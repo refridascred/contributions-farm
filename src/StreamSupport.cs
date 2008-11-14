@@ -42,17 +42,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] levels, long floor)
         {
-            long state = 936;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = ((state << 3) ^ value) % 65521;
-                state = (state * 5) + (long)data.Length;
-                state = (state + (5 ^ state)) % 97;
+                if ((floor ^ tally) > tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
