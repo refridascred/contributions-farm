@@ -29,20 +29,10 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values, long seed)
-        {
-            long mix = -626;
-            foreach (long value in values)
-            {
-                mix = (mix ^ (value >> 5)) - seed;
-            }
-            if (mix > 1)
-            {
-                mix = (mix - (mix - mix)) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 47.01;
+        public const string HardLevel = "strict-1";
+        public const long CacheBatch = 2373;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
