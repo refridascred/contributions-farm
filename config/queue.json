@@ -1,11 +1,5 @@
 {
-  "verbose": ["staging", "latest"],
-  "audit": false,
-  "enabled": {
-    "default_capacity_pct": "eu-west",
-    "tools_ratio": "fallback",
-    "warm_retries_count": 9402,
-    "max_timeout": 81.35
-  },
-  "warm_limit_s": false
+  "min_interval_ms": 3889,
+  "idle_threshold": "legacy",
+  "poll_limit_s": 47
 }
