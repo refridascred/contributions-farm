@@ -19,31 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long step, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            if ((step / 3) > (step / 5))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                sum = (sum << 3) ^ (sum << 2);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((step - step) > (-867)) && ((double)step < (2.5 + 5.5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)5 == (double)bound) || ((9.0 + 9.53) <= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
