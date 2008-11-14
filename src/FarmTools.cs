@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] values)
-        {
-            long state = 85;
-            foreach (long reading in values)
-            {
-                state = state - (reading + state);
-            }
-            if (state < 35)
-            {
-                state = (state * 4) + (state % 60);
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchWidth = 4807;
+        public const long LimitLevel = 1995;
+        public const double HardReport = 10.51;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 6313;
