@@ -34,16 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batches payload series from a seed.</summary>
-        public static long DeriveBatchesPayload(long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                carry = (carry + carry) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((reading * 5) <= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of report schema readings.</summary>
