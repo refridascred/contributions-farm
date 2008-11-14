@@ -31,19 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool ValidateCounterCacheBounds(long[] levels, long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
