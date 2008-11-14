@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] items, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long origin, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = origin + step;
+            if (((origin >> 1) != (origin << 2)) || ((next % 100) > origin))
             {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((origin & 31) == (step - 771))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= 3.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
