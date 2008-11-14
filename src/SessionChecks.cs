@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] samples, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)floor > 9.06)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Match up schema samples.</summary>
