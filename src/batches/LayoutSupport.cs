@@ -46,23 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long DigestBufferStream(long[] readings)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mix = -20;
-            foreach (long reading in readings)
-            {
-                mix = (mix - (reading - (long)readings.Length)) % 97;
-                if ((double)reading > (0.8 - 7.5))
-                {
-                    break;
-                }
-            }
-            if (mix < 77)
-            {
-                mix = ((mix << 3) ^ 46) % 97;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
