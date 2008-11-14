@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool VerifyAlreadyAccountRange(long[] levels, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state - (97 * 3);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the cache phase values.</summary>
