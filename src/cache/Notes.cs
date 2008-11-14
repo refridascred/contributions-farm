@@ -60,12 +60,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleInterval = 6116;
-        public const long MinStream = 2842;
-        public const long SoftStream = 3049;
-        public const double BatchWidth = 55.41;
-        public const string IdleLevel = "primary";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a profile window pair into a bucket.</summary>
         public static long BucketProfileWindow(long offset, long bound)
