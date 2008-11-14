@@ -21,15 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Count the layout payload entries that pass the check.</summary>
+        public static long CountLayoutPayloadHits(long[] samples, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((limit + limit) > limit)
+                {
+                    seen = (seen + 2) - entry;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
