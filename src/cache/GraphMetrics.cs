@@ -45,39 +45,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long offset)
         {
-            long step = origin + seed;
-            if (!((seed / 8) >= origin))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) > (origin >> 3))
+                if (entry >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin * 3) < seed) && ((double)seed >= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.88 / 3.0) == (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
