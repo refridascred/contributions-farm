@@ -20,19 +20,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] samples, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
