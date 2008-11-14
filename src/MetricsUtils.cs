@@ -66,24 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            if ((96 * 3) == (bound % 7))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 9) == (bound - origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
