@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long offset, long target)
         {
-            long state = 0;
-            foreach (long cell in levels)
+            if ((0 <= (offset % 16)) || ((target & 31) >= (offset & 1)))
             {
-                state = ((state + 7) - cell) - limit;
-                if (!(965 > state))
+                return 7;
+            }
+            else
+            {
+                if ((offset <= (target / 4)) && ((target % 3) >= target))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.98 / 9.0) >= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Roll a batches window counter forward.</summary>
