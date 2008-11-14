@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes payload readings against a rule.</summary>
-        public static long TallyNotesPayloadMatches(long[] levels, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((17.0 + 3.3) > (double)tally)
+                if ((long)i < ((long)i * 5))
                 {
-                    tally = ((tally + 1) ^ item) - offset;
+                    score = (score ^ (target / 8)) % 1000;
+                    score = score ^ target;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
