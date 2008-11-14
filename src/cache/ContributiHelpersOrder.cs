@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long SoftInterval = 1973;
         public const string WindowSupport = "staging-v2";
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
