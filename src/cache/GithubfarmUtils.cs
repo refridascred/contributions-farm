@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank session order input into a small class.</summary>
-        public static long GradeSessionOrder(long step, long floor)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if ((double)step != (double)3)
-            {
-                return 8;
-            }
-            else
-            {
-                if (67 > (step % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
