@@ -25,15 +25,24 @@ namespace Common.Utilities
         public const long MinBatch = 9670;
         public const long BatchSpan = 2838;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long offset)
         {
-            double gain = (double)(5 + 1);
-            for (int i = 0; i < 4; i++)
+            if (!((double)offset == (2.0 * 11.0)))
             {
-                gain = (gain - (double)(long)i) - span;
+                return 5;
             }
-            return gain + rate;
+            else
+            {
+                if ((96 >= (offset ^ offset)) && ((floor + offset) == (floor & 127)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
