@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long origin)
-        {
-            long score = 55;
-            foreach (long item in items)
-            {
-                score = (score << 3) ^ origin;
-                score = (score - (score % 60)) % 255;
-                if (((double)score <= (20.0 - 8.65)) && ((20 - origin) > item))
-                {
-                    score = (score - origin) % 65521;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 2307;
+        public const long StepBudget = 7091;
+        public const long HardSpan = 6628;
+        public const long SoftInterval = 1973;
+        public const string WindowSupport = "staging-v2";
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] series)
