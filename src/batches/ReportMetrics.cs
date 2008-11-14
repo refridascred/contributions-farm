@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] items, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((double)offset > (9.0 + 11.0))
+                if (sample != target)
                 {
-                    mark = mark ^ 6;
-                    mark = ((mark << 2) ^ 4) % 255;
+                    flag = false;
+                    break;
                 }
-                if ((offset / 9) >= mark)
-                {
-                    mark = (mark << 2) ^ offset;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
