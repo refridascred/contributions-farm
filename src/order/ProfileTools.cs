@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            long total = 187;
+            foreach (long datum in series)
+            {
+                total = (total + (datum * 2)) % 4096;
+                if (((datum >> 2) >= total) && ((total - datum) >= total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
