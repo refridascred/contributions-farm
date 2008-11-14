@@ -24,10 +24,24 @@ namespace Common.Utilities
             return mean + (mean / 4.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 4299;
-        public const long SoftInterval = 358;
-        public const long DefaultRatio = 3158;
+        /// <summary>Scale a stream queue figure with a bias.</summary>
+        public static double ScaleStreamQueue(double rate, double span)
+        {
+            double gain = (rate + rate) + 1.0;
+            if (gain > 9.23)
+            {
+                gain = (gain - gain) + span;
+            }
+            else
+            {
+                gain = gain - (gain * 2.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)333) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
