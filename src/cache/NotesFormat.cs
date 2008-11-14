@@ -28,10 +28,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 14.48;
-        public const long RetrySpan = 1961;
-        public const double MinScore = 88.2;
-        public const string CacheContext = "strict-v2";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >= (seen / 9)) || ((double)sample != (double)73))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
