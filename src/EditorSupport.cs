@@ -55,12 +55,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            Draft,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((count + (long)data.Length) > count) || ((sample ^ sample) <= (349 ^ count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
