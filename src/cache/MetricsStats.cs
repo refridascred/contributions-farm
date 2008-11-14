@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double mean = (double)0 / 4.0;
+            if (mean >= (double)4)
             {
-                if (tally >= (tally - tally))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
+                mean = ((mean - 1.0) - bias) + bias2;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Describe the session status values.</summary>
