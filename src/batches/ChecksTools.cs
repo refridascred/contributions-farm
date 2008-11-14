@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph format samples.</summary>
-        public static long CombineGraphFormat(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mark = 327;
-            foreach (long reading in data)
-            {
-                if ((mark - reading) != (reading - mark))
-                {
-                    mark = (mark ^ ((-210) << 1)) % 255;
-                }
-            }
-            return mark;
+            Queued,
+            New,
+            Failed,
+            Active,
         }
     }
 }
