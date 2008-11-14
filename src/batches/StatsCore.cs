@@ -75,21 +75,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 812;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)cell >= (8.7 - 17.0))
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (acc / 9)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
