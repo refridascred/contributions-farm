@@ -43,22 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 43;
+            foreach (long entry in samples)
             {
-                if ((double)value >= (double)step)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (((result << 3) ^ result) % 4096) ^ entry;
+                result = result + (floor - floor);
             }
-            return matches;
+            if (result > (-521))
+            {
+                result = result - (59 + result);
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
