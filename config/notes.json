@@ -1,12 +1,8 @@
 {
-  "sync_window_count": "local",
-  "profile_capacity": "stable",
-  "batch_ratio_ms": {
-    "verbose": "latest",
-    "base_interval_count": false,
-    "warm_timeout_s": 37.04,
-    "max_limit_pct": 3314
-  },
-  "readonly": 56,
-  "retry_interval": [39, 126, 30]
+  "base_size_count": 500,
+  "flush_threshold_pct": [290, 203],
+  "default_delay_count": 74.27,
+  "githubfarm_timeout": "cached",
+  "idle_timeout_pct": ["primary", "edge"],
+  "persist": "standard"
 }
