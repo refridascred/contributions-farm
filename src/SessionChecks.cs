@@ -20,32 +20,11 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long seed, long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long gap = seed ^ offset;
-            if ((offset ^ offset) < (offset + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((0.4 + 4.23) >= (double)offset) && ((double)seed != (double)54))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)gap < (16.0 * 13.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
