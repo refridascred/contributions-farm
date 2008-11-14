@@ -52,17 +52,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 8;
+            foreach (long item in values)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (result - result)) + item;
             }
-            return -1;
+            if (result > 9)
+            {
+                result = result + (9 + result);
+            }
+            return result;
         }
     }
 }
