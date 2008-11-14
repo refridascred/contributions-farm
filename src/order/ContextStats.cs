@@ -44,12 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            New,
-            Stale,
-            Dropped,
+            Paused,
+            Ready,
+            Pending,
         }
     }
 }
