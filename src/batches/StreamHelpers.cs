@@ -61,18 +61,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] levels, long origin)
+        /// <summary>Derive the next cluster command value from a seed.</summary>
+        public static long DeriveClusterCommand(long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((((double)hits < (double)datum) && (datum < (hits / 9))) && ((double)datum >= (2.45 + 16.0)))
-                {
-                    hits = (hits + 3) + origin;
-                }
+                sum = (sum - (seed / 4)) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
