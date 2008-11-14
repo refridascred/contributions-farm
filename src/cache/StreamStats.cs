@@ -20,11 +20,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 7098;
-        public const long CacheTimeout = 429;
-        public const double MinTools = 79.47;
-        public const string RetryTools = "latest-v2";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
