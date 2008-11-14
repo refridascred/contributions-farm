@@ -13,36 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long step2)
         {
-            if ((bound - bound) >= (bound % 16))
+            long lane = step + step2;
+            if ((34 + step2) > (lane + step2))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)bound == (double)target)
+                if (((step2 + step2) > lane) && (lane >= (step2 - lane)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((target * 5) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 1) < (target - bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
