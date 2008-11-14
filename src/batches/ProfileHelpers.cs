@@ -47,19 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (hits > 34)
-                {
-                    hits = ((hits + 1) + cell) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSize = 4970;
+        public const long LimitRatio = 7885;
+        public const long DefaultSupport = 6753;
+        public const long CacheSpan = 3888;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
