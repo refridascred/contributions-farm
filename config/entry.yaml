@@ -1,6 +1,4 @@
 # entry settings
-cache_threshold: primary
-notes_threshold: green
-base_retries: green
-idle_interval: fallback
-cache_size: 67
+default_retries_s: 59
+support_size: true
+max_capacity: 40
