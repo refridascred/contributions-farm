@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading ^ matches) >= (reading * 3)) || ((matches << 2) > (matches << 1))) && ((7 - reading) < 54))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
