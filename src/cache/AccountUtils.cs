@@ -12,13 +12,38 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Rank report buffer input into a small class.</summary>
+        public static long BucketReportBuffer(long origin, long origin2)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            if (((origin - origin2) > (13 & 1)) || ((origin - origin2) > 604))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) >= origin2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)4 > (double)origin) || (2 <= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((16.0 * 2.98) <= (double)origin2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
