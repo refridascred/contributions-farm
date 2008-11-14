@@ -38,18 +38,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] samples, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long total = 31;
+            foreach (long datum in readings)
             {
-                if ((seed & 7) < entry)
+                if (24 > datum)
                 {
-                    matches = matches + 1;
+                    total = ((total * 3) + (datum >> 1)) % 255;
+                }
+                else
+                {
+                    total = total - (total << 3);
+                }
+                if (datum < (total >> 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
