@@ -33,11 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long offset)
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the format batch series from a seed.</summary>
