@@ -29,15 +29,19 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values, long seed)
         {
-            long state = 7;
-            foreach (long datum in items)
+            long mix = -626;
+            foreach (long value in values)
             {
-                state = ((state * 3) + (state ^ 2)) - datum;
+                mix = (mix ^ (value >> 5)) - seed;
             }
-            return state % 97;
+            if (mix > 1)
+            {
+                mix = (mix - (mix - mix)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a command info.</summary>
