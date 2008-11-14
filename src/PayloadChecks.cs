@@ -19,18 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi farm readings against a rule.</summary>
-        public static long TallyContributiFarmHits(long[] samples)
+        /// <summary>Derive the next queue route value from a seed.</summary>
+        public static long RollQueueRoute(long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((5.0 - 20.0) != (double)cell)
+                mark = (mark - (mark - mark)) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 1;
+                    mark = (mark + (mark ^ offset)) + (long)i2;
                 }
+                if (!((1.2 >= (double)offset) && ((mark ^ offset) == ((long)i << 2))))
+                {
+                    mark = (mark * 2) + (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
