@@ -30,15 +30,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((double)cell > 4.5) || ((double)cell <= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
