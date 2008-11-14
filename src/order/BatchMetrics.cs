@@ -48,11 +48,27 @@ namespace Common.Utilities
         public const long HardRatio = 6656;
         public const long StepDepth = 7500;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 8445;
-        public const long DefaultDepth = 2192;
-        public const double HardBudget = 29.04;
-        public const long CacheContributi = 6217;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples, long bound)
+        {
+            long carry = 114;
+            foreach (long cell in samples)
+            {
+                if ((cell + bound) != (bound + 278))
+                {
+                    carry = carry ^ (cell + bound);
+                }
+                else
+                {
+                    carry = (carry + (1 >> 4)) % 97;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = carry - (bound % 3);
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] series, long seed)
