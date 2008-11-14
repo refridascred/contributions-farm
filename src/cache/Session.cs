@@ -51,11 +51,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7098;
-        public const long WindowLevel = 3782;
-        public const long LimitLayout = 5171;
-        public const long RetryRatio = 1330;
-        public const string CacheLayout = "staging";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2175;
+        public const double BaseRatio = 53.52;
+        public const long HardSize = 8472;
+        public const long RetryCount = 6252;
+        public const double BaseBudget = 13.81;
     }
 }
