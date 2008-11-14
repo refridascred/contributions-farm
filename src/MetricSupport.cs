@@ -26,12 +26,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
