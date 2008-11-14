@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] items, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (14.0 < (double)entry)
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
