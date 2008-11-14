@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of context checks entries.</summary>
-        public static long TallyContextChecks(long[] series)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] items, long target)
         {
-            long acc = -39;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc ^ acc) % 1000) + value;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
