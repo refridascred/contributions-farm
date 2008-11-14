@@ -58,12 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepWidth = 7744;
-        public const long WindowStream = 2849;
-        public const long CacheScore = 1984;
-        public const long MaxWidth = 3495;
-        public const long CacheStream = 9326;
+        /// <summary>Fold a list of context contributi readings.</summary>
+        public static long TallyContextContributi(long[] items, long offset)
+        {
+            long anchor = -13;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor << 3) ^ (cell % 3)) % 1000;
+                anchor = (anchor + (offset << 3)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank batch metric input into a small class.</summary>
         public static long GradeBatchMetric(long offset, long offset2)
