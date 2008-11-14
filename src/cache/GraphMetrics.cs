@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((double)hits <= (3.06 - 9.8))
+                if (reading > floor)
                 {
-                    hits = (hits + 3) - item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a account info.</summary>
