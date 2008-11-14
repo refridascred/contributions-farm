@@ -1,12 +1,6 @@
 {
-  "base_window_pct": 114,
-  "command_threshold": "green",
-  "sync_interval_s": false,
-  "persist": {
-    "farm_depth": 1172,
-    "compress": "staging",
-    "idle_ttl_count": ["blue", "fallback"],
-    "sync_timeout": "green"
-  },
-  "enabled": false
+  "min_capacity_s": true,
+  "batches_depth": true,
+  "max_limit_pct": 71.05,
+  "idle_limit": "strict"
 }
