@@ -26,27 +26,19 @@ namespace Common.Utilities
         public const string BaseLevel = "stable-1";
         public const long SoftSupport = 9952;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long seed)
         {
-            long carry = 91;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((66 + carry) <= carry)
+                if (item != seed)
                 {
-                    carry = ((carry * 5) + (carry + value)) % 97;
-                    continue;
-                }
-                if ((2.0 - 4.7) <= (double)step)
-                {
-                    carry = carry - (step << 2);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ ((-77) + step);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
