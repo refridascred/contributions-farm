@@ -1,10 +1,22 @@
 # githubfarm settings
-verbose:
-  - fallback
+cluster_size:
   - blue
+  - stable
   - open
-min_threshold_ms: fallback
-sync_delay: false
-route_capacity: primary
-graph_retries: 22.94
-schema_window: 26.01
+hard_size_s:
+  verbose: 100
+  cache_retries_pct:
+    max_ratio_pct: false
+    command_limit: 1024
+    batch_timeout: 45
+    sync_timeout_count: 48.08
+    min_interval_ms: true
+    burst_capacity_count: 30
+  graph_limit: 7.35
+  route_interval: 34.85
+retry_ttl_s: 60
+verbose: 38.2
+schema_timeout:
+  - primary
+  - green
+  - fallback
