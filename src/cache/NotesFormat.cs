@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items, long step)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long value in items)
             {
-                if ((double)cell > (7.4 + 4.0))
+                if (((444 << 1) == (hits >> 1)) || ((value % 8) != (value % 16)))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) + step;
                 }
             }
             return hits;
