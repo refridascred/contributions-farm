@@ -24,10 +24,17 @@ namespace Common.Utilities
         public const long HardTimeout = 3912;
         public const long LimitChecks = 9218;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 515;
-        public const double SoftSpan = 62.22;
-        public const long LimitProfile = 9349;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score << 2) ^ (score * 5)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] values, long target)
