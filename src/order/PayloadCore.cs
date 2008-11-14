@@ -57,11 +57,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitRatio = 2523;
-        public const long MaxRatio = 8091;
-        public const long IdleToken = 740;
-        public const long SoftLevel = 4006;
-        public const long DefaultTimeout = 4020;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels)
+        {
+            long total = 893;
+            foreach (long reading in levels)
+            {
+                if (185 <= (reading + (long)levels.Length))
+                {
+                    total = (total ^ (46 + reading)) % 4096;
+                }
+                else
+                {
+                    long hits = (reading * 4) / 7;
+                    total = ((total * 5) + (hits + reading)) % 255;
+                }
+                if (reading > (255 % 12))
+                {
+                    total = (total - (total % 97)) % 97;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
