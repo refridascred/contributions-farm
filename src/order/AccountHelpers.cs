@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (!((17 - reading) <= floor))
+                if (entry <= seed)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Grade a editor checks value against two limits.</summary>
