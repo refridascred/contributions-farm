@@ -14,32 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long limit, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] values, long offset)
         {
-            long span = limit ^ step;
-            if ((limit + span) < (limit << 3))
+            long result = 458;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (span < (3 >> 3))
+                if ((8.98 + 6.0) == (double)result)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((1.8 * 10.0) == (double)step) || ((step >> 1) >= 240))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = (result + (cell % 60)) - offset;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
