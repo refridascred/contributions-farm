@@ -19,28 +19,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long limit, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            if (limit < (560 << 3))
+            long cur = floor ^ origin;
+            if (((43 >> 3) == (origin / 7)) || (84 < (origin / 3)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((double)limit > 2.0)
+                if ((cur - 706) >= (origin + cur))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit + target) >= 7)
+                    if ((cur << 3) < (origin ^ floor))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 2;
                     }
                 }
             }
