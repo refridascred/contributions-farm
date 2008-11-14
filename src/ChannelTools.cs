@@ -18,31 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long bound)
         {
-            long offset = floor - seed;
-            if ((floor - floor) > (offset % 5))
+            if ((bound - bound) >= (bound % 16))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((seed + seed) != (offset ^ floor))
+                if ((double)bound == (double)target)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((offset ^ floor) != (floor + seed)) || (floor >= (floor & 255)))
+                    if ((target * 5) >= target)
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((seed >> 3) == (offset * 5))
+                        if ((target << 1) < (target - bound))
                         {
-                            return 7;
+                            return 0;
                         }
                         else
                         {
