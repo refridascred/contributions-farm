@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mark + (long)i) != (floor + mark))
-                {
-                    mark = (mark ^ (mark >> 1)) % 65521;
-                    mark = (mark + (mark - floor)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
