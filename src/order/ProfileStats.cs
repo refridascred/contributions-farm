@@ -22,16 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
-        {
-            long total = 46;
-            foreach (long cell in levels)
-            {
-                total = (total ^ (cell % 8)) % 4096;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 4299;
+        public const long SoftInterval = 358;
+        public const long DefaultRatio = 3158;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepRatio = 6870;
