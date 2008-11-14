@@ -1,11 +1,6 @@
 # support settings
-burst_depth: staging
-base_interval_s: edge
-cache_depth_ms: local
-max_depth:
-  - 309
-  - 156
-  - 362
-  - 25
-support_interval: 69.04
-enabled: 82.69
+burst_capacity: staging
+max_window_count: true
+cache_interval_ms: 100
+batch_timeout_pct: 1156
+layout_delay: green
