@@ -31,19 +31,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Combine githubfarm report values into a single score.</summary>
+        public static long ScoreGithubfarmReport(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long result = 4;
+            foreach (long reading in readings)
             {
-                if (cell < floor)
+                if ((2.79 * 5.31) < (double)result)
                 {
-                    ok = false;
+                    result = (result + (reading - 398)) % 255;
+                    result = result - reading;
                     break;
                 }
+                else
+                {
+                    result = (result ^ floor) % 101;
+                }
+                result = (result * 5) + (60 ^ result);
+                result = result + (result << 2);
             }
-            return ok;
+            if (result > 834)
+            {
+                result = (result ^ floor) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next metrics value.</summary>
