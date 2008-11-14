@@ -24,22 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((value < (matches + matches)) && (((value * 4) >= ((-1) / 4)) && ((5.4 - 5.2) <= (double)matches)))
+                if (entry != floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit stream already readings against a rule.</summary>
