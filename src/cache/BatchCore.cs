@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const long CachePayload = 518;
         public const long LimitPayload = 222;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            Retry,
+            Draft,
+            Failed,
+            New,
         }
     }
 }
