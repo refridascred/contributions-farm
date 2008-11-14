@@ -58,19 +58,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] readings, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (reading != bound)
+                if (entry != offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
