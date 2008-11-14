@@ -43,11 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleRatio = 84.51;
-        public const long RetryGraph = 6473;
-        public const long MinGraph = 4526;
-        public const double WindowLevel = 83.77;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Idle,
+            Paused,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double bias, double span)
