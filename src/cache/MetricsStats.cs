@@ -51,23 +51,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits report series from a seed.</summary>
-        public static long DeriveCommitsReport(long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((result << 2) == (583 / 9))
-                {
-                    result = ((result << 2) ^ step) % 4096;
-                }
-                else
-                {
-                    result = (result + (result - step)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Paused,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
