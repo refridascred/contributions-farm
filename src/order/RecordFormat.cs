@@ -73,13 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstSpan = 8052;
+        public const long IdleGraph = 9625;
+        public const long LimitGraph = 1670;
+        public const long MaxScore = 8658;
+        public const long CacheGraph = 6523;
     }
 }
