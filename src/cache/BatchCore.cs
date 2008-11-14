@@ -38,17 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already githubfarm reading by value.</summary>
-        public static long FindAlreadyGithubfarmIndex(long[] values, long origin)
+        /// <summary>Audit stream already readings against a rule.</summary>
+        public static long TallyStreamAlreadyHits(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (values[i] <= origin)
+                if (((seen - floor) >= floor) || (((3.04 - 8.7) != (double)sample) || ((2.28 / 4.0) < (double)sample)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
