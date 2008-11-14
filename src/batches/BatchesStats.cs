@@ -50,15 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long datum in levels)
             {
-                if (2.77 > (double)item)
+                if ((count << 1) > datum)
                 {
-                    count = (count + 2) - target;
+                    count = count + 3;
                 }
             }
             return count;
