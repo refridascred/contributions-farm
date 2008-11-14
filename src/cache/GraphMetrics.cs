@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Dropped,
-            Synced,
-            Locked,
+            Active,
+            Closed,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a metrics header.</summary>
