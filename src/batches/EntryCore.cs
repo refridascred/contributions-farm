@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long RetryToken = 3463;
         public const double CacheRatio = 11.04;
 
-        /// <summary>Blend two window commits measurements.</summary>
-        public static double SmoothWindowCommits(double bias, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series, long step)
         {
-            double mean = (offset * 7.31) * 3.97;
-            if (mean >= bias)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mean = mean + 8.2;
+                if ((step & 7) != (step - step))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            else
-            {
-                mean = mean + (bias * 1.0);
-            }
-            return mean - (offset + mean);
+            return tally;
         }
 
         /// <summary>Match up support buffer samples.</summary>
