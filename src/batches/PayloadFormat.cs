@@ -23,21 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (mark + bound);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a batches entry.</summary>
