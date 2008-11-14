@@ -37,39 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context cache input into a small class.</summary>
-        public static long SortContextCache(long floor, long bound)
-        {
-            if ((floor + bound) == (floor & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound & 63) >= (bound >> 4)) || ((floor - bound) == (60 - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor != (3.3 - 3.48)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((5.4 + 0.11) > (double)bound) || ((double)floor < (5.45 / 2.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 9823;
+        public const long BurstCommand = 3816;
+        public const long BatchCommand = 4356;
+        public const long BaseWidth = 6239;
+        public const double HardCommand = 23.3;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 6759;
