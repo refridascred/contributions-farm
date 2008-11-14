@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches < ((long)series.Length >> 5))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
