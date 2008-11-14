@@ -64,19 +64,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen % 60) > (value >> 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 17.05;
+        public const long BurstRatio = 5139;
+        public const long BaseRoute = 454;
+        public const long BatchRatio = 4349;
+        public const string MinRoute = "stable-v2";
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double ratio, double floor)
