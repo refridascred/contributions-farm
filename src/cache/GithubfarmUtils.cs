@@ -36,10 +36,13 @@ namespace Common.Utilities
         public const long BurstBudget = 8046;
         public const long WindowFilter = 3292;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 7529;
-        public const long BaseFactor = 2681;
-        public const long CacheScore = 4241;
-        public const double WindowInterval = 88.49;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
