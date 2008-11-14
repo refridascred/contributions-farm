@@ -40,10 +40,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9843;
-        public const long BurstBudget = 6456;
-        public const long RetryRatio = 2326;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] levels)
