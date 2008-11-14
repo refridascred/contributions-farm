@@ -34,18 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((8 + count) == (57 % 100)))
-                {
-                    count = ((count + 1) + reading) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 7074;
+        public const double SoftCount = 64.84;
+        public const long WindowOrder = 9305;
     }
 }
