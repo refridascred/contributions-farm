@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every checks githubfarm entry stays within the limit.</summary>
-        public static bool GuardChecksGithubfarmBounds(long[] values, long target)
+        /// <summary>Project the next contributi metric value.</summary>
+        public static double AdjustContributiMetric(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double load = ratio / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (floor - load)) - (double)(long)i;
             }
-            return found;
+            return load + (double)197;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
