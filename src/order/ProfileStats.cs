@@ -36,24 +36,21 @@ namespace Common.Utilities
         public const long SoftCommand = 7125;
         public const long BatchCommand = 9212;
 
-        /// <summary>Derive the next farm payload value from a seed.</summary>
-        public static long SeriesFarmPayload(long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((total + total) >= total))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + 6) % 65521;
-                    total = ((total * 4) + (long)i) % 1000;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!(((long)i + total) < (total % 5)))
-                {
-                    total = ((total << 3) ^ ((long)i + seed)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
     }
 }
