@@ -70,11 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 2052;
-        public const long BaseCluster = 6797;
-        public const long CacheSize = 913;
-        public const long BurstLevel = 2656;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxBudget = 4496;
+        public const long RetryRoute = 3622;
+        public const double IdleRoute = 28.63;
+        public const long LimitCount = 3531;
+        public const double CacheFactor = 47.3;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
