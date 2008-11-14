@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 9299;
-        public const long LimitSize = 7784;
-        public const string LimitFarm = "primary-1";
-        public const double RetryFarm = 94.25;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((mix + limit) > 61) || ((2 + 179) <= limit))
+                {
+                    mix = (mix * 5) + limit;
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (mix + mix)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long offset)
