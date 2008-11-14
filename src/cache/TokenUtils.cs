@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardInterval = 4417;
+        public const long HardTimeout = 3068;
+        public const long LimitBuffer = 418;
+        public const double RetryLevel = 46.62;
+        public const string IdleBuffer = "stable-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 6436;
