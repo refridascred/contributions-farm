@@ -59,19 +59,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((reading - reading) > (reading ^ reading)) || ((count * 4) != (reading + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxWidth = 4.29;
+        public const long BurstCounter = 8870;
+        public const long BatchCounter = 9483;
+        public const long StepSize = 6015;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
