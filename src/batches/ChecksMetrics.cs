@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const long SoftScore = 2445;
         public const long BaseChannel = 6588;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Look up the position of a entry order sample.</summary>
+        public static long FindEntryOrderIndex(long[] data, long target)
         {
-            long sum = 28;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (value % 5)) % 1000;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter window readings.</summary>
