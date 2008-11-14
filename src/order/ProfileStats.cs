@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long TallyGithubfarmContextOutliers(long[] values, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (origin >= (tally + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the batch class values.</summary>
