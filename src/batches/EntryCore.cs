@@ -52,15 +52,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings, long limit)
         {
-            double gain = span;
-            if (gain >= (double)579)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                gain = gain + (bias - span);
+                if (limit >= sample)
+                {
+                    tally = tally + 3;
+                }
             }
-            return gain + bias;
+            return tally;
         }
     }
 }
