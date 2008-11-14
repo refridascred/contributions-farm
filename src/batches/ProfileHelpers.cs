@@ -75,18 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi report readings against a rule.</summary>
-        public static long TallyContributiReportGaps(long[] series)
+        /// <summary>Project the next commits cache value.</summary>
+        public static double ScaleCommitsCache(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double drift = weight;
+            if (drift >= span)
             {
-                if ((long)series.Length >= (10 * 5))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                drift = drift - span;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (weight / 4.0)) - (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
