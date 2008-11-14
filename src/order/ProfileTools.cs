@@ -27,19 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            long total = 187;
-            foreach (long datum in series)
+            double ratio = bias - (offset + offset);
+            for (int i = 0; i < 4; i++)
             {
-                total = (total + (datum * 2)) % 4096;
-                if (((datum >> 2) >= total) && ((total - datum) >= total))
-                {
-                    break;
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return total % 1000;
+            return ratio - offset;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
