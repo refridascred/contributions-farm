@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long score = 128;
+            foreach (long entry in data)
             {
-                if (entry != offset)
+                if (((double)origin != (3.2 * 3.0)) && ((5 & 7) != (score << 2)))
                 {
-                    ready = false;
-                    break;
+                    score = (score + ((-32) ^ (long)data.Length)) + entry;
                 }
             }
-            return ready;
+            return score % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
