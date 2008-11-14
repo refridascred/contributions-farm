@@ -50,18 +50,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 7710;
         public const long RetryEditor = 1964;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mark = 49;
-            foreach (long cell in items)
-            {
-                if (((3.4 / 9.0) != (double)cell) || ((mark ^ cell) > mark))
-                {
-                    mark = (mark + mark) % 101;
-                }
-            }
-            return mark % 1000;
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
