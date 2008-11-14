@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long offset2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] samples, long target)
         {
-            long slot = offset - offset2;
-            if ((offset2 < (offset2 << 3)) || (offset > (slot / 6)))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset2 >= (18.0 + 6.5))
+                if (entry >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((slot + slot) < (offset2 % 100)) && ((slot % 60) < (offset & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)slot >= (6.7 + 2.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
