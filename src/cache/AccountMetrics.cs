@@ -36,20 +36,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            double rate = (floor - bias) / 6.0;
+            if (rate > (2.49 + 4.3))
             {
-                acc = (acc - (long)i) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc << 3) ^ (target + (-688))) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                rate = rate - (rate - rate);
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
