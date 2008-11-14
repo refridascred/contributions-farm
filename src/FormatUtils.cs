@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long StepReport = 2880;
         public const long BaseTimeout = 370;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double span)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            double weight = (double)(3 % 8);
-            if (weight <= gain)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (weight * 5.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + span;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
