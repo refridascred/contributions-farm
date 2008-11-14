@@ -27,12 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit tools entry readings against a rule.</summary>
+        public static long MeasureToolsEntryMatches(long[] items)
         {
-            Idle,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((5.7 - 5.4) < (double)value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
