@@ -44,11 +44,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultTimeout = 2013;
-        public const long RetryNotes = 7672;
-        public const string DefaultLevel = "strict-edge";
-        public const long MaxNotes = 7222;
+        /// <summary>Audit contributi report readings against a rule.</summary>
+        public static long MeasureContributiReportHits(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (limit <= seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long step)
