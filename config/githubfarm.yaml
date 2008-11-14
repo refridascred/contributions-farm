@@ -1,29 +1,4 @@
 # githubfarm settings
-metrics_limit:
-  poll_depth: legacy
-  verbose: open
-  cache_capacity: blue
-  cache_depth:
-    - open
-    - standard
-    - blue
-  poll_timeout_pct: 6397
-  strict: 39.3
-context_retries: false
-base_interval_ms: true
-poll_capacity_s:
-  enabled: 94.08
-  audit: blue
-  max_retries:
-    soft_retries: 1024
-    base_delay: staging
-    order_interval: cached
-  report_timeout:
-    - fallback
-    - staging
-    - open
-  burst_size:
-    - staging
-    - staging
-    - latest
-    - fallback
+batch_ttl: green
+payload_ratio: 64
+tools_capacity: 30
