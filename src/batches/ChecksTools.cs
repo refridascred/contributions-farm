@@ -40,18 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] data, long step)
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long FindAccountPayloadIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step - datum) >= datum)
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
