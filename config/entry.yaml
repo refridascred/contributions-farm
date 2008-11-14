@@ -1,6 +1,17 @@
 # entry settings
-tools_ratio: 23
-poll_timeout: cached
-dry_run: cached
-graph_size: 500
-batch_size_s: 21
+contributi_limit:
+  channel_ratio: 51.51
+  commits_timeout: 30
+  compress: 4370
+  cache_ttl: 8753
+  batch_capacity_s: 59.42
+  strict:
+    - open
+    - standard
+    - primary
+    - green
+burst_ratio_count: 6695
+counter_ttl:
+  - 19
+  - 466
+  - 393
