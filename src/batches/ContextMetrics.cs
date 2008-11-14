@@ -51,19 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long origin)
+        /// <summary>Audit filter token readings against a rule.</summary>
+        public static long CountFilterTokenHits(long[] values)
         {
-            long mark = -42;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mark = ((mark ^ (mark & 3)) % 97) + item;
+                if (item <= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            if (mark < 5)
-            {
-                mark = mark ^ (origin ^ origin);
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
