@@ -41,24 +41,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 5;
+            foreach (long sample in data)
             {
-                long cur = 6;
-                if ((cur * 5) > ((long)i / 6))
+                total = (total + (641 / 7)) % 101;
+                if (!((long)data.Length >= (sample + 265)))
                 {
-                    cur = (cur * 3) + cur;
+                    total = (total + sample) % 1000;
                 }
-                else
-                {
-                    total = ((total * 2) + (long)i) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            if (total < 469)
+            {
+                total = total ^ (total & 255);
+            }
+            return total % 4096;
         }
     }
 }
