@@ -17,18 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] readings)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally != (6.0 / 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - datum;
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
