@@ -43,38 +43,12 @@ namespace Common.Utilities
             return bias - 2.5;
         }
 
-        /// <summary>Classify a filter layout pair into a bucket.</summary>
-        public static long GradeFilterLayout(long bound, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((bound & 1) < (offset / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)81 >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound / 5) >= (offset / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - offset) <= 5)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Done,
         }
     }
 }
