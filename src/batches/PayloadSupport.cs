@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a commits order value against two limits.</summary>
-        public static long SortCommitsOrder(long floor, long limit)
+        /// <summary>Digest a series of commits account entries.</summary>
+        public static long TallyCommitsAccount(long[] levels)
         {
-            long step = floor - limit;
-            if (!((step - limit) < (floor / 3)))
+            long score = -825;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (limit + step))
+                if (8.0 < (double)score)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((-12) - limit) == (limit & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)step == (8.5 * 13.0)) && (limit < (floor ^ step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = (score ^ cell) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Accumulate context token samples.</summary>
