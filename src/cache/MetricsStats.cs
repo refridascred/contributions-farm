@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            double mean = (double)0 / 4.0;
-            if (mean >= (double)4)
+            long acc = 80;
+            foreach (long datum in readings)
             {
-                mean = ((mean - 1.0) - bias) + bias2;
+                if ((double)67 == (double)acc)
+                {
+                    acc = ((acc * 5) + datum) % 101;
+                }
+                else
+                {
+                    acc = acc - ((-871) >> 5);
+                }
             }
-            return mean + mean;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
