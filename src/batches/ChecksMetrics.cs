@@ -54,14 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next report profile value from a seed.</summary>
+        public static long StepReportProfile(long floor)
         {
-            Dropped,
-            Active,
-            Failed,
-            Queued,
-            Closed,
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc - acc) % 255) ^ (long)i2;
+                    acc = (acc * 5) + (floor - acc);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
