@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values, long target)
         {
-            long state = -4;
-            foreach (long cell in levels)
+            long carry = 335;
+            foreach (long item in values)
             {
-                state = state ^ cell;
+                carry = carry + (item << 2);
             }
-            if (state < 68)
+            if (carry < 56)
             {
-                state = (state - (state >> 2)) % 101;
+                carry = (carry + target) % 101;
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Audit contributi farm readings against a rule.</summary>
