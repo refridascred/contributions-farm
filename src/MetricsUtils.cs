@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= (8 + matches))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cluster class values.</summary>
