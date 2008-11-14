@@ -49,19 +49,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 >= (double)7)
-            {
-                bias2 = bias2 + (double)106;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - 5.85) + (double)(long)i;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 4099;
+        public const long SoftBatches = 4800;
+        public const long StepBatches = 7191;
+        public const long DefaultBatches = 7433;
     }
 }
