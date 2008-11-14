@@ -58,13 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
