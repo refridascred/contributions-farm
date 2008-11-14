@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] samples, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the layout level values.</summary>
