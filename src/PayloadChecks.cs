@@ -15,13 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
