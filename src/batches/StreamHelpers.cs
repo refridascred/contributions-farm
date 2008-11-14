@@ -13,26 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] series, long floor)
         {
-            long total = -167;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)item <= (double)18)
+                if ((seen - 34) <= reading)
                 {
-                    total = (total - (item + item)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total / 4)) % 101;
-                }
-                if (item >= (bound % 24))
-                {
-                    break;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
