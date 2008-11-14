@@ -13,12 +13,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7216;
-        public const string MinBudget = "fallback-v2";
-        public const string MaxWindow = "fallback-edge";
-        public const double StepSpan = 23.35;
-        public const long IdleWindow = 9431;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] data)
+        {
+            long score = 77;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (score - (long)i) % 255;
+                }
+                score = (score - (44 + datum)) % 97;
+            }
+            if (score < 4)
+            {
+                score = (score + score) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] items)
