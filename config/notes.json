@@ -1,5 +1,7 @@
 {
-  "cache_retries_s": 30.34,
-  "metric_capacity": "legacy",
-  "burst_window_pct": 3866
+  "idle_threshold_s": 9129,
+  "hard_limit_pct": ["local", "legacy", "standard", "latest"],
+  "verbose": "open",
+  "metrics_ttl": 4883,
+  "base_size": "cached"
 }
