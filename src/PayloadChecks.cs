@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Look up the position of a counter commits sample.</summary>
+        public static long SeekCounterCommitsIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen - seen) > (sample % 5))
+                if (series[i] < bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
