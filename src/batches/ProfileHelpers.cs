@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const string IdleTimeout = "staging-edge";
         public const long WindowCache = 1658;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long bound)
+        /// <summary>Find the first profile format entry that matches the target.</summary>
+        public static long FindProfileFormatIndex(long[] items, long target)
         {
-            if (((bound - (-754)) == (target ^ bound)) && ((double)target != (5.7 / 7.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target + target) >= (bound >> 1)))
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound < (bound * 4)) || ((8.0 * 5.01) <= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools route samples are out of range.</summary>
