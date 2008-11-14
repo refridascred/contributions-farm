@@ -36,11 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((item < (item - tally)) || (52 > item)) || ((item + tally) != (item & 15)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
