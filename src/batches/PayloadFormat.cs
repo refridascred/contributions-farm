@@ -46,19 +46,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (acc < 196)
-                {
-                    acc = (acc * 5) + (long)i;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            double mean = bias;
+            return mean + rate;
         }
     }
 }
