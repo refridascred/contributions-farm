@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "standard-edge";
-        public const string BatchToken = "latest-edge";
-        public const long RetryToken = 3463;
-        public const double CacheRatio = 11.04;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 3532;
+        public const long BatchCount = 3119;
+        public const double DefaultCommand = 45.7;
+        public const long BatchTimeout = 6321;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 6464;
