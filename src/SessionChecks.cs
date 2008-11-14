@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long BatchProfile = 9178;
         public const long StepProfile = 2620;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - target) % 101;
+                anchor = ((anchor * 4) + (anchor ^ (long)i)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
