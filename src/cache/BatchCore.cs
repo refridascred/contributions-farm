@@ -36,12 +36,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 6136;
-        public const long MinPayload = 4815;
-        public const long LimitSize = 29;
-        public const long CachePayload = 518;
-        public const long LimitPayload = 222;
+        /// <summary>Count the already contributi entries that pass the check.</summary>
+        public static long MeasureAlreadyContributiHits(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seed & 127) < (14 >> 1))
+                {
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double BlendRoute(double rate, double bias)
