@@ -1,6 +1,5 @@
 {
-  "strict": "stable",
-  "hard_depth_ms": 1024,
-  "dry_run": true,
-  "compress": 0.45
+  "burst_ttl": "edge",
+  "idle_depth": 44.53,
+  "cache_size_count": "staging"
 }
