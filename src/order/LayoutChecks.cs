@@ -31,19 +31,17 @@ namespace Common.Utilities
         public const long BaseWidth = 6239;
         public const double HardCommand = 23.3;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != seed)
+                if (levels[i] == origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
