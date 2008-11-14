@@ -20,12 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long bound, long origin)
         {
-            Retry,
-            Stale,
-            Done,
+            if (((double)bound > (3.0 / 2.0)) && ((origin + 44) >= (93 % 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (943 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin & 127) >= (origin ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + 271) < origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
