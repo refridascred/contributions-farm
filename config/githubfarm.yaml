@@ -1,4 +1,4 @@
 # githubfarm settings
-stats_retries: 14
-audit: 500
-dry_run: 9.91
+strict: 6892
+persist: 31.35
+farm_retries: legacy
