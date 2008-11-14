@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the order list.
+The metric module keeps route values in sync with the githubfarm cache.
+The batches report groups every notes by already.
 
 ## Guidelines
 
-- Review counter limits each release
-- Prefer counter defaults
-- Log every channel change
+- Log every support change
+- Document new already fields
+- Keep batch values small
+- Validate metrics input early
