@@ -56,14 +56,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Pending,
-            Draft,
-            Idle,
-            Done,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 6661;
+        public const double MaxRatio = 77.16;
+        public const long RetryCount = 8885;
+        public const long BurstSize = 177;
     }
 }
