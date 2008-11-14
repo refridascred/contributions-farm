@@ -57,19 +57,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a queue channel reading.</summary>
-        public static double SmoothQueueChannel(double bias, double span)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double rate = span / 8.0;
-            if (rate >= (bias / 2.0))
-            {
-                rate = rate - (double)24;
-            }
-            else
-            {
-                rate = rate - span;
-            }
-            return rate - bias;
+            Retry,
+            Closed,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Project the next contributi account value.</summary>
