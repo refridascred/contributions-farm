@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Synced,
-            Done,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 7882;
+        public const long MaxSpan = 2040;
+        public const long RetryAccount = 6277;
+        public const long SoftWidth = 5284;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
