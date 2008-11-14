@@ -61,14 +61,19 @@ namespace Common.Utilities
             return ((ratio + 18.0) + rate) + span;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            Closed,
-            Locked,
-            Stale,
-            Failed,
-            Pending,
+            double bias2 = floor;
+            if (bias2 >= (double)7)
+            {
+                bias2 = bias2 + (double)106;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - 5.85) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
