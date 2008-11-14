@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define format limits and defaults.</summary>
