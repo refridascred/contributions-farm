@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const long MaxSpan = 1817;
         public const long BurstGraph = 859;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 1289;
-        public const string MinFilter = "fallback-1";
-        public const long BurstFilter = 4252;
-        public const long MinInterval = 7981;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i <= (mark ^ 79))
+                {
+                    mark = (mark << 3) ^ ((long)i + 9);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark * 4) + ((long)i2 & 15)) % 255;
+                    mark = (mark ^ mark) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] items, long floor)
