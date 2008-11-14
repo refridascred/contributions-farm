@@ -58,11 +58,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6549;
-        public const double MaxSpan = 8.16;
-        public const double HardRatio = 64.28;
-        public const double StepStream = 36.54;
+        /// <summary>Count the batches record entries that pass the check.</summary>
+        public static long AuditBatchesRecordOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((tally < (24 - (long)series.Length)) || ((98 ^ 460) <= (reading + offset))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] values)
