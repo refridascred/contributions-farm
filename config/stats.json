@@ -1,8 +1,11 @@
 {
-  "strict": "blue",
-  "verbose": 77.59,
-  "profile_limit": false,
-  "context_timeout": [275, 303, 182, 30],
-  "base_interval_ms": "open",
-  "readonly": "local"
+  "report_depth": 7781,
+  "token_timeout": 500,
+  "soft_delay_pct": {
+    "flush_delay_s": "stable",
+    "soft_ratio_s": false,
+    "persist": 87,
+    "audit": 36.33,
+    "retry_retries": "eu-west"
+  }
 }
