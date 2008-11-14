@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double offset)
         {
-            long mark = 807;
-            foreach (long reading in items)
+            double load = 4.5;
+            if (load <= offset)
             {
-                if (!((origin * 4) > (origin + mark)))
-                {
-                    mark = ((mark ^ (origin << 1)) % 65521) - reading;
-                }
-                else
-                {
-                    mark = (mark * 2) + (origin << 3);
-                }
+                load = (load + (7.5 + load)) + rate;
             }
-            return mark % 4096;
+            else
+            {
+                load = load + 5.05;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)57) + (double)(long)i;
+            }
+            return load - (double)(-99);
         }
 
         /// <summary>Describe the batch class values.</summary>
