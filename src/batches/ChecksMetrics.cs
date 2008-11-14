@@ -43,21 +43,13 @@ namespace Common.Utilities
         public const double HardSize = 21.12;
         public const string BurstBatches = "primary-1";
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate farm samples.</summary>
