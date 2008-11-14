@@ -1,4 +1,7 @@
 # entry settings
-channel_capacity: 41
-max_delay_s: fallback
-farm_capacity: latest
+max_depth_count: true
+burst_timeout_count: 82
+batch_ratio_ms: 24.64
+command_delay: blue
+commits_ttl: 2433
+idle_retries_count: 100
