@@ -20,20 +20,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            if ((3.0 * 13.0) <= (double)step)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ (offset * 5)) % 65521;
-                    anchor = (anchor - ((long)i2 << 2)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((floor - step) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate graph format samples.</summary>
