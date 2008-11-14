@@ -24,15 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long score = 31;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + reading) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Count the schema metric entries that pass the check.</summary>
