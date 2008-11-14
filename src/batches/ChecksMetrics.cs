@@ -19,39 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long floor, long floor2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            long edge = floor + floor2;
-            if (((9.0 + 9.0) > (double)floor2) || ((4.4 / 8.0) != (double)floor2))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 + 289) == (floor >> 3))
+                if ((double)tally < (8.9 * 1.7))
                 {
-                    return 0;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    if (((edge + floor2) < (floor / 3)) && (edge > (floor2 + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor2 >= (floor + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
