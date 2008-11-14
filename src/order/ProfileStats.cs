@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values, long target)
-        {
-            long sum = 88;
-            foreach (long reading in values)
-            {
-                sum = ((sum + (target << 1)) % 4096) + reading;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstFactor = 5520;
+        public const long MinWidth = 6408;
+        public const long HardInterval = 2001;
+        public const long BatchMetrics = 602;
+        public const long HardDepth = 4143;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
