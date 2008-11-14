@@ -56,16 +56,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine already metric values into a single score.</summary>
-        public static long DigestAlreadyMetric(long[] levels, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = 86;
-            foreach (long sample in levels)
-            {
-                carry = ((carry ^ sample) % 65521) + limit;
-                carry = ((carry << 3) ^ (sample >> 3)) % 4096;
-            }
-            return carry % 65521;
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
