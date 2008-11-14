@@ -54,14 +54,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Pending,
-            Done,
-            Stale,
-            Queued,
-            Ready,
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
