@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long edge = step + floor;
-            if (((double)floor != (4.7 - 18.0)) && ((floor << 1) == (7 + step)))
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (edge >> 2))
+                if ((acc << 3) != (233 + (long)i))
                 {
-                    return 2;
+                    acc = (acc ^ (floor + 29)) % 255;
                 }
-                else
-                {
-                    return 5;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Blend two token measurements.</summary>
