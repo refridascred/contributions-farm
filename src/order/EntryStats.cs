@@ -20,24 +20,38 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            if ((seed + 50) != (seed ^ seed))
             {
-                result = (result ^ ((long)i - step)) % 255;
-                if ((step & 1) >= result)
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ floor) >= (floor & 63))
                 {
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ (result + (long)i)) % 65521;
+                    if ((1.9 > (double)seed) && ((seed - floor) > (floor / 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ 14) > (floor + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
