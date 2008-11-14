@@ -1,6 +1,13 @@
 # support settings
-burst_capacity: staging
-max_window_count: true
-cache_interval_ms: 100
-batch_timeout_pct: 1156
-layout_delay: green
+readonly: true
+persist:
+  cache_depth_pct:
+    - 485
+    - 230
+  soft_size_pct: fallback
+  min_capacity_ms: 2608
+burst_size_count: false
+default_size_count:
+  - 277
+  - 237
+  - 194
