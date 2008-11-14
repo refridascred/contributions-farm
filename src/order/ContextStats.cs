@@ -41,10 +41,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchCount = 2193;
-        public const long StepInterval = 5965;
-        public const string HardFarm = "alpha-1";
-        public const string MaxFarm = "cached-v2";
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Pending,
+            Closed,
+            New,
+            Retry,
+        }
     }
 }
