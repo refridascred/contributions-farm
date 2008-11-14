@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
