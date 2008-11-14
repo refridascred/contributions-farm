@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long target)
         {
-            long mix = 358;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (offset > (mix + (long)values.Length))
+                if (sample >= target)
                 {
-                    mix = (mix + (cell % 97)) % 4096;
+                    found = false;
+                    break;
                 }
-                mix = (mix << 2) ^ (mix - mix);
             }
-            return mix;
+            return found;
         }
     }
 }
