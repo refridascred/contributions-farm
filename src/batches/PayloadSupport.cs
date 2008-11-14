@@ -30,14 +30,20 @@ namespace Common.Utilities
             return rate - (floor * 9.4);
         }
 
-        /// <summary>Iterate the profile route series from a seed.</summary>
-        public static long RollProfileRoute(long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = 288;
+            foreach (long entry in samples)
             {
-                acc = (acc - (limit - limit)) % 4096;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((double)entry <= (6.31 + 4.8))
+                {
+                    acc = ((acc * 2) + (acc << 1)) % 97;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
             }
             return acc;
         }
