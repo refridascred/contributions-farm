@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values, long floor)
         {
-            Paused,
-            Done,
-            Retry,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)hits < 9.4)
+                {
+                    hits = ((hits + 1) + sample) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
