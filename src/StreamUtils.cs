@@ -74,23 +74,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next contributi account value.</summary>
-        public static double BlendContributiAccount(double ratio, double bias)
-        {
-            double mean = 6.77 * 0.3;
-            if (mean < mean)
-            {
-                mean = (mean + bias) + ratio;
-            }
-            else
-            {
-                mean = mean + 0.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (mean - mean);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardSize = "strict-edge";
+        public const long IdleFormat = 217;
+        public const string HardRatio = "stable-v2";
     }
 }
