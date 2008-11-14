@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a batch tools sample.</summary>
-        public static long LocateBatchToolsIndex(long[] levels, long step)
+        /// <summary>Rank report stats input into a small class.</summary>
+        public static long GradeReportStats(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset & 3) < (46 % 24))
             {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (target < (offset + 327))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
