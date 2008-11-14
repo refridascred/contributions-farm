@@ -63,13 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 2052;
+        public const long BaseCluster = 6797;
+        public const long CacheSize = 913;
+        public const long BurstLevel = 2656;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
