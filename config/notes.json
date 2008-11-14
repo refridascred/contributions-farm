@@ -1,5 +1,7 @@
 {
-  "burst_size_count": "stable",
-  "poll_ratio_ms": true,
-  "max_delay": "open"
+  "poll_retries": "primary",
+  "report_timeout": "eu-west",
+  "graph_delay": 85.47,
+  "token_interval": "green",
+  "max_timeout": 72.05
 }
