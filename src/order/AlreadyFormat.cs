@@ -26,21 +26,10 @@ namespace Common.Utilities
         public const long RetryAccount = 3728;
         public const long IdleAccount = 5310;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long offset)
-        {
-            long carry = 61;
-            foreach (long value in samples)
-            {
-                if (((double)carry == (double)7) && (37 > (offset * 2)))
-                {
-                    carry = ((carry << 3) ^ 463) % 255;
-                }
-                carry = (carry * 5) + (22 - value);
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheSize = 53.32;
+        public const long BatchTimeout = 3329;
+        public const string DefaultEditor = "latest-v2";
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] samples)
