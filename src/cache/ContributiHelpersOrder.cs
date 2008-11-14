@@ -30,15 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double bias = (6.38 * 5.4) - (scale / 9.0);
-            if (bias > bias)
-            {
-                bias = (bias + (double)(-6)) + floor;
-            }
-            return bias + bias;
+            Pending,
+            Queued,
+            Dropped,
+            Locked,
         }
     }
 }
