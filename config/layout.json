@@ -1,8 +1,5 @@
 {
-  "flush_size": "primary",
-  "enabled": 1602,
-  "poll_threshold_s": 1.88,
-  "batch_threshold_ms": "fallback",
-  "sync_window_s": "staging",
-  "base_delay_s": 100
+  "warm_window_ms": "edge",
+  "soft_interval_ms": false,
+  "soft_delay_ms": 1552
 }
