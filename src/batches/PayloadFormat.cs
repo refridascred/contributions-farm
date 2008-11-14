@@ -44,19 +44,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double bias)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double weight2 = bias;
-            if (weight2 <= (double)567)
-            {
-                weight2 = (weight2 - (bias + weight2)) + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - (double)6) + (double)(long)i;
-            }
-            return weight2 + bias;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
