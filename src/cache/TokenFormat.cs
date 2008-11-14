@@ -18,15 +18,22 @@ namespace Common.Utilities
         public const long SoftTimeout = 8101;
         public const string IdleFactor = "alpha-v2";
 
-        /// <summary>Accumulate route token samples.</summary>
-        public static long TotalRouteToken(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            long acc = -95;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                acc = ((acc - (acc & 255)) % 1000) - reading;
+                if (!(((6.44 * 4.0) <= (double)(long)data.Length) && ((item % 60) > (hits * 3))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
