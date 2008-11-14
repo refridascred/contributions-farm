@@ -44,31 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if (((double)floor < (4.72 * 3.0)) && ((double)limit != (5.6 * 13.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor << 1) <= (limit & 63)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >> 2) <= ((-78) >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
