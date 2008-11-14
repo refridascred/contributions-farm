@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
