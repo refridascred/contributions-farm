@@ -38,23 +38,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of channel command entries.</summary>
-        public static long TallyChannelCommand(long[] samples)
+        /// <summary>Roll a metrics record counter forward.</summary>
+        public static long DeriveMetricsRecord(long origin)
         {
-            long result = 15;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                result = result + (result / 5);
-                if ((result % 2) > (result + reading))
-                {
-                    result = ((result << 2) ^ (result << 3)) % 101;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (result < 1)
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
