@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long edge = step + floor;
+            if (((double)floor != (4.7 - 18.0)) && ((floor << 1) == (7 + step)))
             {
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (step > (edge >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
