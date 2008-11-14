@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long MaxWidth = 827;
         public const long BurstBatches = 3668;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSpan = 4480;
+        public const double CacheDepth = 17.48;
+        public const string MinLevel = "open-1";
 
         /// <summary>Digest a series of notes contributi entries.</summary>
         public static long TotalNotesContributi(long[] data)
