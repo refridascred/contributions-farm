@@ -1,14 +1,21 @@
 # entry settings
-cache_interval:
-  layout_retries: 98
-  cluster_limit: 7.65
-  warm_timeout_ms: 95.03
-  flush_interval_pct: 28.89
-flush_timeout_s:
-  - 125
-  - 19
-soft_ttl_count:
-  - 292
-  - 215
-  - 155
-  - 427
+entry_timeout: 65.12
+soft_capacity_pct: 2.87
+max_threshold: 78
+batch_ttl_s:
+  sync_depth_ms: 12
+  record_retries: 96.04
+  base_ttl: 1024
+  profile_retries: true
+tools_size:
+  max_size_ms: standard
+  payload_retries:
+    - standard
+    - strict
+  filter_timeout:
+    - 201
+    - 146
+  audit: 829
+  base_ttl_pct:
+    - 350
+    - 46
