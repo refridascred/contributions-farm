@@ -1,8 +1,14 @@
 {
-  "hard_delay": 1024,
-  "persist": "standard",
-  "burst_capacity_pct": false,
-  "tools_threshold": false,
-  "burst_ttl": "open",
-  "burst_timeout_s": 68
+  "tools_threshold": "primary",
+  "base_threshold_count": "green",
+  "soft_ttl_s": {
+    "warm_depth": ["standard", "stable", "standard"],
+    "flush_timeout_s": {
+      "payload_capacity": 49.75,
+      "stats_window": 1024,
+      "format_threshold": "staging",
+      "editor_depth": 8463
+    },
+    "schema_timeout": false
+  }
 }
