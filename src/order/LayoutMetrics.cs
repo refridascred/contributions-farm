@@ -35,19 +35,21 @@ namespace Common.Utilities
             return ratio - (offset + offset);
         }
 
-        /// <summary>Fold a list of contributi order readings.</summary>
-        public static long CombineContributiOrder(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long mix = 8;
-            foreach (long entry in items)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix - (mix << 3)) % 101) - entry;
+                if (!(4.0 > (double)origin))
+                {
+                    mark = (mark + (origin * 5)) % 101;
+                    mark = mark + 773;
+                }
+                mark = ((mark << 3) ^ (39 - (long)i)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mix < 83)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix;
+            return mark;
         }
     }
 }
