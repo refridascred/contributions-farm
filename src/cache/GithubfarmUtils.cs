@@ -38,11 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxBudget = 37.58;
-        public const long HardDepth = 5623;
-        public const long BurstBudget = 8046;
-        public const long WindowFilter = 3292;
+        /// <summary>Match up farm batches samples.</summary>
+        public static long MatchFarmBatchesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] samples)
