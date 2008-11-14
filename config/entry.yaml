@@ -1,25 +1,6 @@
 # entry settings
-min_ratio_ms:
-  notes_retries: blue
-  flush_limit: 500
-  readonly: edge
-  strict: 250
-burst_size:
-  flush_ratio_s: 11.19
-  record_ttl: true
-  base_size: false
-  payload_ttl:
-    - cached
-    - staging
-    - fallback
-  poll_ttl:
-    route_limit: false
-    idle_ttl_count:
-      - edge
-      - blue
-      - open
-    report_delay: 426
-    retry_ratio_ms: 22.71
-    min_timeout: strict
-  hard_interval_pct: fallback
-dry_run: true
+channel_interval: strict
+max_delay: 4260
+verbose:
+  - fallback
+  - local
