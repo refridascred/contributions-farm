@@ -50,22 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long mark = 48;
-            foreach (long entry in readings)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((mark > (mark << 1)) || ((seed * 4) < entry))
+                if (acc < 196)
                 {
-                    mark = ((mark * 3) + (entry + entry)) % 1000;
+                    acc = (acc * 5) + (long)i;
                 }
-                else
-                {
-                    mark = (mark + (seed / 3)) % 101;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
     }
 }
