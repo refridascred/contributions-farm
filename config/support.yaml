@@ -1,33 +1,14 @@
 # support settings
-batch_timeout_ms:
-  - standard
-  - staging
-persist:
-  queue_size:
-    warm_size:
-      - latest
-      - primary
-      - cached
-      - eu-west
-    soft_limit: 12.55
-    hard_limit_ms: true
-    batch_retries_count:
-      - 255
-      - 220
-    farm_window: blue
-    batch_retries_ms: 6658
-  warm_retries_s:
-    - 140
-    - 258
-    - 258
-    - 197
-  persist:
-    metrics_window: 1024
-    batch_threshold_ms: true
-    enabled: true
-    sync_limit_count: 5.01
-    max_timeout: 100
-    verbose: green
-  dry_run: 8749
-  commits_window: open
-batch_delay: 250
+warm_retries_pct:
+  enabled: 32.03
+  poll_capacity_ms: primary
+  verbose: cached
+  channel_size: 500
+  dry_run:
+    - 471
+    - 186
+    - 136
+  poll_retries: primary
+burst_ttl_ms: 250
+cluster_interval: false
+metric_timeout: true
