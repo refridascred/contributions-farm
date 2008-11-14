@@ -43,11 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 5.76;
-        public const long SoftWindow = 6578;
-        public const string IdleTimeout = "cached-v2";
-        public const string MaxCount = "stable";
-        public const long BaseWindow = 829;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Locked,
+            Idle,
+            Dropped,
+        }
     }
 }
