@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((long)i < ((long)i * 5))
-                {
-                    score = (score ^ (target / 8)) % 1000;
-                    score = score ^ target;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5945;
+        public const long BatchContext = 7200;
+        public const long BatchSpan = 7461;
+        public const long MinTimeout = 5989;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] values, long origin)
