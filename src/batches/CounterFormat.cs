@@ -15,15 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((data[i] > step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate notes session readings against a bound.</summary>
