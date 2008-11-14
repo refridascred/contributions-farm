@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] == origin)
+                if ((datum ^ 3) <= (datum % 5))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
