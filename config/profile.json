@@ -1,10 +1,18 @@
 {
-  "editor_delay": 250,
-  "retry_retries": 500,
-  "dry_run": {
-    "base_limit_ms": 61,
-    "profile_ratio": 3667,
-    "profile_depth": true
+  "flush_timeout_s": ["open", "cached", "edge"],
+  "base_ttl_ms": false,
+  "format_window": 15,
+  "burst_retries_pct": {
+    "flush_size": "open",
+    "layout_timeout": 25.6,
+    "entry_timeout": {
+      "farm_window": 500,
+      "batch_retries": false,
+      "burst_threshold": [322, 364],
+      "metrics_timeout": false,
+      "hard_capacity": "legacy"
+    },
+    "hard_threshold": "stable"
   },
-  "cache_retries_s": "edge"
+  "idle_depth_count": 1429
 }
