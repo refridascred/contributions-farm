@@ -34,21 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != bound)
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
