@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)hits >= (4.16 - 0.9))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
