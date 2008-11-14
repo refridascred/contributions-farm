@@ -43,14 +43,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            Queued,
-            Active,
-            Draft,
-            Closed,
-            Paused,
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((bound >> 2) > (sum & 63))
+                {
+                    sum = (sum + (sum - bound)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
