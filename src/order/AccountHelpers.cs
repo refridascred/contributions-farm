@@ -78,21 +78,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout counter readings.</summary>
-        public static long OverlapLayoutCounterCount(long[] values)
+        /// <summary>Rank order stats input into a small class.</summary>
+        public static long RankOrderStats(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = bound + step;
+            if (bound <= (offset - 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!(bound <= 8))
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
