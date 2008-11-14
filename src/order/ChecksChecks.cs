@@ -28,19 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (datum != offset)
+                if (sample >= step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
