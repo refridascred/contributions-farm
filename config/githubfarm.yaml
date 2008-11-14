@@ -1,13 +1,19 @@
 # githubfarm settings
-flush_capacity_count: 8591
-checks_ttl: 40.51
-enabled: green
-batch_window_pct:
-  verbose:
-    warm_capacity_pct: green
-    context_ttl: 3
-    burst_size_count: legacy
-    stats_limit: 2594
-  retry_size_count: edge
-  hard_timeout_count: 1024
-flush_depth_s: 3903
+record_size: 94.11
+warm_depth_s: open
+idle_capacity: 1557
+base_delay: 9144
+cache_limit_count:
+  soft_ttl: fallback
+  default_interval:
+    dry_run: legacy
+    compress: 9318
+    max_capacity_s: open
+    burst_retries_s: open
+    idle_capacity_count: open
+  metrics_window:
+    - stable
+    - strict
+    - staging
+    - staging
+  hard_ratio_pct: false
