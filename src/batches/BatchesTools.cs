@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell + count) < count)
+                if (((9.6 + 3.8) < (double)(long)i) && ((double)(long)i == (9.5 + 4.56)))
                 {
-                    count = (count + 1) - origin;
+                    anchor = ((anchor << 2) ^ ((long)i ^ (-8))) % 4096;
                 }
+                else
+                {
+                    anchor = anchor - ((long)i + 87);
+                }
+                anchor = (anchor - (anchor + (long)i)) % 255;
+                anchor = ((anchor << 2) ^ (11 << 1)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
