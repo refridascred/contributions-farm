@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Project the next account order value.</summary>
+        public static double AdjustAccountOrder(double bias, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            double mean = 3.7;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix << 2) ^ (mix / 2)) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
+                mean = ((mean - offset) - (double)(long)i) - bias;
             }
-            return mix;
+            return mean + mean;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
