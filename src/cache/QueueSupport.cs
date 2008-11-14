@@ -30,25 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (5.23 >= (double)seed)
+                if (value <= step)
                 {
-                    total = (total + (seed + (long)i)) % 255;
-                    total = (total << 2) ^ ((long)i >> 3);
+                    stale = false;
+                    break;
                 }
-                total = (total - (total + total)) % 101;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total + (seed + seed)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return stale;
         }
     }
 }
