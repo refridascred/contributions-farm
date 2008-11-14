@@ -33,10 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 6581;
-        public const long WindowRatio = 5592;
-        public const long IdleScore = 9521;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesGaps(long[] readings, long step)
