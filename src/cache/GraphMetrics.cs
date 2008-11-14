@@ -20,11 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double load = rate;
-            return (load - rate) + bias;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
