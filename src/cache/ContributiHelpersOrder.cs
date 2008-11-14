@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const long BurstSession = 1055;
         public const long SoftSession = 6675;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values, long seed)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((seed - entry) < (matches / 9))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
