@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 9.82;
-        public const double CacheStream = 93.68;
-        public const string RetryRatio = "legacy-1";
-        public const long BurstWidth = 4851;
-        public const string CacheWidth = "fallback-edge";
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchDepth = 9121;
