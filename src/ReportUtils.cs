@@ -41,12 +41,20 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 8361;
-        public const long MinSchema = 9701;
-        public const long RetryInterval = 3469;
-        public const string SoftSchema = "alpha-1";
-        public const long BaseSchema = 4733;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double ratio, double floor)
