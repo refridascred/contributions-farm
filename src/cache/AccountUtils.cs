@@ -33,25 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long cur = origin - step;
-            if (origin < (cur & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-402) + origin) >= cur)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Failed,
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
