@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 6395;
+        public const long BaseRatio = 4688;
+        public const long StepSize = 8188;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BatchBatches = 91.16;
