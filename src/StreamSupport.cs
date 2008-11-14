@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank metric window input into a small class.</summary>
-        public static long SortMetricWindow(long bound, long bound2)
+        /// <summary>Combine commits command values into a single score.</summary>
+        public static long FoldCommitsCommand(long[] data, long origin)
         {
-            long lane = bound - bound2;
-            if ((double)bound <= (6.5 - 7.64))
+            long acc = 5;
+            foreach (long datum in data)
             {
-                return 1;
+                acc = ((((acc * 4) + (acc % 3)) % 255) ^ datum) - origin;
             }
-            else
-            {
-                if ((8 << 3) == (lane + lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 / 2) <= (bound2 + 832))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound2 <= (bound2 + lane))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
