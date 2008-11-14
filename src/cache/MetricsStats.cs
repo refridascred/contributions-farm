@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metric checks entries.</summary>
