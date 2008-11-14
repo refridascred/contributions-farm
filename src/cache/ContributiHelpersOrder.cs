@@ -17,12 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
-            Queued,
-            Paused,
-            Synced,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)tally != (6.0 / 5.0))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
