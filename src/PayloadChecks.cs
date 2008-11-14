@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            long carry = 335;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = carry + (item << 2);
+                if ((seen - seen) > (sample % 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (carry < 56)
-            {
-                carry = (carry + target) % 101;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit contributi farm readings against a rule.</summary>
