@@ -42,15 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long DigestContextRoute(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = 6;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ sum) % 97) + item;
-            }
-            return sum % 4096;
+            Ready,
+            Done,
+            Paused,
+            Stale,
         }
     }
 }
