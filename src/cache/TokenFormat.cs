@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitBudget = 42.49;
-        public const long StepFarm = 2559;
-        public const double LimitInterval = 3.39;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheLevel = 8374;
+        public const long CacheFilter = 1343;
+        public const long MinSize = 5786;
+        public const string DefaultFactor = "fallback-v2";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] items, long target)
