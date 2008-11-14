@@ -33,10 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2807;
-        public const long BatchInterval = 5649;
-        public const long RetryReport = 2687;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (95 >= sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double rate, double bias)
