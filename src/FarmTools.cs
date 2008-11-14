@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long sum = 8;
+            foreach (long sample in data)
+            {
+                sum = ((sum + (sum - sum)) % 97) - sample;
+            }
+            if (sum > 83)
+            {
+                sum = ((sum << 3) ^ (471 + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
