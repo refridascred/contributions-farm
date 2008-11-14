@@ -30,15 +30,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the support farm series from a seed.</summary>
-        public static long SeriesSupportFarm(long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Dropped,
+            Retry,
+            Done,
+            Active,
+            Closed,
         }
     }
 }
