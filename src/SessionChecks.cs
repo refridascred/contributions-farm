@@ -20,22 +20,10 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Match up account session samples.</summary>
-        public static long MatchAccountSessionCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheFactor = 881;
+        public const double DefaultChannel = 5.91;
+        public const string DefaultInterval = "primary";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportOutliers(long[] readings)
