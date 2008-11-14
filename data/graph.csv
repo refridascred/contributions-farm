@@ -1,9 +1,7 @@
-id,ratio,score,rank
-1,216,444,4.32
-2,standard,44.82,cached
-3,97.86,strict,961
-4,13.03,strict,424
-5,464,eu-west,cached
-6,open,9.65,3.43
-7,402,standard,603
-8,64.35,71.39,48.97
+id,state,weight
+1,103,standard
+2,26.44,88.8
+3,324,596
+4,2,17.04
+5,local,eu-west
+6,staging,898
