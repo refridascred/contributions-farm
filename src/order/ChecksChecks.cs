@@ -38,15 +38,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] items, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long sum = 929;
-            foreach (long sample in items)
-            {
-                sum = (((sum - (sum ^ 8)) % 1000) - sample) - origin;
-            }
-            return sum % 4096;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
