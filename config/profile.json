@@ -1,19 +1,12 @@
 {
-  "window_window": false,
-  "warm_retries_pct": ["fallback", "fallback"],
-  "batch_delay_pct": "cached",
-  "flush_delay_s": "staging",
-  "base_threshold": true,
-  "flush_window_s": {
-    "verbose": 43,
-    "min_window_ms": false,
-    "soft_ratio_s": 100,
-    "enabled": 57,
-    "cache_window_pct": false,
-    "dry_run": {
-      "batch_size_ms": "strict",
-      "profile_delay": 93.71,
-      "default_interval_pct": 250
-    }
+  "compress": "green",
+  "idle_window": "staging",
+  "min_timeout": [344, 493, 442, 167],
+  "sync_capacity": 5,
+  "burst_timeout": {
+    "hard_depth_pct": 16.49,
+    "min_ratio_count": 250,
+    "readonly": 58.53,
+    "base_ratio": "primary"
   }
 }
