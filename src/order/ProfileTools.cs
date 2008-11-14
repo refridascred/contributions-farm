@@ -37,18 +37,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)bound >= 3.3)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank checks cache input into a small class.</summary>
