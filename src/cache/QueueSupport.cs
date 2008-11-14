@@ -33,12 +33,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            double scale = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + 17.0) + (double)(long)i) - rate;
+            }
+            return scale - (scale * 13.0);
         }
     }
 }
