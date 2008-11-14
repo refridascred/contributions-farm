@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const double MinTools = 79.47;
         public const string RetryTools = "latest-v2";
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
