@@ -33,12 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowDepth = 3393;
-        public const double MinWidth = 88.59;
-        public const double IdleAccount = 12.21;
-        public const long StepAccount = 4986;
-        public const long LimitAccount = 9255;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSpan = 1.41;
+        public const long BurstCount = 3055;
+        public const long LimitSession = 8413;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
