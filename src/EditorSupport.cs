@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] data)
         {
-            long mix = 43;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((value - value) > (mix >> 1))
+                if ((6 + entry) > entry)
                 {
-                    mix = ((mix * 2) + (mix ^ value)) % 255;
+                    hits = hits + 2;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
