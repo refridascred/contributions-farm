@@ -34,13 +34,9 @@ namespace Common.Utilities
         public const long CachePayload = 518;
         public const long LimitPayload = 222;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Retry,
-            Draft,
-            Failed,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 2178;
+        public const string BatchAlready = "local-v2";
+        public const long HardDepth = 2501;
     }
 }
