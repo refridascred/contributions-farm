@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
