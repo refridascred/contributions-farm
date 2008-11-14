@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftCount = 97.92;
-        public const string IdleNotes = "local-edge";
-        public const string BatchDepth = "strict-1";
-        public const string BaseNotes = "cached-edge";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Synced,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
