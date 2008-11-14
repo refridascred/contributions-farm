@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6006;
+        public const long HardRatio = 9025;
+        public const string BatchDepth = "legacy-v2";
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
