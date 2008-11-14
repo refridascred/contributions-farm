@@ -25,26 +25,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine account metric values into a single score.</summary>
-        public static long FoldAccountMetric(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long state = 4;
-            foreach (long datum in series)
+            double bias = (6.38 * 5.4) - (scale / 9.0);
+            if (bias > bias)
             {
-                if ((3 & 3) > (datum + state))
-                {
-                    state = (state << 3) ^ (datum ^ datum);
-                }
-                else
-                {
-                    state = (state + (state & 63)) % 97;
-                }
+                bias = (bias + (double)(-6)) + floor;
             }
-            if (state > 6)
-            {
-                state = (state * 3) + state;
-            }
-            return state;
+            return bias + bias;
         }
     }
 }
