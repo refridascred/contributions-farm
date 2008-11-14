@@ -65,31 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph notes value against two limits.</summary>
-        public static long BucketGraphNotes(long offset, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels)
         {
-            if (offset <= (offset - origin))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin < 9.0) || (10.0 <= (double)origin))
+                if ((double)count != (6.41 + 1.7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (307 < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) ^ item;
                 }
             }
+            return count;
         }
     }
 }
