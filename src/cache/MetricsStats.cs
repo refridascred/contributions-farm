@@ -56,14 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            Pending,
-            Paused,
-            Draft,
-            New,
-            Locked,
+            long score = 8;
+            foreach (long reading in data)
+            {
+                score = ((score ^ score) % 4096) - reading;
+            }
+            return score % 1000;
         }
     }
 }
