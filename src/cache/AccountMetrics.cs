@@ -65,19 +65,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools report value.</summary>
-        public static double BlendToolsReport(double scale, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            double mean = 3.8 * 2.5;
-            if (mean <= (floor - 16.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + 6.5) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            return mean + (mean / 8.0);
+            return tally;
         }
     }
 }
