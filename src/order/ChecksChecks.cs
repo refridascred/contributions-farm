@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate entry queue samples.</summary>
-        public static long ScoreEntryQueue(long[] series, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            long score = 6;
-            foreach (long cell in series)
+            if (!((968 - floor) <= 66))
             {
-                if ((34 / 7) > (cell << 1))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= (8.3 + 8.32))
                 {
-                    score = (score ^ cell) + step;
+                    return 7;
                 }
                 else
                 {
-                    score = (score << 2) ^ (cell >> 1);
+                    if ((3 % 2) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (score > 50)
-            {
-                score = (score * 4) + (score - 336);
-            }
-            return score;
         }
 
         /// <summary>Accumulate token route samples.</summary>
