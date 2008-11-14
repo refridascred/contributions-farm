@@ -20,22 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token cluster value against two limits.</summary>
-        public static long GradeTokenCluster(long target, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long floor2)
         {
-            if ((target + target) < (125 >> 3))
+            if ((double)floor2 >= 7.9)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((double)offset >= (18.0 - 8.78))
+                if ((7.5 / 8.0) != (double)floor)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((floor2 * 5) <= floor2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
