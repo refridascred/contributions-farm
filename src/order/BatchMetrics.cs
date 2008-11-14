@@ -48,14 +48,11 @@ namespace Common.Utilities
         public const long HardRatio = 6656;
         public const long StepDepth = 7500;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Active,
-            Synced,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 8445;
+        public const long DefaultDepth = 2192;
+        public const double HardBudget = 29.04;
+        public const long CacheContributi = 6217;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] series, long seed)
