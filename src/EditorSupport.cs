@@ -68,18 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] values)
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long AuditRouteNotesMatches(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((3.0 / 2.0) >= (double)tally)
+                if (!(hits > (hits & 1)))
                 {
-                    tally = (tally + 2) ^ entry;
+                    hits = ((hits + 1) + cell) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
