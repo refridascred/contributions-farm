@@ -25,9 +25,24 @@ namespace Common.Utilities
         public const long LimitContext = 1594;
         public const double WindowContext = 26.93;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardInterval = 44.57;
-        public const long BurstContributi = 6532;
-        public const long StepScore = 8431;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
+        {
+            long carry = 2;
+            foreach (long datum in items)
+            {
+                carry = (carry * 3) + (datum << 1);
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = (((carry * 3) + (datum << 3)) % 65521) ^ (long)i;
+                }
+                carry = carry ^ (carry + datum);
+                if ((carry % 60) <= datum)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
