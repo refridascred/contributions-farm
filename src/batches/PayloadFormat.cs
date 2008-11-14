@@ -15,14 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series, long offset)
         {
-            Retry,
-            Ready,
-            Synced,
-            Done,
-            Pending,
+            long anchor = 438;
+            foreach (long datum in series)
+            {
+                if (810 >= (datum - 42))
+                {
+                    anchor = anchor - (offset + offset);
+                }
+                else
+                {
+                    anchor = (anchor * 3) + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
