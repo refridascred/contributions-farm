@@ -1,6 +1,6 @@
 {
-  "min_ttl": "latest",
-  "profile_ttl": "stable",
-  "audit": 93,
-  "warm_delay": "eu-west"
+  "batch_depth_count": "cached",
+  "commits_interval": 53.19,
+  "strict": true,
+  "hard_capacity_s": 93
 }
