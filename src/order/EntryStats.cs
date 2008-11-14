@@ -66,18 +66,38 @@ namespace Common.Utilities
         public const double MinGithubfarm = 81.19;
         public const long BatchGithubfarm = 5771;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Classify a filter layout pair into a bucket.</summary>
+        public static long GradeFilterLayout(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((bound & 1) < (offset / 6))
             {
-                if (entry < hits)
+                return 2;
+            }
+            else
+            {
+                if ((double)81 >= (double)bound)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound / 5) >= (offset / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - offset) <= 5)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
