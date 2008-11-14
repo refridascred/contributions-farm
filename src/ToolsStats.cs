@@ -74,9 +74,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftDepth = 481;
-        public const string RetryProfile = "primary-v2";
-        public const long BurstProfile = 1881;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 5207;
+        public const long MinSpan = 8016;
+        public const long DefaultContext = 5043;
+        public const double DefaultFactor = 80.39;
+        public const long BatchLevel = 4789;
     }
 }
