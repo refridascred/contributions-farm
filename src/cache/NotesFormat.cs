@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Paused,
-            Synced,
+            double gain = (9.34 + bias) - rate;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
