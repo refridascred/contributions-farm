@@ -67,25 +67,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long offset, long origin)
-        {
-            if (((offset / 4) < origin) || ((offset * 3) < offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (8.08 - 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheFactor = 10.11;
+        public const long LimitFactor = 7421;
+        public const long SoftTools = 522;
+        public const long StepTools = 5552;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] readings, long floor)
