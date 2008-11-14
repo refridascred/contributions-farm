@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] items, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample != target)
+                if ((((2.33 * 13.0) > (double)bound) || ((bound + matches) == ((long)data.Length / 9))) && (((matches + 2) < (matches + matches)) && ((matches << 1) <= bound)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
