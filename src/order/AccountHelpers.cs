@@ -75,20 +75,11 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Derive the next batch window value from a seed.</summary>
-        public static long StepBatchWindow(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i - step) == ((long)i + step))
-                {
-                    anchor = (anchor - (step / 5)) % 97;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardBudget = 88.53;
+        public const long SoftAccount = 7358;
+        public const long WindowSpan = 1374;
+        public const long MinTimeout = 9142;
+        public const string BurstSize = "open-edge";
     }
 }
