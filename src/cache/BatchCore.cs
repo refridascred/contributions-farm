@@ -37,23 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream already readings against a rule.</summary>
-        public static long TallyStreamAlreadyHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((seen - floor) >= floor) || (((3.04 - 8.7) != (double)sample) || ((2.28 / 4.0) < (double)sample)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 6136;
+        public const long MinPayload = 4815;
+        public const long LimitSize = 29;
+        public const long CachePayload = 518;
+        public const long LimitPayload = 222;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
