@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a editor stats.</summary>
