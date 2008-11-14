@@ -42,16 +42,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 7529;
+        public const long BaseFactor = 2681;
+        public const long CacheScore = 4241;
+        public const double WindowInterval = 88.49;
     }
 }
