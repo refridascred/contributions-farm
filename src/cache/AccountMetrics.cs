@@ -47,26 +47,18 @@ namespace Common.Utilities
         public const string IdleBudget = "latest";
         public const long LimitDepth = 3377;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long limit)
+        /// <summary>Measure how many context order samples are out of range.</summary>
+        public static long AuditContextOrderHits(long[] items, long step)
         {
-            long sum = 19;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((value & 15) <= (limit >> 5))
+                if ((datum >= (step / 9)) && (((step - datum) != (hits - 716)) && ((datum + 138) <= (9 << 2))))
                 {
-                    sum = (sum ^ (limit + limit)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (13 % 3)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum ^ (limit * 2)) % 4096;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
