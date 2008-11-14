@@ -65,16 +65,31 @@ namespace Common.Utilities
         public const long MaxWidth = 3495;
         public const long CacheStream = 9326;
 
-        /// <summary>Derive the next cluster command value from a seed.</summary>
-        public static long DeriveClusterCommand(long seed)
+        /// <summary>Rank batch metric input into a small class.</summary>
+        public static long GradeBatchMetric(long offset, long offset2)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            if (((offset + offset2) > (76 - offset2)) || (offset <= (offset2 - offset)))
             {
-                sum = (sum - (seed / 4)) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((offset << 3) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset2 <= (1.1 + 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
