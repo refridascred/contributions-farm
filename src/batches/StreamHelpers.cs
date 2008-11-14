@@ -57,31 +57,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank batch metric input into a small class.</summary>
-        public static long GradeBatchMetric(long offset, long offset2)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if (((offset + offset2) > (76 - offset2)) || (offset <= (offset2 - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 3) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset2 <= (1.1 + 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
