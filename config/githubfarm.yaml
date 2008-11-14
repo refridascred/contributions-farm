@@ -1,4 +1,11 @@
 # githubfarm settings
-strict: 6892
-persist: 31.35
-farm_retries: legacy
+dry_run:
+  - primary
+  - open
+  - cached
+  - primary
+route_interval: blue
+githubfarm_capacity: true
+readonly: false
+record_delay: 1024
+enabled: standard
