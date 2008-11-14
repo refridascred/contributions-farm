@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a stream editor reading.</summary>
-        public static double SmoothStreamEditor(double rate, double bias)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double drift = (bias - rate) - rate;
-            if (drift <= (drift * 0.9))
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + (bias - rate);
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of report route entries.</summary>
