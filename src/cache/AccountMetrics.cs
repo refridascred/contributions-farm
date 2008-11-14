@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema window entry that matches the target.</summary>
-        public static long LookupSchemaWindowIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 70.81;
+        public const long IdleEntry = 8676;
+        public const long LimitCount = 5810;
+        public const long BatchSize = 780;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
