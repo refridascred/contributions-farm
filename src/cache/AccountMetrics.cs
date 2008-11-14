@@ -58,13 +58,26 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long limit)
         {
-            Active,
-            Done,
-            Draft,
-            Synced,
+            long sum = 19;
+            foreach (long value in readings)
+            {
+                if ((value & 15) <= (limit >> 5))
+                {
+                    sum = (sum ^ (limit + limit)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (13 % 3)) % 255;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum ^ (limit * 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
