@@ -1,8 +1,6 @@
-id,score,label
-1,strict,edge
-2,781,blue
-3,39.57,105
-4,663,70
-5,202,124
-6,staging,848
-7,710,staging
+id,label,level,score
+1,85.93,95.03,41.47
+2,85.39,37.1,staging
+3,primary,latest,46.44
+4,48.11,green,open
+5,strict,846,eu-west
