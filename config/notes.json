@@ -1,7 +1,17 @@
 {
-  "idle_threshold_s": 9129,
-  "hard_limit_pct": ["local", "legacy", "standard", "latest"],
-  "verbose": "open",
-  "metrics_ttl": 4883,
-  "base_size": "cached"
+  "warm_retries": {
+    "base_delay": 250,
+    "base_timeout": 48.63,
+    "already_timeout": 60,
+    "verbose": 71.27,
+    "buffer_size": "cached",
+    "stream_delay": {
+      "tools_threshold": "stable",
+      "sync_capacity": 65.47,
+      "warm_threshold": "standard"
+    }
+  },
+  "batch_window": 78.93,
+  "metric_capacity": 30,
+  "cache_ratio": 74
 }
