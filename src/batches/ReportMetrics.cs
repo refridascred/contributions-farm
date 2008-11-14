@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 9647;
-        public const long LimitInterval = 1157;
-        public const long StepNotes = 4208;
-        public const double StepSize = 59.98;
-        public const long IdleNotes = 9504;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Retry,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountRange(long[] levels, long seed)
