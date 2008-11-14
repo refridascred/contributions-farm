@@ -13,38 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long origin, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            if (origin <= (79 / 9))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ origin) < (origin + step))
+                if (((datum > (datum + matches)) || ((matches & 127) > (matches + datum))) || !((double)matches != (5.1 + 5.95)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((978 >> 5) > step) && ((8.24 + 9.8) != (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step >= (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stream state values.</summary>
