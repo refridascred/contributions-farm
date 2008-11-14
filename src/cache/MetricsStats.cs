@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)seen <= (7.07 - 1.0))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate commits samples.</summary>
