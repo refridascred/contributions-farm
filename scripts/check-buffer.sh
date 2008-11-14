@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=93
+BUFFER_LIMIT=198
 log "limit is ${BUFFER_LIMIT}"
+
+for item in latest cached blue stable; do
+    log "checking ${item}"
+done
 
 mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
