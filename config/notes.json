@@ -1,6 +1,6 @@
 {
-  "min_threshold_s": 36.67,
-  "min_ratio_s": 51.31,
-  "window_depth": ["eu-west", "primary", "open"],
-  "graph_threshold": 7251
+  "min_ttl": "latest",
+  "profile_ttl": "stable",
+  "audit": 93,
+  "warm_delay": "eu-west"
 }
