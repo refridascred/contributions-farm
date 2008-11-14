@@ -35,15 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile tools readings.</summary>
-        public static long CombineProfileTools(long[] data, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long anchor = -34;
-            foreach (long datum in data)
-            {
-                anchor = (((anchor + 325) % 1000) + datum) - bound;
-            }
-            return anchor % 65521;
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
