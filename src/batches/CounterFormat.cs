@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Region { get; set; }
+            Synced,
+            Draft,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
