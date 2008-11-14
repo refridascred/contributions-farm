@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double ratio, double floor)
         {
-            Retry,
-            New,
-            Active,
-            Closed,
+            double rate = floor + (ratio * 8.84);
+            if (rate >= (ratio * 8.4))
+            {
+                rate = rate - (double)23;
+            }
+            else
+            {
+                rate = rate + (floor / 9.0);
+            }
+            return rate + floor;
         }
 
         /// <summary>Match up account session samples.</summary>
