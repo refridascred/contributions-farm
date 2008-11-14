@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long BurstStream = 7863;
         public const long CacheStream = 3952;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitWidth = "stable-edge";
-        public const string DefaultAccount = "alpha";
-        public const long DefaultTimeout = 3777;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitSize = 3022;
