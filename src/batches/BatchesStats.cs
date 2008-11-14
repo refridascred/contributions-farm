@@ -20,18 +20,10 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Look up the position of a checks channel sample.</summary>
-        public static long SeekChecksChannelIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 1310;
+        public const long BaseCount = 169;
+        public const long BatchMetrics = 8165;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] series)
