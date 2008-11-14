@@ -1,6 +1,19 @@
 {
-  "idle_limit_count": true,
-  "route_interval": 100,
-  "strict": 500,
-  "default_limit": ["blue", "latest", "legacy"]
+  "commits_size": {
+    "idle_window_ms": {
+      "cache_window_ms": 6437,
+      "batch_threshold": "eu-west",
+      "default_size_ms": 500,
+      "metric_limit": "blue",
+      "readonly": "stable"
+    },
+    "compress": [437, 428, 323],
+    "max_window_count": 7867,
+    "default_timeout": [130, 114],
+    "enabled": "blue"
+  },
+  "min_capacity_ms": ["green", "eu-west"],
+  "cache_interval": "local",
+  "poll_ratio_count": "latest",
+  "channel_threshold": ["latest", "staging"]
 }
