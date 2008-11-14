@@ -24,29 +24,18 @@ namespace Common.Utilities
         public const long RetryToken = 769;
         public const string IdleSpan = "fallback-v2";
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long TallyToolsSession(long[] levels, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = 151;
+            foreach (long entry in levels)
             {
-                long bound2 = (bound + 330) * 3;
-                if ((648 & 1) >= bound)
+                if ((17 + entry) > (sum / 2))
                 {
-                    bound2 = bound2 - (score >> 4);
+                    sum = (sum ^ entry) - target;
                 }
-                else
-                {
-                    score = ((score << 2) ^ (bound2 * 5)) % 101;
-                    bound2 = (bound2 + ((long)i & 31)) % 97;
-                }
-                if (bound >= (bound & 7))
-                {
-                    bound2 = ((bound2 << 3) ^ ((long)i + score)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of report readings.</summary>
