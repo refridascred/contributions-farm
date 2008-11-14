@@ -36,20 +36,11 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double floor)
-        {
-            double rate = (double)(7 << 3);
-            if (rate > (5.76 * 6.0))
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)5) - (double)(long)i;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 6272;
+        public const long BatchTimeout = 5848;
+        public const long RetryRatio = 7397;
+        public const long SoftEditor = 8605;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] levels)
