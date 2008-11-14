@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const double LimitCount = 72.42;
         public const long CacheInterval = 342;
 
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long TotalReportSchema(long[] values, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long bound)
         {
-            long anchor = 83;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((double)value != (6.6 - 1.3))
+                if (cell >= bound)
                 {
-                    anchor = ((anchor + (anchor << 2)) % 255) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
