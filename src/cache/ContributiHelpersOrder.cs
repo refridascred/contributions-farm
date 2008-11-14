@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)(941 / 2);
+            return (bias - (weight / 7.0)) + floor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
