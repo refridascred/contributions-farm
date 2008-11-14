@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
