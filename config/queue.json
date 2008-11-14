@@ -1,5 +1,6 @@
 {
-  "default_delay_pct": "latest",
-  "verbose": 4867,
-  "sync_threshold_count": false
+  "base_threshold_pct": 38.87,
+  "farm_depth": 250,
+  "retry_retries_count": 21,
+  "warm_window_pct": "open"
 }
