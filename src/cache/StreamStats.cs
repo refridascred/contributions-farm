@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count notes channel pairs that satisfy a relation.</summary>
-        public static long CompareNotesChannelCount(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)94 * 3.62;
+            if (weight >= (rate * 7.24))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (rate / 9.0);
             }
-            return tally;
+            else
+            {
+                weight = weight + (4.19 - floor);
+            }
+            return weight + floor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
