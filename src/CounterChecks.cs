@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
         {
-            double rate = (double)(43 ^ 26);
-            if (rate >= floor)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate + (double)0;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (result - (result - target)) + (long)i2;
+                }
+                result = (result << 2) ^ (target + 20);
+                result = (result - (result * 3)) % 4096;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return rate + gain;
+            return result;
         }
 
         /// <summary>Check that every counter editor entry stays within the limit.</summary>
