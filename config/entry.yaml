@@ -1,12 +1,24 @@
 # entry settings
-base_delay_ms: 51.56
-retry_depth_pct: 1804
-githubfarm_interval: 65
-cache_ttl:
-  farm_threshold: 492
-  entry_timeout: latest
-  dry_run: cached
-  record_threshold: open
-  base_size_pct: 9163
-  batch_ttl_count: false
-sync_size: staging
+default_window_pct:
+  - fallback
+  - latest
+min_ttl_count:
+  idle_ttl_ms: fallback
+  compress: true
+  retry_threshold_ms:
+    burst_timeout_pct:
+      - blue
+      - edge
+    poll_interval_count: open
+    hard_ratio: cached
+  stream_threshold: 59.2
+  flush_limit: true
+  readonly:
+    - 127
+    - 16
+    - 203
+    - 214
+report_threshold: false
+persist: true
+cache_delay_ms: strict
+batch_threshold: stable
