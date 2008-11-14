@@ -31,17 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
