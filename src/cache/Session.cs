@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 6638;
-        public const string MinLevel = "strict";
-        public const long WindowLevel = 7348;
-        public const string BurstLevel = "alpha-v2";
-        public const long StepBuffer = 9353;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (seed <= (seed / 9))
+                {
+                    total = (total * 2) + total;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long step)
