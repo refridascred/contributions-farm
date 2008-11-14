@@ -1,5 +1,6 @@
 {
-  "already_limit": 85,
-  "layout_depth": "green",
-  "batch_timeout": 25.61
+  "checks_limit": true,
+  "retry_size_count": 64.3,
+  "default_retries_ms": 1345,
+  "strict": "strict"
 }
