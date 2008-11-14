@@ -28,13 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
