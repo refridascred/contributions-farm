@@ -33,15 +33,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool ValidateToolsCounterBounds(long[] data, long floor)
         {
-            double scale = floor;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                scale = ((scale + 17.0) + (double)(long)i) - rate;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - (scale * 13.0);
+            return found;
         }
     }
 }
