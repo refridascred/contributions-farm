@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long bound)
+        /// <summary>Find the first command metrics entry that matches the target.</summary>
+        public static long LookupCommandMetricsIndex(long[] series, long limit)
         {
-            if ((81 ^ bound) >= floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (9.4 * 7.2))
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
