@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            double mean = bias;
-            if (mean >= (double)5)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean - mean) - weight;
+                sum = ((sum << 3) ^ ((long)i + offset)) % 97;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return mean + (double)67;
+            return sum;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
