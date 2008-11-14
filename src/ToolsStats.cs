@@ -18,10 +18,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 4871;
-        public const long MinNotes = 3740;
-        public const long WindowNotes = 5089;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double rate, double bias)
