@@ -21,10 +21,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "primary";
-        public const double MinCounter = 34.07;
-        public const long RetryCounter = 9439;
-        public const long LimitCounter = 5904;
+        /// <summary>Look up the position of a batch command sample.</summary>
+        public static long SeekBatchCommandIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
