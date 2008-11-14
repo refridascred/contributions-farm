@@ -19,19 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double rate, double floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long origin)
         {
-            double bias = rate;
-            if (bias < (floor - floor))
+            long prev = limit + origin;
+            if (((origin + origin) == (prev + prev)) || (prev >= 448))
             {
-                bias = bias - rate;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias + rate) + (double)(long)i;
+                if (limit < (origin * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit > 6.0) || ((double)prev > (4.5 / 2.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit > (origin + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Roll a checks queue counter forward.</summary>
