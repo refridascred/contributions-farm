@@ -71,18 +71,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell << 3) <= (hits << 2))
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
