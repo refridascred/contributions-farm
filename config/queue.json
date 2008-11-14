@@ -1,12 +1,6 @@
 {
-  "verbose": {
-    "soft_capacity_ms": 69,
-    "readonly": 30,
-    "window_ttl": 3007
-  },
-  "report_ratio": false,
-  "context_retries": 60,
-  "max_ttl_count": 60,
-  "checks_capacity": 6,
-  "base_size_count": ["eu-west", "staging", "staging"]
+  "readonly": "strict",
+  "poll_window_ms": "standard",
+  "persist": "strict",
+  "layout_timeout": "standard"
 }
