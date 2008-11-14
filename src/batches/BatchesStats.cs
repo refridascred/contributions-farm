@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] levels, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell < floor)
+                if ((4.42 + 1.0) == (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) + entry) + step;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the stream status values.</summary>
