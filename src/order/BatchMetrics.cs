@@ -75,31 +75,17 @@ namespace Common.Utilities
         public const long HardRatio = 6656;
         public const long StepDepth = 7500;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long seed)
         {
-            if (!((step / 6) != (bound + bound)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((228 <= (step << 2)) && ((bound / 5) > step))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 5) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
