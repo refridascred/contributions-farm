@@ -47,13 +47,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
+            Active,
             New,
-            Dropped,
             Draft,
-            Synced,
+            Locked,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
