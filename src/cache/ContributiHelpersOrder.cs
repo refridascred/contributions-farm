@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long SoftInterval = 1973;
         public const string WindowSupport = "staging-v2";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long offset)
         {
-            long total = 446;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                total = (((total << 3) ^ ((-6) - offset)) % 255) - item;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < 5)
-            {
-                total = total ^ (809 / 6);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
