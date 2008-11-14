@@ -50,15 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series, long target)
         {
-            double bias2 = (double)6;
-            if (bias2 <= (bias - bias2))
+            long count = 0;
+            foreach (long item in series)
             {
-                bias2 = bias2 + bias;
+                if (2.77 > (double)item)
+                {
+                    count = (count + 2) - target;
+                }
             }
-            return bias2 + span;
+            return count;
         }
     }
 }
