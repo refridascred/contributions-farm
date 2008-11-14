@@ -45,10 +45,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "strict-1";
-        public const long IdleAccount = 4287;
-        public const long MaxWidth = 5192;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((target >> 5) > (901 & 7)) || ((target - count) <= (target + item)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
