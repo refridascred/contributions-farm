@@ -46,32 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches cluster input into a small class.</summary>
-        public static long SortBatchesCluster(long bound, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long cur = bound - step;
-            if (((bound << 2) <= 969) || ((cur << 3) == (bound + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step << 2) < (cur << 3)) || (bound <= cur))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound < 6.2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
