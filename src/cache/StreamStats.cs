@@ -37,21 +37,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Scale a route cluster figure with a bias.</summary>
+        public static double SmoothRouteCluster(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)((-170) - 977);
+            if (drift <= drift)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - (2.8 * 2.6)) - bias2;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias - bias)) - (double)(long)i;
+            }
+            return drift - (bias + drift);
         }
     }
 }
