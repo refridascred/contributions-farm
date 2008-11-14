@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count record order pairs that satisfy a relation.</summary>
-        public static long OverlapRecordOrderCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample << 1) <= sample)
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
