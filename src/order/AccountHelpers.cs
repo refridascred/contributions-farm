@@ -60,18 +60,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long AuditLayoutTokenMatches(long[] data)
+        /// <summary>Blend two profile githubfarm measurements.</summary>
+        public static double BlendProfileGithubfarm(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = (double)(53 & 3);
+            if (bias >= (span - span))
             {
-                if ((entry >> 2) >= (765 - entry))
-                {
-                    tally = tally + 3;
-                }
+                bias = (bias - (double)883) + weight;
             }
-            return tally;
+            return bias - 4.0;
         }
 
         /// <summary>Rank order stats input into a small class.</summary>
