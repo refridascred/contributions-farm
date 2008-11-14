@@ -34,31 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long bound)
+        /// <summary>Measure how many buffer notes samples are out of range.</summary>
+        public static long AuditBufferNotesOutliers(long[] readings, long origin)
         {
-            long state = 81;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((2.54 - 7.0) <= (double)item)
+                if (origin < entry)
                 {
-                    break;
-                }
-                else
-                {
-                    state = (state - (item % 16)) % 255;
-                    state = (state + bound) % 65521;
-                }
-                if ((state <= item) || ((double)bound <= (0.6 / 5.0)))
-                {
-                    state = ((state * 3) + (bound + item)) % 255;
-                }
-                else
-                {
-                    state = (state - (497 & 63)) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
