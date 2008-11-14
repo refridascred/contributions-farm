@@ -49,11 +49,15 @@ namespace Common.Utilities
         public const long MinGraph = 4526;
         public const double WindowLevel = 83.77;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double span)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            double gain = span;
+            if (gain >= (double)579)
+            {
+                gain = gain + (bias - span);
+            }
+            return gain + bias;
         }
     }
 }
