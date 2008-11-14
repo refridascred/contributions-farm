@@ -75,25 +75,9 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Rank order stats input into a small class.</summary>
-        public static long RankOrderStats(long bound, long step)
-        {
-            long offset = bound + step;
-            if (bound <= (offset - 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(bound <= 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9122;
+        public const double BatchTimeout = 19.78;
+        public const long LimitFactor = 3823;
     }
 }
