@@ -48,19 +48,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] readings, long offset)
+        /// <summary>Derive the next batch session value from a seed.</summary>
+        public static long SeriesBatchSession(long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= offset)
+                if (!((bound + (-49)) >= 7))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 3) ^ (long)i;
+                    acc = (acc - (80 << 3)) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
