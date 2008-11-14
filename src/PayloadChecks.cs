@@ -58,26 +58,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long floor)
         {
-            long sum = 845;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (value > floor)
                 {
-                    sum = ((sum + (datum % 100)) % 1000) + (long)i;
-                }
-                if ((87 >= (sum + 6)) && (datum >= origin))
-                {
-                    sum = sum + sum;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 65)
-            {
-                sum = ((sum * 5) + origin) % 255;
-            }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
