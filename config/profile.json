@@ -1,12 +1,13 @@
 {
-  "base_capacity": 60,
-  "sync_ratio_ms": true,
-  "sync_ttl": 13.93,
-  "default_size_s": {
-    "verbose": "primary",
-    "min_timeout": 10.16,
-    "poll_retries_pct": 24.68,
-    "batches_size": ["latest", "primary", "fallback"],
-    "min_timeout_count": 7
-  }
+  "poll_limit": "fallback",
+  "tools_capacity": "staging",
+  "idle_size": {
+    "farm_ttl": "open",
+    "dry_run": false,
+    "warm_interval": 231,
+    "flush_window_s": 500
+  },
+  "verbose": "edge",
+  "idle_depth_ms": 35.63,
+  "min_retries_s": 1174
 }
