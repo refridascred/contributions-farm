@@ -71,11 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 8053;
-        public const long IdleCache = 8058;
-        public const string HardCache = "primary";
-        public const long WindowCache = 5449;
-        public const long MinTimeout = 7024;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
