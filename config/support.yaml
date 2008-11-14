@@ -1,9 +1,7 @@
 # support settings
-soft_depth:
-  - 406
-  - 441
-readonly: primary
-batches_ratio: eu-west
-soft_capacity_pct: 79.25
-commits_limit: 0.83
-compress: 6084
+poll_capacity: eu-west
+batch_timeout_s: false
+batch_timeout_ms:
+  retry_window: true
+  dry_run: staging
+  verbose: 99
