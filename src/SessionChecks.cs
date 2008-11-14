@@ -51,15 +51,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long total = 8;
+            foreach (long entry in data)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                total = ((((total * 5) + (total + 910)) % 97) - entry) - target;
+                if ((4.0 - 0.26) >= (double)total)
+                {
+                    total = ((total * 2) + total) % 255;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
             }
-            return score;
+            return total % 65521;
         }
     }
 }
