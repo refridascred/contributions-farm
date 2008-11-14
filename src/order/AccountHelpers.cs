@@ -51,12 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 88.02;
-        public const string SoftDepth = "open";
-        public const double MinSpan = 11.96;
-        public const long LimitGithubfarm = 3269;
-        public const string HardGithubfarm = "local-v2";
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
