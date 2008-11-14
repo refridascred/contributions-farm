@@ -1,6 +1,5 @@
 {
-  "flush_retries": 58,
-  "githubfarm_ratio": 4682,
-  "base_window": false,
-  "buffer_ttl": 4004
+  "poll_threshold_s": true,
+  "batch_timeout": "latest",
+  "default_limit_ms": 7.36
 }
