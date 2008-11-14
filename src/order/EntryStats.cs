@@ -26,22 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support context samples.</summary>
-        public static long TotalSupportContext(long[] levels, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            long result = 3;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((sample << 1) >= result)
+                if ((entry & 7) == (entry * 5))
                 {
-                    result = (((result * 2) + (sample - sample)) % 97) + target;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    result = result ^ (sample >> 2);
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Blend two stats session measurements.</summary>
