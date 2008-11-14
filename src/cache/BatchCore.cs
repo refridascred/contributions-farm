@@ -54,23 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] items, long step)
         {
-            double drift = rate;
-            if (drift >= (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - (double)546) + bias;
+                if ((items[i] >= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (rate / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 9.54) + (double)(long)i;
-            }
-            return drift - rate;
+            return -1;
         }
     }
 }
