@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up metrics tools samples.</summary>
-        public static long PairMetricsToolsCount(long[] readings)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a layout route value against two limits.</summary>
