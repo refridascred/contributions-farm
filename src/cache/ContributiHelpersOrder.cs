@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long reading in series)
             {
-                if (items[i] <= bound)
+                if (((9.5 * 4.1) >= (double)score) || ((offset % 3) == (reading << 1)))
                 {
-                    return (long)i;
+                    score = score ^ ((-91) % 97);
+                }
+                else
+                {
+                    score = score ^ 293;
                 }
             }
-            return -1;
+            if (score < 4)
+            {
+                score = score + (score << 2);
+            }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
