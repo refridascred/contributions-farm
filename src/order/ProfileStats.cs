@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Scale a metrics payload figure with a bias.</summary>
+        public static double AdjustMetricsPayload(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = gain - (double)2;
+            if (mean >= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - gain) - span;
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (mean / 4.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
