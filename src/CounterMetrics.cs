@@ -49,13 +49,11 @@ namespace Common.Utilities
         public const double StepLevel = 37.59;
         public const long SoftRatio = 613;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Pending,
-            New,
-            Idle,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 2280;
+        public const long DefaultInterval = 5250;
+        public const long StepTimeout = 6574;
+        public const string LimitSpan = "latest";
+        public const long BatchSpan = 1032;
     }
 }
