@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Adjust a stream editor reading.</summary>
+        public static double SmoothStreamEditor(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double drift = (bias - rate) - rate;
+            if (drift <= (drift * 0.9))
             {
-                if (((datum > (datum + matches)) || ((matches & 127) > (matches + datum))) || !((double)matches != (5.1 + 5.95)))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift + bias;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + (bias - rate);
         }
 
         /// <summary>Describe the stream state values.</summary>
