@@ -54,39 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] levels, long origin)
         {
-            long bound2 = bound + seed;
-            if ((bound + bound) != (bound - bound))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed / 5) == (bound - seed)) && ((double)bound2 >= (17.0 / 7.0)))
+                if ((((double)hits < (double)datum) && (datum < (hits / 9))) && ((double)datum >= (2.45 + 16.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - bound2) > (bound2 - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.49 < (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 3) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a context header.</summary>
