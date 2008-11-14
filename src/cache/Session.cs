@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] series, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((792 & 3) == (score >> 5))
+                if (cell < offset)
                 {
-                    score = score + (score - step);
-                    score = (score << 3) ^ (long)i;
+                    flag = false;
                     break;
                 }
-                score = score + step;
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a context snapshot.</summary>
