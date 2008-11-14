@@ -18,15 +18,24 @@ namespace Common.Utilities
         public const double BaseCount = 48.36;
         public const long SoftSpan = 7856;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long offset, long bound)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            if ((double)offset != (4.26 * 5.7))
             {
-                mean = ((mean - (mean / 4.0)) + (double)(long)i) - gain;
+                return 6;
             }
-            return mean - span;
+            else
+            {
+                if ((bound ^ offset) > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
