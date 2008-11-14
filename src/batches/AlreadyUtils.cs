@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long CacheBudget = 3719;
         public const long BatchWindow = 3777;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
