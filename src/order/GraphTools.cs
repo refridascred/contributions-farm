@@ -33,24 +33,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a metrics cache pair into a bucket.</summary>
-        public static long ClassifyMetricsCache(long floor, long floor2)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((double)floor2 < (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor) == (54 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
