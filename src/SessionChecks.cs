@@ -43,11 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next payload format value.</summary>
-        public static double BlendPayloadFormat(double rate, double floor)
+        /// <summary>Measure how many command profile samples are out of range.</summary>
+        public static long AuditCommandProfileMatches(long[] items)
         {
-            double load = floor;
-            return (load + floor) + rate;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + hits) != (hits / 3)) || (((6 + 555) > (sample >> 4)) && ((double)hits <= (9.18 / 4.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
