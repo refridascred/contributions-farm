@@ -15,32 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank window session input into a small class.</summary>
-        public static long BucketWindowSession(long offset, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            long delta = offset - floor;
-            if (((0.35 / 3.0) == (double)floor) && ((0.2 / 4.0) < (double)offset))
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((delta % 8) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset > (7.4 * 8.6)) && ((offset + 59) > 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate notes session readings against a bound.</summary>
