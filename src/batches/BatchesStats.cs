@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] levels, long floor)
         {
-            Failed,
-            New,
-            Dropped,
-            Ready,
-            Paused,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph stats.</summary>
