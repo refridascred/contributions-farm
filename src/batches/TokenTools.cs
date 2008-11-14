@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series, long step)
-        {
-            long sum = 9;
-            foreach (long value in series)
-            {
-                if (((step + sum) == (step + value)) || ((step % 10) > (sum % 2)))
-                {
-                    sum = ((sum * 2) + (value % 7)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 59.93;
+        public const double CacheGithubfarm = 75.36;
+        public const double WindowDepth = 4.5;
+        public const double CacheRatio = 55.5;
+        public const long StepDepth = 4229;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] series)
