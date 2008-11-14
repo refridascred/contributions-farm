@@ -56,17 +56,9 @@ namespace Common.Utilities
             return load + (double)473;
         }
 
-        /// <summary>Locate a context schema reading by value.</summary>
-        public static long SeekContextSchemaIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitFactor = "local";
+        public const long MinTimeout = 1896;
+        public const string WindowRecord = "cached-v2";
     }
 }
