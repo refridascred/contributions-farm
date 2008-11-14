@@ -1,17 +1,7 @@
 {
-  "window_threshold": 4.89,
-  "warm_window": {
-    "idle_delay": "open",
-    "queue_delay": 919,
-    "min_size_count": 96.06,
-    "notes_threshold": [66, 257, 244],
-    "poll_size_pct": [132, 407, 468]
-  },
-  "editor_window": {
-    "min_size_s": 87,
-    "base_timeout": 17.95,
-    "retry_retries_count": 32,
-    "schema_limit": ["blue", "local"]
-  },
-  "route_capacity": 1163
+  "soft_ratio_pct": 75.88,
+  "warm_ratio": 6.49,
+  "idle_size_s": 60,
+  "burst_timeout": "local",
+  "stats_ratio": 57
 }
