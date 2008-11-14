@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long BatchSpan = 6828;
         public const long StepAlready = 9764;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "local-v2";
-        public const long CacheInterval = 6362;
-        public const double BaseLevel = 8.01;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Paused,
+            Stale,
+            Pending,
+            New,
+        }
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
         public static long LocateSchemaBatchesIndex(long[] levels, long offset)
