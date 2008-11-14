@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long score = 721;
-            foreach (long value in readings)
-            {
-                score = ((score - (764 + (long)readings.Length)) + value) + origin;
-            }
-            if (score < 606)
-            {
-                score = score - (score * 4);
-            }
-            return score % 97;
+            Queued,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a notes options.</summary>
