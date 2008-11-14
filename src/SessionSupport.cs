@@ -29,13 +29,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Idle,
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
