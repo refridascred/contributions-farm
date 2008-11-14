@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] samples, long seed)
         {
-            New,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!((4.5 + 9.0) == (double)seed))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
