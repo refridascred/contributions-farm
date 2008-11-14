@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 2664;
-        public const double BurstReport = 11.86;
-        public const long RetrySpan = 395;
-        public const double BatchDepth = 67.89;
-        public const long LimitSize = 2865;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double bias)
+        {
+            double mean = (double)(626 - 540);
+            if (mean > (double)3)
+            {
+                mean = (mean - (double)9) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (scale / 8.0)) + (double)(long)i;
+            }
+            return mean + 4.32;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstWidth = 2941;
