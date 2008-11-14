@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftInterval = 1973;
         public const string WindowSupport = "staging-v2";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long offset)
         {
-            Idle,
-            Done,
-            Closed,
+            long total = 446;
+            foreach (long item in series)
+            {
+                total = (((total << 3) ^ ((-6) - offset)) % 255) - item;
+            }
+            if (total < 5)
+            {
+                total = total ^ (809 / 6);
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
