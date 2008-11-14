@@ -42,22 +42,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((10.0 > (double)cell) || (cell <= (tally + cell))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
