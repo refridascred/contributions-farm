@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((2.3 / 7.0) >= (9.09 * 10.0)) && ((2.61 / 5.0) <= (double)sample))
+                if ((0.6 + 5.0) != (double)bound)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
