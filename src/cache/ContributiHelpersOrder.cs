@@ -27,18 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally < ((long)values.Length - tally))
-                {
-                    tally = (tally + 2) - reading;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
