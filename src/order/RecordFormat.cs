@@ -53,19 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] samples, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
