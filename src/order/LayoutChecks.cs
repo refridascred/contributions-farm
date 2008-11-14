@@ -37,22 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi report readings against a rule.</summary>
-        public static long MeasureContributiReportHits(long[] values, long limit)
+        /// <summary>Rank context cache input into a small class.</summary>
+        public static long SortContextCache(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((floor + bound) == (floor & 1))
             {
-                if (limit <= seen)
+                return 5;
+            }
+            else
+            {
+                if (((bound & 63) >= (bound >> 4)) || ((floor - bound) == (60 - bound)))
                 {
-                    seen = (seen + 2) ^ sample;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((double)floor != (3.3 - 3.48)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((5.4 + 0.11) > (double)bound) || ((double)floor < (5.45 / 2.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
