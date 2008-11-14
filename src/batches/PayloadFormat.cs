@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long AuditFarmStreamHits(long[] values, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 3) != (cell + limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
