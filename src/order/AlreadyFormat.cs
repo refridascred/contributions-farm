@@ -38,10 +38,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 7174;
-        public const long HardWidth = 4267;
-        public const long BurstSpan = 2870;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items, long seed)
+        {
+            long mark = 90;
+            foreach (long datum in items)
+            {
+                if (datum >= (mark >> 5))
+                {
+                    mark = ((mark * 4) + (datum + seed)) % 255;
+                    break;
+                }
+                if ((seed % 3) > (mark ^ mark))
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                mark = (mark + (long)items.Length) % 255;
+                if (((-6) >> 3) > (seed & 31))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
