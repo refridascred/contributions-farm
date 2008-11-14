@@ -35,15 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            long acc = 99;
-            foreach (long datum in series)
+            double bias2 = (double)6;
+            if (bias2 <= (bias - bias2))
             {
-                acc = (((acc + (57 % 2)) % 255) ^ datum) + offset;
+                bias2 = bias2 + bias;
             }
-            return acc % 97;
+            return bias2 + span;
         }
     }
 }
