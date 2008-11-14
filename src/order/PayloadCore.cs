@@ -15,12 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "primary-v2";
+        public const double IdleTools = 94.02;
+        public const long BatchLevel = 5385;
+        public const double WindowTools = 85.83;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
