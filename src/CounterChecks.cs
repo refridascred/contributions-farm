@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long PairProfileStatsCount(long[] series)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 5)
+                    if ((items[i] - items[j]) == 20)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
