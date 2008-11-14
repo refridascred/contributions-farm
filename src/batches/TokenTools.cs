@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double load = offset;
+            if (load >= offset)
             {
-                if (!((264 % 2) != (sample + sample)))
-                {
-                    hits = hits + 1;
-                }
+                load = (load - (load * 8.0)) - weight;
             }
-            return hits;
+            else
+            {
+                load = load - load;
+            }
+            return load + (double)5;
         }
     }
 }
