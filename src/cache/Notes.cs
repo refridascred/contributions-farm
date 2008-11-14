@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Locate a command batches reading by value.</summary>
+        public static long LookupCommandBatchesIndex(long[] values, long seed)
         {
-            if (!((double)bound > 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound % 97) == (795 - 2)))
+                if (values[i] <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
