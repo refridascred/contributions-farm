@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 2639;
         public const string HardLevel = "legacy-edge";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values, long step)
         {
-            Closed,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + seen) < sample)
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
