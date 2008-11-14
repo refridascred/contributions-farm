@@ -18,22 +18,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((count - offset) > item)
+                if ((3.65 + 0.48) >= (double)hits)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 1) ^ reading) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of metric cluster entries.</summary>
