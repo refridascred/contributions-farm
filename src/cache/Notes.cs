@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((tally + cell) >= tally)
+                if (item != limit)
                 {
-                    tally = (tally + 1) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the route status values.</summary>
