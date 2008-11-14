@@ -1,6 +1,5 @@
 {
-  "soft_threshold_s": "latest",
-  "compress": 433,
-  "format_ttl": [80, 267, 43, 472],
-  "hard_timeout": 9971
+  "command_ratio": "local",
+  "verbose": "green",
+  "flush_threshold": [210, 483]
 }
