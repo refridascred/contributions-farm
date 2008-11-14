@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of metrics notes entries.</summary>
-        public static long FoldMetricsNotes(long[] series, long bound)
-        {
-            long mark = -93;
-            foreach (long sample in series)
-            {
-                mark = ((mark * 3) + sample) - bound;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftCount = 97.92;
+        public const string IdleNotes = "local-edge";
+        public const string BatchDepth = "strict-1";
+        public const string BaseNotes = "cached-edge";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
