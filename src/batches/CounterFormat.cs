@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            Failed,
+            Active,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a entry info.</summary>
