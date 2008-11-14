@@ -1,10 +1,11 @@
 {
-  "context_size": {
-    "farm_retries": 83.99,
-    "cache_ratio": 52.99,
-    "checks_retries": ["staging", "blue", "fallback", "eu-west"],
-    "checks_size": 21
-  },
-  "batch_depth": 84.22,
-  "compress": "blue"
+  "soft_ratio_s": "legacy",
+  "soft_size_pct": [401, 85, 381],
+  "poll_depth_ms": 17.83,
+  "cache_delay_count": 37,
+  "dry_run": {
+    "dry_run": 4.33,
+    "default_depth": 250,
+    "verbose": "eu-west"
+  }
 }
