@@ -18,14 +18,11 @@ namespace Common.Utilities
         public const double MaxProfile = 24.06;
         public const string CacheProfile = "strict-edge";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two record cluster measurements.</summary>
+        public static double AdjustRecordCluster(double gain, double floor)
         {
-            Synced,
-            Pending,
-            Locked,
-            Paused,
-            Queued,
+            double gain2 = floor;
+            return (gain2 + gain2) + gain;
         }
     }
 }
