@@ -53,18 +53,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double scale2 = bias;
+            if (scale2 > scale)
             {
-                if (tally < (target * 3))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                scale2 = scale2 + (bias - bias);
             }
-            return tally;
+            return scale2 + scale;
         }
 
         /// <summary>Hold a context header.</summary>
