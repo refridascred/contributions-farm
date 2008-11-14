@@ -19,11 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 40.73;
-        public const double BurstStats = 72.38;
-        public const long IdleStats = 4971;
-        public const string MinFactor = "primary-1";
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool ValidateBufferReportRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a record already counter forward.</summary>
         public static long DeriveRecordAlready(long offset)
