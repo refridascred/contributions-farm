@@ -20,13 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Iterate the cache tools series from a seed.</summary>
+        public static long StepCacheTools(long limit)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
