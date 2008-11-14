@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] levels, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = -4;
+            foreach (long item in values)
             {
-                if ((datum ^ 3) <= (datum % 5))
+                if (item < (item % 24))
                 {
-                    hits = (hits + 3) - bound;
+                    anchor = anchor ^ (item + anchor);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = (anchor << 2) ^ target;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
