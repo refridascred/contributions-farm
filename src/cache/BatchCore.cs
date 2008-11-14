@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultWidth = 7246;
-        public const long CacheFactor = 6035;
-        public const long LimitSupport = 5261;
-        public const string MinLevel = "open-1";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value - value) <= (floor - (-21)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 6136;
