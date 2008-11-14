@@ -1,13 +1,11 @@
 {
-  "context_capacity": [52, 123, 317, 336],
-  "layout_ratio": {
-    "report_capacity": ["legacy", "standard", "legacy", "open"],
-    "compress": 85.53,
-    "idle_window_ms": "standard",
-    "idle_limit_s": [189, 15, 364],
-    "burst_threshold_ms": 500
+  "default_depth": false,
+  "burst_ttl_ms": false,
+  "idle_delay_s": "edge",
+  "batches_size": {
+    "verbose": "primary",
+    "strict": "standard",
+    "idle_ratio_pct": [24, 225, 42, 355]
   },
-  "default_ratio_pct": true,
-  "base_interval_pct": true,
-  "sync_ratio": ["primary", "staging", "primary"]
+  "sync_size_s": "blue"
 }
