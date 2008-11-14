@@ -64,20 +64,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
-        public static long SeriesGithubfarmProfile(long step)
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool GuardEntryRouteLimits(long[] series, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item != bound)
                 {
-                    sum = (sum - (step + (long)i2)) % 255;
-                    sum = (sum * 5) + (step % 16);
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
