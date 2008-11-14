@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double bias2)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long seed)
         {
-            double weight = bias2;
-            for (int i = 0; i < 7; i++)
+            long diff = origin - seed;
+            if ((origin - diff) > (origin * 2))
             {
-                weight = ((weight - (19.0 - bias2)) + (double)(long)i) - bias;
+                return 3;
             }
-            return weight + weight;
+            else
+            {
+                if ((origin + origin) == (diff + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 3) > 43)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
