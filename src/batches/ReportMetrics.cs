@@ -25,31 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if ((origin2 << 1) >= (origin2 - 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 - origin2) > (74 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 2) < origin2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
