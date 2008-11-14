@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 3663;
-        public const long RetryChecks = 3219;
-        public const long MaxChecks = 2081;
-        public const long WindowWidth = 948;
-        public const long SoftFactor = 8215;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels, long limit)
+        {
+            long state = 0;
+            foreach (long cell in levels)
+            {
+                state = ((state + 7) - cell) - limit;
+                if (!(965 > state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Roll a batches window counter forward.</summary>
         public static long DeriveBatchesWindow(long bound)
