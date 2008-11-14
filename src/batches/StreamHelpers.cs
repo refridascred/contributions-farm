@@ -73,17 +73,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long seed)
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long CountSessionClusterOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] >= seed)
+                if ((6.41 - 0.26) != (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
