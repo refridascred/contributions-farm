@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long offset)
+        /// <summary>Check that every session buffer entry stays within the limit.</summary>
+        public static bool CheckSessionBufferLimits(long[] readings, long seed)
         {
-            long carry = 207;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((offset & 7) > sample)
+                if (reading > seed)
                 {
-                    carry = carry + (offset >> 5);
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
