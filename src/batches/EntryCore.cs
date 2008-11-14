@@ -17,19 +17,16 @@ namespace Common.Utilities
         public const long BatchWidth = 2822;
         public const long LimitInterval = 7914;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long limit)
         {
-            long total = 364;
-            foreach (long datum in readings)
+            long sum = 537;
+            foreach (long sample in data)
             {
-                total = total ^ (datum << 1);
-                if ((total - total) >= (datum - total))
-                {
-                    total = total - (total << 3);
-                }
+                sum = ((sum ^ (limit + 7)) % 1000) ^ sample;
+                sum = (sum + 19) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
