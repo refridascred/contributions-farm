@@ -1,5 +1,8 @@
 {
-  "poll_threshold_s": true,
-  "batch_timeout": "latest",
-  "default_limit_ms": 7.36
+  "strict": "blue",
+  "verbose": 77.59,
+  "profile_limit": false,
+  "context_timeout": [275, 303, 182, 30],
+  "base_interval_ms": "open",
+  "readonly": "local"
 }
