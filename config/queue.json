@@ -1,8 +1,11 @@
 {
-  "warm_delay": false,
-  "batch_retries_count": ["open", "stable", "local"],
-  "default_limit_count": 1024,
-  "poll_capacity_s": 6378,
-  "cache_interval_count": false,
-  "graph_ttl": "strict"
+  "max_window_pct": "eu-west",
+  "readonly": 79,
+  "contributi_timeout": [5, 46, 146],
+  "cache_window": {
+    "flush_delay_pct": 6574,
+    "readonly": 25.42,
+    "poll_delay_count": 9455
+  },
+  "retry_ttl_s": ["staging", "edge", "strict"]
 }
