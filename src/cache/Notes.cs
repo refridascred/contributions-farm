@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 207;
-        public const double MinMetrics = 88.79;
-        public const long StepMetrics = 2460;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "primary-1";
+        public const long LimitDepth = 7117;
+        public const double MaxSpan = 32.86;
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
         public static long PairSchemaMetricsCount(long[] readings)
