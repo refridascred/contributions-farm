@@ -14,20 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] items, long origin)
         {
-            long mix = 407;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix + entry)) % 65521;
-                mix = mix ^ (entry - entry);
-                if (((double)target > 0.86) || ((mix + mix) >= mix))
+                if (items[i] >= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
