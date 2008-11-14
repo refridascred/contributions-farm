@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] values, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((109 > ((long)values.Length * 5)) && ((seed & 1) < seed)) && ((double)datum < 2.08))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
