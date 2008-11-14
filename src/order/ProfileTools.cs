@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long limit, long offset)
+        /// <summary>Count the context profile entries that pass the check.</summary>
+        public static long MeasureContextProfileHits(long[] values)
         {
-            long lane = limit - offset;
-            if ((offset - limit) != (limit + limit))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane & 7) != (limit + lane))
+                if (((long)values.Length >> 2) > matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (limit / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane <= limit) || ((double)limit > (14.0 / 7.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
