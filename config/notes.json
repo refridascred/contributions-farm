@@ -1,11 +1,5 @@
 {
-  "default_depth": false,
-  "burst_ttl_ms": false,
-  "idle_delay_s": "edge",
-  "batches_size": {
-    "verbose": "primary",
-    "strict": "standard",
-    "idle_ratio_pct": [24, 225, 42, 355]
-  },
-  "sync_size_s": "blue"
+  "burst_ttl_s": 4322,
+  "batch_interval": 44,
+  "idle_ttl": "latest"
 }
