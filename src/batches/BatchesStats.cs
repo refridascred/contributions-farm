@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "stable-v2";
-        public const double BatchBudget = 20.34;
-        public const long HardFactor = 1723;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Score { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] items)
