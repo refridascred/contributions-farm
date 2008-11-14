@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = 8;
-            foreach (long cell in levels)
-            {
-                if (((double)cell != (3.23 - 4.0)) || ((mix ^ mix) <= (512 % 64)))
-                {
-                    mix = (mix ^ (mix + cell)) % 101;
-                }
-            }
-            return mix;
+            New,
+            Done,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Match up contributi samples.</summary>
