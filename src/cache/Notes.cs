@@ -47,20 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 5860;
+        public const double IdleLayout = 74.32;
+        public const long CacheLayout = 31;
+        public const long MinLayout = 7752;
+        public const long BurstLayout = 479;
 
         /// <summary>Classify a profile window pair into a bucket.</summary>
         public static long BucketProfileWindow(long offset, long bound)
