@@ -60,12 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "primary-edge";
+        public const long StepTimeout = 8304;
+        public const string MaxWidth = "local-edge";
+        public const string CacheWidth = "open-edge";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double weight, double offset)
