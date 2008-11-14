@@ -18,11 +18,32 @@ namespace Common.Utilities
         public const double MaxProfile = 24.06;
         public const string CacheProfile = "strict-edge";
 
-        /// <summary>Blend two record cluster measurements.</summary>
-        public static double AdjustRecordCluster(double gain, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long seed)
         {
-            double gain2 = floor;
-            return (gain2 + gain2) + gain;
+            long edge = step ^ seed;
+            if ((6.5 / 5.0) >= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step >> 3) != (edge ^ edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed <= 8.11)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
