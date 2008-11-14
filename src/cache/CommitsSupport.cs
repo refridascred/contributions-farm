@@ -54,17 +54,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] data, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((data[i] >= limit) && ((data[i] % 5) != 0))
+                if (!(reading <= (bound % 5)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
