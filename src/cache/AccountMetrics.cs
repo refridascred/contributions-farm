@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2469;
-        public const long BurstGithubfarm = 9682;
-        public const string BaseInterval = "stable-edge";
-        public const long IdleWidth = 6881;
+        /// <summary>Find the first schema window entry that matches the target.</summary>
+        public static long LookupSchemaWindowIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] levels)
