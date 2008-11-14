@@ -1,5 +1,6 @@
 {
-  "min_interval_ms": 3889,
-  "idle_threshold": "legacy",
-  "poll_limit_s": 47
+  "soft_ttl": 4280,
+  "commits_ttl": "blue",
+  "format_interval": 51,
+  "min_timeout": "stable"
 }
