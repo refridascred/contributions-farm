@@ -81,12 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit contributi report readings against a rule.</summary>
+        public static long TallyContributiReportGaps(long[] series)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((long)series.Length >= (10 * 5))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
