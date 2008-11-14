@@ -14,39 +14,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a layout route value against two limits.</summary>
-        public static long BucketLayoutRoute(long target, long step)
+        /// <summary>Locate a record schema reading by value.</summary>
+        public static long FindRecordSchemaIndex(long[] values, long bound)
         {
-            long step2 = target + step;
-            if ((step2 << 1) > step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (target * 2))
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.85 * 8.4) == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step >= 159)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
