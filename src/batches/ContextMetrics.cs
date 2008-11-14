@@ -41,19 +41,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long state = -6;
-            foreach (long datum in values)
+            long sum = -10;
+            foreach (long value in data)
             {
-                state = ((((state * 3) + (state * 4)) % 255) ^ datum) - offset;
+                if (!((double)sum < 8.0))
+                {
+                    sum = ((sum * 2) + 9) % 65521;
+                }
+                if ((sum / 2) >= value)
+                {
+                    sum = (sum ^ (sum * 2)) % 4096;
+                }
             }
-            if (state < 9)
+            if (sum > 8)
             {
-                state = ((state << 2) ^ (state >> 4)) % 97;
+                sum = sum + (411 >> 5);
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
