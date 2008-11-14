@@ -52,16 +52,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data)
         {
-            long mix = 5;
-            foreach (long datum in data)
+            long anchor = 8;
+            foreach (long reading in data)
             {
-                mix = (((mix * 4) + (mix & 3)) % 101) + datum;
-                mix = ((mix * 4) + mix) % 255;
+                if ((reading - reading) == (anchor + anchor))
+                {
+                    anchor = anchor - reading;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (88 & 15)) % 101;
+                }
             }
-            return mix;
+            if (anchor < 54)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next contributi account value.</summary>
