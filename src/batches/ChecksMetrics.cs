@@ -45,13 +45,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Compare every pair of filter window readings.</summary>
+        public static long PairFilterWindowCount(long[] items)
         {
-            Pending,
-            Ready,
-            Done,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
