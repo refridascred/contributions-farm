@@ -43,13 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Failed,
-            Queued,
-            Dropped,
-            Ready,
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
