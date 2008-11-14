@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum - datum) >= (datum << 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                long offset = (993 ^ step) & 7;
+                sum = (sum * 5) + (offset & 31);
+                offset = ((offset * 2) + (1 - offset)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a counter record.</summary>
