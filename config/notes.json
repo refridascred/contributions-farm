@@ -1,5 +1,6 @@
 {
-  "audit": true,
-  "poll_size": 8410,
-  "flush_delay": 7605
+  "audit": "green",
+  "default_delay_count": "stable",
+  "cache_ratio_ms": false,
+  "batch_capacity": 59.54
 }
