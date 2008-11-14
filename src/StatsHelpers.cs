@@ -32,12 +32,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 86.26;
-        public const long RetryScore = 9318;
-        public const long BurstEditor = 4316;
-        public const double WindowDepth = 87.3;
-        public const double HardEditor = 23.44;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "strict-1";
+        public const long IdleAccount = 4287;
+        public const long MaxWidth = 5192;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
