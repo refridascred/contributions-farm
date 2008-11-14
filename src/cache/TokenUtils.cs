@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const double IdleTimeout = 41.97;
         public const long RetryOrder = 2870;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Derive the next commits editor value from a seed.</summary>
+        public static long StepCommitsEditor(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
