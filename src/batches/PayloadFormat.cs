@@ -15,22 +15,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] items, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((limit * 2) > limit)
+                if (!((47 << 2) > ((long)i + bound)))
                 {
-                    tally = (tally + 3) + entry;
+                    total = (total + (total % 10)) % 65521;
+                    total = total ^ total;
+                }
+                if (((43 & 127) == (total - total)) && ((bound << 1) <= (total + bound)))
+                {
+                    total = (total - (bound / 6)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = total ^ (total % 2);
                 }
+                total = ((total << 3) ^ (long)i) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
