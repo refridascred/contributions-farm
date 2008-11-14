@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long seed)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a order snapshot.</summary>
