@@ -45,19 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route command readings against a bound.</summary>
-        public static bool GuardRouteCommandLimits(long[] levels, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            double load = bias + bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = ((load - load) - (double)(long)i) + offset;
             }
-            return stale;
+            return load - load;
         }
 
         /// <summary>Compare every pair of report session readings.</summary>
