@@ -13,10 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 70.19;
-        public const long SoftCounter = 6331;
-        public const long MinTimeout = 4826;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] levels, long floor)
