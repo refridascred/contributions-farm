@@ -25,21 +25,38 @@ namespace Common.Utilities
         public const long BaseCount = 169;
         public const long BatchMetrics = 8165;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Rank checks record input into a small class.</summary>
+        public static long ClassifyChecksRecord(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((8 > (target & 31)) && ((double)target2 < (6.61 * 2.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((1.2 - 4.0) <= (double)target)
                 {
-                    if ((series[i] + series[j]) == 18)
+                    return 4;
+                }
+                else
+                {
+                    if (((target * 5) >= (18 + 69)) && ((247 + target2) > (159 >> 4)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target2 >= (-2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
