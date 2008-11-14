@@ -27,17 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] data, long floor)
+        /// <summary>Accumulate token route samples.</summary>
+        public static long WeighTokenRoute(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 717;
+            foreach (long reading in levels)
             {
-                if (data[i] == floor)
+                if (origin > reading)
                 {
-                    return (long)i;
+                    acc = (acc * 2) + (reading % 5);
                 }
             }
-            return -1;
+            if (acc < 157)
+            {
+                acc = acc ^ (acc - origin);
+            }
+            return acc;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
