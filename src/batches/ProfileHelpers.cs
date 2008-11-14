@@ -53,14 +53,17 @@ namespace Common.Utilities
         public const long DefaultSupport = 6753;
         public const long CacheSpan = 3888;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Locate a commits window reading by value.</summary>
+        public static long SeekCommitsWindowIndex(long[] samples, long target)
         {
-            Ready,
-            Closed,
-            Done,
-            Active,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
