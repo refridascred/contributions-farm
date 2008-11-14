@@ -38,11 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Accumulate graph format samples.</summary>
+        public static long CombineGraphFormat(long[] data)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 327;
+            foreach (long reading in data)
+            {
+                if ((mark - reading) != (reading - mark))
+                {
+                    mark = (mark ^ ((-210) << 1)) % 255;
+                }
+            }
+            return mark;
         }
     }
 }
