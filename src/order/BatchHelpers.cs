@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long RetryCluster = 8765;
         public const long BaseWidth = 1218;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = 0;
-            foreach (long datum in data)
-            {
-                acc = (acc * 3) + acc;
-                acc = (acc * 3) + datum;
-                acc = ((acc << 2) ^ (acc << 3)) % 255;
-            }
-            return acc;
+            Synced,
+            Dropped,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
