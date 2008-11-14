@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long state = 86;
-            foreach (long cell in readings)
-            {
-                state = (state ^ state) % 4096;
-                if (cell >= (bound * 4))
-                {
-                    state = (state << 2) ^ (bound - cell);
-                }
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
