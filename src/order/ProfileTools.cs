@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Retry,
-            Failed,
-            Draft,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheDepth = "primary";
+        public const string WindowRatio = "latest-v2";
+        public const long StepProfile = 5761;
+        public const long StepDepth = 6666;
+        public const double IdleProfile = 25.12;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
