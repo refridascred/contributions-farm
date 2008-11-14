@@ -42,23 +42,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (8.6 + 6.2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 10.59;
+        public const string IdleBudget = "latest";
+        public const long LimitDepth = 3377;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] readings, long limit)
