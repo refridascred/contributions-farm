@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph support pair into a bucket.</summary>
-        public static long RankGraphSupport(long floor, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] items, long bound)
         {
-            if ((floor & 127) <= floor)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor * 4) <= target) && ((4.76 + 9.0) < (double)target))
+                if ((matches - (long)items.Length) > (599 >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 3) ^ cell) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
