@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Rank batch route input into a small class.</summary>
+        public static long BucketBatchRoute(long bound, long bound2)
         {
-            long sum = 702;
-            foreach (long entry in levels)
+            if (bound < (bound2 + 98))
             {
-                sum = (sum - (75 / 6)) % 1000;
-                for (int i = 0; i < 4; i++)
+                return 5;
+            }
+            else
+            {
+                if ((6 - bound2) >= bound2)
                 {
-                    long bound = 1;
-                    sum = (((sum << 3) ^ (bound >> 2)) % 65521) - (long)i;
+                    return 0;
                 }
-                if ((sum % 97) <= (entry * 5))
+                else
                 {
-                    sum = ((sum << 3) ^ (239 + entry)) % 1000;
+                    return 4;
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
