@@ -20,14 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Paused,
-            Stale,
-            Pending,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 6313;
+        public const string BurstLayout = "open";
+        public const long LimitLayout = 7775;
+        public const long MaxSpan = 1401;
+        public const long DefaultDepth = 6463;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double SoftSession = 44.98;
