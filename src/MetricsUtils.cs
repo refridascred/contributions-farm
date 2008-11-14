@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 7262;
+        public const string SoftToken = "cached-1";
+        public const long DefaultSize = 2916;
+        public const long BatchToken = 7275;
+        public const long MaxSpan = 2377;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] samples)
