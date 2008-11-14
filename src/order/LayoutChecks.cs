@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchTimeout = "legacy";
-        public const double BaseEditor = 62.29;
-        public const long MinEditor = 2685;
+        /// <summary>Validate record format readings against a bound.</summary>
+        public static bool ValidateRecordFormatRange(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] samples, long target)
