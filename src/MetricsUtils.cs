@@ -71,23 +71,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((6 * 2) <= (cell % 24))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseInterval = 58.2;
+        public const double HardContributi = 56.68;
+        public const double BaseFactor = 83.39;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
