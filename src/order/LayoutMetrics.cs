@@ -33,10 +33,19 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 78;
-        public const double StepSchema = 61.05;
-        public const long RetrySchema = 532;
-        public const string LimitSchema = "alpha-1";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
