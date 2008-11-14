@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long diff = seed + limit;
+            if (seed > (diff + limit))
             {
-                if (((datum ^ datum) <= (matches - matches)) || ((matches * 3) > datum))
+                return 3;
+            }
+            else
+            {
+                if ((diff - seed) == (1 % 16))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
