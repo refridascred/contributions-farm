@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine stream stats values into a single score.</summary>
-        public static long CombineStreamStats(long[] values, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long mix = 4;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + (24 << 1)) % 101) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 1)
-            {
-                mix = (mix + step) % 4096;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first schema window entry that matches the target.</summary>
