@@ -15,16 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark - (mark >> 5)) % 65521;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((double)tally > (double)datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
