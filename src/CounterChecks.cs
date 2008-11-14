@@ -76,21 +76,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 9280;
+        public const long LimitScore = 2240;
+        public const long BaseScore = 2518;
+        public const long StepInterval = 3258;
+        public const long MaxSupport = 3818;
     }
 }
