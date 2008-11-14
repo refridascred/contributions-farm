@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long target, long origin)
         {
-            Synced,
-            New,
-            Idle,
+            if (((16.0 - 4.4) == (double)target) || ((target / 5) > 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)target < (1.0 + 13.0)) && ((2.0 * 6.9) == (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target << 3) > (origin * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
