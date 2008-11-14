@@ -33,20 +33,12 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool ValidateClusterMetricBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 8361;
+        public const long MinSchema = 9701;
+        public const long RetryInterval = 3469;
+        public const string SoftSchema = "alpha-1";
+        public const long BaseSchema = 4733;
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double ratio, double floor)
