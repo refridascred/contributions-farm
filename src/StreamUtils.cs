@@ -38,13 +38,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
