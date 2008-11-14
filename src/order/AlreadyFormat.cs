@@ -59,12 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
