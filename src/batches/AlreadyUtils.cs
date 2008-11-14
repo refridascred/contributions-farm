@@ -38,17 +38,15 @@ namespace Common.Utilities
             return scale + 16.0;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Adjust a commits githubfarm reading.</summary>
+        public static double ProjectCommitsGithubfarm(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = rate;
+            if (scale > bias)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)10;
             }
-            return -1;
+            return scale + bias;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
