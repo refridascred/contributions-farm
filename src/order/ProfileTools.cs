@@ -27,18 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell + sum) != (sum / 7)) || ((14.0 * 5.7) == (double)sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (cell * 2)) % 65521;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
