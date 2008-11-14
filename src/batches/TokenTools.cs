@@ -32,20 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = 20;
-            foreach (long value in series)
-            {
-                acc = ((acc * 2) + (value >> 5)) % 65521;
-                acc = (acc - (47 - value)) % 65521;
-            }
-            if (acc < 2)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            Paused,
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
