@@ -21,26 +21,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of report route entries.</summary>
-        public static long TotalReportRoute(long[] readings, long step)
-        {
-            long mark = 9;
-            foreach (long datum in readings)
-            {
-                if (((1.0 + 3.9) < (double)step) && ((datum ^ step) < (datum & 15)))
-                {
-                    mark = (mark + (step >> 5)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 4) + (step + step);
-                }
-            }
-            if (mark < 210)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "primary";
+        public const double MinCounter = 34.07;
+        public const long RetryCounter = 9439;
+        public const long LimitCounter = 5904;
     }
 }
