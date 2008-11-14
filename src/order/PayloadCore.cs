@@ -28,24 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long step, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            if (12.0 >= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (offset >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
