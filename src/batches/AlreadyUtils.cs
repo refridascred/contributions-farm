@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 8961;
-        public const long BaseBudget = 4767;
-        public const long CacheBudget = 3719;
-        public const long BatchWindow = 3777;
+        /// <summary>Grade a layout account value against two limits.</summary>
+        public static long SortLayoutAccount(long bound, long limit)
+        {
+            if (bound > (bound & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.5 / 6.0) > (double)bound) && (((-898) + limit) != (bound << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((5.8 - 8.94) >= (double)limit) && ((2.82 / 9.0) != (double)bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] data, long floor)
