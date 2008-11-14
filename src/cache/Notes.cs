@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "primary-1";
-        public const long LimitDepth = 7117;
-        public const double MaxSpan = 32.86;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            New,
+            Pending,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
         public static long PairSchemaMetricsCount(long[] readings)
