@@ -40,19 +40,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool VerifyTokenEditorBounds(long[] series, long bound)
+        /// <summary>Iterate the format batch series from a seed.</summary>
+        public static long DeriveFormatBatch(long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
