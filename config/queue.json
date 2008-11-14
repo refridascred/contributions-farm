@@ -1,15 +1,12 @@
 {
-  "report_interval": {
-    "max_threshold": 67.98,
-    "base_ratio_count": 5,
-    "batch_delay_pct": "fallback"
+  "verbose": {
+    "soft_capacity_ms": 69,
+    "readonly": 30,
+    "window_ttl": 3007
   },
-  "dry_run": {
-    "max_window": 42,
-    "sync_size_ms": true,
-    "min_capacity_pct": 85,
-    "cache_retries_pct": "cached"
-  },
-  "verbose": "standard",
-  "base_timeout_s": "legacy"
+  "report_ratio": false,
+  "context_retries": 60,
+  "max_ttl_count": 60,
+  "checks_capacity": 6,
+  "base_size_count": ["eu-west", "staging", "staging"]
 }
