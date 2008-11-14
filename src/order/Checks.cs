@@ -53,10 +53,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 9160;
-        public const long IdleBudget = 2771;
-        public const long LimitScore = 8877;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6509;
+        public const string LimitCount = "local";
+        public const long SoftCount = 2705;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
