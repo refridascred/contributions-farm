@@ -48,24 +48,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values, long offset)
         {
-            if (((11 + 3) == (target % 10)) || ((double)target == (5.9 - 3.2)))
+            long mix = -686;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= 7.39)
+                if ((value ^ mix) > (6 * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    mix = (((mix * 5) + mix) % 4096) - offset;
                 }
             }
+            if (mix > 64)
+            {
+                mix = mix ^ ((long)values.Length + 84);
+            }
+            return mix;
         }
     }
 }
