@@ -27,23 +27,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long result = 226;
-            foreach (long datum in levels)
-            {
-                if ((datum * 2) >= (result / 8))
-                {
-                    result = result + (result - result);
-                }
-                result = (result ^ 53) % 65521;
-            }
-            if (result > 7)
-            {
-                result = (result - 54) % 1000;
-            }
-            return result;
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
