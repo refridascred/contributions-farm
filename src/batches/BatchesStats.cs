@@ -25,38 +25,14 @@ namespace Common.Utilities
         public const long BaseCount = 169;
         public const long BatchMetrics = 8165;
 
-        /// <summary>Rank checks record input into a small class.</summary>
-        public static long ClassifyChecksRecord(long target, long target2)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((8 > (target & 31)) && ((double)target2 < (6.61 * 2.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.2 - 4.0) <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target * 5) >= (18 + 69)) && ((247 + target2) > (159 >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target2 >= (-2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            New,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a graph stats.</summary>
