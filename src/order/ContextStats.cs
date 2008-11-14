@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long StepSize = 958;
         public const string DefaultWindow = "alpha-1";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
