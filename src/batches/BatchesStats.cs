@@ -43,11 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 5.76;
+        public const long SoftWindow = 6578;
+        public const string IdleTimeout = "cached-v2";
+        public const string MaxCount = "stable";
+        public const long BaseWindow = 829;
     }
 }
