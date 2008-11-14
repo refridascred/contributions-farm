@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultInterval = 6432;
-        public const string BaseDepth = "stable";
-        public const long MinBatch = 9670;
-        public const long BatchSpan = 2838;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long floor, long offset)
