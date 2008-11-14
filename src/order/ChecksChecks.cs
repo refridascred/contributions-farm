@@ -26,20 +26,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            if ((limit ^ limit) <= (limit - limit))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state - 4) % 65521) ^ (long)i2;
-                }
-                state = ((state << 2) ^ (bound / 4)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (target <= (2 >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (6.51 * 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)target >= (5.46 / 4.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
