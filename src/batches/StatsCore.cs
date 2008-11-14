@@ -71,17 +71,15 @@ namespace Common.Utilities
             return (load - (floor / 3.0)) + scale;
         }
 
-        /// <summary>Find the first context notes entry that matches the target.</summary>
-        public static long FindContextNotesIndex(long[] series, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)10 - (2.0 + ratio);
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (double)(long)i) + floor;
             }
-            return -1;
+            return ratio2 + (ratio - ratio2);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
