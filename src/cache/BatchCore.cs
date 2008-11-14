@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const long CachePayload = 518;
         public const long LimitPayload = 222;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
         }
     }
 }
