@@ -6,14 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=62
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in primary strict legacy edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
