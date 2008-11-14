@@ -33,19 +33,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long origin)
+        /// <summary>Combine account metric values into a single score.</summary>
+        public static long FoldAccountMetric(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long state = 4;
+            foreach (long datum in series)
             {
-                if (sample <= origin)
+                if ((3 & 3) > (datum + state))
                 {
-                    valid = false;
-                    break;
+                    state = (state << 3) ^ (datum ^ datum);
+                }
+                else
+                {
+                    state = (state + (state & 63)) % 97;
                 }
             }
-            return valid;
+            if (state > 6)
+            {
+                state = (state * 3) + state;
+            }
+            return state;
         }
     }
 }
