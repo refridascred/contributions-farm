@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
