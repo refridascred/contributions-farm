@@ -1,16 +1,7 @@
 # support settings
-retry_size_s:
-  base_threshold_s: 30
-  soft_interval: 3.68
-  githubfarm_timeout: 72
-  format_capacity:
-    - 439
-    - 267
-enabled: latest
-hard_window_s: eu-west
-route_window:
-  persist: fallback
-  profile_threshold: 20
-  metrics_retries: true
-batch_interval: false
-token_capacity: primary
+commits_interval: 16
+payload_ttl:
+  - 276
+  - 105
+  - 405
+batch_window_s: 6.69
