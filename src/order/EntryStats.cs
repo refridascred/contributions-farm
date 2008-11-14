@@ -20,39 +20,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long floor)
-        {
-            if ((seed + 50) != (seed ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ floor) >= (floor & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.9 > (double)seed) && ((seed - floor) > (floor / 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor ^ 14) > (floor + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9882;
+        public const long IdleCount = 5036;
+        public const string SoftLevel = "fallback-edge";
+        public const double IdleSpan = 66.47;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double scale, double span)
