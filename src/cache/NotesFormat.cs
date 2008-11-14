@@ -22,19 +22,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate cache cluster readings against a bound.</summary>
-        public static bool ValidateCacheClusterLimits(long[] samples, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (cell >= bound)
+                if (sample <= bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
