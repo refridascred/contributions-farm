@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long limit)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long DigestToolsAlready(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                if ((state << 1) > (state - state))
                 {
-                    return (long)i;
+                    state = (((state * 3) + (state - 755)) % 255) + cell;
                 }
             }
-            return -1;
+            if (state > 23)
+            {
+                state = state + 4;
+            }
+            return state;
         }
 
         /// <summary>Describe the profile kind values.</summary>
