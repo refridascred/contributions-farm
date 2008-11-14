@@ -86,9 +86,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 8016;
-        public const long IdleDepth = 4360;
-        public const double RetryStream = 52.89;
+        /// <summary>Compare every pair of layout counter readings.</summary>
+        public static long OverlapLayoutCounterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
