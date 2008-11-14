@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
             Ready,
-            Failed,
             Active,
-            New,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
