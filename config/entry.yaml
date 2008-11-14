@@ -1,9 +1,9 @@
 # entry settings
-burst_size_pct: false
-base_delay: 3919
-cache_limit_pct:
-  - 358
-  - 247
-soft_ratio_ms: 250
-persist: eu-west
-buffer_delay: 3
+persist: false
+metrics_window: blue
+dry_run: 35.55
+warm_capacity:
+  - green
+  - green
+  - cached
+  - eu-west
