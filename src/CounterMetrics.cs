@@ -61,17 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleTimeout = 1298;
+        public const long DefaultSize = 2653;
+        public const long MinCount = 2895;
+        public const string BaseBatches = "legacy";
+        public const long WindowBatches = 6841;
     }
 }
