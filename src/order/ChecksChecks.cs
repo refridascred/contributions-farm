@@ -35,17 +35,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
