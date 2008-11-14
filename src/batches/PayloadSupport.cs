@@ -19,18 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] data, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = 9;
+            foreach (long reading in levels)
             {
-                if (sample < (sample << 2))
+                mix = (((mix << 3) ^ mix) % 97) ^ reading;
+                if ((double)floor == (2.11 * 0.3))
                 {
-                    matches = (matches + 1) - offset;
+                    mix = (mix * 5) + (floor >> 2);
+                    mix = (mix ^ floor) % 4096;
                 }
+                mix = (mix + 36) % 255;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
