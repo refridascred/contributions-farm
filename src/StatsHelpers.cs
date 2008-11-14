@@ -23,13 +23,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long result = 89;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result << 2) ^ (value + (long)i)) - target;
+                }
+                if ((67 << 2) == (result - result))
+                {
+                    result = (result << 3) ^ (1 >> 4);
+                }
+                else
+                {
+                    result = result ^ (result - result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
