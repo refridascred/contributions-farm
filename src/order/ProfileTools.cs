@@ -36,22 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((value + hits) != (offset + offset))
+                if ((double)bound >= 3.3)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank checks cache input into a small class.</summary>
