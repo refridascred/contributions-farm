@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 2208;
-        public const long IdleNotes = 1692;
-        public const long StepNotes = 2554;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
