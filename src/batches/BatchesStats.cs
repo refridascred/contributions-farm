@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "stable-v2";
+        public const double BatchBudget = 20.34;
+        public const long HardFactor = 1723;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] data, long bound)
