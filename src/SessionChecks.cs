@@ -43,23 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data, long target)
+        /// <summary>Project the next payload format value.</summary>
+        public static double BlendPayloadFormat(double rate, double floor)
         {
-            long total = 8;
-            foreach (long entry in data)
-            {
-                total = ((((total * 5) + (total + 910)) % 97) - entry) - target;
-                if ((4.0 - 0.26) >= (double)total)
-                {
-                    total = ((total * 2) + total) % 255;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            return total % 65521;
+            double load = floor;
+            return (load + floor) + rate;
         }
     }
 }
