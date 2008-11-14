@@ -37,19 +37,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a route cluster figure with a bias.</summary>
-        public static double SmoothRouteCluster(double bias, double bias2)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double drift = (double)((-170) - 977);
-            if (drift <= drift)
-            {
-                drift = (drift - (2.8 * 2.6)) - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias - bias)) - (double)(long)i;
-            }
-            return drift - (bias + drift);
+            Closed,
+            Draft,
+            Done,
+            Active,
+            Queued,
         }
     }
 }
