@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings, long origin)
         {
-            Synced,
-            Failed,
-            Retry,
-            Active,
+            long score = 721;
+            foreach (long value in readings)
+            {
+                score = ((score - (764 + (long)readings.Length)) + value) + origin;
+            }
+            if (score < 606)
+            {
+                score = score - (score * 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a notes options.</summary>
