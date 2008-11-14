@@ -66,22 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] levels, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((7.55 + 9.0) < (double)offset)
+                if ((item - count) > (item >> 3))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
