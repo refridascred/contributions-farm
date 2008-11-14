@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const double StepSpan = 23.35;
         public const long IdleWindow = 9431;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum > (tally - datum)) && ((datum < tally) && ((tally ^ tally) >= (tally & 31))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
