@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] data, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((double)seen >= 3.59) && ((seen + 5) == (0 & 31)))
+                if ((datum % 10) == (count + datum))
                 {
-                    seen = ((seen + 1) + entry) - seed;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
