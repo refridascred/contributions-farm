@@ -47,18 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long AuditFarmPayloadOutliers(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > (6.1 * 13.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Derive the next cluster command value from a seed.</summary>
