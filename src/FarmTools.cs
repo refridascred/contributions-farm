@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseFactor = "legacy-v2";
+        public const long BatchSpan = 6828;
+        public const long StepAlready = 9764;
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] data)
