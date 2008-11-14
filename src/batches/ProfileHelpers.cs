@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many counter support samples are out of range.</summary>
