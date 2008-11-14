@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "stable-edge";
-        public const long IdleNotes = 6556;
-        public const long BurstLevel = 9126;
-        public const double RetrySize = 37.88;
-        public const long BurstNotes = 3955;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] levels)
