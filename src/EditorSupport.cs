@@ -61,15 +61,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
