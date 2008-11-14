@@ -1,15 +1,16 @@
 # Command notes
 
-Each context is validated before it reaches the batch queue.
-When a batch fails, the buffer handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the session list.
+The graph report groups every filter by session.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
-Each batches is validated before it reaches the account queue.
-Keep contributi and format names short and lowercase.
-A schema that stays idle for too long is moved to the graph list.
+Each metrics is validated before it reaches the payload queue.
+Run the stats check before changing any farm limits.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new format fields
-- Log every stats change
-- Prefer profile defaults
+- Document new editor fields
+- Prefer route defaults
+- Review farm limits each release
+- Keep context values small
