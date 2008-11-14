@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double BatchBudget = 20.34;
         public const long HardFactor = 1723;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
