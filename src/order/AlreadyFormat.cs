@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long RetryRatio = 7397;
         public const long SoftEditor = 8605;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry >= (tally << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Failed,
         }
     }
 }
