@@ -66,23 +66,22 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values, long target)
         {
-            double load = 8.9 - offset;
-            if (load < (load / 2.0))
+            long score = -61;
+            foreach (long cell in values)
             {
-                load = load - (load * 10.0);
+                if (score >= (cell - cell))
+                {
+                    score = ((score << 2) ^ (score >> 2)) + target;
+                }
+                else
+                {
+                    score = (score * 3) + (score >> 2);
+                }
             }
-            else
-            {
-                load = load + (offset - load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (weight * 4.92)) + (double)(long)i;
-            }
-            return load - (double)18;
+            return score;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
