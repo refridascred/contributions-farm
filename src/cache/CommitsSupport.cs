@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            Queued,
-            Pending,
-            Retry,
-            Active,
-            Failed,
+            double load = rate;
+            if (load <= load)
+            {
+                load = load + (5.74 * 5.9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + 9.0;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
