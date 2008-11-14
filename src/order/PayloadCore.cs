@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Audit schema filter readings against a rule.</summary>
+        public static long MeasureSchemaFilterMatches(long[] series, long step)
         {
-            double rate = bias;
-            if (rate < (double)2)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                rate = (rate - rate) + bias2;
+                if ((hits ^ hits) < (step / 9))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (double)8) + (double)(long)i;
-            }
-            return rate + (rate * 1.0);
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
