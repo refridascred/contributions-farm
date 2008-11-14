@@ -63,22 +63,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((cell + cell) > (matches + cell))
+                if (reading != bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
