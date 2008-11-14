@@ -44,13 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long total = -1;
+            foreach (long item in data)
+            {
+                if ((19.0 + 15.0) != (double)item)
+                {
+                    total = (total + total) % 65521;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
