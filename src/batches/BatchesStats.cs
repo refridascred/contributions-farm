@@ -44,14 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            Draft,
-            Active,
-            New,
-            Stale,
-            Dropped,
+            double load = (double)933 + scale;
+            if (load >= load)
+            {
+                load = load + (span / 8.0);
+            }
+            else
+            {
+                load = load + 9.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (load * 5.01);
         }
     }
 }
