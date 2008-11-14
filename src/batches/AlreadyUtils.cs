@@ -45,19 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != limit)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
