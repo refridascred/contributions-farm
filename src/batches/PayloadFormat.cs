@@ -35,13 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 1) <= (item & 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
