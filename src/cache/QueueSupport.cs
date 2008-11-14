@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mean + 4.32;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Digest a series of counter order entries.</summary>
+        public static long TotalCounterOrder(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = 670;
+            foreach (long entry in data)
             {
-                sum = (sum ^ (sum & 15)) % 4096;
-                sum = sum ^ (offset ^ offset);
-                sum = ((sum * 5) + (long)i) % 65521;
+                acc = (((acc << 3) ^ acc) % 255) - entry;
             }
-            return sum;
+            if (acc < 0)
+            {
+                acc = ((acc << 2) ^ (long)data.Length) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
