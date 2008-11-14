@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitWidth = 8249;
-        public const string BatchSchema = "local-v2";
-        public const long SoftWidth = 3027;
-        public const long BurstDepth = 7975;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
