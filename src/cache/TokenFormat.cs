@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long AuditChecksQueueHits(long[] samples)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (hits <= (hits + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
