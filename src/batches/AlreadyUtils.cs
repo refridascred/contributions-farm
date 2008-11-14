@@ -69,22 +69,30 @@ namespace Common.Utilities
             return load + (double)473;
         }
 
-        /// <summary>Grade a batches buffer value against two limits.</summary>
-        public static long RankBatchesBuffer(long origin, long step)
+        /// <summary>Rank buffer metric input into a small class.</summary>
+        public static long BucketBufferMetric(long origin, long offset)
         {
-            if ((origin + step) == (step * 3))
+            long prev = origin - offset;
+            if ((7.9 * 2.3) != (double)prev)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (step >= (origin ^ step))
+                if (prev < origin)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if ((origin + offset) <= (166 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
