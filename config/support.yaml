@@ -1,7 +1,11 @@
 # support settings
-commits_interval: 16
-payload_ttl:
-  - 276
-  - 105
-  - 405
-batch_window_s: 6.69
+context_size: 91.1
+warm_depth_ms:
+  - 325
+  - 426
+  - 500
+  - 391
+cache_window_pct: 91.78
+batches_limit:
+  - fallback
+  - staging
