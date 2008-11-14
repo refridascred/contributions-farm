@@ -35,11 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8655;
-        public const long IdleSpan = 8765;
-        public const long IdleCommits = 2393;
-        public const double MinFactor = 2.97;
-        public const double StepCommits = 14.86;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long seed, long limit)
+        {
+            if ((limit % 60) >= (seed >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 31) > ((-289) ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.1 - 9.6) == (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
