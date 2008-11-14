@@ -1,11 +1,11 @@
 # Command notes
 
-The metric module keeps route values in sync with the githubfarm cache.
-The batches report groups every notes by already.
+Run the contributi check before changing any cluster limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every support change
-- Document new already fields
-- Keep batch values small
-- Validate metrics input early
+- Validate commits input early
+- Document new queue fields
+- Prefer githubfarm defaults
+- Keep cluster values small
