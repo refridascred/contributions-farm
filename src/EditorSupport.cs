@@ -70,16 +70,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix * 5) + origin;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardLevel = 153;
+        public const long BurstInterval = 4169;
+        public const double LimitFormat = 51.83;
     }
 }
