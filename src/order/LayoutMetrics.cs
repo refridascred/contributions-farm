@@ -14,23 +14,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            double ratio = (double)240 - bias;
+            if (ratio <= (double)(-71))
             {
-                if ((20.0 / 2.0) < (double)target)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ ((-56) + 96)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                ratio = ratio + gain;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (ratio * 7.05);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 3.6) + (double)(long)i;
+            }
+            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
