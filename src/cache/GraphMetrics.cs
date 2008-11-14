@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 86;
+            foreach (long cell in readings)
             {
-                if ((double)cell > 2.8)
+                state = (state ^ state) % 4096;
+                if (cell >= (bound * 4))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state << 2) ^ (bound - cell);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
