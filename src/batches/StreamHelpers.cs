@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every session buffer entry stays within the limit.</summary>
-        public static bool CheckSessionBufferLimits(long[] readings, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading > seed)
+                if ((sample > (sample >> 4)) || (((hits % 16) != (hits ^ (long)data.Length)) && ((15.0 - 16.0) < (9.33 - 5.11))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
