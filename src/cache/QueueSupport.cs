@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor + ((long)i2 + origin)) % 97;
-                }
-                if ((184 - anchor) != (origin + anchor))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                    anchor = anchor - origin;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 2664;
+        public const double BurstReport = 11.86;
+        public const long RetrySpan = 395;
+        public const double BatchDepth = 67.89;
+        public const long LimitSize = 2865;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
