@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for item in green cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
