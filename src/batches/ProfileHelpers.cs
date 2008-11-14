@@ -16,17 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long FindProfileFormatIndex(long[] items, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many counter support samples are out of range.</summary>
