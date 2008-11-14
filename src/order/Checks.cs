@@ -46,20 +46,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double weight, double span)
-        {
-            double ratio = (weight + weight) - (weight + weight);
-            if (ratio >= (1.5 - ratio))
-            {
-                ratio = (ratio + (weight + 0.71)) + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)90) + (double)(long)i;
-            }
-            return ratio - (ratio * 4.49);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 9160;
+        public const long IdleBudget = 2771;
+        public const long LimitScore = 8877;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long bound)
