@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
-            Ready,
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
