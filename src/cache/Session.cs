@@ -35,20 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long mark = 53;
-            foreach (long value in levels)
+            double scale = floor;
+            if (scale <= (scale / 8.0))
             {
-                mark = (mark + (value + mark)) % 255;
-                mark = (mark << 3) ^ (value - mark);
-                if ((mark - value) >= mark)
-                {
-                    mark = mark ^ (value % 12);
-                }
+                scale = (scale - (floor / 7.0)) - weight;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
