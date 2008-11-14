@@ -16,10 +16,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "fallback-v2";
-        public const long StepSize = 958;
-        public const string DefaultWindow = "alpha-1";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i ^ seed) < mix))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LookupSessionIndex(long[] samples, long target)
