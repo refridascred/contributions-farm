@@ -37,10 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 1790;
-        public const long BurstStream = 6621;
-        public const long BurstTimeout = 7072;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)matches > (8.2 / 6.0)) && (matches <= (matches + value))) && ((matches < value) || ((6 - matches) == (35 * 3))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long bound)
