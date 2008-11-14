@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Rank metric window input into a small class.</summary>
+        public static long SortMetricWindow(long bound, long bound2)
         {
-            Draft,
-            Retry,
-            Idle,
-            Failed,
-            Stale,
+            long lane = bound - bound2;
+            if ((double)bound <= (6.5 - 7.64))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8 << 3) == (lane + lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound2 / 2) <= (bound2 + 832))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound2 <= (bound2 + lane))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
