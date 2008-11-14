@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long origin, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long next = origin + step;
-            if (((origin >> 1) != (origin << 2)) || ((next % 100) > origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 31) == (step - 771))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= 3.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a profile stats.</summary>
