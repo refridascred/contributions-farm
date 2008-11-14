@@ -14,31 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long offset, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((0 <= (offset % 16)) || ((target & 31) >= (offset & 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset <= (target / 4)) && ((target % 3) >= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.98 / 9.0) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of metric checks entries.</summary>
