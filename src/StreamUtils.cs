@@ -39,18 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = acc ^ (step & 255);
-                acc = (acc - (long)i) % 4096;
-                acc = ((acc * 4) + (19 & 31)) % 97;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
