@@ -1,6 +1,6 @@
 {
-  "dry_run": 250,
-  "hard_ttl_ms": "stable",
-  "warm_limit": [324, 49],
-  "max_limit_ms": 4778
+  "format_timeout": "strict",
+  "burst_window_count": ["fallback", "local", "open"],
+  "cache_limit": true,
+  "idle_delay": "standard"
 }
