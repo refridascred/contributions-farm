@@ -20,25 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long edge = step - offset;
-            if ((5 >> 4) < (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)edge <= (14.0 / 7.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Retry,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
