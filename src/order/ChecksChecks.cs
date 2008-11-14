@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples, long bound)
         {
-            if (!((968 - floor) <= 66))
+            long mix = 575;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (8.3 + 8.32))
+                if ((0.64 + 7.2) >= (double)bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3 % 2) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = ((mix * 2) + (0 & 255)) + cell;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
