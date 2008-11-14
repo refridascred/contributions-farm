@@ -22,19 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route queue value from a seed.</summary>
-        public static long RollRouteQueue(long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = 30;
+            foreach (long value in readings)
             {
-                if (((result - 4) != (result + (long)i)) || ((limit + result) == ((long)i >> 3)))
+                for (int i = 0; i < 9; i++)
                 {
-                    result = (result + limit) % 97;
+                    mix = (mix + value) % 1000;
+                    mix = mix + ((long)i - 60);
                 }
-                result = ((result * 3) + (long)i) % 101;
+                if (((double)mix <= (1.0 / 9.0)) && ((double)value <= (double)mix))
+                {
+                    mix = (mix + (mix * 5)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (value % 2);
+                }
             }
-            return result;
+            if (mix > 404)
+            {
+                mix = ((mix * 4) + (mix * 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
