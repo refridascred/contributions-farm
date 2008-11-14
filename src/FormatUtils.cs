@@ -63,11 +63,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepInterval = 63.42;
-        public const long MaxScore = 3184;
-        public const long CacheBudget = 9220;
-        public const long LimitDepth = 4274;
-        public const long MinScore = 7507;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits >> 2) > (hits >> 4))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
