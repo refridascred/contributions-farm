@@ -14,38 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank buffer layout input into a small class.</summary>
-        public static long GradeBufferLayout(long limit, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            if ((75 + offset) >= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 31) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 1) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit == (8.1 + 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a record info.</summary>
