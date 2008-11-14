@@ -50,19 +50,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool GuardEntryRouteLimits(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long score = 655;
+            foreach (long reading in levels)
             {
-                if (item != bound)
+                if ((reading >= (76 >> 1)) && ((37 * 2) >= reading))
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 2) ^ (486 % 24)) - bound;
                 }
+                score = (score << 2) ^ (-61);
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Match up schema samples.</summary>
