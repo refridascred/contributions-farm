@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long HardRatio = 9025;
         public const string BatchDepth = "legacy-v2";
 
-        /// <summary>Combine metrics format values into a single score.</summary>
-        public static long CombineMetricsFormat(long[] readings, long step)
-        {
-            long mark = 76;
-            foreach (long item in readings)
-            {
-                if (mark > (38 ^ item))
-                {
-                    mark = (((mark << 2) ^ mark) % 255) + step;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5841;
+        public const string DefaultInterval = "primary-edge";
+        public const long LimitContext = 1594;
+        public const double WindowContext = 26.93;
 
         /// <summary>Look up the position of a batch command sample.</summary>
         public static long SeekBatchCommandIndex(long[] items, long step)
