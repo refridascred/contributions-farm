@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
