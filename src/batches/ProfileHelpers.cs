@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardInterval = 71.35;
-        public const double BurstScore = 17.16;
-        public const long IdleBudget = 7663;
-        public const long RetryBudget = 7036;
+        /// <summary>Look up the position of a cache stats sample.</summary>
+        public static long LocateCacheStatsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long floor)
