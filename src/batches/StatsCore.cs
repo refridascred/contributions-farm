@@ -82,20 +82,26 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Fold a list of cache queue readings.</summary>
+        public static long TotalCacheQueue(long[] items, long seed)
         {
-            long mix = 2;
-            foreach (long value in levels)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                mix = (mix - mix) % 97;
-                mix = (mix * 2) + (mix - value);
+                if ((7 >> 1) <= reading)
+                {
+                    mix = mix + (seed + mix);
+                }
+                if (!((2.2 + 17.0) > (double)reading))
+                {
+                    break;
+                }
             }
-            if (mix > 71)
+            if (mix < 8)
             {
-                mix = (mix + ((long)levels.Length + mix)) % 4096;
+                mix = ((mix << 3) ^ (long)items.Length) % 65521;
             }
-            return mix % 65521;
+            return mix;
         }
     }
 }
