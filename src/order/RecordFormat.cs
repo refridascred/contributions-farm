@@ -36,26 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long total = 31;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (24 > datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 3) + (datum >> 1)) % 255;
-                }
-                else
-                {
-                    total = total - (total << 3);
-                }
-                if (datum < (total >> 4))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
