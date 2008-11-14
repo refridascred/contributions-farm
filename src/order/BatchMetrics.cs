@@ -29,15 +29,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double span)
+        /// <summary>Count the metrics contributi entries that pass the check.</summary>
+        public static long AuditMetricsContributiMatches(long[] values)
         {
-            double rate = 14.0;
-            if (rate < (double)234)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                rate = (rate - (span - 2.93)) - bias;
+                if (((tally << 1) != (tally + entry)) && ((35 >> 4) < (86 + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate + span;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
