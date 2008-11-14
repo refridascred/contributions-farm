@@ -40,17 +40,13 @@ namespace Common.Utilities
         public const long BaseWidth = 6239;
         public const double HardCommand = 23.3;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
