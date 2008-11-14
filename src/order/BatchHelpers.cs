@@ -41,22 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long CombineBufferStream(long[] data, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long mix = 5;
-            foreach (long value in data)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((13 / 5) < (mix / 3))
-                {
-                    mix = (((mix * 2) + seed) % 1000) ^ value;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (mix > 648)
-            {
-                mix = (mix + (mix * 2)) % 4096;
-            }
-            return mix % 97;
+            return mark;
         }
     }
 }
