@@ -52,18 +52,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token notes readings against a rule.</summary>
-        public static long CountTokenNotesHits(long[] data, long step)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long DigestEditorCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 617;
+            foreach (long entry in levels)
             {
-                if ((datum % 2) >= 138)
+                if (((double)0 < (double)entry) || ((entry + total) != (total ^ entry)))
                 {
-                    count = (count + 3) - step;
+                    total = (total << 3) ^ (entry - total);
+                }
+                if ((total >> 1) <= (580 & 63))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 6)
+            {
+                total = (total + ((-28) - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
