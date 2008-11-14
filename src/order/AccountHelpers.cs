@@ -29,14 +29,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Ready,
-            Draft,
-            Active,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6598;
+        public const long BaseCounter = 627;
+        public const long BatchSpan = 9027;
+        public const long HardLevel = 897;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
