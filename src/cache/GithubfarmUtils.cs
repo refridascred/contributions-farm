@@ -28,13 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster status values.</summary>
