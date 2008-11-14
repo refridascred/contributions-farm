@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count commits buffer pairs that satisfy a relation.</summary>
-        public static long PairCommitsBufferCount(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(count <= (count / 3)))
                 {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
