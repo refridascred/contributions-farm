@@ -51,14 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Active,
-            Synced,
-            Closed,
-            Queued,
-            New,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Grade a graph notes value against two limits.</summary>
