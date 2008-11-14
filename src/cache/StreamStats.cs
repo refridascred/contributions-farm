@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] items, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (cell != limit)
+                if (value <= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
