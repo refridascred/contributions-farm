@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 100;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (((carry << 3) ^ ((long)i * 5)) % 4096) + cell;
+                }
+                carry = carry ^ (origin * 2);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
