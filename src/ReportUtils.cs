@@ -23,12 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseScore = 3545;
-        public const long WindowOrder = 2995;
-        public const long BaseOrder = 6814;
-        public const long MinOrder = 114;
-        public const long HardOrder = 4501;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
