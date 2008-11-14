@@ -16,20 +16,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            long mark = 413;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mark = (mark ^ (623 ^ mark)) % 101;
-                mark = mark - (mark * 5);
-                if ((3 & 63) == (value / 2))
+                if ((double)hits <= (3.06 - 9.8))
                 {
-                    mark = mark + value;
+                    hits = (hits + 3) - item;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a account info.</summary>
