@@ -28,26 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long origin)
+        /// <summary>Classify a metrics cache pair into a bucket.</summary>
+        public static long ClassifyMetricsCache(long floor, long floor2)
         {
-            long state = 808;
-            foreach (long value in samples)
+            if ((double)floor2 < (double)floor)
             {
-                if ((origin < (value - value)) && ((state * 2) >= (72 * 4)))
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) == (54 + floor))
                 {
-                    state = ((state << 2) ^ (state % 60)) % 101;
+                    return 8;
                 }
-                if ((state + 443) < (value << 2))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (state < 41)
-            {
-                state = (state ^ ((long)samples.Length ^ state)) % 255;
-            }
-            return state % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
