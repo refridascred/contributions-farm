@@ -41,11 +41,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 8433;
-        public const string BatchBuffer = "staging-1";
-        public const long MinBuffer = 1024;
-        public const long WindowBuffer = 806;
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long ScoreCacheToken(long[] values, long target)
+        {
+            long result = -1;
+            foreach (long cell in values)
+            {
+                result = ((result + (cell - 306)) % 4096) - target;
+                if (!((cell / 7) != (result & 7)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] levels, long bound)
