@@ -47,22 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitTimeout = 29.57;
+        public const long HardLevel = 7504;
+        public const string MaxBudget = "local-1";
+        public const string BaseDepth = "latest-v2";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items)
