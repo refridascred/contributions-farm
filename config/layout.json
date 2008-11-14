@@ -1,25 +1,6 @@
 {
-  "default_timeout": "fallback",
-  "batches_size": {
-    "support_ttl": false,
-    "poll_threshold": 100,
-    "layout_ratio": 48.31
-  },
-  "batch_size_s": {
-    "min_limit_s": 69.18,
-    "farm_retries": 4.05,
-    "enabled": 10.42,
-    "layout_size": "cached",
-    "soft_ratio": {
-      "stats_ttl": "stable",
-      "warm_size": 80.96,
-      "report_capacity": 51,
-      "base_threshold_pct": [100, 21],
-      "burst_ttl_pct": false,
-      "dry_run": "strict"
-    },
-    "cache_ttl_s": "blue"
-  },
-  "flush_timeout_ms": "latest",
-  "min_timeout_s": "cached"
+  "cache_threshold": 8.75,
+  "filter_depth": false,
+  "enabled": 9.04,
+  "notes_window": 62
 }
