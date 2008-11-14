@@ -1,5 +1,10 @@
 # support settings
-readonly: 89.88
-verbose: true
-record_ratio: cached
-burst_window_ms: false
+sync_retries: standard
+burst_retries_pct: false
+enabled: 5344
+retry_depth_ms: 250
+session_depth:
+  - open
+  - legacy
+  - green
+  - eu-west
