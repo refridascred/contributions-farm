@@ -32,11 +32,20 @@ namespace Common.Utilities
         public const long BaseWidth = 6239;
         public const double HardCommand = 23.3;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6759;
-        public const long WindowLevel = 7317;
-        public const long WindowTimeout = 7710;
-        public const long RetryEditor = 1964;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long seed, long floor)
