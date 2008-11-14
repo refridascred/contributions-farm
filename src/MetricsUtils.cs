@@ -58,31 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long limit, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((double)limit <= 8.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.5 * 6.22) > (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (9 >= (target ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
