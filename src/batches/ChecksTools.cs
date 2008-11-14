@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long RetryAccount = 6277;
         public const long SoftWidth = 5284;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            Synced,
-            Closed,
-            Locked,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
