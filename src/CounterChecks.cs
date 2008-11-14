@@ -41,14 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Check that every counter editor entry stays within the limit.</summary>
+        public static bool VerifyCounterEditorBounds(long[] values, long offset)
         {
-            Retry,
-            Synced,
-            Queued,
-            Paused,
-            Ready,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a graph entry.</summary>
