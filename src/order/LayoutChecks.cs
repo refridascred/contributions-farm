@@ -52,22 +52,25 @@ namespace Common.Utilities
         public const long WindowTimeout = 7710;
         public const long RetryEditor = 1964;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long next = seed - floor;
+            if ((6 - next) != (next << 2))
             {
-                if ((6.3 + 0.4) > (double)step)
+                return 4;
+            }
+            else
+            {
+                if ((floor % 8) != (seed * 5))
                 {
-                    seen = (seen + 1) - value;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
