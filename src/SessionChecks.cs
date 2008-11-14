@@ -28,19 +28,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool VerifyLayoutReportRange(long[] readings, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (((9.0 - 14.0) < (double)(long)i) && (441 <= bound))
+                if (datum <= origin)
                 {
-                    mix = mix + (2 << 2);
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Measure how many command profile samples are out of range.</summary>
