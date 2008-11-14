@@ -46,21 +46,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Look up the position of a graph tools sample.</summary>
+        public static long FindGraphToolsIndex(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] == limit)
                 {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
