@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long mix = 284;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)mix <= 4.28) || ((target + 458) > target))
-                {
-                    mix = ((mix ^ (target << 2)) % 255) + datum;
-                }
+                mix = ((mix << 2) ^ (mix / 2)) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
             return mix;
         }
