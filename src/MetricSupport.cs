@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
