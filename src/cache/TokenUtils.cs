@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchDepth = 9121;
-        public const string BatchOrder = "standard-edge";
-        public const double MaxOrder = 11.2;
-        public const double IdleTimeout = 41.97;
-        public const long RetryOrder = 2870;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 8062;
+        public const double MaxFormat = 21.07;
+        public const long LimitLevel = 3882;
 
         /// <summary>Derive the next commits editor value from a seed.</summary>
         public static long StepCommitsEditor(long floor)
