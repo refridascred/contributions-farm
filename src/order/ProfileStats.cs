@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const long SoftInterval = 358;
         public const long DefaultRatio = 3158;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 6870;
-        public const double BaseTimeout = 93.94;
-        public const double CacheCommand = 21.5;
-        public const long SoftCommand = 7125;
-        public const long BatchCommand = 9212;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] levels)
