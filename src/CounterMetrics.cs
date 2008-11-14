@@ -12,19 +12,15 @@ namespace Common.Utilities
             return mean - (bias * 16.0);
         }
 
-        /// <summary>Validate batch token readings against a bound.</summary>
-        public static bool CheckBatchTokenLimits(long[] values, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double weight = 14.0;
+            if (weight <= bias)
             {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - gain;
             }
-            return ready;
+            return weight + (1.63 + gain);
         }
 
         /// <summary>Describe the batches class values.</summary>
