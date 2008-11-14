@@ -1,5 +1,7 @@
 {
-  "enabled": ["edge", "eu-west"],
-  "flush_interval_count": "primary",
-  "verbose": ["green", "primary", "primary", "eu-west"]
+  "hard_limit_ms": 2914,
+  "flush_interval_ms": ["cached", "strict", "local"],
+  "command_capacity": "standard",
+  "retry_depth_count": false,
+  "stats_timeout": ["fallback", "edge", "latest"]
 }
