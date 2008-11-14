@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long seed)
+        /// <summary>Count the route order entries that pass the check.</summary>
+        public static long CountRouteOrderMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                if (!((sample + sample) < 3) || ((7.36 + 7.43) < (double)sample))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
