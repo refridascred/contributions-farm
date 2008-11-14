@@ -31,13 +31,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long seed)
         {
-            Queued,
-            New,
-            Failed,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
