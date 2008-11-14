@@ -32,18 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer notes samples are out of range.</summary>
-        public static long AuditBufferNotesOutliers(long[] readings, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (origin < entry)
+                if ((((floor << 1) == (floor & 31)) || ((floor + datum) < datum)) || (((9.1 / 2.0) >= (double)datum) || ((matches ^ (long)levels.Length) >= floor)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
