@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Count commits buffer pairs that satisfy a relation.</summary>
+        public static long PairCommitsBufferCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((9.6 + 3.8) < (double)(long)i) && ((double)(long)i == (9.5 + 4.56)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ ((long)i ^ (-8))) % 4096;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - ((long)i + 87);
-                }
-                anchor = (anchor - (anchor + (long)i)) % 255;
-                anchor = ((anchor << 2) ^ (11 << 1)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
