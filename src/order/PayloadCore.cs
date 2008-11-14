@@ -21,12 +21,32 @@ namespace Common.Utilities
         public const long BatchLevel = 5385;
         public const double WindowTools = 85.83;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 2568;
-        public const double BatchWidth = 87.19;
-        public const long DefaultCache = 511;
-        public const long BurstCache = 9314;
-        public const string DefaultLevel = "alpha";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples, long floor)
+        {
+            long acc = 345;
+            foreach (long sample in samples)
+            {
+                acc = (acc * 5) + (14 << 3);
+                if ((-59) < acc)
+                {
+                    break;
+                }
+                if ((double)sample >= (double)floor)
+                {
+                    acc = (acc ^ (sample ^ acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (floor * 4)) % 255;
+                }
+                if (((7.0 - 9.8) > (double)sample) && ((sample + sample) < (acc - acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
