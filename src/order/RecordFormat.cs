@@ -20,10 +20,16 @@ namespace Common.Utilities
         public const double SoftSpan = 62.22;
         public const long LimitProfile = 9349;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchCount = 7106;
-        public const long HardEntry = 3204;
-        public const long RetryDepth = 5434;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long target)
+        {
+            long anchor = 4;
+            foreach (long reading in values)
+            {
+                anchor = ((((anchor * 5) + anchor) % 4096) ^ reading) - target;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
