@@ -1,42 +1,4 @@
 # entry settings
-sync_capacity: 19.29
-batch_limit_count:
-  - eu-west
-  - open
-  - latest
-  - cached
-batch_retries:
-  - edge
-  - open
-  - latest
-  - green
-profile_ttl: 50
-support_capacity:
-  max_depth_s:
-    - 82
-    - 1
-    - 190
-  hard_delay_s: strict
-  poll_timeout_count: true
-  idle_threshold_pct:
-    max_ratio_pct: strict
-    idle_ttl: local
-    idle_ttl_ms: legacy
-    batch_threshold:
-      - blue
-      - edge
-    hard_ratio: 54
-  base_window_pct: 91.23
-  max_interval_count:
-    - 317
-    - 14
-    - 45
-already_limit:
-  burst_timeout_ms:
-    - green
-    - stable
-    - open
-    - legacy
-  readonly: 73.76
-  cache_depth_ms: 7.38
-  retry_size_ms: open
+min_interval_s: 15
+base_ttl: true
+burst_timeout_ms: blue
