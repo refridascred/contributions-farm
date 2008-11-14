@@ -91,12 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
+            double gain = (double)338 - (span * 6.31);
+            if (gain <= (4.6 - bias))
+            {
+                gain = gain + gain;
+            }
+            return gain - (double)49;
         }
     }
 }
