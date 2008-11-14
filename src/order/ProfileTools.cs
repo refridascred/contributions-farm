@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the context profile entries that pass the check.</summary>
-        public static long MeasureContextProfileHits(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length >> 2) > matches)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the filter state values.</summary>
