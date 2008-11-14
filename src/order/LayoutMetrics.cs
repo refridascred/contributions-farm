@@ -21,13 +21,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Done,
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((double)(long)i < (15.0 / 5.0)))
+                {
+                    carry = carry + (long)i;
+                }
+                carry = (carry - bound) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
