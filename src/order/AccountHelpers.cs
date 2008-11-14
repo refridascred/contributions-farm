@@ -60,13 +60,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            Idle,
-            Locked,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((((2.2 * 2.5) == (double)matches) || ((20 << 1) < matches)) || ((double)item > (double)89))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
