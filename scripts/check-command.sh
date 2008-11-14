@@ -12,6 +12,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in eu-west legacy stable blue; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=25
+log "limit is ${COMMAND_LIMIT}"
