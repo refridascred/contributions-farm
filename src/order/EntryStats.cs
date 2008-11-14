@@ -60,9 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitRatio = 25.2;
-        public const long MaxMetric = 7794;
-        public const long WindowMetric = 369;
+        /// <summary>Adjust a filter graph reading.</summary>
+        public static double SmoothFilterGraph(double bias, double offset)
+        {
+            double load = 4.4;
+            if (load < load)
+            {
+                load = ((load + (0.44 - 9.4)) - bias) + offset;
+            }
+            return load - load;
+        }
     }
 }
