@@ -51,13 +51,24 @@ namespace Common.Utilities
             return load - (double)(-99);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long origin)
         {
-            Queued,
-            Synced,
-            Stale,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result ^ result;
+                if (origin < (long)i)
+                {
+                    result = (result + result) % 4096;
+                }
+                else
+                {
+                    result = result + (result / 5);
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
