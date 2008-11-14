@@ -51,15 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream record value.</summary>
-        public static double AdjustStreamRecord(double bias, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            double weight = bias * 6.23;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight + 1.0) - (double)(long)i) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return seen;
         }
     }
 }
