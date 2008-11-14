@@ -29,14 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitInterval = 914;
+        public const long RetrySize = 8914;
+        public const long MinSpan = 8043;
+        public const long DefaultInterval = 495;
+        public const string MaxCounter = "legacy-v2";
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] levels, long origin)
