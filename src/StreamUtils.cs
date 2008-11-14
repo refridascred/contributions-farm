@@ -85,18 +85,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] readings, long limit)
+        /// <summary>Check that every batch graph entry stays within the limit.</summary>
+        public static bool GuardBatchGraphLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((70 + 0) >= entry)
+                if (item > target)
                 {
-                    count = (count + 1) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
