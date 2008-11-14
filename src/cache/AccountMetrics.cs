@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
