@@ -15,11 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "primary-v2";
-        public const double IdleTools = 94.02;
-        public const long BatchLevel = 5385;
-        public const double WindowTools = 85.83;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Dropped,
+            New,
+            Active,
+            Queued,
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] samples, long floor)
