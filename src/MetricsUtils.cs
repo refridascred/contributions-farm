@@ -40,24 +40,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a counter payload value against two limits.</summary>
-        public static long ClassifyCounterPayload(long step, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            if ((8.0 * 0.6) < (double)floor)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step * 3) <= floor))
+                if ((double)4 <= (double)(long)levels.Length)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
