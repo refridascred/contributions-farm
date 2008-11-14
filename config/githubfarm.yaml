@@ -1,9 +1,10 @@
 # githubfarm settings
-max_timeout_s:
-  channel_threshold: 7357
-  notes_threshold: eu-west
-  already_delay: true
-  dry_run: 89.02
-channel_retries: 53.09
-verbose: fallback
-soft_threshold_ms: latest
+max_limit_count: 62.11
+base_interval:
+  default_retries_count: legacy
+  max_capacity_count: primary
+  hard_timeout: true
+  githubfarm_ttl: edge
+stream_capacity: standard
+soft_size_pct: 20.96
+idle_timeout_s: fallback
