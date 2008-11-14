@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long offset)
         {
-            long sum = 7;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (entry <= 8)
+                if (cell <= offset)
                 {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 3) + sum) % 101;
-                }
-                if ((double)entry > (double)7)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
