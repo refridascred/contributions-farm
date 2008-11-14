@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the profile kind values.</summary>
