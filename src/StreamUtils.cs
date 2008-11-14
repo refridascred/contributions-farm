@@ -36,21 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Adjust a report order reading.</summary>
+        public static double ProjectReportOrder(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            if (rate > gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (offset + gain);
             }
-            return matches;
+            return rate - gain;
         }
 
         /// <summary>Hold a profile stats.</summary>
