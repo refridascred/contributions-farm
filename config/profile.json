@@ -1,13 +1,5 @@
 {
-  "poll_limit": "fallback",
-  "tools_capacity": "staging",
-  "idle_size": {
-    "farm_ttl": "open",
-    "dry_run": false,
-    "warm_interval": 231,
-    "flush_window_s": 500
-  },
-  "verbose": "edge",
-  "idle_depth_ms": 35.63,
-  "min_retries_s": 1174
+  "already_limit": 85,
+  "layout_depth": "green",
+  "batch_timeout": 25.61
 }
