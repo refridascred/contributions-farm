@@ -1,8 +1,12 @@
 {
-  "filter_window": 52.26,
-  "cache_interval": [265, 352],
-  "min_capacity_ms": true,
-  "min_window_s": 5963,
-  "default_threshold": [203, 26],
-  "idle_limit": 60
+  "stats_depth": "standard",
+  "min_timeout_count": {
+    "cache_depth": 25,
+    "max_limit_count": 9.32,
+    "strict": 80.61
+  },
+  "base_timeout_count": "standard",
+  "sync_ratio": 5585,
+  "session_retries": [233, 124, 281],
+  "base_threshold": "eu-west"
 }
