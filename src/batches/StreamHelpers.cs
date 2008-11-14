@@ -58,17 +58,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context contributi readings.</summary>
-        public static long TallyContextContributi(long[] items, long offset)
-        {
-            long anchor = -13;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor << 3) ^ (cell % 3)) % 1000;
-                anchor = (anchor + (offset << 3)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepDepth = 81.06;
+        public const long MaxFormat = 9957;
+        public const double CacheFormat = 71.8;
 
         /// <summary>Rank batch metric input into a small class.</summary>
         public static long GradeBatchMetric(long offset, long offset2)
