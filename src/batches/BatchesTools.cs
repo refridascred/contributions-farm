@@ -30,23 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter account entries.</summary>
-        public static long DigestCounterAccount(long[] data, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long limit, long bound)
         {
-            long result = 4;
-            foreach (long cell in data)
+            long offset = limit - bound;
+            if (28 < (limit + offset))
             {
-                if ((cell + target) >= (target - result))
+                return 1;
+            }
+            else
+            {
+                if ((offset >> 4) == (bound >> 1))
                 {
-                    result = ((result << 3) ^ (result * 3)) % 97;
-                    break;
+                    return 3;
                 }
-                if ((cell > (target / 5)) && ((target - target) > cell))
+                else
                 {
-                    result = (result * 5) + (cell - cell);
+                    if (!(bound > 158))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset >= limit) && ((limit >> 3) >= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
     }
 }
