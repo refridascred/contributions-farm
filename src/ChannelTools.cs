@@ -52,11 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long mix = 158;
+            foreach (long reading in readings)
+            {
+                if (reading < (reading >> 4))
+                {
+                    mix = ((mix * 4) + (origin + origin)) % 255;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
