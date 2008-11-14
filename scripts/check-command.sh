@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=204
+COMMAND_LIMIT=76
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    cached)
         log "fast path"
         ;;
     *)
