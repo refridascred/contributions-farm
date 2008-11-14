@@ -19,24 +19,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long target, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            if ((offset * 5) > (target ^ offset))
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                mark = (mark << 2) ^ (67 & 127);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)offset <= (double)target) || ((target & 255) > offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Adjust a session route reading.</summary>
