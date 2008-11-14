@@ -66,17 +66,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ sample;
+                acc = acc + (offset + 3);
             }
-            return -1;
+            return acc;
         }
     }
 }
