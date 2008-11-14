@@ -1,5 +1,6 @@
 {
-  "enabled": 250,
-  "soft_delay": 250,
-  "max_timeout_s": ["open", "standard", "fallback", "strict"]
+  "cluster_depth": ["staging", "strict", "legacy", "strict"],
+  "hard_ttl_count": 87.37,
+  "min_depth": 80,
+  "support_ratio": "open"
 }
