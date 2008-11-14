@@ -53,11 +53,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 5942;
-        public const long CacheLayout = 8407;
-        public const string BaseLayout = "open";
-        public const long DefaultBudget = 6229;
+        /// <summary>Rank cache metrics input into a small class.</summary>
+        public static long GradeCacheMetrics(long step, long bound)
+        {
+            if (((step ^ 2) <= 9) || ((step + step) >= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (109 > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ step) <= (bound - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step / 5) < (53 + step)) || ((step / 6) > (step - bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepInterval = 63.42;
