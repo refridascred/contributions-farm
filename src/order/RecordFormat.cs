@@ -65,11 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstSpan = 8052;
-        public const long IdleGraph = 9625;
-        public const long LimitGraph = 1670;
-        public const long MaxScore = 8658;
-        public const long CacheGraph = 6523;
+        /// <summary>Scale a window layout figure with a bias.</summary>
+        public static double ScaleWindowLayout(double bias, double floor)
+        {
+            double weight = (double)(323 ^ 2);
+            if (weight < (bias - bias))
+            {
+                weight = (weight + weight) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (bias + bias)) - (double)(long)i;
+            }
+            return weight + (double)0;
+        }
     }
 }
