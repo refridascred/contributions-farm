@@ -53,22 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] items, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally >= (5.53 - 14.0))
-                {
-                    tally = ((tally + 1) - reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
