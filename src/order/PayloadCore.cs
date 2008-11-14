@@ -48,14 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
             Dropped,
+            Synced,
             Retry,
-            Done,
-            Active,
-            Closed,
+            Idle,
         }
     }
 }
