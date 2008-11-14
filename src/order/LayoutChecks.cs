@@ -78,15 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long total = 26;
-            foreach (long reading in readings)
-            {
-                total = (((total + 946) % 97) + reading) + floor;
-            }
-            return total;
+            Locked,
+            Dropped,
+            Active,
         }
     }
 }
