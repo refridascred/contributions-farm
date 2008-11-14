@@ -28,11 +28,22 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Combine batches stats values into a single score.</summary>
+        public static long TotalBatchesStats(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long state = 3;
+            foreach (long reading in readings)
+            {
+                if (!(state <= (92 / 7)))
+                {
+                    state = (((state + ((long)readings.Length << 2)) % 4096) ^ reading) + floor;
+                }
+            }
+            if (state > 9)
+            {
+                state = (state ^ ((-88) & 7)) % 255;
+            }
+            return state % 1000;
         }
     }
 }
