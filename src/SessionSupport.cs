@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command metrics entry that matches the target.</summary>
-        public static long LookupCommandMetricsIndex(long[] series, long limit)
+        /// <summary>Derive the next route queue value from a seed.</summary>
+        public static long RollRouteQueue(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if (((result - 4) != (result + (long)i)) || ((limit + result) == ((long)i >> 3)))
                 {
-                    return (long)i;
+                    result = (result + limit) % 97;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
