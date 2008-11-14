@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long WindowProfile = 7042;
         public const long StepProfile = 8309;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] values, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long result = 458;
-            foreach (long cell in values)
-            {
-                if ((8.98 + 6.0) == (double)result)
-                {
-                    result = (result + (cell % 60)) - offset;
-                }
-            }
-            return result % 1000;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
