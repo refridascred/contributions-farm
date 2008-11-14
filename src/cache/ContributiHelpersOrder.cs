@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 2307;
-        public const long StepBudget = 7091;
-        public const long HardSpan = 6628;
-        public const long SoftInterval = 1973;
-        public const string WindowSupport = "staging-v2";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Ready,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsRange(long[] readings, long offset)
