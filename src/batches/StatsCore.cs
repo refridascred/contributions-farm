@@ -26,11 +26,15 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long state = 7;
+            foreach (long datum in items)
+            {
+                state = ((state * 3) + (state ^ 2)) - datum;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a command info.</summary>
