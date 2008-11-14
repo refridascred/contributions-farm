@@ -60,22 +60,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] items)
+        /// <summary>Count the layout token entries that pass the check.</summary>
+        public static long AuditLayoutTokenMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((((2.2 * 2.5) == (double)matches) || ((20 << 1) < matches)) || ((double)item > (double)89))
+                if ((entry >> 2) >= (765 - entry))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank order stats input into a small class.</summary>
