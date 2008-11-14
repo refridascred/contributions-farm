@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const double RetryLevel = 46.62;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6436;
-        public const string LimitProfile = "stable";
-        public const double MaxProfile = 24.06;
-        public const string CacheProfile = "strict-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 1639;
+        public const long IdleRatio = 8662;
+        public const double BaseCount = 48.36;
+        public const long SoftSpan = 7856;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double gain, double span)
