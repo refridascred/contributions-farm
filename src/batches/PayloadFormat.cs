@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            long total = 368;
-            foreach (long cell in items)
+            double weight = scale;
+            if (weight > scale)
             {
-                total = (total ^ cell) % 97;
-                if (((double)total != (double)cell) && (total <= (total % 60)))
-                {
-                    break;
-                }
+                weight = (weight + weight) - offset;
             }
-            return total % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 9.8) + (double)(long)i;
+            }
+            return weight + (double)169;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
