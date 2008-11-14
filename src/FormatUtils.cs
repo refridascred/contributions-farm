@@ -15,18 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] levels, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double weight = (double)(3 % 8);
+            if (weight <= gain)
             {
-                if (!((seed * 5) > ((-6) / 3)))
-                {
-                    hits = (hits + 2) - value;
-                }
+                weight = weight + (weight * 5.0);
             }
-            return hits;
+            return weight + span;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
