@@ -70,17 +70,13 @@ namespace Common.Utilities
         public const long HardRatio = 6656;
         public const long StepDepth = 7500;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
