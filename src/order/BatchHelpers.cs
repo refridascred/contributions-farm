@@ -25,18 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] samples, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((double)offset == (0.7 / 7.0)) || (offset >= (hits + hits)))
+                if ((count >> 5) > (item & 7))
                 {
-                    hits = (hits + 1) ^ sample;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
