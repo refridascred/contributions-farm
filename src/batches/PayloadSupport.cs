@@ -47,13 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            Synced,
-            Failed,
-            Draft,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((6.85 * 6.7) > (double)anchor)
+                {
+                    anchor = (anchor - (limit % 7)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
