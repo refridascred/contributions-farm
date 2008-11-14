@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long bound)
+        /// <summary>Fold a list of payload tools readings.</summary>
+        public static long CombinePayloadTools(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 12;
+            foreach (long sample in readings)
             {
-                if (data[i] < bound)
+                if ((0.6 - 8.4) >= (double)sample)
                 {
-                    return (long)i;
+                    sum = ((sum + sum) % 1000) + offset;
+                }
+                if ((sum % 24) != (3 / 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Describe the filter level values.</summary>
