@@ -1,5 +1,5 @@
 {
-  "editor_ratio": 60,
-  "idle_limit_pct": 11.69,
-  "sync_ratio": 2.38
+  "flush_timeout": [186, 91],
+  "order_ratio": 88.54,
+  "entry_size": true
 }
