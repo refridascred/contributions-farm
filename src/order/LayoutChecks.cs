@@ -92,11 +92,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long floor)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
