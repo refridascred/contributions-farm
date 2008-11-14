@@ -1,6 +1,5 @@
 {
-  "audit": "green",
-  "default_delay_count": "stable",
-  "cache_ratio_ms": false,
-  "batch_capacity": 59.54
+  "cache_retries_s": 30.34,
+  "metric_capacity": "legacy",
+  "burst_window_pct": 3866
 }
