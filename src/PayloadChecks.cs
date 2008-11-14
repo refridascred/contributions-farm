@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] levels, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
