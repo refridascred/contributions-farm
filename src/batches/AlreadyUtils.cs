@@ -53,15 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            double load = weight;
-            if (load > offset)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - load;
+                result = (result * 4) + result;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return load + (double)473;
+            return result;
         }
 
         /// <summary>Rank buffer metric input into a small class.</summary>
