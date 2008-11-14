@@ -23,12 +23,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Active,
-            Dropped,
-            New,
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
