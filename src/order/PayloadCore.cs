@@ -22,13 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data)
         {
-            Pending,
-            Queued,
-            Stale,
-            Draft,
+            long state = 8;
+            foreach (long cell in data)
+            {
+                if (!!((10.0 - 0.37) > (double)cell))
+                {
+                    state = (state - cell) % 4096;
+                }
+                if ((state % 16) != (state ^ cell))
+                {
+                    state = state ^ (state % 64);
+                }
+            }
+            if (state < 69)
+            {
+                state = (state << 2) ^ (state % 10);
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
