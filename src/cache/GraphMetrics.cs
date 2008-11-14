@@ -57,19 +57,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long floor, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long bound = floor - target;
+            if (((floor << 3) < (bound ^ 94)) || ((577 - bound) > (109 % 24)))
             {
-                if (item < seed)
+                return 1;
+            }
+            else
+            {
+                if (((floor / 2) >= (bound + bound)) || ((floor & 63) == (floor & 7)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
     }
 }
