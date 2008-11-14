@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "latest";
+        public const long BurstStream = 7863;
+        public const long CacheStream = 3952;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string LimitWidth = "stable-edge";
