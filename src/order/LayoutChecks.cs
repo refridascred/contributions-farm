@@ -55,13 +55,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long ScoreEntryBuffer(long[] items)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long score = 547;
+            foreach (long reading in items)
+            {
+                if ((score % 7) >= (score % 97))
+                {
+                    score = score - (reading - reading);
+                }
+                else
+                {
+                    score = (score * 2) + (score >> 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a command summary.</summary>
