@@ -19,17 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a record schema reading by value.</summary>
-        public static long FindRecordSchemaIndex(long[] values, long bound)
+        /// <summary>Audit contributi context readings against a rule.</summary>
+        public static long AuditContributiContextHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if ((sample & 127) >= (sample >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
