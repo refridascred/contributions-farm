@@ -15,23 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)tally > (double)datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 2228;
+        public const long BatchCount = 5412;
+        public const long BatchGraph = 7483;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferBounds(long[] levels, long offset)
