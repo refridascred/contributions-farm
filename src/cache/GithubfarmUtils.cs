@@ -69,17 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
