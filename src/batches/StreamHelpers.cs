@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long origin)
+        /// <summary>Classify a payload cache pair into a bucket.</summary>
+        public static long SortPayloadCache(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = bound ^ bound2;
+            if ((bound << 1) >= delta)
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound / 5) > (bound2 << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
