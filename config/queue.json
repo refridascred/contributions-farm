@@ -1,5 +1,6 @@
 {
-  "strict": 1718,
-  "compress": [254, 38, 17, 28],
-  "burst_threshold": true
+  "soft_threshold_s": "latest",
+  "compress": 433,
+  "format_ttl": [80, 267, 43, 472],
+  "hard_timeout": 9971
 }
