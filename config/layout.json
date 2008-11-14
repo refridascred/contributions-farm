@@ -1,22 +1,14 @@
 {
-  "sync_threshold_pct": {
-    "hard_delay_pct": {
-      "verbose": 68,
-      "already_retries": ["primary", "edge"],
-      "cache_timeout": true,
-      "tools_ratio": false,
-      "max_limit": 81,
-      "layout_delay": 5999
+  "min_depth": [61, 330, 182, 208],
+  "poll_retries_ms": 75.52,
+  "soft_ratio_ms": {
+    "cache_ratio_pct": true,
+    "max_size": {
+      "readonly": 71,
+      "layout_capacity": "primary",
+      "default_timeout": 500,
+      "default_timeout_ms": "standard"
     },
-    "verbose": 69.58,
-    "idle_ratio_count": "blue",
-    "max_depth_ms": 7
-  },
-  "persist": "eu-west",
-  "queue_threshold": "primary",
-  "profile_size": {
-    "flush_depth_s": false,
-    "sync_size_pct": true,
-    "sync_window_s": "open"
+    "dry_run": 26.82
   }
 }
