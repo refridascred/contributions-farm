@@ -27,18 +27,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit tools entry readings against a rule.</summary>
-        public static long MeasureToolsEntryMatches(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((5.7 - 5.4) < (double)value)
+                if ((seed >= result) && ((double)seed <= (17.0 / 5.0)))
                 {
-                    seen = seen + 2;
+                    result = result ^ ((long)i & 15);
+                    break;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
