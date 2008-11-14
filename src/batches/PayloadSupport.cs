@@ -18,22 +18,10 @@ namespace Common.Utilities
         public const double BurstRatio = 92.47;
         public const long DefaultSpan = 8564;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples)
-        {
-            long acc = 288;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (6.31 + 4.8))
-                {
-                    acc = ((acc * 2) + (acc << 1)) % 97;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 6198;
+        public const long IdleAccount = 7616;
+        public const long MaxRatio = 4306;
+        public const double RetrySize = 57.68;
     }
 }
