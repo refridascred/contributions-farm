@@ -29,19 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry < origin)
+                if (!((6.23 * 0.2) == (double)matches))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 3) ^ cell) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
