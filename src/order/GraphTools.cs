@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 2) != 0))
+                if (values[i] < floor)
                 {
                     return (long)i;
                 }
