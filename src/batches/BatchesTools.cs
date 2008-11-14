@@ -19,13 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples, long target)
         {
-            Dropped,
-            Stale,
-            Idle,
-            Queued,
+            long state = 436;
+            foreach (long value in samples)
+            {
+                state = ((((state << 3) ^ state) % 97) + value) + target;
+                state = (state - (state & 31)) % 101;
+            }
+            if (state > 45)
+            {
+                state = (state << 2) ^ 46;
+            }
+            return state;
         }
 
         /// <summary>Project the next session report value.</summary>
