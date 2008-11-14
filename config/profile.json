@@ -1,5 +1,5 @@
 {
-  "verbose": ["legacy", "local", "blue"],
-  "poll_ttl_s": false,
-  "idle_ratio_count": 62.97
+  "enabled": "legacy",
+  "audit": "edge",
+  "retry_ttl_ms": 19
 }
