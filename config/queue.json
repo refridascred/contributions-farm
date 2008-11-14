@@ -1,18 +1,6 @@
 {
-  "record_capacity": "green",
-  "record_size": ["primary", "open"],
-  "retry_ttl": ["legacy", "standard", "edge"],
-  "cluster_ttl": 9.87,
-  "sync_ratio": {
-    "order_retries": "standard",
-    "persist": 100,
-    "burst_delay_s": ["open", "strict", "legacy", "latest"],
-    "stream_timeout": {
-      "readonly": "blue",
-      "layout_timeout": 8188,
-      "poll_ratio": "edge",
-      "hard_delay": "eu-west"
-    }
-  },
-  "sync_window": "blue"
+  "dry_run": 250,
+  "hard_ttl_ms": "stable",
+  "warm_limit": [324, 49],
+  "max_limit_ms": 4778
 }
