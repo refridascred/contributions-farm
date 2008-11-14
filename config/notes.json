@@ -1,6 +1,6 @@
 {
-  "batch_depth_count": "cached",
-  "commits_interval": 53.19,
-  "strict": true,
-  "hard_capacity_s": 93
+  "cache_ratio": "eu-west",
+  "flush_delay_ms": "green",
+  "order_threshold": 97,
+  "counter_interval": "latest"
 }
