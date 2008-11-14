@@ -21,18 +21,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length - (long)readings.Length) <= (seen + seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseLevel = 3053;
+        public const long BatchCommits = 9216;
+        public const long LimitCommits = 9353;
+        public const long HardDepth = 5695;
     }
 }
