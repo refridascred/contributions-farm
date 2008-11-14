@@ -23,24 +23,13 @@ namespace Common.Utilities
             return weight + (1.63 + gain);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            if (limit >= (origin / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit % 2) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
