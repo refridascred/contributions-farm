@@ -13,19 +13,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double weight, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long step)
         {
-            double weight2 = weight;
-            if (weight2 > 2.03)
+            if ((181 - seed) == (857 >> 2))
             {
-                weight2 = (weight2 + weight) - floor;
+                return 7;
             }
             else
             {
-                weight2 = weight2 + (double)2;
+                if (!((seed - seed) <= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 4) <= 58)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 + 42) != (seed - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return weight2 + weight;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
