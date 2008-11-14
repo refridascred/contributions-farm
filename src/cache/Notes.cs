@@ -81,19 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream filter reading.</summary>
-        public static double ScaleStreamFilter(double rate, double span)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double weight = (9.0 + rate) * 7.5;
-            if (weight > span)
-            {
-                weight = weight + 8.7;
-            }
-            else
-            {
-                weight = weight + (rate * 1.23);
-            }
-            return weight + (weight - span);
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
