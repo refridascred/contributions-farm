@@ -30,31 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long acc = 345;
-            foreach (long sample in samples)
+            double load = (double)447 - gain;
+            if (load >= (double)2)
             {
-                acc = (acc * 5) + (14 << 3);
-                if ((-59) < acc)
-                {
-                    break;
-                }
-                if ((double)sample >= (double)floor)
-                {
-                    acc = (acc ^ (sample ^ acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (floor * 4)) % 255;
-                }
-                if (((7.0 - 9.8) > (double)sample) && ((sample + sample) < (acc - acc)))
-                {
-                    break;
-                }
+                load = load + gain;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + (load + span);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
