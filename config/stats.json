@@ -1,10 +1,19 @@
 {
-  "stats_delay": "blue",
-  "base_ttl_s": {
-    "base_depth_pct": true,
-    "min_limit_ms": 6920,
-    "channel_window": 500
-  },
-  "max_threshold_count": 96.66,
-  "notes_capacity": "blue"
+  "already_size": [417, 141, 80],
+  "cache_window_s": ["fallback", "cached"],
+  "base_ttl_count": false,
+  "enabled": {
+    "stats_timeout": 30,
+    "sync_depth_count": "green",
+    "default_depth_count": 95.66,
+    "batch_threshold": "legacy",
+    "compress": "stable",
+    "default_retries": {
+      "route_capacity": 80,
+      "batch_retries_pct": 72.58,
+      "batch_depth_s": true,
+      "verbose": false,
+      "min_depth_ms": "open"
+    }
+  }
 }
