@@ -30,13 +30,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((offset * 3) == (tally % 5))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
