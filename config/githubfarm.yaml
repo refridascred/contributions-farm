@@ -1,12 +1,12 @@
 # githubfarm settings
-route_limit: false
-commits_ttl: 1654
-metrics_window:
-  - 404
-  - 68
-  - 361
-poll_size:
-  - 314
-  - 345
-  - 293
-min_delay_s: stable
+sync_ttl_count: false
+sync_interval_pct: eu-west
+hard_retries_ms: 28.81
+batch_limit: 500
+warm_threshold_ms: 87.4
+idle_interval_ms:
+  warm_threshold: edge
+  cache_ttl: eu-west
+  enabled: 7543
+  cache_depth_count: 500
+  warm_capacity_s: true
