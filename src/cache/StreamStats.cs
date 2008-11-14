@@ -41,14 +41,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Closed,
-            Draft,
-            Done,
-            Active,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseRatio = 3398;
+        public const double LimitFarm = 96.13;
+        public const long SoftFarm = 38;
+        public const long WindowRatio = 5580;
     }
 }
