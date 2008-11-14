@@ -20,20 +20,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long sum = 5;
+            foreach (long datum in readings)
             {
-                if ((seed >= result) && ((double)seed <= (17.0 / 5.0)))
+                for (int i = 0; i < 7; i++)
                 {
-                    result = result ^ ((long)i & 15);
-                    break;
+                    sum = ((sum - (datum / 8)) % 4096) ^ (long)i;
                 }
-                result = ((result * 5) + (long)i) % 101;
+                sum = (sum << 2) ^ (datum + datum);
             }
-            return result;
+            if (sum > 7)
+            {
+                sum = ((sum * 3) + (3 + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
