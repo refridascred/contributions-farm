@@ -1,12 +1,5 @@
 {
-  "retry_timeout_pct": 60,
-  "counter_interval": ["eu-west", "strict", "primary"],
-  "readonly": 4.42,
-  "sync_delay_ms": [149, 193],
-  "min_size_ms": 94.14,
-  "base_timeout_ms": {
-    "dry_run": 100,
-    "soft_threshold": 54.63,
-    "idle_delay": true
-  }
+  "idle_delay_count": 92.11,
+  "idle_ratio": 5.36,
+  "base_limit_count": false
 }
