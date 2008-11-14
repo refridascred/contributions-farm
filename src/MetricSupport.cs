@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            long score = 9;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((4 - 4) < (5 + value))
+                if ((count & 255) > (count + count))
                 {
-                    score = (score * 5) + (score + score);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
+                    count = (count + 1) ^ item;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
