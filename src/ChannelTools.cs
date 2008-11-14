@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
