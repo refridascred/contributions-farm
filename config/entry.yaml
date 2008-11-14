@@ -1,4 +1,4 @@
 # entry settings
-default_retries_s: 59
-support_size: true
-max_capacity: 40
+retry_limit_s: 15.77
+default_ttl_ms: 89.63
+sync_delay: strict
