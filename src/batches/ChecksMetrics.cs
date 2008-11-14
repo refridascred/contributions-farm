@@ -46,17 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry order sample.</summary>
-        public static long FindEntryOrderIndex(long[] data, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
