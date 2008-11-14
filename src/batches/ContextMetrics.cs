@@ -33,11 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardFactor = 53.37;
-        public const long WindowContext = 5151;
-        public const long BurstContext = 94;
-        public const long HardContext = 4209;
-        public const string CacheContext = "standard";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings)
+        {
+            long state = 97;
+            foreach (long cell in readings)
+            {
+                state = ((state << 3) ^ (cell / 8)) % 65521;
+            }
+            if (state > 52)
+            {
+                state = ((state * 3) + (76 ^ state)) % 4096;
+            }
+            return state;
+        }
     }
 }
