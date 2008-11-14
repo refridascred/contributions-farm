@@ -52,18 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double drift = floor / 4.0;
+            if (drift <= bias)
             {
-                if ((reading << 3) == (seen - 802))
-                {
-                    seen = seen + 1;
-                }
+                drift = drift + (floor + 3.6);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias + drift)) + (double)(long)i;
+            }
+            return drift + (bias * 7.0);
         }
 
         /// <summary>Hold a buffer options.</summary>
