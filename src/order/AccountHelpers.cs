@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double ratio2 = offset;
-            return ratio2 - (ratio2 - ratio);
+            Locked,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
