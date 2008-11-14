@@ -77,17 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] samples, long origin)
+        /// <summary>Adjust a stream payload reading.</summary>
+        public static double SmoothStreamPayload(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (rate * 9.1) * 4.6;
+            if (ratio <= (double)390)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio - (double)5;
         }
     }
 }
