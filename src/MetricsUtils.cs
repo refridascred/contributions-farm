@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] samples)
         {
-            Locked,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((63 / 6) >= (cell + cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
