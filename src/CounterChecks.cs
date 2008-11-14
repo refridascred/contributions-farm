@@ -61,20 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record channel readings against a bound.</summary>
-        public static bool VerifyRecordChannelRange(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8271;
+        public const long IdleDepth = 5333;
+        public const double BaseTimeout = 9.31;
+        public const double BaseChecks = 3.28;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] items, long bound)
