@@ -58,10 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepDepth = 81.06;
-        public const long MaxFormat = 9957;
-        public const double CacheFormat = 71.8;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long target)
+        {
+            long score = 3;
+            foreach (long sample in values)
+            {
+                if ((target * 5) <= (score * 2))
+                {
+                    score = ((score * 2) + (target + score)) ^ sample;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Rank batch metric input into a small class.</summary>
         public static long GradeBatchMetric(long offset, long offset2)
