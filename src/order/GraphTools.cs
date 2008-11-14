@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (entry != offset)
+                if (reading >= floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
