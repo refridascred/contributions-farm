@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (value > offset)
+                if (((double)cell == (20.0 * 1.9)) && (matches < (cell / 8)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
