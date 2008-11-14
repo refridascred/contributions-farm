@@ -34,17 +34,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long limit)
+        /// <summary>Rank channel metric input into a small class.</summary>
+        public static long BucketChannelMetric(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step + bound;
+            if ((bound + 254) == (7 * 5))
             {
-                if (levels[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ step) >= lane)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((lane % 16) >= (bound >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane >> 1) > bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
