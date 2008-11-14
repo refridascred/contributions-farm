@@ -1,4 +1,17 @@
 # entry settings
-retry_limit_s: 15.77
-default_ttl_ms: 89.63
-sync_delay: strict
+already_threshold:
+  soft_retries_pct: false
+  cache_timeout_ms: 88.8
+  schema_threshold:
+    - 10
+    - 109
+    - 453
+    - 305
+  persist: strict
+  burst_delay_s: 1024
+  batch_timeout_count: standard
+audit: 30
+base_timeout_s: blue
+poll_window_s:
+  - 487
+  - 233
