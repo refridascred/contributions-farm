@@ -53,22 +53,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            long result = 15;
-            foreach (long item in items)
+            double weight = (double)(82 * 3);
+            if (weight < (bias + bias2))
             {
-                if (!(66 >= result))
-                {
-                    result = (result + (result + result)) ^ item;
-                }
+                weight = weight + (bias - weight);
             }
-            if (result < 480)
+            else
             {
-                result = ((result << 2) ^ (offset + result)) % 101;
+                weight = weight + 6.68;
             }
-            return result % 65521;
+            return weight - weight;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
