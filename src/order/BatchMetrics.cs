@@ -29,18 +29,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the metrics contributi entries that pass the check.</summary>
-        public static long AuditMetricsContributiMatches(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally << 1) != (tally + entry)) && ((35 >> 4) < (86 + tally)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
