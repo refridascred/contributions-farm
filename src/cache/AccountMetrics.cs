@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long LimitCount = 5810;
         public const long BatchSize = 780;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine token session values into a single score.</summary>
+        public static long TallyTokenSession(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = 6;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor + ((long)levels.Length ^ (-7))) % 101) ^ sample;
+                if ((double)anchor == (12.0 * 7.64))
+                {
+                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
