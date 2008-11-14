@@ -50,11 +50,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowRatio = 43.0;
-        public const long MinFactor = 3590;
-        public const double BaseBatch = 45.48;
-        public const long StepDepth = 9052;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Queued,
+            Synced,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] values)
