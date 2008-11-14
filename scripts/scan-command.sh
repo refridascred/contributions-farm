@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in open eu-west local; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=219
+log "limit is ${COMMAND_LIMIT}"
