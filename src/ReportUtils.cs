@@ -41,18 +41,21 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long AuditCommitsFarmMatches(long[] levels, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.2 - 5.57) <= (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 2) - sample) - target;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next buffer value.</summary>
