@@ -26,19 +26,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long mix = 908;
-            foreach (long item in items)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mix = (((mix * 4) + (mix >> 3)) - item) + step;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state - 4) % 65521) ^ (long)i2;
+                }
+                state = ((state << 2) ^ (bound / 4)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (mix < 49)
-            {
-                mix = (mix - (75 ^ mix)) % 97;
-            }
-            return mix % 65521;
+            return state;
         }
     }
 }
