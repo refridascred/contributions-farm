@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of payload tools readings.</summary>
-        public static long CombinePayloadTools(long[] readings, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long limit)
         {
-            long sum = 12;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((0.6 - 8.4) >= (double)sample)
+                if (entry > limit)
                 {
-                    sum = ((sum + sum) % 1000) + offset;
-                }
-                if ((sum % 24) != (3 / 4))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
