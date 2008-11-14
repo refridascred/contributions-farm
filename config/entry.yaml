@@ -1,24 +1,10 @@
 # entry settings
-readonly: false
-flush_threshold: 1990
-batch_threshold_count:
-  hard_size_ms:
-    - staging
-    - primary
-    - primary
-  compress: cached
-  max_delay_s: 70.79
-  batch_size:
-    - blue
-    - standard
-  batch_retries_s:
-    - 215
-    - 246
-    - 429
-min_capacity_s:
-  - cached
-  - legacy
-  - edge
-  - standard
-enabled: fallback
-min_depth_count: standard
+window_retries: 6803
+compress: 47.03
+dry_run:
+  base_capacity_pct: 30
+  route_depth: staging
+  metric_retries: cached
+  base_depth: 84.06
+counter_size: 60
+stats_depth: 1024
