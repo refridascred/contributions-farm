@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a tools buffer counter forward.</summary>
-        public static long RollToolsBuffer(long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long seen = limit & 7;
-                if (!(score < (score - score)))
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
                 {
-                    score = (score * 4) + (long)i;
-                    score = ((score << 3) ^ (score & 31)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score - seen;
-                }
-                score = (score * 3) + (30 - score);
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
