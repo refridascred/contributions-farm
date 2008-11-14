@@ -68,18 +68,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (step < (tally + 0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftDepth = 481;
+        public const string RetryProfile = "primary-v2";
+        public const long BurstProfile = 1881;
     }
 }
