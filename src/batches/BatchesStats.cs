@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] values)
+        /// <summary>Look up the position of a checks channel sample.</summary>
+        public static long SeekChecksChannelIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.07 * 0.94) <= (double)hits)
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
                 {
-                    hits = (hits + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
