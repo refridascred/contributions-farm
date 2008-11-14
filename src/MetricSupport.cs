@@ -34,13 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
