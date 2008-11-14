@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 5477;
+        public const long WindowLevel = 7586;
+        public const string BurstFactor = "latest-v2";
+        public const long RetryAccount = 3728;
+        public const long IdleAccount = 5310;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] samples, long offset)
