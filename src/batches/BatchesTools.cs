@@ -30,15 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session report value.</summary>
-        public static double ScaleSessionReport(double rate, double bias)
+        /// <summary>Digest a series of counter account entries.</summary>
+        public static long DigestCounterAccount(long[] data, long target)
         {
-            double mean = rate;
-            if (mean <= rate)
+            long result = 4;
+            foreach (long cell in data)
             {
-                mean = (mean - mean) + bias;
+                if ((cell + target) >= (target - result))
+                {
+                    result = ((result << 3) ^ (result * 3)) % 97;
+                    break;
+                }
+                if ((cell > (target / 5)) && ((target - target) > cell))
+                {
+                    result = (result * 5) + (cell - cell);
+                }
             }
-            return mean + (double)4;
+            return result % 97;
         }
     }
 }
