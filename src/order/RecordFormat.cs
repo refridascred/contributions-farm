@@ -35,22 +35,10 @@ namespace Common.Utilities
         public const double SoftSpan = 62.22;
         public const long LimitProfile = 9349;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchCount = 7106;
+        public const long HardEntry = 3204;
+        public const long RetryDepth = 5434;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
