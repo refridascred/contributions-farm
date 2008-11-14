@@ -19,39 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long prev = limit + origin;
-            if (((origin + origin) == (prev + prev)) || (prev >= 448))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < (origin * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit > 6.0) || ((double)prev > (4.5 / 2.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (origin + limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Project the next session report value.</summary>
