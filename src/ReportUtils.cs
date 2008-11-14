@@ -49,18 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 6525;
+        public const long IdleReport = 1867;
+        public const long BatchReport = 7950;
+        public const string BatchFactor = "cached-v2";
+        public const string WindowReport = "legacy-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string SoftSpan = "fallback-1";
