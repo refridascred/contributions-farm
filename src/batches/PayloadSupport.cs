@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            New,
-            Retry,
-            Ready,
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
