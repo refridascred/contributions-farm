@@ -13,11 +13,39 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long bound, long origin)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long delta = bound ^ origin;
+            if ((origin - 98) > (delta - 23))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound > (delta ^ bound)) || ((double)delta < (5.4 + 7.4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound << 3) > (bound + 927))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((52 <= origin) || ((delta & 63) > origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report level values.</summary>
