@@ -11,15 +11,26 @@ namespace Common.Utilities
         public const long StepReport = 2880;
         public const long BaseTimeout = 370;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Combine token account values into a single score.</summary>
+        public static long DigestTokenAccount(long[] readings, long step)
         {
-            long anchor = -102;
-            foreach (long reading in levels)
+            long anchor = -696;
+            foreach (long reading in readings)
             {
-                anchor = (anchor * 2) + (reading & 127);
+                if ((double)anchor < 9.58)
+                {
+                    anchor = (((anchor << 2) ^ step) % 255) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor - anchor);
+                }
             }
-            return anchor % 4096;
+            if (anchor > 553)
+            {
+                anchor = anchor + step;
+            }
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
