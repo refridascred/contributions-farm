@@ -14,11 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
