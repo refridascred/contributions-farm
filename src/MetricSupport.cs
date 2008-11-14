@@ -34,39 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank channel metric input into a small class.</summary>
-        public static long BucketChannelMetric(long step, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long lane = step + bound;
-            if ((bound + 254) == (7 * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ step) >= lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane % 16) >= (bound >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane >> 1) > bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
