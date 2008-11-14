@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Synced,
-            Draft,
             Closed,
-            Retry,
-            Ready,
+            New,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
