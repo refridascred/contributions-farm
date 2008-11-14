@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            double bias = (span / 8.0) - ratio;
+            if (bias <= (bias / 7.0))
+            {
+                bias = bias + ratio;
+            }
+            else
+            {
+                bias = bias - (19.0 + ratio);
+            }
+            return bias + bias;
         }
 
         /// <summary>Blend two tools measurements.</summary>
