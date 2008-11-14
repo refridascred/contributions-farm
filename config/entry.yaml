@@ -1,7 +1,14 @@
 # entry settings
-default_threshold: 7341
-cache_interval_s: 2375
-max_window_ms: 21.95
-warm_limit: 5.91
-warm_threshold: 38.78
-enabled: 4398
+format_retries:
+  compress: local
+  cache_limit: 42
+  report_size: 30
+  batch_threshold_pct: 30
+idle_delay_pct:
+  metric_threshold: 24
+  max_threshold_pct: latest
+  verbose: 6913
+  hard_size: 9079
+entry_ttl: 88.53
+soft_size: 250
+cache_size_pct: 4.27
