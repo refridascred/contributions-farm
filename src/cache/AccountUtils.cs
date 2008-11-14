@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Idle,
-            Failed,
-            Ready,
-            Done,
+            Draft,
+            Locked,
             Stale,
         }
     }
