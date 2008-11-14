@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 607;
+            foreach (long item in samples)
             {
-                if (!(count <= (count / 3)))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score ^ (item % 97)) % 1000;
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
