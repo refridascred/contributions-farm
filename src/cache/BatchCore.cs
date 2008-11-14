@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series)
         {
-            Idle,
-            Draft,
-            Retry,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 5) >= (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
