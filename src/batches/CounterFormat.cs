@@ -35,14 +35,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the schema metric entries that pass the check.</summary>
+        public static long CountSchemaMetricGaps(long[] series, long bound)
         {
-            Dropped,
-            Active,
-            Draft,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((0.51 * 6.9) >= (double)hits)
+                {
+                    hits = ((hits + 2) ^ entry) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
