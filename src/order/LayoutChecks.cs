@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] readings, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double bias2 = weight;
+            if (bias2 < weight)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 + 5.02;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 + (bias - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Digest a series of order entries.</summary>
