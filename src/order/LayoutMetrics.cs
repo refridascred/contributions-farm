@@ -33,20 +33,10 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((double)(long)i < (15.0 / 5.0)))
-                {
-                    carry = carry + (long)i;
-                }
-                carry = (carry - bound) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftLevel = 78;
+        public const double StepSchema = 61.05;
+        public const long RetrySchema = 532;
+        public const string LimitSchema = "alpha-1";
     }
 }
