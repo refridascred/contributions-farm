@@ -23,31 +23,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((double)426 > (9.58 / 2.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.72 / 9.0) == (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(0.41 < (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
