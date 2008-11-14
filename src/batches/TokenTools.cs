@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((limit + hits) < (limit + limit)))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
