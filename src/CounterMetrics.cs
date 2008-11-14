@@ -58,39 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] data, long origin)
         {
-            long edge = floor ^ origin;
-            if (!((double)edge == (10.0 / 6.0)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge ^ origin) > (origin - origin))
+                if (data[i] >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (edge <= (floor * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (edge > (edge + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
