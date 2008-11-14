@@ -37,24 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next payload filter value from a seed.</summary>
-        public static long RollPayloadFilter(long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (origin < (origin + mark))
-                {
-                    mark = mark - ((long)i & 1);
-                }
-                if ((double)mark > (8.3 + 9.0))
-                {
-                    mark = (mark * 5) + (origin - 7);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
