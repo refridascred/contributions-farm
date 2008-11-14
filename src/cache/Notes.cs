@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long origin, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings, long bound)
         {
-            if (!((limit * 3) <= (origin << 1)))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin > limit)
+                if ((tally + cell) >= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((7.11 * 7.0) < (double)origin) || (origin > (limit - origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 1) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
