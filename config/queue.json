@@ -1,6 +1,6 @@
 {
-  "soft_ttl": 4280,
-  "commits_ttl": "blue",
-  "format_interval": 51,
-  "min_timeout": "stable"
+  "batch_threshold_count": 6942,
+  "audit": 2192,
+  "profile_interval": [142, 179],
+  "idle_depth": "eu-west"
 }
