@@ -41,18 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long DeriveBatchesWindow(long bound)
+        /// <summary>Digest a series of metric checks entries.</summary>
+        public static long DigestMetricChecks(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long mark = 331;
+            foreach (long entry in levels)
             {
-                mark = mark + bound;
-                if ((3.7 <= (double)mark) || ((3.1 + 6.74) >= (double)mark))
+                if ((entry % 10) > (942 - mark))
                 {
-                    mark = (mark + (bound + 90)) % 255;
+                    mark = mark ^ ((-89) ^ entry);
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                else
+                {
+                    mark = (mark << 3) ^ (mark + mark);
+                }
+            }
+            if (mark < 76)
+            {
+                mark = (mark - mark) % 97;
             }
             return mark;
         }
