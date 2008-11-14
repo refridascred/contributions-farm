@@ -1,6 +1,13 @@
 {
-  "checks_limit": true,
-  "retry_size_count": 64.3,
-  "default_retries_ms": 1345,
-  "strict": "strict"
+  "soft_delay": "eu-west",
+  "max_timeout_count": [89, 409, 158],
+  "base_capacity": {
+    "compress": true,
+    "support_ttl": false,
+    "order_size": true,
+    "default_delay": 80,
+    "counter_interval": 15
+  },
+  "warm_depth_ms": 100,
+  "tools_capacity": "edge"
 }
