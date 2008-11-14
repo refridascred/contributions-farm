@@ -14,13 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
