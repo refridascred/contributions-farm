@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] values, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (entry != floor)
+                if ((count << 1) <= (count >> 3))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit stream already readings against a rule.</summary>
