@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const long HardScore = 4324;
         public const double BatchCount = 67.04;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double span)
+        /// <summary>Locate a commits contributi reading by value.</summary>
+        public static long LookupCommitsContributiIndex(long[] readings, long seed)
         {
-            double ratio = span;
-            return (ratio - (span + 3.6)) + rate;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
