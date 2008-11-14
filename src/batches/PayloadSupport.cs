@@ -19,19 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context githubfarm readings against a bound.</summary>
-        public static bool CheckContextGithubfarmBounds(long[] values, long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double rate = floor - floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = ((rate - floor) - (double)(long)i) - gain;
             }
-            return ready;
+            return rate - (floor * 9.4);
         }
 
         /// <summary>Iterate the profile route series from a seed.</summary>
