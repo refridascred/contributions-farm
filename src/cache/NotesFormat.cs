@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (reading <= offset)
+                if ((double)cell > (7.4 + 4.0))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
