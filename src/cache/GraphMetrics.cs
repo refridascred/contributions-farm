@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a schema token reading.</summary>
-        public static double SmoothSchemaToken(double gain, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            double ratio = 7.0 / 8.0;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - (offset - ratio)) + (double)(long)i) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
