@@ -38,19 +38,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry != bound)
+                total = (total + (total - (long)i)) % 4096;
+                if (((bound * 5) > (bound / 5)) || ((2.5 / 5.0) != (double)bound))
                 {
-                    ready = false;
-                    break;
+                    total = (total ^ (total + total)) % 97;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Match up session samples.</summary>
