@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 575;
-            foreach (long cell in samples)
-            {
-                if ((0.64 + 7.2) >= (double)bound)
-                {
-                    mix = ((mix * 2) + (0 & 255)) + cell;
-                }
-            }
-            return mix % 1000;
+            Closed,
+            Paused,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
