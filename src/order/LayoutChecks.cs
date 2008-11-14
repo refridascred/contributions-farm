@@ -43,15 +43,16 @@ namespace Common.Utilities
         public const string DefaultLevel = "strict-edge";
         public const long MaxNotes = 7222;
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long IterateCommandSchema(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                total = (total ^ total) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a tools record.</summary>
