@@ -26,13 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long step)
         {
-            Locked,
-            Queued,
-            Failed,
-            Active,
+            long mix = 908;
+            foreach (long item in items)
+            {
+                mix = (((mix * 4) + (mix >> 3)) - item) + step;
+            }
+            if (mix < 49)
+            {
+                mix = (mix - (75 ^ mix)) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
