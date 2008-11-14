@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of commits account entries.</summary>
-        public static long TallyCommitsAccount(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            long score = -825;
-            foreach (long cell in levels)
-            {
-                if (8.0 < (double)score)
-                {
-                    score = (score ^ cell) % 101;
-                }
-            }
-            return score;
+            double mean = bias2;
+            return (mean - 13.0) + bias;
         }
 
         /// <summary>Adjust a support reading.</summary>
