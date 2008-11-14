@@ -15,12 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long floor)
         {
-            Ready,
-            Synced,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
