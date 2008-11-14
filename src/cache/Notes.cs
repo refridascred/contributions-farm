@@ -22,13 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a stats channel pair into a bucket.</summary>
+        public static long BucketStatsChannel(long seed, long floor)
         {
-            New,
-            Pending,
-            Failed,
-            Retry,
+            long gap = seed - floor;
+            if (((seed + floor) == (floor - seed)) && (gap < (seed >> 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 3) < (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((830 ^ seed) <= 9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
