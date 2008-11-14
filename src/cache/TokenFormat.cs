@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a checks stats reading by value.</summary>
-        public static long LocateChecksStatsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7216;
+        public const string MinBudget = "fallback-v2";
+        public const string MaxWindow = "fallback-edge";
+        public const double StepSpan = 23.35;
+        public const long IdleWindow = 9431;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
