@@ -46,12 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
