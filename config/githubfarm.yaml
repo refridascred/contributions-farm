@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_interval: stable
-warm_window_count: 98
-sync_interval: blue
+default_interval_s: 86.86
+burst_interval_count:
+  - 261
+  - 199
+base_ttl: 94.54
+compress: legacy
