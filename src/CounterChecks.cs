@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster graph figure with a bias.</summary>
-        public static double AdjustClusterGraph(double rate, double span)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long AuditGithubfarmBatchGaps(long[] data, long bound)
         {
-            double weight = (double)(914 - 78);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                weight = ((weight - rate) - (double)(long)i) - span;
+                if ((bound - (-68)) <= (matches + bound))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight - (double)4;
+            return matches;
         }
 
         /// <summary>Describe the tools kind values.</summary>
