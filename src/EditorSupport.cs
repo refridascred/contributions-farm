@@ -67,17 +67,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = 8.9 - offset;
+            if (load < (load / 2.0))
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                load = load - (load * 10.0);
             }
-            return -1;
+            else
+            {
+                load = load + (offset - load);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (weight * 4.92)) + (double)(long)i;
+            }
+            return load - (double)18;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
