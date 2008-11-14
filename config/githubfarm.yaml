@@ -1,11 +1,9 @@
 # githubfarm settings
-warm_retries_ms: stable
-batches_capacity: 4345
-idle_retries: 62
-max_interval_s: 7116
-flush_size: false
-strict:
-  - stable
-  - open
-  - legacy
-  - standard
+retry_interval_count: 96.11
+audit: 60
+soft_window_ms: edge
+cache_size: edge
+idle_threshold_pct:
+  - 248
+  - 309
+max_delay_count: fallback
