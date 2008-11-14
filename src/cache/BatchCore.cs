@@ -19,32 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long TallyOrderContextGaps(long[] series, long offset)
         {
-            long cur = floor ^ origin;
-            if (((43 >> 3) == (origin / 7)) || (84 < (origin / 3)))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((cur - 706) >= (origin + cur))
+                if ((533 << 2) <= matches)
                 {
-                    return 0;
+                    matches = ((matches + 2) ^ datum) - offset;
                 }
                 else
                 {
-                    if ((cur << 3) < (origin ^ floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stream already readings against a rule.</summary>
