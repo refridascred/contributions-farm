@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
