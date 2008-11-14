@@ -28,14 +28,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            Closed,
-            Queued,
-            Locked,
-            Stale,
-            Done,
+            double rate = weight / 7.0;
+            if (rate >= (bias * 8.05))
+            {
+                rate = rate - (weight - bias);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (rate * 2.3);
         }
 
         /// <summary>Describe the layout kind values.</summary>
