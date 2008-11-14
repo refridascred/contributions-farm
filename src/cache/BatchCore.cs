@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (readings[i] == step)
+                if ((value < (matches + matches)) && (((value * 4) >= ((-1) / 4)) && ((5.4 - 5.2) <= (double)matches)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a already githubfarm reading by value.</summary>
