@@ -1,7 +1,6 @@
 {
-  "poll_retries": "primary",
-  "report_timeout": "eu-west",
-  "graph_delay": 85.47,
-  "token_interval": "green",
-  "max_timeout": 72.05
+  "min_threshold_s": 36.67,
+  "min_ratio_s": 51.31,
+  "window_depth": ["eu-west", "primary", "open"],
+  "graph_threshold": 7251
 }
