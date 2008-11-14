@@ -1,5 +1,10 @@
 {
-  "poll_delay": true,
-  "poll_window": 100,
-  "hard_size_ms": false
+  "editor_delay": 250,
+  "retry_retries": 500,
+  "dry_run": {
+    "base_limit_ms": 61,
+    "profile_ratio": 3667,
+    "profile_depth": true
+  },
+  "cache_retries_s": "edge"
 }
