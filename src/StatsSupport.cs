@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit booking readings against a rule.</summary>
+        public static long TallyBookingOutliers(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen > (seen & 1))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank filter counter input into a small class.</summary>
