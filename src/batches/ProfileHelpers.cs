@@ -39,13 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long bound)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            if (((bound - (-754)) == (target ^ bound)) && ((double)target != (5.7 / 7.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target + target) >= (bound >> 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound < (bound * 4)) || ((8.0 * 5.01) <= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools route samples are out of range.</summary>
