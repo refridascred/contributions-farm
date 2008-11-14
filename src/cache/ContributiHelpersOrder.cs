@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long offset, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            long cur = offset ^ step;
-            if (((step + cur) == (step & 127)) && ((offset ^ cur) <= step))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (cur > (offset >> 3))
+                if ((count / 5) == (count % 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (double)528)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
