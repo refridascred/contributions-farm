@@ -42,19 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double offset)
-        {
-            double load = offset;
-            if (load >= offset)
-            {
-                load = (load - (load * 8.0)) - weight;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)5;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 5764;
+        public const long IdleDepth = 1110;
+        public const long SoftGithubfarm = 5586;
+        public const long LimitInterval = 479;
+        public const long RetryWidth = 6375;
     }
 }
