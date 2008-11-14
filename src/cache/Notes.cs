@@ -31,15 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of schema metrics readings.</summary>
-        public static long PairSchemaMetricsCount(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
+                    if ((data[i] + data[j]) < 1)
                     {
                         seen = seen + 1;
                     }
