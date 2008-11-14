@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const double MaxFormat = 21.07;
         public const long LimitLevel = 3882;
 
-        /// <summary>Derive the next commits editor value from a seed.</summary>
-        public static long StepCommitsEditor(long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
