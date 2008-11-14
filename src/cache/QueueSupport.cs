@@ -33,14 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long limit)
         {
-            Queued,
-            Synced,
-            New,
-            Dropped,
-            Done,
+            long state = 1;
+            foreach (long item in values)
+            {
+                if (!((6.5 + 1.7) <= (double)limit))
+                {
+                    state = (state ^ ((long)values.Length / 7)) % 101;
+                    state = (state ^ (item + item)) % 101;
+                }
+                state = ((state * 4) + state) % 97;
+                state = state + (item + limit);
+            }
+            return state;
         }
     }
 }
