@@ -64,18 +64,15 @@ namespace Common.Utilities
         public const long CacheToken = 3810;
         public const long HardToken = 3792;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Measure how many graph token samples are out of range.</summary>
+        public static long MeasureGraphTokenHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(cell >= (cell & 127)))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
