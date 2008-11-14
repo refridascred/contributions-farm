@@ -53,13 +53,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the commits report series from a seed.</summary>
+        public static long DeriveCommitsReport(long step)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((result << 2) == (583 / 9))
+                {
+                    result = ((result << 2) ^ step) % 4096;
+                }
+                else
+                {
+                    result = (result + (result - step)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
