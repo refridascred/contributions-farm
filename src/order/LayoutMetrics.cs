@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((bound << 2) > ((long)i ^ 96)) && ((bound << 2) <= (sum / 3))))
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    sum = ((sum * 5) + bound) % 65521;
+                    return (long)i;
                 }
-                if ((bound - bound) > ((long)i / 7))
-                {
-                    sum = ((sum * 2) + ((-182) >> 1)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
