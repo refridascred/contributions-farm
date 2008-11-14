@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long TotalRecordBatch(long[] items)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            long result = 83;
+            foreach (long entry in items)
+            {
+                if ((62 & 3) < (result & 31))
+                {
+                    result = ((result << 2) ^ (result - entry)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (result & 3)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a context options.</summary>
