@@ -42,21 +42,19 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(7 << 3);
+            if (rate > (5.76 * 6.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - scale;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)5) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
