@@ -52,13 +52,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long sum = 14;
+            foreach (long datum in readings)
+            {
+                sum = (sum ^ (sum - sum)) % 4096;
+                if ((datum >> 5) < (1 * 4))
+                {
+                    sum = (sum << 3) ^ (sum % 2);
+                }
+                if (!((sum + datum) <= (datum + sum)))
+                {
+                    sum = (sum * 4) + (sum + sum);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (datum >> 3)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
