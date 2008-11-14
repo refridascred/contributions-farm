@@ -57,18 +57,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long state = 759;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 + state) >= state)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state - state) % 65521) - reading;
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
