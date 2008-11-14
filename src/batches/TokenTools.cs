@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Fold a list of commits layout readings.</summary>
+        public static long FoldCommitsLayout(long[] levels, long origin)
         {
-            if ((2.19 - 4.42) >= (double)floor)
+            long sum = 27;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 2) == (bound ^ 640))
+                if ((double)origin == (4.0 + 8.39))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) > (floor % 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (7.7 - 9.3)) || (bound >= (13 << 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum << 2) ^ sample) % 255;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
