@@ -24,23 +24,25 @@ namespace Common.Utilities
             return mean + (mean / 4.0);
         }
 
-        /// <summary>Scale a stream queue figure with a bias.</summary>
-        public static double ScaleStreamQueue(double rate, double span)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long limit)
         {
-            double gain = (rate + rate) + 1.0;
-            if (gain > 9.23)
+            long gap = target ^ limit;
+            if ((gap + 11) < (8 + target))
             {
-                gain = (gain - gain) + span;
+                return 2;
             }
             else
             {
-                gain = gain - (gain * 2.6);
+                if ((double)limit == (3.51 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)333) + (double)(long)i;
-            }
-            return gain + gain;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
