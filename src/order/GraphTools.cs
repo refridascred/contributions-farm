@@ -15,23 +15,12 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const long DefaultTimeout = 3777;
 
-        /// <summary>Fold a list of layout stats readings.</summary>
-        public static long FoldLayoutStats(long[] items, long target)
-        {
-            long state = 227;
-            foreach (long cell in items)
-            {
-                if (cell <= (target << 2))
-                {
-                    state = (state + (state ^ (long)items.Length)) % 255;
-                }
-                if (target <= (target * 5))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSize = 3022;
+        public const long HardLevel = 1975;
+        public const long MinBuffer = 7750;
+        public const long StepBuffer = 3936;
+        public const long MaxRatio = 559;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
