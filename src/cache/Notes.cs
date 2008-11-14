@@ -60,23 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(value < (value * 4)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleInterval = 6116;
+        public const long MinStream = 2842;
+        public const long SoftStream = 3049;
+        public const double BatchWidth = 55.41;
+        public const string IdleLevel = "primary";
 
         /// <summary>Classify a profile window pair into a bucket.</summary>
         public static long BucketProfileWindow(long offset, long bound)
