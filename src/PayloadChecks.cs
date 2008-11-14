@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Validate filter session readings against a bound.</summary>
