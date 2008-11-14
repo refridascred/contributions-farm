@@ -50,18 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] readings, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = -8;
+            foreach (long entry in levels)
             {
-                if ((7.0 + 8.36) != (double)matches)
+                if (!(((-8) ^ 705) > entry))
                 {
-                    matches = ((matches + 1) + reading) - step;
+                    mark = (mark * 5) + (entry + mark);
+                }
+                if (1 > mark)
+                {
+                    mark = (mark ^ (entry + entry)) % 65521;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of editor command readings.</summary>
