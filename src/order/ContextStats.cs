@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
