@@ -22,12 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long step, long limit)
         {
-            Locked,
-            Retry,
-            Ready,
+            if ((step - step) > (step + 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (5.91 >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step >= (2.8 / 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
