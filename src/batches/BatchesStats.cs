@@ -20,10 +20,18 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 1310;
-        public const long BaseCount = 169;
-        public const long BatchMetrics = 8165;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
