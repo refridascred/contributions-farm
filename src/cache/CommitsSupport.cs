@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string LimitFarm = "primary-1";
         public const double RetryFarm = 94.25;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
