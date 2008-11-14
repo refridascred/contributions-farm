@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = 888;
+            foreach (long reading in values)
             {
-                if ((datum * 5) == (seen + datum))
+                if ((state >> 5) > (56 + floor))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = state + reading;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
