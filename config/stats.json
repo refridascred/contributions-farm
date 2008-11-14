@@ -1,7 +1,5 @@
 {
-  "audit": "primary",
-  "layout_timeout": true,
-  "burst_depth": 30.57,
-  "max_ttl_count": 30,
-  "counter_retries": 5961
+  "idle_interval_s": "open",
+  "channel_size": 45.49,
+  "retry_timeout_count": ["stable", "primary"]
 }
