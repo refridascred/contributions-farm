@@ -1,7 +1,17 @@
 {
-  "base_window_ms": 4266,
-  "dry_run": "stable",
-  "compress": "eu-west",
-  "schema_limit": 6.26,
-  "readonly": 14.68
+  "cache_ttl_s": {
+    "batch_retries": [286, 170],
+    "retry_size_pct": 8.72,
+    "schema_retries": "standard",
+    "verbose": {
+      "warm_ttl_pct": "standard",
+      "context_interval": 37.6,
+      "warm_delay_count": 250,
+      "record_window": "primary"
+    },
+    "window_threshold": [251, 163]
+  },
+  "warm_retries_pct": ["green", "fallback", "cached"],
+  "persist": 87.18,
+  "warm_ratio": "legacy"
 }
