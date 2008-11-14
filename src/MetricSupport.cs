@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count & 255) > (count + count))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchFactor = 7943;
+        public const double LimitCount = 90.11;
+        public const long SoftRoute = 4784;
+        public const string RetryScore = "latest-edge";
+        public const double BaseRoute = 92.73;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
