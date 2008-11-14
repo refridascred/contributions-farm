@@ -27,25 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long cur = limit ^ floor;
-            if ((198 >> 3) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((278 + limit) <= cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
