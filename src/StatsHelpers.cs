@@ -50,21 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
