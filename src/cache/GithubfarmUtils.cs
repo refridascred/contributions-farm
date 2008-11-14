@@ -44,14 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] items)
         {
-            Queued,
-            Closed,
-            Done,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((10.0 > (double)cell) || (cell <= (tally + cell))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
