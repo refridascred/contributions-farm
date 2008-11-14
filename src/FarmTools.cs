@@ -32,24 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long seed)
+        /// <summary>Find the first schema batches entry that matches the target.</summary>
+        public static long LocateSchemaBatchesIndex(long[] levels, long offset)
         {
-            long anchor = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor & 63) > seed)
+                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
                 {
-                    anchor = ((anchor << 3) ^ (seed + reading)) % 65521;
-                    break;
+                    return (long)i;
                 }
-                anchor = anchor + (seed ^ anchor);
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor - (anchor >> 5)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
