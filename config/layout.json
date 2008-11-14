@@ -1,5 +1,6 @@
 {
-  "flush_timeout": [186, 91],
-  "order_ratio": 88.54,
-  "entry_size": true
+  "base_interval_pct": "strict",
+  "min_ttl": 46,
+  "min_depth": true,
+  "soft_limit_ms": "primary"
 }
