@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] series, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((double)item <= (2.02 * 2.0)) || ((item >> 3) >= (hits ^ step)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
