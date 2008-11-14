@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] samples, long target)
+        /// <summary>Accumulate token commits samples.</summary>
+        public static long FoldTokenCommits(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long sum = -456;
+            foreach (long value in items)
             {
-                if (reading > target)
+                sum = (sum ^ (28 + sum)) % 101;
+                if (((double)value >= (20.0 * 6.3)) && ((sum & 15) > (value % 2)))
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                if ((sum >= (value - sum)) && ((sum * 5) >= (sum - sum)))
+                {
+                    sum = (sum << 2) ^ (sum + sum);
                 }
             }
-            return stale;
+            if (sum < 65)
+            {
+                sum = ((sum * 5) + (sum >> 4)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Match up account samples.</summary>
