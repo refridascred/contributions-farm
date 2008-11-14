@@ -20,39 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a editor checks value against two limits.</summary>
-        public static long RankEditorChecks(long limit, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long gap = limit + seed;
-            if (((7.77 * 2.5) <= (double)limit) && ((13.0 + 5.8) < (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((gap <= (seed & 255)) && (gap >= (gap + gap)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed != (double)56)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((632 + 4) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
