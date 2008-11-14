@@ -35,31 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            if ((limit % 60) >= (seed >> 3))
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                mix = ((mix * 4) + (mix / 3)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit & 31) > ((-289) ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.1 - 9.6) == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
