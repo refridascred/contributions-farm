@@ -42,17 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Dropped,
+            Ready,
         }
     }
 }
