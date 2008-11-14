@@ -1,17 +1,27 @@
 # support settings
-schema_retries: 91
-cache_depth_ms:
-  verbose:
-    min_timeout: false
-    cache_size_s: standard
-    schema_ttl: fallback
-  flush_threshold:
-    max_capacity: 1024
-    flush_retries: true
-    burst_ttl_ms: 82.03
-  batch_interval: 43.94
-  batches_interval: 2.25
-  idle_timeout:
+command_interval: false
+burst_interval_ms:
+  cache_depth_count: 51.39
+  compress:
+    - staging
+    - local
+  flush_ttl_pct: false
+  poll_timeout_pct: 1024
+cache_capacity:
+  batch_ttl: strict
+  default_interval: true
+  base_retries_count: 6134
+  contributi_size: 48.68
+  hard_limit: 57.15
+audit:
+  warm_delay: 46
+  warm_depth: 4007
+  max_capacity: 81
+  warm_retries_pct: 4
+  token_interval:
     - stable
-    - cached
-notes_size: 82.98
+    - legacy
+    - legacy
+  command_depth: 51.64
+flush_size: 2.17
+strict: strict
