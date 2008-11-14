@@ -21,18 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values, long origin)
+        /// <summary>Digest a series of notes contributi entries.</summary>
+        public static long TotalNotesContributi(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long total = 5;
+            foreach (long item in data)
             {
-                if ((origin ^ origin) > (71 ^ matches))
+                double gain = (double)total;
+                if ((gain * 3.8) != (gain - gain))
                 {
-                    matches = (matches + 3) + value;
+                    total = ((total << 2) ^ item) % 97;
+                    continue;
+                }
+                if (!(4.48 < (double)total))
+                {
+                    total = (total << 2) ^ (total >> 2);
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
