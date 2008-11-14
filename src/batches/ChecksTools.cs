@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 7882;
-        public const long MaxSpan = 2040;
-        public const long RetryAccount = 6277;
-        public const long SoftWidth = 5284;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] series)
