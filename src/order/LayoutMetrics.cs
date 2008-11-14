@@ -33,27 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples, long offset)
         {
-            long total = 7;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                bool valid = (reading - reading) != (reading + reading);
-                if (valid || ((reading + total) <= total))
+                if ((offset + hits) < (offset % 2))
                 {
-                    valid = total <= (total ^ total);
-                }
-                else
-                {
-                    total = total ^ (total + reading);
-                }
-                if ((total & 255) != (total << 2))
-                {
-                    total = ((total * 2) + 1) % 101;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return total % 65521;
+            return hits;
         }
     }
 }
