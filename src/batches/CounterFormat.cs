@@ -28,19 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool VerifyNotesSessionLimits(long[] data, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Retry,
+            Closed,
+            Idle,
+            New,
         }
     }
 }
