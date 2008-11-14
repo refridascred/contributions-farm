@@ -1,5 +1,6 @@
 {
-  "idle_threshold": 30,
-  "layout_depth": true,
-  "base_timeout_count": "legacy"
+  "flush_retries": 58,
+  "githubfarm_ratio": 4682,
+  "base_window": false,
+  "buffer_ttl": 4004
 }
