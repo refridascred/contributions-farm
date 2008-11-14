@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series, long step)
         {
-            Pending,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((8 + count) == (57 % 100)))
+                {
+                    count = ((count + 1) + reading) - step;
+                }
+            }
+            return count;
         }
     }
 }
