@@ -34,26 +34,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Roll a checks queue counter forward.</summary>
+        public static long DeriveChecksQueue(long limit)
         {
-            long acc = -722;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item + acc) > acc)
+                double rate = 4.5;
+                sum = ((sum * 5) + (limit - (long)i)) % 101;
+                if (6.9 <= rate)
                 {
-                    acc = acc + (acc & 15);
+                    rate = rate - rate;
                 }
-                else
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-                if (!((acc - acc) >= (item / 2)))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
     }
 }
