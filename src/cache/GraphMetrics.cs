@@ -32,11 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a counter reading by value.</summary>
