@@ -34,9 +34,23 @@ namespace Common.Utilities
         public const long CachePayload = 518;
         public const long LimitPayload = 222;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 2178;
-        public const string BatchAlready = "local-v2";
-        public const long HardDepth = 2501;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double bias)
+        {
+            double drift = rate;
+            if (drift >= (double)2)
+            {
+                drift = (drift - (double)546) + bias;
+            }
+            else
+            {
+                drift = drift + (rate / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 9.54) + (double)(long)i;
+            }
+            return drift - rate;
+        }
     }
 }
