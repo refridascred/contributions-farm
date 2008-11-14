@@ -1,7 +1,6 @@
 # entry settings
-batch_delay_count: false
-verbose: primary
-idle_ratio_pct: primary
-dry_run: false
-base_threshold_s: standard
-min_depth_s: blue
+cache_threshold: primary
+notes_threshold: green
+base_retries: green
+idle_interval: fallback
+cache_size: 67
