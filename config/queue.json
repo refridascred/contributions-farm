@@ -1,17 +1,7 @@
 {
-  "cache_ttl_s": {
-    "batch_retries": [286, 170],
-    "retry_size_pct": 8.72,
-    "schema_retries": "standard",
-    "verbose": {
-      "warm_ttl_pct": "standard",
-      "context_interval": 37.6,
-      "warm_delay_count": 250,
-      "record_window": "primary"
-    },
-    "window_threshold": [251, 163]
-  },
-  "warm_retries_pct": ["green", "fallback", "cached"],
-  "persist": 87.18,
-  "warm_ratio": "legacy"
+  "min_window_s": false,
+  "strict": 500,
+  "sync_delay": 500,
+  "cache_depth": ["blue", "legacy", "green", "edge"],
+  "profile_depth": "fallback"
 }
