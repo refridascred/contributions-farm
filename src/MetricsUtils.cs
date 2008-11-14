@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((matches ^ (-512)) >= 23))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
