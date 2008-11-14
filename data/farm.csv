@@ -1,6 +1,7 @@
-id,token,weight,level
-1,fallback,107,28.04
-2,12.69,164,672
-3,655,98.91,latest
-4,31.31,556,19.68
-5,green,85.16,65.02
+id,level,active,rank,region
+1,open,515,open,483
+2,open,fallback,471,90.01
+3,0.05,stable,398,33.14
+4,40.93,98.06,198,554
+5,stable,530,862,577
+6,294,staging,384,642
