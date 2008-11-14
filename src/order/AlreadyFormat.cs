@@ -56,18 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] samples)
+        /// <summary>Digest a series of already report entries.</summary>
+        public static long WeighAlreadyReport(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = 15;
+            foreach (long value in items)
             {
-                if ((matches >> 1) != (99 + cell))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 3;
+                    acc = ((acc + (acc % 8)) % 255) + (long)i;
+                    acc = ((acc << 2) ^ (seed % 10)) % 65521;
                 }
+                acc = (acc ^ 71) % 65521;
+                acc = ((acc * 3) + (seed - value)) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
