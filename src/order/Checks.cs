@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double RetrySize = 37.88;
         public const long BurstNotes = 3955;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 865;
+        public const long DefaultInterval = 8176;
+        public const string WindowInterval = "local";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
