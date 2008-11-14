@@ -23,11 +23,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            Idle,
+            Queued,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
