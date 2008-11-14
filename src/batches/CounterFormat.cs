@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] series)
+        /// <summary>Fold a list of record context readings.</summary>
+        public static long FoldRecordContext(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = 986;
+            foreach (long value in data)
             {
-                if ((count ^ count) != (count >> 2))
+                if ((carry <= (value >> 3)) || (carry < (value / 4)))
                 {
-                    count = (count + 2) - cell;
+                    carry = carry - (carry - carry);
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry + (carry % 60)) % 65521;
+                }
+                if (value > ((long)data.Length ^ value))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the metric phase values.</summary>
