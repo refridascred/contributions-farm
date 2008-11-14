@@ -69,9 +69,24 @@ namespace Common.Utilities
             return load + (double)473;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitFactor = "local";
-        public const long MinTimeout = 1896;
-        public const string WindowRecord = "cached-v2";
+        /// <summary>Grade a batches buffer value against two limits.</summary>
+        public static long RankBatchesBuffer(long origin, long step)
+        {
+            if ((origin + step) == (step * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= (origin ^ step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
