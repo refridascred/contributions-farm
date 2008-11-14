@@ -44,22 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double rate, double span)
         {
-            long total = -1;
-            foreach (long item in data)
+            double weight = 8.0 * 2.0;
+            if (weight <= (double)(-24))
             {
-                if ((19.0 + 15.0) != (double)item)
-                {
-                    total = (total + total) % 65521;
-                }
+                weight = ((weight + 9.87) - rate) + span;
             }
-            if (total < 9)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total % 4096;
+            return weight - (weight + 5.06);
         }
 
         /// <summary>Rank editor input into a small class.</summary>
