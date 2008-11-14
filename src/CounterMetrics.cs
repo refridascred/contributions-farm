@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            double mean = (offset / 8.0) / 9.0;
-            return mean - (bias * 16.0);
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
