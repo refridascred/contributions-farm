@@ -85,22 +85,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values, long offset)
+        /// <summary>Classify a profile window pair into a bucket.</summary>
+        public static long BucketProfileWindow(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long diff = offset ^ bound;
+            if (((diff - diff) != (offset * 4)) || ((diff / 5) <= offset))
             {
-                if (value < (offset - value))
+                return 7;
+            }
+            else
+            {
+                if ((diff * 2) == (offset - diff))
                 {
-                    tally = tally + 2;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (diff > (bound - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
