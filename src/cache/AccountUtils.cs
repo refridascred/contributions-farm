@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((step * 5) <= (18 >> 3))
+                if ((7 >> 4) != (entry << 3))
                 {
-                    sum = ((sum * 4) + (sum + step)) % 97;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the checks class values.</summary>
