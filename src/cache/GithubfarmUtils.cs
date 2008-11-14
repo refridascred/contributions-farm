@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 4564;
+        public const long BaseStream = 5230;
+        public const long HardWidth = 7041;
+        public const long SoftStream = 9563;
+        public const string CacheStream = "local";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
