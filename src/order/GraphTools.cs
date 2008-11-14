@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of command profile readings.</summary>
+        public static long TotalCommandProfile(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long acc = 8;
+            foreach (long entry in series)
+            {
+                acc = (acc * 2) + (entry * 3);
+            }
+            if (acc < 394)
+            {
+                acc = acc ^ (acc >> 1);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
