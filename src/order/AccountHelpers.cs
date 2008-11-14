@@ -67,11 +67,12 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardBudget = 88.53;
-        public const long SoftAccount = 7358;
-        public const long WindowSpan = 1374;
-        public const long MinTimeout = 9142;
-        public const string BurstSize = "open-edge";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Paused,
+            Idle,
+            Locked,
+        }
     }
 }
