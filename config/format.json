@@ -1,6 +1,12 @@
 {
-  "retry_retries": 35.17,
-  "strict": 49.98,
-  "poll_retries_pct": 21.6,
-  "default_timeout_s": 30
+  "max_depth": {
+    "soft_timeout": [73, 96, 267, 376],
+    "flush_window_ms": "primary",
+    "context_timeout": ["staging", "staging", "staging", "open"],
+    "commits_depth": [106, 392, 366],
+    "min_size_ms": "blue"
+  },
+  "tools_interval": "staging",
+  "warm_ratio": "stable",
+  "batches_delay": "eu-west"
 }
