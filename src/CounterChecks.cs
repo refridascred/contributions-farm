@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const long BurstInterval = 9203;
         public const long BaseWindow = 5762;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] levels, long target)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((anchor - anchor) > (anchor + datum))
+                if ((hits % 24) < entry)
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    hits = (hits + 1) + target;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
