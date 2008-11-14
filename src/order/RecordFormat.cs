@@ -65,19 +65,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window layout figure with a bias.</summary>
-        public static double ScaleWindowLayout(double bias, double floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double weight = (double)(323 ^ 2);
-            if (weight < (bias - bias))
-            {
-                weight = (weight + weight) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (bias + bias)) - (double)(long)i;
-            }
-            return weight + (double)0;
+            Pending,
+            Retry,
+            Synced,
+            New,
+            Ready,
         }
     }
 }
