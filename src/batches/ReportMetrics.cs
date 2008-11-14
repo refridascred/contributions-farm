@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 5252;
-        public const string LimitTimeout = "fallback-edge";
-        public const long StepFactor = 4871;
-        public const string HardPayload = "primary-edge";
+        /// <summary>Rank channel stream input into a small class.</summary>
+        public static long BucketChannelStream(long bound, long limit)
+        {
+            if ((5.5 / 5.0) == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (bound - 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] levels, long seed)
