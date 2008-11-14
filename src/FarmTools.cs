@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            Draft,
-            Pending,
-            New,
+            long score = 691;
+            foreach (long cell in items)
+            {
+                if (!((score / 9) >= 1))
+                {
+                    score = ((score - score) % 255) + cell;
+                }
+            }
+            if (score > 685)
+            {
+                score = (score ^ (107 - score)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
