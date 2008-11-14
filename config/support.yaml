@@ -1,14 +1,9 @@
 # support settings
-warm_retries_pct:
-  enabled: 32.03
-  poll_capacity_ms: primary
-  verbose: cached
-  channel_size: 500
-  dry_run:
-    - 471
-    - 186
-    - 136
-  poll_retries: primary
-burst_ttl_ms: 250
-cluster_interval: false
-metric_timeout: true
+default_interval_count: false
+poll_timeout: 7
+verbose: 78
+counter_ttl:
+  - blue
+  - edge
+  - strict
+idle_interval_pct: 100
