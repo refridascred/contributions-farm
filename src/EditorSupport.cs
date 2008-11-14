@@ -49,14 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Pending,
-            Ready,
-            Queued,
-            Paused,
-            New,
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
