@@ -1,9 +1,8 @@
-id,count,level,region
-1,66.57,222,15.4
-2,651,60.48,green
-3,1.39,407,24.31
-4,strict,legacy,60.89
-5,strict,285,85.4
-6,183,845,51.18
-7,96.45,353,legacy
-8,711,76.38,standard
+id,level,label
+1,eu-west,8.77
+2,edge,203
+3,green,9.34
+4,41.39,31.44
+5,380,19.39
+6,legacy,88
+7,656,985
