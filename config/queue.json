@@ -1,5 +1,5 @@
 {
-  "command_ratio": "local",
-  "verbose": "green",
-  "flush_threshold": [210, 483]
+  "dry_run": true,
+  "verbose": 100,
+  "enabled": 10
 }
