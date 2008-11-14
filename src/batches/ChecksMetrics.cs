@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool CheckEntryChecksLimits(long[] values, long origin)
         {
-            double scale = (6.81 + floor) - (floor / 9.0);
-            return (scale - floor) + gain;
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank token input into a small class.</summary>
