@@ -54,13 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            Synced,
-            Retry,
-            Idle,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
