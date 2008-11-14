@@ -41,22 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry * 3) <= (seen >> 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
