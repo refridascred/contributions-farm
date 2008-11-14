@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (sample >= (count - count))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a order header.</summary>
