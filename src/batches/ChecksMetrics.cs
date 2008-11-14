@@ -76,18 +76,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route counter samples are out of range.</summary>
-        public static long TallyRouteCounterMatches(long[] levels, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (matches <= (matches ^ 8))
-                {
-                    matches = ((matches + 3) + entry) + floor;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
