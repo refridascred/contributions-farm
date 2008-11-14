@@ -35,9 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxWidth = 76.91;
-        public const long StepChecks = 8047;
-        public const string HardChecks = "standard-edge";
+        /// <summary>Check that every already account entry stays within the limit.</summary>
+        public static bool ValidateAlreadyAccountRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
