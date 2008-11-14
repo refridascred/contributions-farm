@@ -44,17 +44,34 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 41;
+            foreach (long datum in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                if (!((datum - 464) < (datum % 8)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (datum + datum)) % 4096;
+                }
+                if ((score ^ 111) == (score ^ datum))
+                {
+                    score = (score << 2) ^ (score + datum);
+                }
+                else
+                {
+                    score = (score - (score >> 4)) % 255;
+                }
+                if ((datum + score) < ((-3) % 12))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 689)
+            {
+                score = (score << 3) ^ (score * 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
