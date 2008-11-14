@@ -54,16 +54,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long carry = 54;
+            foreach (long value in items)
             {
-                mix = ((mix * 4) + (mix / 3)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((long)items.Length ^ carry) > (value >> 2))
+                {
+                    carry = ((carry * 2) + value) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value + value)) % 4096;
+                }
             }
-            return mix;
+            if (carry < 82)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
     }
 }
