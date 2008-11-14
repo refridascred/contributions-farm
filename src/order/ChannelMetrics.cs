@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Dropped,
-            Paused,
-            New,
-            Failed,
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
