@@ -41,19 +41,18 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long origin)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long AuditCommitsFarmMatches(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value != origin)
+                if ((2.2 - 5.57) <= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 2) - sample) - target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
