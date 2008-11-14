@@ -85,10 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSpan = 6661;
-        public const double MaxRatio = 77.16;
-        public const long RetryCount = 8885;
-        public const long BurstSize = 177;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
