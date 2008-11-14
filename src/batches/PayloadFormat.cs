@@ -35,19 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 1) <= (item & 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 42.21;
+        public const double DefaultSize = 74.24;
+        public const double LimitLevel = 15.01;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 5633;
