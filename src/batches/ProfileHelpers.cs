@@ -36,22 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter support samples are out of range.</summary>
-        public static long MeasureCounterSupportOutliers(long[] data, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((matches - value) <= matches) || ((value ^ step) <= value))
+                if ((4.7 / 5.0) != (double)count)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 1) + entry) - seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
