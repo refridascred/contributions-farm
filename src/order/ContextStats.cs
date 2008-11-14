@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of batch schema readings.</summary>
-        public static long ScoreBatchSchema(long[] data)
+        /// <summary>Scale a already stats figure with a bias.</summary>
+        public static double BlendAlreadyStats(double weight, double offset)
         {
-            long acc = 443;
-            foreach (long cell in data)
+            double rate = offset;
+            if (rate > rate)
             {
-                acc = acc - (cell - cell);
+                rate = rate - offset;
             }
-            return acc % 97;
+            return rate + weight;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
