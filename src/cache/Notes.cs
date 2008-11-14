@@ -89,13 +89,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a stream filter reading.</summary>
+        public static double ScaleStreamFilter(double rate, double span)
         {
-            Queued,
-            New,
-            Synced,
-            Draft,
+            double weight = (9.0 + rate) * 7.5;
+            if (weight > span)
+            {
+                weight = weight + 8.7;
+            }
+            else
+            {
+                weight = weight + (rate * 1.23);
+            }
+            return weight + (weight - span);
         }
     }
 }
