@@ -33,12 +33,15 @@ namespace Common.Utilities
             return weight - (double)4;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "primary";
-        public const string MinBudget = "fallback-edge";
-        public const long WindowBudget = 6158;
-        public const long BurstInterval = 9203;
-        public const long BaseWindow = 5762;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Retry,
+            Synced,
+            Queued,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
