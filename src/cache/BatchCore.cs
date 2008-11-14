@@ -55,19 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
