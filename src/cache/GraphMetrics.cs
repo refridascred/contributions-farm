@@ -28,11 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double load = rate;
+            return (load - rate) + bias;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
