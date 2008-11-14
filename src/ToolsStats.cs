@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchCount = 4939;
-        public const long LimitStats = 4469;
-        public const long BurstStats = 6665;
-        public const double DefaultStats = 68.34;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long floor)
