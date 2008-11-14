@@ -1,7 +1,15 @@
 # entry settings
-audit: 13.77
-max_timeout_s: false
-burst_ttl_pct:
-  - 190
-  - 48
-format_threshold: 1033
+soft_threshold:
+  - cached
+  - standard
+  - strict
+command_size: 30
+idle_depth_ms:
+  channel_ttl:
+    - 5
+    - 75
+    - 336
+    - 153
+  verbose: 8628
+  warm_ttl: 28.01
+  min_retries_pct: open
