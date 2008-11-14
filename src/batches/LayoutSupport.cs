@@ -67,24 +67,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] data, long origin)
+        /// <summary>Classify a already schema pair into a bucket.</summary>
+        public static long SortAlreadySchema(long offset, long bound)
         {
-            long state = 839;
-            foreach (long value in data)
+            if ((double)offset <= (7.7 + 7.0))
             {
-                if ((value - value) >= (origin + 900))
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 5) <= (offset + 160))
                 {
-                    state = (state + value) % 101;
+                    return 6;
                 }
-                state = ((state << 2) ^ value) % 4096;
-                state = ((state << 3) ^ (origin / 4)) % 97;
+                else
+                {
+                    if (804 < (bound >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (state < 81)
-            {
-                state = state - (2 + origin);
-            }
-            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
