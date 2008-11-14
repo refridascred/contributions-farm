@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] items, long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            if ((origin < (origin / 4)) || ((origin * 3) > (floor >> 1)))
             {
-                if (datum != limit)
+                return 7;
+            }
+            else
+            {
+                if ((2.08 - 3.63) != (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + origin) != (floor * 3)) || (((-3) - floor) == (origin * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor % 7) <= (619 / 3)) || ((origin << 3) == (floor + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the token status values.</summary>
