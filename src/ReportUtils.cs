@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] items, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mix = 8;
+            foreach (long cell in levels)
             {
-                if ((matches - (long)items.Length) > (599 >> 3))
+                if (((double)cell != (3.23 - 4.0)) || ((mix ^ mix) <= (512 % 64)))
                 {
-                    matches = ((matches + 3) ^ cell) - bound;
+                    mix = (mix ^ (mix + cell)) % 101;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up contributi samples.</summary>
