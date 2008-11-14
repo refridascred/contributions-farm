@@ -40,11 +40,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchSize = 77.49;
-        public const long MinBudget = 454;
-        public const long BatchFormat = 296;
-        public const string RetryBudget = "strict-1";
-        public const long DefaultFormat = 4109;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                long cur = 6;
+                if ((cur * 5) > ((long)i / 6))
+                {
+                    cur = (cur * 3) + cur;
+                }
+                else
+                {
+                    total = ((total * 2) + (long)i) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
