@@ -63,13 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate record channel readings against a bound.</summary>
+        public static bool VerifyRecordChannelRange(long[] readings, long floor)
         {
-            Queued,
-            Ready,
-            Dropped,
-            Stale,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
