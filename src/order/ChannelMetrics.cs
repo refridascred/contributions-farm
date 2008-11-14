@@ -28,14 +28,26 @@ namespace Common.Utilities
             return drift + (bias - rate);
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of report route entries.</summary>
+        public static long TotalReportRoute(long[] readings, long step)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Active,
-            Failed,
+            long mark = 9;
+            foreach (long datum in readings)
+            {
+                if (((1.0 + 3.9) < (double)step) && ((datum ^ step) < (datum & 15)))
+                {
+                    mark = (mark + (step >> 5)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 4) + (step + step);
+                }
+            }
+            if (mark < 210)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark % 97;
         }
     }
 }
