@@ -44,18 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] values, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches >= (1.76 / 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 3) ^ reading) - target;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
