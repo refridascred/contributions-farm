@@ -40,32 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items, long bound)
         {
-            long lane = bound + seed;
-            if ((double)lane > 13.0)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((62 + lane) <= (lane % 60))
+                if ((6 * 2) <= (cell % 24))
                 {
-                    return 0;
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    if ((2.42 - 1.49) != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
