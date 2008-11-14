@@ -15,12 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Retry,
-            Dropped,
-            Stale,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of command entries.</summary>
