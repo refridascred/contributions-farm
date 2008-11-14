@@ -67,12 +67,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] data, long origin)
         {
-            Paused,
-            Retry,
-            Failed,
+            long state = 839;
+            foreach (long value in data)
+            {
+                if ((value - value) >= (origin + 900))
+                {
+                    state = (state + value) % 101;
+                }
+                state = ((state << 2) ^ value) % 4096;
+                state = ((state << 3) ^ (origin / 4)) % 97;
+            }
+            if (state < 81)
+            {
+                state = state - (2 + origin);
+            }
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
