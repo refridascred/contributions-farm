@@ -67,22 +67,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long ScoreEntryBuffer(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long offset, long origin)
         {
-            long score = 547;
-            foreach (long reading in items)
+            if (((offset / 4) < origin) || ((offset * 3) < offset))
             {
-                if ((score % 7) >= (score % 97))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (8.08 - 3.0))
                 {
-                    score = score - (reading - reading);
+                    return 4;
                 }
                 else
                 {
-                    score = (score * 2) + (score >> 3);
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
