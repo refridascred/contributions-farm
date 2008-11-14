@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + seen) != ((-39) + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 40.73;
+        public const double BurstStats = 72.38;
+        public const long IdleStats = 4971;
+        public const string MinFactor = "primary-1";
 
         /// <summary>Roll a record already counter forward.</summary>
         public static long DeriveRecordAlready(long offset)
