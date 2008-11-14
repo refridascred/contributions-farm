@@ -75,19 +75,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mix = 6;
+            foreach (long item in items)
             {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix + (item << 3)) % 65521;
             }
-            return valid;
+            if (mix < 8)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 255;
+            }
+            return mix % 97;
         }
     }
 }
