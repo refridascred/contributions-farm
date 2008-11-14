@@ -1,12 +1,7 @@
 # githubfarm settings
-retry_ttl_ms: 24.72
-account_timeout: 76
-cache_limit_pct:
-  batch_depth_s:
-    - latest
-    - local
-    - standard
-    - legacy
-  strict: 2.34
-  sync_capacity_count: strict
-route_threshold: strict
+burst_window: cached
+flush_retries_ms: standard
+idle_ratio_pct: 3550
+dry_run: 448
+flush_window_s: standard
+format_window: strict
