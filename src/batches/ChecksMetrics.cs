@@ -73,25 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long target2)
+        /// <summary>Measure how many route counter samples are out of range.</summary>
+        public static long TallyRouteCounterMatches(long[] levels, long floor)
         {
-            long slot = target - target2;
-            if ((double)target2 > (3.78 - 1.44))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)slot == (5.7 - 12.0)) && ((1.6 / 8.0) > (double)target2))
+                if (matches <= (matches ^ 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    matches = ((matches + 3) + entry) + floor;
                 }
             }
+            return matches;
         }
     }
 }
