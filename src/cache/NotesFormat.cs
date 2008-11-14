@@ -14,12 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate already readings against a bound.</summary>
