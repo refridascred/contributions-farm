@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const double DefaultSize = 74.24;
         public const double LimitLevel = 15.01;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5633;
-        public const double DefaultBatch = 36.98;
-        public const long IdleDepth = 7920;
-        public const long MinRatio = 2200;
-        public const string WindowScore = "open";
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 <= (double)567)
+            {
+                weight2 = (weight2 - (bias + weight2)) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (double)6) + (double)(long)i;
+            }
+            return weight2 + bias;
+        }
     }
 }
