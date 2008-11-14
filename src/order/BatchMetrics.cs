@@ -20,38 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long bound, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if (((double)bound > (3.0 / 2.0)) && ((origin + 44) >= (93 % 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (943 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin & 127) >= (origin ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + 271) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next counter value.</summary>
