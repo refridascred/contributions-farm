@@ -56,19 +56,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long target)
         {
-            double bias = scale;
-            if (bias <= (17.0 * 8.7))
+            if (((double)3 >= (double)target) && ((double)450 <= (double)step))
             {
-                bias = bias + (scale + span);
+                return 0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias = (bias - (5.0 - 8.04)) + (double)(long)i;
+                if ((target & 255) < (step / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= (target + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step - target) < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias - 2.5;
         }
 
         /// <summary>Match up farm samples.</summary>
