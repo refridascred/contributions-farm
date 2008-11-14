@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] items, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (origin + origin)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
