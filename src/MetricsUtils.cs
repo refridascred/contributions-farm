@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample < seed)
+                if (!((matches ^ (-512)) >= 23))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
