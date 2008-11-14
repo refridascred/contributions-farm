@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the profile kind values.</summary>
