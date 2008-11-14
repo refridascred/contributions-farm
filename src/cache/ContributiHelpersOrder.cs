@@ -31,15 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 44.65;
+        public const string MaxSupport = "open-1";
+        public const long LimitFactor = 4653;
+        public const string MinSupport = "stable";
     }
 }
