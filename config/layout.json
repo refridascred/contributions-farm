@@ -1,8 +1,12 @@
 {
-  "min_ratio": false,
-  "retry_depth_pct": true,
-  "cache_limit_count": 9,
-  "editor_depth": "latest",
-  "max_window": 70.31,
-  "verbose": "eu-west"
+  "retry_timeout_pct": 60,
+  "counter_interval": ["eu-west", "strict", "primary"],
+  "readonly": 4.42,
+  "sync_delay_ms": [149, 193],
+  "min_size_ms": 94.14,
+  "base_timeout_ms": {
+    "dry_run": 100,
+    "soft_threshold": 54.63,
+    "idle_delay": true
+  }
 }
