@@ -47,18 +47,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)matches >= (9.86 + 9.64))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
             return matches;
