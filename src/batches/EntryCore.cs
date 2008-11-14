@@ -57,17 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats batches value from a seed.</summary>
-        public static long DeriveStatsBatches(long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] data, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + mark;
-                mark = (mark ^ ((long)i / 8)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
