@@ -44,34 +44,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long seed)
         {
-            long score = 41;
-            foreach (long datum in levels)
+            long step = origin + seed;
+            if (!((seed / 8) >= origin))
             {
-                if (!((datum - 464) < (datum % 8)))
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) > (origin >> 3))
                 {
-                    score = ((score << 3) ^ (datum + datum)) % 4096;
-                }
-                if ((score ^ 111) == (score ^ datum))
-                {
-                    score = (score << 2) ^ (score + datum);
+                    return 8;
                 }
                 else
                 {
-                    score = (score - (score >> 4)) % 255;
-                }
-                if ((datum + score) < ((-3) % 12))
-                {
-                    break;
+                    if (((origin * 3) < seed) && ((double)seed >= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.88 / 3.0) == (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (score > 689)
-            {
-                score = (score << 3) ^ (score * 4);
-            }
-            return score % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
