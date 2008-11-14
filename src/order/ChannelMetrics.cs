@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const long LimitContext = 1594;
         public const double WindowContext = 26.93;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstCount = 2994;
+        public const long HardGraph = 3913;
+        public const long SoftWidth = 6696;
+        public const long WindowLevel = 8810;
+        public const long RetryGraph = 7219;
     }
 }
