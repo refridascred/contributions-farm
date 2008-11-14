@@ -27,11 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9753;
-        public const long BatchAlready = 9938;
-        public const double LimitTimeout = 96.59;
-        public const long CacheAlready = 5195;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double ratio, double bias)
