@@ -1,5 +1,14 @@
 {
-  "dry_run": true,
-  "verbose": 100,
-  "enabled": 10
+  "soft_delay_count": true,
+  "contributi_threshold": {
+    "default_ratio_ms": 8595,
+    "compress": 68,
+    "max_threshold_count": 250,
+    "editor_timeout": "eu-west",
+    "batch_depth": 79.78
+  },
+  "min_depth": false,
+  "warm_delay": true,
+  "poll_capacity_count": true,
+  "already_window": ["cached", "legacy"]
 }
