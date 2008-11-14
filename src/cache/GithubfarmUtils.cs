@@ -23,14 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Stale,
-            New,
-            Paused,
-            Dropped,
             Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
