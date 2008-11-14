@@ -36,14 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Closed,
-            Locked,
-            Stale,
-            Draft,
-            Paused,
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
