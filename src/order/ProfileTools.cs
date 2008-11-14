@@ -53,22 +53,37 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank checks cache input into a small class.</summary>
-        public static long ClassifyChecksCache(long target, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long origin)
         {
-            if ((target <= (step * 3)) || ((4.2 + 1.18) >= (double)target))
+            long next = seed ^ origin;
+            if (((seed - origin) <= origin) && ((origin - next) == (origin >> 4)))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((1 + step) >= (target % 24))
+                if ((next - 24) <= (next ^ origin))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if ((origin - origin) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin < (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
