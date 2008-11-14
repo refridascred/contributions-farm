@@ -87,19 +87,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] values, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (entry != floor)
+                if (hits > 34)
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) + cell) + floor;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
