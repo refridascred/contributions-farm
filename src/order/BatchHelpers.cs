@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long RetryCluster = 8765;
         public const long BaseWidth = 1218;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Synced,
-            Dropped,
-            Draft,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleSize = 88.92;
+        public const long MinBatch = 80;
+        public const long BatchFactor = 4087;
+        public const long RetryTimeout = 7282;
+        public const long SoftBatch = 8439;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] data)
