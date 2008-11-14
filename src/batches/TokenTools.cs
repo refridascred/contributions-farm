@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((264 % 2) != (sample + sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
