@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long AuditSupportFormatHits(long[] items)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) >= (value - value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
