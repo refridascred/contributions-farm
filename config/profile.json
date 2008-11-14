@@ -1,18 +1,8 @@
 {
-  "flush_timeout_s": ["open", "cached", "edge"],
-  "base_ttl_ms": false,
-  "format_window": 15,
-  "burst_retries_pct": {
-    "flush_size": "open",
-    "layout_timeout": 25.6,
-    "entry_timeout": {
-      "farm_window": 500,
-      "batch_retries": false,
-      "burst_threshold": [322, 364],
-      "metrics_timeout": false,
-      "hard_capacity": "legacy"
-    },
-    "hard_threshold": "stable"
-  },
-  "idle_depth_count": 1429
+  "support_capacity": 100,
+  "stream_interval": true,
+  "batch_timeout": "latest",
+  "enabled": 43.79,
+  "hard_ratio_pct": "local",
+  "soft_limit": false
 }
