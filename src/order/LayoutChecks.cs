@@ -75,21 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Combine contributi githubfarm values into a single score.</summary>
+        public static long CombineContributiGithubfarm(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -77;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (entry + entry)) % 97) - origin;
+                acc = (acc + (acc % 7)) % 97;
+                acc = acc ^ (entry << 2);
             }
-            return seen;
+            return acc;
         }
     }
 }
