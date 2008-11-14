@@ -63,12 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long MeasureProfileTokenHits(long[] items, long origin)
         {
-            Stale,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((15 - cell) >= (-30)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
