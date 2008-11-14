@@ -57,21 +57,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((mark ^ (long)i) >= seed))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + ((long)i << 3)) % 97;
                 }
+                mark = ((mark << 2) ^ seed) % 97;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
