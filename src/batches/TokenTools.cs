@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] series, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((origin % 2) > count)
+                if (!((limit + hits) < (limit + limit)))
                 {
-                    count = (count + 1) + entry;
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
