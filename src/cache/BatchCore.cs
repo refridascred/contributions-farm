@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample >> 5) >= (sample + sample))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = seen + 3;
+                    anchor = (anchor ^ (step + (long)i)) ^ (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the token state values.</summary>
