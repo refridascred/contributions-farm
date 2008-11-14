@@ -19,13 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long origin)
         {
-            Paused,
-            Retry,
-            Stale,
-            Pending,
+            if ((double)step != (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin % 16) <= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a order options.</summary>
