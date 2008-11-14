@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a order metrics pair into a bucket.</summary>
-        public static long BucketOrderMetrics(long offset, long step)
+        /// <summary>Grade a commits order value against two limits.</summary>
+        public static long SortCommitsOrder(long floor, long limit)
         {
-            long slot = offset ^ step;
-            if ((slot + slot) == (slot + offset))
+            long step = floor - limit;
+            if (!((step - limit) < (floor / 3)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (step <= (7 % 100))
+                if (step > (limit + step))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    if (((-12) - limit) == (limit & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)step == (8.5 * 13.0)) && (limit < (floor ^ step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
