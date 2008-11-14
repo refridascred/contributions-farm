@@ -20,20 +20,32 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long seed, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long gap = seed ^ offset;
+            if ((offset ^ offset) < (offset + seed))
             {
-                anchor = anchor + (bound + bound);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((0.4 + 4.23) >= (double)offset) && ((double)seed != (double)54))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)gap < (16.0 * 13.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
