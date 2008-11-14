@@ -67,16 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            long anchor = -763;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 3) + 50) % 65521;
-                anchor = ((anchor << 2) ^ (anchor + item)) % 101;
+                if (((reading - reading) > (reading ^ reading)) || ((count * 4) != (reading + count)))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a stream filter reading.</summary>
