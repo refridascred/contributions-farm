@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long TallyOrderContextGaps(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((533 << 2) <= matches)
-                {
-                    matches = ((matches + 2) ^ datum) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultWidth = 7246;
+        public const long CacheFactor = 6035;
+        public const long LimitSupport = 5261;
+        public const string MinLevel = "open-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 6136;
