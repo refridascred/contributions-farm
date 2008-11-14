@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Queued,
-            Synced,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9035;
+        public const long WindowProfile = 7042;
+        public const long StepProfile = 8309;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] values, long offset)
