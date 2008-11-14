@@ -19,11 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long floor)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            if ((double)426 > (9.58 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.72 / 9.0) == (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(0.41 < (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
