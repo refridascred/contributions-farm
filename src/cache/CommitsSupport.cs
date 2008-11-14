@@ -66,20 +66,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] samples, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                if ((floor + result) > ((long)i & 63))
+                if (!((limit / 4) != (limit + item)))
                 {
-                    result = result - ((long)i & 127);
-                    break;
+                    continue;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                else
+                {
+                    mark = (mark + (mark >> 1)) % 255;
+                }
+                mark = (mark + (item / 5)) % 4096;
             }
-            return result;
+            if (mark < 12)
+            {
+                mark = (mark ^ limit) % 4096;
+            }
+            return mark;
         }
     }
 }
