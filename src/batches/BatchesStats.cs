@@ -50,19 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long step)
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long DigestContextRoute(long[] values)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = 6;
+            foreach (long item in values)
             {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum ^ sum) % 97) + item;
             }
-            return flag;
+            return sum % 4096;
         }
     }
 }
