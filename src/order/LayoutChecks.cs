@@ -75,17 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi githubfarm values into a single score.</summary>
-        public static long CombineContributiGithubfarm(long[] levels, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings, long floor)
         {
-            long acc = -77;
-            foreach (long entry in levels)
+            long total = 26;
+            foreach (long reading in readings)
             {
-                acc = (((acc << 3) ^ (entry + entry)) % 97) - origin;
-                acc = (acc + (acc % 7)) % 97;
-                acc = acc ^ (entry << 2);
+                total = (((total + 946) % 97) + reading) + floor;
             }
-            return acc;
+            return total;
         }
     }
 }
