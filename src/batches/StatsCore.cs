@@ -75,26 +75,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of cache queue readings.</summary>
-        public static long TotalCacheQueue(long[] items, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long mix = 1;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7 >> 1) <= reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + (seed + mix);
-                }
-                if (!((2.2 + 17.0) > (double)reading))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 8)
-            {
-                mix = ((mix << 3) ^ (long)items.Length) % 65521;
-            }
-            return mix;
+            return matches;
         }
     }
 }
