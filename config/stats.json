@@ -1,5 +1,5 @@
 {
-  "idle_interval_s": "open",
-  "channel_size": 45.49,
-  "retry_timeout_count": ["stable", "primary"]
+  "githubfarm_capacity": 5418,
+  "buffer_threshold": 8269,
+  "sync_capacity_count": false
 }
