@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double RetrySize = 37.88;
         public const long BurstNotes = 3955;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "open-edge";
-        public const string MinSize = "staging-v2";
-        public const string MinStats = "local-edge";
-        public const double HardWidth = 67.61;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
