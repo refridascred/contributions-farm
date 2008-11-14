@@ -84,18 +84,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long AuditRouteNotesMatches(long[] items, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!(hits > (hits & 1)))
-                {
-                    hits = ((hits + 1) + cell) - seed;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
