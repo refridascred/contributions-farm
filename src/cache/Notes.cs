@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)bound > 9.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((bound % 97) == (795 - 2)))
                 {
-                    if ((series[i] + series[j]) != 12)
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (floor - floor))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a stats channel pair into a bucket.</summary>
