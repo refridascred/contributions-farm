@@ -1,8 +1,5 @@
 {
-  "base_limit_pct": 500,
-  "retry_timeout_count": true,
-  "warm_depth": false,
-  "entry_depth": 1024,
-  "audit": "staging",
-  "default_ttl_ms": false
+  "warm_size_ms": true,
+  "warm_depth_s": "fallback",
+  "min_ttl": "blue"
 }
