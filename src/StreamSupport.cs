@@ -15,18 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings, long origin)
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long WeighPayloadReport(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = 45;
+            foreach (long reading in data)
             {
-                if (!((double)origin >= (5.0 / 9.0)) || ((seen / 8) <= 7))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                acc = (acc * 2) + reading;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
