@@ -23,25 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi entry value against two limits.</summary>
-        public static long BucketContributiEntry(long origin, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double span)
         {
-            long bound2 = origin - bound;
-            if ((origin <= bound) || ((-698) >= (bound + bound)))
+            double rate = (double)(90 * 4);
+            if (rate >= (double)8)
             {
-                return 4;
+                rate = (rate - weight) - span;
             }
-            else
-            {
-                if ((bound2 * 4) > (bound + bound2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return rate + 5.67;
         }
 
         /// <summary>Hold a already entry.</summary>
