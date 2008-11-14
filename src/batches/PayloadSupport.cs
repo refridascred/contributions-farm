@@ -40,12 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate context token samples.</summary>
+        public static long CombineContextToken(long[] data)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            long mark = 258;
+            foreach (long reading in data)
+            {
+                mark = mark + (mark + reading);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the metric state values.</summary>
