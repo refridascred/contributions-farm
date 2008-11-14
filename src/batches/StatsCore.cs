@@ -71,38 +71,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long floor2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] series)
         {
-            if (((floor / 4) <= (floor2 % 100)) || (floor > (829 / 5)))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor2 == (double)floor) || (floor < (7 & 3)))
+                if ((cell << 3) <= (hits << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor != (1.0 - 7.08))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-732) * 2) <= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
