@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long CombineOrderChecks(long[] series)
+        /// <summary>Measure how many format queue samples are out of range.</summary>
+        public static long MeasureFormatQueueGaps(long[] data, long seed)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor + (anchor << 3)) % 65521) - value;
+                if ((seen * 4) != (datum << 3))
+                {
+                    seen = (seen + 1) - seed;
+                }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
