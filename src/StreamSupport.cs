@@ -15,25 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long offset, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long gap = offset ^ target;
-            if ((double)gap == (5.7 * 11.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((860 + gap) > (target % 16)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Draft,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
