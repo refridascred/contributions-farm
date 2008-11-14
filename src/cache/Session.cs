@@ -45,13 +45,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen + seen) <= (entry * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
