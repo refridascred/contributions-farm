@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order buffer reading by value.</summary>
-        public static long LookupOrderBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 207;
+        public const double MinMetrics = 88.79;
+        public const long StepMetrics = 2460;
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
         public static long PairSchemaMetricsCount(long[] readings)
