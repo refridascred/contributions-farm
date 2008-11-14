@@ -38,15 +38,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a metrics record counter forward.</summary>
-        public static long DeriveMetricsRecord(long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Pending,
+            Ready,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
