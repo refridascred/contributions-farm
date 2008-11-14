@@ -23,13 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            if (3.9 < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.8 * 2.0) > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up route buffer samples.</summary>
