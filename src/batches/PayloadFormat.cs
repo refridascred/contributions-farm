@@ -23,21 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long acc = -941;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc - acc) % 255) - sample;
-                acc = acc - bound;
-                acc = (acc ^ (bound & 31)) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc > 302)
-            {
-                acc = (acc + (bound + acc)) % 97;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
