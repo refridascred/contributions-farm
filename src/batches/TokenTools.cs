@@ -19,19 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool ValidateBufferReportRange(long[] readings, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long acc = 20;
+            foreach (long value in series)
             {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (value >> 5)) % 65521;
+                acc = (acc - (47 - value)) % 65521;
             }
-            return flag;
+            if (acc < 2)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a record already counter forward.</summary>
