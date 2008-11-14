@@ -27,9 +27,15 @@ namespace Common.Utilities
         public const long MaxSpan = 1401;
         public const long DefaultDepth = 6463;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 44.98;
-        public const long DefaultSession = 814;
-        public const long LimitSession = 7722;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
