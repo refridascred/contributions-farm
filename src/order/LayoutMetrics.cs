@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = span;
+            if (gain <= (gain - gain))
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + rate;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)5;
+            }
+            return gain + rate;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
