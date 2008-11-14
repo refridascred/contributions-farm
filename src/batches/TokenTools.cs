@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = 9;
+            foreach (long value in series)
             {
-                if ((double)seen > (4.9 + 7.9))
+                if (((step + sum) == (step + value)) || ((step % 10) > (sum % 2)))
                 {
-                    seen = (seen + 3) ^ entry;
+                    sum = ((sum * 2) + (value % 7)) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
