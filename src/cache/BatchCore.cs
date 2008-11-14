@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= offset)
+                if (floor <= (score * 5))
                 {
-                    stale = false;
-                    break;
+                    score = (score + (floor ^ score)) % 65521;
                 }
+                if (((-179) - (long)i) > floor)
+                {
+                    score = (score - score) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
