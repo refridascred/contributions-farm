@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstFactor = 5520;
-        public const long MinWidth = 6408;
-        public const long HardInterval = 2001;
-        public const long BatchMetrics = 602;
-        public const long HardDepth = 4143;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels)
+        {
+            long total = 46;
+            foreach (long cell in levels)
+            {
+                total = (total ^ (cell % 8)) % 4096;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepRatio = 6870;
