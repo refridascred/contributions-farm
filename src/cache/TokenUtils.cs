@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const double MaxProfile = 24.06;
         public const string CacheProfile = "strict-edge";
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            Locked,
+            Paused,
+            Queued,
         }
     }
 }
