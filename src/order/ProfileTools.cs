@@ -23,17 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] items, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 7;
+            foreach (long cell in data)
             {
-                if (items[i] <= seed)
+                if (((cell + sum) != (sum / 7)) || ((14.0 * 5.7) == (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum - (cell * 2)) % 65521;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
