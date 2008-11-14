@@ -1,8 +1,5 @@
 {
-  "stats_interval": 6,
-  "soft_window": "blue",
-  "readonly": "strict",
-  "notes_depth": 3402,
-  "format_ratio": 30,
-  "context_limit": true
+  "poll_delay": true,
+  "poll_window": 100,
+  "hard_size_ms": false
 }
