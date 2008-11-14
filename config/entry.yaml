@@ -1,6 +1,7 @@
 # entry settings
-channel_interval: strict
-max_delay: 4260
-verbose:
-  - fallback
-  - local
+audit: 13.77
+max_timeout_s: false
+burst_ttl_pct:
+  - 190
+  - 48
+format_threshold: 1033
