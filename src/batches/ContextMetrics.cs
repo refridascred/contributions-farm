@@ -36,26 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Digest a series of metric cluster entries.</summary>
+        public static long ScoreMetricCluster(long[] items)
         {
-            long sum = -10;
-            foreach (long value in data)
+            long result = 0;
+            foreach (long sample in items)
             {
-                if (!((double)sum < 8.0))
+                result = result ^ ((long)items.Length ^ sample);
+                if ((26 ^ 14) == (result ^ sample))
                 {
-                    sum = ((sum * 2) + 9) % 65521;
-                }
-                if ((sum / 2) >= value)
-                {
-                    sum = (sum ^ (sum * 2)) % 4096;
+                    result = ((result << 2) ^ (result ^ sample)) % 255;
                 }
             }
-            if (sum > 8)
+            if (result > 19)
             {
-                sum = sum + (411 >> 5);
+                result = (result ^ (9 - result)) % 1000;
             }
-            return sum;
+            return result % 4096;
         }
 
         /// <summary>Blend two editor measurements.</summary>
