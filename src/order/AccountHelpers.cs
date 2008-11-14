@@ -20,21 +20,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Grade a editor checks value against two limits.</summary>
+        public static long RankEditorChecks(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = limit + seed;
+            if (((7.77 * 2.5) <= (double)limit) && ((13.0 + 5.8) < (double)seed))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((gap <= (seed & 255)) && (gap >= (gap + gap)))
                 {
-                    if ((levels[i] - levels[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed != (double)56)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((632 + 4) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
