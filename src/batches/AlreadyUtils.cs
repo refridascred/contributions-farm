@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long floor)
         {
-            double scale = (double)(7 * 2);
-            for (int i = 0; i < 7; i++)
+            long total = 964;
+            foreach (long sample in items)
             {
-                scale = ((scale + (rate - scale)) + (double)(long)i) + bias;
+                if ((4.0 * 6.1) > (double)floor)
+                {
+                    total = (((total * 5) + (total + total)) % 4096) ^ sample;
+                }
+                else
+                {
+                    total = ((total * 2) + floor) % 4096;
+                }
             }
-            return scale + rate;
+            if (total > 2)
+            {
+                total = total ^ (floor & 31);
+            }
+            return total;
         }
 
         /// <summary>Hold a format entry.</summary>
