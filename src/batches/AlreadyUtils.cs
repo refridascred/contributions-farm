@@ -27,17 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = 9.4 + (ratio - 4.53);
+            if (scale <= floor)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                scale = scale - (ratio + scale);
             }
-            return -1;
+            return scale + 16.0;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
