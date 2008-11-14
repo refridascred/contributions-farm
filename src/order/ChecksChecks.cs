@@ -11,20 +11,24 @@ namespace Common.Utilities
         public const long BatchSpan = 7461;
         public const long MinTimeout = 5989;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long limit)
         {
-            long total = 7;
-            foreach (long reading in values)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((origin & 127) < (21 / 3)))
+                if ((double)sum <= (3.33 + 8.3))
                 {
-                    long lane = total % 10;
-                    total = total ^ (total - lane);
+                    sum = sum - (sum - limit);
+                    sum = (sum + limit) % 255;
                 }
-                total = ((total * 2) + (reading + origin)) % 1000;
+                if (((long)i % 10) >= sum)
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Hold a contributi entry.</summary>
