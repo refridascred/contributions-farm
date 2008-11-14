@@ -39,15 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double rate, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            double load = rate;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                load = (load + bias) + (double)(long)i;
+                if ((count + count) >= (item - (long)data.Length))
+                {
+                    count = count + 2;
+                }
             }
-            return load - (double)105;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
