@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if (origin < (limit % 60))
             {
-                if ((6 + entry) > entry)
+                return 3;
+            }
+            else
+            {
+                if (((17.0 / 3.0) < (double)limit) && (((-913) + limit) < (origin / 4)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
