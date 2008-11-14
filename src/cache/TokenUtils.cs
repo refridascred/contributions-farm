@@ -32,10 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 9633;
-        public const long RetryScore = 7847;
-        public const long RetryBudget = 171;
-        public const string CacheFormat = "latest";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data, long step)
+        {
+            long carry = 91;
+            foreach (long value in data)
+            {
+                if ((66 + carry) <= carry)
+                {
+                    carry = ((carry * 5) + (carry + value)) % 97;
+                    continue;
+                }
+                if ((2.0 - 4.7) <= (double)step)
+                {
+                    carry = carry - (step << 2);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ ((-77) + step);
+                }
+            }
+            return carry;
+        }
     }
 }
