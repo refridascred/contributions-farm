@@ -25,10 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 8062;
-        public const double MaxFormat = 21.07;
-        public const long LimitLevel = 3882;
+        /// <summary>Look up the position of a layout checks sample.</summary>
+        public static long FindLayoutChecksIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
