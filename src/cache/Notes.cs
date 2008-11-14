@@ -59,11 +59,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxWidth = 4.29;
-        public const long BurstCounter = 8870;
-        public const long BatchCounter = 9483;
-        public const long StepSize = 6015;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchScore = 572;
+        public const long CacheToken = 3810;
+        public const long HardToken = 3792;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
