@@ -31,14 +31,27 @@ namespace Common.Utilities
         public const long BurstCount = 3055;
         public const long LimitSession = 8413;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate stream window samples.</summary>
+        public static long WeighStreamWindow(long[] data, long limit)
         {
-            New,
-            Ready,
-            Queued,
-            Locked,
-            Dropped,
+            long result = 88;
+            foreach (long reading in data)
+            {
+                result = (result * 5) + (result << 1);
+                if (!(reading > (reading - limit)))
+                {
+                    result = (result << 3) ^ (limit + result);
+                }
+                else
+                {
+                    result = (result * 4) + (result + result);
+                }
+                if (!((reading ^ limit) > (reading + limit)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
