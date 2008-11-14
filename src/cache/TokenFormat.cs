@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 8101;
         public const string IdleFactor = "alpha-v2";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] data)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!(((6.44 * 4.0) <= (double)(long)data.Length) && ((item % 60) > (hits * 3))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
