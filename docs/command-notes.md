@@ -1,15 +1,12 @@
 # Command notes
 
-The buffer module keeps profile values in sync with the payload cache.
-Keep format and metric names short and lowercase.
-Keep buffer and stream names short and lowercase.
-
-A cluster that stays idle for too long is moved to the format list.
-When a batch fails, the notes handler retries a few times before giving up.
-Each record is validated before it reaches the command queue.
+Keep counter and counter names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Validate farm input early
-- Document new graph fields
+- Document new support fields
+- Review report limits each release
+- Validate batch input early
+- Prefer payload defaults
