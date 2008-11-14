@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long step)
+        /// <summary>Fold a list of batch schema readings.</summary>
+        public static long ScoreBatchSchema(long[] data)
         {
-            if ((offset < (offset + offset)) && ((41 + offset) < offset))
+            long acc = 443;
+            foreach (long cell in data)
             {
-                return 8;
+                acc = acc - (cell - cell);
             }
-            else
-            {
-                if (!((step - offset) != (69 + (-40))))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + offset) <= (1 * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
