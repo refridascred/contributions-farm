@@ -63,11 +63,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheCount = "primary";
-        public const long LimitDepth = 7469;
-        public const long HardCache = 295;
-        public const long SoftDepth = 9491;
-        public const long RetryCache = 3536;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Queued,
+            Paused,
+            Closed,
+            Idle,
+            New,
+        }
     }
 }
