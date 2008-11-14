@@ -39,9 +39,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 2344;
-        public const long SoftContext = 9598;
-        public const double CacheLevel = 12.17;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] items, long origin)
+        {
+            long sum = 929;
+            foreach (long sample in items)
+            {
+                sum = (((sum - (sum ^ 8)) % 1000) - sample) - origin;
+            }
+            return sum % 4096;
+        }
     }
 }
