@@ -17,12 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of stream window readings.</summary>
+        public static long CombineStreamWindow(long[] series, long offset)
         {
-            Active,
-            Pending,
-            Draft,
+            long mix = 5;
+            foreach (long value in series)
+            {
+                if (((mix - 3) != (offset << 3)) && (value < (mix << 2)))
+                {
+                    mix = ((mix * 3) + (value ^ 5)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
