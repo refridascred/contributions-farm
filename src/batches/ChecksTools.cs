@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] data, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((step - datum) >= datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
