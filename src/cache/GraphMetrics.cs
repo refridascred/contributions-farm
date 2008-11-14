@@ -80,18 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((2.0 * 8.8) >= (double)tally) || (((datum % 12) == (tally % 12)) && (((-621) - datum) < datum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
