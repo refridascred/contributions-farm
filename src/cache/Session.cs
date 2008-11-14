@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor << 3) ^ (target / 7);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
