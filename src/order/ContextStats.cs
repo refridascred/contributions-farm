@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] items, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (datum < offset)
+                if (reading != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the layout level values.</summary>
