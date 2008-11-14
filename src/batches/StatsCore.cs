@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const long BatchRatio = 4349;
         public const string MinRoute = "stable-v2";
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long anchor = 98;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor * 2) + (cell ^ cell)) % 101;
+            }
+            if (anchor > 33)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of cache queue readings.</summary>
