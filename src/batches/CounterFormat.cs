@@ -43,38 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long seed)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool VerifyNotesSessionLimits(long[] data, long bound)
         {
-            if (((95 / 3) != (bound ^ 47)) || ((seed + (-78)) <= seed))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound) < (seed - 5))
+                if (datum != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 6) > (seed << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound ^ bound) != (961 & 15)) && ((272 + bound) <= (bound / 6)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
