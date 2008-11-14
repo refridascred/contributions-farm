@@ -81,18 +81,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                if (!(((double)offset != (2.24 + 9.7)) || ((5.4 - 4.3) == (double)matches)))
+                if ((7.09 / 7.0) < (double)datum)
                 {
-                    matches = (matches + 2) - item;
+                    acc = (acc + (datum / 6)) - seed;
+                }
+                if (!((datum >> 2) < 964))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
