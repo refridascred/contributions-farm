@@ -25,14 +25,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] data, long offset)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Retry,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
