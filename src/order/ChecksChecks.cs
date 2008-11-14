@@ -26,31 +26,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a already cache value against two limits.</summary>
-        public static long GradeAlreadyCache(long offset, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((1.7 - 16.0) != (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(0.7 <= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 64) != (7 + 930))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Failed,
+            Active,
         }
     }
 }
