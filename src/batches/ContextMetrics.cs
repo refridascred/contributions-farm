@@ -32,23 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric cluster entries.</summary>
-        public static long ScoreMetricCluster(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = 0;
-            foreach (long sample in items)
-            {
-                result = result ^ ((long)items.Length ^ sample);
-                if ((26 ^ 14) == (result ^ sample))
-                {
-                    result = ((result << 2) ^ (result ^ sample)) % 255;
-                }
-            }
-            if (result > 19)
-            {
-                result = (result ^ (9 - result)) % 1000;
-            }
-            return result % 4096;
+            Stale,
+            Pending,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Blend two editor measurements.</summary>
