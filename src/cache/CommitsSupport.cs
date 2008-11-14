@@ -57,13 +57,16 @@ namespace Common.Utilities
             return drift + (bias * 7.0);
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine already metric values into a single score.</summary>
+        public static long DigestAlreadyMetric(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long carry = 86;
+            foreach (long sample in levels)
+            {
+                carry = ((carry ^ sample) % 65521) + limit;
+                carry = ((carry << 3) ^ (sample >> 3)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate counter samples.</summary>
