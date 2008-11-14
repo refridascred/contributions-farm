@@ -38,31 +38,22 @@ namespace Common.Utilities
         public const long BurstFilter = 4252;
         public const long MinInterval = 7981;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items, long seed)
         {
-            if (((target - target) != (floor / 5)) && ((floor % 12) < floor))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (target % 97))
+                if ((double)count <= (1.33 - 9.7))
                 {
-                    return 3;
+                    count = ((count + 2) + cell) - seed;
                 }
                 else
                 {
-                    if ((target & 63) < (-52))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
