@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool GuardGithubfarmClusterRange(long[] values, long floor)
         {
-            Queued,
-            Ready,
-            Active,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
