@@ -30,23 +30,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] items, long floor)
-        {
-            long total = 97;
-            foreach (long value in items)
-            {
-                if (!((double)value > (3.72 + 4.9)))
-                {
-                    total = (((total << 3) ^ (total / 2)) % 65521) + floor;
-                }
-                else
-                {
-                    total = ((total * 4) + (3 % 7)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 515;
+        public const double SoftSpan = 62.22;
+        public const long LimitProfile = 9349;
 
         /// <summary>Match up already samples.</summary>
         public static long OverlapAlreadyCount(long[] series)
