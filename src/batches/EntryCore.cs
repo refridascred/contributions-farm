@@ -49,11 +49,14 @@ namespace Common.Utilities
         public const long MinGraph = 4526;
         public const double WindowLevel = 83.77;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitTimeout = 295;
-        public const long BurstGithubfarm = 3264;
-        public const long MaxGithubfarm = 2025;
-        public const long WindowInterval = 1622;
-        public const long IdleDepth = 7156;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Idle,
+            Locked,
+            Pending,
+            Active,
+            Closed,
+        }
     }
 }
