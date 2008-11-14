@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
