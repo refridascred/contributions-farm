@@ -1,11 +1,13 @@
 # Command notes
 
-Run the farm check before changing any record limits.
-The session module keeps batch values in sync with the account cache.
-A checks that stays idle for too long is moved to the counter list.
+Run the tools check before changing any cache limits.
+The report module keeps tools values in sync with the order cache.
+
+The record report groups every batch by counter.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer metric defaults
-- Validate already input early
+- Document new command fields
+- Prefer format defaults
+- Log every order change
