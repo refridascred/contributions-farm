@@ -88,14 +88,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Roll a counter stats counter forward.</summary>
+        public static long StepCounterStats(long limit)
         {
-            Queued,
-            Paused,
-            Closed,
-            Idle,
-            New,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((total & 31) > (total + (long)i)))
+                {
+                    total = ((total * 4) + (limit + limit)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
