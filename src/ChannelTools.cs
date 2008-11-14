@@ -14,25 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Rank buffer layout input into a small class.</summary>
+        public static long GradeBufferLayout(long limit, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            if ((75 + offset) >= offset)
             {
-                if ((floor + floor) == (floor >> 4))
+                return 0;
+            }
+            else
+            {
+                if ((offset & 31) <= offset)
                 {
-                    acc = ((acc << 3) ^ (209 + floor)) % 4096;
-                    acc = (acc ^ floor) % 97;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc ^ (acc / 2)) % 4096;
-                    acc = ((acc * 4) + ((long)i - acc)) % 255;
+                    if ((limit >> 1) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit == (8.1 + 4.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Hold a record info.</summary>
