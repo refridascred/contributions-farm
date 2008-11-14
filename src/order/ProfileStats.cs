@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                if (offset >= (7 - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
