@@ -18,27 +18,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long target)
         {
-            long result = 786;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (target < (long)i)
                 {
-                    result = (result ^ ((long)i / 5)) % 4096;
+                    sum = (sum ^ sum) % 255;
                 }
-                result = (result ^ result) % 4096;
-                if (((24 * 3) < (sample + 317)) && ((sample % 3) == (origin + 24)))
-                {
-                    result = result ^ (sample + result);
-                }
-                if (((58 + sample) < (result - sample)) || ((origin & 7) >= (sample * 2)))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Combine report values into a single score.</summary>
