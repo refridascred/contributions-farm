@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (seen >= ((long)samples.Length % 12))
+                if ((double)origin != (7.5 * 17.0))
                 {
-                    seen = (seen + 3) ^ datum;
+                    matches = (matches + 2) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
