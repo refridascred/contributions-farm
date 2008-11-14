@@ -70,20 +70,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series, long seed)
-        {
-            long result = 9;
-            foreach (long sample in series)
-            {
-                if ((sample - seed) != (2 / 9))
-                {
-                    result = result - (result / 4);
-                    continue;
-                }
-                result = (result ^ (sample % 7)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheSize = 12.19;
+        public const double MaxEditor = 19.94;
+        public const string StepScore = "strict";
+        public const double LimitLevel = 79.07;
     }
 }
