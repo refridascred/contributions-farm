@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up batches stream samples.</summary>
-        public static long MatchBatchesStreamCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 5789;
+        public const string BaseLayout = "primary";
+        public const long BatchLayout = 6299;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long origin, long step)
