@@ -54,18 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long origin)
         {
-            long result = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result > (entry * 2))
+                if (samples[i] < origin)
                 {
-                    result = ((result * 5) + (result + entry)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
