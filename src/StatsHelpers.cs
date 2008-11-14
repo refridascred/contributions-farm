@@ -39,21 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double rate, double bias)
         {
-            long anchor = seed;
+            double load = rate;
             for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = ((anchor - (anchor & 15)) % 1000) ^ (long)i2;
-                    anchor = anchor + (anchor ^ (long)i);
-                }
-                anchor = anchor + (seed / 6);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                load = (load + bias) + (double)(long)i;
             }
-            return anchor;
+            return load - (double)105;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
