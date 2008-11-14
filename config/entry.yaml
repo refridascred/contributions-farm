@@ -1,14 +1,14 @@
 # entry settings
-strict:
-  default_size_pct:
-    - 61
-    - 260
-  flush_interval: staging
-  notes_retries: 54.52
-  enabled:
-    - 459
-    - 195
-    - 44
-checks_threshold: 40.08
-soft_timeout: 3867
-dry_run: 250
+cache_interval:
+  layout_retries: 98
+  cluster_limit: 7.65
+  warm_timeout_ms: 95.03
+  flush_interval_pct: 28.89
+flush_timeout_s:
+  - 125
+  - 19
+soft_ttl_count:
+  - 292
+  - 215
+  - 155
+  - 427
