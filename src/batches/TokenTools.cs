@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank buffer profile input into a small class.</summary>
-        public static long BucketBufferProfile(long floor, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            if ((offset <= (floor & 255)) || ((double)offset < (double)2))
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((floor ^ offset) == (offset ^ offset)))
+                if (!(7 <= (mix + mix)))
                 {
-                    return 3;
+                    mix = (mix ^ (mix / 9)) % 1000;
                 }
-                else
-                {
-                    if ((1 % 64) >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = (mix - ((long)i - mix)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Describe the token class values.</summary>
