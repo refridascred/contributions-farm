@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=118
-log "limit is ${BUFFER_LIMIT}"
-
-for item in eu-west open latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
