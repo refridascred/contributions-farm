@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Dropped,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultBudget = 68.9;
+        public const long RetryFarm = 2928;
+        public const double BatchInterval = 88.8;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelGaps(long[] data)
