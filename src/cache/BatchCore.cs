@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record payload entries.</summary>
-        public static long FoldRecordPayload(long[] samples, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long target)
         {
-            long result = 17;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (17.0 < (double)result)
+                if ((target - 29) > (datum / 3))
                 {
-                    result = ((result * 4) + sample) % 65521;
+                    seen = seen + 3;
                 }
             }
-            if (result < 88)
-            {
-                result = (result * 4) + (limit - result);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every order contributi entry stays within the limit.</summary>
