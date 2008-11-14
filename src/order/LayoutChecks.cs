@@ -54,13 +54,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Failed,
-            Idle,
-            Stale,
-            Synced,
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
