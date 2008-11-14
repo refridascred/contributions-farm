@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((mix + limit) > 61) || ((2 + 179) <= limit))
-                {
-                    mix = (mix * 5) + limit;
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (mix + mix)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
