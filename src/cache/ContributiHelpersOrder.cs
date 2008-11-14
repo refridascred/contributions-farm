@@ -25,13 +25,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((-688) < (value >> 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
