@@ -1,5 +1,11 @@
 # support settings
-persist: legacy
-batch_threshold_ms: 8167
-retry_delay_ms: stable
-base_size: 500
+record_limit: 88.76
+flush_size_count:
+  - 113
+  - 416
+  - 265
+  - 328
+verbose: 250
+default_timeout: fallback
+burst_depth_ms: 250
+idle_window_count: false
