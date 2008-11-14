@@ -57,18 +57,18 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((2 <= (matches << 1)) || ((matches << 2) <= (597 ^ sample)))
+                if (entry >= (tally << 1))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
