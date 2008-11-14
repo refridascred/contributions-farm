@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double load = rate;
-            if (load <= load)
-            {
-                load = load + (5.74 * 5.9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + 9.0;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
