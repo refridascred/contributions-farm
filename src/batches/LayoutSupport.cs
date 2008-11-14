@@ -10,32 +10,10 @@ namespace Common.Utilities
         public const string BaseLayout = "primary";
         public const long BatchLayout = 6299;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long step)
-        {
-            if (((double)origin <= (double)step) || (origin < step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.0 / 6.0) >= (6.93 - 2.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 2) == (268 % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxCount = 1511;
+        public const string WindowInterval = "cached-edge";
+        public const long MinLevel = 8691;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] samples)
