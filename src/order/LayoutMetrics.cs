@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Fold a list of window batches readings.</summary>
+        public static long CombineWindowBatches(long[] series, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long state = 848;
+            foreach (long cell in series)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                state = (((state * 3) + (limit + state)) % 4096) - cell;
             }
-            return acc;
+            return state;
         }
     }
 }
