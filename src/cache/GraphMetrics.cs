@@ -16,11 +16,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultFactor = "cached-1";
-        public const long HardFactor = 6894;
-        public const double RetrySpan = 9.6;
-        public const string SoftFactor = "open";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
+        {
+            long mark = 413;
+            foreach (long value in items)
+            {
+                mark = (mark ^ (623 ^ mark)) % 101;
+                mark = mark - (mark * 5);
+                if ((3 & 63) == (value / 2))
+                {
+                    mark = mark + value;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
