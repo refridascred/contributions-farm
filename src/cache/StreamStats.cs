@@ -16,17 +16,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -2;
+            foreach (long value in samples)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
+                if ((anchor >> 2) == (4 / 2))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 4) + seed) % 65521) ^ value;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
