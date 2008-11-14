@@ -15,24 +15,13 @@ namespace Common.Utilities
         public const double CacheDepth = 17.48;
         public const string MinLevel = "open-1";
 
-        /// <summary>Digest a series of notes contributi entries.</summary>
-        public static long TotalNotesContributi(long[] data)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = 5;
-            foreach (long item in data)
-            {
-                double gain = (double)total;
-                if ((gain * 3.8) != (gain - gain))
-                {
-                    total = ((total << 2) ^ item) % 97;
-                    continue;
-                }
-                if (!(4.48 < (double)total))
-                {
-                    total = (total << 2) ^ (total >> 2);
-                }
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
