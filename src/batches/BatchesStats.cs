@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two contributi entry measurements.</summary>
+        public static double SmoothContributiEntry(double rate, double offset)
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias = offset;
+            if (bias <= (double)69)
+            {
+                bias = bias + (rate * 8.55);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (double)2;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
