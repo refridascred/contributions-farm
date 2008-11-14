@@ -42,20 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch session value from a seed.</summary>
-        public static long SeriesBatchSession(long bound)
+        /// <summary>Fold a list of profile tools readings.</summary>
+        public static long CombineProfileTools(long[] data, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = -34;
+            foreach (long datum in data)
             {
-                if (!((bound + (-49)) >= 7))
-                {
-                    acc = (acc << 3) ^ (long)i;
-                    acc = (acc - (80 << 3)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                anchor = (((anchor + 325) % 1000) + datum) - bound;
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
