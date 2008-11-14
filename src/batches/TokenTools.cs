@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] levels, long limit)
         {
-            long cur = origin + limit;
-            if (!(((-680) * 5) > (origin % 3)))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 4) < (cur << 2))
+                if (!(3 >= (count & 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((333 + 276) <= (origin / 4)) || ((double)291 != (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = ((count + 1) + value) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
