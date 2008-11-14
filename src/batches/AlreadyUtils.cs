@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long floor)
-        {
-            long total = 964;
-            foreach (long sample in items)
-            {
-                if ((4.0 * 6.1) > (double)floor)
-                {
-                    total = (((total * 5) + (total + total)) % 4096) ^ sample;
-                }
-                else
-                {
-                    total = ((total * 2) + floor) % 4096;
-                }
-            }
-            if (total > 2)
-            {
-                total = total ^ (floor & 31);
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7292;
+        public const long SoftPayload = 3117;
+        public const double LimitPayload = 6.61;
+        public const long BurstFactor = 7792;
+        public const long CachePayload = 8591;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
