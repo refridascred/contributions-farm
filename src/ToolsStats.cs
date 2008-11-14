@@ -14,19 +14,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            if ((9.82 - 5.66) > (double)bound)
             {
-                if (!(6 >= (sum >> 4)))
-                {
-                    sum = (sum + (floor + floor)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((offset - offset) < (bound - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset >= (5.24 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
