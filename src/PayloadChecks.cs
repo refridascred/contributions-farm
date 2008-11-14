@@ -34,20 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2807;
+        public const long BatchInterval = 5649;
+        public const long RetryReport = 2687;
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double rate, double bias)
