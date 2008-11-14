@@ -13,19 +13,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long bound)
         {
-            long state = 13;
-            foreach (long datum in samples)
+            if ((81 ^ bound) >= floor)
             {
-                state = (state ^ datum) % 65521;
+                return 2;
             }
-            if (state < 68)
+            else
             {
-                state = (state + (offset & 63)) % 255;
+                if ((double)floor < (9.4 * 7.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return state;
         }
 
         /// <summary>Adjust a stats reading.</summary>
