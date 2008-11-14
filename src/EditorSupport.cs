@@ -38,18 +38,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] series, long bound)
+        /// <summary>Digest a series of channel command entries.</summary>
+        public static long TallyChannelCommand(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long result = 15;
+            foreach (long reading in samples)
             {
-                if ((double)reading <= (6.0 + 9.8))
+                result = result + (result / 5);
+                if ((result % 2) > (result + reading))
                 {
-                    matches = (matches + 1) - bound;
+                    result = ((result << 2) ^ (result << 3)) % 101;
                 }
             }
-            return matches;
+            if (result < 1)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
