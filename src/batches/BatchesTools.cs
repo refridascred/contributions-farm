@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((9.0 / 4.0) != (double)cell)
+                if ((cell + count) < count)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
