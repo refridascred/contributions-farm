@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long BatchMetrics = 602;
         public const long HardDepth = 4143;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Paused,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 6870;
+        public const double BaseTimeout = 93.94;
+        public const double CacheCommand = 21.5;
+        public const long SoftCommand = 7125;
+        public const long BatchCommand = 9212;
 
         /// <summary>Derive the next farm payload value from a seed.</summary>
         public static long SeriesFarmPayload(long seed)
