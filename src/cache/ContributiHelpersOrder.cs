@@ -20,17 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long floor)
         {
-            long mix = 81;
-            foreach (long entry in series)
+            long sum = -184;
+            foreach (long sample in samples)
             {
-                mix = (mix - (entry << 1)) + limit;
-                mix = mix ^ (entry << 2);
-                mix = (mix ^ mix) % 255;
+                sum = (sum - (sample / 4)) % 97;
+                if ((202 / 7) != (sample / 9))
+                {
+                    sum = ((sum << 2) ^ (floor + sample)) % 255;
+                }
+                sum = (sum - sum) % 1000;
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
