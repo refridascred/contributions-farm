@@ -32,22 +32,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = -722;
+            foreach (long item in data)
             {
-                if (!((datum << 2) != ((long)items.Length - matches)) || ((5.0 * 4.5) <= (double)datum))
+                if ((item + acc) > acc)
                 {
-                    matches = matches + 1;
+                    acc = acc + (acc & 15);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc ^ acc) % 101;
+                }
+                if (!((acc - acc) >= (item / 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
