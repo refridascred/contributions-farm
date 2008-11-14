@@ -1,19 +1,5 @@
 {
-  "batch_depth_pct": {
-    "retry_interval": "fallback",
-    "poll_window": true,
-    "tools_ttl": false,
-    "poll_ttl": 29.09,
-    "audit": {
-      "sync_window_s": "blue",
-      "sync_retries_ms": 7,
-      "idle_delay": 43.57,
-      "retry_threshold_s": ["local", "blue", "standard", "edge"],
-      "dry_run": "local",
-      "flush_window_ms": "edge"
-    },
-    "route_threshold": 4511
-  },
-  "enabled": "strict",
-  "retry_size_s": "stable"
+  "cache_window_ms": [110, 488, 61],
+  "burst_size_count": 4344,
+  "sync_ttl_pct": false
 }
