@@ -14,14 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Queued,
-            Ready,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleScore = 5610;
+        public const long MaxCounter = 4435;
+        public const double SoftCounter = 66.71;
+        public const long DefaultCounter = 5811;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
