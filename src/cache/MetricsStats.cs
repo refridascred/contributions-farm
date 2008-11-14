@@ -62,19 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long step)
+        /// <summary>Accumulate buffer order samples.</summary>
+        public static long TotalBufferOrder(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long total = 8;
+            foreach (long item in series)
             {
-                if (sample <= step)
+                if ((item >> 1) < total)
                 {
-                    ok = false;
+                    total = (total - (item & 1)) % 65521;
+                }
+                if (!((item >> 4) >= item))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
     }
 }
