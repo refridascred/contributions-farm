@@ -48,22 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((17 % 7) != (item - seen))
-                {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitFactor = 3067;
+        public const string HardRatio = "local-v2";
+        public const long MinSpan = 8692;
     }
 }
