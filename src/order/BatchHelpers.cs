@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series)
-        {
-            long mark = 3;
-            foreach (long item in series)
-            {
-                mark = (mark - item) % 65521;
-            }
-            if (mark < 13)
-            {
-                mark = (mark - (mark >> 1)) % 97;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryBudget = 74.31;
+        public const string BurstCluster = "standard";
+        public const long IdleCluster = 1593;
+        public const long RetryCluster = 8765;
+        public const long BaseWidth = 1218;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] data)
