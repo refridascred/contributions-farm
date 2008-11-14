@@ -1,24 +1,21 @@
 # entry settings
-default_window_pct:
-  - fallback
-  - latest
-min_ttl_count:
-  idle_ttl_ms: fallback
-  compress: true
-  retry_threshold_ms:
-    burst_timeout_pct:
-      - blue
-      - edge
-    poll_interval_count: open
-    hard_ratio: cached
-  stream_threshold: 59.2
-  flush_limit: true
-  readonly:
-    - 127
-    - 16
-    - 203
-    - 214
-report_threshold: false
-persist: true
-cache_delay_ms: strict
-batch_threshold: stable
+poll_interval_count: eu-west
+readonly: 2523
+channel_delay: primary
+profile_ratio:
+  - open
+  - cached
+soft_window_pct:
+  batch_capacity_ms:
+    batch_timeout_pct: 30
+    warm_size_ms: 21
+    farm_threshold: standard
+  retry_delay_pct: 1024
+  queue_capacity:
+    flush_ttl_count: true
+    window_ttl:
+      - 498
+      - 75
+      - 412
+    poll_threshold_s: standard
+  soft_delay: green
