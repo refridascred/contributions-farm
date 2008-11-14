@@ -37,11 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBudget = 27.52;
-        public const long IdleBatches = 4078;
-        public const double HardSize = 21.12;
-        public const string BurstBatches = "primary-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1533;
+        public const double LimitQueue = 10.38;
+        public const long SoftQueue = 5368;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
