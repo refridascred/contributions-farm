@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the tools queue entries that pass the check.</summary>
-        public static long CountToolsQueueOutliers(long[] items, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((bound + 771) < entry)
+                if (((long)items.Length + seen) > sample)
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
