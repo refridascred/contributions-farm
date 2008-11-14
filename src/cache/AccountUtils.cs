@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long limit)
         {
-            double rate2 = offset / 7.0;
-            if (rate2 > rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = rate2 + (double)781;
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - 1.83) + (double)(long)i;
-            }
-            return rate2 + (19.0 * 4.57);
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
