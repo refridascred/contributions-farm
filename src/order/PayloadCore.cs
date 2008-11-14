@@ -21,23 +21,17 @@ namespace Common.Utilities
         public const long BatchLevel = 5385;
         public const double WindowTools = 85.83;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long floor)
         {
-            long sum = 7;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ (cell + sum);
-                for (int i = 0; i < 11; i++)
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    sum = ((sum - cell) % 4096) ^ (long)i;
-                }
-                if ((sum - cell) > cell)
-                {
-                    sum = sum + (sum + sum);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
