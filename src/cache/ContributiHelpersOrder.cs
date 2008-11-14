@@ -17,14 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long floor)
         {
-            Failed,
-            Idle,
-            Synced,
-            Done,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
