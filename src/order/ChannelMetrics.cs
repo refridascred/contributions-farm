@@ -13,13 +13,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long origin, long step)
         {
-            Active,
-            Synced,
-            Idle,
-            Failed,
+            if (origin <= (79 / 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ origin) < (origin + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((978 >> 5) > step) && ((8.24 + 9.8) != (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step >= (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two payload measurements.</summary>
