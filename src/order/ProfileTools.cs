@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 686;
-            foreach (long datum in levels)
-            {
-                mark = ((mark + (mark * 2)) % 101) - origin;
-                if ((11.0 * 8.15) <= (3.1 - 5.2))
-                {
-                    mark = (mark + datum) % 101;
-                }
-            }
-            if (mark < 728)
-            {
-                mark = (mark << 3) ^ 7;
-            }
-            return mark % 97;
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Digest a series of account entries.</summary>
