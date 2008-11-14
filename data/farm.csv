@@ -1,7 +1,9 @@
-id,weight,region,active
-1,local,94.61,338
-2,726,16.59,eu-west
-3,548,261,994
-4,green,70.57,68.89
-5,44.51,fallback,64.73
-6,78.23,67.91,47.78
+id,token,region
+1,cached,green
+2,39.05,cached
+3,121,standard
+4,868,178
+5,199,open
+6,4.64,latest
+7,primary,63.84
+8,standard,1.4
