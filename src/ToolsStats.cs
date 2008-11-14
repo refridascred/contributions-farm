@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BurstStats = 6665;
         public const double DefaultStats = 68.34;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(6 >= (sum >> 4)))
+                {
+                    sum = (sum + (floor + floor)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a record options.</summary>
