@@ -16,14 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a counter cache value against two limits.</summary>
+        public static long SortCounterCache(long origin, long origin2)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Ready,
-            Retry,
+            long gap = origin + origin2;
+            if ((origin2 / 9) != (gap * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin > (origin2 << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin2 - gap) <= (origin << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
