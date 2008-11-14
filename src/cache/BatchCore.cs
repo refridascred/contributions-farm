@@ -47,9 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 6324;
-        public const string MinReport = "staging";
-        public const long StepFactor = 7649;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
