@@ -15,23 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings, long origin)
         {
-            long state = -28;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                state = (state + limit) % 65521;
-                if (((limit + 42) >= (state - value)) && ((double)0 >= (double)value))
+                if (!((double)origin >= (5.0 / 9.0)) || ((seen / 8) <= 7))
                 {
-                    state = state - (limit / 8);
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            if (state > 33)
-            {
-                state = (state + limit) % 4096;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
