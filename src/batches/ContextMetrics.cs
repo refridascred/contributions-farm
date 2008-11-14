@@ -57,12 +57,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((3.73 - 4.98) != (double)(long)i)
+                {
+                    mark = mark - (floor % 60);
+                }
+                mark = (mark ^ mark) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
