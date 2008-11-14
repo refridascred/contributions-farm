@@ -1,8 +1,8 @@
 {
-  "commits_timeout": false,
-  "cache_interval_s": "stable",
-  "poll_depth_pct": 27.53,
-  "persist": 13,
-  "flush_timeout_ms": 500,
-  "idle_ttl_pct": 78.41
+  "batch_capacity": 91.84,
+  "batch_ratio": 46,
+  "metric_limit": ["stable", "local", "green"],
+  "verbose": 600,
+  "readonly": "blue",
+  "batch_timeout": false
 }
