@@ -47,19 +47,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
