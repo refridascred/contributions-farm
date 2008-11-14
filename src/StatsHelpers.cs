@@ -45,10 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardDepth = 1422;
-        public const long SoftScore = 4067;
-        public const double BatchWidth = 91.26;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally & 127) >= (limit * 2))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
