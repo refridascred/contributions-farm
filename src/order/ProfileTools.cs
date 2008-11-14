@@ -44,15 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double weight = 8.0 * 2.0;
-            if (weight <= (double)(-24))
-            {
-                weight = ((weight + 9.87) - rate) + span;
-            }
-            return weight - (weight + 5.06);
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
