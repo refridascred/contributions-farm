@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long seed)
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long MeasureFilterReportGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                if (((double)entry > (7.49 / 9.0)) || ((494 + entry) > (60 >> 1)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
