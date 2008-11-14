@@ -19,15 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context token samples.</summary>
-        public static long CombineContextToken(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = 258;
-            foreach (long reading in data)
-            {
-                mark = mark + (mark + reading);
-            }
-            return mark % 65521;
+            Synced,
+            Stale,
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the metric state values.</summary>
