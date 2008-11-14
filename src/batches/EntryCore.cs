@@ -49,14 +49,11 @@ namespace Common.Utilities
         public const long MinGraph = 4526;
         public const double WindowLevel = 83.77;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Idle,
-            Locked,
-            Pending,
-            Active,
-            Closed,
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
