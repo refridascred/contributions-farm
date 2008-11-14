@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean + 4.32;
         }
 
-        /// <summary>Digest a series of counter order entries.</summary>
-        public static long TotalCounterOrder(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long acc = 670;
-            foreach (long entry in data)
-            {
-                acc = (((acc << 3) ^ acc) % 255) - entry;
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 2) ^ (long)data.Length) % 4096;
-            }
-            return acc % 4096;
+            Locked,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
