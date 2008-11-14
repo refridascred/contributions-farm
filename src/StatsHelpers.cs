@@ -69,18 +69,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) >= (item - (long)data.Length))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
