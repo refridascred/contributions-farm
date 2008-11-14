@@ -38,11 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = ((anchor - (anchor & 15)) % 1000) ^ (long)i2;
+                    anchor = anchor + (anchor ^ (long)i);
+                }
+                anchor = anchor + (seed / 6);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel level values.</summary>
