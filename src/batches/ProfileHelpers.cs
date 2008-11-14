@@ -62,25 +62,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long offset, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long target)
         {
-            long edge = offset - step;
-            if (edge >= (step ^ 908))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (edge <= (edge - edge))
+                if (levels[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit contributi report readings against a rule.</summary>
