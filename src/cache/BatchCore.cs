@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long limit)
         {
-            long mix = 3;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                mix = ((mix << 3) ^ (mix & 31)) + datum;
-                if (mix < offset)
+                if (value < limit)
                 {
-                    mix = ((mix << 3) ^ offset) % 1000;
-                }
-                if ((4.77 + 20.0) <= (double)offset)
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mix < 39)
-            {
-                mix = ((mix * 3) + mix) % 97;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the token state values.</summary>
