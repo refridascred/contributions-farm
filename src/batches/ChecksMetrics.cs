@@ -45,23 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = 1;
-            foreach (long datum in readings)
-            {
-                mark = mark - ((long)readings.Length + datum);
-                if (!((2.1 + 6.0) >= (5.56 + 9.5)))
-                {
-                    mark = mark + (datum * 5);
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark ^ (9 - mark)) % 4096;
-            }
-            return mark % 1000;
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
