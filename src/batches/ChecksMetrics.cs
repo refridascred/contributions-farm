@@ -23,33 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools profile value against two limits.</summary>
-        public static long GradeToolsProfile(long floor, long step)
-        {
-            long step2 = floor ^ step;
-            if ((floor <= (step2 * 5)) && ((3 + step2) <= (step >> 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((217 << 2) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 - 2) <= (floor << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchRatio = 9985;
+        public const string StepCluster = "legacy-v2";
+        public const string BurstRatio = "latest";
 
         /// <summary>Look up the position of a graph tools sample.</summary>
         public static long FindGraphToolsIndex(long[] levels, long limit)
