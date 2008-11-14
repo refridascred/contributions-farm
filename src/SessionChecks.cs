@@ -44,18 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command profile samples are out of range.</summary>
-        public static long AuditCommandProfileMatches(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = 556;
+            foreach (long item in data)
             {
-                if (((sample + hits) != (hits / 3)) || (((6 + 555) > (sample >> 4)) && ((double)hits <= (9.18 / 4.0))))
+                result = ((result * 3) + offset) % 255;
+                if ((offset - result) < (offset - item))
                 {
-                    hits = hits + 2;
+                    result = ((result << 3) ^ (item + 210)) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
