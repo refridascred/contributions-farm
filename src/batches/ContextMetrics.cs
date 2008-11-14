@@ -36,12 +36,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long result = 786;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result ^ ((long)i / 5)) % 4096;
+                }
+                result = (result ^ result) % 4096;
+                if (((24 * 3) < (sample + 317)) && ((sample % 3) == (origin + 24)))
+                {
+                    result = result ^ (sample + result);
+                }
+                if (((58 + sample) < (result - sample)) || ((origin & 7) >= (sample * 2)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
