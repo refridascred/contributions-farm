@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitTimeout = 18.97;
-        public const string IdleTimeout = "staging-edge";
-        public const long WindowCache = 1658;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Find the first profile format entry that matches the target.</summary>
         public static long FindProfileFormatIndex(long[] items, long target)
