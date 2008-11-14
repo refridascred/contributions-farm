@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a graph command reading by value.</summary>
-        public static long FindGraphCommandIndex(long[] readings, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (5 - seed);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
