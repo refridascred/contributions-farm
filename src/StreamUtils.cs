@@ -48,14 +48,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data)
         {
-            Retry,
-            Closed,
-            Pending,
-            Idle,
-            Dropped,
+            long mix = 5;
+            foreach (long datum in data)
+            {
+                mix = (((mix * 4) + (mix & 3)) % 101) + datum;
+                mix = ((mix * 4) + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Project the next contributi account value.</summary>
