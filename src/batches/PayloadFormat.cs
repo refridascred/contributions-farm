@@ -14,29 +14,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long offset = floor + limit;
+            if ((offset << 2) < limit)
             {
-                if (!((47 << 2) > ((long)i + bound)))
+                return 5;
+            }
+            else
+            {
+                if ((offset / 7) != (640 << 2))
                 {
-                    total = (total + (total % 10)) % 65521;
-                    total = total ^ total;
-                }
-                if (((43 & 127) == (total - total)) && ((bound << 1) <= (total + bound)))
-                {
-                    total = (total - (bound / 6)) % 255;
+                    return 1;
                 }
                 else
                 {
-                    total = total ^ (total % 2);
+                    if ((1 <= floor) || ((479 >> 5) > offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                total = ((total << 3) ^ (long)i) % 255;
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
         }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
