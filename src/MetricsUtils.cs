@@ -40,21 +40,32 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count session account pairs that satisfy a relation.</summary>
-        public static long OverlapSessionAccountCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = bound + seed;
+            if ((double)lane > 13.0)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((62 + lane) <= (lane % 60))
                 {
-                    if ((values[i] ^ values[j]) != 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((2.42 - 1.49) != (double)bound)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
