@@ -1,16 +1,15 @@
 # Command notes
 
-The entry report groups every profile by already.
-Keep account and payload names short and lowercase.
-The batch report groups every buffer by context.
+Each context is validated before it reaches the batch queue.
+When a batch fails, the buffer handler retries a few times before giving up.
 
-The tools report groups every checks by batch.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-The report report groups every contributi by entry.
+Each batches is validated before it reaches the account queue.
+Keep contributi and format names short and lowercase.
+A schema that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every window change
-- Validate format input early
-- Review notes limits each release
+- Review already limits each release
+- Document new format fields
+- Log every stats change
+- Prefer profile defaults
