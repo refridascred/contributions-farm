@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data, long seed)
         {
-            long diff = seed + limit;
-            if (seed > (diff + limit))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff - seed) == (1 % 16))
+                if (((double)seen >= 3.59) && ((seen + 5) == (0 & 31)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    seen = ((seen + 1) + entry) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
