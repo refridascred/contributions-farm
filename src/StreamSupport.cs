@@ -33,31 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long origin2)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data)
         {
-            if (((origin / 9) >= (416 / 5)) && ((origin + origin) >= (901 + origin2)))
+            long state = 936;
+            foreach (long value in data)
             {
-                return 5;
+                state = ((state << 3) ^ value) % 65521;
+                state = (state * 5) + (long)data.Length;
+                state = (state + (5 ^ state)) % 97;
             }
-            else
-            {
-                if (((origin2 - origin) != (origin + origin2)) && (origin2 > (origin * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin << 1) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
