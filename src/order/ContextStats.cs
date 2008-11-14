@@ -61,13 +61,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            Pending,
-            Closed,
-            New,
-            Retry,
+            double ratio = (span / 8.0) / 8.0;
+            if (ratio < 4.64)
+            {
+                ratio = ratio + (bias - 9.0);
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio - span;
         }
     }
 }
