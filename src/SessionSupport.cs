@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long floor)
+        /// <summary>Count record order pairs that satisfy a relation.</summary>
+        public static long OverlapRecordOrderCount(long[] levels)
         {
-            if ((origin < (origin / 4)) || ((origin * 3) > (floor >> 1)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.08 - 3.63) != (double)floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + origin) != (floor * 3)) || (((-3) - floor) == (origin * 2)))
+                    if ((levels[i] ^ levels[j]) > 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor % 7) <= (619 / 3)) || ((origin << 3) == (floor + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the token status values.</summary>
