@@ -36,18 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((item < (item - tally)) || (52 > item)) || ((item + tally) != (item & 15)))
+                if ((double)value >= (double)step)
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
