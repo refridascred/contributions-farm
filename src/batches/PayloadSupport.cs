@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a session route reading.</summary>
-        public static double BlendSessionRoute(double scale, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings)
         {
-            double scale2 = scale / 6.0;
-            if (scale2 >= offset)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                scale2 = scale2 + scale2;
+                if ((double)seen < 8.7)
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 - (1.3 * 5.6);
+            return seen;
         }
     }
 }
