@@ -1,9 +1,6 @@
-id,token,region
-1,cached,green
-2,39.05,cached
-3,121,standard
-4,868,178
-5,199,open
-6,4.64,latest
-7,primary,63.84
-8,standard,1.4
+id,state,count,token,label
+1,open,253,977,442
+2,314,4.78,cached,74.11
+3,strict,78,75,fallback
+4,46.63,49.77,stable,738
+5,157,42.87,863,2.76
