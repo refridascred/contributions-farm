@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((9.0 + 17.0) != (double)floor) || ((floor - seen) < (0 << 2)))
+                if (data[i] > bound)
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
