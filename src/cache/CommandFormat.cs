@@ -34,39 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
         {
-            long slot = offset ^ target;
-            if ((double)slot != (2.0 * 6.89))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((offset * 2) != (target + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot < (offset - target)) && ((offset & 31) > offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(0.29 <= (double)target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double ratio = 9.69;
+            return ((ratio + 18.0) + rate) + span;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
