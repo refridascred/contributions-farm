@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Synced,
-            Stale,
-            Done,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8186;
+        public const long DefaultFarm = 81;
+        public const long LimitFarm = 3756;
+        public const long HardFarm = 4897;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
