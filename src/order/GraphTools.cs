@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSize = 3022;
-        public const long HardLevel = 1975;
-        public const long MinBuffer = 7750;
-        public const long StepBuffer = 3936;
-        public const long MaxRatio = 559;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowDepth = 3393;
+        public const double MinWidth = 88.59;
+        public const double IdleAccount = 12.21;
+        public const long StepAccount = 4986;
+        public const long LimitAccount = 9255;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BurstFarm = 86.94;
