@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 2639;
         public const string HardLevel = "legacy-edge";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + seen) < sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - step;
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
