@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Audit githubfarm context readings against a rule.</summary>
+        public static long TallyGithubfarmContextOutliers(long[] values, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((step >= (long)i) && ((9.4 * 6.02) == (double)step))
+                if (origin >= (tally + sample))
                 {
-                    carry = (carry - (carry - step)) % 101;
-                    carry = (carry + carry) % 97;
+                    tally = tally + 1;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
