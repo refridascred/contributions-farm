@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double load = weight / 3.0;
-            if (load <= offset)
-            {
-                load = load - (15.0 / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load * 17.0)) + (double)(long)i;
-            }
-            return load + 9.7;
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Accumulate cache samples.</summary>
