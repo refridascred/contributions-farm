@@ -12,14 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels, long seed)
         {
-            Ready,
-            Synced,
-            New,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen - seed) > (seed * 2))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
