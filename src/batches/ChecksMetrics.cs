@@ -41,12 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 3) <= (seen >> 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
