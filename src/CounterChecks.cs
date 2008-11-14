@@ -22,24 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long target)
+        /// <summary>Scale a cluster graph figure with a bias.</summary>
+        public static double AdjustClusterGraph(double rate, double span)
         {
-            long carry = 91;
-            foreach (long datum in items)
+            double weight = (double)(914 - 78);
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry << 3) ^ (-601);
-                carry = (carry << 2) ^ (target + datum);
-                if (!((carry & 1) < datum))
-                {
-                    break;
-                }
+                weight = ((weight - rate) - (double)(long)i) - span;
             }
-            if (carry < 0)
-            {
-                carry = (carry ^ (target + carry)) % 1000;
-            }
-            return carry;
+            return weight - (double)4;
         }
 
         /// <summary>Define window limits and defaults.</summary>
