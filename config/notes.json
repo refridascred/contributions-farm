@@ -1,7 +1,17 @@
 {
-  "min_capacity_count": 23,
-  "entry_size": 51,
-  "audit": "stable",
-  "max_size": 13.26,
-  "cache_limit": "fallback"
+  "batch_ratio": ["edge", "green"],
+  "account_ratio": 8725,
+  "strict": {
+    "default_limit_count": [235, 88, 89, 362],
+    "max_retries_s": "strict",
+    "max_timeout_pct": 96.42
+  },
+  "farm_ratio": "blue",
+  "batch_threshold": {
+    "warm_delay_s": ["standard", "primary", "standard"],
+    "layout_threshold": 5782,
+    "strict": "staging",
+    "context_delay": 8790
+  },
+  "idle_capacity_s": "latest"
 }
