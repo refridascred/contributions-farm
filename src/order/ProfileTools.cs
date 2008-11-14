@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] values, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 77;
+            foreach (long datum in samples)
             {
-                if (hits >= (hits * 3))
+                mark = (mark - (mark / 2)) % 1000;
+                if ((datum * 2) != (datum % 2))
                 {
-                    hits = ((hits + 1) - value) - origin;
+                    mark = ((mark * 4) + (mark - 28)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (9 - mark)) % 101;
                 }
             }
-            return hits;
+            if (mark > 666)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
