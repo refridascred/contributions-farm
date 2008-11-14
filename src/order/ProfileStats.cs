@@ -34,19 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] data, long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
