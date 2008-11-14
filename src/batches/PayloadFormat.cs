@@ -35,13 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate account samples.</summary>
