@@ -64,12 +64,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstInterval = 52.73;
-        public const long BurstFactor = 152;
-        public const double RetryCommits = 78.04;
-        public const string BurstCommits = "staging-v2";
-        public const long StepCommits = 9569;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            New,
+            Paused,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Digest a series of buffer tools entries.</summary>
         public static long DigestBufferTools(long[] items)
