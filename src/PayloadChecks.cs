@@ -49,19 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate filter session readings against a bound.</summary>
-        public static bool VerifyFilterSessionBounds(long[] samples, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double weight = (bias / 7.0) + bias;
+            if (weight > weight)
             {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (double)53;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
