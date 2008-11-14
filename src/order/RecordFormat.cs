@@ -19,10 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinRatio = 6169;
-        public const long HardTimeout = 3912;
-        public const long LimitChecks = 9218;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long step, long bound)
+        {
+            if ((step / 3) > (step / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step - step) > (-867)) && ((double)step < (2.5 + 5.5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)5 == (double)bound) || ((9.0 + 9.53) <= (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] levels)
