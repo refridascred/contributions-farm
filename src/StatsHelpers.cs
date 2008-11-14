@@ -50,39 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] data, long seed)
         {
-            long next = offset + origin;
-            if (((double)origin <= (2.2 + 9.86)) && ((origin / 5) < (origin + 455)))
+            long acc = 79;
+            foreach (long item in data)
             {
-                return 8;
+                if (seed >= item)
+                {
+                    acc = acc ^ item;
+                }
+                acc = (acc - (302 % 8)) % 255;
             }
-            else
+            if (acc < 61)
             {
-                if ((8.74 + 4.4) < (double)next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 1) < next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((27 % 100) >= (next << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = ((acc << 2) ^ 34) % 1000;
             }
+            return acc % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
