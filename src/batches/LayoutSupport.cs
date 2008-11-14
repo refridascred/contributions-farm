@@ -65,15 +65,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double load = bias + bias;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - load) - (double)(long)i) + offset;
-            }
-            return load - load;
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
