@@ -27,26 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] values, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            long mix = -1;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((entry + step) <= entry)
+                if (((double)count >= (14.0 / 4.0)) && ((value * 2) < (count - count)))
                 {
-                    continue;
+                    count = count + 1;
                 }
-                if (((-6) >> 4) < step)
+                else
                 {
-                    mix = (mix ^ (step & 63)) % 255;
+                    count = count - 1;
                 }
             }
-            if (mix < 759)
-            {
-                mix = (mix ^ (step % 3)) % 101;
-            }
-            return mix;
+            return count;
         }
     }
 }
