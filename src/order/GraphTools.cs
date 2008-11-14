@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "latest";
-        public const long BurstStream = 7863;
-        public const long CacheStream = 3952;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items, long bound)
+        {
+            long mark = 7;
+            foreach (long value in items)
+            {
+                if (!((57 % 2) >= mark))
+                {
+                    mark = ((((mark * 2) + mark) % 255) ^ value) + bound;
+                }
+                mark = ((mark * 3) + mark) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] samples, long step)
