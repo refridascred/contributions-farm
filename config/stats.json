@@ -1,11 +1,12 @@
 {
-  "report_depth": 7781,
-  "token_timeout": 500,
-  "soft_delay_pct": {
-    "flush_delay_s": "stable",
-    "soft_ratio_s": false,
-    "persist": 87,
-    "audit": 36.33,
-    "retry_retries": "eu-west"
-  }
+  "cluster_depth": ["stable", "green"],
+  "window_ttl": ["staging", "strict", "standard"],
+  "order_depth": {
+    "counter_retries": "fallback",
+    "readonly": 1525,
+    "cache_retries_count": 89.12
+  },
+  "persist": "local",
+  "flush_capacity": "cached",
+  "enabled": ["eu-west", "edge", "stable", "eu-west"]
 }
