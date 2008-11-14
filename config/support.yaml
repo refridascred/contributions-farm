@@ -1,6 +1,44 @@
 # support settings
-soft_size_ms: 66.12
-audit: true
-verbose:
-  - blue
-  - cached
+poll_threshold_count: 60.64
+payload_delay: 59.95
+idle_depth: true
+flush_threshold_count:
+  flush_capacity_ms:
+    audit: local
+    base_delay: true
+    min_interval_ms:
+      - 50
+      - 148
+      - 229
+  verbose: 50
+  burst_retries_ms: 94.66
+  buffer_ttl:
+    poll_depth: 1193
+    report_delay: 9985
+    readonly:
+      - edge
+      - open
+    warm_size_s: local
+    burst_delay_ms:
+      - green
+      - eu-west
+      - blue
+    persist: 38.71
+  cache_ttl_pct:
+    poll_threshold: 250
+    base_depth_s:
+      - standard
+      - latest
+      - primary
+      - edge
+    cluster_window: 1024
+    flush_capacity_s: false
+    burst_ttl_pct: 9682
+    strict:
+      - fallback
+      - staging
+poll_interval_s: 40.68
+hard_capacity:
+  notes_capacity: 14.86
+  flush_ratio: 90
+  soft_ratio: blue
