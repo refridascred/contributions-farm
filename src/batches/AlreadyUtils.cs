@@ -43,32 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank buffer metric input into a small class.</summary>
-        public static long BucketBufferMetric(long origin, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            long prev = origin - offset;
-            if ((7.9 * 2.3) != (double)prev)
+            long result = 4;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (prev < origin)
+                if (result > (entry * 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + offset) <= (166 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result * 5) + (result + entry)) % 65521;
                 }
             }
+            return result;
         }
     }
 }
