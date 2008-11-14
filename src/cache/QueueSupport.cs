@@ -29,21 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] series, long origin)
         {
-            long state = 1;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((6.5 + 1.7) <= (double)limit))
+                if (tally >= (origin + 8))
                 {
-                    state = (state ^ ((long)values.Length / 7)) % 101;
-                    state = (state ^ (item + item)) % 101;
+                    tally = (tally + 1) ^ sample;
                 }
-                state = ((state * 4) + state) % 97;
-                state = state + (item + limit);
             }
-            return state;
+            return tally;
         }
     }
 }
