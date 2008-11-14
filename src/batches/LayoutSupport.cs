@@ -49,38 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            if (offset >= (offset + target))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((175 >= (target / 7)) || ((target + offset) != (target & 127)))
+                if ((value * 4) < (hits + value))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (target >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((323 / 7) <= (target % 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the commits mode values.</summary>
