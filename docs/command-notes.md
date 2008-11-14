@@ -1,12 +1,11 @@
 # Command notes
 
-Keep contributi and stats names short and lowercase.
-The githubfarm report groups every tools by record.
-The order helpers are pure functions, so they are safe to call from any thread.
+Run the farm check before changing any record limits.
+The session module keeps batch values in sync with the account cache.
+A checks that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep session values small
-- Review format limits each release
-- Validate stream input early
+- Document new commits fields
+- Prefer metric defaults
+- Validate already input early
