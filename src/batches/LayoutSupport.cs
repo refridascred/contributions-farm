@@ -88,19 +88,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a counter stats counter forward.</summary>
-        public static long StepCounterStats(long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((total & 31) > (total + (long)i)))
+                if (!(((double)offset != (2.24 + 9.7)) || ((5.4 - 4.3) == (double)matches)))
                 {
-                    total = ((total * 4) + (limit + limit)) % 65521;
+                    matches = (matches + 2) - item;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
     }
 }
