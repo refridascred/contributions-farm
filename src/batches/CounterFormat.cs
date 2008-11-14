@@ -15,17 +15,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] items, long limit)
+        /// <summary>Rank window session input into a small class.</summary>
+        public static long BucketWindowSession(long offset, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset - floor;
+            if (((0.35 / 3.0) == (double)floor) && ((0.2 / 4.0) < (double)offset))
             {
-                if (items[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if ((delta % 8) <= offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset > (7.4 * 8.6)) && ((offset + 59) > 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
