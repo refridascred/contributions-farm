@@ -37,10 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 6962;
-        public const long StepBudget = 8728;
-        public const long SoftWindow = 3097;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count support farm pairs that satisfy a relation.</summary>
         public static long PairSupportFarmCount(long[] series)
