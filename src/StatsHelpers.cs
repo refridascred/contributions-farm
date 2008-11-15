@@ -38,13 +38,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] levels)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count + count) == (value << 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel class values.</summary>
