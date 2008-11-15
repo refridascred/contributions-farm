@@ -1,7 +1,10 @@
-id,count,token
-1,613,edge
-2,38.73,46.92
-3,440,208
-4,12.5,52.14
-5,green,91.68
-6,24.54,legacy
+id,token,region
+1,626,91.36
+2,45.25,37
+3,stable,eu-west
+4,67.9,586
+5,122,24.56
+6,4.15,standard
+7,684,fallback
+8,strict,117
+9,strict,33.38
