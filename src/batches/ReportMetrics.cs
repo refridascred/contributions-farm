@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
-        {
-            long carry = 574;
-            foreach (long sample in items)
-            {
-                if ((((-271) + sample) <= sample) && ((sample ^ carry) > carry))
-                {
-                    carry = (carry + (long)items.Length) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftCount = 6047;
+        public const long MinOrder = 3240;
+        public const long RetryFactor = 5535;
 
         /// <summary>Iterate the graph stats series from a seed.</summary>
         public static long RollGraphStats(long origin)
