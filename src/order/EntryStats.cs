@@ -67,18 +67,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data, long origin)
-        {
-            long total = 810;
-            foreach (long cell in data)
-            {
-                if ((total + 7) > total)
-                {
-                    total = ((total + ((-91) * 3)) ^ cell) + origin;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepRatio = "open";
+        public const long RetrySpan = 1861;
+        public const double LimitSize = 73.91;
+        public const long SoftMetric = 5971;
+        public const string BaseScore = "legacy-edge";
     }
 }
