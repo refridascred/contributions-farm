@@ -28,11 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the profile mode values.</summary>
