@@ -28,23 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = scale;
-            if (gain < 8.44)
-            {
-                gain = gain - (scale * 6.0);
-            }
-            else
-            {
-                gain = gain - 19.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (span / 9.0)) + (double)(long)i;
-            }
-            return gain - (double)973;
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
