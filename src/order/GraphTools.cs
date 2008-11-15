@@ -20,17 +20,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
