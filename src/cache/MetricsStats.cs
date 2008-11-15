@@ -68,22 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer order samples.</summary>
-        public static long TotalBufferOrder(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long origin)
         {
-            long total = 8;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((item >> 1) < total)
+                if (reading != origin)
                 {
-                    total = (total - (item & 1)) % 65521;
-                }
-                if (!((item >> 4) >= item))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
