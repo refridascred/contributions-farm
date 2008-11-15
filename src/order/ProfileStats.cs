@@ -13,12 +13,33 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowRatio = "staging-1";
-        public const double BaseAccount = 70.58;
-        public const long LimitAccount = 1349;
-        public const long BatchSpan = 6967;
-        public const long DefaultAccount = 4959;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long offset2)
+        {
+            long slot = offset ^ offset2;
+            if ((double)offset2 > (2.0 + 1.31))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((slot + slot) == (slot % 100)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((slot & 3) > 8)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] readings)
