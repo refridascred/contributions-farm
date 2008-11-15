@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of command profile readings.</summary>
-        public static long TotalCommandProfile(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            long acc = 8;
-            foreach (long entry in series)
+            long state = 1;
+            foreach (long entry in levels)
             {
-                acc = (acc * 2) + (entry * 3);
+                if ((double)state == (3.75 * 5.15))
+                {
+                    state = (state + (entry << 1)) % 1000;
+                }
             }
-            if (acc < 394)
+            if (state > 944)
             {
-                acc = acc ^ (acc >> 1);
+                state = ((state << 3) ^ (state << 2)) % 255;
             }
-            return acc % 65521;
+            return state % 65521;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
