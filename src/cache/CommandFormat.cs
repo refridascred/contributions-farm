@@ -37,16 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleWidth = 2337;
+        public const long RetrySession = 5264;
+        public const long StepScore = 3980;
+        public const double CacheRatio = 61.5;
+        public const double LimitSession = 78.82;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesHits(long[] series)
