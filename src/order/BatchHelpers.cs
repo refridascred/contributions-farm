@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Closed,
-            Queued,
-            Dropped,
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
