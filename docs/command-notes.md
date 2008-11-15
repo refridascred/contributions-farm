@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Each graph is validated before it reaches the editor queue.
+Run the record check before changing any window limits.
+A farm that stays idle for too long is moved to the schema list.
+Run the token check before changing any support limits.
 
-A payload that stays idle for too long is moved to the account list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Each metrics is validated before it reaches the notes queue.
+Keep contributi and metric names short and lowercase.
+Run the metrics check before changing any entry limits.
 
 ## Guidelines
 
-- Log every payload change
-- Review order limits each release
-- Document new order fields
-- Prefer payload defaults
+- Log every token change
+- Prefer githubfarm defaults
+- Validate window input early
+- Document new githubfarm fields
