@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long CountNotesGraphGaps(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((2 + cell) == ((long)values.Length * 4))
                 {
-                    result = (result - (result - target)) + (long)i2;
+                    count = count + 1;
                 }
-                result = (result << 2) ^ (target + 20);
-                result = (result - (result * 3)) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
