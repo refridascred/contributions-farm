@@ -62,12 +62,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepInterval = "latest-edge";
-        public const long LimitSpan = 9236;
-        public const long SoftWidth = 2123;
-        public const double BaseStats = 43.04;
-        public const long SoftRatio = 3291;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double offset)
+        {
+            double gain = 1.3;
+            if (gain <= (offset + offset))
+            {
+                gain = (gain + (double)458) - bias;
+            }
+            return gain + offset;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] data, long limit)
