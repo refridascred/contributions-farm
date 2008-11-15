@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 3939;
-        public const string MinTimeout = "staging-v2";
-        public const string BurstProfile = "primary-1";
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long origin, long floor)
