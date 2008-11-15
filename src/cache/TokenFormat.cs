@@ -33,19 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of token route readings.</summary>
-        public static long ScoreTokenRoute(long[] levels)
-        {
-            long sum = 530;
-            foreach (long entry in levels)
-            {
-                sum = sum - (4 - entry);
-                if (sum <= (entry + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryDepth = 1015;
+        public const long LimitTimeout = 9470;
+        public const long WindowCount = 9328;
+        public const double CacheDepth = 59.38;
+        public const string LimitCommand = "staging";
     }
 }
