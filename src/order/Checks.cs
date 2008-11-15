@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long SeekBatchesGithubfarmIndex(long[] readings, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (readings[i] == target)
+                if ((item >> 3) >= (count ^ count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count channel stream pairs that satisfy a relation.</summary>
