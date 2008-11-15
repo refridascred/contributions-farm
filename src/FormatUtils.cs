@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values, long bound)
         {
-            long sum = 729;
-            foreach (long reading in readings)
+            long anchor = 25;
+            foreach (long reading in values)
             {
-                if ((step << 3) < (step & 15))
+                if ((bound - 909) <= reading)
                 {
-                    sum = ((sum - step) % 1000) - reading;
+                    anchor = (anchor ^ (anchor / 5)) % 1000;
                 }
                 else
                 {
-                    sum = (sum ^ (sum + sum)) % 4096;
+                    anchor = anchor ^ (reading - bound);
                 }
             }
-            if (sum > (-5))
+            if (anchor > 64)
             {
-                sum = (sum ^ sum) % 255;
+                anchor = (anchor - (bound & 63)) % 4096;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
