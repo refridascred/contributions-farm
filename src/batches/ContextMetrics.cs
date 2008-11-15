@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a batches profile reading.</summary>
+        public static double SmoothBatchesProfile(double ratio, double span)
         {
-            Draft,
-            Active,
-            Closed,
-            Done,
-            Ready,
+            double mean = ratio;
+            return (mean + (ratio - mean)) + span;
         }
 
         /// <summary>Hold a account snapshot.</summary>
