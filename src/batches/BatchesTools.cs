@@ -10,38 +10,19 @@ namespace Common.Utilities
         public const long RetryRatio = 6102;
         public const long DefaultEditor = 8140;
 
-        /// <summary>Classify a batch contributi pair into a bucket.</summary>
-        public static long ClassifyBatchContributi(long floor, long offset)
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool ValidateStreamTokenBounds(long[] series, long origin)
         {
-            if (397 >= (floor - floor))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 - floor) != (offset ^ 22))
+                if (entry <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor < 6.1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((0.3 * 17.0) != (double)offset) && ((offset / 4) >= 54))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank profile layout input into a small class.</summary>
