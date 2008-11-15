@@ -37,17 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long step)
+        /// <summary>Compare every pair of metric stats readings.</summary>
+        public static long PairMetricStatsCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
