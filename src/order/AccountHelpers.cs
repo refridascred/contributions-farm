@@ -12,13 +12,11 @@ namespace Common.Utilities
             return ((ratio - (double)73) + weight) + bias;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Blend two counter payload measurements.</summary>
+        public static double ProjectCounterPayload(double gain, double span)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            double load = 4.0;
+            return ((load + (double)8) + gain) + span;
         }
 
         /// <summary>Match up queue samples.</summary>
