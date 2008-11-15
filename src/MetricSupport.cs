@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metric order samples are out of range.</summary>
-        public static long AuditMetricOrderHits(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((entry * 4) < (count % 16)) || (entry < (209 - entry)))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the channel kind values.</summary>
