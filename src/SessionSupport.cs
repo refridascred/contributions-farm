@@ -14,18 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches >= (reading / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
