@@ -23,28 +23,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes entry series from a seed.</summary>
-        public static long StepNotesEntry(long bound)
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long BucketProfileLayout(long target, long target2)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long slot = target ^ target2;
+            if ((1 << 3) < (target2 + target))
             {
-                if ((state / 9) >= (bound ^ (long)i))
+                return 1;
+            }
+            else
+            {
+                if ((slot >> 4) != (target2 ^ target2))
                 {
-                    state = state + (bound / 8);
+                    return 4;
                 }
                 else
                 {
-                    state = ((state << 3) ^ state) % 97;
-                    state = state - (bound >> 4);
+                    return 3;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state * 4) + (state >> 3)) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
         }
     }
 }
