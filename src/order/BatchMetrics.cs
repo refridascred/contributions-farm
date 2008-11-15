@@ -44,12 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinBudget = 6741;
-        public const long BaseContributi = 2846;
-        public const long MaxRatio = 4246;
-        public const string CacheContributi = "standard-1";
-        public const long HardContributi = 8623;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 7115;
+        public const long RetryReport = 9610;
+        public const long IdleReport = 1059;
+        public const long BaseReport = 6223;
+        public const string BaseInterval = "fallback-1";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] levels)
