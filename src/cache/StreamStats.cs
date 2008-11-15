@@ -35,11 +35,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 81.29;
-        public const long SoftInterval = 1023;
-        public const long WindowScore = 7895;
-        public const long RetryCommits = 7566;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double bias, double span)
+        {
+            double scale = bias;
+            if (scale >= span)
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + span;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
