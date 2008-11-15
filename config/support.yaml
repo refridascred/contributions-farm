@@ -1,9 +1,7 @@
 # support settings
-readonly: 25
-account_depth: 52
-default_threshold_s: 79.15
-sync_timeout:
-  - staging
-  - primary
-  - staging
-min_retries_s: edge
+strict:
+  - stable
+  - standard
+base_ratio_s: 70
+warm_retries_ms: 500
+report_capacity: 3.5
