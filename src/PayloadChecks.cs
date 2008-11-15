@@ -15,21 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)entry != (double)454))
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                if ((step - anchor) == (step + anchor))
+                {
+                    anchor = (anchor - (step ^ step)) % 1000;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Count cache checks pairs that satisfy a relation.</summary>
