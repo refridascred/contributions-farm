@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double weight, double floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series, long bound)
         {
-            double mean = weight * 0.27;
-            if (mean > (double)6)
+            long score = 40;
+            foreach (long cell in series)
             {
-                mean = mean - (weight * 5.7);
+                if ((cell - bound) <= (-80))
+                {
+                    score = (score + 0) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + mean;
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
