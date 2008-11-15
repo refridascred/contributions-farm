@@ -34,17 +34,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] items, long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = 2.9 + (double)5;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - offset) + (double)(long)i;
             }
-            return -1;
+            return scale - gain;
         }
     }
 }
