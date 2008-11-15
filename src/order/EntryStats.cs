@@ -45,15 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter graph reading.</summary>
-        public static double SmoothFilterGraph(double bias, double offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double load = 4.4;
-            if (load < load)
-            {
-                load = ((load + (0.44 - 9.4)) - bias) + offset;
-            }
-            return load - load;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
