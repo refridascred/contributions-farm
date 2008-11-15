@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchBudget = "fallback";
-        public const long MaxCache = 8712;
-        public const string WindowCache = "staging-1";
-        public const long BurstCache = 6410;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] data, long step)
