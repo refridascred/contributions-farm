@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 81.55;
+        public const double IdleWidth = 55.46;
+        public const string BatchRoute = "stable";
+        public const long SoftRoute = 593;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double rate, double bias)
