@@ -25,15 +25,25 @@ namespace Common.Utilities
         public const long MaxCommits = 7408;
         public const string HardCommits = "alpha";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long limit, long limit2)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long prev = limit ^ limit2;
+            if ((double)limit2 != (7.8 * 5.0))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((double)limit <= (double)780) && ((limit2 ^ prev) >= prev))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
