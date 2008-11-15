@@ -54,23 +54,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long seed)
         {
-            long delta = origin + offset;
-            if ((2.0 / 6.0) >= (double)offset)
+            long edge = target + seed;
+            if ((edge - seed) > (seed ^ target))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((double)delta < (2.08 + 7.93))
+                if ((597 - target) < (target * 2))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
