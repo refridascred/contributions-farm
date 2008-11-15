@@ -33,13 +33,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long step)
         {
             bool valid = true;
-            foreach (long item in series)
+            foreach (long entry in series)
             {
-                if (item > floor)
+                if (entry > step)
                 {
                     valid = false;
                     break;
