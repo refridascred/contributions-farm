@@ -1,6 +1,8 @@
 {
-  "order_ratio": "primary",
-  "batch_threshold_count": [422, 200, 432],
-  "persist": "latest",
-  "batch_window": "fallback"
+  "verbose": 71.89,
+  "idle_timeout_count": ["cached", "staging", "open"],
+  "enabled": "standard",
+  "sync_limit_pct": 36.9,
+  "poll_capacity": "green",
+  "counter_capacity": false
 }
