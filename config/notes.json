@@ -1,5 +1,11 @@
 {
-  "batch_ttl_ms": "fallback",
-  "idle_retries_s": 70.09,
-  "profile_interval": 1024
+  "cache_ratio_count": {
+    "poll_depth_pct": 90.78,
+    "flush_limit_s": "edge",
+    "account_retries": "local",
+    "compress": false,
+    "min_capacity_s": "edge"
+  },
+  "batch_threshold_ms": 100,
+  "poll_size_pct": 1024
 }
