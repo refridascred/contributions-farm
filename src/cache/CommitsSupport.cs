@@ -76,21 +76,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 465;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((reading * 3) <= reading) && ((acc / 7) < acc))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 3) ^ (reading & 15);
+                    break;
                 }
+                acc = acc + (acc >> 5);
             }
-            return seen;
+            return acc;
         }
     }
 }
