@@ -55,17 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long seed)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 6.37;
+            if (mean >= 8.1)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (double)59) - weight) + span;
             }
-            return -1;
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
