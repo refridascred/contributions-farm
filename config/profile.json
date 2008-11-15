@@ -1,5 +1,11 @@
 {
-  "commits_interval": "staging",
-  "poll_limit_s": "stable",
-  "burst_threshold": "latest"
+  "readonly": "stable",
+  "context_retries": {
+    "command_timeout": "primary",
+    "warm_limit": "open",
+    "counter_ratio": 8.9
+  },
+  "cache_timeout": "legacy",
+  "verbose": [349, 488, 53, 107],
+  "sync_threshold": 3006
 }
