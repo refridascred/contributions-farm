@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long bound)
+        /// <summary>Classify a commits cache pair into a bucket.</summary>
+        public static long BucketCommitsCache(long seed, long offset)
         {
-            long score = 756;
-            foreach (long sample in readings)
+            long diff = seed + offset;
+            if (((822 >> 5) <= (offset + 67)) || ((6.0 + 8.84) != (double)diff))
             {
-                score = ((((score * 2) + (score / 5)) % 101) + sample) - bound;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((offset * 2) < (offset >> 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
