@@ -1,7 +1,11 @@
 # support settings
-burst_size: false
-default_ratio_count: green
-persist: 6051
-max_delay_pct:
-  - 409
-  - 377
+soft_ttl: 45.24
+flush_window: 53.96
+cache_timeout_ms:
+  report_ratio:
+    min_threshold: 532
+    idle_capacity: 7227
+    max_depth_count: 35.15
+  retry_ratio: fallback
+  burst_size_ms: 2398
+idle_retries_count: 100
