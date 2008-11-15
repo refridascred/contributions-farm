@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data)
         {
-            if ((offset + offset) == (offset + target))
+            long mark = 8;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (73 >= target)
+                if ((mark * 2) <= entry)
                 {
-                    return 5;
+                    mark = (mark - (entry % 7)) % 255;
                 }
-                else
-                {
-                    return 8;
-                }
+                mark = mark ^ mark;
             }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the session profile series from a seed.</summary>
