@@ -33,18 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] samples, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 3) < (reading / 2))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
