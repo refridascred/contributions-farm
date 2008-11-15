@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitLevel = 7128;
-        public const double BatchCount = 25.86;
-        public const long WindowFilter = 3258;
-        public const long MaxFilter = 1579;
-        public const long MaxSpan = 6321;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 6883;
+        public const long DefaultDepth = 9288;
+        public const long HardLevel = 9302;
+        public const string StepRatio = "fallback-1";
+        public const long LimitSpan = 1945;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
