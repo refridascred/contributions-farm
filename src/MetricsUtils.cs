@@ -36,17 +36,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first buffer checks entry that matches the target.</summary>
-        public static long SeekBufferChecksIndex(long[] values, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(48 & 255);
+            for (int i = 0; i < 3; i++)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (5.0 - span)) - (double)(long)i) - weight;
             }
-            return -1;
+            return rate - 4.33;
         }
 
         /// <summary>Digest a series of schema filter entries.</summary>
