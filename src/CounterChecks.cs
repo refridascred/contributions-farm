@@ -56,22 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] samples, long floor)
         {
-            long state = 3;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((limit % 2) <= (state + state))
+                if (cell <= floor)
                 {
-                    state = (((state << 3) ^ 6) % 255) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 313)
-            {
-                state = (state << 3) ^ (76 ^ 1);
-            }
-            return state % 1000;
+            return stale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
