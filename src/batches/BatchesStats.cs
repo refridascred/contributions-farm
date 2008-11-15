@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of farm payload readings.</summary>
-        public static long CompareFarmPayloadCount(long[] levels)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = rate;
+            if (weight > (9.1 + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return hits;
+            else
+            {
+                weight = weight + 2.5;
+            }
+            return weight - floor;
         }
 
         /// <summary>Scale a stats layout figure with a bias.</summary>
