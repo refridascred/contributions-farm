@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
-        public static long BucketGithubfarmStats(long step, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long seed)
         {
-            if ((20.0 + 9.41) == (double)step)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 7) >= (45 % 16))
+                if ((tally / 9) < (seed / 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((11.0 * 2.4) == (double)bound) && ((step * 3) >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a metrics session reading.</summary>
