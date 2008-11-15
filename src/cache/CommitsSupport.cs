@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] series, long origin)
+        /// <summary>Derive the next stats notes value from a seed.</summary>
+        public static long StepStatsNotes(long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > origin)
+                if (!((step + (long)i) == (carry & 15)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry * 5) + (carry >> 2);
+                    carry = carry + (carry + carry);
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Combine token values into a single score.</summary>
