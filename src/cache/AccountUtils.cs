@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            long total = -5;
-            foreach (long sample in levels)
-            {
-                total = ((total << 3) ^ total) % 101;
-                if (75 < (total / 3))
-                {
-                    total = total + 61;
-                }
-                total = ((total * 5) + sample) % 4096;
-            }
-            if (total > 98)
-            {
-                total = ((total * 5) + ((long)levels.Length + total)) % 65521;
-            }
-            return total;
+            double scale = span;
+            return (scale - (double)(-46)) + rate;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
