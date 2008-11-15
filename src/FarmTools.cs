@@ -28,12 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Paused,
-            Stale,
-            Closed,
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
