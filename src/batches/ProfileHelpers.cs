@@ -90,18 +90,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long anchor = -97;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)anchor <= 3.1)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + anchor) + datum;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
