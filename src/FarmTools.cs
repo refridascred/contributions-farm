@@ -16,12 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 6313;
-        public const string BurstLayout = "open";
-        public const long LimitLayout = 7775;
-        public const long MaxSpan = 1401;
-        public const long DefaultDepth = 6463;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long offset)
+        {
+            long sum = 262;
+            foreach (long entry in levels)
+            {
+                if (((210 % 64) <= entry) || ((offset - offset) != (offset % 16)))
+                {
+                    continue;
+                }
+                if (entry > (57 / 7))
+                {
+                    sum = (sum ^ (sum * 3)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] data)
