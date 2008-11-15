@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long floor)
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long AuditQueueContextMatches(long[] values, long limit)
         {
-            if (((double)floor >= (4.72 + 5.8)) || ((double)floor < 1.8))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound + 531) >= (608 * 4)))
+                if ((limit < (count << 3)) || ((9.0 + 6.2) > (double)count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.3 + 9.7) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
