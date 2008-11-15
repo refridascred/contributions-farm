@@ -23,23 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
-        {
-            long total = 54;
-            foreach (long item in samples)
-            {
-                if ((total + 200) <= item)
-                {
-                    total = (total * 2) + 5;
-                }
-            }
-            if (total > (-160))
-            {
-                total = total + (1 ^ total);
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftWidth = 77.11;
+        public const string DefaultRatio = "open";
+        public const long BaseCount = 8484;
+        public const long HardScore = 8878;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] items, long limit)
