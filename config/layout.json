@@ -1,6 +1,7 @@
 {
-  "default_depth": 86,
-  "default_ratio_ms": "standard",
-  "verbose": "open",
-  "route_ttl": true
+  "soft_interval": "latest",
+  "sync_ttl": "latest",
+  "compress": [110, 154, 88, 437],
+  "retry_capacity": 19,
+  "entry_delay": 90.44
 }
