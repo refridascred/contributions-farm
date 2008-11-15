@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MinBudget = 2212;
         public const long LimitSize = 2919;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long step)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long mark = 8;
-            foreach (long reading in series)
-            {
-                if ((7 > reading) && ((double)848 <= (double)mark))
-                {
-                    mark = (mark << 2) ^ (step + mark);
-                }
-            }
-            if (mark < 615)
-            {
-                mark = (mark ^ (4 / 9)) % 65521;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
