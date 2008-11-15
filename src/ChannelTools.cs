@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long AuditGithubfarmBatchMatches(long[] samples, long step)
         {
-            long score = 2;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (score <= (score & 1))
+                if ((entry / 7) > step)
                 {
-                    score = ((score - score) % 255) ^ entry;
+                    seen = seen + 3;
                 }
             }
-            if (score < 4)
-            {
-                score = score ^ (532 + score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
