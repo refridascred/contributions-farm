@@ -32,25 +32,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank stats farm input into a small class.</summary>
-        public static long RankStatsFarm(long seed, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            long slot = seed ^ target;
-            if ((double)slot > (9.2 + 3.62))
+            long acc = 8;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(target > (929 << 3)))
+                if ((15.0 - 1.12) >= (double)entry)
                 {
-                    return 1;
+                    acc = (acc + (acc & 15)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    acc = acc - (6 + entry);
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate record samples.</summary>
