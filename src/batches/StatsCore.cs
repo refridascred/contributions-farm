@@ -67,39 +67,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long step)
+        /// <summary>Look up the position of a commits record sample.</summary>
+        public static long SeekCommitsRecordIndex(long[] levels, long target)
         {
-            long next = origin + step;
-            if (((next * 4) <= (44 - step)) || ((12.0 / 2.0) > (double)step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((next >> 3) > (47 & 31)) && ((step - 5) >= (next - next)))
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)next < (4.36 - 12.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 162) < next)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
