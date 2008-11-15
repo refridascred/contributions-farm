@@ -37,22 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3555;
+        public const string BaseCommits = "staging-edge";
+        public const long IdleWidth = 5389;
+        public const long HardScore = 433;
 
         /// <summary>Combine support buffer values into a single score.</summary>
         public static long TotalSupportBuffer(long[] samples)
