@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long HardSpan = 2709;
         public const double MinBatch = 92.76;
 
-        /// <summary>Combine record format values into a single score.</summary>
-        public static long DigestRecordFormat(long[] levels)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long carry = 6;
-            foreach (long value in levels)
-            {
-                if ((carry - value) == (carry + value))
-                {
-                    carry = carry + (690 >> 5);
-                }
-                if ((463 + value) < (value - carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
