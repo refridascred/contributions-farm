@@ -70,13 +70,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a route context reading by value.</summary>
+        public static long SeekRouteContextIndex(long[] data, long limit)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
