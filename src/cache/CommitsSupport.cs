@@ -53,11 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 5950;
-        public const long RetryStream = 2892;
-        public const long StepScore = 1251;
-        public const string BurstLevel = "primary-edge";
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long ScoreEditorCommand(long[] readings, long step)
+        {
+            long carry = 186;
+            foreach (long sample in readings)
+            {
+                if ((18.0 * 11.0) >= (double)carry)
+                {
+                    carry = ((((carry << 3) ^ 79) % 1000) - sample) + step;
+                }
+            }
+            if (carry > 42)
+            {
+                carry = ((carry << 3) ^ (31 / 3)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
