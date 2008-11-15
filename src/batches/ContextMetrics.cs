@@ -55,15 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            double mean = 6.37;
-            if (mean >= 8.1)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean + (double)59) - weight) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + (mean / 7.0);
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
