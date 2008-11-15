@@ -56,24 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels, long target)
         {
-            if (((double)step >= (9.1 - 15.0)) && ((double)step == (double)seed))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((64 & 31) == (step >> 3)) && ((step % 60) >= (seed - 228)))
+                if ((6 * 3) == (value & 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 3) - target;
                 }
             }
+            return hits;
         }
     }
 }
