@@ -33,22 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (953 <= (bound + reading))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepSpan = 21.62;
+        public const string IdleDepth = "primary";
+        public const long BaseCount = 6190;
+        public const long IdleBudget = 7151;
+        public const string RetrySize = "staging-v2";
     }
 }
