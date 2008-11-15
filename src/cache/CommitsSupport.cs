@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double offset)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            double bias = offset;
+            if (bias <= (bias / 4.0))
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
