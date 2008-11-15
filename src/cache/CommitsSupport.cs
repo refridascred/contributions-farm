@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double bias = offset;
-            if (bias <= (bias / 4.0))
-            {
-                bias = bias + offset;
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - scale) + (double)(long)i;
-            }
-            return bias + bias;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
