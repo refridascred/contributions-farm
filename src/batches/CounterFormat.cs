@@ -32,24 +32,19 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Classify a tools metrics pair into a bucket.</summary>
-        public static long ClassifyToolsMetrics(long floor, long floor2)
+        /// <summary>Validate channel batch readings against a bound.</summary>
+        public static bool CheckChannelBatchLimits(long[] readings, long seed)
         {
-            if ((floor2 >> 4) <= (29 << 2))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor2 - 839))
+                if (cell >= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
