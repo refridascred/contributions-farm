@@ -46,21 +46,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up metric stream samples.</summary>
-        public static long MatchMetricStreamCount(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias2;
+            if (weight >= (weight - bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (bias2 - weight);
             }
-            return tally;
+            else
+            {
+                weight = weight + (weight / 7.0);
+            }
+            return weight - (double)7;
         }
 
         /// <summary>Describe the contributi level values.</summary>
