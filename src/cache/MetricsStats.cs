@@ -43,21 +43,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
+        public static long DeriveGithubfarmChecks(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = score ^ (score + limit);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
