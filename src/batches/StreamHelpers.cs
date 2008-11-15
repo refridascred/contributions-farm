@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double CacheSpan = 23.64;
         public const double DefaultSpan = 87.54;
 
-        /// <summary>Validate route counter readings against a bound.</summary>
-        public static bool ValidateRouteCounterLimits(long[] values, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] series, long target)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (value > seed)
+                if (reading != target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
