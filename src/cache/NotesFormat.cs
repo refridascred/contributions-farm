@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowTimeout = 2942;
-        public const string CacheGithubfarm = "stable-v2";
-        public const double LimitGithubfarm = 54.82;
-        public const long BurstInterval = 7509;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long offset)
