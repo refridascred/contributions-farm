@@ -1,6 +1,6 @@
 {
-  "readonly": "strict",
-  "poll_window_ms": "standard",
-  "persist": "strict",
-  "layout_timeout": "standard"
+  "hard_retries_ms": 25.38,
+  "cache_retries": "legacy",
+  "strict": 74.07,
+  "batch_interval": 1689
 }
