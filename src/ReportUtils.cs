@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheScore = 29.65;
-        public const long RetryReport = 7519;
-        public const double BurstScore = 83.88;
-        public const long BatchReport = 3010;
-        public const long StepInterval = 1358;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 91.39;
+        public const string HardSize = "strict";
+        public const long MinEntry = 3294;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long floor)
