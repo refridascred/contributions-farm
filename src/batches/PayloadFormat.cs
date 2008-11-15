@@ -27,14 +27,27 @@ namespace Common.Utilities
         public const long BurstMetric = 8163;
         public const string CacheMetric = "strict-edge";
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data, long target)
         {
-            Locked,
-            Retry,
-            Failed,
-            Queued,
-            Ready,
+            long state = 865;
+            foreach (long sample in data)
+            {
+                state = (state << 2) ^ 8;
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (((state * 2) + (sample >> 5)) % 65521) + (long)i;
+                }
+                if ((sample / 2) >= (sample - sample))
+                {
+                    state = (state - (8 % 97)) % 101;
+                }
+            }
+            if (state > 73)
+            {
+                state = state - (target + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
