@@ -26,17 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
