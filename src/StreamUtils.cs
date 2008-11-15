@@ -53,11 +53,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepRatio = 63.65;
-        public const long SoftChannel = 8873;
-        public const double RetryChannel = 86.8;
-        public const double DefaultChannel = 38.77;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Pending,
+            Ready,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
