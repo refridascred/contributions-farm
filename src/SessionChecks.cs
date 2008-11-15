@@ -24,18 +24,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((count / 2) == ((-4) + count)))
-                {
-                    count = ((count + 2) + entry) + limit;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
