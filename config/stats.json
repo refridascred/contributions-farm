@@ -1,6 +1,5 @@
 {
-  "compress": "open",
-  "checks_retries": [421, 276, 182],
-  "hard_limit_ms": 81,
-  "base_timeout_pct": "legacy"
+  "cache_retries_s": "latest",
+  "max_ttl_pct": "blue",
+  "batch_delay": false
 }
