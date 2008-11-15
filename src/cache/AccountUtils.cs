@@ -20,27 +20,18 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Digest a series of command githubfarm entries.</summary>
-        public static long CombineCommandGithubfarm(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] samples, long floor)
         {
-            long mix = 41;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 3) + datum) % 255;
-                if (datum <= (datum << 1))
+                if (!(((17.0 + 8.0) > (double)floor) && ((hits & 15) != (sample * 4))))
                 {
-                    mix = (mix + (long)data.Length) % 65521;
-                }
-                if ((datum + datum) < (datum * 3))
-                {
-                    mix = (mix - mix) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (mix > 654)
-            {
-                mix = ((mix * 4) + (mix / 9)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
