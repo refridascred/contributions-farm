@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count << 3) <= (value % 24)) && ((value + count) == (count - count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
