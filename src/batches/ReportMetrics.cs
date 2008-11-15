@@ -33,11 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer farm measurements.</summary>
-        public static double AdjustBufferFarm(double rate, double offset)
+        /// <summary>Iterate the graph stats series from a seed.</summary>
+        public static long RollGraphStats(long origin)
         {
-            double scale = 6.48;
-            return (scale - offset) + rate;
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state << 3) ^ (state + origin)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
