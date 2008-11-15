@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long CountFarmToolsGaps(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (11.0 >= 7.92)
+                if ((seen * 2) > (6 << 3))
                 {
-                    count = ((count + 1) - sample) + step;
+                    seen = ((seen + 3) + datum) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a editor summary.</summary>
