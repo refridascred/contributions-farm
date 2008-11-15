@@ -47,13 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchBatchesCount(long[] readings)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
