@@ -56,13 +56,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((((-257) - cell) != (hits + (-4))) && (((hits + cell) != (cell >> 2)) && (cell < (hits - cell))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
