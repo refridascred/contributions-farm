@@ -14,18 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] levels)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight = ratio;
+            if (weight >= 14.0)
             {
-                if (!((cell ^ cell) <= (997 + (long)levels.Length)))
-                {
-                    count = count + 2;
-                }
+                weight = (weight + (double)(-37)) + offset;
             }
-            return count;
+            else
+            {
+                weight = weight + (ratio * 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Grade a support metric value against two limits.</summary>
