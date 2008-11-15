@@ -36,21 +36,17 @@ namespace Common.Utilities
         public const long BurstCount = 3055;
         public const long LimitSession = 8413;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
