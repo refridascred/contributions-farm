@@ -84,25 +84,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] items, long target)
         {
-            long delta = seed ^ bound;
-            if ((10.0 / 2.0) >= (double)delta)
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (delta >= (delta << 1))
+                if (reading >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
