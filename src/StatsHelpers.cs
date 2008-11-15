@@ -50,18 +50,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count + count) == (value << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the channel class values.</summary>
