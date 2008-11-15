@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count stats window pairs that satisfy a relation.</summary>
-        public static long PairStatsWindowCount(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != step)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a layout options.</summary>
