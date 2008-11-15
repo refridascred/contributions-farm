@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] data, long limit)
         {
-            double weight = rate;
-            if (weight > (9.1 + floor))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                weight = weight + weight;
+                if (!!(reading > (reading / 6)))
+                {
+                    hits = (hits + 2) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight + 2.5;
-            }
-            return weight - floor;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
