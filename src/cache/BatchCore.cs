@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((tally / 9) < (seed / 7))
+                if (!((double)58 == (double)reading) && ((target * 2) > seen))
                 {
-                    tally = (tally + 3) + reading;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
