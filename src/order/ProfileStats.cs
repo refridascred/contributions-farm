@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit metric tools readings against a rule.</summary>
-        public static long MeasureMetricToolsGaps(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((9.0 * 3.7) != (double)seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
