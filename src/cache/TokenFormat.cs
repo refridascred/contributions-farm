@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long MeasureNotesGraphHits(long[] items, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.0 - 4.26) > (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 3) ^ entry) + bound;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
