@@ -47,22 +47,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 6;
+            foreach (long value in readings)
             {
-                score = ((score << 2) ^ ((long)i % 64)) % 255;
-                if ((1.0 * 1.0) <= (double)score)
+                if (((9.0 - 6.0) <= (double)result) || ((double)result == (0.4 * 8.1)))
                 {
-                    score = ((score * 4) + (score + score)) % 255;
-                    score = (score ^ (long)i) % 255;
+                    result = (result - (value + result)) % 1000;
                 }
-                score = (score * 5) + (bound - (long)i);
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    result = (result ^ (step & 255)) % 97;
+                }
+                if ((result * 4) == (step / 8))
+                {
+                    result = (result ^ (step & 7)) % 97;
+                }
+                if ((value * 5) >= (value & 255))
+                {
+                    result = (result + result) % 4096;
+                }
             }
-            return score;
+            return result;
         }
     }
 }
