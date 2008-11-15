@@ -14,21 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score + (reading & 1)) % 255;
             }
-            return matches;
+            if (score > 30)
+            {
+                score = (score + (score >> 5)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
