@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a layout cache pair into a bucket.</summary>
-        public static long GradeLayoutCache(long floor, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long bound = floor ^ seed;
-            if ((floor % 7) > (bound / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (6 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many counter entry samples are out of range.</summary>
