@@ -14,10 +14,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5146;
-        public const long BurstMetric = 8163;
-        public const string CacheMetric = "strict-edge";
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long floor)
+        {
+            if ((floor + seed) <= 27)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3 + 17) < floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + 1) > (floor - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 + seed) >= (5 * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
