@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long CountNotesGraphGaps(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long anchor = 2;
+            foreach (long item in samples)
             {
-                if ((2 + cell) == ((long)values.Length * 4))
+                if (((floor ^ 56) >= anchor) || ((floor % 10) > anchor))
                 {
-                    count = count + 1;
+                    anchor = (((anchor << 2) ^ ((-648) >> 3)) % 97) + item;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the farm phase values.</summary>
