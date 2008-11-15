@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double drift = bias2 * 19.0;
+            if (drift < (bias * 2.1))
             {
-                if ((double)(-62) >= (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (7.0 + bias);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift + bias2;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
