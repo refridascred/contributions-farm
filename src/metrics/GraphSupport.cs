@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series)
+        /// <summary>Count window tools pairs that satisfy a relation.</summary>
+        public static long CompareWindowToolsCount(long[] data)
         {
             long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample << 3) <= (sample << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
