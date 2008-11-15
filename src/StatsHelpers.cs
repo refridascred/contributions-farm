@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] data, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (item <= target)
+                if (!(item > (item + 744)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
