@@ -26,23 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long seed)
         {
-            double mean = (double)78 * 2.5;
-            if (mean <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (rate + rate);
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean + rate)) + (double)(long)i;
-            }
-            return mean + (double)4;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
