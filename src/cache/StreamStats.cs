@@ -26,25 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 3) + (state << 1)) % 4096;
-                if ((8.0 - 5.34) < (double)(long)i)
+                if ((mark * 5) < limit)
                 {
-                    state = (state << 2) ^ 7;
-                    state = (state << 3) ^ (state - state);
+                    mark = mark ^ (mark - 5);
                 }
-                if ((7.0 * 9.3) <= (double)origin)
-                {
-                    state = (state ^ origin) % 97;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                mark = ((mark * 4) + mark) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
