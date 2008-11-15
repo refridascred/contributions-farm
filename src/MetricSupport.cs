@@ -40,17 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
