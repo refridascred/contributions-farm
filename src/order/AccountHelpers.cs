@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] readings, long step)
         {
-            double ratio = (double)452 / 5.0;
-            return ((ratio - (double)73) + weight) + bias;
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two counter payload measurements.</summary>
