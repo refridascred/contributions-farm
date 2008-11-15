@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Queued,
-            Dropped,
-            Closed,
-            Pending,
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
