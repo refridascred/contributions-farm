@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = 40;
-            foreach (long cell in series)
-            {
-                if ((cell - bound) <= (-80))
-                {
-                    score = (score + 0) % 101;
-                }
-            }
-            return score;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
