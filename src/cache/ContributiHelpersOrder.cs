@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry << 2) >= (hits ^ entry))
+                if (!((result ^ step) >= (step % 100)))
                 {
-                    hits = hits + 2;
+                    result = ((result << 2) ^ ((long)i - (long)i)) % 97;
+                    result = (result - (result * 4)) % 97;
                 }
+                if ((long)i > result)
+                {
+                    result = result ^ step;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
