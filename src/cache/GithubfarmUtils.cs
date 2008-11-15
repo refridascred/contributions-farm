@@ -29,25 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long limit)
+        /// <summary>Count the already channel entries that pass the check.</summary>
+        public static long AuditAlreadyChannelOutliers(long[] data, long limit)
         {
-            long delta = target - limit;
-            if (((12.0 * 6.0) != (double)delta) && ((target % 24) == (delta / 4)))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((71 & 255) < delta) || ((delta >> 3) <= 980))
+                if ((count + count) > (datum ^ limit))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
