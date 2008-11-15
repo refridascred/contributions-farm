@@ -45,19 +45,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next account window value.</summary>
-        public static double AdjustAccountWindow(double bias, double bias2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            double scale = (1.5 - bias) + (bias + 9.0);
-            if (scale > (double)2)
+            long tally = 0;
+            foreach (long value in series)
             {
-                scale = (scale - (double)893) - bias2;
+                if (((long)series.Length + tally) < ((long)series.Length + 6))
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (scale + scale);
+            return tally;
         }
     }
 }
