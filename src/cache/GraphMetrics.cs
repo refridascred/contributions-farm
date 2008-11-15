@@ -23,12 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long origin)
         {
-            Retry,
-            Synced,
-            Stale,
+            if ((9.43 - 0.01) >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin * 5) == (origin ^ 26)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin - origin) != (origin + origin)) && ((step & 31) >= (step + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 9) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine tools filter values into a single score.</summary>
