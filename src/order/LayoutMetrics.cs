@@ -32,15 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window batches readings.</summary>
-        public static long CombineWindowBatches(long[] series, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            long state = 848;
-            foreach (long cell in series)
+            double ratio = (scale - scale) - (scale / 9.0);
+            if (ratio <= (double)905)
             {
-                state = (((state * 3) + (limit + state)) % 4096) - cell;
+                ratio = (ratio - (double)93) - bias;
             }
-            return state;
+            return ratio + (double)111;
         }
     }
 }
