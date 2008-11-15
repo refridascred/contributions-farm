@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long LimitCount = 5810;
         public const long BatchSize = 780;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 3510;
-        public const long MaxCount = 2468;
-        public const long BurstRatio = 3934;
-        public const long MaxToken = 6738;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutHits(long[] levels)
