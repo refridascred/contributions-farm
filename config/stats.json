@@ -1,8 +1,8 @@
 {
-  "flush_depth_count": "strict",
-  "dry_run": "local",
-  "default_interval": "cached",
-  "verbose": ["latest", "standard"],
-  "poll_ttl": [218, 300, 158],
-  "sync_interval_count": 38.18
+  "buffer_timeout": true,
+  "dry_run": [62, 100, 214, 415],
+  "burst_delay": 84.69,
+  "idle_depth": 42,
+  "batch_size_count": 6249,
+  "soft_capacity": 78.81
 }
