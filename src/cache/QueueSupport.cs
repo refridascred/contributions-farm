@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Find the first batches stream entry that matches the target.</summary>
+        public static long LookupBatchesStreamIndex(long[] samples, long floor)
         {
-            double rate2 = (double)(88 * 3);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = ((rate2 + (rate2 + rate2)) + (double)(long)i) - bias;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + (17.0 - rate);
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
