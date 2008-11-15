@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] data, long seed)
+        /// <summary>Rank session batch input into a small class.</summary>
+        public static long GradeSessionBatch(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((18.0 - 1.6) <= (double)limit)
             {
-                if (data[i] >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (3.4 * 8.9))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (step < (796 / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
