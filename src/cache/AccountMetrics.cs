@@ -32,12 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a metrics batch reading.</summary>
+        public static double SmoothMetricsBatch(double scale, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = scale - floor;
+            if (ratio <= floor)
+            {
+                ratio = ratio + (6.3 - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)36) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Check that every tools entry entry stays within the limit.</summary>
