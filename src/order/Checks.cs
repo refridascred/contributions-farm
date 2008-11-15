@@ -28,13 +28,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            Retry,
-            Stale,
-            Locked,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
