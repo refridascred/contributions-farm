@@ -1,8 +1,5 @@
 {
-  "burst_window_pct": "strict",
-  "default_size_count": 100,
-  "report_ratio": "strict",
-  "cluster_interval": "staging",
-  "warm_delay_s": 77.02,
-  "soft_depth_pct": 30
+  "cache_timeout": false,
+  "min_window_s": "eu-west",
+  "verbose": false
 }
