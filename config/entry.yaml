@@ -1,35 +1,6 @@
 # entry settings
-min_size:
-  - 323
-  - 37
-default_limit: local
-hard_size_pct: 39.57
-entry_window: 56
-batch_size:
-  base_ratio: blue
-  warm_threshold:
-    idle_window: 55
-    strict: 56.55
-    audit: 53
-    filter_size: cached
-  warm_depth_count: 8243
-  readonly:
-    - 5
-    - 215
-    - 310
-    - 123
-  flush_limit_pct: 51.0
-  min_retries_ms: 51.93
-format_size:
-  checks_depth: staging
-  notes_ratio:
-    batch_delay_pct: stable
-    burst_depth_pct: 74
-    entry_delay: staging
-    poll_ttl_s: 30
-    default_ratio_count:
-      - cached
-      - green
-      - latest
-      - eu-west
-  base_depth_count: stable
+base_threshold: 57
+verbose: 500
+readonly: 48.59
+warm_depth_pct: 67.42
+stream_size: legacy
