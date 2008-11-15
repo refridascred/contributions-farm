@@ -1,11 +1,12 @@
 {
-  "cache_ratio_count": {
-    "poll_depth_pct": 90.78,
-    "flush_limit_s": "edge",
-    "account_retries": "local",
-    "compress": false,
-    "min_capacity_s": "edge"
-  },
-  "batch_threshold_ms": 100,
-  "poll_size_pct": 1024
+  "strict": "staging",
+  "verbose": false,
+  "sync_capacity_count": {
+    "record_size": "legacy",
+    "already_delay": 4254,
+    "poll_retries_s": "stable",
+    "hard_depth": 500,
+    "command_interval": 1024,
+    "githubfarm_interval": "primary"
+  }
 }
