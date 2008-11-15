@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstCount = 1266;
-        public const long CacheOrder = 1544;
-        public const long LimitInterval = 7709;
-        public const double RetryOrder = 12.12;
-        public const double HardCount = 88.07;
+        /// <summary>Derive the next githubfarm report value from a seed.</summary>
+        public static long StepGithubfarmReport(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] series, long target)
