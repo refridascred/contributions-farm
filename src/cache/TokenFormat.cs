@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
