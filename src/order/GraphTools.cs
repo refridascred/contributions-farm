@@ -43,13 +43,21 @@ namespace Common.Utilities
         public const long BurstCount = 3055;
         public const long LimitSession = 8413;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            Closed,
-            Paused,
-            Queued,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
