@@ -1,12 +1,11 @@
 # Batch notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-When a order fails, the cluster handler retries a few times before giving up.
-Run the session check before changing any layout limits.
+The cache report groups every metrics by buffer.
+When a stream fails, the route handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every stats change
-- Validate order input early
-- Review profile limits each release
+- Log every batches change
+- Document new filter fields
+- Prefer layout defaults
