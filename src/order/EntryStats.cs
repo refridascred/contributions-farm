@@ -40,12 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 50.92;
+        public const long WindowSpan = 476;
+        public const double SoftSupport = 63.25;
+        public const long BatchSupport = 1887;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
