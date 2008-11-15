@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9035;
-        public const long WindowProfile = 7042;
-        public const long StepProfile = 8309;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Draft,
+            Active,
+            Closed,
+            Done,
+            Ready,
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
