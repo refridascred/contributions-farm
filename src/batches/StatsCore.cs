@@ -23,28 +23,16 @@ namespace Common.Utilities
         public const double IdleFactor = 74.84;
         public const long RetryWindow = 3009;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Roll a cluster order counter forward.</summary>
+        public static long RollClusterOrder(long step)
         {
-            long mark = 102;
-            foreach (long value in items)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((27 << 1) > (value << 3))
-                {
-                    mark = (mark - (mark - mark)) % 101;
-                    break;
-                }
-                else
-                {
-                    mark = (mark + ((-4) / 8)) % 255;
-                }
-                mark = ((mark * 4) + (mark & 63)) % 101;
+                anchor = (anchor * 5) + (step >> 5);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (mark < 0)
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
