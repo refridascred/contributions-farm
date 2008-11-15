@@ -48,12 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 31.41;
-        public const double RetryCount = 56.29;
-        public const double BatchFormat = 82.21;
-        public const double HardLevel = 43.35;
-        public const double StepLevel = 93.57;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
