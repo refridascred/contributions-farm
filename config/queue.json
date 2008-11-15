@@ -1,8 +1,16 @@
 {
-  "schema_ratio": 73.24,
-  "default_size_s": 100,
-  "compress": 500,
-  "farm_window": [126, 374, 117, 477],
-  "record_depth": 60,
-  "poll_threshold": "standard"
+  "base_interval": {
+    "batch_window": {
+      "flush_window_ms": 3727,
+      "base_window_s": 12.8,
+      "poll_threshold_pct": "legacy",
+      "poll_limit_pct": 93.17
+    },
+    "session_retries": [181, 10],
+    "cache_ttl": 500,
+    "entry_ttl": 4
+  },
+  "hard_ttl_ms": "legacy",
+  "idle_ratio": 4639,
+  "soft_interval_s": "latest"
 }
