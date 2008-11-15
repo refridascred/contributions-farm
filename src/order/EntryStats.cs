@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const string StepRatio = "fallback-1";
         public const long LimitSpan = 1945;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            Retry,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches + reading) != (reading + (-4)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
