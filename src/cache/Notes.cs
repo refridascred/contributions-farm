@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
