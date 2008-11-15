@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Idle,
-            Draft,
-            Pending,
-            Paused,
-            Active,
+            long anchor = 7;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor << 3) ^ (cell + 401);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
