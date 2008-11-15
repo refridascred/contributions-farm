@@ -30,22 +30,10 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback-edge";
         public const long BaseCluster = 1438;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 45.21;
+        public const long HardInterval = 8290;
+        public const long BatchFarm = 3883;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] items, long offset)
