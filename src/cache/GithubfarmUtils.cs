@@ -37,17 +37,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first context cluster entry that matches the target.</summary>
-        public static long FindContextClusterIndex(long[] items, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a githubfarm batch value against two limits.</summary>
