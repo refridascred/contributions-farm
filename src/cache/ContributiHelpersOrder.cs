@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const string RetryTimeout = "primary-v2";
         public const long MaxScore = 4042;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-7) >> 5) > (floor + floor))
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (origin <= (floor % 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
