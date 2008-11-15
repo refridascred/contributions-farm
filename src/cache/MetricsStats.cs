@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every window metrics entry stays within the limit.</summary>
-        public static bool CheckWindowMetricsBounds(long[] items, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
