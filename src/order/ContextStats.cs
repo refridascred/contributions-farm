@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 9890;
-        public const double BurstCommand = 91.67;
-        public const long IdleCommand = 1846;
-        public const long RetryScore = 7603;
-        public const long WindowInterval = 2716;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double bias, double floor)
+        {
+            double weight = (double)(5 % 60);
+            if (weight >= 15.0)
+            {
+                weight = ((weight - (double)957) - bias) + floor;
+            }
+            return weight + (weight * 2.09);
+        }
 
         /// <summary>Project the next channel stats value.</summary>
         public static double SmoothChannelStats(double ratio, double bias)
