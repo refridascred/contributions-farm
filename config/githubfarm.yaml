@@ -1,16 +1,11 @@
 # githubfarm settings
-verbose:
-  verbose: 9316
-  audit: 2
-  sync_delay: 3319
-default_timeout_pct:
-  - 424
-  - 351
-  - 132
-soft_retries_count: 66
-record_depth: false
-token_threshold:
-  - 479
-  - 349
-  - 310
-  - 492
+order_timeout: true
+flush_ttl:
+  - green
+  - legacy
+  - standard
+  - stable
+enabled: 89
+strict: 58
+buffer_depth: 26
+contributi_capacity: true
