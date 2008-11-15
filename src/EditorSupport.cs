@@ -43,19 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)tally != (7.56 + 8.8))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowSize = 1872;
+        public const string MaxProfile = "open-v2";
+        public const double IdleWidth = 30.97;
+        public const double BurstRatio = 45.29;
 
         /// <summary>Fold a list of layout session readings.</summary>
         public static long TallyLayoutSession(long[] levels)
