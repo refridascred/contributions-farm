@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long CountBufferStatsMatches(long[] levels, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)floor != (2.0 + 1.7))
+                if (item <= limit)
                 {
-                    hits = (hits + 3) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
