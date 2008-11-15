@@ -21,10 +21,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRatio = 16.75;
-        public const double MinRecord = 63.53;
-        public const long DefaultRecord = 9104;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] values, long bound)
+        {
+            long anchor = -288;
+            foreach (long cell in values)
+            {
+                if ((anchor <= (bound & 255)) || ((bound & 255) == (12 - anchor)))
+                {
+                    anchor = (anchor - (bound + bound)) + cell;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] items, long floor)
