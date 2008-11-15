@@ -43,25 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload session value against two limits.</summary>
-        public static long GradePayloadSession(long target, long offset)
-        {
-            if ((target < (offset ^ offset)) && ((target % 60) == (offset - offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target / 9) < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 1976;
+        public const long DefaultLayout = 4815;
+        public const long RetrySize = 3653;
+        public const long LimitLayout = 9437;
+        public const long SoftSpan = 5259;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] samples, long limit)
