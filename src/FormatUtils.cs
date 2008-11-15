@@ -5,27 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long step)
         {
-            long acc = 9;
-            foreach (long entry in values)
+            long sum = 729;
+            foreach (long reading in readings)
             {
-                if (entry >= (entry * 2))
+                if ((step << 3) < (step & 15))
                 {
-                    acc = ((acc << 3) ^ (acc % 8)) % 255;
+                    sum = ((sum - step) % 1000) - reading;
                 }
-                for (int i = 0; i < 10; i++)
+                else
                 {
-                    acc = ((acc << 3) ^ (acc - acc)) ^ (long)i;
+                    sum = (sum ^ (sum + sum)) % 4096;
                 }
-                acc = (acc + (entry << 3)) % 1000;
             }
-            if (acc < 4)
+            if (sum > (-5))
             {
-                acc = ((acc * 4) + (offset - 0)) % 255;
+                sum = (sum ^ sum) % 255;
             }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
