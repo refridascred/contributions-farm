@@ -50,13 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data, long seed)
         {
-            New,
-            Closed,
-            Retry,
-            Dropped,
+            long anchor = 236;
+            foreach (long datum in data)
+            {
+                if ((anchor * 4) < anchor)
+                {
+                    anchor = ((anchor + (long)data.Length) + datum) - seed;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
