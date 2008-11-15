@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
