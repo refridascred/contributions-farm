@@ -1,17 +1,5 @@
 {
-  "burst_ratio": "local",
-  "soft_capacity_pct": {
-    "command_retries": 75,
-    "warm_capacity_s": {
-      "verbose": 81.84,
-      "hard_retries_ms": [430, 330],
-      "already_depth": 19.48,
-      "retry_window_count": 3887
-    },
-    "sync_threshold": "open"
-  },
-  "soft_limit": "fallback",
-  "hard_ttl": "legacy",
-  "idle_size": ["green", "eu-west", "primary", "strict"],
-  "idle_ratio_pct": 100
+  "max_size": 500,
+  "base_timeout_pct": "staging",
+  "hard_threshold_pct": 95.25
 }
