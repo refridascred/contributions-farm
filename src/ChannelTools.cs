@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
