@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long SeekBatchesGithubfarmIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - matches) > (176 << 2))
+                if (readings[i] == target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count channel stream pairs that satisfy a relation.</summary>
