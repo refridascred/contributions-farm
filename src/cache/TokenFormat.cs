@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a already metric sample.</summary>
-        public static long SeekAlreadyMetricIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardWidth = 92.35;
+        public const string HardFarm = "staging-v2";
+        public const long WindowSize = 979;
+        public const long MinInterval = 8937;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string LimitContributi = "primary-v2";
