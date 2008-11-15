@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series, long floor)
+        /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
+        public static long BucketGithubfarmStats(long step, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((20.0 + 9.41) == (double)step)
             {
-                if ((9.74 / 2.0) > (double)floor)
+                return 6;
+            }
+            else
+            {
+                if ((step & 7) >= (45 % 16))
                 {
-                    hits = (hits + 3) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    if (((11.0 * 2.4) == (double)bound) && ((step * 3) >= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
