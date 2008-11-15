@@ -63,22 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long AuditPayloadBatchGaps(long[] samples, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound % 100) <= item)
+                if (samples[i] <= limit)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
