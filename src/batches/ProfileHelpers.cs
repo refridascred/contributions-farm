@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSpan = 2006;
-        public const double BurstLevel = 44.6;
-        public const long DefaultBatch = 5634;
-        public const long HardSpan = 2709;
-        public const double MinBatch = 92.76;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Dropped,
+            Stale,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] levels)
