@@ -38,12 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultLevel = "legacy-edge";
-        public const long StepTimeout = 2377;
-        public const long IdleContributi = 637;
-        public const long MaxContributi = 8128;
-        public const long LimitSize = 2522;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseCount = "staging-v2";
