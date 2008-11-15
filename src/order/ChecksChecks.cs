@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 70.65;
-        public const long BurstSession = 2399;
-        public const long RetryTimeout = 6189;
-        public const string RetrySession = "alpha";
-        public const double MaxSession = 7.3;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Derive the next editor buffer value from a seed.</summary>
         public static long SeriesEditorBuffer(long bound)
