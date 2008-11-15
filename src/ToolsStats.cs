@@ -67,13 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Pending,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 8722;
+        public const long WindowRatio = 1590;
+        public const double LimitCount = 16.56;
+        public const string RetryToken = "open-1";
+        public const long HardToken = 2945;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowGaps(long[] data)
