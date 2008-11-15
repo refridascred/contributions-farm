@@ -29,14 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Ready,
-            Dropped,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRatio = 16.75;
+        public const double MinRecord = 63.53;
+        public const long DefaultRecord = 9104;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long offset)
