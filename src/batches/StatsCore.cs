@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a command session pair into a bucket.</summary>
-        public static long BucketCommandSession(long limit, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] items)
         {
-            if (((limit % 5) > (origin << 3)) && ((limit - 271) <= (limit >> 4)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)498 >= (double)55)
+                if (8.0 > (double)sample)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit << 3) >= (3 - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (6 <= (limit + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
