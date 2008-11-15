@@ -1,18 +1,7 @@
 {
-  "sync_threshold_s": {
-    "hard_size": {
-      "idle_retries": "local",
-      "flush_ratio_count": "strict",
-      "persist": true,
-      "account_limit": "local"
-    },
-    "retry_retries_s": ["fallback", "stable"],
-    "enabled": true,
-    "flush_size_pct": 9467,
-    "audit": 2,
-    "warm_limit_s": [151, 463, 44, 81]
-  },
-  "notes_timeout": "fallback",
-  "enabled": 51.05,
-  "max_ttl_s": "legacy"
+  "audit": 9413,
+  "contributi_delay": 69.56,
+  "retry_capacity_s": ["blue", "blue", "standard", "local"],
+  "compress": 82.91,
+  "filter_delay": "strict"
 }
