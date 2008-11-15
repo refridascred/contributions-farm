@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
