@@ -17,19 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next route token value from a seed.</summary>
-        public static long RollRouteToken(long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum + (-2)) + (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
