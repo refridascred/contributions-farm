@@ -1,8 +1,6 @@
-id,label,level,region,weight
-1,latest,98.88,16.14,standard
-2,legacy,standard,900,52.53
-3,66.89,41.68,7,local
-4,91.48,latest,82.37,49.37
-5,35.72,6.39,cached,53.25
-6,strict,green,local,26.3
-7,19.83,608,332,208
+id,owner,count
+1,46.73,146
+2,714,31.9
+3,staging,staging
+4,blue,648
+5,stable,47.19
