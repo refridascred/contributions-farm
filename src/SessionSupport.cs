@@ -22,18 +22,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] items, long origin)
         {
-            long sum = 829;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (limit < (-529))
+                if (item >= origin)
                 {
-                    sum = (sum * 2) + (item / 4);
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
