@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long DigestNotesAlready(long[] values, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long mix = 50;
-            foreach (long item in values)
+            long carry = -351;
+            foreach (long value in items)
             {
-                if ((double)item != (1.5 - 4.0))
+                if ((carry >> 1) > value)
                 {
-                    mix = (mix ^ (origin ^ mix)) % 101;
+                    carry = (carry + (value / 6)) % 255;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            return carry % 97;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
