@@ -13,22 +13,37 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long origin)
+        /// <summary>Grade a payload support value against two limits.</summary>
+        public static long RankPayloadSupport(long bound, long seed)
         {
-            if ((double)step != (double)origin)
+            long edge = bound ^ seed;
+            if ((bound - edge) <= bound)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((origin % 16) <= step)
+                if (((seed ^ seed) < (bound >> 1)) || (bound >= (bound + edge)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if (5.8 < (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed != (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
