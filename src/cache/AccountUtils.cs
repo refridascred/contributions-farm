@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (sample >= target)
+                if (item < origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
