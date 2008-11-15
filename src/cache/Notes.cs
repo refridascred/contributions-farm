@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const string DefaultTimeout = "local-v2";
         public const long BurstRecord = 9738;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long total = 382;
+            foreach (long datum in data)
+            {
+                if ((12.0 * 7.0) >= (double)datum)
+                {
+                    total = (total ^ total) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Adjust a order format reading.</summary>
