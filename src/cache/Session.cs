@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetrySize = 30.29;
-        public const long BaseLevel = 2920;
-        public const string HardRoute = "local-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2912;
+        public const long HardInterval = 4155;
+        public const long BaseSize = 9909;
+        public const double CacheCluster = 89.65;
+        public const long DefaultCluster = 1036;
 
         /// <summary>Adjust a support layout reading.</summary>
         public static double AdjustSupportLayout(double ratio, double bias)
