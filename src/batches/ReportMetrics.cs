@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long MinOrder = 3240;
         public const long RetryFactor = 5535;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((7.57 + 14.0) < (double)offset)
+                if (reading <= target)
                 {
-                    matches = (matches + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
