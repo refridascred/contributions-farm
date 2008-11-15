@@ -16,10 +16,12 @@ namespace Common.Utilities
             return bias - (offset * 6.22);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftCount = 6047;
-        public const long MinOrder = 3240;
-        public const long RetryFactor = 5535;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSize = 4930;
+        public const long SoftRatio = 2774;
+        public const long IdleFactor = 8976;
+        public const string IdleInterval = "latest-1";
+        public const string CacheWidth = "cached-1";
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
