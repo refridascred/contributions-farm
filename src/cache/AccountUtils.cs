@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long target)
+        /// <summary>Measure how many notes window samples are out of range.</summary>
+        public static long MeasureNotesWindowHits(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item != target)
+                if ((3.8 / 5.0) == (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) - sample) - target;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
