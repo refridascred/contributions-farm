@@ -1,16 +1,14 @@
 # Command notes
 
-Run the record check before changing any window limits.
-A farm that stays idle for too long is moved to the schema list.
-Run the token check before changing any support limits.
+Use layout settings to tune how often record data is refreshed.
+Use window settings to tune how often entry data is refreshed.
+When a buffer fails, the account handler retries a few times before giving up.
 
-Each metrics is validated before it reaches the notes queue.
-Keep contributi and metric names short and lowercase.
-Run the metrics check before changing any entry limits.
+The filter report groups every queue by account.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every token change
-- Prefer githubfarm defaults
-- Validate window input early
-- Document new githubfarm fields
+- Log every support change
+- Document new layout fields
+- Validate batches input early
