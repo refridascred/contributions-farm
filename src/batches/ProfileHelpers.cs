@@ -21,18 +21,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] values, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.7 / 5.0) != (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 1) + entry) - seed;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
