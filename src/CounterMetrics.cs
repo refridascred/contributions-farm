@@ -14,12 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
