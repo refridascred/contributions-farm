@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate filter channel readings against a bound.</summary>
-        public static bool GuardFilterChannelBounds(long[] samples, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
