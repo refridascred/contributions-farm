@@ -55,17 +55,19 @@ namespace Common.Utilities
             return (gain2 + (9.0 * 8.4)) + floor;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long offset)
+        /// <summary>Check that every report contributi entry stays within the limit.</summary>
+        public static bool ValidateReportContributiLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (levels[i] >= offset)
+                if (item > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
