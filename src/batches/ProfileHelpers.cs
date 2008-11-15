@@ -30,21 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((2.19 / 2.0) < (double)count) || (8 <= count)))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) + value) + bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the batch account series from a seed.</summary>
