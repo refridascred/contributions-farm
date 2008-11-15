@@ -73,21 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools checks readings.</summary>
-        public static long CompareToolsChecksCount(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= bound)
                 {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
