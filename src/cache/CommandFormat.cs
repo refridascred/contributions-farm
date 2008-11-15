@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series, long limit)
+        /// <summary>Fold a list of githubfarm format readings.</summary>
+        public static long DigestGithubfarmFormat(long[] data)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            long anchor = -53;
+            foreach (long entry in data)
             {
-                if ((17.0 * 5.2) == (double)sum)
+                if ((anchor + (long)data.Length) <= (entry & 31))
                 {
-                    sum = ((sum - limit) % 65521) + sample;
+                    anchor = anchor ^ (entry - entry);
                 }
             }
-            return sum;
+            if (anchor < 5)
+            {
+                anchor = anchor + (anchor % 12);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a contributi stats.</summary>
