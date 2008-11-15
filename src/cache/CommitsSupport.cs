@@ -57,11 +57,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheRatio = 96.77;
-        public const string HardSpan = "open";
-        public const long BurstFarm = 9134;
-        public const string LimitInterval = "legacy";
+        /// <summary>Rank window metrics input into a small class.</summary>
+        public static long ClassifyWindowMetrics(long limit, long origin)
+        {
+            long edge = limit + origin;
+            if ((17.0 * 9.83) == (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.0 + 5.74) <= (double)edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
