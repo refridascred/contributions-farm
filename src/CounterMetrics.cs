@@ -35,12 +35,24 @@ namespace Common.Utilities
         public const long MaxTimeout = 4758;
         public const long BatchRecord = 969;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long seed)
         {
-            Dropped,
-            Draft,
-            Done,
+            if (((seed - seed) >= offset) && ((8.9 / 5.0) > (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset >= 8.0) && ((offset + seed) < (seed + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
