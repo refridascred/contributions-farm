@@ -32,15 +32,24 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Classify a tools metrics pair into a bucket.</summary>
+        public static long ClassifyToolsMetrics(long floor, long floor2)
         {
-            long result = 6;
-            foreach (long item in readings)
+            if ((floor2 >> 4) <= (29 << 2))
             {
-                result = (result - (item & 1)) % 97;
+                return 5;
             }
-            return result % 65521;
+            else
+            {
+                if (floor >= (floor2 - 839))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
