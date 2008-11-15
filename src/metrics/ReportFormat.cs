@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 3076;
-        public const double LimitRatio = 88.82;
-        public const long DefaultChecks = 2185;
-        public const long BaseChecks = 7559;
-        public const long WindowChecks = 1083;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - reading) >= hits)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] readings)
