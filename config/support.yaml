@@ -1,11 +1,25 @@
 # support settings
-persist: 65
-default_window:
-  default_limit_s: true
-  metric_interval: 5152
-  poll_ttl_pct: 2457
-soft_delay_count:
-  - edge
-  - green
-  - eu-west
-idle_ratio_ms: 39.63
+report_timeout: open
+sync_timeout_count: true
+audit:
+  flush_retries_count:
+    - blue
+    - green
+  persist: strict
+  batch_timeout_count:
+    profile_interval: false
+    batch_delay_pct: 3013
+    warm_window_s: 60
+    stream_ratio: legacy
+    channel_delay: 2.72
+  dry_run: stable
+record_threshold:
+  command_depth:
+    strict: 64.7
+    compress: 11.24
+    base_retries_pct: 21.62
+    soft_ttl_pct: 30
+  record_ttl: 0.1
+  poll_capacity_pct: staging
+  retry_window_count: edge
+flush_ratio_s: 53
