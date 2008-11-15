@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 63;
+            foreach (long item in data)
             {
-                if (items[i] >= bound)
+                if ((item + item) >= 6)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (item + item)) % 65521;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
