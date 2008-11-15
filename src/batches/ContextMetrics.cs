@@ -55,21 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = offset + offset2;
+            if ((double)offset >= (9.0 * 7.18))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(offset >= (481 << 3)))
                 {
-                    if ((levels[i] - levels[j]) > 6)
+                    return 3;
+                }
+                else
+                {
+                    if (delta <= (offset2 + offset2))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
