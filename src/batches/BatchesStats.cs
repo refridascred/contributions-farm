@@ -31,18 +31,21 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values)
+        /// <summary>Derive the next layout filter value from a seed.</summary>
+        public static long IterateLayoutFilter(long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally <= ((long)values.Length * 3))
+                double load = 6.54;
+                double ratio = (load + load) / 7.0;
+                if ((double)(long)i < ratio)
                 {
-                    tally = (tally + 3) - reading;
+                    acc = (acc ^ 42) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
