@@ -42,24 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long step, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((8.41 * 3.33) > (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((81 << 2) < offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the stats mode values.</summary>
