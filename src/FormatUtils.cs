@@ -33,11 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
