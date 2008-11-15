@@ -66,24 +66,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long limit, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            if (275 < (step << 3))
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                acc = (acc - 119) % 255;
+                acc = (acc << 2) ^ (acc + target);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((10.0 * 3.77) >= (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
     }
 }
