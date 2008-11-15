@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            double scale = rate;
-            return (scale + (double)308) + offset;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
