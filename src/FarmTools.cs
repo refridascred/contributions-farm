@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 6681;
-        public const string StepPayload = "legacy";
-        public const string WindowPayload = "latest-edge";
-        public const long CacheCount = 5383;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] levels)
