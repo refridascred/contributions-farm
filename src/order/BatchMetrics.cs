@@ -64,15 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 11)
+                    if ((samples[i] + samples[j]) < 4)
                     {
                         matches = matches + 1;
                     }
