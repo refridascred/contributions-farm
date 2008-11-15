@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchBudget = 98.09;
-        public const double BatchCounter = 11.92;
-        public const long StepCounter = 7321;
-        public const string MaxBudget = "primary-1";
-        public const string MinCounter = "latest-1";
+        /// <summary>Match up graph report samples.</summary>
+        public static long MatchGraphReportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
         public static long SeekToolsFormatIndex(long[] series, long floor)
