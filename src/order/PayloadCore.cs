@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long total = 99;
+            foreach (long cell in readings)
             {
-                if ((tally % 3) > (datum + tally))
+                if ((long)readings.Length > cell)
                 {
-                    tally = tally + 3;
+                    total = (total - cell) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
