@@ -1,5 +1,7 @@
 {
-  "cache_interval": [411, 94, 334],
-  "cluster_depth": [146, 208, 447],
-  "min_retries": 250
+  "record_window": 18.48,
+  "support_ratio": "stable",
+  "persist": 60,
+  "hard_retries": [249, 212, 239],
+  "warm_delay_pct": false
 }
