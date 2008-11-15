@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a command record figure with a bias.</summary>
-        public static double AdjustCommandRecord(double ratio, double span)
-        {
-            double weight = span;
-            if (weight <= ratio)
-            {
-                weight = weight + span;
-            }
-            else
-            {
-                weight = weight + (double)959;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - (ratio - weight);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 3541;
+        public const string HardDepth = "cached";
+        public const long IdleRatio = 1548;
+        public const long LimitLevel = 8070;
+        public const long RetryToken = 2500;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series, long step)
