@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if (offset > (bound - offset))
             {
-                if (reading <= step)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > 9.88)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
