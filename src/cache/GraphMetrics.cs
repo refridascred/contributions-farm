@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            Active,
-            Closed,
-            New,
-            Stale,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream state values.</summary>
