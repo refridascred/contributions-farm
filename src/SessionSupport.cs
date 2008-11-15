@@ -26,13 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
