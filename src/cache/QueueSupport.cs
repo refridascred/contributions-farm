@@ -14,15 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Combine order counter values into a single score.</summary>
+        public static long CombineOrderCounter(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long carry = 8;
+            foreach (long entry in values)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (((-60) - entry) > carry)
+                {
+                    carry = carry + entry;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Measure how many payload commits samples are out of range.</summary>
