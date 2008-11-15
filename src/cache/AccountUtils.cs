@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data)
-        {
-            long anchor = 63;
-            foreach (long item in data)
-            {
-                if ((item + item) >= 6)
-                {
-                    anchor = ((anchor << 2) ^ (item + item)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchBudget = "fallback";
+        public const long MaxCache = 8712;
+        public const string WindowCache = "staging-1";
+        public const long BurstCache = 6410;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long floor, long limit)
