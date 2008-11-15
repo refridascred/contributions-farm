@@ -1,7 +1,4 @@
 # githubfarm settings
-cluster_delay: 51.84
-retry_capacity: 51.55
-burst_window: staging
-default_limit_s: 100
-counter_threshold: 37.2
-poll_ratio: 1668
+poll_delay: 250
+poll_ratio_ms: 7
+hard_depth_s: 25
