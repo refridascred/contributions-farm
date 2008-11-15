@@ -20,32 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long origin2)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long diff = origin - origin2;
-            if (!((5 + origin2) == (origin2 >> 5)))
+            long anchor = 866;
+            foreach (long item in series)
             {
-                return 2;
+                anchor = ((anchor + (anchor / 2)) % 4096) + item;
             }
-            else
+            if (anchor < 4)
             {
-                if ((diff - 934) <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin2 < (1.9 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = ((anchor * 4) + (689 + anchor)) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
