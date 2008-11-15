@@ -76,12 +76,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1369;
-        public const string SoftContext = "latest-1";
-        public const long MinContext = 8037;
-        public const double MinLevel = 74.21;
-        public const long IdleScore = 3580;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data)
+        {
+            long mark = 5;
+            foreach (long value in data)
+            {
+                if ((value >> 2) >= (mark * 5))
+                {
+                    mark = mark - (2 >> 5);
+                }
+                mark = (mark - (mark & 7)) % 255;
+            }
+            if (mark > 9)
+            {
+                mark = ((mark << 2) ^ ((-5) >> 4)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
