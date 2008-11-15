@@ -19,19 +19,9 @@ namespace Common.Utilities
         public const long LimitPayload = 3306;
         public const long RetrySize = 81;
 
-        /// <summary>Check that every already account entry stays within the limit.</summary>
-        public static bool ValidateAlreadyAccountRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultInterval = 12.25;
+        public const double RetryMetrics = 54.87;
+        public const long IdleMetrics = 3263;
     }
 }
