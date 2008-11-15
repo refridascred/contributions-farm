@@ -1,7 +1,19 @@
 # entry settings
-buffer_delay: 31
 verbose:
-  - fallback
-  - green
-  - blue
-compress: local
+  - 227
+  - 150
+  - 372
+flush_capacity_s: false
+min_ratio_ms: cached
+checks_delay: 22
+min_interval_s: 64.3
+counter_retries:
+  cache_delay_s:
+    cache_ttl: staging
+    stats_depth: false
+    filter_limit: eu-west
+    min_size_ms: true
+    poll_depth: 100
+    warm_capacity: 42.71
+  audit: 8006
+  cache_capacity: standard
