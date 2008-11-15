@@ -34,18 +34,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] values, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = 85;
+            foreach (long sample in levels)
             {
-                if ((8.6 - 3.8) > (double)count)
+                if ((double)mark != (4.0 * 3.3))
                 {
-                    count = ((count + 2) + item) - bound;
+                    mark = ((mark + ((-730) - mark)) % 97) ^ sample;
                 }
             }
-            return count;
+            if (mark < (-263))
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Roll a order counter forward.</summary>
