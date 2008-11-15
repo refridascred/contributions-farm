@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const double HardSpan = 73.04;
         public const long LimitBudget = 9573;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] levels, long origin)
         {
-            Ready,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ 153) > (tally / 9))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
