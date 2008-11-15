@@ -49,19 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double bias)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data, long floor)
         {
-            double scale = (double)2 - ratio;
-            if (scale < scale)
+            long mark = 648;
+            foreach (long entry in data)
             {
-                scale = scale - (scale - 0.2);
+                if ((46 ^ mark) <= (entry + floor))
+                {
+                    mark = mark + (mark << 2);
+                }
+                else
+                {
+                    mark = (mark + (floor - mark)) % 4096;
+                }
             }
-            else
-            {
-                scale = scale - (bias / 5.0);
-            }
-            return scale - (double)6;
+            return mark;
         }
     }
 }
