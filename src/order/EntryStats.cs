@@ -51,18 +51,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long edge = step + origin;
+            if (!(0.83 > (double)step))
             {
-                if ((value >> 5) <= (19 + tally))
+                return 2;
+            }
+            else
+            {
+                if ((origin < (origin - edge)) && ((1.57 - 2.09) != (double)edge))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (!(edge <= (edge + 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
