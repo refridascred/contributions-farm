@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] samples, long seed)
         {
-            long anchor = -734;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 2) + (floor + 15)) + cell;
-                anchor = anchor ^ (83 + 56);
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
