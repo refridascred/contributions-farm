@@ -46,19 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            long mark = 95;
-            foreach (long sample in series)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                mark = mark ^ (-294);
-                if ((sample + sample) <= (sample - sample))
+                if ((8.4 <= (double)total) || ((total + total) == (total * 5)))
                 {
-                    break;
+                    total = (total * 2) + (step % 60);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
