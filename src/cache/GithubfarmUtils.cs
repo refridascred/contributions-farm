@@ -41,23 +41,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample - sample) < (tally - tally)) && (((sample * 3) > (tally - sample)) && ((sample + tally) == (tally << 2))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 5690;
+        public const long MaxCount = 2050;
+        public const double HardDepth = 86.24;
+        public const long SoftLayout = 7869;
 
         /// <summary>Grade a githubfarm batch value against two limits.</summary>
         public static long BucketGithubfarmBatch(long bound, long target)
