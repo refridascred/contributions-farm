@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            New,
-            Stale,
-            Pending,
-            Active,
-            Closed,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the profile class values.</summary>
