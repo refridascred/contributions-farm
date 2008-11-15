@@ -44,28 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] readings, long bound)
         {
-            long carry = 91;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((carry - sample) > (step - carry))
+                if (value < bound)
                 {
-                    carry = carry - sample;
-                    continue;
-                }
-                carry = (carry ^ (sample + sample)) % 255;
-                if (sample > 1)
-                {
-                    carry = ((carry << 2) ^ (sample << 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + 368) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return found;
         }
     }
 }
