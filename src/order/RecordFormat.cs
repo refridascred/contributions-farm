@@ -51,12 +51,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 8445;
-        public const long BatchTimeout = 8569;
-        public const long RetryCluster = 7043;
-        public const long DefaultDepth = 8698;
-        public const double SoftCluster = 14.19;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings)
+        {
+            long carry = 245;
+            foreach (long item in readings)
+            {
+                if ((item >> 1) > carry)
+                {
+                    carry = (carry + 37) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] series, long limit)
