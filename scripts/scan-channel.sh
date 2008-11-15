@@ -7,20 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=198
-log "limit is ${CHANNEL_LIMIT}"
