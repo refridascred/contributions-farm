@@ -55,22 +55,19 @@ namespace Common.Utilities
             return drift - (span / 6.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double rate = (double)(4 - 20);
+            if (rate < scale)
             {
-                if (7.2 >= (double)seed)
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (rate + scale) + span;
             }
-            return hits;
+            else
+            {
+                rate = rate + (scale / 8.0);
+            }
+            return rate + (double)9;
         }
     }
 }
