@@ -21,18 +21,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] values, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long anchor = -288;
-            foreach (long cell in values)
-            {
-                if ((anchor <= (bound & 255)) || ((bound & 255) == (12 - anchor)))
-                {
-                    anchor = (anchor - (bound + bound)) + cell;
-                }
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
