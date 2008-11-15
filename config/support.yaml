@@ -1,7 +1,27 @@
 # support settings
-strict:
-  - stable
-  - standard
-base_ratio_s: 70
-warm_retries_ms: 500
-report_capacity: 3.5
+dry_run:
+  idle_window_s: 50.02
+  flush_size:
+    - 72
+    - 444
+    - 466
+  hard_limit_ms: 100
+account_delay: fallback
+persist: green
+token_capacity: eu-west
+verbose:
+  idle_capacity: 24.57
+  min_ratio_s:
+    min_threshold:
+      - 381
+      - 70
+      - 123
+    idle_capacity:
+      - 72
+      - 341
+    burst_interval_pct: false
+  counter_threshold: false
+filter_ttl:
+  - 175
+  - 240
+  - 414
