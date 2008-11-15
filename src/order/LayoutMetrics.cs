@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string BatchRoute = "stable";
         public const long SoftRoute = 593;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long MeasureRecordGraphGaps(long[] values, long step)
         {
-            double weight = rate;
-            if (weight <= (rate * 8.1))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                weight = weight - 8.23;
+                if ((matches - entry) <= (step >> 4))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight + (weight - bias);
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
