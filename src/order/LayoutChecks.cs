@@ -24,12 +24,18 @@ namespace Common.Utilities
             return bias + (scale + offset);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "open";
-        public const string BatchCommits = "cached-v2";
-        public const string DefaultFactor = "fallback";
-        public const string SoftCommits = "legacy-edge";
-        public const string HardCommits = "stable-v2";
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
