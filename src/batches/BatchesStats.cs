@@ -25,11 +25,22 @@ namespace Common.Utilities
         public const double RetryMetric = 79.0;
         public const long LimitMetric = 6509;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 64.05;
-        public const double BatchBudget = 91.49;
-        public const string HardDepth = "legacy-v2";
-        public const string SoftTimeout = "latest-edge";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate report batch readings against a bound.</summary>
         public static bool GuardReportBatchBounds(long[] levels, long step)
