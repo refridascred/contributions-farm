@@ -21,19 +21,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long CountToolsStreamMatches(long[] levels, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step <= (1.0 + 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
