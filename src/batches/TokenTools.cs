@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Compare every pair of githubfarm buffer readings.</summary>
+        public static long OverlapGithubfarmBufferCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + entry) < entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
