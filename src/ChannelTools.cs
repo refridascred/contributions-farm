@@ -24,17 +24,38 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)floor >= (double)origin))
             {
-                if (series[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if (8 >= (floor << 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((874 ^ origin) >= (floor - (-66)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin % 64) != (origin + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
