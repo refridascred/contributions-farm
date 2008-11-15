@@ -1,6 +1,10 @@
 {
-  "warm_limit_ms": "strict",
-  "batch_size": "standard",
-  "flush_threshold_pct": true,
-  "warm_threshold": "edge"
+  "stream_size": {
+    "token_interval": 6440,
+    "burst_ratio_ms": 94.42,
+    "idle_interval_ms": 51.58
+  },
+  "hard_depth": 948,
+  "min_size_s": "staging",
+  "warm_limit_ms": 4127
 }
