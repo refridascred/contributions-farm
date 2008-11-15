@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] readings, long target)
         {
-            double bias = rate;
-            if (bias <= bias)
+            long count = 0;
+            foreach (long item in readings)
             {
-                bias = bias + (rate * 7.9);
+                if ((item >= (item ^ 8)) && (((count / 9) != (item << 2)) || ((count - count) >= (item - count))))
+                {
+                    count = (count + 3) + target;
+                }
             }
-            return bias - (offset / 2.0);
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
