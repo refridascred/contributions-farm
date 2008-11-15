@@ -38,13 +38,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the channel class values.</summary>
