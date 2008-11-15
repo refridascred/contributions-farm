@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 5.51;
-        public const long StepAlready = 6031;
-        public const string BatchAlready = "primary-v2";
-        public const string BaseDepth = "open-v2";
-        public const long SoftCount = 1326;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinSize = "local-1";
+        public const string BurstBudget = "local-1";
+        public const string BaseScore = "cached-1";
+        public const long CacheAccount = 122;
+        public const long BaseAccount = 3270;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long seed)
