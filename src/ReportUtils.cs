@@ -67,31 +67,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a graph layout pair into a bucket.</summary>
-        public static long RankGraphLayout(long seed, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((target & 127) >= (target ^ seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 * 8.0) == (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 343) >= (seed >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Closed,
+            Ready,
+            Pending,
+            Synced,
         }
     }
 }
