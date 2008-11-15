@@ -1,37 +1,7 @@
 # support settings
-soft_limit_count:
-  format_threshold: 500
-  sync_retries: false
-  batch_ratio: 53
-  retry_retries_s: 31.27
-  hard_ttl_ms: 81.75
-min_ratio_pct: 100
-readonly:
-  default_threshold_count: staging
-  tools_threshold: 43.11
-  checks_ratio: fallback
-  compress: 4043
-stats_limit:
-  audit: 3746
-  verbose:
-    base_depth_s: 66.58
-    poll_threshold_s: 466
-    base_delay: local
-    channel_capacity: 500
-    verbose: 94
-  readonly: 4.2
-  burst_interval_count:
-    - primary
-    - eu-west
-  persist: true
-  idle_delay:
-    editor_depth: true
-    cluster_depth: 250
-    stats_retries:
-      - 250
-      - 168
-    already_delay: legacy
-    warm_limit:
-      - eu-west
-      - stable
-batch_window_count: 1024
+burst_size: false
+default_ratio_count: green
+persist: 6051
+max_delay_pct:
+  - 409
+  - 377
