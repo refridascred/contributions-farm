@@ -1,8 +1,8 @@
 {
-  "base_interval_s": 58.7,
-  "sync_interval": "primary",
-  "cluster_depth": [186, 122, 109],
-  "schema_interval": 30,
-  "githubfarm_ttl": 60,
-  "max_ratio_ms": "staging"
+  "verbose": 8115,
+  "soft_interval_s": "strict",
+  "flush_retries": true,
+  "hard_depth_count": "primary",
+  "retry_limit_ms": 640,
+  "batch_retries": "legacy"
 }
