@@ -71,14 +71,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Dropped,
-            Stale,
-            Done,
-            Synced,
-            Queued,
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
