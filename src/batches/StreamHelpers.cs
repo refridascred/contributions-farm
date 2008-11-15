@@ -51,12 +51,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 4860;
-        public const long WindowToken = 4665;
-        public const long BaseToken = 1533;
-        public const double HardCount = 38.64;
-        public const long RetryDepth = 839;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
+        {
+            double gain = bias * 18.0;
+            if (gain < gain)
+            {
+                gain = (gain - bias) + scale;
+            }
+            return gain - (bias / 9.0);
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
