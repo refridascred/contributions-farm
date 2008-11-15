@@ -47,12 +47,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Iterate the batch account series from a seed.</summary>
+        public static long StepBatchAccount(long origin)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long result = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)origin == (6.62 / 9.0))
+                {
+                    result = (result + origin) % 65521;
+                }
+                if (((8.66 + 15.0) == (double)(long)i) || ((472 + result) > result))
+                {
+                    result = ((result << 3) ^ (origin / 4)) % 255;
+                    break;
+                }
+                else
+                {
+                    result = result + ((long)i - 40);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
