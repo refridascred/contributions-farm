@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const double CacheSpan = 23.64;
         public const double DefaultSpan = 87.54;
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long CombineFormatOrder(long[] items)
+        /// <summary>Validate route counter readings against a bound.</summary>
+        public static bool ValidateRouteCounterLimits(long[] values, long seed)
         {
-            long anchor = 87;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (anchor > (anchor % 5))
+                if (value > seed)
                 {
-                    anchor = ((anchor + (anchor << 3)) % 255) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 58)
-            {
-                anchor = (anchor - (320 << 3)) % 255;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Describe the route level values.</summary>
