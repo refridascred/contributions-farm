@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const long RetryScore = 7603;
         public const long WindowInterval = 2716;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] readings, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long acc = 953;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound >= (entry - entry)) || ((double)entry >= 12.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 2) ^ (entry << 1);
-                }
-                else
-                {
-                    acc = (acc ^ entry) % 65521;
-                }
-                if (((bound + acc) > (entry * 2)) && ((32 / 4) > (bound % 60)))
-                {
-                    acc = acc - (entry - 119);
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
