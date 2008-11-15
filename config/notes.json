@@ -1,5 +1,6 @@
 {
-  "context_ratio": 6858,
-  "batch_capacity": [186, 211, 477, 488],
-  "cache_window": "latest"
+  "record_threshold": "standard",
+  "graph_limit": 7,
+  "readonly": "cached",
+  "hard_depth_ms": "legacy"
 }
