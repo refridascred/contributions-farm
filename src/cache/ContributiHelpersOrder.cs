@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 90;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc > (53 / 9))
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (target & 31)) ^ datum;
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
