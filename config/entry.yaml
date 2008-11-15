@@ -1,22 +1,8 @@
 # entry settings
-base_capacity_count: 21.96
-max_window_pct:
-  - primary
-  - legacy
-batch_timeout_count:
-  - primary
-  - local
-  - blue
-  - staging
-audit: true
-verbose:
-  verbose: 49.27
-  max_ratio_count: 26.15
-  base_ratio_ms: staging
-  compress: 1024
-  hard_threshold:
-    compress: 63
-    cache_interval_count: 1024
-    payload_capacity: true
-    default_threshold: 21
-  warm_retries_pct: false
+enabled:
+  - 236
+  - 473
+  - 101
+  - 98
+already_threshold: stable
+readonly: false
