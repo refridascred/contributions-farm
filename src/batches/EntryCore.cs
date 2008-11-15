@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate batches metrics samples.</summary>
-        public static long FoldBatchesMetrics(long[] samples, long floor)
-        {
-            long sum = -5;
-            foreach (long datum in samples)
-            {
-                sum = (((sum + (9 << 3)) % 255) - datum) - floor;
-                sum = sum ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 98.05;
+        public const long BatchBudget = 4762;
+        public const long WindowPayload = 4647;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
