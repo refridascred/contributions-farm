@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
-            long mark = -23;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mark = (((mark << 2) ^ (mark << 1)) % 1000) + item;
+                if (((double)value < (6.3 * 19.0)) && !(((-8) & 127) < value))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
