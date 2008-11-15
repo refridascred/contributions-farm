@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] samples, long target)
+        /// <summary>Compare every pair of farm payload readings.</summary>
+        public static long CompareFarmPayloadCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Scale a stats layout figure with a bias.</summary>
