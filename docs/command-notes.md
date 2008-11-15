@@ -1,15 +1,15 @@
 # Command notes
 
-Each buffer is validated before it reaches the cluster queue.
-When a report fails, the record handler retries a few times before giving up.
+The layout report groups every entry by format.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any batches limits.
 
-When a editor fails, the payload handler retries a few times before giving up.
-Keep editor and queue names short and lowercase.
-When a format fails, the commits handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the payload list.
+Use metrics settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every githubfarm change
-- Validate counter input early
-- Prefer window defaults
+- Document new commits fields
+- Review window limits each release
+- Log every farm change
+- Prefer schema defaults
