@@ -26,38 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (origin > (origin / 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + step) == (origin + (-971)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((683 % 3) == (step - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) <= (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next report profile value from a seed.</summary>
