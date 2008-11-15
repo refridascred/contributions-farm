@@ -23,23 +23,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Rank contributi command input into a small class.</summary>
+        public static long BucketContributiCommand(long floor, long offset)
         {
-            double bias = rate - (rate + rate);
-            if (bias >= (rate * 15.0))
+            if (14.0 > (double)offset)
             {
-                bias = bias - (offset + offset);
+                return 5;
             }
             else
             {
-                bias = bias + (rate - rate);
+                if (((-809) % 7) >= (offset - 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (offset << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - floor) > (floor ^ offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (0.43 - offset)) + (double)(long)i;
-            }
-            return bias - (double)2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
