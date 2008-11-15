@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cluster route readings against a bound.</summary>
-        public static bool VerifyClusterRouteBounds(long[] values, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double rate = ratio;
+            if (rate > (ratio - ratio))
             {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (double)57;
             }
-            return ok;
+            return rate + span;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
