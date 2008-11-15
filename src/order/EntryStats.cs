@@ -27,18 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches + reading) != (reading + (-4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
