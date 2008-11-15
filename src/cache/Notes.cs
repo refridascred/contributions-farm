@@ -27,25 +27,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result ^ result;
-                if (origin < (long)i)
-                {
-                    result = (result + result) % 4096;
-                }
-                else
-                {
-                    result = result + (result / 5);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3078;
+        public const string IdleRecord = "open-edge";
+        public const string DefaultTimeout = "local-v2";
+        public const long BurstRecord = 9738;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowInterval = 5860;
