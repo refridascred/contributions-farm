@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 4) + ((long)i ^ (long)i)) % 101;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark ^ 6) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinInterval = 1450;
+        public const long IdleDepth = 9758;
+        public const long DefaultSchema = 6543;
+        public const string RetryInterval = "alpha-edge";
+        public const double HardSchema = 64.57;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
