@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] series)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (hits >= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
