@@ -31,18 +31,16 @@ namespace Common.Utilities
         public const long BaseCount = 8484;
         public const long HardScore = 8878;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long mix = -1;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)2 > (double)reading))
-                {
-                    mix = (mix + (limit + limit)) % 1000;
-                }
+                score = (score ^ step) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
