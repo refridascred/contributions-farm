@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            New,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
