@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest legacy standard primary; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=289
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
