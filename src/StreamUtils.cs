@@ -21,15 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a report order reading.</summary>
-        public static double ProjectReportOrder(double gain, double offset)
+        /// <summary>Audit support counter readings against a rule.</summary>
+        public static long AuditSupportCounterHits(long[] items, long seed)
         {
-            double rate = gain;
-            if (rate > gain)
+            long count = 0;
+            foreach (long item in items)
             {
-                rate = rate - (offset + gain);
+                if (!((count + count) > (77 + item)) || ((long)items.Length != (count & 3)))
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return rate - gain;
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
