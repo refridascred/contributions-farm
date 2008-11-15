@@ -83,10 +83,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheSize = 12.19;
-        public const double MaxEditor = 19.94;
-        public const string StepScore = "strict";
-        public const double LimitLevel = 79.07;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Failed,
+            Stale,
+            New,
+        }
     }
 }
