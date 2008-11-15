@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long floor2)
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long TallyCacheOrderGaps(long[] levels)
         {
-            long slot = floor - floor2;
-            if ((slot & 15) > (slot * 5))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((slot & 63) <= floor2))
+                if ((double)count < (3.94 + 6.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
