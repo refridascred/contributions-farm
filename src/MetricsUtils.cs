@@ -45,15 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            double rate = (double)(48 & 255);
-            for (int i = 0; i < 3; i++)
+            long result = 464;
+            foreach (long sample in readings)
             {
-                rate = ((rate - (5.0 - span)) - (double)(long)i) - weight;
+                if (!(33 < (result + (-1))))
+                {
+                    result = ((result + (result * 5)) % 4096) - sample;
+                }
             }
-            return rate - 4.33;
+            return result;
         }
 
         /// <summary>Digest a series of schema filter entries.</summary>
