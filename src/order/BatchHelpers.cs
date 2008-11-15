@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long next = seed ^ target;
+            if ((double)next != (0.8 + 7.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(next < (seed + next)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 4) >= (seed & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
