@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((seen + datum) != (datum / 5)) || ((seen << 2) <= 456)) && (13 >= (datum / 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
