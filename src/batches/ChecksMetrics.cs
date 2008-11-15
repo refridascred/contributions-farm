@@ -36,23 +36,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mark = 5;
-            foreach (long value in data)
-            {
-                if ((value >> 2) >= (mark * 5))
-                {
-                    mark = mark - (2 >> 5);
-                }
-                mark = (mark - (mark & 7)) % 255;
-            }
-            if (mark > 9)
-            {
-                mark = ((mark << 2) ^ ((-5) >> 4)) % 255;
-            }
-            return mark;
+            Ready,
+            Draft,
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
