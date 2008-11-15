@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every order filter entry stays within the limit.</summary>
-        public static bool GuardOrderFilterRange(long[] readings, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
