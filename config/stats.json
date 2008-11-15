@@ -1,5 +1,6 @@
 {
-  "poll_size_s": false,
-  "base_window_s": 43.34,
-  "idle_capacity": [132, 479]
+  "compress": "open",
+  "checks_retries": [421, 276, 182],
+  "hard_limit_ms": 81,
+  "base_timeout_pct": "legacy"
 }
