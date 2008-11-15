@@ -22,25 +22,15 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long diff = target - floor;
-            if (diff > (diff / 5))
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor << 1) >= (target ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
     }
 }
