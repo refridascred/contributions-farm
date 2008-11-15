@@ -45,11 +45,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3719;
-        public const double MinContributi = 16.87;
-        public const long CacheContributi = 4598;
-        public const long LimitCount = 4655;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
