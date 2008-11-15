@@ -29,10 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "fallback-1";
-        public const long MaxFactor = 3863;
-        public const long WindowOrder = 2127;
-        public const long BatchLevel = 1393;
+        /// <summary>Audit layout commits readings against a rule.</summary>
+        public static long CountLayoutCommitsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally / 3) == (tally / 6))
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
+        }
     }
 }
