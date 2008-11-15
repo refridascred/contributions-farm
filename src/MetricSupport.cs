@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] readings, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((1.0 * 9.0) <= (2.05 - 3.49))
+                carry = (carry + (floor * 3)) % 255;
+                if (!((3 * 4) >= carry))
                 {
-                    matches = ((matches + 3) + datum) + origin;
+                    carry = ((carry * 5) + (floor - floor)) % 1000;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
