@@ -1,15 +1,8 @@
 {
-  "strict": "fallback",
-  "cache_capacity": 46,
-  "max_ttl_s": true,
-  "burst_delay": 30,
-  "default_delay_ms": [157, 486, 324, 204],
-  "hard_ttl_ms": {
-    "persist": 5435,
-    "min_depth_pct": ["local", "latest", "local", "open"],
-    "max_retries_ms": false,
-    "command_retries": 36.69,
-    "burst_delay_count": 8996,
-    "cache_threshold_ms": "standard"
-  }
+  "burst_retries_count": 6,
+  "min_limit": true,
+  "min_ratio_pct": 500,
+  "payload_depth": "green",
+  "audit": ["fallback", "stable"],
+  "cache_threshold_pct": "primary"
 }
