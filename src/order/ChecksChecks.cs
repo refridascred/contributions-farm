@@ -13,31 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long origin2)
+        /// <summary>Validate githubfarm channel readings against a bound.</summary>
+        public static bool CheckGithubfarmChannelLimits(long[] values, long offset)
         {
-            if ((origin / 3) >= (177 - origin2))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin > (6 + origin2))
+                if (cell >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin2 / 7) >= (origin - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
