@@ -23,18 +23,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long sum = 6;
-            foreach (long cell in samples)
+            double bias = rate - (rate + rate);
+            if (bias >= (rate * 15.0))
             {
-                if ((sum > (cell % 16)) || (sum < cell))
-                {
-                    sum = ((sum * 3) + (cell - 5)) % 4096;
-                }
+                bias = bias - (offset + offset);
             }
-            return sum;
+            else
+            {
+                bias = bias + (rate - rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (0.43 - offset)) + (double)(long)i;
+            }
+            return bias - (double)2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
