@@ -14,30 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of tools layout readings.</summary>
-        public static long ScoreToolsLayout(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mix = -70;
-            foreach (long datum in samples)
-            {
-                if (!((datum % 10) > (datum >> 1)))
-                {
-                    continue;
-                }
-                if ((mix * 3) > mix)
-                {
-                    mix = mix ^ (datum * 4);
-                }
-                if ((55 - mix) != (datum - datum))
-                {
-                    break;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = (mix - (mix >> 3)) % 97;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
