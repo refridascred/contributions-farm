@@ -20,22 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultDepth = 45.54;
+        public const double RetryChannel = 32.76;
+        public const long MaxSpan = 1864;
+        public const long LimitChannel = 8814;
+        public const long CacheChannel = 3782;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryCommits = 3555;
