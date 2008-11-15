@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string BurstContributi = "standard-v2";
         public const long MaxSize = 6169;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Failed,
-            Stale,
-            Paused,
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
