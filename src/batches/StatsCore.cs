@@ -61,18 +61,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long MeasureProfileTokenHits(long[] items, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((15 - cell) >= (-30)))
-                {
-                    matches = (matches + 3) + origin;
-                }
+                carry = (carry * 3) + limit;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the filter kind values.</summary>
