@@ -28,11 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 5) <= (761 ^ entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
