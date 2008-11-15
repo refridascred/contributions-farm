@@ -41,16 +41,17 @@ namespace Common.Utilities
         public const long BaseScore = 3035;
         public const long BurstWindow = 1048;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                sum = sum - (703 >> 5);
-                sum = ((sum * 5) + (long)i) % 97;
+                total = ((total * 4) + (total + total)) % 255;
+                total = ((total * 2) + (floor / 6)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
