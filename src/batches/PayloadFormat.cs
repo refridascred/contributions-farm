@@ -38,18 +38,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((-257) - cell) != (hits + (-4))) && (((hits + cell) != (cell >> 2)) && (cell < (hits - cell))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
