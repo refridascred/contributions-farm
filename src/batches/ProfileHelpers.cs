@@ -14,23 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long target)
         {
-            double weight = ratio;
-            if (weight >= 14.0)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                weight = (weight + (double)(-37)) + offset;
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (ratio * 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - ratio;
+            return valid;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
