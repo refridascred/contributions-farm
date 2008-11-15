@@ -1,11 +1,5 @@
 {
-  "idle_retries_s": false,
-  "verbose": {
-    "min_ttl_pct": [274, 14, 334, 431],
-    "hard_delay_pct": "standard",
-    "batch_interval_ms": [26, 55]
-  },
-  "commits_interval": 6909,
-  "base_limit_pct": [446, 464, 197, 67],
-  "base_delay_pct": 74.04
+  "flush_size_s": ["latest", "legacy", "latest", "standard"],
+  "flush_interval_pct": 38,
+  "entry_retries": "local"
 }
