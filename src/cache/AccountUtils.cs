@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] samples, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (!(((17.0 + 8.0) > (double)floor) && ((hits & 15) != (sample * 4))))
+                if (item != target)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
