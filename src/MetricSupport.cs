@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] samples, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long seed)
         {
-            long mark = 894;
-            foreach (long datum in samples)
+            long next = origin ^ seed;
+            if ((25 + 43) == (62 ^ seed))
             {
-                if (datum > 6)
+                return 2;
+            }
+            else
+            {
+                if ((seed << 2) <= (origin ^ origin))
                 {
-                    mark = (mark ^ (7 << 2)) + seed;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)origin >= (double)82))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.6 + 8.62) < (double)next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Rank already input into a small class.</summary>
