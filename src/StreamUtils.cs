@@ -77,31 +77,12 @@ namespace Common.Utilities
         public const double RetryChannel = 86.8;
         public const double DefaultChannel = 38.77;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if (3 < (floor + 906))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + floor) > (floor & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + floor) < (4 + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Dropped,
         }
     }
 }
