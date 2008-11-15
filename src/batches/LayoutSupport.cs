@@ -31,21 +31,22 @@ namespace Common.Utilities
         public const long StepReport = 509;
         public const long WindowScore = 6165;
 
-        /// <summary>Compare every pair of layout order readings.</summary>
-        public static long MatchLayoutOrderCount(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 34;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((total & 3) > total) && (285 > (offset % 97)))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (2 + cell)) % 255;
+                }
+                else
+                {
+                    total = (total + (offset + total)) % 1000;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
