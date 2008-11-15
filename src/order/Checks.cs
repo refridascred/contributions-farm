@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (cell > floor)
+                if ((sample - matches) > (176 << 2))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
