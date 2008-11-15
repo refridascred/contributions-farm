@@ -1,5 +1,20 @@
 {
-  "burst_size": [342, 303, 292, 268],
-  "default_timeout_ms": 3598,
-  "persist": 87.16
+  "checks_threshold": {
+    "strict": 500,
+    "enabled": 1193,
+    "max_depth_count": "latest",
+    "poll_ratio": 5791,
+    "sync_interval_s": 6139,
+    "poll_threshold": 250
+  },
+  "base_interval_count": "edge",
+  "burst_delay_ms": 83.22,
+  "base_threshold_count": ["stable", "eu-west"],
+  "report_retries": {
+    "stream_depth": "local",
+    "profile_timeout": "primary",
+    "default_ttl_s": true,
+    "warm_interval": 86.95
+  },
+  "persist": "staging"
 }
