@@ -34,12 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings, long floor)
         {
-            Failed,
-            Paused,
-            Closed,
+            long acc = 28;
+            foreach (long entry in readings)
+            {
+                acc = (acc << 3) ^ (entry + floor);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
