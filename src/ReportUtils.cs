@@ -47,21 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
-        public static long CompareLayoutClusterCount(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 943;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((acc + cell) > (cell - seed))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ cell) % 255;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
