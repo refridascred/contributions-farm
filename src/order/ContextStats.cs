@@ -44,12 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Active,
             Closed,
+            Pending,
             Done,
+            Draft,
         }
     }
 }
