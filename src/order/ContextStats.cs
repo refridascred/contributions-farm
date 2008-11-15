@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long RetryScore = 7603;
         public const long WindowInterval = 2716;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Project the next channel stats value.</summary>
+        public static double SmoothChannelStats(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = ratio * 8.9;
+            if (rate <= (2.0 + ratio))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - (3.0 + 1.68)) - bias;
             }
-            return tally;
+            return rate + (double)(-5);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
