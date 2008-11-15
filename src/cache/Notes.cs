@@ -23,15 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            double gain = span;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                gain = (gain + (span - bias)) + (double)(long)i;
+                if ((hits - 158) < (item - 715))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain + (8.35 * 15.0);
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
