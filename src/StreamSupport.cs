@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            double weight = bias;
-            if (weight > (1.19 - offset))
+            double mean = 0.36;
+            if (mean <= (mean / 5.0))
             {
-                weight = weight + weight;
+                mean = ((mean + mean) - ratio) - floor;
             }
-            return weight - (bias + bias);
+            else
+            {
+                mean = mean - 5.7;
+            }
+            return mean + 7.4;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
