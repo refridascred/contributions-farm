@@ -1,6 +1,17 @@
 {
-  "hard_retries_ms": 25.38,
-  "cache_retries": "legacy",
-  "strict": 74.07,
-  "batch_interval": 1689
+  "layout_threshold": ["green", "local", "open", "fallback"],
+  "batch_size": 25.97,
+  "entry_depth": {
+    "base_delay_pct": {
+      "batch_threshold": true,
+      "batch_size": 143,
+      "retry_threshold_pct": 4321,
+      "flush_window_pct": 8976,
+      "context_threshold": "edge",
+      "enabled": "edge"
+    },
+    "warm_ratio_pct": 30,
+    "hard_capacity_ms": [449, 303, 144, 269],
+    "batch_depth": "primary"
+  }
 }
