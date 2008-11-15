@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const double CacheRatio = 61.5;
         public const double LimitSession = 78.82;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Compare every pair of commits farm readings.</summary>
+        public static long CompareCommitsFarmCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)series.Length + tally) < ((long)series.Length + 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + value;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
