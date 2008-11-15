@@ -75,19 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool ValidateWindowPayloadBounds(long[] readings, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
