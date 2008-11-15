@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            double weight = 14.0 + (ratio + span);
+            if (weight > weight)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
