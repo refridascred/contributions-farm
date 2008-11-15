@@ -41,19 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < origin)
+                if (items[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
