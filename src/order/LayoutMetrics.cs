@@ -22,14 +22,18 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long origin)
         {
-            Failed,
-            Synced,
-            Retry,
-            Active,
-            Queued,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((origin + origin) <= (matches - matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
