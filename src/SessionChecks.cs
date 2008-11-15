@@ -41,17 +41,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long seed, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = seed + bound;
+            if (!((bound & 7) < 1))
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((bound / 6) > (90 ^ diff))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((6.92 + 15.0) < (double)diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
