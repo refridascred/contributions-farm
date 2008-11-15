@@ -35,19 +35,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] items, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain2 = gain;
+            return (gain2 + (9.0 * 8.4)) + floor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
