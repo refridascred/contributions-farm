@@ -33,38 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long target, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items, long offset)
         {
-            if ((limit ^ target) > (target % 3))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.4 * 3.0) != (double)target)
+                if (!((5.61 / 9.0) >= (double)tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)limit >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target < limit) || (limit >= (limit + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = ((tally + 3) + value) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
