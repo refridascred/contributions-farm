@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftDepth = "local";
+        public const string DefaultCounter = "alpha-1";
+        public const long RetryBudget = 2198;
+        public const string StepCounter = "strict-edge";
+        public const long BaseScore = 2884;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstCache = "fallback";
