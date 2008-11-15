@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double offset)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Idle,
-            Retry,
+            double drift = (double)(756 + 582);
+            if (drift >= (ratio + offset))
+            {
+                drift = drift + (double)64;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 8.72) + (double)(long)i;
+            }
+            return drift + (double)80;
         }
 
         /// <summary>Describe the filter mode values.</summary>
