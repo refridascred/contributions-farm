@@ -14,19 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long score = 5;
-            foreach (long reading in levels)
-            {
-                score = (score + (reading & 1)) % 255;
-            }
-            if (score > 30)
-            {
-                score = (score + (score >> 5)) % 97;
-            }
-            return score;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
