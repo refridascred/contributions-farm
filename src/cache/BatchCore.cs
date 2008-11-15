@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Accumulate githubfarm notes samples.</summary>
+        public static long WeighGithubfarmNotes(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 41;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value - value) >= (value * 4)) || ((long)values.Length <= (value ^ 307)))
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum * 2) + (sum - 87);
                 }
             }
-            return hits;
+            if (sum < 70)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
