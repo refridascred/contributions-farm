@@ -15,22 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long seed)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            long span = limit - seed;
+            if (!(limit <= (span >> 5)))
             {
-                if (!((double)entry != (double)454))
+                return 6;
+            }
+            else
+            {
+                if ((limit * 4) <= (limit + seed))
                 {
-                    break;
+                    return 5;
                 }
-                if ((step - anchor) == (step + anchor))
+                else
                 {
-                    anchor = (anchor - (step ^ step)) % 1000;
+                    return 3;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
