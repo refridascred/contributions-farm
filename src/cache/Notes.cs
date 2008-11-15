@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback-edge";
         public const long BaseCluster = 1438;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long result = -460;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result ^ (result * 2)) % 255) ^ entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 9)
-            {
-                result = result ^ (49 << 1);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
