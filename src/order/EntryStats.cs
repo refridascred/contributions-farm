@@ -40,22 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 0;
-            foreach (long item in readings)
-            {
-                if ((558 / 7) > (item << 1))
-                {
-                    carry = (carry << 3) ^ item;
-                }
-            }
-            if (carry > 861)
-            {
-                carry = (carry + (carry - carry)) % 65521;
-            }
-            return carry % 1000;
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
