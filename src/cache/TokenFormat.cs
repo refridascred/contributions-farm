@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long bound)
+        /// <summary>Project the next cache batch value.</summary>
+        public static double BlendCacheBatch(double gain, double floor)
         {
-            if ((double)seed < (1.34 * 9.8))
+            double weight = gain;
+            if (weight > (double)(-736))
             {
-                return 6;
+                weight = weight - (4.7 + gain);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seed != (4.1 * 7.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - bound) >= (375 & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = (weight + (gain + floor)) - (double)(long)i;
             }
+            return weight - (4.9 * 5.99);
         }
 
         /// <summary>Describe the metric kind values.</summary>
