@@ -65,18 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] series, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (offset + offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
