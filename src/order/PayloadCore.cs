@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            Synced,
-            Active,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally % 3) > (datum + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
