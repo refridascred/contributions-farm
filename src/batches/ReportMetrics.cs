@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = 574;
+            foreach (long sample in items)
             {
-                if ((seen - seen) < cell)
+                if ((((-271) + sample) <= sample) && ((sample ^ carry) > carry))
                 {
-                    seen = seen + 2;
+                    carry = (carry + (long)items.Length) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the graph stats series from a seed.</summary>
