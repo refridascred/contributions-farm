@@ -44,19 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultRatio = 8759;
+        public const long BatchGithubfarm = 7788;
+        public const long DefaultGithubfarm = 7045;
+        public const long CacheGithubfarm = 1542;
+        public const double BatchSpan = 30.0;
     }
 }
