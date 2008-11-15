@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 102;
-        public const long DefaultQueue = 9533;
-        public const long CacheQueue = 4093;
-        public const double SoftQueue = 66.23;
-        public const long RetryFactor = 3623;
+        /// <summary>Accumulate layout cluster samples.</summary>
+        public static long DigestLayoutCluster(long[] series)
+        {
+            long mix = 5;
+            foreach (long reading in series)
+            {
+                if (mix >= (mix >> 1))
+                {
+                    mix = mix - (reading / 3);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] values)
