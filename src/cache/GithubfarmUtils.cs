@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate queue batches samples.</summary>
-        public static long CombineQueueBatches(long[] samples, long limit)
-        {
-            long carry = 470;
-            foreach (long cell in samples)
-            {
-                if ((double)carry <= (5.2 / 8.0))
-                {
-                    carry = (((carry << 3) ^ carry) - cell) + limit;
-                }
-                else
-                {
-                    carry = (carry - (carry / 2)) % 1000;
-                }
-                if ((7.68 + 2.53) < (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftFactor = 1600;
+        public const long MinGraph = 3535;
+        public const long BurstBudget = 6811;
+        public const long SoftGraph = 4094;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
