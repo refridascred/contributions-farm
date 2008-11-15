@@ -41,17 +41,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - 119) % 255;
-                acc = (acc << 2) ^ (acc + target);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
