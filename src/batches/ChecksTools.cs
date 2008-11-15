@@ -23,22 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 3546;
+        public const long MaxFactor = 5678;
+        public const double BurstSpan = 31.63;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
