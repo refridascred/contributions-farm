@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const double MinRecord = 63.53;
         public const long DefaultRecord = 9104;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long mix = 10;
+            foreach (long datum in items)
             {
-                long delta = state;
-                if (!((delta * 5) == (delta % 12)))
-                {
-                    delta = (delta ^ ((long)i & 127)) % 4096;
-                }
-                state = (state ^ (offset & 7)) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                mix = ((mix ^ ((long)items.Length * 5)) + datum) + floor;
             }
-            return state;
+            if (mix > 992)
+            {
+                mix = ((mix * 4) + (mix & 127)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
