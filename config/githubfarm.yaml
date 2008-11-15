@@ -1,10 +1,5 @@
 # githubfarm settings
-sync_size_pct: 593
-base_window_count:
-  - eu-west
-  - standard
-  - stable
-audit: local
-idle_window_s: 74
-format_timeout: true
-support_threshold: 95.51
+queue_ttl: 6160
+retry_threshold: blue
+burst_limit_ms: 85.86
+poll_timeout: true
