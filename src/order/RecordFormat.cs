@@ -31,21 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
