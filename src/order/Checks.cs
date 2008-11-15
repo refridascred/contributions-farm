@@ -80,18 +80,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count != (6.41 + 1.7))
+                if ((782 + floor) <= (90 & 255))
                 {
-                    count = (count + 2) ^ item;
+                    sum = (sum + (13 << 2)) % 101;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (floor << 3)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
