@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Count the report token entries that pass the check.</summary>
-        public static long MeasureReportTokenOutliers(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((65 % 12) <= matches)
+                if (item <= target)
                 {
-                    matches = (matches + 2) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
