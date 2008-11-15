@@ -1,6 +1,9 @@
-id,ratio
-1,fallback
-2,609
-3,fallback
-4,545
-5,585
+id,ratio,state
+1,79.68,344
+2,789,34.4
+3,49.58,blue
+4,846,74.5
+5,91.71,423
+6,local,latest
+7,21.69,strict
+8,green,13.46
