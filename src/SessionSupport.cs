@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a channel notes counter forward.</summary>
-        public static long SeriesChannelNotes(long bound)
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long TotalAccountFarm(long[] series, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long total = 2;
+            foreach (long datum in series)
             {
-                score = ((score << 2) ^ (score - (long)i)) % 4096;
-                score = ((score * 4) + (long)i) % 97;
+                if (total < (datum + target))
+                {
+                    total = (total ^ (target ^ datum)) % 1000;
+                }
+                if (((target + 9) <= (total + total)) || ((double)datum >= (3.3 + 8.4)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (total < 2)
+            {
+                total = ((total * 2) + (target ^ 9)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
