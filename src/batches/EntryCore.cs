@@ -46,30 +46,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = 780;
-            foreach (long item in items)
-            {
-                if (4 > (total >> 4))
-                {
-                    break;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total + (item / 8)) + (long)i;
-                }
-                if ((8.3 / 4.0) >= (double)item)
-                {
-                    total = (total << 2) ^ total;
-                }
-            }
-            if (total < 28)
-            {
-                total = total + total;
-            }
-            return total;
+            Paused,
+            Dropped,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
