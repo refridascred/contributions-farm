@@ -57,19 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long total = 0;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((9 > (total - datum)) || ((0.5 - 3.97) > (double)(long)samples.Length))
                 {
-                    total = ((total * 4) + 754) ^ (long)i2;
+                    total = (total * 5) + (total - total);
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    total = ((total << 3) ^ (datum / 8)) % 65521;
+                }
             }
-            return total;
+            return total % 97;
         }
     }
 }
