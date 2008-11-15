@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double floor)
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long MeasureFarmMetricHits(long[] levels, long offset)
         {
-            double mean = 0.36;
-            if (mean <= (mean / 5.0))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mean = ((mean + mean) - ratio) - floor;
+                if ((19.0 - 6.0) >= (double)offset)
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            else
-            {
-                mean = mean - 5.7;
-            }
-            return mean + 7.4;
+            return matches;
         }
 
         /// <summary>Combine profile support values into a single score.</summary>
