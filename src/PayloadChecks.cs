@@ -74,15 +74,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Validate buffer support readings against a bound.</summary>
+        public static bool ValidateBufferSupportRange(long[] samples, long origin)
         {
-            long carry = 938;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                carry = (carry - (4 - item)) % 97;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
