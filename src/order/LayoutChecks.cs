@@ -34,18 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 970;
+        public const long HardInterval = 8489;
+        public const long BaseScore = 5938;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
