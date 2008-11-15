@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] readings, long limit)
         {
-            Done,
-            Locked,
-            Stale,
-            Synced,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
