@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (anchor < (value & 255))
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (value << 3)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor * 2)) % 4096;
+                }
+                if ((5.6 * 0.6) != (double)anchor)
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 5)
+            {
+                anchor = anchor ^ (anchor << 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
