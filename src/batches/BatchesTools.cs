@@ -40,17 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix - (bound / 7)) % 4096;
-                mix = ((mix * 5) + (bound / 9)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Stale,
+            Synced,
+            Pending,
+            Queued,
         }
     }
 }
