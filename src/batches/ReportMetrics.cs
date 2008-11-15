@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long bound, long target)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long next = bound + target;
+            if ((97 ^ bound) <= (next % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target ^ next) >= (bound / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two buffer farm measurements.</summary>
