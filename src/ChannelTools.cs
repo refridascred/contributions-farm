@@ -37,10 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleLevel = "local";
-        public const double MaxQueue = 82.46;
-        public const double CacheScore = 40.14;
-        public const double CacheQueue = 60.6;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((19 - (long)i) < (32 << 3))
+                {
+                    score = (score - (floor - 90)) % 255;
+                    score = (score + (floor - floor)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
