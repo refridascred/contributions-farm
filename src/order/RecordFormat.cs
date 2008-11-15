@@ -31,13 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
