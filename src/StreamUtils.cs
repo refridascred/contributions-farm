@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] items, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mix = 58;
+            foreach (long cell in samples)
             {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix + mix) % 4096) - cell) - target;
             }
-            return valid;
+            if (mix < 16)
+            {
+                mix = mix - (mix % 8);
+            }
+            return mix;
         }
 
         /// <summary>Hold a format stats.</summary>
