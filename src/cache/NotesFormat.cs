@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((double)hits == (8.47 * 7.0))
+                {
+                    hits = ((hits + 3) ^ sample) - floor;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
