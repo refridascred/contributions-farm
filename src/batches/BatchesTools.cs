@@ -34,14 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Idle,
-            Stale,
-            Synced,
-            Pending,
+            Retry,
             Queued,
+            Closed,
         }
     }
 }
