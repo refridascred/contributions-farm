@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "primary-v2";
+        public const long WindowContributi = 2361;
+        public const double MaxTimeout = 88.32;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] readings, long bound)
