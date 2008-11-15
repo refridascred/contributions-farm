@@ -15,16 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc ^ (19 - acc);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Locked,
+            Queued,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
