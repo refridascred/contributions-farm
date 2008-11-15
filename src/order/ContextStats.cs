@@ -55,18 +55,17 @@ namespace Common.Utilities
             return (gain2 + (9.0 * 8.4)) + floor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] values, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin << 3) != (origin >> 4))
+                if (levels[i] >= offset)
                 {
-                    count = (count + 1) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
