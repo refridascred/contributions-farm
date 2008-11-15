@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a batch queue reading by value.</summary>
-        public static long SeekBatchQueueIndex(long[] items, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor * 11.0;
+            if (drift > floor)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (4.3 / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (drift - ratio)) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
