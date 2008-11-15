@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
