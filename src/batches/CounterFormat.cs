@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Synced,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
