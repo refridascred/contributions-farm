@@ -62,25 +62,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long next = seed - floor;
-            if ((6 - next) != (next << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 8) != (seed * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the farm status values.</summary>
