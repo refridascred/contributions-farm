@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            double bias = gain;
+            if (bias >= floor)
+            {
+                bias = bias - (7.0 - gain);
+            }
+            else
+            {
+                bias = bias + (gain + floor);
+            }
+            return bias + floor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
