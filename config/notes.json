@@ -1,8 +1,6 @@
 {
-  "session_limit": "latest",
-  "retry_timeout_ms": ["eu-west", "primary", "edge"],
-  "editor_threshold": "latest",
-  "retry_depth": ["latest", "local", "latest"],
-  "max_limit_pct": 21,
-  "min_timeout_ms": 29.65
+  "counter_depth": ["blue", "cached", "local", "legacy"],
+  "base_size_ms": "open",
+  "queue_window": 500,
+  "persist": false
 }
