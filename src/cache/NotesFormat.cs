@@ -30,23 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload stream samples.</summary>
-        public static long WeighPayloadStream(long[] series, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] samples, long bound)
         {
-            long sum = 50;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                sum = sum + target;
-                if ((sum >> 4) >= (896 + target))
+                if (!((bound + 8) != (hits << 2)) && (((4.8 - 19.0) >= (double)hits) || (((long)samples.Length & 255) == (value + 63))))
                 {
-                    sum = sum + (datum / 8);
-                }
-                else
-                {
-                    sum = (sum - (sum / 4)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
