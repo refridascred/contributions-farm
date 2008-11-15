@@ -17,21 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Match up entry context samples.</summary>
+        public static long PairEntryContextCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 12)
+                    if ((items[i] + items[j]) > 2)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
