@@ -26,25 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter counter pair into a bucket.</summary>
-        public static long GradeFilterCounter(long target, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long slot = target - seed;
-            if ((seed - seed) != (seed >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(target <= (7 + slot)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
