@@ -1,44 +1,6 @@
 {
-  "buffer_retries": {
-    "verbose": "edge",
-    "graph_delay": ["stable", "edge", "local"],
-    "report_size": "eu-west",
-    "default_threshold": "legacy"
-  },
-  "max_size_count": "open",
-  "default_interval_s": true,
-  "base_size_pct": {
-    "readonly": 51.47,
-    "counter_depth": {
-      "min_depth_s": 28.92,
-      "compress": "latest",
-      "session_retries": [355, 257, 453],
-      "cache_threshold": "fallback",
-      "batches_ttl": 55
-    },
-    "enabled": [433, 20, 121, 398],
-    "idle_timeout": 8085,
-    "default_size_ms": "fallback",
-    "audit": false
-  },
-  "poll_limit_pct": {
-    "cache_size": 53,
-    "batch_ttl": {
-      "soft_timeout_s": 74,
-      "flush_capacity": false,
-      "soft_ttl_count": 30,
-      "base_ratio_count": "staging",
-      "enabled": "local"
-    },
-    "context_window": 6668,
-    "max_depth_count": false,
-    "readonly": {
-      "stream_size": "edge",
-      "batch_delay": "blue",
-      "poll_capacity_ms": 25,
-      "hard_ttl_ms": true,
-      "persist": "green"
-    }
-  },
-  "soft_timeout_ms": "strict"
+  "metric_capacity": "local",
+  "cluster_ttl": ["primary", "strict", "staging", "fallback"],
+  "readonly": ["fallback", "legacy", "blue", "latest"],
+  "hard_delay": 76.71
 }
