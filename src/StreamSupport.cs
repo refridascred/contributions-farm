@@ -18,23 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Scale a command record figure with a bias.</summary>
+        public static double AdjustCommandRecord(double ratio, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            double weight = span;
+            if (weight <= ratio)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state - ((long)i2 % 24)) % 4096;
-                }
-                if ((2 >> 3) == (limit - state))
-                {
-                    state = ((state << 2) ^ (45 - state)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                weight = weight + span;
             }
-            return state;
+            else
+            {
+                weight = weight + (double)959;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (ratio - weight);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
