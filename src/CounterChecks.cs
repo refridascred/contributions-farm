@@ -75,34 +75,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter cluster samples.</summary>
-        public static long WeighCounterCluster(long[] items, long target)
-        {
-            long total = 27;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total + (long)i) % 97;
-                }
-                if (!((40 << 2) < total))
-                {
-                    total = (total + item) % 1000;
-                }
-                if ((item % 60) == (target + total))
-                {
-                    total = (total ^ 165) % 255;
-                }
-                else
-                {
-                    total = (total * 5) + item;
-                }
-            }
-            if (total > (-307))
-            {
-                total = (total + (total - target)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 2034;
+        public const double MinNotes = 16.68;
+        public const long BatchNotes = 2221;
     }
 }
