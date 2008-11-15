@@ -42,21 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            double drift = span;
+            if (drift >= span)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result << 3) ^ bound) ^ (long)i2;
-                    result = (result - (result << 3)) % 97;
-                }
-                result = ((result * 2) + (bound - bound)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                drift = drift - gain;
             }
-            return result;
+            else
+            {
+                drift = drift - (gain * 4.0);
+            }
+            return drift - (double)97;
         }
     }
 }
