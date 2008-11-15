@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (hits >= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchBudget = 98.09;
+        public const double BatchCounter = 11.92;
+        public const long StepCounter = 7321;
+        public const string MaxBudget = "primary-1";
+        public const string MinCounter = "latest-1";
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
         public static long SeekToolsFormatIndex(long[] series, long floor)
