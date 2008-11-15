@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a metrics payload value against two limits.</summary>
-        public static long GradeMetricsPayload(long seed, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double weight, double floor)
         {
-            if ((seed > (step + step)) || (((-94) % 8) > step))
+            double mean = weight * 0.27;
+            if (mean > (double)6)
             {
-                return 1;
+                mean = mean - (weight * 5.7);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((seed - step) <= (seed + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step - step) < (190 & 1)) && ((double)seed != (3.0 - 12.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = (mean + floor) + (double)(long)i;
             }
+            return mean + mean;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
