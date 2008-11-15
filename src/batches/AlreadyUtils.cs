@@ -52,19 +52,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            long result = 8;
-            foreach (long item in values)
+            double ratio = scale + (offset + 8.0);
+            if (ratio >= (double)16)
             {
-                result = ((result * 4) + (result - result)) + item;
+                ratio = ratio - (scale + ratio);
             }
-            if (result > 9)
+            else
             {
-                result = result + (9 + result);
+                ratio = ratio - ratio;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)77) + (double)(long)i;
+            }
+            return ratio - (scale + offset);
         }
     }
 }
