@@ -33,17 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window githubfarm entry that matches the target.</summary>
-        public static long LocateWindowGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
