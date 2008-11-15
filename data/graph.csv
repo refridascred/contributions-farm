@@ -1,10 +1,7 @@
-id,label,weight
-1,458,4.57
-2,144,786
-3,blue,395
-4,197,531
-5,535,10.65
-6,617,608
-7,35,green
-8,open,green
-9,stable,81.69
+id,weight,rank,owner,label
+1,open,140,48,stable
+2,957,edge,stable,fallback
+3,257,open,59.02,49.08
+4,cached,18.72,69.06,70.99
+5,802,98.43,14.14,primary
+6,261,244,527,378
