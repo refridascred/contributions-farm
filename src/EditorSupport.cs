@@ -62,12 +62,14 @@ namespace Common.Utilities
         public const long BatchCounter = 5440;
         public const string BaseBudget = "legacy-v2";
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            New,
+            Stale,
+            Paused,
+            Retry,
+            Ready,
         }
     }
 }
