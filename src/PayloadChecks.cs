@@ -44,22 +44,11 @@ namespace Common.Utilities
         public const double MaxFarm = 44.94;
         public const long CacheSize = 7632;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4845;
+        public const long WindowAccount = 9809;
+        public const string DefaultAccount = "local-1";
+        public const long IdleFactor = 4626;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueBounds(long[] levels, long floor)
