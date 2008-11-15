@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank editor filter input into a small class.</summary>
-        public static long BucketEditorFilter(long origin, long origin2)
-        {
-            if ((origin2 / 4) > (origin ^ origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 % 5) != (237 + (-4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 4682;
+        public const string BaseCommits = "latest-edge";
+        public const long LimitRatio = 5877;
+        public const long MinBudget = 2392;
+        public const long MinCommits = 5276;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
