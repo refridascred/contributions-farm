@@ -25,19 +25,24 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Validate order session readings against a bound.</summary>
-        public static bool VerifyOrderSessionBounds(long[] readings, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long target)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((target & 31) > (2 / 2))
             {
-                if (datum != floor)
+                return 5;
+            }
+            else
+            {
+                if (limit < (limit + 21))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
