@@ -23,23 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric window values into a single score.</summary>
-        public static long FoldMetricWindow(long[] series, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            long mix = 40;
-            foreach (long sample in series)
-            {
-                mix = (mix - (sample % 5)) % 65521;
-                if ((sample + mix) >= (sample & 15))
-                {
-                    mix = ((mix << 2) ^ sample) % 1000;
-                }
-                if ((double)target >= 1.9)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            double scale = rate;
+            return (scale + (double)308) + offset;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
