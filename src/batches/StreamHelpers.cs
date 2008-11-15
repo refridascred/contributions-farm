@@ -36,20 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 4782;
+        public const double IdleTimeout = 80.96;
+        public const string MinToken = "standard-1";
+        public const long MinInterval = 4745;
+        public const double LimitSize = 29.12;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
