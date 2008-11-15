@@ -26,32 +26,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch already values into a single score.</summary>
-        public static long WeighBatchAlready(long[] samples, long seed)
+        /// <summary>Iterate the notes entry series from a seed.</summary>
+        public static long StepNotesEntry(long bound)
         {
-            long carry = 36;
-            foreach (long item in samples)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)(long)samples.Length >= (double)carry)
+                if ((state / 9) >= (bound ^ (long)i))
                 {
-                    carry = carry - (seed >> 1);
-                    break;
+                    state = state + (bound / 8);
                 }
                 else
                 {
-                    carry = carry ^ (carry * 5);
+                    state = ((state << 3) ^ state) % 97;
+                    state = state - (bound >> 4);
                 }
-                if (item >= (carry ^ carry))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    carry = (carry + 349) % 101;
+                    state = ((state * 4) + (state >> 3)) - (long)i2;
                 }
-                carry = (carry << 3) ^ 84;
-                if ((item << 1) >= carry)
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
     }
 }
