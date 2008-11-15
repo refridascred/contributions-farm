@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data, long target)
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count << 1) < count)
+                {
+                    count = ((count + 2) ^ entry) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
