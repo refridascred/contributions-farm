@@ -48,14 +48,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Retry,
-            Active,
-            Failed,
-            Queued,
-            Synced,
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
