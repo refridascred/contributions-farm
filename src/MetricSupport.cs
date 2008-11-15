@@ -34,17 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (readings[i] >= floor)
+                if (item >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
