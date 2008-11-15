@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySize = "strict-v2";
-        public const long WindowSpan = 4768;
-        public const long HardCount = 8749;
-        public const double LimitSpan = 11.41;
-        public const string HardSession = "local-1";
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Synced,
+            Idle,
+            Paused,
+            New,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] series, long target)
