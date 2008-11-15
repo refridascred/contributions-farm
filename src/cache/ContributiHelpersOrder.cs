@@ -30,11 +30,19 @@ namespace Common.Utilities
             return (scale + (double)308) + offset;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseScore = "cached-edge";
-        public const long StepBatch = 8101;
-        public const long RetryCount = 1243;
-        public const long LimitFactor = 8947;
-        public const long CacheWidth = 2276;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (limit >= (limit * 5))
+                {
+                    score = (score ^ (score + limit)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
