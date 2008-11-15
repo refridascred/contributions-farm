@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string MinDepth = "strict";
         public const long BatchCount = 2616;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
