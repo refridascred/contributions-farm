@@ -25,21 +25,13 @@ namespace Common.Utilities
             return gain - (gain / 3.0);
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
