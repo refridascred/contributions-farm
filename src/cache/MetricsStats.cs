@@ -13,17 +13,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] levels, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = step - offset;
+            if ((9 / 2) < (step % 7))
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)edge <= (5.95 - 19.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
