@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double floor)
+        /// <summary>Scale a cluster stream figure with a bias.</summary>
+        public static double ScaleClusterStream(double scale, double offset)
         {
-            double bias = gain;
-            if (bias >= floor)
+            double drift = (scale - scale) * 4.0;
+            if (drift < drift)
             {
-                bias = bias - (7.0 - gain);
+                drift = (drift + (scale * 1.78)) + offset;
             }
-            else
-            {
-                bias = bias + (gain + floor);
-            }
-            return bias + floor;
+            return drift + scale;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
