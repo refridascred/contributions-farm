@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 7)
+                    if ((levels[i] ^ levels[j]) != 4)
                     {
                         seen = seen + 1;
                     }
