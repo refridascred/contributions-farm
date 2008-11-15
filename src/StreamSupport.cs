@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] readings, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (!(((-8) + entry) >= entry))
+                if (item < floor)
                 {
-                    tally = (tally + 3) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
