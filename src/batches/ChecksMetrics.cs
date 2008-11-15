@@ -76,23 +76,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels, long bound)
-        {
-            long state = 284;
-            foreach (long item in levels)
-            {
-                if (((double)(long)levels.Length < 6.92) || ((state << 3) <= (bound & 127)))
-                {
-                    state = (state + 88) ^ item;
-                }
-            }
-            if (state < (-465))
-            {
-                state = state + ((long)levels.Length + 674);
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1369;
+        public const string SoftContext = "latest-1";
+        public const long MinContext = 8037;
+        public const double MinLevel = 74.21;
+        public const long IdleScore = 3580;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
