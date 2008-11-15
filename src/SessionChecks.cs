@@ -31,14 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items, long limit)
         {
-            Ready,
-            Synced,
-            Active,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((count / 2) == ((-4) + count)))
+                {
+                    count = ((count + 2) + entry) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
