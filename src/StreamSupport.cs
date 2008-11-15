@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 505;
-        public const string HardCount = "alpha-1";
-        public const double BatchLevel = 73.4;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((-8) + entry) >= entry))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] levels, long floor)
