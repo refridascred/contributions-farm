@@ -45,12 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            New,
-            Closed,
-            Done,
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
