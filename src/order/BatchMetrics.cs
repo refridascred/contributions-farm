@@ -84,12 +84,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long floor)
         {
-            Failed,
-            Stale,
-            New,
+            if ((double)floor < (4.3 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit >= (floor + 0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor > (double)45)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
