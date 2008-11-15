@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long AuditQueueContextMatches(long[] values, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((limit < (count << 3)) || ((9.0 + 6.2) > (double)count))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the context level values.</summary>
