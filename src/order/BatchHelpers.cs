@@ -35,17 +35,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] values, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = score + (limit + limit);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
