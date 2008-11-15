@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the order schema entries that pass the check.</summary>
-        public static long MeasureOrderSchemaGaps(long[] values, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = 565;
+            foreach (long item in readings)
             {
-                if ((seen + bound) <= (bound % 24))
+                if ((total - total) <= (total + item))
                 {
-                    seen = (seen + 1) - reading;
+                    total = ((total * 3) + (total / 6)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total - total)) % 255;
+                }
+                if ((double)item > (2.56 * 12.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total > 47)
+            {
+                total = ((total << 3) ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate record samples.</summary>
