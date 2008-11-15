@@ -72,12 +72,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6864;
+        public const long CacheScore = 6041;
+        public const double BaseFactor = 39.58;
     }
 }
