@@ -20,19 +20,27 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] readings, long offset)
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long CombineCommandGithubfarm(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mix = 41;
+            foreach (long datum in data)
             {
-                if (cell < offset)
+                mix = ((mix * 3) + datum) % 255;
+                if (datum <= (datum << 1))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + (long)data.Length) % 65521;
+                }
+                if ((datum + datum) < (datum * 3))
+                {
+                    mix = (mix - mix) % 101;
                 }
             }
-            return stale;
+            if (mix > 654)
+            {
+                mix = ((mix * 4) + (mix / 9)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
