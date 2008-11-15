@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((origin - 424) >= (origin & 31))
             {
-                if ((double)value < (3.75 + 15.0))
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 4) == (14 % 8))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ 15) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin < (1.56 - 6.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
