@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] readings, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item >= (item ^ 8)) && (((count / 9) != (item << 2)) || ((count - count) >= (item - count))))
+                if (((2.2 - 6.2) >= (double)offset) || ((sum + 30) < (2 / 8)))
                 {
-                    count = (count + 3) + target;
+                    sum = sum ^ sum;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a token options.</summary>
