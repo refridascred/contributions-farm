@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long CacheDepth = 2842;
         public const long MinAlready = 9780;
 
-        /// <summary>Compare every pair of batch checks readings.</summary>
-        public static long CompareBatchChecksCount(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
