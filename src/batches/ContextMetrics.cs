@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank session input into a small class.</summary>
