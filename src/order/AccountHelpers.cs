@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 8542;
-        public const long DefaultScore = 8011;
-        public const long BaseCommits = 4226;
-        public const string MaxCommits = "cached-edge";
-        public const long BurstBudget = 4930;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstDepth = 2475;
+        public const double MaxSpan = 36.58;
+        public const long CacheGithubfarm = 9311;
+        public const long RetryGithubfarm = 4384;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
