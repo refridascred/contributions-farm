@@ -68,18 +68,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(reading <= (bound % 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
