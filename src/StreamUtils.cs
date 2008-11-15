@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
+        public static bool ValidateCommitsContributiBounds(long[] levels, long limit)
         {
-            Active,
-            Done,
-            Retry,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit support counter readings against a rule.</summary>
