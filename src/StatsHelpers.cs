@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double span)
         {
-            Done,
-            Idle,
-            Dropped,
-            Failed,
-            Pending,
+            double gain = span + bias;
+            return gain + (gain * 3.3);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
