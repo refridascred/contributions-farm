@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count << 3) <= (value % 24)) && ((value + count) == (count - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
