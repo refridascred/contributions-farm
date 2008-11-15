@@ -54,26 +54,20 @@ namespace Common.Utilities
         public const string RetryToken = "open-1";
         public const long HardToken = 2945;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long mark = 23;
-            foreach (long datum in samples)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((mark ^ datum) >= datum) && (mark < ((-45) & 1)))
+                if ((offset + 722) > (score - score))
                 {
-                    mark = mark ^ 59;
+                    score = (score - (long)i) % 255;
                 }
-                else
-                {
-                    mark = (mark ^ (mark + datum)) % 65521;
-                }
+                score = (score << 2) ^ (score % 10);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (mark < 10)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
