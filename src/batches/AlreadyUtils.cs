@@ -53,19 +53,13 @@ namespace Common.Utilities
         public const double MinSize = 82.57;
         public const long MaxNotes = 1908;
 
-        /// <summary>Adjust a tools context reading.</summary>
-        public static double AdjustToolsContext(double bias, double bias2)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double scale = bias;
-            if (scale >= bias2)
-            {
-                scale = scale - (bias2 - scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (12.0 - scale)) - (double)(long)i;
-            }
-            return scale + bias;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
