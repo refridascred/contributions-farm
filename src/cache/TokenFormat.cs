@@ -14,19 +14,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next cache batch value.</summary>
-        public static double BlendCacheBatch(double gain, double floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double weight = gain;
-            if (weight > (double)(-736))
-            {
-                weight = weight - (4.7 + gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (gain + floor)) - (double)(long)i;
-            }
-            return weight - (4.9 * 5.99);
+            Paused,
+            Ready,
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Combine format values into a single score.</summary>
