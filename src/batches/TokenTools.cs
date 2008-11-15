@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Ready,
-            Synced,
-            Stale,
+            Dropped,
+            Pending,
+            Paused,
         }
     }
 }
