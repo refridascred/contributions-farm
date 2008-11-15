@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Grade a entry notes value against two limits.</summary>
+        public static long GradeEntryNotes(long offset, long target)
         {
-            double gain = span + bias;
-            return gain + (gain * 3.3);
+            if ((target + 721) <= (target / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (0.36 < (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
