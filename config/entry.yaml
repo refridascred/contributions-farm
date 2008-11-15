@@ -1,23 +1,28 @@
 # entry settings
-retry_timeout: 70.15
-retry_threshold_s: true
-audit:
-  verbose: staging
-  min_ttl_ms: false
-  layout_size: open
-strict: false
-sync_limit_count:
-  readonly: 500
-  min_size_ms: fallback
+persist:
+  - legacy
+  - cached
+  - legacy
+  - fallback
+burst_retries_ms:
+  retry_ttl:
+    - 44
+    - 334
+    - 129
+  hard_delay_ms:
+    poll_limit_s: 18.69
+    already_window: latest
+    idle_ratio_s: blue
   strict:
-    - 319
-    - 281
-    - 36
-  tools_window:
-    schema_retries: 56.5
-    cache_limit_s: 2288
-    idle_ratio: edge
-farm_interval:
-  enabled: staging
-  contributi_retries: 8755
-  default_size_count: latest
+    readonly: local
+    enabled:
+      - strict
+      - legacy
+      - green
+    min_limit_count: 68.75
+report_timeout: 90.45
+verbose: edge
+readonly:
+  - 13
+  - 30
+record_ttl: 1703
