@@ -71,29 +71,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long IterateBufferRecord(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((6.15 + 0.79) > (double)origin)
-                {
-                    state = state + origin;
-                }
-                if (state > (state >> 2))
-                {
-                    break;
-                }
-                else
-                {
-                    state = ((state << 2) ^ origin) % 1000;
-                    state = (state + (origin % 2)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 6880;
+        public const long CacheBatch = 2139;
+        public const long IdleBatch = 6635;
+        public const long BaseCount = 1154;
+        public const long LimitSize = 719;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] levels, long limit)
