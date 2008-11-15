@@ -24,26 +24,12 @@ namespace Common.Utilities
             return mean + (mean / 4.0);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long limit)
-        {
-            long gap = target ^ limit;
-            if ((gap + 11) < (8 + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (3.51 / 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowRatio = "staging-1";
+        public const double BaseAccount = 70.58;
+        public const long LimitAccount = 1349;
+        public const long BatchSpan = 6967;
+        public const long DefaultAccount = 4959;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] readings)
