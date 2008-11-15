@@ -19,21 +19,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((bound - bound) > (311 - 33)) && ((3.07 + 19.0) <= (double)hits)))
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
