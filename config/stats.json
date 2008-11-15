@@ -1,5 +1,6 @@
 {
-  "flush_size_s": ["latest", "legacy", "latest", "standard"],
-  "flush_interval_pct": 38,
-  "entry_retries": "local"
+  "min_depth_ms": 88.69,
+  "poll_limit": "latest",
+  "max_timeout_s": "blue",
+  "readonly": "standard"
 }
