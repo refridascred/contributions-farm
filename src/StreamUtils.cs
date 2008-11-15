@@ -28,18 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support counter readings against a rule.</summary>
-        public static long AuditSupportCounterHits(long[] items, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((count + count) > (77 + item)) || ((long)items.Length != (count & 3)))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
