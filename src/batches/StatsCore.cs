@@ -38,23 +38,11 @@ namespace Common.Utilities
         public const string DefaultSpan = "staging";
         public const double StepScore = 48.1;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values)
-        {
-            long sum = -6;
-            foreach (long cell in values)
-            {
-                if ((118 * 3) <= (cell * 4))
-                {
-                    sum = sum ^ cell;
-                }
-                if ((long)values.Length < (sum % 60))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 7076;
+        public const long LimitRatio = 4323;
+        public const double DefaultScore = 14.81;
+        public const string MinTools = "fallback";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long step)
