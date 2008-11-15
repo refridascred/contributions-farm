@@ -55,19 +55,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate metric report readings against a bound.</summary>
-        public static bool VerifyMetricReportBounds(long[] values, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long lane = offset + origin;
+            if ((lane <= (lane % 12)) || ((offset + offset) < (origin + 74)))
             {
-                if (datum > step)
+                return 2;
+            }
+            else
+            {
+                if (!(134 >= (lane ^ offset)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin - offset) >= (62 ^ origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 24) < (offset - lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up stream samples.</summary>
