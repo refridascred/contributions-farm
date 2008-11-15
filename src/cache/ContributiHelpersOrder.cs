@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a notes session reading.</summary>
-        public static double ProjectNotesSession(double weight, double bias)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] data)
         {
-            double mean = weight;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mean = ((mean + (double)43) - (double)(long)i) - bias;
+                if ((entry << 2) >= (hits ^ entry))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - (double)78;
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
