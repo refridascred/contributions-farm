@@ -47,10 +47,13 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 3.43;
-        public const long CacheSize = 1386;
-        public const double DefaultLevel = 34.71;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Ready,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
