@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowScore = 2114;
-        public const long WindowWidth = 6296;
-        public const long SoftSize = 782;
-        public const long SoftInterval = 6892;
-        public const long IdleLevel = 830;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
