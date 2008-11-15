@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item - count) <= (count % 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 3939;
+        public const string MinTimeout = "staging-v2";
+        public const string BurstProfile = "primary-1";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long origin, long floor)
