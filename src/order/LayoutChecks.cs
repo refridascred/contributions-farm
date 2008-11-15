@@ -36,12 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 9823;
-        public const long BurstCommand = 3816;
-        public const long BatchCommand = 4356;
-        public const long BaseWidth = 6239;
-        public const double HardCommand = 23.3;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a already tools pair into a bucket.</summary>
         public static long SortAlreadyTools(long step, long step2)
