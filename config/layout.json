@@ -1,5 +1,5 @@
 {
-  "base_size": false,
-  "batch_depth": "legacy",
-  "idle_retries": "standard"
+  "dry_run": 7351,
+  "strict": 43.23,
+  "commits_size": "open"
 }
