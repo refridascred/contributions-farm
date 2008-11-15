@@ -1,5 +1,13 @@
 {
-  "warm_size_pct": "eu-west",
-  "persist": "staging",
-  "default_timeout_pct": [352, 177, 411]
+  "window_ratio": "local",
+  "commits_delay": [213, 434, 104, 95],
+  "max_timeout_pct": {
+    "strict": 2.34,
+    "token_delay": "stable",
+    "soft_timeout": 41.11,
+    "batch_window": [74, 124, 177, 390],
+    "stream_threshold": "cached"
+  },
+  "min_capacity": 45.51,
+  "compress": 94.56
 }
