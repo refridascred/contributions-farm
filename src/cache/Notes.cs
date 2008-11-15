@@ -46,19 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a order format reading.</summary>
-        public static double SmoothOrderFormat(double gain, double bias)
-        {
-            double scale = (double)5 + (double)826;
-            if (scale <= (double)156)
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + (gain / 3.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1445;
+        public const double BatchEditor = 56.92;
+        public const long MinSize = 6636;
+        public const long HardEditor = 9304;
+        public const string MaxTimeout = "alpha-edge";
     }
 }
