@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = 698;
-            foreach (long datum in items)
-            {
-                if ((state < datum) && ((17.0 - 3.0) > (double)datum))
-                {
-                    state = state - (limit + limit);
-                }
-                if ((0 - state) <= datum)
-                {
-                    state = ((state << 3) ^ limit) % 65521;
-                    break;
-                }
-                if ((limit * 4) < limit)
-                {
-                    state = ((state * 4) + (2 * 5)) % 4096;
-                }
-                if ((state - limit) < (limit + state))
-                {
-                    break;
-                }
-            }
-            if (state > 54)
-            {
-                state = ((state * 4) + state) % 4096;
-            }
-            return state;
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Blend two window buffer measurements.</summary>
