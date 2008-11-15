@@ -20,14 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 36.35;
+        public const long LimitTimeout = 5034;
+        public const long RetryEditor = 4869;
+        public const double LimitScore = 38.7;
+        public const string LimitDepth = "latest-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleTimeout = 8297;
