@@ -21,11 +21,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series, long offset)
         {
-            double bias = (double)(559 - 86);
-            return bias + (scale + offset);
+            long mark = 42;
+            foreach (long entry in series)
+            {
+                mark = mark ^ mark;
+                if (!((entry + 496) != (5 >> 3)))
+                {
+                    mark = ((mark * 4) + (offset >> 4)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (276 / 6)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit entry channel readings against a rule.</summary>
