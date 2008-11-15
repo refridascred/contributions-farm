@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale - (double)819;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < origin)
+                if (series[i] < limit)
                 {
                     return (long)i;
                 }
