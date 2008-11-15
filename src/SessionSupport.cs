@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstDepth = 5227;
-        public const long WindowScore = 9550;
-        public const long MaxCommand = 2432;
-        public const long WindowLevel = 2616;
+        /// <summary>Roll a channel notes counter forward.</summary>
+        public static long SeriesChannelNotes(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score << 2) ^ (score - (long)i)) % 4096;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueLimits(long[] levels, long target)
