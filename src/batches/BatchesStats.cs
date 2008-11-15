@@ -20,15 +20,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double BlendStatsLayout(double bias, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] series, long target)
         {
-            double load = 15.0 - span;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                load = (load + (double)(long)i) + bias;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - load;
+            return stale;
         }
 
         /// <summary>Derive the next layout filter value from a seed.</summary>
