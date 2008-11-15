@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] items, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= seed)
+                if (items[i] < seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
