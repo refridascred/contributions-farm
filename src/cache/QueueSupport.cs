@@ -25,31 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long bound, long seed)
+        /// <summary>Measure how many payload commits samples are out of range.</summary>
+        public static long MeasurePayloadCommitsOutliers(long[] data)
         {
-            if (((617 & 3) <= (bound ^ seed)) && (((-14) + seed) > seed))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound % 100) >= seed))
+                if (entry > count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((83 ^ seed) >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
