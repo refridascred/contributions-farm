@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            double gain = span;
-            if (gain < (double)86)
+            double scale = (double)((-3) << 3);
+            if (scale > scale)
             {
-                gain = gain + (double)47;
+                scale = (scale - bias) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                gain = gain - (double)85;
+                scale = (scale + 11.0) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (span * 9.85);
+            return scale - scale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
