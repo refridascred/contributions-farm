@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchWidth = 4807;
-        public const long LimitLevel = 1995;
-        public const double HardReport = 10.51;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 6313;
