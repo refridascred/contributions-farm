@@ -43,12 +43,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a graph layout pair into a bucket.</summary>
+        public static long RankGraphLayout(long seed, long target)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            if ((target & 127) >= (target ^ seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 * 8.0) == (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 343) >= (seed >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
