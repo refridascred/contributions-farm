@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
