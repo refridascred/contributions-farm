@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)seen <= (19.0 / 3.0))
+                if ((limit + 9) > limit)
                 {
-                    seen = (seen + 3) + entry;
+                    count = (count + 1) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
