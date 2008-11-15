@@ -48,22 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            long mix = -686;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value ^ mix) > (6 * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (((mix * 5) + mix) % 4096) - offset;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 64)
-            {
-                mix = mix ^ ((long)values.Length + 84);
-            }
-            return mix;
+            return tally;
         }
     }
 }
