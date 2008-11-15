@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            long carry = 199;
+            foreach (long reading in data)
+            {
+                if ((seed << 3) < (carry / 7))
+                {
+                    carry = carry - (carry + reading);
+                }
+                else
+                {
+                    carry = (carry + (reading - 89)) % 101;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
