@@ -63,17 +63,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long limit)
+        /// <summary>Derive the next filter buffer value from a seed.</summary>
+        public static long DeriveFilterBuffer(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] == limit)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum + (long)i)) + (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
