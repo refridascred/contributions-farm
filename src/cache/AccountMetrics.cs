@@ -72,9 +72,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6864;
-        public const long CacheScore = 6041;
-        public const double BaseFactor = 39.58;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Stale,
+            Locked,
+            Synced,
+            Draft,
+            Active,
+        }
     }
 }
