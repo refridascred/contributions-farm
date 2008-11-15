@@ -1,5 +1,9 @@
 # githubfarm settings
-retry_size_count: 94
-sync_threshold: 75.33
-readonly: 50.44
-min_window: 51
+enabled: 62
+metric_retries:
+  - strict
+  - cached
+  - fallback
+soft_capacity_pct: green
+audit: blue
+command_depth: 91.58
