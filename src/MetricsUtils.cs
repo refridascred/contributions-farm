@@ -58,15 +58,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of schema filter entries.</summary>
-        public static long FoldSchemaFilter(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] readings, long limit)
         {
-            long sum = 28;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum - (sum + sum)) % 255) - datum;
+                if (!((limit / 6) <= 81) || ((limit >> 1) != (limit - limit)))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return sum % 4096;
+            return hits;
         }
     }
 }
