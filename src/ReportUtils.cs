@@ -45,23 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value + tally) >= (878 * 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 63.03;
+        public const long RetryLevel = 9796;
+        public const double MinInterval = 57.02;
+        public const long LimitLevel = 5727;
+        public const string BaseSpan = "local-v2";
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
         public static long RankGraphLayout(long seed, long target)
