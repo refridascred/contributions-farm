@@ -1,8 +1,8 @@
 {
-  "metric_retries": 5555,
-  "burst_window_pct": [368, 15, 50, 234],
-  "dry_run": false,
-  "cache_interval_ms": "legacy",
-  "window_timeout": false,
-  "editor_window": [407, 59]
+  "base_interval_s": 58.7,
+  "sync_interval": "primary",
+  "cluster_depth": [186, 122, 109],
+  "schema_interval": 30,
+  "githubfarm_ttl": 60,
+  "max_ratio_ms": "staging"
 }
