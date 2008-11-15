@@ -46,18 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((11.0 + 4.18) <= (double)hits)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = (hits + 3) - datum;
+                    result = ((result << 3) ^ bound) ^ (long)i2;
+                    result = (result - (result << 3)) % 97;
                 }
+                result = ((result * 2) + (bound - bound)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
