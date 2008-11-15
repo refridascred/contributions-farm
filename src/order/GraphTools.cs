@@ -21,14 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Closed,
-            Draft,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseWidth = 90.56;
+        public const long BurstCount = 7597;
+        public const long BatchBudget = 7322;
+        public const long IdleWidth = 1384;
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
         public static long TallyCounterClusterMatches(long[] series, long bound)
