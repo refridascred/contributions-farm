@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long BaseReport = 6223;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result ^ (57 >> 2)) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
