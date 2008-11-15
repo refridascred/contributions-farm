@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long MeasureRecordGraphGaps(long[] values, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches - entry) <= (step >> 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
