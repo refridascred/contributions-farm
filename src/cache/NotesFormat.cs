@@ -14,15 +14,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Grade a stream githubfarm value against two limits.</summary>
+        public static long BucketStreamGithubfarm(long step, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            if ((double)offset < (9.0 - 3.7))
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (!((double)step == (2.38 + 3.54)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset - step) >= (step + step)) || ((double)offset < (double)9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
