@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
         {
-            Active,
-            Synced,
-            Stale,
-            Failed,
+            long mix = 6;
+            foreach (long value in items)
+            {
+                mix = (mix - (mix - mix)) - value;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
