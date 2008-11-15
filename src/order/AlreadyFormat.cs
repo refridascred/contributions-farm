@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate layout queue samples.</summary>
-        public static long ScoreLayoutQueue(long[] data, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data, long floor)
         {
-            long sum = 98;
-            foreach (long item in data)
+            long anchor = -734;
+            foreach (long cell in data)
             {
-                sum = (((sum + (sum & 15)) % 65521) ^ item) + bound;
+                anchor = ((anchor * 2) + (floor + 15)) + cell;
+                anchor = anchor ^ (83 + 56);
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Roll a report already counter forward.</summary>
