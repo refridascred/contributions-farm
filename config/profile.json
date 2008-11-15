@@ -1,6 +1,5 @@
 {
-  "readonly": false,
-  "warm_timeout_ms": 84,
-  "entry_retries": 1538,
-  "base_retries_s": "latest"
+  "commits_interval": "staging",
+  "poll_limit_s": "stable",
+  "burst_threshold": "latest"
 }
