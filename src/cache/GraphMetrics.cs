@@ -37,14 +37,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            Synced,
-            Paused,
-            Idle,
-            Active,
-            Pending,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                long delta = state;
+                if (!((delta * 5) == (delta % 12)))
+                {
+                    delta = (delta ^ ((long)i & 127)) % 4096;
+                }
+                state = (state ^ (offset & 7)) % 4096;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
