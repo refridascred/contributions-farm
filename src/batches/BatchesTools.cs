@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long RetryBuffer = 8207;
         public const string MinBuffer = "fallback-edge";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long limit)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
+            long delta = floor ^ limit;
+            if (!(delta <= (0 >> 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < (0.79 / 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
