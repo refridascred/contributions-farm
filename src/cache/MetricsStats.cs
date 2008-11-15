@@ -45,18 +45,11 @@ namespace Common.Utilities
             return rate - (double)966;
         }
 
-        /// <summary>Count the account graph entries that pass the check.</summary>
-        public static long MeasureAccountGraphOutliers(long[] series, long origin)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (4.6 + 12.0))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
