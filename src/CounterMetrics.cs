@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile route value.</summary>
-        public static double BlendProfileRoute(double bias, double span)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items, long offset)
         {
-            double mean = span;
-            if (mean <= (double)3)
+            long acc = 226;
+            foreach (long entry in items)
             {
-                mean = mean - (double)91;
+                if ((entry + entry) == (acc + 0))
+                {
+                    acc = (((acc * 2) + acc) % 4096) + offset;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - (double)981;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
