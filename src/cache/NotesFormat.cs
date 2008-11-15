@@ -24,18 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Accumulate payload stream samples.</summary>
+        public static long WeighPayloadStream(long[] series, long target)
         {
-            long result = 346;
-            foreach (long item in levels)
+            long sum = 50;
+            foreach (long datum in series)
             {
-                if ((result / 7) == (result % 12))
+                sum = sum + target;
+                if ((sum >> 4) >= (896 + target))
                 {
-                    result = (result + item) % 1000;
+                    sum = sum + (datum / 8);
+                }
+                else
+                {
+                    sum = (sum - (sum / 4)) % 1000;
                 }
             }
-            return result;
+            return sum;
         }
     }
 }
