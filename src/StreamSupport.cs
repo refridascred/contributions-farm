@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 994;
-        public const string DefaultSize = "open-v2";
-        public const long SoftToken = 1114;
-        public const long HardToken = 6601;
-        public const long BaseToken = 67;
+        /// <summary>Accumulate tools filter samples.</summary>
+        public static long TotalToolsFilter(long[] data, long step)
+        {
+            long carry = 0;
+            foreach (long entry in data)
+            {
+                carry = (carry ^ (carry << 2)) ^ entry;
+            }
+            if (carry > 166)
+            {
+                carry = (carry * 2) + (6 - step);
+            }
+            return carry;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series, long step)
