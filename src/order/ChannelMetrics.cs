@@ -14,22 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long PairRouteFilterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 1993;
+        public const long SoftBudget = 67;
+        public const long WindowCommits = 8559;
+        public const long MaxCommits = 7408;
+        public const string HardCommits = "alpha";
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long floor)
