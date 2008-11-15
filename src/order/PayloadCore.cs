@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate cache buffer readings against a bound.</summary>
-        public static bool CheckCacheBufferRange(long[] values, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine command values into a single score.</summary>
