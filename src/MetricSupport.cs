@@ -40,32 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long step = origin - target;
-            if (((double)step <= (7.0 - 4.72)) && ((6.7 + 7.0) != (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step / 6) > (6 % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >= origin) || ((double)step <= 5.79))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the account class values.</summary>
