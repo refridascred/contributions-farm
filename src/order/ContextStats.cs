@@ -33,15 +33,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                sum = (sum - (floor + floor)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
