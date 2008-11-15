@@ -41,13 +41,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long AuditSessionProfileGaps(long[] samples, long bound)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((729 + sample) >= sample) || ((double)bound <= (double)sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
