@@ -27,31 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long step, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((step - step) > (step + 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if (5.91 >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= (2.8 / 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
