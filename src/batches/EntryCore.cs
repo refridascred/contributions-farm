@@ -32,11 +32,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double gain, double offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double load = 0.5 * 9.0;
-            return (load - offset) + gain;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
