@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate githubfarm notes samples.</summary>
-        public static long WeighGithubfarmNotes(long[] values)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long origin)
         {
-            long sum = 41;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value - value) >= (value * 4)) || ((long)values.Length <= (value ^ 307)))
+                if (levels[i] < origin)
                 {
-                    sum = (sum * 2) + (sum - 87);
+                    return (long)i;
                 }
             }
-            if (sum < 70)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
