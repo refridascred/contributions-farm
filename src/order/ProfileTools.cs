@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCommitsCount(long[] values)
+        /// <summary>Find the first commits buffer entry that matches the target.</summary>
+        public static long SeekCommitsBufferIndex(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up checks commits samples.</summary>
