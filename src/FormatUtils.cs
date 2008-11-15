@@ -65,21 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window support value from a seed.</summary>
-        public static long SeriesWindowSupport(long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total << 2) ^ (59 - 27)) % 97;
-                if (((total + 84) == (31 - limit)) || ((total - limit) == (383 ^ 180)))
-                {
-                    total = (total ^ (7 / 5)) % 4096;
-                    total = total + (limit * 2);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
