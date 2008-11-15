@@ -19,25 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long total = 321;
+            foreach (long cell in readings)
             {
-                if ((3.8 + 3.3) > (double)bound)
+                if (0.5 > (double)cell)
                 {
-                    mix = (mix + (bound + (long)i)) % 65521;
+                    total = total - (total - total);
+                    total = total - (total + total);
                 }
                 else
                 {
-                    mix = mix ^ bound;
+                    total = total - (cell % 100);
                 }
-                mix = (mix << 2) ^ (bound + (long)i);
-                mix = mix ^ bound;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (!(8.94 < (double)total))
+                {
+                    total = total ^ cell;
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
