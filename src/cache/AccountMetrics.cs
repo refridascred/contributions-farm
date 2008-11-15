@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 70.81;
-        public const long IdleEntry = 8676;
-        public const long LimitCount = 5810;
-        public const long BatchSize = 780;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((3 + floor) == (tally + tally)) && ((datum * 4) <= (982 & 15)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
