@@ -16,19 +16,10 @@ namespace Common.Utilities
             return weight + (weight * 2.09);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((83 % 10) >= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstSize = 5936;
+        public const string WindowBudget = "open";
+        public const long SoftSize = 1247;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitInterval = 4412;
