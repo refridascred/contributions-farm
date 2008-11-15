@@ -49,12 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples, long origin)
         {
-            Synced,
-            Paused,
-            Active,
+            long anchor = 41;
+            foreach (long entry in samples)
+            {
+                if ((origin + entry) >= (anchor * 2))
+                {
+                    anchor = anchor - (anchor / 5);
+                }
+            }
+            return anchor % 97;
         }
     }
 }
