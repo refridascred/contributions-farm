@@ -45,19 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = 10;
-            foreach (long datum in items)
-            {
-                mix = ((mix ^ ((long)items.Length * 5)) + datum) + floor;
-            }
-            if (mix > 992)
-            {
-                mix = ((mix * 4) + (mix & 127)) % 1000;
-            }
-            return mix;
+            Queued,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a buffer options.</summary>
