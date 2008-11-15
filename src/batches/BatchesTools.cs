@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
