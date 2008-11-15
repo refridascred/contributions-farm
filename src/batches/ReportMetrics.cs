@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mix = 83;
+            foreach (long value in data)
+            {
+                mix = ((mix ^ 96) % 65521) - value;
+            }
+            return mix;
         }
 
         /// <summary>Blend two buffer farm measurements.</summary>
