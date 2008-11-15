@@ -26,13 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            long mix = 6;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (5.54 - 2.1))
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix + cell) % 101;
+                }
+            }
+            if (mix < 60)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next report profile value from a seed.</summary>
