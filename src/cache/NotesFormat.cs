@@ -18,31 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream githubfarm value against two limits.</summary>
-        public static long BucketStreamGithubfarm(long step, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((double)offset < (9.0 - 3.7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step == (2.38 + 3.54)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset - step) >= (step + step)) || ((double)offset < (double)9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a schema graph counter forward.</summary>
