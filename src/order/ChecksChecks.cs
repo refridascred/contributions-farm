@@ -41,22 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((target + (-157)) > target)
             {
-                if (!((matches - origin) >= sample))
+                return 0;
+            }
+            else
+            {
+                if ((bound % 24) >= target)
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
