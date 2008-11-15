@@ -30,17 +30,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] values, long offset)
+        /// <summary>Rank schema window input into a small class.</summary>
+        public static long ClassifySchemaWindow(long step, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = step - target;
+            if ((target % 16) > (target / 6))
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((target & 1) < (step + offset)) && ((target - target) <= step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
