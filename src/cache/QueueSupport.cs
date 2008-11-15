@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate2 + (17.0 - rate);
         }
 
-        /// <summary>Combine order counter values into a single score.</summary>
-        public static long CombineOrderCounter(long[] values)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long offset)
         {
-            long carry = 8;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (((-60) - entry) > carry)
+                if (datum != offset)
                 {
-                    carry = carry + entry;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
