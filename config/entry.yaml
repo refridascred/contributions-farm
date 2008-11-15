@@ -1,11 +1,11 @@
 # entry settings
-burst_capacity: strict
-tools_window: 47.85
-poll_timeout: 60
-support_interval: 100
-enabled:
-  retry_ttl_s: 27.99
-  base_ratio: 30
-  idle_threshold_count: 2
-  account_ratio: false
-burst_timeout_pct: cached
+min_ttl_s:
+  batch_retries_count: 9553
+  counter_window: 7356
+  dry_run:
+    - 269
+    - 41
+dry_run: primary
+readonly: legacy
+max_ratio: true
+cache_window_pct: 98
