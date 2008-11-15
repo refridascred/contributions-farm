@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetryOrder = 12.12;
         public const double HardCount = 88.07;
 
-        /// <summary>Combine payload cache values into a single score.</summary>
-        public static long ScorePayloadCache(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series, long target)
         {
-            long state = 101;
-            foreach (long entry in items)
+            long mark = -4;
+            foreach (long entry in series)
             {
-                if (((-42) + entry) < (entry - state))
+                if (((entry - target) > (-89)) && ((6.7 / 6.0) >= (double)mark))
                 {
-                    state = (state << 3) ^ (state * 3);
+                    mark = (mark + (entry << 3)) % 101;
                 }
             }
-            return state;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
