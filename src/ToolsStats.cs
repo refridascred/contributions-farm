@@ -19,24 +19,19 @@ namespace Common.Utilities
         public const double HardSpan = 73.04;
         public const long LimitBudget = 9573;
 
-        /// <summary>Derive the next entry notes value from a seed.</summary>
-        public static long IterateEntryNotes(long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((7 - target) != (816 * 3)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = (sum + (target & 7)) % 101;
+                    mark = (((mark << 3) ^ seed) % 65521) ^ (long)i2;
                 }
-                sum = sum ^ (sum - sum);
-                if ((sum % 5) >= sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
