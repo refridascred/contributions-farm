@@ -40,11 +40,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 46.44;
-        public const long BurstCount = 233;
-        public const string HardInterval = "strict";
-        public const long BatchContributi = 4165;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double bias)
+        {
+            double weight = (double)(6 + 27);
+            if (weight > rate)
+            {
+                weight = (weight + weight) - bias;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long target, long seed)
