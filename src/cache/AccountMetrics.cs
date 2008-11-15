@@ -65,18 +65,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data, long step)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long score = 325;
-            foreach (long entry in data)
-            {
-                if (!((step - score) != (score * 2)))
-                {
-                    score = ((score + (score >> 4)) % 65521) - entry;
-                }
-            }
-            return score;
+            Failed,
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
