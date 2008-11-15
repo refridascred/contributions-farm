@@ -36,22 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count - cell) == (cell / 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 2459;
+        public const double MaxAlready = 98.34;
+        public const long IdleBudget = 1575;
+        public const long LimitWidth = 3648;
     }
 }
