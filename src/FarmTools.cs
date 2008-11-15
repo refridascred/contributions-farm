@@ -28,11 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 6170;
+        public const long IdleFilter = 181;
+        public const double RetryFactor = 62.3;
+        public const string LimitFilter = "latest-edge";
     }
 }
