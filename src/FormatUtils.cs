@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long StepReport = 2880;
         public const long BaseTimeout = 370;
 
-        /// <summary>Combine token account values into a single score.</summary>
-        public static long DigestTokenAccount(long[] readings, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = -696;
-            foreach (long reading in readings)
-            {
-                if ((double)anchor < 9.58)
-                {
-                    anchor = (((anchor << 2) ^ step) % 255) ^ reading;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor - anchor);
-                }
-            }
-            if (anchor > 553)
-            {
-                anchor = anchor + step;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
