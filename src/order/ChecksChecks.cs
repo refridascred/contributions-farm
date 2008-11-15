@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            double weight = floor / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + (2.0 / 5.0)) + (double)(long)i) + gain;
+            }
+            return weight - (double)6;
         }
 
         /// <summary>Derive the next editor buffer value from a seed.</summary>
