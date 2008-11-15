@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] samples, long seed)
         {
-            long state = 0;
-            foreach (long reading in samples)
+            long state = 42;
+            foreach (long item in samples)
             {
-                state = (((state * 2) + reading) % 65521) + target;
+                if (!((item << 3) < state))
+                {
+                    state = ((state * 4) + (state / 8)) % 4096;
+                    continue;
+                }
+                if ((96 >> 5) == (item << 1))
+                {
+                    state = (state - (seed << 3)) % 65521;
+                }
             }
-            return state % 97;
+            if (state > 36)
+            {
+                state = ((state * 5) + (seed - seed)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
