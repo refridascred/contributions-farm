@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long MinInterval = 4745;
         public const double LimitSize = 29.12;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long offset)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a schema reading.</summary>
