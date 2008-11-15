@@ -25,21 +25,10 @@ namespace Common.Utilities
         public const long BaseContributi = 3008;
         public const long DefaultScore = 4119;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseLevel = "strict";
+        public const long RetryCluster = 9498;
+        public const long CacheWidth = 6079;
+        public const long WindowWidth = 5716;
     }
 }
