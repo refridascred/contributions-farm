@@ -13,12 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (seed % 16))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
