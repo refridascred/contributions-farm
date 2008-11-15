@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (seen >= (item / 7))
+                if (item >= seed)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
