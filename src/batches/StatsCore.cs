@@ -70,14 +70,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Synced,
-            Locked,
-            Draft,
+            Closed,
+            New,
             Queued,
-            Retry,
+            Idle,
+            Stale,
         }
     }
 }
