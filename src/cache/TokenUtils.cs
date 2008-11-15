@@ -40,10 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 2459;
-        public const double MaxAlready = 98.34;
-        public const long IdleBudget = 1575;
-        public const long LimitWidth = 3648;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 48.62;
+        public const long IdleDepth = 1670;
+        public const long BurstRecord = 9829;
+        public const long HardCount = 6480;
+        public const string DefaultSize = "fallback-1";
     }
 }
