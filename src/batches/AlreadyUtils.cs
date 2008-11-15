@@ -61,23 +61,9 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double offset)
-        {
-            double ratio = scale + (offset + 8.0);
-            if (ratio >= (double)16)
-            {
-                ratio = ratio - (scale + ratio);
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)77) + (double)(long)i;
-            }
-            return ratio - (scale + offset);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSize = 7436;
+        public const long IdleBudget = 9419;
+        public const string LimitCount = "local-1";
     }
 }
