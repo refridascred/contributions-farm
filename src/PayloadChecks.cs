@@ -44,11 +44,23 @@ namespace Common.Utilities
         public const double MaxFarm = 44.94;
         public const long CacheSize = 7632;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4845;
-        public const long WindowAccount = 9809;
-        public const string DefaultAccount = "local-1";
-        public const long IdleFactor = 4626;
+        /// <summary>Fold a list of channel batch readings.</summary>
+        public static long TallyChannelBatch(long[] readings, long step)
+        {
+            long result = 94;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result - (0 + (long)i)) % 1000;
+                }
+                if ((sample << 1) > (sample + result))
+                {
+                    result = result ^ (0 + step);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueBounds(long[] levels, long floor)
