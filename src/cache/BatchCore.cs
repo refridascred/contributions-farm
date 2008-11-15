@@ -48,18 +48,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((9.9 - 0.5) >= (double)count))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
