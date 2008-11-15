@@ -1,7 +1,5 @@
 {
-  "audit": 9413,
-  "contributi_delay": 69.56,
-  "retry_capacity_s": ["blue", "blue", "standard", "local"],
-  "compress": 82.91,
-  "filter_delay": "strict"
+  "burst_size": [342, 303, 292, 268],
+  "default_timeout_ms": 3598,
+  "persist": 87.16
 }
