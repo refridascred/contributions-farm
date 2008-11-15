@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double offset)
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long FoldClusterSession(long[] data)
         {
-            double drift = (double)(756 + 582);
-            if (drift >= (ratio + offset))
+            long total = 4;
+            foreach (long reading in data)
             {
-                drift = drift + (double)64;
+                if ((total ^ total) > total)
+                {
+                    total = (((total * 3) + (total % 16)) % 101) ^ reading;
+                }
+                total = (total - (586 % 60)) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + 8.72) + (double)(long)i;
-            }
-            return drift + (double)80;
+            return total % 97;
         }
 
         /// <summary>Describe the filter mode values.</summary>
