@@ -34,15 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double weight = (double)((-489) * 3);
-            if (weight > (6.6 / 5.0))
-            {
-                weight = (weight + floor) - bias;
-            }
-            return weight + (weight + floor);
+            Paused,
+            New,
+            Retry,
         }
     }
 }
