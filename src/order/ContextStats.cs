@@ -51,19 +51,24 @@ namespace Common.Utilities
             return (gain2 + (9.0 * 8.4)) + floor;
         }
 
-        /// <summary>Check that every report contributi entry stays within the limit.</summary>
-        public static bool ValidateReportContributiLimits(long[] readings, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long limit, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if (275 < (step << 3))
             {
-                if (item > floor)
+                return 3;
+            }
+            else
+            {
+                if (!((10.0 * 3.77) >= (double)step))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
