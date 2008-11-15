@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCommitsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell >> 3) <= 0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up checks commits samples.</summary>
