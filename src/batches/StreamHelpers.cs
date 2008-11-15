@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two metrics farm measurements.</summary>
-        public static double ScaleMetricsFarm(double ratio, double offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double ratio2 = ratio / 3.0;
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = ratio2 + 8.8;
-            }
-            else
-            {
-                ratio2 = ratio2 + offset;
-            }
-            return ratio2 - (ratio / 8.0);
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a queue entry.</summary>
