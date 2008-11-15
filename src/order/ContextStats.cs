@@ -34,26 +34,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] values, long bound)
         {
-            long result = 1;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 7; i++)
+                if ((8.6 - 3.8) > (double)count)
                 {
-                    result = (result + result) + (long)i;
-                }
-                if ((result - 21) == (result % 24))
-                {
-                    result = ((result * 5) + (item - 44)) % 97;
-                }
-                else
-                {
-                    result = (result << 2) ^ item;
+                    count = ((count + 2) + item) - bound;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a order counter forward.</summary>
