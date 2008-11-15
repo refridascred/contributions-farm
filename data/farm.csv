@@ -1,6 +1,10 @@
-id,token,ratio,owner
-1,448,fallback,88.3
-2,edge,141,70.71
-3,42.89,blue,eu-west
-4,404,36.22,fallback
-5,73.77,81.8,434
+id,region,state,rank
+1,27.9,10,37.81
+2,edge,strict,latest
+3,41.17,cached,348
+4,eu-west,93.77,11.81
+5,primary,primary,26.78
+6,253,strict,726
+7,40.71,primary,662
+8,56.37,338,open
+9,46.15,116,16.96
