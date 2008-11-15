@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long TallySchemaFarmMatches(long[] samples, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (0.1 < (double)matches)
+                if ((tally << 2) < sample)
                 {
-                    matches = ((matches + 2) ^ value) + floor;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
