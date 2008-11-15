@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((2.76 - 0.2) != (double)seen)
+                if ((double)value <= (2.0 / 8.0))
                 {
-                    seen = (seen + 3) - value;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a record summary.</summary>
