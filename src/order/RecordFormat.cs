@@ -11,30 +11,12 @@ namespace Common.Utilities
         public const string BurstContributi = "standard-v2";
         public const long MaxSize = 6169;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 48;
-            foreach (long value in readings)
-            {
-                if (!((limit ^ limit) <= 801))
-                {
-                    state = (state * 2) + (limit ^ limit);
-                }
-                if ((double)(-46) >= (2.5 / 2.0))
-                {
-                    state = (state - (value + 72)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (value - state);
-                }
-            }
-            if (state > 8)
-            {
-                state = state ^ limit;
-            }
-            return state % 4096;
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a account options.</summary>
