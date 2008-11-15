@@ -34,17 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items, long step)
         {
-            long score = 4;
-            foreach (long sample in data)
+            long mix = -83;
+            foreach (long entry in items)
             {
-                score = (score + ((long)data.Length + score)) % 65521;
-                score = (score << 2) ^ 39;
-                score = (score - sample) % 255;
+                if (((entry / 3) <= (mix + step)) && (step <= (mix % 16)))
+                {
+                    mix = mix ^ (mix / 9);
+                }
+                else
+                {
+                    mix = mix - (mix ^ step);
+                }
             }
-            return score % 4096;
+            if (mix > 9)
+            {
+                mix = (mix * 2) + (mix - mix);
+            }
+            return mix % 97;
         }
     }
 }
