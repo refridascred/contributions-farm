@@ -1,20 +1,8 @@
 {
-  "strict": "standard",
-  "support_size": "blue",
-  "support_delay": {
-    "dry_run": 6395,
-    "compress": 1024,
-    "strict": 31.48,
-    "default_size_s": [236, 155, 317],
-    "cache_interval_pct": false,
-    "warm_ttl_count": {
-      "cluster_threshold": 4998,
-      "sync_threshold_ms": "green",
-      "base_threshold_s": 100,
-      "default_depth_ms": 29.95,
-      "commits_depth": true,
-      "dry_run": 34.63
-    }
-  },
-  "soft_window_s": false
+  "schema_ratio": 73.24,
+  "default_size_s": 100,
+  "compress": 500,
+  "farm_window": [126, 374, 117, 477],
+  "record_depth": 60,
+  "poll_threshold": "standard"
 }
