@@ -84,14 +84,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Locked,
-            Paused,
-            Failed,
-            Stale,
-            Synced,
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
