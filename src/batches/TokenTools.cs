@@ -28,24 +28,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long sum = 489;
-            foreach (long cell in samples)
+            long carry = 7;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if ((value & 15) == (value + value))
                 {
-                    sum = (sum ^ (long)i) % 1000;
+                    carry = carry - carry;
+                    carry = (carry ^ (600 * 5)) % 1000;
                 }
-                sum = sum ^ sum;
-                sum = (sum * 4) + (48 + cell);
+                if (carry >= (carry & 1))
+                {
+                    carry = (carry + (carry % 97)) % 97;
+                }
             }
-            if (sum < 1)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Describe the filter mode values.</summary>
