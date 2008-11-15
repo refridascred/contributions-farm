@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const long MinLayout = 7752;
         public const long BurstLayout = 479;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long offset)
+        /// <summary>Adjust a order format reading.</summary>
+        public static double SmoothOrderFormat(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)5 + (double)826;
+            if (scale <= (double)156)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + (gain / 3.0);
         }
     }
 }
