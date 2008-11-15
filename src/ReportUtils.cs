@@ -23,16 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            long mark = -2;
+            foreach (long cell in series)
             {
-                state = state ^ 0;
-                state = ((state * 4) + (long)i) % 97;
+                mark = ((((mark << 2) ^ (mark + mark)) % 4096) - cell) - seed;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
