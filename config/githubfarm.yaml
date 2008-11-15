@@ -1,4 +1,9 @@
 # githubfarm settings
-order_window: true
-soft_window_count: 54.54
-burst_capacity_s: 2702
+session_threshold:
+  - 210
+  - 388
+  - 342
+  - 215
+cache_depth_s: staging
+base_ttl_s: eu-west
+soft_interval: stable
