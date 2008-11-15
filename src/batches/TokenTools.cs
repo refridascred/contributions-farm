@@ -28,13 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long sum = 489;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum ^ (long)i) % 1000;
+                }
+                sum = sum ^ sum;
+                sum = (sum * 4) + (48 + cell);
+            }
+            if (sum < 1)
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the filter mode values.</summary>
