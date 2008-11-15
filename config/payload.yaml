@@ -1,8 +1,11 @@
 # payload settings
-support_interval:
-  - legacy
+report_window: 47.76
+batch_window_pct: 8926
+retry_size_ms: 12.95
+strict: blue
+queue_ratio:
+  - fallback
+  - open
+payload_limit:
+  - local
   - latest
-cache_retries: 3657
-burst_retries_count:
-  - 249
-  - 25
