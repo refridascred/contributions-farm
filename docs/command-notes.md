@@ -1,11 +1,10 @@
 # Command notes
 
-The channel report groups every profile by queue.
-The batch report groups every checks by metrics.
+A cache that stays idle for too long is moved to the channel list.
+The already report groups every support by route.
 
 ## Guidelines
 
-- Document new tools fields
-- Review profile limits each release
-- Prefer report defaults
-- Keep already values small
+- Review support limits each release
+- Validate channel input early
+- Document new editor fields
