@@ -12,25 +12,32 @@ namespace Common.Utilities
         public const long RetryBuffer = 8207;
         public const string MinBuffer = "fallback-edge";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items, long origin)
         {
-            long delta = floor ^ limit;
-            if (!(delta <= (0 >> 4)))
+            long carry = 2;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < (0.79 / 2.0))
+                carry = (carry ^ (carry & 255)) % 1000;
+                carry = carry + (cell + cell);
+                if ((origin * 4) <= (origin - 2))
                 {
-                    return 4;
+                    carry = (carry ^ (origin - cell)) % 97;
                 }
                 else
                 {
-                    return 6;
+                    carry = (carry + (cell >> 4)) % 255;
+                }
+                if (cell >= (carry >> 1))
+                {
+                    break;
                 }
             }
+            if (carry < 30)
+            {
+                carry = (carry ^ (origin + (-13))) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate already samples.</summary>
