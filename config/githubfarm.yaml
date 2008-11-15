@@ -1,7 +1,11 @@
 # githubfarm settings
-dry_run: open
-compress: 30
-sync_size: true
-stream_size: local
-cache_interval_ms: staging
-persist: 9.25
+batch_threshold_count: eu-west
+graph_interval: blue
+base_ttl: legacy
+readonly:
+  - 136
+  - 317
+  - 162
+  - 280
+record_window: edge
+idle_size_count: eu-west
