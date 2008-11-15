@@ -22,19 +22,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings, long limit)
-        {
-            long total = -3;
-            foreach (long cell in readings)
-            {
-                if (((limit + cell) > (limit >> 4)) && ((total << 1) >= cell))
-                {
-                    total = (total ^ total) % 1000;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowBudget = 8115;
+        public const string BaseCluster = "fallback-edge";
+        public const long StepSize = 5319;
 
         /// <summary>Iterate the checks batches series from a seed.</summary>
         public static long RollChecksBatches(long target)
