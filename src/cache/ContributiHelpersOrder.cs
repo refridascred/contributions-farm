@@ -23,11 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long floor)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            if ((seed + seed) >= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed <= 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((0.63 / 9.0) >= (double)seed) || (floor > (seed - 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
