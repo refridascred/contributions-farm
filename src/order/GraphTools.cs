@@ -45,17 +45,13 @@ namespace Common.Utilities
         public const long BurstCount = 3055;
         public const long LimitSession = 8413;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a tools record.</summary>
