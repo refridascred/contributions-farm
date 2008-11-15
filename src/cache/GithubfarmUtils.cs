@@ -43,11 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double ratio = 9.21;
-            return ((ratio - 6.43) + bias) + offset;
+            Ready,
+            Closed,
+            Failed,
         }
     }
 }
