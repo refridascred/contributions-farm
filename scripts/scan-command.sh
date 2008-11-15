@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=69
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest legacy standard primary; do
+for item in open standard staging; do
     log "checking ${item}"
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
