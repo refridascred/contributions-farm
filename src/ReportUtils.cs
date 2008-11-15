@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= target)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
