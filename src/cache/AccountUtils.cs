@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const string WindowCache = "staging-1";
         public const long BurstCache = 6410;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long step)
         {
-            if (((floor - limit) == (limit % 24)) && ((double)limit != (8.0 + 5.05)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 1) != (floor - floor))
+                if (data[i] >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (14.0 >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.01 + 4.61) != (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
