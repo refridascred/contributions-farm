@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string RetryContributi = "open-v2";
         public const long MinContributi = 7292;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 5.51;
+        public const long StepAlready = 6031;
+        public const string BatchAlready = "primary-v2";
+        public const string BaseDepth = "open-v2";
+        public const long SoftCount = 1326;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long seed)
