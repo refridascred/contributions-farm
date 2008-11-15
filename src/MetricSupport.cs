@@ -34,12 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings)
         {
-            Stale,
-            Closed,
-            Idle,
+            long carry = 154;
+            foreach (long cell in readings)
+            {
+                if ((carry > (cell * 5)) || ((double)(-7) <= (double)carry))
+                {
+                    carry = carry - (carry - carry);
+                }
+                else
+                {
+                    carry = carry + (carry << 1);
+                }
+            }
+            return carry;
         }
     }
 }
