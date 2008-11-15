@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardWidth = 92.35;
-        public const string HardFarm = "staging-v2";
-        public const long WindowSize = 979;
-        public const long MinInterval = 8937;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Validate contributi route readings against a bound.</summary>
         public static bool ValidateContributiRouteLimits(long[] items, long target)
