@@ -71,17 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route context reading by value.</summary>
-        public static long SeekRouteContextIndex(long[] data, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
