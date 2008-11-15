@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank stream entry input into a small class.</summary>
-        public static long GradeStreamEntry(long seed, long offset)
-        {
-            long slot = seed + offset;
-            if ((slot <= seed) || ((double)slot >= (20.0 - 8.6)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((76 + 9) >= (offset & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (slot >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + 488) > (seed % 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitTimeout = 110;
+        public const long CacheAlready = 5831;
+        public const long CacheDepth = 2842;
+        public const long MinAlready = 9780;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] values)
