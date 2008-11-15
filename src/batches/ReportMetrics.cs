@@ -16,13 +16,18 @@ namespace Common.Utilities
             return bias - (offset * 6.22);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally > (19 + tally))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
