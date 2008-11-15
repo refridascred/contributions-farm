@@ -40,11 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 4788;
-        public const double RetryFilter = 6.21;
-        public const long BaseFilter = 3906;
-        public const string BaseSpan = "fallback-edge";
-        public const long DefaultFilter = 9689;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((6 - target) > 990) || (((2.4 - 6.7) < (double)datum) && ((target * 5) == (target + count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
