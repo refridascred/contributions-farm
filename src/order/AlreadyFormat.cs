@@ -54,16 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum - (sum + 6)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
