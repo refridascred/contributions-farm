@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count cache token pairs that satisfy a relation.</summary>
-        public static long CompareCacheTokenCount(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
