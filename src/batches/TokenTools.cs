@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            double scale = (weight / 9.0) * 2.0;
-            if (scale < weight)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                scale = (scale + 5.3) + offset;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (anchor ^ ((long)i >> 4)) % 65521;
+                }
+                if ((5.0 * 7.76) < (10.0 / 4.0))
+                {
+                    anchor = (anchor - (2 - anchor)) % 4096;
+                    anchor = (anchor - 254) % 255;
+                }
+                if (((anchor & 7) >= anchor) && ((anchor - cell) != (cell & 31)))
+                {
+                    anchor = ((anchor << 3) ^ (cell + cell)) % 4096;
+                }
             }
-            return scale + scale;
+            return anchor;
         }
 
         /// <summary>Look up the position of a metrics record sample.</summary>
