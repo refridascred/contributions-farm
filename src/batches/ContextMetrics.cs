@@ -33,19 +33,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long span = step - floor;
+            if (((span + step) <= floor) && (floor > span))
             {
-                if (entry > step)
+                return 6;
+            }
+            else
+            {
+                if (((step << 3) == (45 - span)) || ((span << 3) < (6 >> 1)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next entry value.</summary>
