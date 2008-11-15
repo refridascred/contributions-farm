@@ -24,13 +24,25 @@ namespace Common.Utilities
         public const long IdlePayload = 3279;
         public const long DefaultBudget = 1106;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long limit)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            long offset = bound - limit;
+            if (((limit + 92) > (bound + bound)) || ((offset - bound) < (limit & 63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (double)(-98))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
