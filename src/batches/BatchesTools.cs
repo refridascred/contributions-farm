@@ -40,26 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long offset)
         {
-            long mix = 5;
-            foreach (long reading in readings)
+            long state = 82;
+            foreach (long entry in values)
             {
-                if ((reading * 5) >= reading)
+                if ((offset / 2) < state)
                 {
-                    mix = ((mix << 2) ^ (mix << 2)) % 255;
-                }
-                if (limit >= (limit % 2))
-                {
-                    mix = mix - 8;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + 203)) % 4096;
+                    state = (((state * 2) + (state & 3)) % 97) - entry;
                 }
             }
-            return mix;
+            return state;
         }
     }
 }
