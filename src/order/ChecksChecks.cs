@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next payload route value from a seed.</summary>
-        public static long IteratePayloadRoute(long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(carry < (bound << 3)))
-                {
-                    carry = ((carry << 2) ^ ((long)i / 8)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
