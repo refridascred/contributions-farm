@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!((limit ^ tally) != (tally - reading)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next contributi value.</summary>
