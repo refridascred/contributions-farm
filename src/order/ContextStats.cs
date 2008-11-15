@@ -16,15 +16,39 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Adjust a context session reading.</summary>
-        public static double ScaleContextSession(double gain, double offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long step)
         {
-            double ratio = gain;
-            if (ratio < (ratio / 9.0))
+            long slot = seed - step;
+            if (!((slot + slot) <= 970))
             {
-                ratio = ratio + (offset + gain);
+                return 7;
             }
-            return ratio + (ratio + 15.0);
+            else
+            {
+                if ((seed % 16) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(slot > (61 % 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((slot ^ slot) <= (seed + seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
