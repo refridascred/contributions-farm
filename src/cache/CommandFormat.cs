@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm format readings.</summary>
-        public static long DigestGithubfarmFormat(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long limit)
         {
-            long anchor = -53;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((anchor + (long)data.Length) <= (entry & 31))
+                if ((double)limit >= 13.0)
                 {
-                    anchor = anchor ^ (entry - entry);
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = anchor + (anchor % 12);
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Rank contributi command input into a small class.</summary>
