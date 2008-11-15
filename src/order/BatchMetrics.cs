@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up graph report samples.</summary>
-        public static long MatchGraphReportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitInterval = "open";
+        public const double WindowTimeout = 51.05;
+        public const long MinSpan = 3419;
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
         public static long SeekToolsFormatIndex(long[] series, long floor)
