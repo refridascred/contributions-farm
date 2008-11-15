@@ -20,10 +20,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 19.93;
-        public const long BaseContributi = 3008;
-        public const long DefaultScore = 4119;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Queued,
+            Retry,
+            Draft,
+            Active,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BaseLevel = "strict";
