@@ -64,12 +64,17 @@ namespace Common.Utilities
         public const double CacheRatio = 61.5;
         public const double LimitSession = 78.82;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
