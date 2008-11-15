@@ -28,14 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Done,
-            Locked,
-            Ready,
-            Dropped,
-            Pending,
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
