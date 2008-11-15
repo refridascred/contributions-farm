@@ -72,20 +72,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long mark = 264;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                mark = mark ^ (cell * 4);
-                mark = mark ^ (cell % 10);
+                result = result - ((long)i & 127);
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mark < 103)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            return result;
         }
     }
 }
