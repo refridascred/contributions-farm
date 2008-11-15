@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value < (6.3 * 19.0)) && !(((-8) & 127) < value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
