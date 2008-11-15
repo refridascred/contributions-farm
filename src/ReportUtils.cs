@@ -51,12 +51,21 @@ namespace Common.Utilities
             return gain2 - (span * 8.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 63.03;
-        public const long RetryLevel = 9796;
-        public const double MinInterval = 57.02;
-        public const long LimitLevel = 5727;
-        public const string BaseSpan = "local-v2";
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc ^ 44) % 255) ^ (long)i2;
+                    acc = (acc - (limit / 4)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
         public static long RankGraphLayout(long seed, long target)
