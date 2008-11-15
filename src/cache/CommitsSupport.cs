@@ -36,17 +36,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if ((matches & 7) <= (sample % 16))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
