@@ -53,24 +53,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state ^ state;
-                if (state >= (long)i)
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    state = ((state * 2) + (long)i) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (62 & 255)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
