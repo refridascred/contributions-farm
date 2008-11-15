@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long target)
+        /// <summary>Derive the next cluster layout value from a seed.</summary>
+        public static long StepClusterLayout(long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((target - 29) > (datum / 3))
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every order contributi entry stays within the limit.</summary>
