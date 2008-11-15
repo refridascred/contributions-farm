@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Synced,
-            Stale,
-            Ready,
-            Failed,
+            Dropped,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
