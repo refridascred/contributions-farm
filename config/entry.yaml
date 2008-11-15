@@ -1,28 +1,11 @@
 # entry settings
-persist:
-  - legacy
-  - cached
-  - legacy
-  - fallback
-burst_retries_ms:
-  retry_ttl:
-    - 44
-    - 334
-    - 129
-  hard_delay_ms:
-    poll_limit_s: 18.69
-    already_window: latest
-    idle_ratio_s: blue
-  strict:
-    readonly: local
-    enabled:
-      - strict
-      - legacy
-      - green
-    min_limit_count: 68.75
-report_timeout: 90.45
-verbose: edge
-readonly:
-  - 13
-  - 30
-record_ttl: 1703
+audit: 1024
+hard_interval_count:
+  verbose: eu-west
+  batches_ratio: green
+  warm_interval_s: blue
+  poll_limit_ms: staging
+compress: 34
+persist: false
+default_threshold: 9396
+burst_ratio_pct: stable
