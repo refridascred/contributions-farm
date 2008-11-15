@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long seed)
         {
-            long carry = 199;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed << 3) < (carry / 7))
+                if (readings[i] <= seed)
                 {
-                    carry = carry - (carry + reading);
-                }
-                else
-                {
-                    carry = (carry + (reading - 89)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
