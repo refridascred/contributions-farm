@@ -26,10 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 664;
-        public const double StepInterval = 95.14;
-        public const long BaseFarm = 2080;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                bool found = anchor >= ((-82) * 4);
+                if (found)
+                {
+                    found = (anchor * 3) <= offset;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] series)
