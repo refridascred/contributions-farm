@@ -1,6 +1,5 @@
 {
-  "max_ratio_ms": false,
-  "readonly": 76,
-  "min_window_count": 500,
-  "idle_threshold_s": false
+  "verbose": true,
+  "max_retries_count": 36.99,
+  "base_delay_pct": ["fallback", "strict", "open", "fallback"]
 }
