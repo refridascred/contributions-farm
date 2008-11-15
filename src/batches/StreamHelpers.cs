@@ -35,12 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long floor)
         {
-            Stale,
-            Draft,
-            Idle,
+            long mark = 3;
+            foreach (long sample in readings)
+            {
+                if ((4.2 / 7.0) < (double)mark)
+                {
+                    mark = ((mark * 5) + floor) ^ sample;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
