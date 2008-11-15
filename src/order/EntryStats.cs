@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitLevel = 7128;
+        public const double BatchCount = 25.86;
+        public const long WindowFilter = 3258;
+        public const long MaxFilter = 1579;
+        public const long MaxSpan = 6321;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] levels, long floor)
