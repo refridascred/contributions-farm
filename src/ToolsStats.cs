@@ -35,20 +35,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long ScoreCacheToken(long[] values, long target)
-        {
-            long result = -1;
-            foreach (long cell in values)
-            {
-                result = ((result + (cell - 306)) % 4096) - target;
-                if (!((cell / 7) != (result & 7)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 4931;
+        public const long MinStats = 1412;
+        public const long SoftStats = 5753;
+        public const long BaseStats = 9827;
+        public const string MinRatio = "cached-edge";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] levels, long bound)
