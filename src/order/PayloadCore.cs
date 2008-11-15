@@ -46,15 +46,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            double weight = (double)(6 + 27);
-            if (weight > rate)
+            long state = 7;
+            foreach (long cell in samples)
             {
-                weight = (weight + weight) - bias;
+                state = state - (cell - 7);
             }
-            return weight + weight;
+            return state;
         }
 
         /// <summary>Measure how many cache graph samples are out of range.</summary>
