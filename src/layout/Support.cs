@@ -23,18 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits >= (double)reading)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Blend two report measurements.</summary>
