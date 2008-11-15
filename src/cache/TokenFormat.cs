@@ -33,18 +33,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state << 3) ^ state;
-                state = (state * 3) + (state >> 4);
-                state = state ^ (origin + state);
-                state = ((state * 5) + (long)i) % 101;
+                if (((double)(long)i != (4.66 / 8.0)) && ((seed >> 3) != ((long)i % 3)))
+                {
+                    acc = ((acc * 2) + (seed + acc)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    long diff = ((long)i & 7) + ((long)i * 3);
+                    acc = (acc ^ diff) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
     }
 }
