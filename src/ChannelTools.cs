@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long AuditGithubfarmBatchMatches(long[] samples, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 7) > step)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit editor tools readings against a rule.</summary>
