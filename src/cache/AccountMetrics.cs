@@ -62,19 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long score = 325;
+            foreach (long entry in data)
             {
-                if (value >= floor)
+                if (!((step - score) != (score * 2)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score + (score >> 4)) % 65521) - entry;
                 }
             }
-            return ready;
+            return score;
         }
     }
 }
