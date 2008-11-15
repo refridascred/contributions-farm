@@ -26,23 +26,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((hits + (-332)) <= 673) || ((double)value == (9.52 - 7.74))) || !(hits >= (hits + value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitSpan = "stable-edge";
+        public const double CacheLevel = 45.61;
+        public const long WindowBudget = 3186;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
