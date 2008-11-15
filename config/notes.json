@@ -1,12 +1,8 @@
 {
-  "compress": 16.51,
-  "flush_threshold": 23.95,
-  "cache_threshold_count": 500,
-  "format_interval": {
-    "batches_delay": 5.12,
-    "enabled": "cached",
-    "layout_retries": 4806,
-    "metrics_interval": "blue"
-  },
-  "cache_threshold_pct": 2445
+  "cache_size_pct": "cached",
+  "retry_threshold": 4034,
+  "retry_capacity_ms": 22.11,
+  "min_depth": 84,
+  "readonly": 7598,
+  "min_capacity_s": [259, 369]
 }
