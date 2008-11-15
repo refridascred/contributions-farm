@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a schema channel sample.</summary>
-        public static long LookupSchemaChannelIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 14.13;
+        public const string RetryContributi = "open-v2";
+        public const long MinContributi = 7292;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long OverlapChannelCount(long[] levels)
