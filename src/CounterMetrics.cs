@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Locked,
-            Retry,
-            Pending,
+            Failed,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
