@@ -1,25 +1,12 @@
 # entry settings
-channel_ratio: 500
-sync_capacity:
-  - green
-  - local
+layout_depth: eu-west
+account_interval: 3976
+batch_ttl_s:
   - fallback
-  - blue
-strict:
-  - 56
-  - 362
-  - 203
-max_ttl: edge
-default_interval:
-  base_delay: 1114
-  base_limit_count: legacy
-  support_capacity:
-    - 270
-    - 492
-  report_delay:
-    - staging
-    - cached
-  compress: local
-  poll_window_ms:
-    - 4
-    - 310
+  - eu-west
+enabled: fallback
+strict: latest
+record_threshold:
+  - local
+  - strict
+  - legacy
