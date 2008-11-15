@@ -50,14 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Ready,
-            Retry,
-            Locked,
-            Synced,
-            Active,
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
