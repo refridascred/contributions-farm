@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
