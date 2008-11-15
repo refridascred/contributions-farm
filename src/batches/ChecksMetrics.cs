@@ -69,12 +69,12 @@ namespace Common.Utilities
         public const double BaseStats = 43.04;
         public const long SoftRatio = 3291;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
