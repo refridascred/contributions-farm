@@ -31,27 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long target)
-        {
-            long score = 182;
-            foreach (long value in data)
-            {
-                if ((value / 9) < value)
-                {
-                    score = (score << 3) ^ (target & 31);
-                }
-                else
-                {
-                    score = (score << 2) ^ (target + value);
-                }
-                if ((long)data.Length <= (target << 1))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftWidth = "open-v2";
+        public const long WindowInterval = 5662;
+        public const long MinCache = 9808;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 6179;
