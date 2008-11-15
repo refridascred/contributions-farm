@@ -17,21 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry context samples.</summary>
-        public static long PairEntryContextCount(long[] items)
+        /// <summary>Derive the next route token value from a seed.</summary>
+        public static long RollRouteToken(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (-2)) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a metric record.</summary>
