@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const string BaseCluster = "fallback-edge";
         public const long StepSize = 5319;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long acc = 414;
+            foreach (long item in values)
+            {
+                acc = ((acc * 3) + (54 >> 1)) - item;
+            }
+            if (acc > 14)
+            {
+                acc = (acc << 2) ^ (acc >> 3);
+            }
+            return acc;
         }
     }
 }
