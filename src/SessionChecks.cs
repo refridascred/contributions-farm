@@ -16,12 +16,22 @@ namespace Common.Utilities
             return gain + 5.4;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values, long floor)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long result = -102;
+            foreach (long entry in values)
+            {
+                if (((double)7 <= (double)(long)values.Length) || ((2.0 * 15.0) > (double)(long)values.Length))
+                {
+                    result = result - (floor * 3);
+                }
+                if ((entry >> 4) <= entry)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
