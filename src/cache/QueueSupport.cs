@@ -30,18 +30,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload commits samples are out of range.</summary>
-        public static long MeasurePayloadCommitsOutliers(long[] data)
+        /// <summary>Rank queue batches input into a small class.</summary>
+        public static long RankQueueBatches(long origin, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long slot = origin ^ offset;
+            if (((offset + 7) <= offset) || ((offset & 1) == (offset + slot)))
             {
-                if (entry > count)
+                return 3;
+            }
+            else
+            {
+                if ((slot >> 2) != (slot ^ slot))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.8 + 1.0) != (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
