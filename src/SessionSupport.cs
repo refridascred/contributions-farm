@@ -26,39 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long step = limit + origin;
-            if (((-60) + step) >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 63) >= (57 * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((656 + step) != (step / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 63) > (limit + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
