@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] data, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (item > origin)
+                if (((entry / 2) > (877 ^ entry)) && ((double)seen > (4.48 + 4.76)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
