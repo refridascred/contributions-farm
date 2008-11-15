@@ -17,12 +17,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5381;
-        public const double StepCache = 14.19;
-        public const long BurstBudget = 5569;
-        public const string WindowCache = "alpha-1";
-        public const double StepSize = 58.77;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinScore = 635;
+        public const long BatchSize = 4583;
+        public const long BatchCluster = 6938;
+        public const string BurstTimeout = "fallback-edge";
+        public const long BaseCluster = 1438;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] readings)
