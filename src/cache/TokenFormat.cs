@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            Done,
+            Draft,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
