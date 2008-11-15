@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
