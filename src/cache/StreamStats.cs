@@ -35,38 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((offset / 9) > (bound & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (offset * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 3) != (bound * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (60 > (bound / 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
