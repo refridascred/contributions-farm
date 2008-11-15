@@ -1,4 +1,11 @@
 # githubfarm settings
-contributi_ttl: 30
-soft_depth_ms: true
-flush_ratio_count: green
+checks_threshold:
+  - 110
+  - 166
+  - 63
+retry_depth_count: 66
+stats_retries: 79.34
+idle_ttl:
+  base_retries_count: 62
+  flush_window_ms: 49
+  burst_limit_ms: 500
