@@ -42,31 +42,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long step, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((step + target) >= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target % 100) < 617) && ((target - step) > step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (724 >= (step & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Done,
         }
     }
 }
