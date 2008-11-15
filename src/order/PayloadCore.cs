@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long BatchRatio = 9609;
         public const long SoftWidth = 7223;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((1 * 3) > (cell / 7))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitLevel = 85.99;
+        public const double DefaultCount = 77.92;
+        public const long MaxNotes = 883;
+        public const long BurstDepth = 8163;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
