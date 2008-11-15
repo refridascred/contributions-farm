@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long CacheDepth = 2842;
         public const long MinAlready = 9780;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 81;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((offset % 60) != (5 >> 4)) || (((-325) << 1) >= (anchor - offset)))
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (-70)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (datum + anchor);
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
