@@ -31,21 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] == limit)
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
