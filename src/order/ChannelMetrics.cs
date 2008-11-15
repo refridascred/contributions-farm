@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
