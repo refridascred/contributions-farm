@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the window phase values.</summary>
