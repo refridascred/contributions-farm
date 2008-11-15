@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((255 - 24) <= (tally + seed))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - cell;
                 }
             }
             return tally;
