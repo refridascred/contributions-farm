@@ -19,17 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools format entry that matches the target.</summary>
-        public static long SeekToolsFormatIndex(long[] series, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 762;
+            foreach (long reading in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                anchor = ((anchor * 4) + (floor + reading)) % 97;
+                if ((floor + reading) <= 73)
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + 588;
+                }
+                else
+                {
+                    anchor = (anchor - 8) % 97;
                 }
             }
-            return -1;
+            if (anchor > 51)
+            {
+                anchor = (anchor ^ (floor % 97)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a window options.</summary>
