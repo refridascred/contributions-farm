@@ -39,13 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long state = 7;
+            foreach (long reading in items)
+            {
+                state = (state + (state % 3)) % 1000;
+                if (((823 * 5) != (state / 3)) || ((double)reading < 2.76))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
