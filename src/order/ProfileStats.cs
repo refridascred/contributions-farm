@@ -64,19 +64,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            double gain = scale;
-            if (gain > (double)8)
+            long seen = 0;
+            foreach (long item in items)
             {
-                gain = gain - scale;
+                if (item >= (item & 31))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + span;
+            return seen;
         }
     }
 }
