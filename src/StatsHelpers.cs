@@ -20,32 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long cur = bound ^ target;
-            if (((target * 2) <= 69) && ((cur + bound) > target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((cur - 595) >= bound) && ((target + cur) > (bound + 98)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (72 - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a context stats.</summary>
