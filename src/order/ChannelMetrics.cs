@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitInterval = 69.0;
-        public const long MaxBudget = 6467;
-        public const long CacheBudget = 2556;
+        /// <summary>Derive the next format graph value from a seed.</summary>
+        public static long SeriesFormatGraph(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                long count = (offset ^ offset) - (832 - 76);
+                state = (state * 5) + ((long)i - count);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 1993;
