@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics session reading.</summary>
-        public static double AdjustMetricsSession(double weight, double floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels, long step)
         {
-            double bias = 5.64 + floor;
-            return bias - (weight * 17.0);
+            long score = -662;
+            foreach (long cell in levels)
+            {
+                if (!(score <= (cell - 21)))
+                {
+                    score = (((score << 3) ^ 16) % 65521) - step;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
