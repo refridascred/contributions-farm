@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Count the support schema entries that pass the check.</summary>
+        public static long AuditSupportSchemaMatches(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= (340 << 1))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
