@@ -1,12 +1,9 @@
 # support settings
-verbose: true
-max_ratio_ms:
-  - 410
-  - 259
-  - 376
-  - 22
-soft_window_count: 23
-poll_timeout:
-  - blue
-  - stable
-  - legacy
+readonly: 25
+account_depth: 52
+default_threshold_s: 79.15
+sync_timeout:
+  - staging
+  - primary
+  - staging
+min_retries_s: edge
