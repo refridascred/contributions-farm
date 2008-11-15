@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchInterval = 1969;
-        public const long LimitGithubfarm = 1202;
-        public const long MinGithubfarm = 1222;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
