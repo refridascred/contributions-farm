@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 10.61;
+        public const long MinToken = 1088;
+        public const double WindowToken = 74.41;
+        public const long HardLevel = 2843;
+        public const long HardToken = 2524;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] data, long step)
