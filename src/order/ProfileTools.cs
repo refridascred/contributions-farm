@@ -35,19 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (entry >= seed)
+                if (!!((datum << 3) <= (80 >> 1)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
