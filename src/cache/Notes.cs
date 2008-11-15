@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const long MinLayout = 7752;
         public const long BurstLayout = 479;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (series[i] < seed)
+                if (value >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
