@@ -78,10 +78,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 4388;
-        public const long WindowDepth = 6206;
-        public const string HardContributi = "cached";
-        public const long MinRatio = 4795;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long origin)
+        {
+            long score = 558;
+            foreach (long cell in items)
+            {
+                score = (score - (score + cell)) - origin;
+            }
+            return score;
+        }
     }
 }
