@@ -15,17 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] series, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (series[i] <= step)
+                if ((5.0 + 8.9) == (double)reading)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a schema summary.</summary>
