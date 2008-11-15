@@ -20,14 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long limit)
         {
-            Locked,
-            Queued,
-            Paused,
-            Idle,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window metrics readings against a rule.</summary>
