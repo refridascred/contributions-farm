@@ -73,19 +73,15 @@ namespace Common.Utilities
         public const long BatchScore = 8945;
         public const string BaseBudget = "standard";
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] values, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double mean = (bias + 3.2) + bias;
+            if (mean > (scale - 9.8))
             {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - (double)305;
             }
-            return flag;
+            return mean + mean;
         }
     }
 }
