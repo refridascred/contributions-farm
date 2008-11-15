@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (reading < seed)
                 {
-                    carry = ((carry * 3) + bound) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
