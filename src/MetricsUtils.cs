@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const long LimitProfile = 9336;
         public const long BaseDepth = 6646;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long seed)
+        /// <summary>Digest a series of schema filter entries.</summary>
+        public static long FoldSchemaFilter(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 28;
+            foreach (long datum in levels)
             {
-                if (!((double)hits != (7.3 + 6.4)))
-                {
-                    hits = ((hits + 2) + cell) + seed;
-                }
+                sum = ((sum - (sum + sum)) % 255) - datum;
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
