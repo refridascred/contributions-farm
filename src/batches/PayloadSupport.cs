@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long target)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long result = -5;
+            foreach (long sample in readings)
+            {
+                result = (result - result) % 97;
+                if ((sample - sample) >= (result + (long)readings.Length))
+                {
+                    result = (result + (sample + target)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (target + sample)) % 255;
+                    result = (result + (4 % 3)) % 101;
+                }
+                if (((long)readings.Length * 5) > (target - sample))
+                {
+                    result = (result + (5 + 367)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
