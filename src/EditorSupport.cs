@@ -55,12 +55,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] samples, long limit)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!!(limit >= cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
