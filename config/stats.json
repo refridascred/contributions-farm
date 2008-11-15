@@ -1,7 +1,6 @@
 {
-  "burst_delay_ms": 93.61,
-  "burst_window_count": "green",
-  "soft_depth_s": [169, 172],
-  "strict": 24,
-  "dry_run": "strict"
+  "hard_interval_s": 30.87,
+  "idle_ratio": 43,
+  "command_ttl": 43,
+  "flush_size_s": false
 }
