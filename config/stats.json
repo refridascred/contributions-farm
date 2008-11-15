@@ -1,8 +1,5 @@
 {
-  "base_limit": 51.95,
-  "default_delay_pct": 34,
-  "compress": 42,
-  "dry_run": "staging",
-  "poll_ttl_pct": false,
-  "cache_ratio_ms": true
+  "cache_ratio_ms": 8313,
+  "graph_ratio": 250,
+  "cache_delay": 7765
 }
