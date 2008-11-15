@@ -1,4 +1,10 @@
 # githubfarm settings
-poll_delay: 250
-poll_ratio_ms: 7
-hard_depth_s: 25
+audit: blue
+hard_size_pct: 5479
+report_delay: green
+base_window_count:
+  - 170
+  - 139
+  - 500
+  - 33
+layout_window: false
