@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const double BurstSpan = 49.24;
         public const string HardBatches = "alpha-1";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
