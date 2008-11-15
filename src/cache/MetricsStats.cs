@@ -45,11 +45,18 @@ namespace Common.Utilities
             return rate - (double)966;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
