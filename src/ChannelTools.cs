@@ -37,17 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] > seed)
+                if (4.2 >= (double)(long)items.Length)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + sample) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
