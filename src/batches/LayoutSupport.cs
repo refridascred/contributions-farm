@@ -47,13 +47,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
