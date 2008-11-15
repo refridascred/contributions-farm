@@ -1,5 +1,7 @@
 {
-  "retry_capacity": "standard",
-  "soft_limit": false,
-  "min_size": ["latest", "local", "standard"]
+  "verbose": 7294,
+  "audit": 6.09,
+  "report_timeout": 63,
+  "metrics_depth": 30,
+  "counter_depth": "stable"
 }
