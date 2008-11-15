@@ -1,23 +1,25 @@
 # support settings
-sync_window_ms: blue
-strict: green
-poll_threshold_pct:
-  poll_threshold_pct: staging
-  base_ttl:
-    notes_delay: latest
-    support_limit:
-      - green
-      - primary
-    soft_threshold_count: 58
-    retry_window_ms: green
-    verbose: staging
-    strict:
-      - standard
-      - standard
-      - strict
-  poll_ratio_ms: 34.52
-hard_delay_s:
-  - open
-  - legacy
-  - local
-  - latest
+base_depth_ms: 1024
+hard_delay: 7649
+idle_window_count:
+  min_threshold: 44
+  hard_interval_count:
+    - green
+    - blue
+    - edge
+  sync_depth_pct: latest
+  batch_ttl_pct:
+    - cached
+    - stable
+    - fallback
+    - edge
+  min_retries: 90.22
+burst_depth_ms:
+  persist:
+    - cached
+    - edge
+    - cached
+  batch_depth: 100
+  compress: eu-west
+  buffer_threshold: primary
+token_delay: 30
