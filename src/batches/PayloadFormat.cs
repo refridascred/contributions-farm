@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long CountMetricStatsOutliers(long[] samples, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias = floor;
+            if (bias > weight)
             {
-                if ((target + seen) < (seen + 4))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias - (bias + bias);
             }
-            return seen;
+            else
+            {
+                bias = bias + (floor - weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (weight + weight);
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
