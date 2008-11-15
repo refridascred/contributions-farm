@@ -40,18 +40,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((6 - target) > 990) || (((2.4 - 6.7) < (double)datum) && ((target * 5) == (target + count))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSpan = 4470;
+        public const double StepSize = 42.08;
+        public const long BatchDepth = 5969;
     }
 }
