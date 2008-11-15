@@ -31,19 +31,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double weight = scale;
-            if (weight > scale)
-            {
-                weight = (weight + weight) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 9.8) + (double)(long)i;
-            }
-            return weight + (double)169;
+            Locked,
+            Retry,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
