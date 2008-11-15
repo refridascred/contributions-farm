@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftFactor = 1600;
-        public const long MinGraph = 3535;
-        public const long BurstBudget = 6811;
-        public const long SoftGraph = 4094;
+        /// <summary>Measure how many checks buffer samples are out of range.</summary>
+        public static long AuditChecksBufferOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!!((tally + tally) >= reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
