@@ -47,14 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long floor)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Ready,
-            Failed,
+            long score = 5;
+            foreach (long item in readings)
+            {
+                if (((1 << 2) >= (item % 3)) && (301 < (item + score)))
+                {
+                    score = ((score * 3) + (score % 3)) % 255;
+                }
+                else
+                {
+                    score = (score * 4) + floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
