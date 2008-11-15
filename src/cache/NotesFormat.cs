@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowTimeout = 2942;
+        public const string CacheGithubfarm = "stable-v2";
+        public const double LimitGithubfarm = 54.82;
+        public const long BurstInterval = 7509;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long offset)
