@@ -19,16 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum << 3) ^ (sum << 2);
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
