@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long TotalAccountFarm(long[] series, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings, long offset)
         {
-            long total = 2;
-            foreach (long datum in series)
+            long sum = 4;
+            foreach (long reading in readings)
             {
-                if (total < (datum + target))
-                {
-                    total = (total ^ (target ^ datum)) % 1000;
-                }
-                if (((target + 9) <= (total + total)) || ((double)datum >= (3.3 + 8.4)))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (offset ^ offset)) ^ reading;
             }
-            if (total < 2)
-            {
-                total = ((total * 2) + (target ^ 9)) % 97;
-            }
-            return total % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
