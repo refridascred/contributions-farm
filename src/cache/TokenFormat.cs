@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long MeasureNotesGraphHits(long[] items, long bound)
         {
-            long state = 92;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 10; i++)
+                if ((8.0 - 4.26) > (double)matches)
                 {
-                    state = ((state ^ (state + (long)i)) % 1000) + sample;
+                    matches = ((matches + 3) ^ entry) + bound;
                 }
-                state = state - (216 / 7);
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
