@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] samples, long step)
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool GuardSupportClusterRange(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (reading <= step)
+                if (sample > step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
