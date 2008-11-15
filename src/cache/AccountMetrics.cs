@@ -61,13 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] samples, long floor)
         {
-            Active,
-            Done,
-            Locked,
-            Draft,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
