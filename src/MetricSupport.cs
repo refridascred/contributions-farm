@@ -16,12 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long bound)
         {
-            Pending,
-            Retry,
-            Paused,
+            long acc = 2;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc * 3) + (bound - acc)) % 4096) ^ (long)i;
+                }
+                if ((item - bound) < 33)
+                {
+                    acc = (acc - (item ^ item)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (95 ^ item)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate token samples.</summary>
