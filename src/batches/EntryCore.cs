@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 98.05;
-        public const long BatchBudget = 4762;
-        public const long WindowPayload = 4647;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long seed)
+        {
+            if (!((440 & 31) != (origin - origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(seed < (seed << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
