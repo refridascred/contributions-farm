@@ -28,22 +28,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = 47;
+            foreach (long item in items)
             {
-                if (((309 + 70) == (item + 350)) && ((item % 8) != (hits - item)))
+                if ((item + 3) < (seed ^ item))
                 {
-                    hits = hits + 1;
+                    mark = (mark * 5) + ((long)items.Length * 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = mark ^ (mark + mark);
                 }
             }
-            return hits;
+            if (mark > 7)
+            {
+                mark = ((mark * 5) + (mark << 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
