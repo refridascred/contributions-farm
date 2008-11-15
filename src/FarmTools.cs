@@ -22,21 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
