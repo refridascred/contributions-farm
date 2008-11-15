@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] series, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 8;
+            foreach (long reading in series)
             {
-                if ((8 - 953) > (count - count))
+                if ((7 > reading) && ((double)848 <= (double)mark))
                 {
-                    count = ((count + 3) ^ entry) - floor;
+                    mark = (mark << 2) ^ (step + mark);
                 }
             }
-            return count;
+            if (mark < 615)
+            {
+                mark = (mark ^ (4 / 9)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
