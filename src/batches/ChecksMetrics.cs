@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            Closed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((14.0 - 4.0) <= (double)count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
