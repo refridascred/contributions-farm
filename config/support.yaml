@@ -1,4 +1,4 @@
 # support settings
-verbose: 9692
-queue_depth: legacy
-dry_run: 16
+dry_run: 34
+persist: stable
+hard_capacity_pct: 39
