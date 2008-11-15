@@ -1,9 +1,4 @@
 # support settings
-entry_size:
-  - 449
-  - 234
-cluster_size: blue
-retry_delay_pct: primary
-strict:
-  - 471
-  - 496
+default_ttl_count: 28.0
+audit: 24
+max_delay: blue
