@@ -50,22 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 61;
-            foreach (long item in series)
-            {
-                if ((mark << 2) > 308)
-                {
-                    mark = (mark - ((long)series.Length ^ mark)) % 101;
-                }
-                else
-                {
-                    mark = mark - (item * 4);
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
