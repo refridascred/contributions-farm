@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long origin)
+        /// <summary>Derive the next payload route value from a seed.</summary>
+        public static long IteratePayloadRoute(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] < origin)
+                if (!(carry < (bound << 3)))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ ((long)i / 8)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
