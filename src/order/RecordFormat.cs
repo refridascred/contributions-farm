@@ -19,21 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 48;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((limit ^ limit) <= 801))
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 2) + (limit ^ limit);
+                }
+                if ((double)(-46) >= (2.5 / 2.0))
+                {
+                    state = (state - (value + 72)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (value - state);
                 }
             }
-            return count;
+            if (state > 8)
+            {
+                state = state ^ limit;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a account options.</summary>
