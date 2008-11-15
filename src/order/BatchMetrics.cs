@@ -42,12 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3518;
-        public const long MaxCache = 210;
-        public const long CacheFactor = 9644;
-        public const double LimitCache = 86.64;
-        public const long DefaultLevel = 3020;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels)
+        {
+            long total = 1;
+            foreach (long cell in levels)
+            {
+                total = (total ^ (total / 4)) % 65521;
+                if (cell >= (0 << 3))
+                {
+                    total = ((total * 3) + total) % 101;
+                }
+            }
+            if (total < (-3))
+            {
+                total = total ^ (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples, long bound)
