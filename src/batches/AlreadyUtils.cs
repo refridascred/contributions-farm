@@ -52,11 +52,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 655;
-        public const long MinNotes = 5989;
-        public const double MinSize = 82.57;
-        public const long MaxNotes = 1908;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6106;
+        public const long BurstBatches = 6396;
+        public const long IdleInterval = 1213;
+        public const long HardBatches = 6194;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
