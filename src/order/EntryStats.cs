@@ -20,19 +20,31 @@ namespace Common.Utilities
         public const long MaxFilter = 1579;
         public const long MaxSpan = 6321;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long step)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if (step >= (8 & 3))
             {
-                if (cell > floor)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (step >> 4))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (14 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
