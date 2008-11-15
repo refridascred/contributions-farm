@@ -27,27 +27,12 @@ namespace Common.Utilities
         public const long BurstMetric = 8163;
         public const string CacheMetric = "strict-edge";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long state = 865;
-            foreach (long sample in data)
-            {
-                state = (state << 2) ^ 8;
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (((state * 2) + (sample >> 5)) % 65521) + (long)i;
-                }
-                if ((sample / 2) >= (sample - sample))
-                {
-                    state = (state - (8 % 97)) % 101;
-                }
-            }
-            if (state > 73)
-            {
-                state = state - (target + state);
-            }
-            return state % 1000;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
