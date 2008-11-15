@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long span = origin + seed;
-            if ((origin ^ origin) < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed < span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
