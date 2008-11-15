@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long limit)
+        /// <summary>Grade a metrics payload value against two limits.</summary>
+        public static long GradeMetricsPayload(long seed, long step)
         {
-            long bound = step ^ limit;
-            if ((limit + step) > limit)
+            if ((seed > (step + step)) || (((-94) % 8) > step))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (((7.2 * 3.4) >= (double)step) || ((bound / 6) > (limit / 7)))
+                if ((seed - step) <= (seed + seed))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 3;
+                    if (step > (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step - step) < (190 & 1)) && ((double)seed != (3.0 - 12.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
