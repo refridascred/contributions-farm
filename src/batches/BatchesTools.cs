@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Retry,
-            Queued,
-            New,
-            Done,
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
