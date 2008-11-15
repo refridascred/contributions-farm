@@ -1,5 +1,8 @@
 {
-  "batch_threshold": true,
-  "warm_timeout_count": "fallback",
-  "default_depth_ms": true
+  "min_window": 33.64,
+  "record_ttl": "green",
+  "cache_window_count": 250,
+  "soft_interval_s": 48.71,
+  "idle_size_count": [128, 169],
+  "compress": 7152
 }
