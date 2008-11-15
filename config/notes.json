@@ -1,16 +1,6 @@
 {
-  "cache_depth": true,
-  "sync_depth_ms": 63,
-  "sync_depth_pct": {
-    "max_delay": 32.33,
-    "hard_ratio_s": true,
-    "base_delay_count": {
-      "stream_timeout": 66.85,
-      "contributi_timeout": true,
-      "readonly": 3618,
-      "min_window_s": "open"
-    },
-    "retry_timeout_pct": 5.19
-  },
-  "poll_threshold_count": true
+  "cache_delay_count": true,
+  "flush_ratio_ms": false,
+  "warm_interval_pct": "local",
+  "min_limit_ms": [183, 164]
 }
