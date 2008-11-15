@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stream report entries.</summary>
-        public static long ScoreStreamReport(long[] levels, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long floor2)
         {
-            long total = 15;
-            foreach (long sample in levels)
+            long slot = floor - floor2;
+            if ((slot & 15) > (slot * 5))
             {
-                total = (total << 3) ^ (sample - seed);
-                if ((total - sample) >= (total << 3))
+                return 0;
+            }
+            else
+            {
+                if (!((slot & 63) <= floor2))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (total < 393)
-            {
-                total = (total + (95 - total)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Describe the stream level values.</summary>
