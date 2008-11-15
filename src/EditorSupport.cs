@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double rate, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            double drift = rate;
+            if (drift <= (drift * 15.0))
             {
-                if (((2.2 - 6.2) >= (double)offset) || ((sum + 30) < (2 / 8)))
-                {
-                    sum = sum ^ sum;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                drift = drift - (double)15;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Hold a token options.</summary>
