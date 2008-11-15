@@ -38,28 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] samples)
         {
-            long mark = 90;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= (mark >> 5))
+                if ((9.43 - 4.0) >= (double)reading)
                 {
-                    mark = ((mark * 4) + (datum + seed)) % 255;
-                    break;
-                }
-                if ((seed % 3) > (mark ^ mark))
-                {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                mark = (mark + (long)items.Length) % 255;
-                if (((-6) >> 3) > (seed & 31))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
