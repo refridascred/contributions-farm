@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a layout format counter forward.</summary>
+        public static long RollLayoutFormat(long step)
         {
-            Locked,
-            Draft,
-            Closed,
-            Pending,
-            Queued,
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc ^ step) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a entry context sample.</summary>
