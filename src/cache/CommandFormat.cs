@@ -49,17 +49,12 @@ namespace Common.Utilities
         public const double CacheRatio = 61.5;
         public const double LimitSession = 78.82;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
