@@ -19,21 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of token metrics readings.</summary>
-        public static long OverlapTokenMetricsCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((tally < (sample ^ tally)) || (target < (1 << 1))))
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank schema window input into a small class.</summary>
