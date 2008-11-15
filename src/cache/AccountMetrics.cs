@@ -44,12 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool GuardEditorRouteRange(long[] data, long limit)
         {
-            Closed,
-            Paused,
-            New,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the window phase values.</summary>
