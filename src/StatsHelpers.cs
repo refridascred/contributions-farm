@@ -29,12 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((142 << 3) != ((-1) + count))
+                {
+                    count = ((count + 3) + datum) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window state values.</summary>
