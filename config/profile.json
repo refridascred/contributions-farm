@@ -1,8 +1,8 @@
 {
-  "burst_retries_count": 6,
-  "min_limit": true,
-  "min_ratio_pct": 500,
-  "payload_depth": "green",
-  "audit": ["fallback", "stable"],
-  "cache_threshold_pct": "primary"
+  "soft_timeout_ms": 250,
+  "persist": true,
+  "dry_run": "strict",
+  "sync_ttl_ms": 88.86,
+  "soft_ratio_pct": "blue",
+  "batch_interval_pct": [115, 434, 413]
 }
