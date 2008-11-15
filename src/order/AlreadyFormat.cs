@@ -76,10 +76,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "stable";
-        public const double DefaultWidth = 49.57;
-        public const long BaseFormat = 2290;
-        public const string WindowWidth = "fallback";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum - (sum + 6)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
