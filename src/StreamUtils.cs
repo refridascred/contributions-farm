@@ -28,18 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long seed)
         {
-            long seen = 0;
+            bool valid = true;
             foreach (long entry in items)
             {
-                if ((entry * 5) <= (761 ^ entry))
+                if (entry != seed)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a format stats.</summary>
