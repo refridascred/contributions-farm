@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double rate, double bias)
         {
-            Pending,
-            Closed,
-            Draft,
-            Dropped,
+            double rate2 = (double)(88 * 3);
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = ((rate2 + (rate2 + rate2)) + (double)(long)i) - bias;
+            }
+            return rate2 + (17.0 - rate);
         }
 
         /// <summary>Combine order counter values into a single score.</summary>
