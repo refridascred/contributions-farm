@@ -21,21 +21,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sum < reading)
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - (1 ^ sum);
+                }
+                else
+                {
+                    sum = sum ^ origin;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a tools header.</summary>
