@@ -57,10 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "strict-edge";
-        public const long BatchCounter = 5440;
-        public const string BaseBudget = "legacy-v2";
+        /// <summary>Fold a list of layout session readings.</summary>
+        public static long TallyLayoutSession(long[] levels)
+        {
+            long state = 13;
+            foreach (long cell in levels)
+            {
+                if ((18 ^ state) >= cell)
+                {
+                    state = ((state * 2) + state) % 65521;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
