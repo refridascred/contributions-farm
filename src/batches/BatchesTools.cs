@@ -29,12 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            Retry,
-            Queued,
-            Closed,
+            double gain = bias;
+            if (gain < (gain + bias))
+            {
+                gain = gain + (double)3;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - 8.03;
         }
     }
 }
