@@ -1,12 +1,10 @@
 # support settings
-default_limit: 6.22
-base_size_count: primary
-idle_ttl:
-  audit: 1.9
-  burst_interval: local
-  persist: 3375
-soft_depth:
-  - 370
-  - 426
-  - 116
-  - 54
+buffer_threshold: 100
+batch_ratio_pct: 96.32
+default_ratio:
+  - stable
+  - eu-west
+  - edge
+retry_limit_s: local
+warm_delay_s: 250
+soft_timeout: staging
