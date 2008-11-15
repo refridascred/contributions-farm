@@ -62,12 +62,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Compare every pair of route buffer readings.</summary>
+        public static long MatchRouteBufferCount(long[] data)
         {
-            Synced,
-            Queued,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
