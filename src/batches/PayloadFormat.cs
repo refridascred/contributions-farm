@@ -41,21 +41,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 301;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = score ^ ((long)values.Length >> 2);
+                score = ((score << 3) ^ (sample + 260)) % 101;
             }
-            return count;
+            if (score < 103)
+            {
+                score = (score * 3) + (score << 1);
+            }
+            return score;
         }
     }
 }
