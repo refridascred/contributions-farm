@@ -55,21 +55,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 62;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc * 4) + (acc - reading);
             }
-            return matches;
+            if (acc < 96)
+            {
+                acc = (acc ^ (acc >> 3)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
