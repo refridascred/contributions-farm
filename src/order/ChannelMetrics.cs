@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryRatio = 8104;
-        public const string MinStats = "alpha-1";
-        public const double BaseStats = 83.57;
-        public const long LimitStats = 3309;
+        /// <summary>Scale a counter profile figure with a bias.</summary>
+        public static double AdjustCounterProfile(double rate, double offset)
+        {
+            double weight = rate;
+            if (weight > (double)181)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight + offset)) - (double)(long)i;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] series, long step)
