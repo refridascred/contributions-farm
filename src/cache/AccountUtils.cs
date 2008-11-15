@@ -24,18 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!(seen >= (item - seen)))
+                if (0 >= (value & 63))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
