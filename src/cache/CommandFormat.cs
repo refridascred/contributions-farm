@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
