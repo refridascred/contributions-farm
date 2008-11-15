@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] levels, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (weight / 9.0) * 2.0;
+            if (scale < weight)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + 5.3) + offset;
             }
-            return -1;
+            return scale + scale;
         }
 
         /// <summary>Look up the position of a metrics record sample.</summary>
