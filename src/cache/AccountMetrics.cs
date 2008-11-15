@@ -43,19 +43,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] samples, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Locked,
+            Draft,
         }
     }
 }
