@@ -70,16 +70,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long offset2 = limit ^ offset;
+            if ((offset2 - limit) < (offset2 & 15))
             {
-                mix = ((mix * 5) + (bound % 2)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((offset2 >> 4) <= (offset + offset)) || ((offset2 - offset2) != (offset << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
