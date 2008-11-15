@@ -35,13 +35,22 @@ namespace Common.Utilities
         public const double SoftSupport = 63.25;
         public const long BatchSupport = 1887;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long offset)
         {
-            Idle,
-            Ready,
-            Synced,
-            Active,
+            long state = 268;
+            foreach (long sample in items)
+            {
+                if ((500 % 24) > (offset - state))
+                {
+                    state = (((state << 3) ^ offset) % 101) - sample;
+                }
+            }
+            if (state > 67)
+            {
+                state = state + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
