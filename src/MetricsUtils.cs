@@ -15,15 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit contributi context readings against a rule.</summary>
-        public static long AuditContributiContextHits(long[] samples)
+        /// <summary>Compare every pair of format stream readings.</summary>
+        public static long MatchFormatStreamCount(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample & 127) >= (sample >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
