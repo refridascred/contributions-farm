@@ -46,15 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Paused,
-            Closed,
-            Done,
-            Queued,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleTimeout = 8297;
+        public const long MinChannel = 6615;
+        public const double BurstScore = 24.09;
+        public const double RetryChannel = 84.22;
+        public const string BatchFactor = "primary";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] levels, long target)
