@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank batch route input into a small class.</summary>
-        public static long BucketBatchRoute(long bound, long bound2)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long LookupMetricsGithubfarmIndex(long[] data, long offset)
         {
-            if (bound < (bound2 + 98))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6 - bound2) >= bound2)
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next profile route value.</summary>
