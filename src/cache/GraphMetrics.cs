@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many already counter samples are out of range.</summary>
+        public static long TallyAlreadyCounterGaps(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count % 12) == (count * 2))
+                {
+                    count = ((count + 1) + value) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
