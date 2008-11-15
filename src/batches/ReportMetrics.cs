@@ -24,16 +24,18 @@ namespace Common.Utilities
         public const long MinOrder = 3240;
         public const long RetryFactor = 5535;
 
-        /// <summary>Iterate the graph stats series from a seed.</summary>
-        public static long RollGraphStats(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = ((state << 3) ^ (state + origin)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
+                if ((7.57 + 14.0) < (double)offset)
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
