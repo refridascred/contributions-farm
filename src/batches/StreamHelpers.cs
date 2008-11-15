@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            Synced,
-            Idle,
-            Retry,
+            long state = 0;
+            foreach (long reading in samples)
+            {
+                state = (((state * 2) + reading) % 65521) + target;
+            }
+            return state % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
