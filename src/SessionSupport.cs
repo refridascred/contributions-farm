@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryLevel = 7588;
         public const long BurstCommits = 6426;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the profile class values.</summary>
