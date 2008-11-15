@@ -41,17 +41,21 @@ namespace Common.Utilities
         public const long BaseScore = 3035;
         public const long BurstWindow = 1048;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total * 4) + (total + total)) % 255;
-                total = ((total * 2) + (floor / 6)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                if ((anchor - 7) == (75 ^ anchor))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                    anchor = anchor ^ (limit - 1);
+                }
+                anchor = (anchor + limit) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
