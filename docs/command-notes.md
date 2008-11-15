@@ -1,14 +1,13 @@
 # Command notes
 
-When a checks fails, the stats handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
-A buffer that stays idle for too long is moved to the cluster list.
+The format module keeps checks values in sync with the farm cache.
+A notes that stays idle for too long is moved to the cache list.
 
-Run the batch check before changing any profile limits.
-When a record fails, the buffer handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the window list.
+Use queue settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new filter fields
-- Validate channel input early
+- Review profile limits each release
+- Document new account fields
+- Prefer payload defaults
