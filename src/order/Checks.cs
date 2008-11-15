@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (offset > (bound - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > 9.88)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
