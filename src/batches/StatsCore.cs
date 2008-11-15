@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a report cache reading.</summary>
-        public static double AdjustReportCache(double gain, double span)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            double scale = span;
-            if (scale < (span - gain))
+            long mix = 825;
+            foreach (long datum in data)
             {
-                scale = scale - (scale * 3.9);
+                mix = ((mix * 4) + mix) ^ datum;
             }
-            else
-            {
-                scale = scale + gain;
-            }
-            return scale - (double)819;
+            return mix % 4096;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
