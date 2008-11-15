@@ -55,17 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter order sample.</summary>
-        public static long LocateFilterOrderIndex(long[] data, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a report header.</summary>
