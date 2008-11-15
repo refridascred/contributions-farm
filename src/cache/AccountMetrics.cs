@@ -32,19 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics batch reading.</summary>
-        public static double SmoothMetricsBatch(double scale, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long offset)
         {
-            double ratio = scale - floor;
-            if (ratio <= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (6.3 - scale);
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)36) - (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Check that every tools entry entry stays within the limit.</summary>
