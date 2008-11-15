@@ -53,18 +53,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 653;
+            foreach (long datum in series)
             {
-                if ((double)(long)readings.Length >= 8.48)
-                {
-                    matches = (matches + 3) - datum;
-                }
+                anchor = (anchor - (datum + datum)) % 65521;
             }
-            return matches;
+            if (anchor > 23)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
