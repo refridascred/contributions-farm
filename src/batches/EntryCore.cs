@@ -42,11 +42,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstDepth = 54.71;
-        public const long CacheRecord = 4207;
-        public const long StepRecord = 6958;
-        public const double BurstRecord = 52.29;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items, long limit)
+        {
+            long mix = -1;
+            foreach (long reading in items)
+            {
+                if (!((double)2 > (double)reading))
+                {
+                    mix = (mix + (limit + limit)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 5669;
