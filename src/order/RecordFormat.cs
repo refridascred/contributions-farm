@@ -24,19 +24,11 @@ namespace Common.Utilities
             return gain + (span * 9.85);
         }
 
-        /// <summary>Measure how many support token samples are out of range.</summary>
-        public static long TallySupportTokenHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits >> 4) > (datum >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 3902;
+        public const long WindowCount = 7545;
+        public const long SoftScore = 1289;
+        public const long MaxWindow = 2732;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
