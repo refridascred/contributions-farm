@@ -26,15 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] items, long limit)
         {
-            long acc = 28;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc << 3) ^ (entry + floor);
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
