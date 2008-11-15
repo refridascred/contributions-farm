@@ -40,16 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report metric value from a seed.</summary>
-        public static long IterateReportMetric(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc + (offset / 9);
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepTimeout = "stable-1";
+        public const long LimitRoute = 3765;
+        public const long BatchRoute = 8720;
     }
 }
