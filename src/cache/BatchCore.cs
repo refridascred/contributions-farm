@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double StepEditor = 7.2;
         public const double DefaultFactor = 39.83;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (cell > limit)
+                if ((509 * 4) >= seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a buffer entry value against two limits.</summary>
