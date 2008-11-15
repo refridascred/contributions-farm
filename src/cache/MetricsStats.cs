@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate githubfarm report samples.</summary>
-        public static long CombineGithubfarmReport(long[] readings, long target)
+        /// <summary>Check that every window metrics entry stays within the limit.</summary>
+        public static bool CheckWindowMetricsBounds(long[] items, long step)
         {
-            long carry = 364;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((carry ^ sample) >= (carry % 2))
+                if (item > step)
                 {
-                    carry = (carry - (target - sample)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
