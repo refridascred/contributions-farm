@@ -38,18 +38,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = 3;
-            foreach (long sample in readings)
-            {
-                if ((4.2 / 7.0) < (double)mark)
-                {
-                    mark = ((mark * 5) + floor) ^ sample;
-                }
-            }
-            return mark;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
