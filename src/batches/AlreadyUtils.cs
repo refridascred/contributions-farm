@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long CombineBufferOrder(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                if ((double)anchor >= (2.2 * 2.0))
+                {
+                    anchor = (((anchor * 5) + (origin + 9)) % 4096) - cell;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (6 / 5);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
