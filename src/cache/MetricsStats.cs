@@ -55,22 +55,17 @@ namespace Common.Utilities
             return drift - (span / 6.0);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 > (total - datum)) || ((0.5 - 3.97) > (double)(long)samples.Length))
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
                 {
-                    total = (total * 5) + (total - total);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (datum / 8)) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
