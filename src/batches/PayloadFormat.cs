@@ -14,38 +14,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series, long limit)
         {
-            if ((floor + seed) <= 27)
+            long mix = 0;
+            foreach (long sample in series)
             {
-                return 4;
+                mix = ((mix - (limit >> 1)) % 97) - sample;
+                mix = (mix << 3) ^ (mix & 1);
             }
-            else
+            if (mix > 984)
             {
-                if ((3 + 17) < floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + 1) > (floor - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3 + seed) >= (5 * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mix = (mix ^ (468 ^ limit)) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Hold a command record.</summary>
