@@ -1,11 +1,12 @@
 # support settings
-poll_size: 13.88
-audit: true
-idle_interval:
-  readonly: latest
-  burst_interval_pct:
-    - cached
-    - local
-    - open
-    - cached
-  sync_limit_s: blue
+idle_ratio_count: strict
+hard_ttl_pct: cached
+readonly:
+  - 425
+  - 465
+  - 348
+  - 446
+min_size_pct: 4908
+githubfarm_ttl:
+  - cached
+  - edge
