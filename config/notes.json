@@ -1,19 +1,5 @@
 {
-  "payload_delay": {
-    "idle_threshold_count": {
-      "cache_delay_count": [174, 356, 446],
-      "checks_capacity": "legacy",
-      "burst_depth_s": 100,
-      "soft_threshold_count": 1024
-    },
-    "retry_timeout": 1024,
-    "tools_limit": [135, 173, 493, 425]
-  },
-  "account_timeout": 30,
-  "hard_threshold": {
-    "sync_retries_s": false,
-    "readonly": 1024,
-    "idle_interval": [40, 499],
-    "audit": 500
-  }
+  "flush_limit_count": "cached",
+  "max_limit": [448, 406, 451, 14],
+  "base_depth_pct": 73
 }
