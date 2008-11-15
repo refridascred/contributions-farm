@@ -48,9 +48,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowWidth = 87.42;
-        public const long WindowCluster = 7589;
-        public const long StepCluster = 4741;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Pending,
+            Dropped,
+            Draft,
+        }
     }
 }
