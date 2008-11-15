@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
