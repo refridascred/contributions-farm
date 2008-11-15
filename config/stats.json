@@ -1,12 +1,7 @@
 {
-  "burst_depth_count": {
-    "schema_window": ["standard", "primary", "standard", "green"],
-    "compress": 63.02,
-    "retry_ttl_s": "open",
-    "filter_timeout": 60
-  },
-  "window_ttl": "latest",
-  "format_ratio": "fallback",
-  "batch_depth": "cached",
-  "compress": 9161
+  "burst_delay_ms": 93.61,
+  "burst_window_count": "green",
+  "soft_depth_s": [169, 172],
+  "strict": 24,
+  "dry_run": "strict"
 }
