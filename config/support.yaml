@@ -1,15 +1,23 @@
 # support settings
-verbose:
-  max_threshold_ms: 75.22
-  max_depth_s: blue
-  soft_ttl: true
-  counter_timeout: strict
-  warm_ttl:
-    - 104
-    - 174
-strict: fallback
-cache_size_count: 42.93
-commits_interval:
-  - 264
-  - 179
-  - 14
+graph_size: 75.28
+dry_run: true
+soft_interval:
+  warm_size_s:
+    - latest
+    - strict
+    - eu-west
+    - stable
+  flush_limit_ms: true
+  max_ttl_ms: true
+batch_depth:
+  queue_ratio:
+    cache_capacity_s: standard
+    min_ratio_ms: 61
+    retry_delay_pct: standard
+    soft_capacity: legacy
+    idle_capacity: legacy
+    githubfarm_timeout: 63
+  base_capacity_s: 73.62
+  cache_retries_count: 250
+  flush_ttl_pct: 403
+batch_limit: legacy
