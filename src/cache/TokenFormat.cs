@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Look up the position of a already metric sample.</summary>
+        public static long SeekAlreadyMetricIndex(long[] levels, long floor)
         {
-            New,
-            Synced,
-            Failed,
-            Active,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
