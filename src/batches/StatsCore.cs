@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] items)
+        /// <summary>Adjust a report cache reading.</summary>
+        public static double AdjustReportCache(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double scale = span;
+            if (scale < (span - gain))
             {
-                if (8.0 > (double)sample)
-                {
-                    matches = matches + 1;
-                }
+                scale = scale - (scale * 3.9);
             }
-            return matches;
+            else
+            {
+                scale = scale + gain;
+            }
+            return scale - (double)819;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
