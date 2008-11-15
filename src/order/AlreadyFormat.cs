@@ -27,14 +27,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            Failed,
-            Queued,
-            Locked,
-            Active,
-            Stale,
+            long prev = offset - bound;
+            if ((double)bound != (10.0 * 7.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (prev < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((prev >> 1) > (bound * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev - 27) <= 723)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
