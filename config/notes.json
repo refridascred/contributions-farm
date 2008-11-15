@@ -1,8 +1,18 @@
 {
-  "cache_size_pct": "cached",
-  "retry_threshold": 4034,
-  "retry_capacity_ms": 22.11,
-  "min_depth": 84,
-  "readonly": 7598,
-  "min_capacity_s": [259, 369]
+  "flush_retries": 6032,
+  "contributi_timeout": 8.78,
+  "retry_capacity_s": [17, 307, 255],
+  "default_threshold": 1659,
+  "cache_threshold_pct": {
+    "compress": {
+      "idle_size": 78.09,
+      "warm_interval_pct": 16,
+      "persist": 500
+    },
+    "cluster_timeout": 83,
+    "base_delay": 43.59,
+    "warm_capacity_count": 60.46,
+    "retry_ttl_ms": "standard",
+    "graph_window": 82
+  }
 }
