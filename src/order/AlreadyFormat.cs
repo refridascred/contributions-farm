@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter cache series from a seed.</summary>
-        public static long SeriesFilterCache(long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long target2)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            if (!((1.14 - 5.8) < (double)target))
             {
-                result = ((result * 5) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((target / 9) >= (target2 / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
