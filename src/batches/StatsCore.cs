@@ -40,21 +40,28 @@ namespace Common.Utilities
         public const double DefaultScore = 14.81;
         public const string MinTools = "fallback";
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-8) <= (carry - floor)) && ((floor ^ 588) >= (-386)))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (carry - floor)) % 65521;
                 }
+                else
+                {
+                    carry = (carry + (floor & 7)) % 255;
+                }
+                if (carry >= (473 ^ carry))
+                {
+                    carry = ((carry << 2) ^ (floor ^ 85)) % 1000;
+                    carry = carry + (carry + carry);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
