@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
