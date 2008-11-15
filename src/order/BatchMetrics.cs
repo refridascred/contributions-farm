@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a layout format counter forward.</summary>
-        public static long RollLayoutFormat(long step)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long CountQueueStatsOutliers(long[] readings, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((matches % 64) == ((-87) * 5))
                 {
-                    acc = (acc ^ step) - (long)i2;
+                    matches = ((matches + 3) ^ value) + origin;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry context sample.</summary>
