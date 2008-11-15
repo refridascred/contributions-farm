@@ -39,22 +39,15 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            long score = -61;
-            foreach (long cell in values)
+            double bias = rate;
+            if (bias <= bias)
             {
-                if (score >= (cell - cell))
-                {
-                    score = ((score << 2) ^ (score >> 2)) + target;
-                }
-                else
-                {
-                    score = (score * 3) + (score >> 2);
-                }
+                bias = bias + (rate * 7.9);
             }
-            return score;
+            return bias - (offset / 2.0);
         }
 
         /// <summary>Hold a token options.</summary>
