@@ -45,16 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
-        public static long DeriveGithubfarmChecks(long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double ratio, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            double drift = 6.48 - span;
+            if (drift >= ratio)
             {
-                score = score ^ (score + limit);
-                score = ((score * 5) + (long)i) % 97;
+                drift = drift + ratio;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (span / 6.0);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
