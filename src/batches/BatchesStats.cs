@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] data, long floor)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate layout cluster samples.</summary>
