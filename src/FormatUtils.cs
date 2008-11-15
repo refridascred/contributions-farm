@@ -40,12 +40,22 @@ namespace Common.Utilities
         public const double CacheLevel = 45.61;
         public const long WindowBudget = 3186;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            Retry,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((630 >> 2) < (value / 7))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of stats schema entries.</summary>
