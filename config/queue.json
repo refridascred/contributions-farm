@@ -1,6 +1,8 @@
 {
-  "default_timeout_ms": 13,
-  "default_delay_pct": "latest",
-  "already_retries": "cached",
-  "compress": 1192
+  "cache_threshold": true,
+  "retry_window_ms": "standard",
+  "retry_limit_s": false,
+  "default_capacity_ms": "strict",
+  "already_timeout": 250,
+  "idle_size_count": 65.75
 }
