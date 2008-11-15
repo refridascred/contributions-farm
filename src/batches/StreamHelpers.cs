@@ -28,12 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "fallback-1";
-        public const long MaxEditor = 5467;
-        public const double CacheEditor = 24.37;
-        public const double CacheSpan = 23.64;
-        public const double DefaultSpan = 87.54;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 4533;
+        public const long BaseQueue = 9875;
+        public const double MaxQueue = 62.71;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] series, long target)
