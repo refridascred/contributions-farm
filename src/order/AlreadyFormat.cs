@@ -40,32 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long floor)
-        {
-            if ((floor + limit) < (floor - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit <= 4.62))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((16.0 - 7.49) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 2548;
+        public const long MinAlready = 6912;
+        public const double RetryTimeout = 84.73;
+        public const double BurstAlready = 52.89;
 
         /// <summary>Measure how many payload batch samples are out of range.</summary>
         public static long AuditPayloadBatchGaps(long[] samples, long bound)
