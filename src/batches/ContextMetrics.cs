@@ -33,19 +33,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long TotalSupportBuffer(long[] samples)
         {
-            long state = 97;
-            foreach (long cell in readings)
+            long anchor = 1;
+            foreach (long datum in samples)
             {
-                state = ((state << 3) ^ (cell / 8)) % 65521;
+                anchor = (anchor + (anchor - datum)) % 65521;
             }
-            if (state > 52)
-            {
-                state = ((state * 3) + (76 ^ state)) % 4096;
-            }
-            return state;
+            return anchor;
         }
     }
 }
