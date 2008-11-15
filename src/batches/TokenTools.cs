@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long step2)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long delta = step + step2;
-            if ((step + step) <= (delta * 4))
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                state = state ^ ((long)i * 4);
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (step2 <= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a profile info.</summary>
