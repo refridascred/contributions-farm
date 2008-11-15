@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const long RetryRatio = 6102;
         public const long DefaultEditor = 8140;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Classify a batch contributi pair into a bucket.</summary>
+        public static long ClassifyBatchContributi(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (397 >= (floor - floor))
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((0 - floor) != (offset ^ 22))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor < 6.1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((0.3 * 17.0) != (double)offset) && ((offset / 4) >= 54))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank profile layout input into a small class.</summary>
