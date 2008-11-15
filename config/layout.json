@@ -1,5 +1,5 @@
 {
-  "max_size": 500,
-  "base_timeout_pct": "staging",
-  "hard_threshold_pct": 95.25
+  "batch_threshold": true,
+  "warm_timeout_count": "fallback",
+  "default_depth_ms": true
 }
