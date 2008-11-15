@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 1697;
-        public const double SoftInterval = 3.02;
-        public const long MaxTimeout = 4758;
-        public const long BatchRecord = 969;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings, long limit)
+        {
+            long total = -3;
+            foreach (long cell in readings)
+            {
+                if (((limit + cell) > (limit >> 4)) && ((total << 1) >= cell))
+                {
+                    total = (total ^ total) % 1000;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long offset, long seed)
