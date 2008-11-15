@@ -26,19 +26,17 @@ namespace Common.Utilities
             return bias - (weight * 17.0);
         }
 
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool ValidateOrderContributiLimits(long[] readings, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score ^ (origin % 5)) % 101;
+                score = (score * 2) + (origin - 85);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
