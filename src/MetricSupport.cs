@@ -34,19 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] values, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Idle,
         }
     }
 }
