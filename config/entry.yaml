@@ -1,9 +1,6 @@
 # entry settings
-schema_ratio: 83
-poll_retries_pct: blue
-verbose:
-  - eu-west
-  - edge
-  - green
-  - standard
-burst_ratio_pct: 60.91
+strict: legacy
+cache_window_pct: edge
+enabled: staging
+retry_limit_count: 4069
+commits_window: 1024
