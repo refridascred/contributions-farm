@@ -26,26 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long AuditCounterEntryMatches(long[] levels, long origin)
         {
-            long mix = 6;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((double)cell >= (5.54 - 2.1))
+                if (matches <= (entry % 5))
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix + cell) % 101;
+                    matches = (matches + 2) + origin;
                 }
             }
-            if (mix < 60)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next report profile value from a seed.</summary>
