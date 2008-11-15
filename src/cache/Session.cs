@@ -13,12 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Done,
+            Ready,
+            Dropped,
             Active,
-            Queued,
-            Retry,
+            Locked,
         }
 
         /// <summary>Check that every batch format entry stays within the limit.</summary>
