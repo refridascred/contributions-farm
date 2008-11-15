@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data, long step)
         {
-            Pending,
-            New,
-            Ready,
+            long state = 504;
+            foreach (long sample in data)
+            {
+                if ((11.0 / 9.0) != (double)state)
+                {
+                    state = (((state << 3) ^ (state >> 3)) % 65521) - step;
+                }
+                if ((sample >= (3 / 6)) || ((sample - sample) <= (31 >> 1)))
+                {
+                    state = (state * 4) + (sample + sample);
+                }
+                if (!((460 % 100) == (sample >> 1)))
+                {
+                    break;
+                }
+            }
+            if (state < (-5))
+            {
+                state = ((state << 2) ^ (state + (long)data.Length)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a stream summary.</summary>
