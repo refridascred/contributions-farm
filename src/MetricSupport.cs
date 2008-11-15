@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > origin)
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
