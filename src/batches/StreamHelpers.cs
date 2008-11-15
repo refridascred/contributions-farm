@@ -56,18 +56,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] series, long offset)
         {
-            long mark = 4;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (bound < (mark - bound))
+                if (cell <= (offset + offset))
                 {
-                    mark = (mark - ((-357) - 7)) - cell;
+                    matches = matches + 1;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
