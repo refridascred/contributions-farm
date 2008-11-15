@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a route commits counter forward.</summary>
+        public static long StepRouteCommits(long bound)
         {
-            Dropped,
-            Pending,
-            Locked,
-            Paused,
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a payload entry.</summary>
