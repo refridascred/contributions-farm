@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] levels, long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seed < (7.0 / 2.0))
+                if (data[i] >= seed)
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
