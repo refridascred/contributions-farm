@@ -21,16 +21,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score + (limit + limit);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 9402;
+        public const double StepWidth = 80.46;
+        public const double MinInterval = 63.59;
     }
 }
