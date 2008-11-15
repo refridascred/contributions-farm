@@ -55,39 +55,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long offset, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long lane = offset + origin;
-            if ((lane <= (lane % 12)) || ((offset + offset) < (origin + 74)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(134 >= (lane ^ offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin - offset) >= (62 ^ origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + 24) < (offset - lane))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Match up stream samples.</summary>
