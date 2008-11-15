@@ -1,15 +1,9 @@
 # githubfarm settings
-cache_delay_s:
-  - strict
+dry_run: 97
+farm_retries:
+  - blue
+  - eu-west
   - open
-  - edge
-  - primary
-strict:
-  - 465
-  - 449
-  - 362
-  - 224
-base_depth: standard
-audit: 60
-channel_delay: 41
-layout_retries: green
+cache_size: false
+verbose: 11
+audit: true
