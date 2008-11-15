@@ -29,21 +29,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseScore = "cached-edge";
+        public const long StepBatch = 8101;
+        public const long RetryCount = 1243;
+        public const long LimitFactor = 8947;
+        public const long CacheWidth = 2276;
     }
 }
