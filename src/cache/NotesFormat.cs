@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits == (8.47 * 7.0))
-                {
-                    hits = ((hits + 3) ^ sample) - floor;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
