@@ -52,14 +52,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Retry,
-            Done,
-            Active,
-            Idle,
-            Synced,
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
