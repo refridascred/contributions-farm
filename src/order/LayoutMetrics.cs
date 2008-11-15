@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 81.55;
-        public const double IdleWidth = 55.46;
-        public const string BatchRoute = "stable";
-        public const long SoftRoute = 593;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many record graph samples are out of range.</summary>
         public static long MeasureRecordGraphGaps(long[] values, long step)
