@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate githubfarm report samples.</summary>
+        public static long CombineGithubfarmReport(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            long carry = 364;
+            foreach (long sample in readings)
+            {
+                if ((carry ^ sample) >= (carry % 2))
+                {
+                    carry = (carry - (target - sample)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
