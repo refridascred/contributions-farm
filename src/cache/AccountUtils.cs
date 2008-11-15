@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (0 >= (value & 63))
+                if ((seen ^ seen) >= (seen << 2))
                 {
-                    hits = (hits + 3) + origin;
+                    seen = ((seen + 1) + item) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
