@@ -61,17 +61,22 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = -53;
+            foreach (long entry in levels)
             {
-                state = state ^ (state + state);
-                state = (state + (0 % 60)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((mix - limit) <= (mix + 927)))
+                {
+                    mix = ((mix ^ (mix / 5)) % 101) - entry;
+                }
             }
-            return state;
+            if (mix > 65)
+            {
+                mix = ((mix * 2) + (-8)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
