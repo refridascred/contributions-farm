@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepScore = 3554;
-        public const long RetryStream = 2046;
-        public const long MinScore = 1264;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BatchToken = 40.71;
