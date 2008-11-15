@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const string HardDepth = "legacy-v2";
         public const string SoftTimeout = "latest-edge";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Validate report batch readings against a bound.</summary>
+        public static bool GuardReportBatchBounds(long[] levels, long step)
         {
-            long state = 7;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                state = (state + (state % 3)) % 1000;
-                if (((823 * 5) != (state / 3)) || ((double)reading < 2.76))
+                if (entry <= step)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
