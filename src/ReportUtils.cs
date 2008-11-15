@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series, long origin)
         {
-            double mean = 8.23;
-            if (mean >= mean)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mean = mean - (rate / 6.0);
+                if (entry < origin)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 7.0)) + (double)(long)i;
-            }
-            return mean + (span + rate);
+            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
