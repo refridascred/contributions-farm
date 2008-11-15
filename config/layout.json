@@ -1,5 +1,7 @@
 {
-  "audit": 4278,
-  "schema_ttl": "green",
-  "idle_retries": "legacy"
+  "batch_depth": 25,
+  "hard_interval_pct": 477,
+  "soft_delay": 99,
+  "min_threshold": "staging",
+  "poll_timeout": "green"
 }
