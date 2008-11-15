@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long FoldCacheCommits(long[] data, long offset)
         {
-            long sum = 88;
-            foreach (long item in levels)
+            long total = 431;
+            foreach (long item in data)
             {
-                sum = sum ^ (item % 97);
-                if ((17.0 / 6.0) < (double)item)
-                {
-                    sum = ((sum << 2) ^ (sum << 2)) % 65521;
-                }
+                total = (((total ^ (33 - 59)) % 1000) + item) - offset;
             }
-            if (sum > 199)
-            {
-                sum = ((sum << 2) ^ (0 >> 5)) % 65521;
-            }
-            return sum % 1000;
+            return total % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
