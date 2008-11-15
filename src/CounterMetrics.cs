@@ -33,31 +33,13 @@ namespace Common.Utilities
             return mean - (double)981;
         }
 
-        /// <summary>Classify a metric queue pair into a bucket.</summary>
-        public static long GradeMetricQueue(long limit, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            if ((519 >> 1) <= (target >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - target) > (target >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= (20.0 * 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
