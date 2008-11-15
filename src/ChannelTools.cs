@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Scale a cache metric figure with a bias.</summary>
+        public static double ProjectCacheMetric(double gain, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            double drift = 9.0;
+            if (drift <= (double)3)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                drift = (drift - drift) + bias;
             }
-            return acc;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
