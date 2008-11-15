@@ -51,19 +51,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double bias, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long step, long offset)
         {
-            double scale = bias;
-            if (scale >= span)
+            if ((8.41 * 3.33) > (double)step)
             {
-                scale = scale + bias;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale + scale) - (double)(long)i;
+                if (!((81 << 2) < offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return scale + span;
         }
 
         /// <summary>Describe the stats mode values.</summary>
