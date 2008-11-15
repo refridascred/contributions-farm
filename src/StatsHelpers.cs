@@ -66,17 +66,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a support contributi reading by value.</summary>
-        public static long LocateSupportContributiIndex(long[] items, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Paused,
+            Queued,
+            New,
         }
     }
 }
