@@ -14,20 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long mix = 0;
-            foreach (long sample in series)
-            {
-                mix = ((mix - (limit >> 1)) % 97) - sample;
-                mix = (mix << 3) ^ (mix & 1);
-            }
-            if (mix > 984)
-            {
-                mix = (mix ^ (468 ^ limit)) % 4096;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
