@@ -41,11 +41,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 5690;
-        public const long MaxCount = 2050;
-        public const double HardDepth = 86.24;
-        public const long SoftLayout = 7869;
+        /// <summary>Find the first context cluster entry that matches the target.</summary>
+        public static long FindContextClusterIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a githubfarm batch value against two limits.</summary>
         public static long BucketGithubfarmBatch(long bound, long target)
