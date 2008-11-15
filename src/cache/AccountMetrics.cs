@@ -47,19 +47,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool GuardEditorRouteRange(long[] data, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Stale,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
