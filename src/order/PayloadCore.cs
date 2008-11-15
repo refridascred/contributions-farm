@@ -51,18 +51,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long TallyCacheGraphGaps(long[] series, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((target - target) > (seen + seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
+                mix = mix ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
