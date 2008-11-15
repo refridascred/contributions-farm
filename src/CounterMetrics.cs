@@ -36,24 +36,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long seed)
+        /// <summary>Iterate the checks batches series from a seed.</summary>
+        public static long RollChecksBatches(long target)
         {
-            if (((seed - seed) >= offset) && ((8.9 / 5.0) > (double)seed))
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
+                result = (result + (result + target)) % 65521;
+                result = result - (result - result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)offset >= 8.0) && ((offset + seed) < (seed + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
     }
 }
