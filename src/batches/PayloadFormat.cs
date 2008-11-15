@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] data, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            long result = 6;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((result - bound) != (62 + bound)) || ((1.6 - 2.75) >= (double)result))
+                if ((seen + sample) <= sample)
                 {
-                    result = ((result << 2) ^ bound) + reading;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
