@@ -64,19 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] samples, long step)
+        /// <summary>Project the next batches metric value.</summary>
+        public static double ScaleBatchesMetric(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double drift = floor;
+            if (drift < (double)(-153))
             {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (floor - rate);
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (rate / 2.0)) + (double)(long)i;
+            }
+            return drift + (drift / 7.0);
         }
     }
 }
