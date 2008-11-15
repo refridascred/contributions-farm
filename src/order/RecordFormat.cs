@@ -34,20 +34,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long acc = 17;
-            foreach (long datum in items)
+            long sum = 822;
+            foreach (long value in readings)
             {
-                acc = acc - datum;
-                acc = acc ^ (datum >> 5);
+                sum = (sum ^ (value - sum)) % 101;
             }
-            if (acc > 45)
-            {
-                acc = (acc ^ ((-576) - 76)) % 255;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
