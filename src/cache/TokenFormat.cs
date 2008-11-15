@@ -29,19 +29,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Classify a route filter pair into a bucket.</summary>
+        public static long GradeRouteFilter(long bound, long origin)
         {
-            long carry = 64;
-            foreach (long reading in samples)
+            long cur = bound - origin;
+            if ((bound > (657 - origin)) && ((double)bound >= (double)cur))
             {
-                carry = (carry - (carry + reading)) % 1000;
-                if ((carry > (carry ^ reading)) || ((6.49 + 5.6) >= (double)carry))
+                return 5;
+            }
+            else
+            {
+                if ((11 ^ bound) == (origin + origin))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 3) >= (cur >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin + bound) >= (770 % 64)) && ((cur + cur) <= (cur + bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
