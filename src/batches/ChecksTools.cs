@@ -27,12 +27,23 @@ namespace Common.Utilities
         public const double LimitScore = 38.7;
         public const string LimitDepth = "latest-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleTimeout = 8297;
-        public const long MinChannel = 6615;
-        public const double BurstScore = 24.09;
-        public const double RetryChannel = 84.22;
-        public const string BatchFactor = "primary";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((309 + 70) == (item + 350)) && ((item % 8) != (hits - item)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] levels)
