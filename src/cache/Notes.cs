@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
-        {
-            long mix = 56;
-            foreach (long cell in samples)
-            {
-                if (((cell & 255) != (mix & 127)) && (cell < 86))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchInterval = 1969;
+        public const long LimitGithubfarm = 1202;
+        public const long MinGithubfarm = 1222;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
