@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] samples, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((bound + 8) != (hits << 2)) && (((4.8 - 19.0) >= (double)hits) || (((long)samples.Length & 255) == (value + 63))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
