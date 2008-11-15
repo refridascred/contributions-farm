@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "standard-1";
-        public const string BaseChecks = "primary-1";
-        public const double MaxSpan = 50.75;
-        public const long DefaultChecks = 1578;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long step, long bound)
