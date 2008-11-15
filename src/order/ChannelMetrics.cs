@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] items, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up route filter samples.</summary>
