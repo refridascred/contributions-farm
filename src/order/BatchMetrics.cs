@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 7115;
-        public const long RetryReport = 9610;
-        public const long IdleReport = 1059;
-        public const long BaseReport = 6223;
-        public const string BaseInterval = "fallback-1";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
