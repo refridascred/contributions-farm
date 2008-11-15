@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long IdleWidth = 9549;
         public const long WindowQueue = 3536;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)bound > (0.4 / 6.0))
+                {
+                    mark = (mark + (mark * 2)) % 255;
+                    mark = ((mark * 5) + (mark - bound)) % 101;
+                }
+                mark = (mark + mark) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of account cluster readings.</summary>
