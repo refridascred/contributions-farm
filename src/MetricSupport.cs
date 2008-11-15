@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchLevel = "staging-edge";
-        public const long RetryLevel = 1290;
-        public const long BurstCache = 8218;
-        public const long MaxDepth = 4000;
-        public const long LimitCache = 27;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsLimits(long[] values, long bound)
