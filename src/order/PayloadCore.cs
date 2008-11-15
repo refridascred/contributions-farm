@@ -40,16 +40,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples)
-        {
-            long state = 7;
-            foreach (long cell in samples)
-            {
-                state = state - (cell - 7);
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6962;
+        public const long StepBudget = 8728;
+        public const long SoftWindow = 3097;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long bound)
