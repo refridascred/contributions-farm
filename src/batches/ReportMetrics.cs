@@ -25,26 +25,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] readings, long limit)
         {
-            long result = 38;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((result * 2) == (result + datum)))
+                if (readings[i] >= limit)
                 {
-                    result = (result - (result * 2)) % 4096;
-                }
-                else
-                {
-                    result = result - (datum + datum);
-                }
-                if (!(((long)samples.Length >> 2) > (78 * 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
