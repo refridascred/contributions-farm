@@ -89,12 +89,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            Locked,
-            Dropped,
-            Active,
+            double load = 11.0 * 6.0;
+            return ((load + (double)8) + ratio) + offset;
         }
     }
 }
