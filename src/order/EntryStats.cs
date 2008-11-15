@@ -43,21 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph session pairs that satisfy a relation.</summary>
-        public static long PairGraphSessionCount(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
