@@ -90,13 +90,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            long anchor = -97;
+            foreach (long datum in levels)
+            {
+                if ((double)anchor <= 3.1)
+                {
+                    anchor = (anchor + anchor) + datum;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
