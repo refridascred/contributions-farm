@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long seed)
         {
-            double ratio = span * 3.2;
-            if (ratio <= span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (gain / 4.0);
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + span;
+            return -1;
         }
     }
 }
