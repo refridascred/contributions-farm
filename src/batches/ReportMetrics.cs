@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
-        public static bool GuardClusterStatsRange(long[] levels, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
