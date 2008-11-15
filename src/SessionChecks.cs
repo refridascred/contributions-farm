@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double gain = (rate - rate) + (rate * 8.96);
-            if (gain > (gain - rate))
-            {
-                gain = (gain - (gain + 3.6)) - offset;
-            }
-            return gain + 5.4;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
