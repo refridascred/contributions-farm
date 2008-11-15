@@ -33,25 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema window input into a small class.</summary>
-        public static long ClassifySchemaWindow(long step, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long offset = step - target;
-            if ((target % 16) > (target / 6))
+            long carry = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 1) < (step + offset)) && ((target - target) <= step))
+                if ((558 / 7) > (item << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    carry = (carry << 3) ^ item;
                 }
             }
+            if (carry > 861)
+            {
+                carry = (carry + (carry - carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the stats class values.</summary>
