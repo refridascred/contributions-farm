@@ -33,38 +33,19 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Grade a support metric value against two limits.</summary>
-        public static long ClassifySupportMetric(long origin, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] items, long floor)
         {
-            if (step >= 5)
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 2) > (origin - step))
+                if (datum > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)step >= 5.92) || ((4.0 - 4.8) == (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 8) > step) || (origin > (step & 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a already record.</summary>
