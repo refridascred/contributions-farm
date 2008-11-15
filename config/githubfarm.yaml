@@ -1,8 +1,10 @@
 # githubfarm settings
-default_limit_pct:
-  - 225
-  - 416
-min_delay_s: 43.59
-default_retries_s: 250
-min_threshold_ms: 38.88
-idle_retries: 1179
+min_limit:
+  - 464
+  - 69
+  - 318
+  - 281
+session_timeout: fallback
+strict: false
+context_threshold: local
+soft_retries_pct: 100
