@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools filter samples.</summary>
-        public static long TotalToolsFilter(long[] data, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                carry = (carry ^ (carry << 2)) ^ entry;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state - ((long)i2 % 24)) % 4096;
+                }
+                if ((2 >> 3) == (limit - state))
+                {
+                    state = ((state << 2) ^ (45 - state)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (carry > 166)
-            {
-                carry = (carry * 2) + (6 - step);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
