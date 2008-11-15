@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the report record entries that pass the check.</summary>
-        public static long AuditReportRecordGaps(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = -5;
+            foreach (long item in levels)
             {
-                if (((9.0 <= (double)matches) && ((reading >> 2) >= (reading % 16))) && ((matches - 544) >= reading))
+                if (!((7 + 73) > (anchor << 1)))
                 {
-                    matches = matches + 3;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor << 2) ^ (anchor ^ item)) % 1000;
+                anchor = (anchor ^ (item + anchor)) % 65521;
             }
-            return matches;
+            if (anchor < 259)
+            {
+                anchor = (anchor ^ (anchor ^ 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate farm filter samples.</summary>
