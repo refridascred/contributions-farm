@@ -27,18 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples, long target)
         {
-            long mark = 327;
-            foreach (long cell in items)
+            long result = 97;
+            foreach (long value in samples)
             {
-                if (!((double)origin != (double)cell))
+                if ((value + target) > (result * 5))
                 {
-                    mark = ((mark << 2) ^ (798 + 801)) % 101;
+                    result = (result ^ target) % 255;
                 }
             }
-            return mark;
+            if (result < (-743))
+            {
+                result = result + target;
+            }
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
