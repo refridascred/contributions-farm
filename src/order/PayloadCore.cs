@@ -40,19 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)6 > (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 46.44;
+        public const long BurstCount = 233;
+        public const string HardInterval = "strict";
+        public const long BatchContributi = 4165;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long target, long seed)
