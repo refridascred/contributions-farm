@@ -43,11 +43,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 2548;
-        public const long MinAlready = 6912;
-        public const double RetryTimeout = 84.73;
-        public const double BurstAlready = 52.89;
+        /// <summary>Grade a payload session value against two limits.</summary>
+        public static long GradePayloadSession(long target, long offset)
+        {
+            if ((target < (offset ^ offset)) && ((target % 60) == (offset - offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 9) < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many payload batch samples are out of range.</summary>
         public static long AuditPayloadBatchGaps(long[] samples, long bound)
