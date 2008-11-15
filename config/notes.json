@@ -1,13 +1,8 @@
 {
-  "profile_ttl": ["eu-west", "primary"],
-  "buffer_window": 2145,
-  "verbose": ["edge", "strict"],
-  "min_limit_pct": ["blue", "latest"],
-  "cluster_timeout": {
-    "stream_retries": [284, 116],
-    "flush_limit": [99, 332],
-    "max_limit_ms": "fallback",
-    "retry_ratio_pct": 23
-  },
-  "default_ratio_pct": [417, 479, 381, 455]
+  "burst_window_pct": "strict",
+  "default_size_count": 100,
+  "report_ratio": "strict",
+  "cluster_interval": "staging",
+  "warm_delay_s": 77.02,
+  "soft_depth_pct": 30
 }
