@@ -42,19 +42,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long step, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            if ((step + target) >= step)
             {
-                if (result >= (long)i)
-                {
-                    result = (result * 5) + (seed / 7);
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((target % 100) < 617) && ((target - step) > step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (724 >= (step & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
