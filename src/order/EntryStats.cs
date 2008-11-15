@@ -51,32 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long origin)
+        /// <summary>Validate notes support readings against a bound.</summary>
+        public static bool CheckNotesSupportLimits(long[] samples, long limit)
         {
-            long edge = step + origin;
-            if (!(0.83 > (double)step))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin < (origin - edge)) && ((1.57 - 2.09) != (double)edge))
+                if (reading >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(edge <= (edge + 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
