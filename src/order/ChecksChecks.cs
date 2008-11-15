@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string RetrySession = "alpha";
         public const double MaxSession = 7.3;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 5566;
-        public const long HardQueue = 2878;
-        public const long WindowQueue = 7841;
-        public const double MinTimeout = 78.16;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (19 - 10)) % 101;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long bound, long target)
