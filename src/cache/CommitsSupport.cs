@@ -97,19 +97,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] readings, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long reading in levels)
             {
-                if (((long)readings.Length << 2) > 694)
+                if ((reading ^ hits) >= (5 << 1))
                 {
-                    hits = ((hits + 1) + item) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
