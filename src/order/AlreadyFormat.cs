@@ -27,21 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
