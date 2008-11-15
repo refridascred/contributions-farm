@@ -62,15 +62,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            double gain = 1.3;
-            if (gain <= (offset + offset))
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain + (double)458) - bias;
+                if (((long)i ^ target) <= sum)
+                {
+                    sum = sum - (long)i;
+                    sum = sum ^ target;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return gain + offset;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
