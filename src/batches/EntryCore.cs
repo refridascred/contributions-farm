@@ -33,15 +33,11 @@ namespace Common.Utilities
             return (load - offset) + gain;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long result = -41;
-            foreach (long cell in series)
-            {
-                result = ((result - (result & 3)) - cell) - bound;
-            }
-            return result % 65521;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
