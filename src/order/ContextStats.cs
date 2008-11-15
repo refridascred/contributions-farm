@@ -24,18 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long TallyGraphEditorMatches(long[] samples, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value < count) && !(limit > (value / 8)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
