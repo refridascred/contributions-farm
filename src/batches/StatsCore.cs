@@ -47,18 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (8.2 * 3.71))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Queued,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
