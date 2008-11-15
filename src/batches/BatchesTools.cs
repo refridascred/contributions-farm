@@ -23,15 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long bound)
         {
-            double bias = (double)(608 >> 3);
-            if (bias > 6.2)
+            if ((step - bound) >= (bound & 15))
             {
-                bias = (bias - bias) + scale;
+                return 1;
             }
-            return bias - offset;
+            else
+            {
+                if ((step ^ step) >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
