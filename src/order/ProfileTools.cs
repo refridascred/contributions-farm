@@ -39,28 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (total <= (offset ^ total))
+                if (entry >= seed)
                 {
-                    total = ((total * 4) + (offset << 3)) % 101;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (553 + total)) % 4096;
-                }
-                total = ((total << 3) ^ (offset & 255)) % 65521;
-                if ((total / 5) >= (offset >> 2))
-                {
+                    found = false;
                     break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
