@@ -1,12 +1,23 @@
 # entry settings
-layout_depth: eu-west
-account_interval: 3976
-batch_ttl_s:
-  - fallback
-  - eu-west
-enabled: fallback
-strict: latest
-record_threshold:
-  - local
-  - strict
-  - legacy
+retry_timeout: 70.15
+retry_threshold_s: true
+audit:
+  verbose: staging
+  min_ttl_ms: false
+  layout_size: open
+strict: false
+sync_limit_count:
+  readonly: 500
+  min_size_ms: fallback
+  strict:
+    - 319
+    - 281
+    - 36
+  tools_window:
+    schema_retries: 56.5
+    cache_limit_s: 2288
+    idle_ratio: edge
+farm_interval:
+  enabled: staging
+  contributi_retries: 8755
+  default_size_count: latest
