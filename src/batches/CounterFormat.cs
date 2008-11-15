@@ -32,19 +32,12 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Validate channel batch readings against a bound.</summary>
-        public static bool CheckChannelBatchLimits(long[] readings, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Ready,
+            Synced,
         }
     }
 }
