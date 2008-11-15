@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double span)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double weight = 14.0 + (ratio + span);
-            if (weight > weight)
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + ratio;
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
