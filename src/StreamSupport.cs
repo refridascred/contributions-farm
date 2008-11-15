@@ -31,32 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer channel pair into a bucket.</summary>
-        public static long GradeBufferChannel(long seed, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] values, long bound)
         {
-            long delta = seed ^ offset;
-            if ((double)seed < (9.5 + 7.0))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((9 % 100) <= (delta ^ seed)))
+                if ((sample >> 5) != (28 - sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((490 & 63) >= (seed ^ offset)) && ((6.0 + 6.0) != (double)delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 3) - bound;
                 }
             }
+            return tally;
         }
     }
 }
