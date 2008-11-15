@@ -45,11 +45,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Queued,
+            Locked,
+            Draft,
         }
     }
 }
