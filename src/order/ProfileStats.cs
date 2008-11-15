@@ -37,10 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftInterval = "stable-1";
-        public const string MaxInterval = "cached-v2";
-        public const long BaseBatches = 5984;
-        public const long MinBatches = 865;
+        /// <summary>Blend two batch report measurements.</summary>
+        public static double ProjectBatchReport(double bias, double span)
+        {
+            double ratio = 8.0 + 1.77;
+            return ratio + (span + bias);
+        }
     }
 }
