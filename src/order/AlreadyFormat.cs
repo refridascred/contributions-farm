@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long result = 370;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (cell * 3)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
