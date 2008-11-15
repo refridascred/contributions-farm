@@ -59,19 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool CheckToolsEntryBounds(long[] samples, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long carry = 677;
+            foreach (long reading in levels)
             {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry + (carry >> 5)) % 97) + reading;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the layout class values.</summary>
