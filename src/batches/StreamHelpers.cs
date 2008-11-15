@@ -43,13 +43,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long limit)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            if (limit >= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.0 - 10.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin < 2.63)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin + origin) <= (limit ^ origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
