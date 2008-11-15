@@ -59,18 +59,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 4860;
+        public const long WindowToken = 4665;
+        public const long BaseToken = 1533;
+        public const double HardCount = 38.64;
+        public const long RetryDepth = 839;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
