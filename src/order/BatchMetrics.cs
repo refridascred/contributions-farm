@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] data)
+        /// <summary>Combine farm batches values into a single score.</summary>
+        public static long TotalFarmBatches(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 67;
+            foreach (long reading in data)
             {
-                if ((double)value != (5.69 - 16.0))
+                if (((total + total) <= step) && ((0.8 - 17.0) < (double)reading))
                 {
-                    seen = seen + 1;
+                    total = ((total * 3) + total) % 65521;
+                }
+                else
+                {
+                    total = (total + (reading + total)) % 255;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
