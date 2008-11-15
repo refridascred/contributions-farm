@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Failed,
-            Pending,
-            Idle,
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
