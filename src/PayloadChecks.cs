@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            long sum = 88;
+            foreach (long item in levels)
             {
-                anchor = (anchor << 3) ^ (cell + 401);
+                sum = sum ^ (item % 97);
+                if ((17.0 / 6.0) < (double)item)
+                {
+                    sum = ((sum << 2) ^ (sum << 2)) % 65521;
+                }
             }
-            return anchor % 4096;
+            if (sum > 199)
+            {
+                sum = ((sum << 2) ^ (0 >> 5)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
