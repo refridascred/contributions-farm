@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 6990;
-        public const double DefaultBudget = 55.8;
-        public const double StepEditor = 7.2;
-        public const double DefaultFactor = 39.83;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
