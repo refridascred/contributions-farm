@@ -33,12 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            Stale,
-            Active,
-            Retry,
+            double rate = span / 5.0;
+            if (rate < rate)
+            {
+                rate = (rate - rate) + ratio;
+            }
+            return rate - (double)966;
         }
 
         /// <summary>Count the account graph entries that pass the check.</summary>
