@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double span)
-        {
-            double scale = span;
-            return (scale - (double)(-46)) + rate;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "cached-1";
+        public const string SoftQueue = "staging-1";
+        public const string BatchWidth = "local-edge";
+        public const long IdleWidth = 9549;
+        public const long WindowQueue = 3536;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
