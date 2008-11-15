@@ -28,20 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
-        {
-            long state = 1;
-            foreach (long reading in readings)
-            {
-                state = (((state << 2) ^ (state % 64)) % 4096) ^ reading;
-            }
-            if (state < 25)
-            {
-                state = ((state * 4) + (39 >> 4)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSpan = 3986;
+        public const double DefaultSchema = 11.25;
+        public const double CacheSchema = 59.65;
+        public const string BaseCount = "standard-edge";
+        public const long StepSchema = 4663;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
