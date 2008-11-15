@@ -27,11 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepSpan = 21.62;
-        public const string IdleDepth = "primary";
-        public const long BaseCount = 6190;
-        public const long IdleBudget = 7151;
-        public const string RetrySize = "staging-v2";
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Rank { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
