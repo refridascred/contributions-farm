@@ -16,19 +16,15 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Adjust a context session reading.</summary>
+        public static double ScaleContextSession(double gain, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            double ratio = gain;
+            if (ratio < (ratio / 9.0))
             {
-                if (!(((long)i ^ seed) < mix))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                ratio = ratio + (offset + gain);
             }
-            return mix;
+            return ratio + (ratio + 15.0);
         }
 
         /// <summary>Locate a session reading by value.</summary>
