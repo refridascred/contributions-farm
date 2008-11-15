@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batches stream entry that matches the target.</summary>
-        public static long LookupBatchesStreamIndex(long[] samples, long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = floor - scale;
+            return rate + scale;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
