@@ -1,6 +1,6 @@
 {
-  "strict": "fallback",
-  "readonly": "cached",
-  "max_retries": false,
-  "warm_delay_count": false
+  "default_timeout_ms": 13,
+  "default_delay_pct": "latest",
+  "already_retries": "cached",
+  "compress": 1192
 }
