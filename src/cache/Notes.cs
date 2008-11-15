@@ -33,12 +33,14 @@ namespace Common.Utilities
         public const string DefaultTimeout = "local-v2";
         public const long BurstRecord = 9738;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 5860;
-        public const double IdleLayout = 74.32;
-        public const long CacheLayout = 31;
-        public const long MinLayout = 7752;
-        public const long BurstLayout = 479;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Adjust a order format reading.</summary>
         public static double SmoothOrderFormat(double gain, double bias)
