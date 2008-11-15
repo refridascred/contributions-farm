@@ -1,6 +1,6 @@
 {
-  "counter_depth": ["blue", "cached", "local", "legacy"],
-  "base_size_ms": "open",
-  "queue_window": 500,
-  "persist": false
+  "sync_ratio_pct": [314, 313, 103, 21],
+  "hard_delay": 66,
+  "context_ratio": [301, 475],
+  "compress": 21.77
 }
