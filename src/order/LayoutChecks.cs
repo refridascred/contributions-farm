@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Roll a entry contributi counter forward.</summary>
+        public static long StepEntryContributi(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 4) + seed) % 101;
-                if ((long)i < (9 & 15))
-                {
-                    result = ((result * 3) + seed) % 101;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                state = (state + (long)i) % 255;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Locate a already reading by value.</summary>
