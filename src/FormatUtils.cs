@@ -41,12 +41,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            Active,
-            Paused,
-            Synced,
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)sum <= (8.7 * 4.0))
+                {
+                    sum = (sum + (bound - 0)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
