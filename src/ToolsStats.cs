@@ -20,21 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up metrics order samples.</summary>
-        public static long OverlapMetricsOrderCount(long[] values)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin - origin2;
+            if (!((5 + origin2) == (origin2 >> 5)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((diff - 934) <= origin)
                 {
-                    if ((values[i] + values[j]) < 16)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin2 < (1.9 / 9.0))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
