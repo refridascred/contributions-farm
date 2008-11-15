@@ -20,22 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long state = 6;
+            foreach (long sample in samples)
             {
-                if (((item / 7) <= (long)data.Length) || (anchor > item))
+                if (((state - state) == (6 % 12)) || (sample <= (74 % 8)))
                 {
-                    anchor = ((anchor * 5) + (6 << 1)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    state = (state + (state ^ state)) % 255;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state + (sample << 1)) % 97) ^ (long)i;
+                }
+                if ((6.0 - 14.0) == (double)state)
+                {
+                    state = (state + (sample + sample)) % 1000;
                 }
             }
-            if (anchor > 25)
-            {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
