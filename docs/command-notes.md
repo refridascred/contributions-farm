@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Each graph is validated before it reaches the entry queue.
+The support module keeps cluster values in sync with the support cache.
+Keep cluster and commits names short and lowercase.
+
+Each buffer is validated before it reaches the format queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new githubfarm fields
-- Keep commits values small
+- Document new record fields
+- Prefer already defaults
+- Log every window change
