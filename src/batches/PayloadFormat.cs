@@ -27,19 +27,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((18.0 * 5.0) >= (double)origin)
-                {
-                    state = ((state * 2) + (origin ^ 726)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Dropped,
+            Retry,
+            Closed,
         }
     }
 }
