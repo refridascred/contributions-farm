@@ -44,14 +44,10 @@ namespace Common.Utilities
         public const double MinSize = 44.92;
         public const long CacheInterval = 7429;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            New,
-            Closed,
-            Ready,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetrySize = 2489;
+        public const string BatchFilter = "alpha-1";
+        public const long BatchInterval = 8542;
+        public const string IdleFilter = "fallback-v2";
     }
 }
