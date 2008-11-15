@@ -39,20 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter editor entry stays within the limit.</summary>
-        public static bool VerifyCounterEditorBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5580;
+        public const long CacheToken = 8815;
+        public const string CacheInterval = "open-1";
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
