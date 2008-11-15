@@ -18,12 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 1993;
-        public const long SoftBudget = 67;
-        public const long WindowCommits = 8559;
-        public const long MaxCommits = 7408;
-        public const string HardCommits = "alpha";
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long limit, long limit2)
