@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            Closed,
-            Synced,
-            Failed,
-            Dropped,
-            Draft,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc << 3) ^ (seed - 95)) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
