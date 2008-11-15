@@ -47,12 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 8722;
-        public const long WindowRatio = 1590;
-        public const double LimitCount = 16.56;
-        public const string RetryToken = "open-1";
-        public const long HardToken = 2945;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Ready,
+            Paused,
+            Done,
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long offset)
