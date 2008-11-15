@@ -43,19 +43,38 @@ namespace Common.Utilities
         public const long BaseWidth = 6239;
         public const double HardCommand = 23.3;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] data, long step)
+        /// <summary>Classify a already tools pair into a bucket.</summary>
+        public static long SortAlreadyTools(long step, long step2)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((step + step2) != (77 >> 3))
             {
-                if (cell != step)
+                return 3;
+            }
+            else
+            {
+                if ((double)775 > (double)step2)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((-1) <= (step + step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step * 2) > (-85)) && ((0.6 / 8.0) <= (double)step2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
