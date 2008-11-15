@@ -1,7 +1,11 @@
 {
-  "batch_depth": 25,
-  "hard_interval_pct": 477,
-  "soft_delay": 99,
-  "min_threshold": "staging",
-  "poll_timeout": "green"
+  "verbose": 7529,
+  "strict": "legacy",
+  "soft_interval_pct": false,
+  "contributi_ttl": {
+    "strict": 7641,
+    "default_ratio_count": ["latest", "cached", "local"],
+    "soft_retries_ms": ["blue", "strict", "latest", "fallback"],
+    "notes_retries": [80, 101, 312, 154]
+  }
 }
