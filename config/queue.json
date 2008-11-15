@@ -1,17 +1,8 @@
 {
-  "stats_retries": 20.39,
-  "window_retries": true,
-  "commits_delay": "cached",
-  "metrics_window": {
-    "flush_ttl_pct": {
-      "cache_retries_s": 60,
-      "token_limit": 8726,
-      "cache_interval": 100
-    },
-    "base_threshold_count": 60,
-    "hard_window_pct": 40.26,
-    "idle_limit_count": ["cached", "primary", "primary", "standard"]
-  },
-  "notes_timeout": "edge",
-  "schema_limit": 9920
+  "buffer_ttl": "open",
+  "metrics_capacity": false,
+  "compress": ["legacy", "primary"],
+  "sync_interval": 1024,
+  "burst_retries": "strict",
+  "default_ratio_count": 78
 }
