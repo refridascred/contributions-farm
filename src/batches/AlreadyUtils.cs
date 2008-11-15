@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support commits readings against a rule.</summary>
-        public static long AuditSupportCommitsHits(long[] series, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!(33 < (hits + 954)))
+                if (((target & 63) < (77 - 15)) && ((target + 19) >= 47))
                 {
-                    hits = ((hits + 2) ^ cell) + limit;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
