@@ -55,16 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + origin) % 65521;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
