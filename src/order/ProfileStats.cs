@@ -53,22 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] series, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 1) <= (0 ^ sample))
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Project the next metrics value.</summary>
