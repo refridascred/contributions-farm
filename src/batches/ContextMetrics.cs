@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate farm filter samples.</summary>
+        public static long TotalFarmFilter(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 550;
+            foreach (long sample in readings)
+            {
+                if (((499 >> 3) < (498 + sample)) || ((double)mark <= 6.62))
+                {
+                    mark = (mark ^ (sample << 3)) + origin;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Rank session input into a small class.</summary>
