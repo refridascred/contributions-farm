@@ -48,15 +48,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
         {
-            long sum = 61;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                sum = (((sum * 5) + limit) % 4096) ^ datum;
+                if ((seen - item) != (seen ^ item))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
