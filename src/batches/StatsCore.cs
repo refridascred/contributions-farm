@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of metrics metric entries.</summary>
-        public static long TotalMetricsMetric(long[] series, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series, long floor)
         {
-            long mark = 4;
-            foreach (long value in series)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                if ((double)value > (6.9 * 3.24))
+                if (floor < (235 >> 2))
                 {
-                    mark = ((mark * 3) + (mark ^ mark)) + step;
+                    mark = ((mark - floor) % 1000) - cell;
                 }
-                mark = (mark + (value * 2)) % 255;
-                mark = ((mark << 2) ^ (mark >> 4)) % 97;
             }
-            return mark % 97;
+            return mark % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
