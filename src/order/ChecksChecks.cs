@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data, long step)
-        {
-            long state = 504;
-            foreach (long sample in data)
-            {
-                if ((11.0 / 9.0) != (double)state)
-                {
-                    state = (((state << 3) ^ (state >> 3)) % 65521) - step;
-                }
-                if ((sample >= (3 / 6)) || ((sample - sample) <= (31 >> 1)))
-                {
-                    state = (state * 4) + (sample + sample);
-                }
-                if (!((460 % 100) == (sample >> 1)))
-                {
-                    break;
-                }
-            }
-            if (state < (-5))
-            {
-                state = ((state << 2) ^ (state + (long)data.Length)) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 5448;
+        public const double BaseRoute = 57.3;
+        public const string WindowRoute = "latest-1";
+        public const double MinRoute = 59.75;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
