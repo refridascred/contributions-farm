@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] series, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (limit <= cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
