@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                long cur = mix / 5;
+                if ((cur * 2) <= (mix - cur))
+                {
+                    cur = ((cur << 2) ^ (1 + cur)) % 101;
+                }
+                cur = ((cur * 5) + ((long)i >> 1)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
