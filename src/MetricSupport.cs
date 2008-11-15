@@ -48,12 +48,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
+        public static long AuditGithubfarmAccountGaps(long[] items, long bound)
         {
-            Pending,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((value + bound) > 6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
