@@ -34,10 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstInterval = 4686;
-        public const long CacheCount = 5592;
-        public const double LimitSession = 41.08;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
