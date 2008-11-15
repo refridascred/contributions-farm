@@ -53,22 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long ScoreEditorCommand(long[] readings, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long floor, long seed)
         {
-            long carry = 186;
-            foreach (long sample in readings)
+            if ((floor & 7) < (seed >> 2))
             {
-                if ((18.0 * 11.0) >= (double)carry)
+                return 7;
+            }
+            else
+            {
+                if (!(seed <= (floor << 2)))
                 {
-                    carry = ((((carry << 3) ^ 79) % 1000) - sample) + step;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + seed) == (seed >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry > 42)
-            {
-                carry = ((carry << 3) ^ (31 / 3)) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
