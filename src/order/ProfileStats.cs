@@ -64,18 +64,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item >= (item & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Retry,
+            New,
+            Failed,
         }
     }
 }
