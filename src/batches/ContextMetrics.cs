@@ -27,12 +27,33 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultDepth = 45.54;
-        public const double RetryChannel = 32.76;
-        public const long MaxSpan = 1864;
-        public const long LimitChannel = 8814;
-        public const long CacheChannel = 3782;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long bound2)
+        {
+            long cur = bound - bound2;
+            if (16.0 <= (double)bound2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound2 ^ bound2) > 8)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound2 - cur) >= 344))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatOutliers(long[] items)
