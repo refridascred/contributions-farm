@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] values, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
