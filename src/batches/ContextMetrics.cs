@@ -33,15 +33,20 @@ namespace Common.Utilities
         public const long IdleWidth = 5389;
         public const long HardScore = 433;
 
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long TotalSupportBuffer(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            long anchor = 1;
-            foreach (long datum in samples)
+            long mark = 264;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + (anchor - datum)) % 65521;
+                mark = mark ^ (cell * 4);
+                mark = mark ^ (cell % 10);
             }
-            return anchor;
+            if (mark < 103)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
