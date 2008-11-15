@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry / 4) <= ((-7) - limit))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the schema level values.</summary>
