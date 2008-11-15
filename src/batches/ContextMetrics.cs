@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long floor)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next entry value.</summary>
