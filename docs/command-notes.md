@@ -1,13 +1,13 @@
 # Command notes
 
-The support module keeps cluster values in sync with the support cache.
-Keep cluster and commits names short and lowercase.
+Use stats settings to tune how often checks data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-Each buffer is validated before it reaches the format queue.
-The batches helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the entry handler retries a few times before giving up.
+The window report groups every route by stats.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer already defaults
-- Log every window change
+- Document new counter fields
+- Validate tools input early
+- Prefer commits defaults
