@@ -1,8 +1,19 @@
 {
-  "poll_delay": 65,
-  "command_window": [77, 261, 7, 30],
-  "stream_limit": 100,
-  "batch_limit_count": "green",
-  "enabled": "staging",
-  "min_capacity_ms": 4
+  "command_delay": [211, 335, 130],
+  "cache_timeout_s": 6461,
+  "poll_retries_ms": "staging",
+  "idle_delay_count": {
+    "default_ttl_pct": 60,
+    "hard_interval_pct": 8,
+    "persist": {
+      "compress": true,
+      "channel_window": "fallback",
+      "persist": 2.24,
+      "soft_timeout_s": 250,
+      "context_capacity": 1.8
+    },
+    "metric_capacity": 55.07
+  },
+  "compress": false,
+  "cache_capacity": 500
 }
