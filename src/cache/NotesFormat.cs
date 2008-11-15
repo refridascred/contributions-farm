@@ -33,9 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 7440;
-        public const string WindowInterval = "strict-1";
-        public const string MaxStream = "local";
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double span)
+        {
+            double drift = scale;
+            if (drift < (scale + scale))
+            {
+                drift = (drift + (drift + 18.0)) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(-161)) + (double)(long)i;
+            }
+            return drift - (drift / 8.0);
+        }
     }
 }
