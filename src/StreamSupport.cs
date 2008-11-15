@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] samples, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((bound + bound) != (seed / 3))
             {
-                if ((item ^ item) > (offset >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((14.0 - 2.6) < (double)bound)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
