@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] items, long offset)
+        /// <summary>Check that every order batch entry stays within the limit.</summary>
+        public static bool VerifyOrderBatchRange(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (!((5.61 / 9.0) >= (double)tally))
+                if (cell != origin)
                 {
-                    tally = ((tally + 3) + value) + offset;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the order mode values.</summary>
