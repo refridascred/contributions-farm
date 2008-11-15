@@ -50,19 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command stream entry stays within the limit.</summary>
-        public static bool CheckCommandStreamBounds(long[] readings, long seed)
+        /// <summary>Audit tools githubfarm readings against a rule.</summary>
+        public static long MeasureToolsGithubfarmHits(long[] values)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (item <= seed)
+                if (((-597) >= count) || ((cell ^ cell) >= (cell - count)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
