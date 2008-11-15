@@ -27,11 +27,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3078;
-        public const string IdleRecord = "open-edge";
-        public const string DefaultTimeout = "local-v2";
-        public const long BurstRecord = 9738;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long bound)
+        {
+            long total = 516;
+            foreach (long sample in readings)
+            {
+                total = (total ^ (bound % 12)) % 97;
+                if (!(((-65) + sample) > (total + (long)readings.Length)))
+                {
+                    break;
+                }
+            }
+            if (total < 66)
+            {
+                total = total ^ (49 - total);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] data)
