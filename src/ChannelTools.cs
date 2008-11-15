@@ -36,21 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= offset)
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
