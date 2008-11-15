@@ -54,18 +54,26 @@ namespace Common.Utilities
         public const string RetryToken = "open-1";
         public const long HardToken = 2945;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 23;
+            foreach (long datum in samples)
             {
-                if (((-173) % 5) > tally)
+                if (((mark ^ datum) >= datum) && (mark < ((-45) & 1)))
                 {
-                    tally = (tally + 3) - entry;
+                    mark = mark ^ 59;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + datum)) % 65521;
                 }
             }
-            return tally;
+            if (mark < 10)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
