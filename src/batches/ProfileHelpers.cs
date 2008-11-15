@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardSpan = 2709;
         public const double MinBatch = 92.76;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((tally & 3) > (tally & 127))
+                if (!((cell ^ cell) <= (997 + (long)levels.Length)))
                 {
-                    tally = (tally + 1) + datum;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a support metric value against two limits.</summary>
