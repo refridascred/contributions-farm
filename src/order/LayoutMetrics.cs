@@ -22,15 +22,14 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Failed,
+            Synced,
+            Retry,
+            Active,
+            Queued,
         }
     }
 }
