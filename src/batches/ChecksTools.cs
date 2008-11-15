@@ -20,27 +20,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the session profile series from a seed.</summary>
-        public static long StepSessionProfile(long floor)
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long CountChecksBatchHits(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mix = (mix + (mix ^ 54)) % 101;
-                if (floor <= mix)
+                if ((reading ^ 381) != (847 & 127))
                 {
-                    mix = ((mix * 3) + floor) % 101;
-                    break;
+                    matches = matches + 2;
                 }
-                if ((8 > (47 + mix)) && ((double)mix < 9.0))
-                {
-                    mix = mix + mix;
-                    mix = (mix ^ (mix - floor)) % 65521;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
