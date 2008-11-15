@@ -46,18 +46,11 @@ namespace Common.Utilities
             return weight + (double)169;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels, long limit)
-        {
-            long score = 13;
-            foreach (long value in levels)
-            {
-                if (((limit * 4) <= score) && ((limit & 3) <= (long)levels.Length))
-                {
-                    score = (score << 3) ^ (value + value);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "legacy-v2";
+        public const double MaxFactor = 15.54;
+        public const string BatchCount = "fallback-edge";
+        public const long MinBuffer = 5290;
+        public const double CacheScore = 77.54;
     }
 }
