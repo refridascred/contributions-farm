@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleSpan = 9494;
+        public const long BurstFactor = 4083;
+        public const string BaseRatio = "alpha-1";
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
