@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((3.5 - 6.3) >= (double)mix) && ((double)bound <= (20.0 * 5.5)))
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
-                    mix = (mix * 2) + (mix << 1);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = (state << 2) ^ (state + step);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
