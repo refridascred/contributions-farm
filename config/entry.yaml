@@ -1,11 +1,5 @@
 # entry settings
-min_ttl_s:
-  batch_retries_count: 9553
-  counter_window: 7356
-  dry_run:
-    - 269
-    - 41
-dry_run: primary
-readonly: legacy
-max_ratio: true
-cache_window_pct: 98
+account_limit: 12
+report_ttl: standard
+retry_ratio_pct: blue
+poll_size: false
