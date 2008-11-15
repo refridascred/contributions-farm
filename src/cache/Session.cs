@@ -27,17 +27,13 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
