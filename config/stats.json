@@ -1,12 +1,5 @@
 {
-  "flush_capacity_pct": "local",
-  "poll_ttl": {
-    "compress": ["open", "staging", "edge", "strict"],
-    "batch_capacity_s": false,
-    "hard_window": 250,
-    "flush_timeout_pct": 705
-  },
-  "dry_run": "latest",
-  "max_ttl_ms": 60,
-  "tools_timeout": 449
+  "compress": 60,
+  "soft_threshold_pct": false,
+  "poll_delay_pct": 8245
 }
