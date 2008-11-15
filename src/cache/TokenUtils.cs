@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream channel readings against a bound.</summary>
-        public static bool GuardStreamChannelRange(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepLevel = 1380;
+        public const double MaxPayload = 66.29;
+        public const long IdlePayload = 3279;
+        public const long DefaultBudget = 1106;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
