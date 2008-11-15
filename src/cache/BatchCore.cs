@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long MinBudget = 2392;
         public const long MinCommits = 5276;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((509 * 4) >= seen)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2977;
+        public const double BurstWindow = 43.16;
+        public const double RetryWindow = 33.43;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] items, long limit)
