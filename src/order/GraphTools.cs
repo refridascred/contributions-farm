@@ -21,21 +21,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long target2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target >> 4) >= (target2 % 97))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 1) == (1 - target2))
                 {
-                    if ((samples[i] - samples[j]) > 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((46 - target) > (target2 - target))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate githubfarm profile samples.</summary>
