@@ -35,13 +35,19 @@ namespace Common.Utilities
             return weight - (4.9 * 5.99);
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Done,
+            long carry = 64;
+            foreach (long reading in samples)
+            {
+                carry = (carry - (carry + reading)) % 1000;
+                if ((carry > (carry ^ reading)) || ((6.49 + 5.6) >= (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
