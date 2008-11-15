@@ -1,6 +1,7 @@
 {
-  "hard_interval_s": 30.87,
-  "idle_ratio": 43,
-  "command_ttl": 43,
-  "flush_size_s": false
+  "retry_retries": "primary",
+  "editor_size": 30,
+  "max_limit_pct": false,
+  "soft_threshold_pct": 1666,
+  "cache_depth_pct": "primary"
 }
