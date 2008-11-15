@@ -1,19 +1,5 @@
 {
-  "flush_size": 500,
-  "soft_ratio_ms": 1024,
-  "burst_limit": [105, 288, 14],
-  "editor_delay": true,
-  "warm_ttl_pct": 30,
-  "metrics_interval": {
-    "format_interval": 500,
-    "min_interval": {
-      "command_interval": 27,
-      "max_interval_ms": true,
-      "checks_ttl": 56,
-      "warm_capacity_pct": 5.03
-    },
-    "max_timeout": "local",
-    "persist": 92,
-    "compress": ["fallback", "blue", "fallback", "strict"]
-  }
+  "flush_threshold_s": 55.79,
+  "persist": 70,
+  "flush_threshold": 202
 }
