@@ -1,9 +1,8 @@
-id,rank,active,score
-1,green,eu-west,27.94
-2,85.9,237,local
-3,green,20.87,493
-4,eu-west,staging,legacy
-5,stable,24.02,23.07
-6,cached,23.43,legacy
-7,green,165,660
-8,62.28,green,11.25
+id,active,weight,rank,ratio
+1,443,448,29,latest
+2,96.13,blue,68.8,74.47
+3,local,8.52,976,136
+4,967,latest,925,898
+5,175,73.75,673,green
+6,21.63,98,46.03,open
+7,944,38.98,25.27,95.12
