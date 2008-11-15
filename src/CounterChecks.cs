@@ -36,10 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 4766;
-        public const long BaseScore = 3035;
-        public const long BurstWindow = 1048;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score ^ (score + (long)i)) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (((score << 3) ^ limit) % 65521) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long limit)
