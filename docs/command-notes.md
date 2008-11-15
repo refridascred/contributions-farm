@@ -1,15 +1,12 @@
 # Command notes
 
-The editor module keeps editor values in sync with the format cache.
-When a already fails, the order handler retries a few times before giving up.
-Each entry is validated before it reaches the metric queue.
-
-Run the token check before changing any channel limits.
-Keep metric and schema names short and lowercase.
+The stats module keeps payload values in sync with the filter cache.
+Each command is validated before it reaches the command queue.
+Use context settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate order input early
-- Log every batches change
-- Prefer counter defaults
+- Prefer cluster defaults
+- Review editor limits each release
+- Log every notes change
+- Validate schema input early
