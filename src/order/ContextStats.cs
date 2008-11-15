@@ -39,11 +39,21 @@ namespace Common.Utilities
         public const long LimitChannel = 8715;
         public const long HardCount = 3612;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Match up route graph samples.</summary>
+        public static long OverlapRouteGraphCount(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
