@@ -28,15 +28,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm commits figure with a bias.</summary>
-        public static double BlendFarmCommits(double ratio, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            double gain = 0.6 / 3.0;
-            if (gain < (gain * 7.49))
+            long state = 95;
+            foreach (long reading in samples)
             {
-                gain = (gain - ratio) + floor;
+                if ((double)reading == (13.0 / 5.0))
+                {
+                    break;
+                }
+                if (((223 + 54) <= state) || ((10.0 + 15.0) < (double)state))
+                {
+                    state = (state + (4 ^ 5)) % 97;
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = (state + reading) % 1000;
+                }
+                if (!((0.5 * 0.21) > (double)reading))
+                {
+                    state = (state ^ (state / 2)) % 4096;
+                }
             }
-            return gain + 20.0;
+            return state;
         }
     }
 }
