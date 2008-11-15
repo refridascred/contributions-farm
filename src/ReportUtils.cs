@@ -32,17 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long target)
+        /// <summary>Scale a graph notes figure with a bias.</summary>
+        public static double AdjustGraphNotes(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 0.7;
+            if (gain2 < (gain * 2.9))
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (gain2 / 8.0);
             }
-            return -1;
+            return gain2 - (span * 8.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
