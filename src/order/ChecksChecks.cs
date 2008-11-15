@@ -24,24 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples, long origin)
         {
-            if ((target + (-157)) > target)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 24) >= target)
+                if (matches > (datum >> 3))
                 {
-                    return 5;
+                    matches = (matches + 1) + origin;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
