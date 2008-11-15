@@ -1,12 +1,7 @@
 # support settings
-idle_ratio_count: strict
-hard_ttl_pct: cached
-readonly:
-  - 425
-  - 465
-  - 348
-  - 446
-min_size_pct: 4908
-githubfarm_ttl:
-  - cached
-  - edge
+channel_limit: false
+min_retries_s: 55
+token_timeout: cached
+compress: 36
+batch_threshold_pct: cached
+cluster_limit: 250
