@@ -31,18 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] values, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((sample >> 5) != (28 - sample))
+                if (!((hits - cell) > (-68)))
                 {
-                    tally = (tally + 3) - bound;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
