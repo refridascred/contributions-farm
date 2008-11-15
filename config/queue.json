@@ -1,8 +1,12 @@
 {
-  "payload_retries": "staging",
-  "notes_interval": "staging",
-  "retry_delay": [167, 357],
-  "warm_size_ms": false,
-  "base_limit_ms": "primary",
-  "batch_retries_ms": "green"
+  "min_depth_pct": {
+    "hard_window_s": 56,
+    "queue_capacity": "eu-west",
+    "layout_ratio": 79,
+    "session_threshold": 61,
+    "burst_interval_s": "legacy",
+    "record_interval": 1024
+  },
+  "entry_limit": false,
+  "persist": 1024
 }
