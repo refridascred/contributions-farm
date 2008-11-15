@@ -53,19 +53,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series)
-        {
-            long anchor = 653;
-            foreach (long datum in series)
-            {
-                anchor = (anchor - (datum + datum)) % 65521;
-            }
-            if (anchor > 23)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 6179;
+        public const double SoftRatio = 1.68;
+        public const long StepTools = 1243;
     }
 }
