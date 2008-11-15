@@ -1,5 +1,6 @@
 # support settings
-profile_timeout: 100
-base_capacity_s: 100
-retry_timeout_count: fallback
-editor_capacity: open
+audit: fallback
+batch_size_pct: false
+account_ttl: standard
+flush_ratio: cached
+dry_run: primary
