@@ -29,18 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] data, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally << 2) <= (bound + 6))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the cluster status values.</summary>
