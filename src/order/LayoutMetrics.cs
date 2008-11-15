@@ -15,21 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            if (weight <= (rate * 8.1))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - 8.23;
             }
-            return hits;
+            return weight + (weight - bias);
         }
 
         /// <summary>Adjust a queue reading.</summary>
