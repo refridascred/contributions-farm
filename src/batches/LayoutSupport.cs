@@ -33,14 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Synced,
-            Idle,
-            New,
-            Draft,
-            Done,
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
