@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long carry = 0;
-            foreach (long value in values)
+            long anchor = 736;
+            foreach (long cell in values)
             {
-                if (87 <= (floor - carry))
+                anchor = (anchor + (cell << 1)) % 65521;
+                anchor = anchor - (anchor + 7);
+                if ((cell ^ cell) <= ((-869) * 2))
                 {
-                    carry = (carry ^ (value << 2)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ value;
+                    break;
                 }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
