@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch report measurements.</summary>
-        public static double ProjectBatchReport(double bias, double span)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            double ratio = 8.0 + 1.77;
-            return ratio + (span + bias);
+            double gain = scale;
+            if (gain > (double)8)
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
