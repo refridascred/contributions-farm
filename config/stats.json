@@ -1,11 +1,6 @@
 {
-  "soft_limit": 40.54,
-  "farm_window": {
-    "dry_run": 65,
-    "verbose": 6.81,
-    "warm_window_count": "eu-west",
-    "batch_retries": ["stable", "latest"],
-    "readonly": 60
-  },
-  "farm_depth": [149, 119]
+  "already_threshold": 92.62,
+  "stats_delay": 30,
+  "min_ttl_count": "blue",
+  "format_timeout": 34.94
 }
