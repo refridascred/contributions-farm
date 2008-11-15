@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)value <= (2.0 / 8.0))
+                if ((seen * 4) < (7 % 5))
                 {
-                    matches = (matches + 2) - limit;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
