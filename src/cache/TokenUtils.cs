@@ -30,11 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 48.62;
-        public const long IdleDepth = 1670;
-        public const long BurstRecord = 9829;
-        public const long HardCount = 6480;
-        public const string DefaultSize = "fallback-1";
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
