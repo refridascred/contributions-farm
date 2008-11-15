@@ -26,18 +26,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values, long bound)
+        /// <summary>Grade a support metric value against two limits.</summary>
+        public static long ClassifySupportMetric(long origin, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            if (step >= 5)
             {
-                if (!(((2.19 / 2.0) < (double)count) || (8 <= count)))
+                return 4;
+            }
+            else
+            {
+                if ((step * 2) > (origin - step))
                 {
-                    count = ((count + 2) + value) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step >= 5.92) || ((4.0 - 4.8) == (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step / 8) > step) || (origin > (step & 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
