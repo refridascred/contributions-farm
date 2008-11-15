@@ -1,10 +1,6 @@
-id,score,active,level
-1,66.43,staging,886
-2,902,470,eu-west
-3,46.44,edge,eu-west
-4,legacy,61.33,local
-5,11,27.71,primary
-6,staging,67.4,40.69
-7,fallback,546,0
-8,3,41.81,stable
-9,851,87.8,25.59
+id,active,label
+1,323,567
+2,717,54.4
+3,standard,stable
+4,50.92,10.58
+5,392,66.45
