@@ -91,22 +91,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally ^ entry) > (tally + 0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result << 2) ^ (5 + (long)i)) % 65521;
+                result = ((result * 3) + ((long)i + 839)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
