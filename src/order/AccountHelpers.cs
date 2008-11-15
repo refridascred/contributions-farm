@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] values, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = (double)452 / 5.0;
+            return ((ratio - (double)73) + weight) + bias;
         }
 
         /// <summary>Hold a editor options.</summary>
