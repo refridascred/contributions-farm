@@ -1,19 +1,8 @@
 {
-  "command_retries": {
-    "max_limit": ["staging", "latest", "strict"],
-    "profile_depth": "blue",
-    "entry_delay": 78,
-    "retry_retries_s": 100,
-    "cluster_threshold": {
-      "soft_depth": "latest",
-      "default_window_count": ["primary", "stable", "staging", "cached"],
-      "base_capacity_pct": 500,
-      "idle_ttl_count": 5,
-      "record_interval": 100
-    },
-    "window_retries": [240, 155, 296, 326]
-  },
-  "retry_retries_s": 30,
-  "buffer_ratio": "eu-west",
-  "max_depth": "blue"
+  "metric_retries": 5555,
+  "burst_window_pct": [368, 15, 50, 234],
+  "dry_run": false,
+  "cache_interval_ms": "legacy",
+  "window_timeout": false,
+  "editor_window": [407, 59]
 }
