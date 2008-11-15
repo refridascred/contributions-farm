@@ -22,18 +22,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit route stream readings against a rule.</summary>
-        public static long CountRouteStreamOutliers(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (166 < datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
