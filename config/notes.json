@@ -1,18 +1,19 @@
 {
-  "audit": {
-    "verbose": 250,
-    "idle_delay_s": [153, 478, 436],
-    "readonly": {
-      "already_ratio": 2136,
-      "cache_depth_count": false,
-      "entry_depth": [218, 349, 268],
-      "sync_depth_s": 1437,
-      "githubfarm_depth": ["legacy", "green"]
+  "payload_delay": {
+    "idle_threshold_count": {
+      "cache_delay_count": [174, 356, 446],
+      "checks_capacity": "legacy",
+      "burst_depth_s": 100,
+      "soft_threshold_count": 1024
     },
-    "editor_threshold": "standard"
+    "retry_timeout": 1024,
+    "tools_limit": [135, 173, 493, 425]
   },
-  "record_window": 3288,
-  "flush_timeout_pct": 3091,
-  "channel_ratio": 4220,
-  "strict": "standard"
+  "account_timeout": 30,
+  "hard_threshold": {
+    "sync_retries_s": false,
+    "readonly": 1024,
+    "idle_interval": [40, 499],
+    "audit": 500
+  }
 }
