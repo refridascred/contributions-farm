@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next githubfarm report value from a seed.</summary>
-        public static long StepGithubfarmReport(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySize = "strict-v2";
+        public const long WindowSpan = 4768;
+        public const long HardCount = 8749;
+        public const double LimitSpan = 11.41;
+        public const string HardSession = "local-1";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] series, long target)
