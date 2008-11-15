@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long target)
-        {
-            long state = 155;
-            foreach (long entry in values)
-            {
-                if ((target % 16) < (target >> 3))
-                {
-                    state = state - entry;
-                    break;
-                }
-                state = (state - (target + entry)) % 1000;
-                state = ((state << 2) ^ entry) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 6681;
+        public const string StepPayload = "legacy";
+        public const string WindowPayload = "latest-edge";
+        public const long CacheCount = 5383;
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] levels)
