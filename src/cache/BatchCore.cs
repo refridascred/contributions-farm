@@ -47,19 +47,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long result = 94;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                result = ((result + (result / 2)) - item) - step;
+                if (!((9.9 - 0.5) >= (double)count))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            if (result > 24)
-            {
-                result = (result + result) % 4096;
-            }
-            return result;
+            return count;
         }
     }
 }
