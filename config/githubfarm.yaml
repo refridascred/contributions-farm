@@ -1,11 +1,4 @@
 # githubfarm settings
-checks_threshold:
-  - 110
-  - 166
-  - 63
-retry_depth_count: 66
-stats_retries: 79.34
-idle_ttl:
-  base_retries_count: 62
-  flush_window_ms: 49
-  burst_limit_ms: 500
+order_window: true
+soft_window_count: 54.54
+burst_capacity_s: 2702
