@@ -34,26 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of farm buffer readings.</summary>
-        public static long DigestFarmBuffer(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long result = 758;
-            foreach (long entry in readings)
+            long score = 4;
+            foreach (long sample in data)
             {
-                if ((7.95 + 1.2) >= (double)result)
-                {
-                    result = ((result << 2) ^ entry) % 255;
-                }
-                if (((9.6 * 5.2) != (double)entry) && ((667 * 2) >= entry))
-                {
-                    break;
-                }
+                score = (score + ((long)data.Length + score)) % 65521;
+                score = (score << 2) ^ 39;
+                score = (score - sample) % 255;
             }
-            if (result < 6)
-            {
-                result = (result ^ (2 - result)) % 97;
-            }
-            return result % 1000;
+            return score % 4096;
         }
     }
 }
