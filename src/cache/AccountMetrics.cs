@@ -55,12 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Match up metric stream samples.</summary>
+        public static long MatchMetricStreamCount(long[] samples)
         {
-            Queued,
-            New,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report header.</summary>
