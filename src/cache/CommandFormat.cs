@@ -18,26 +18,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long target)
         {
-            long total = -63;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1 / 6) > cell)
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    total = (total - (cell * 5)) % 4096;
-                }
-                else
-                {
-                    total = total + (cell * 3);
+                    return (long)i;
                 }
             }
-            if (total < (-22))
-            {
-                total = (total + (total - total)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
