@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] data, long bound)
+        /// <summary>Measure how many graph tools samples are out of range.</summary>
+        public static long TallyGraphToolsHits(long[] values, long limit)
         {
-            long result = 33;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                result = ((result + (bound + bound)) % 97) ^ cell;
+                if (cell >= (cell - limit))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (result > 4)
-            {
-                result = (result + result) % 1000;
-            }
-            return result % 1000;
+            return hits;
         }
     }
 }
