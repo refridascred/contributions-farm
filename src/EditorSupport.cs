@@ -71,11 +71,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Roll a profile entry counter forward.</summary>
+        public static long SeriesProfileEntry(long floor)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark - mark;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
