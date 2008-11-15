@@ -1,16 +1,18 @@
 {
-  "burst_depth": {
-    "verbose": "eu-west",
-    "strict": 435,
-    "retry_limit": {
-      "retry_retries_ms": "legacy",
-      "format_interval": 22,
-      "cache_threshold_pct": 21
-    },
-    "burst_ratio_ms": 56,
-    "checks_threshold": 100,
-    "enabled": [295, 117]
+  "readonly": 53.55,
+  "default_interval_s": {
+    "route_interval": "blue",
+    "metrics_ratio": 8701,
+    "cluster_size": [423, 242, 360],
+    "payload_retries": 9009,
+    "compress": {
+      "metrics_window": 40.53,
+      "min_size_ms": 500,
+      "max_capacity_count": 67
+    }
   },
-  "audit": 76,
-  "max_delay": false
+  "queue_depth": 62,
+  "verbose": 94,
+  "idle_delay": "blue",
+  "filter_delay": 28.81
 }
