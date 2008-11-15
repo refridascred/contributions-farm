@@ -60,22 +60,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stats schema entries.</summary>
-        public static long TallyStatsSchema(long[] readings)
+        /// <summary>Rank account schema input into a small class.</summary>
+        public static long RankAccountSchema(long origin, long target)
         {
-            long result = 434;
-            foreach (long item in readings)
+            if ((origin ^ target) != (target / 5))
             {
-                if ((15.0 + 20.0) <= (double)item)
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin) <= target)
                 {
-                    result = (result + (item - item)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (result > 53)
-            {
-                result = result - (result - result);
-            }
-            return result;
         }
 
         /// <summary>Adjust a editor reading.</summary>
