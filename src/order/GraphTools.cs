@@ -36,18 +36,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit counter cluster readings against a rule.</summary>
-        public static long TallyCounterClusterMatches(long[] series, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((bound & 63) != (bound >> 1))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                long delta = carry >> 4;
+                carry = ((carry * 3) + (delta + step)) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of command readings.</summary>
