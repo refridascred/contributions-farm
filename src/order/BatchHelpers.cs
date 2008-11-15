@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double bias)
         {
-            long anchor = 41;
-            foreach (long entry in samples)
+            double scale = (double)2 - ratio;
+            if (scale < scale)
             {
-                if ((origin + entry) >= (anchor * 2))
-                {
-                    anchor = anchor - (anchor / 5);
-                }
+                scale = scale - (scale - 0.2);
             }
-            return anchor % 97;
+            else
+            {
+                scale = scale - (bias / 5.0);
+            }
+            return scale - (double)6;
         }
     }
 }
