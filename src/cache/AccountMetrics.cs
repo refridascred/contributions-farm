@@ -58,14 +58,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long target)
         {
-            Synced,
-            Stale,
-            Locked,
-            Dropped,
-            Ready,
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix << 3) ^ 978) % 1000) ^ (long)i2;
+                }
+                mix = (mix - (mix - mix)) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer status values.</summary>
