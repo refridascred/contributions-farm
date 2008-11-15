@@ -68,18 +68,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally << 2) != (tally + entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate counter cluster samples.</summary>
