@@ -34,19 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long target)
         {
-            long total = -823;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 2) + (seed & 63)) % 101;
-                if (((value + value) == (seed / 5)) || ((102 + total) < (value * 5)))
+                if (samples[i] >= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
