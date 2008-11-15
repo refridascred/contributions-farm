@@ -1,15 +1,10 @@
 # Command notes
 
-The layout report groups every entry by format.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Run the filter check before changing any batches limits.
-
-A tools that stays idle for too long is moved to the payload list.
-Use metrics settings to tune how often tools data is refreshed.
+Each batches is validated before it reaches the window queue.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new commits fields
-- Review window limits each release
-- Log every farm change
-- Prefer schema defaults
+- Validate window input early
+- Log every support change
+- Review route limits each release
