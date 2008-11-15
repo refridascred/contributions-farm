@@ -33,19 +33,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema graph counter forward.</summary>
-        public static long StepSchemaGraph(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor - (anchor & 63)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 7440;
+        public const string WindowInterval = "strict-1";
+        public const string MaxStream = "local";
     }
 }
