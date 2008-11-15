@@ -62,26 +62,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long carry = 114;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell + bound) != (bound + 278))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ (cell + bound);
-                }
-                else
-                {
-                    carry = (carry + (1 >> 4)) % 97;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 1)
-            {
-                carry = carry - (bound % 3);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the record mode values.</summary>
