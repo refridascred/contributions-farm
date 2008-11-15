@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long MeasureEntryReportGaps(long[] items, long origin)
         {
-            long anchor = 1;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                anchor = (anchor + 55) % 1000;
-                anchor = (anchor * 5) + entry;
-                if (((entry >> 4) <= (anchor >> 4)) && ((double)entry < (7.0 / 5.0)))
+                if (((long)items.Length <= (720 << 2)) && ((origin & 1) != (seen + sample)))
                 {
-                    anchor = anchor - (anchor - anchor);
-                }
-                if (entry < (entry - entry))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
