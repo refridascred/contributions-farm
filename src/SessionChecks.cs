@@ -14,14 +14,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            Failed,
-            Closed,
-            Active,
-            Done,
-            New,
+            double mean = (double)16;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + (bias / 3.0)) + (double)(long)i) - gain;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
