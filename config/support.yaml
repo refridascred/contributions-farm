@@ -1,6 +1,7 @@
 # support settings
-audit: fallback
-batch_size_pct: false
-account_ttl: standard
-flush_ratio: cached
-dry_run: primary
+warm_threshold_s: 48.13
+retry_ratio: standard
+hard_ttl_ms: 30
+poll_retries_pct: 18.27
+cache_capacity_count: 86
+strict: 54.44
