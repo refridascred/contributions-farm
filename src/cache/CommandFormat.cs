@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!!((double)matches <= (1.22 + 3.7)))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
