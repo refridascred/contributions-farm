@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+COMMAND_LIMIT=313
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for item in fallback stable strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
