@@ -1,8 +1,6 @@
 {
-  "hard_interval_ms": 1092,
-  "idle_ttl": 2.79,
-  "base_limit_pct": 100,
-  "warm_depth": 88,
-  "audit": "cached",
-  "retry_interval_ms": "latest"
+  "readonly": false,
+  "warm_timeout_ms": 84,
+  "entry_retries": 1538,
+  "base_retries_s": "latest"
 }
