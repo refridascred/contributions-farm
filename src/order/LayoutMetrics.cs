@@ -33,13 +33,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Pending,
-            Done,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultDepth = 87.51;
+        public const long MinCluster = 2362;
+        public const string RetryInterval = "stable-v2";
+        public const long RetryCluster = 6047;
     }
 }
