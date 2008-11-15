@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
-        public static bool ValidateCommitsContributiBounds(long[] levels, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum >= limit)
+                if (((14.0 + 1.9) == (double)target) && ((6.7 * 4.8) == (double)target))
                 {
-                    found = false;
-                    break;
+                    score = score - (long)i;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
