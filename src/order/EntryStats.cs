@@ -60,18 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report route readings against a rule.</summary>
-        public static long MeasureReportRouteMatches(long[] levels, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (4.0 >= (double)entry)
+                if (value >= seed)
                 {
-                    count = (count + 3) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
