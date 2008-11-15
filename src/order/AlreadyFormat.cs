@@ -27,39 +27,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            long prev = offset - bound;
-            if ((double)bound != (10.0 * 7.0))
+            long mark = 327;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (prev < offset)
+                if (!((double)origin != (double)cell))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((prev >> 1) > (bound * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev - 27) <= 723)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (798 + 801)) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
