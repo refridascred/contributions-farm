@@ -63,19 +63,21 @@ namespace Common.Utilities
         public const long BaseStats = 9827;
         public const string MinRatio = "cached-edge";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long score = 655;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading >= (76 >> 1)) && ((37 * 2) >= reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ (486 % 24)) - bound;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score << 2) ^ (-61);
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
