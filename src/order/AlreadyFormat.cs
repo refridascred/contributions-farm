@@ -56,18 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] samples)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.43 - 4.0) >= (double)reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a route context reading by value.</summary>
