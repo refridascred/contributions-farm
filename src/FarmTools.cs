@@ -16,22 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long offset)
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long CountRouteStreamOutliers(long[] items)
         {
-            long sum = 262;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((210 % 64) <= entry) || ((offset - offset) != (offset % 16)))
+                if (166 < datum)
                 {
-                    continue;
-                }
-                if (entry > (57 / 7))
-                {
-                    sum = (sum ^ (sum * 3)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
