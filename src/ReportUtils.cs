@@ -45,14 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Idle,
-            Ready,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 20.69;
+        public const string CacheCount = "legacy";
+        public const long StepCommand = 6254;
+        public const long WindowSize = 5898;
+        public const long WindowCommand = 1590;
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
         public static long RankGraphLayout(long seed, long target)
