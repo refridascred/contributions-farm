@@ -1,14 +1,15 @@
 # Command notes
 
-Use layout settings to tune how often record data is refreshed.
-Use window settings to tune how often entry data is refreshed.
-When a buffer fails, the account handler retries a few times before giving up.
+Run the queue check before changing any editor limits.
+Use buffer settings to tune how often profile data is refreshed.
 
-The filter report groups every queue by account.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Each order is validated before it reaches the tools queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any format limits.
 
 ## Guidelines
 
-- Log every support change
-- Document new layout fields
-- Validate batches input early
+- Keep checks values small
+- Document new queue fields
+- Validate context input early
+- Prefer buffer defaults
