@@ -1,10 +1,12 @@
 # Command notes
 
-Each batches is validated before it reaches the window queue.
-Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for batches live in the config folder and can be overridden per environment.
+Keep already and channel names short and lowercase.
 
 ## Guidelines
 
-- Validate window input early
-- Log every support change
-- Review route limits each release
+- Keep notes values small
+- Validate order input early
+- Review token limits each release
+- Document new order fields
