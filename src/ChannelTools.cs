@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "fallback";
-        public const long SoftCache = 7343;
-        public const long BatchCache = 5584;
-        public const string MinCache = "cached";
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelOutliers(long[] data, long seed)
