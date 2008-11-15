@@ -33,21 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks filter readings.</summary>
-        public static long OverlapChecksFilterCount(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Pending,
+            Queued,
         }
     }
 }
