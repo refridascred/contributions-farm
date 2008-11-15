@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value >= (value / 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
