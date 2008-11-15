@@ -1,6 +1,6 @@
 {
-  "soft_window_ms": 63.15,
-  "audit": 9953,
-  "flush_size_pct": [414, 394, 427],
-  "record_capacity": 41
+  "idle_capacity_s": "staging",
+  "max_retries_s": 0.42,
+  "readonly": "fallback",
+  "soft_interval_ms": "strict"
 }
