@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = -6;
-            foreach (long sample in readings)
-            {
-                anchor = anchor + sample;
-            }
-            if (anchor > 40)
-            {
-                anchor = (anchor - (anchor & 127)) % 1000;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
