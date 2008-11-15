@@ -23,14 +23,21 @@ namespace Common.Utilities
         public const string StepGithubfarm = "latest-v2";
         public const long RetryGithubfarm = 317;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            Stale,
-            Pending,
-            Queued,
-            Draft,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
