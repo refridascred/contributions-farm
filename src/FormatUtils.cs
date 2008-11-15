@@ -33,18 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long TallyRecordAccountHits(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((0.85 + 4.7) >= (double)(long)items.Length)
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
