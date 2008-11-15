@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 13;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)mix == (9.0 + 6.3))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + value) % 4096;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+                if (offset <= mix)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
