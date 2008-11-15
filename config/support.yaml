@@ -1,11 +1,15 @@
 # support settings
-soft_ttl: 45.24
-flush_window: 53.96
-cache_timeout_ms:
-  report_ratio:
-    min_threshold: 532
-    idle_capacity: 7227
-    max_depth_count: 35.15
-  retry_ratio: fallback
-  burst_size_ms: 2398
-idle_retries_count: 100
+verbose:
+  max_threshold_ms: 75.22
+  max_depth_s: blue
+  soft_ttl: true
+  counter_timeout: strict
+  warm_ttl:
+    - 104
+    - 174
+strict: fallback
+cache_size_count: 42.93
+commits_interval:
+  - 264
+  - 179
+  - 14
