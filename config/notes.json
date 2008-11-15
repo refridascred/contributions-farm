@@ -1,13 +1,7 @@
 {
-  "window_ratio": "local",
-  "commits_delay": [213, 434, 104, 95],
-  "max_timeout_pct": {
-    "strict": 2.34,
-    "token_delay": "stable",
-    "soft_timeout": 41.11,
-    "batch_window": [74, 124, 177, 390],
-    "stream_threshold": "cached"
-  },
-  "min_capacity": 45.51,
-  "compress": 94.56
+  "commits_timeout": "green",
+  "base_capacity": 100,
+  "counter_retries": 5249,
+  "batch_interval": "primary",
+  "persist": "stable"
 }
