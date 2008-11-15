@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Dropped,
-            Active,
-            Failed,
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
