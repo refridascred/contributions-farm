@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 6972;
-        public const long RetryRatio = 6102;
-        public const long DefaultEditor = 8140;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long limit, long offset)
+        {
+            if ((limit >> 5) < (limit + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) != (offset >> 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9 > limit) && ((105 * 3) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
