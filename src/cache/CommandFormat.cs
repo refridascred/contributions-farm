@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
-        public static long OverlapClusterReportCount(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (2.3 - offset) * 8.82;
+            if (ratio <= offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (ratio - offset);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Hold a profile record.</summary>
