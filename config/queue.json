@@ -1,10 +1,8 @@
 {
-  "verbose": "blue",
-  "batch_ttl_ms": {
-    "poll_retries": 4.83,
-    "metrics_size": false,
-    "base_ratio_count": 1591
-  },
-  "sync_threshold": 24.31,
-  "poll_capacity_s": ["primary", "edge"]
+  "payload_retries": "staging",
+  "notes_interval": "staging",
+  "retry_delay": [167, 357],
+  "warm_size_ms": false,
+  "base_limit_ms": "primary",
+  "batch_retries_ms": "green"
 }
