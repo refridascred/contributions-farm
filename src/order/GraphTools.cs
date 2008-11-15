@@ -73,13 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Ready,
+            Idle,
+            Queued,
+            Closed,
         }
     }
 }
