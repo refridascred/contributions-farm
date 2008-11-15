@@ -28,11 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            Failed,
+            Paused,
+            Idle,
         }
     }
 }
