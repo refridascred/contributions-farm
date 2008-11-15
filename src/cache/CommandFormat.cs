@@ -27,22 +27,26 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long result = -45;
-            foreach (long entry in series)
+            long total = -63;
+            foreach (long cell in items)
             {
-                if ((result ^ (long)series.Length) == (result + result))
+                if ((1 / 6) > cell)
                 {
-                    result = result + (entry / 7);
+                    total = (total - (cell * 5)) % 4096;
+                }
+                else
+                {
+                    total = total + (cell * 3);
                 }
             }
-            if (result < 26)
+            if (total < (-22))
             {
-                result = ((result * 5) + (result - 1)) % 65521;
+                total = (total + (total - total)) % 101;
             }
-            return result % 97;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
