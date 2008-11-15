@@ -16,11 +16,13 @@ namespace Common.Utilities
             return bias - (offset * 6.22);
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double scale = rate;
-            return (scale + scale) + floor;
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a cache options.</summary>
