@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] readings, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((1.0 * 9.0) <= (2.05 - 3.49))
+                {
+                    matches = ((matches + 3) + datum) + origin;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
