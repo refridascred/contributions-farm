@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchLevel = 4532;
-        public const string HardSpan = "staging-edge";
-        public const double StepEditor = 47.29;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long bound)
+        {
+            long edge = floor + bound;
+            if ((20.0 / 3.0) <= (double)edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 255) > (edge % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Combine cluster session values into a single score.</summary>
         public static long FoldClusterSession(long[] data)
