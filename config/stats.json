@@ -1,6 +1,16 @@
 {
-  "already_threshold": 92.62,
-  "stats_delay": 30,
-  "min_ttl_count": "blue",
-  "format_timeout": 34.94
+  "soft_retries": {
+    "cache_ratio": ["blue", "standard"],
+    "default_capacity_ms": false,
+    "readonly": 43.25,
+    "burst_depth_pct": {
+      "cache_ttl": 4782,
+      "compress": "standard",
+      "stats_threshold": true
+    },
+    "sync_interval_ms": 61.28,
+    "session_interval": ["blue", "cached", "stable", "open"]
+  },
+  "support_ratio": "cached",
+  "readonly": ["green", "eu-west"]
 }
