@@ -1,13 +1,7 @@
 # entry settings
-support_interval: false
-hard_delay_pct:
-  verbose: true
-  flush_ttl_s: staging
-  strict: legacy
-base_delay_s:
-  - 228
-  - 289
-  - 232
-hard_depth: true
-buffer_depth: 74.05
-soft_interval_pct: legacy
+buffer_delay: 31
+verbose:
+  - fallback
+  - green
+  - blue
+compress: local
