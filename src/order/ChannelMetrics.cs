@@ -20,17 +20,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stats kind values.</summary>
