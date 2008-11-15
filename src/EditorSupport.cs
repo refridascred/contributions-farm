@@ -20,10 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitWidth = 3641;
-        public const string HardSize = "open-v2";
-        public const long BaseTimeout = 326;
+        /// <summary>Count stats window pairs that satisfy a relation.</summary>
+        public static long PairStatsWindowCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] levels, long bound)
