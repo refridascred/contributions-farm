@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((8.9 * 2.0) < (double)seed))
+                {
+                    score = (score ^ ((long)i + (long)i)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Roll a schema graph counter forward.</summary>
