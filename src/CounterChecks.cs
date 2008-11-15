@@ -62,19 +62,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples, long limit)
         {
-            double rate = offset + (double)2;
-            if (rate >= (offset / 9.0))
+            long state = 3;
+            foreach (long sample in samples)
             {
-                rate = (rate - 11.0) + ratio;
+                if ((limit % 2) <= (state + state))
+                {
+                    state = (((state << 3) ^ 6) % 255) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (state < 313)
             {
-                rate = (rate + offset) + (double)(long)i;
+                state = (state << 3) ^ (76 ^ 1);
             }
-            return rate + (double)(-34);
+            return state % 1000;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
