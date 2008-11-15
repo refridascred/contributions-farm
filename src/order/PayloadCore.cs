@@ -19,11 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinSize = "cached";
-        public const double StepFactor = 84.97;
-        public const double LimitStream = 53.41;
-        public const double HardScore = 5.12;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)tally < (6.19 + 4.9))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryWindow = 6962;
