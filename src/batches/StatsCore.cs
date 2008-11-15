@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
-        public static long AuditGithubfarmEditorGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((7.0 + 18.0) < (double)sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 66;
+        public const double CacheEditor = 52.15;
+        public const string DefaultSpan = "staging";
+        public const double StepScore = 48.1;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] readings, long floor)
