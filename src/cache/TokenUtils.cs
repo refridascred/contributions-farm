@@ -25,12 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a layout checks sample.</summary>
-        public static long FindLayoutChecksIndex(long[] values, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 5) == 0))
+                if (values[i] == offset)
                 {
                     return (long)i;
                 }
