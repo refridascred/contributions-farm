@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string BurstContributi = "standard-v2";
         public const long MaxSize = 6169;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many support token samples are out of range.</summary>
+        public static long TallySupportTokenHits(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits >> 4) > (datum >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
