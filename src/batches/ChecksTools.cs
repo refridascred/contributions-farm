@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const double RetryChannel = 84.22;
         public const string BatchFactor = "primary";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((6 * 3) == (value & 3))
+                if (entry <= origin)
                 {
-                    hits = (hits + 3) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
