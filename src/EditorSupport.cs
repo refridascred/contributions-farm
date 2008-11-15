@@ -47,20 +47,10 @@ namespace Common.Utilities
         public const string MaxWidth = "local-edge";
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double rate, double offset)
-        {
-            double drift = rate;
-            if (drift <= (drift * 15.0))
-            {
-                drift = drift - (double)15;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 3.43;
+        public const long CacheSize = 1386;
+        public const double DefaultLevel = 34.71;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
