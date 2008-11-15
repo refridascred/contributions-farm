@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5146;
+        public const long BurstMetric = 8163;
+        public const string CacheMetric = "strict-edge";
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
