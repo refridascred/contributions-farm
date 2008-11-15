@@ -1,8 +1,16 @@
 {
-  "min_window": 33.64,
-  "record_ttl": "green",
-  "cache_window_count": 250,
-  "soft_interval_s": 48.71,
-  "idle_size_count": [128, 169],
-  "compress": 7152
+  "burst_depth": {
+    "verbose": "eu-west",
+    "strict": 435,
+    "retry_limit": {
+      "retry_retries_ms": "legacy",
+      "format_interval": 22,
+      "cache_threshold_pct": 21
+    },
+    "burst_ratio_ms": 56,
+    "checks_threshold": 100,
+    "enabled": [295, 117]
+  },
+  "audit": 76,
+  "max_delay": false
 }
