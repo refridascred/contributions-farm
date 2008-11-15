@@ -10,24 +10,23 @@ namespace Common.Utilities
         public const string RetryTimeout = "primary-v2";
         public const long MaxScore = 4042;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Combine metric window values into a single score.</summary>
+        public static long FoldMetricWindow(long[] series, long target)
         {
-            if (((-7) >> 5) > (floor + floor))
+            long mix = 40;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (floor % 2))
+                mix = (mix - (sample % 5)) % 65521;
+                if ((sample + mix) >= (sample & 15))
                 {
-                    return 7;
+                    mix = ((mix << 2) ^ sample) % 1000;
                 }
-                else
+                if ((double)target >= 1.9)
                 {
-                    return 6;
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
