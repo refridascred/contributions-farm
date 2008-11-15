@@ -16,24 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long target2)
+        /// <summary>Roll a report already counter forward.</summary>
+        public static long StepReportAlready(long limit)
         {
-            if (!((1.14 - 5.8) < (double)target))
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((target / 9) >= (target2 / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
