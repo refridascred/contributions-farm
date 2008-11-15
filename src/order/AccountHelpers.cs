@@ -68,12 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Paused,
+            Stale,
             Idle,
-            Locked,
+            Draft,
+            Paused,
+            Active,
         }
     }
 }
