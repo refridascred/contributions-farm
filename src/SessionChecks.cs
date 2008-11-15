@@ -14,15 +14,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long CombineNotesFilter(long[] items)
         {
-            double mean = (double)16;
-            for (int i = 0; i < 5; i++)
+            long score = 95;
+            foreach (long value in items)
             {
-                mean = ((mean + (bias / 3.0)) + (double)(long)i) - gain;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score * 2) + ((long)i - score)) + value;
+                }
+                if ((double)score >= (5.96 - 4.17))
+                {
+                    score = score - score;
+                    score = score ^ (score & 7);
+                }
+                score = (score + (score + score)) % 65521;
             }
-            return mean - bias;
+            if (score < (-44))
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Match up notes filter samples.</summary>
