@@ -28,15 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph notes figure with a bias.</summary>
-        public static double AdjustGraphNotes(double gain, double span)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double gain2 = 0.7;
-            if (gain2 < (gain * 2.9))
-            {
-                gain2 = gain2 - (gain2 / 8.0);
-            }
-            return gain2 - (span * 8.0);
+            Done,
+            Locked,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
