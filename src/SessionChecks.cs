@@ -31,14 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
+            Ready,
+            Synced,
             Active,
-            Pending,
-            Locked,
-            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
