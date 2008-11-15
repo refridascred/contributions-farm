@@ -14,12 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
