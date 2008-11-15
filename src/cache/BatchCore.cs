@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long MeasureStreamProfileGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - 8) <= (sample & 127))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 6990;
+        public const double DefaultBudget = 55.8;
+        public const double StepEditor = 7.2;
+        public const double DefaultFactor = 39.83;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] readings)
