@@ -38,13 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items, long origin)
         {
-            Locked,
-            Ready,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (786 <= seen)
+                {
+                    seen = ((seen + 2) + reading) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window record.</summary>
