@@ -19,25 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long bound, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] levels)
         {
-            long next = bound + target;
-            if ((97 ^ bound) <= (next % 12))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target ^ next) >= (bound / 4)))
+                if ((seen - seen) < cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two buffer farm measurements.</summary>
