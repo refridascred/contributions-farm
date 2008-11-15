@@ -58,13 +58,10 @@ namespace Common.Utilities
         public const long MaxContributi = 8128;
         public const long LimitSize = 2522;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Closed,
-            Pending,
-            Done,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseCount = "staging-v2";
+        public const long BatchChecks = 3404;
+        public const long LimitChecks = 1935;
+        public const double HardChecks = 49.55;
     }
 }
