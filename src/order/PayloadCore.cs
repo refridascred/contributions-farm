@@ -20,23 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            double weight = (double)(8 ^ 6);
-            if (weight <= (double)3)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                weight = weight + (rate * 5.1);
+                if (datum <= (3 & 63))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight + (rate - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (10.0 + weight)) - (double)(long)i;
-            }
-            return weight - (floor / 5.0);
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
