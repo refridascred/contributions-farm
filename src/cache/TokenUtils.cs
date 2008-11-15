@@ -22,15 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Digest a series of farm counter entries.</summary>
+        public static long TotalFarmCounter(long[] data, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long acc = 837;
+            foreach (long reading in data)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                acc = acc - reading;
+                acc = ((acc * 2) + (4 >> 5)) % 255;
+                if (((acc + 5) >= 2) || ((reading / 8) <= (target + reading)))
+                {
+                    acc = acc + (70 << 2);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (reading - 82);
+                }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
