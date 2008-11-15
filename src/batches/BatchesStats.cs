@@ -31,11 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long score = 5;
+            foreach (long datum in levels)
+            {
+                score = ((score << 2) ^ (score ^ 70)) ^ datum;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a payload stats.</summary>
