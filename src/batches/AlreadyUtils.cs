@@ -61,9 +61,17 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSize = 7436;
-        public const long IdleBudget = 9419;
-        public const string LimitCount = "local-1";
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = state ^ (state + state);
+                state = (state + (0 % 60)) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
