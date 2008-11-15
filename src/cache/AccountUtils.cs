@@ -29,12 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "fallback-1";
+        public const long MaxFactor = 3863;
+        public const long WindowOrder = 2127;
+        public const long BatchLevel = 1393;
     }
 }
