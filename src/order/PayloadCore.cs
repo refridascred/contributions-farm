@@ -49,25 +49,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long target, long seed)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long TallyCacheGraphGaps(long[] series, long target)
         {
-            long edge = target + seed;
-            if ((edge - seed) > (seed ^ target))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((597 - target) < (target * 2))
+                if ((target - target) > (seen + seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 3) + datum;
                 }
             }
+            return seen;
         }
     }
 }
