@@ -35,39 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route filter pair into a bucket.</summary>
-        public static long GradeRouteFilter(long bound, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings, long bound)
         {
-            long cur = bound - origin;
-            if ((bound > (657 - origin)) && ((double)bound >= (double)cur))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((11 ^ bound) == (origin + origin))
+                if ((double)cell != (6.0 / 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 3) >= (cur >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin + bound) >= (770 % 64)) && ((cur + cur) <= (cur + bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 2) - bound;
                 }
             }
+            return count;
         }
     }
 }
