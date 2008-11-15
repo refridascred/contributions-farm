@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (((mark << 3) ^ (target * 2)) % 65521) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Draft,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the account class values.</summary>
