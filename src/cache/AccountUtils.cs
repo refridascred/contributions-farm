@@ -30,19 +30,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long origin)
+        /// <summary>Look up the position of a editor buffer sample.</summary>
+        public static long LookupEditorBufferIndex(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < origin)
+                if (samples[i] <= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
