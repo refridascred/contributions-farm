@@ -47,38 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already tools pair into a bucket.</summary>
-        public static long SortAlreadyTools(long step, long step2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] samples, long origin)
         {
-            if ((step + step2) != (77 >> 3))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)775 > (double)step2)
+                if (reading < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((-1) <= (step + step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step * 2) > (-85)) && ((0.6 / 8.0) <= (double)step2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the batch class values.</summary>
