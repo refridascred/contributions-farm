@@ -84,23 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            double drift = 9.3;
+            if (drift >= bias)
             {
-                if ((782 + floor) <= (90 & 255))
-                {
-                    sum = (sum + (13 << 2)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (floor << 3)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                drift = drift - rate;
             }
-            return sum;
+            return drift + (double)19;
         }
     }
 }
