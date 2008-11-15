@@ -18,10 +18,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitInterval = "standard";
-        public const string StepGithubfarm = "latest-v2";
-        public const long RetryGithubfarm = 317;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Queued,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] values)
