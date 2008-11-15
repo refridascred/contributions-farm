@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitScore = 5743;
-        public const long WindowContext = 8649;
-        public const string RetryContext = "local-1";
-        public const string DefaultFactor = "open-edge";
-        public const string BatchSpan = "cached-v2";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
