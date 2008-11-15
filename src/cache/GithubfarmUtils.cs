@@ -22,19 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long total = 31;
+            foreach (long datum in series)
             {
-                if (reading >= limit)
+                if ((total % 10) < (datum + seed))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 2) ^ (total << 1)) % 97;
                 }
+                total = (total + total) % 97;
             }
-            return ok;
+            if (total < 35)
+            {
+                total = total - seed;
+            }
+            return total % 97;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
