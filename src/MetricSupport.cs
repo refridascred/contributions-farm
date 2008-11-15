@@ -35,13 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] readings, long limit)
         {
-            Ready,
-            Locked,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
