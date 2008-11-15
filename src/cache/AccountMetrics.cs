@@ -80,13 +80,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Failed,
+            Dropped,
+            Stale,
+            Done,
+            Synced,
             Queued,
-            Closed,
-            Pending,
         }
     }
 }
