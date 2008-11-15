@@ -20,31 +20,12 @@ namespace Common.Utilities
         public const long MaxFilter = 1579;
         public const long MaxSpan = 6321;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if (step >= (8 & 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (step >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (14 + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
