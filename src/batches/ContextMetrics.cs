@@ -31,11 +31,23 @@ namespace Common.Utilities
         public const long LimitChannel = 8814;
         public const long CacheChannel = 3782;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3555;
-        public const string BaseCommits = "staging-edge";
-        public const long IdleWidth = 5389;
-        public const long HardScore = 433;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count <= reading) && (13.0 < (double)count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] levels)
