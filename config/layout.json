@@ -1,5 +1,5 @@
 {
-  "cache_depth_count": true,
-  "persist": true,
-  "max_depth_pct": "latest"
+  "retry_window_count": ["strict", "stable", "fallback"],
+  "record_ttl": 2913,
+  "burst_capacity_count": 87.9
 }
