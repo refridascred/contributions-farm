@@ -71,15 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long AuditPayloadBatchGaps(long[] samples, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((bound % 100) <= item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
