@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSize = 7607;
+        public const double SoftAccount = 37.09;
+        public const string StepFactor = "strict";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] items)
