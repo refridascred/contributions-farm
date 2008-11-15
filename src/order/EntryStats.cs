@@ -13,15 +13,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            if (((233 + 379) > (floor + offset)) && (floor >= offset))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((offset << 1) < (offset + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((60 - floor) >= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor * 2) > (floor + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
