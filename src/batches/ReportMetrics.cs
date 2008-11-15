@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((target * 5) < (target + 512))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two buffer farm measurements.</summary>
