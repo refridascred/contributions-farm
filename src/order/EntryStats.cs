@@ -55,25 +55,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a report contributi counter forward.</summary>
-        public static long StepReportContributi(long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long lane = target ^ origin;
+            if ((lane > 575) || ((double)target > 7.3))
             {
-                if ((55 < score) || (floor < (long)i))
-                {
-                    score = ((score << 3) ^ (score ^ (long)i)) % 4096;
-                    score = score + (score + floor);
-                    break;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (((score << 2) ^ (score * 5)) % 255) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((lane - lane) >= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
