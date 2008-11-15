@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (tally <= 1)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
