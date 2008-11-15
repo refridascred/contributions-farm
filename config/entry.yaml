@@ -1,14 +1,13 @@
 # entry settings
-cache_size_ms:
-  - 66
-  - 323
-  - 245
-contributi_size: 6056
-account_threshold:
-  compress: 21.12
-  retry_threshold_ms: 4166
-  filter_window: 3782
-  poll_interval_s:
-    base_ttl_count: 8472
-    audit: eu-west
-    graph_window: 8336
+base_threshold: 60.31
+cluster_interval: false
+readonly:
+  - 121
+  - 9
+  - 377
+  - 246
+verbose: false
+compress:
+  - 204
+  - 200
+  - 470
