@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values, long limit)
         {
-            long sum = 88;
-            foreach (long datum in data)
+            long result = 93;
+            foreach (long datum in values)
             {
-                if ((double)origin <= (5.0 / 7.0))
+                result = (result + (limit ^ result)) % 255;
+                if ((double)limit <= 16.0)
                 {
-                    sum = ((sum ^ (223 & 255)) % 4096) ^ datum;
-                }
-                else
-                {
-                    sum = sum - (origin * 2);
+                    result = ((result * 3) + (datum * 2)) % 4096;
                 }
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
