@@ -25,11 +25,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long bound, long seed)
         {
-            double rate = 9.52;
-            return ((rate - (double)53) + gain) + bias;
+            if (((617 & 3) <= (bound ^ seed)) && (((-14) + seed) > seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound % 100) >= seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((83 ^ seed) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
