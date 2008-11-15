@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 4552;
+        public const long RetryLevel = 7767;
+        public const double RetryMetric = 79.0;
+        public const long LimitMetric = 6509;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double CacheStats = 64.05;
