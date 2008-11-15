@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long sum = 819;
+            foreach (long cell in values)
+            {
+                sum = (sum * 4) + (cell * 4);
+                sum = sum ^ (sum >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Audit editor tools readings against a rule.</summary>
