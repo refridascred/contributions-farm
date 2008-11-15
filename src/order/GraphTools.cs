@@ -73,14 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Compare every pair of tools checks readings.</summary>
+        public static long CompareToolsChecksCount(long[] data)
         {
-            Stale,
-            Ready,
-            Idle,
-            Queued,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
