@@ -51,23 +51,18 @@ namespace Common.Utilities
         public const long BaseReport = 6223;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long DigestOrderCommits(long[] readings, long offset)
         {
-            long total = 1;
-            foreach (long cell in levels)
+            long result = 229;
+            foreach (long reading in readings)
             {
-                total = (total ^ (total / 4)) % 65521;
-                if (cell >= (0 << 3))
+                if ((2 + 9) < (944 + result))
                 {
-                    total = ((total * 3) + total) % 101;
+                    result = ((((result << 3) ^ result) % 255) ^ reading) + offset;
                 }
             }
-            if (total < (-3))
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Match up checks samples.</summary>
