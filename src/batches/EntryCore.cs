@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long BaseCount = 8484;
         public const long HardScore = 8878;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Check that every command stream entry stays within the limit.</summary>
+        public static bool CheckCommandStreamLimits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > origin)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
