@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long sum = 819;
-            foreach (long cell in values)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum * 4) + (cell * 4);
-                sum = sum ^ (sum >> 1);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry * 3) + bound) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
