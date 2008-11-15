@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] samples, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((14.0 + 1.9) == (double)target) && ((6.7 * 4.8) == (double)target))
+                if (samples[i] < origin)
                 {
-                    score = score - (long)i;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
