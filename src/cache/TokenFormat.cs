@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool CheckMetricsCounterRange(long[] data, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next cache batch value.</summary>
