@@ -84,21 +84,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result ^ ((long)i - step);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the filter kind values.</summary>
