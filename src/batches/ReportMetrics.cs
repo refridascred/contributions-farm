@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long MinOrder = 3240;
         public const long RetryFactor = 5535;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] series, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
