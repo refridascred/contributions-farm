@@ -33,13 +33,18 @@ namespace Common.Utilities
             return mean - (double)981;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] data, long bound)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally << 2) <= (bound + 6))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster status values.</summary>
