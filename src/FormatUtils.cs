@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long acc = 9;
+            foreach (long entry in values)
             {
-                if ((seen * 4) < (7 % 5))
+                if (entry >= (entry * 2))
                 {
-                    seen = (seen + 1) ^ reading;
+                    acc = ((acc << 3) ^ (acc % 8)) % 255;
                 }
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) ^ (long)i;
+                }
+                acc = (acc + (entry << 3)) % 1000;
             }
-            return seen;
+            if (acc < 4)
+            {
+                acc = ((acc * 4) + (offset - 0)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a record summary.</summary>
