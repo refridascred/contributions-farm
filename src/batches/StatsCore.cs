@@ -58,22 +58,22 @@ namespace Common.Utilities
         public const string DefaultSpan = "staging";
         public const double StepScore = 48.1;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values)
         {
-            long score = 5;
-            foreach (long item in readings)
+            long sum = -6;
+            foreach (long cell in values)
             {
-                if (((1 << 2) >= (item % 3)) && (301 < (item + score)))
+                if ((118 * 3) <= (cell * 4))
                 {
-                    score = ((score * 3) + (score % 3)) % 255;
+                    sum = sum ^ cell;
                 }
-                else
+                if ((long)values.Length < (sum % 60))
                 {
-                    score = (score * 4) + floor;
+                    break;
                 }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
