@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitBudget = 888;
-        public const long IdleCount = 8023;
-        public const long CacheAccount = 5141;
-        public const long WindowAccount = 5523;
-        public const long CacheCount = 4655;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
         public static long CompareLayoutClusterCount(long[] samples)
