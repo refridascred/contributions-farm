@@ -17,12 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Draft,
-            Ready,
-            Active,
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
