@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const string WindowCache = "alpha-1";
         public const double StepSize = 58.77;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long result = -460;
+            foreach (long entry in readings)
+            {
+                result = ((result ^ (result * 2)) % 255) ^ entry;
+            }
+            if (result > 9)
+            {
+                result = result ^ (49 << 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
