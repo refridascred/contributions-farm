@@ -48,21 +48,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count graph window pairs that satisfy a relation.</summary>
-        public static long CompareGraphWindowCount(long[] data)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of report layout entries.</summary>
