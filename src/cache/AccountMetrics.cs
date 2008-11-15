@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const long LimitCount = 5810;
         public const long BatchSize = 780;
 
-        /// <summary>Combine token session values into a single score.</summary>
-        public static long TallyTokenSession(long[] levels)
-        {
-            long anchor = 6;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor + ((long)levels.Length ^ (-7))) % 101) ^ sample;
-                if ((double)anchor == (12.0 * 7.64))
-                {
-                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 3510;
+        public const long MaxCount = 2468;
+        public const long BurstRatio = 3934;
+        public const long MaxToken = 6738;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MaxAccount = 10.59;
