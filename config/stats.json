@@ -1,20 +1,5 @@
 {
-  "compress": 5,
-  "notes_interval": 9434,
-  "batch_capacity_count": "green",
-  "commits_interval": "blue",
-  "flush_interval_ms": {
-    "idle_depth": {
-      "context_ttl": "primary",
-      "burst_threshold_count": "primary",
-      "cache_retries": 9.88,
-      "batch_window": "open",
-      "poll_ratio_count": 500,
-      "sync_limit_ms": [73, 360, 101, 369]
-    },
-    "sync_depth_pct": 81,
-    "min_interval": "edge",
-    "default_window_ms": 64
-  },
-  "base_size_s": 500
+  "hard_ratio_ms": 21.87,
+  "githubfarm_delay": 68,
+  "base_ratio_s": true
 }
