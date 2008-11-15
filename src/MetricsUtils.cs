@@ -15,22 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of format stream readings.</summary>
-        public static long MatchFormatStreamCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchLevel = 5092;
+        public const long RetryDepth = 5969;
+        public const long StepCommand = 4605;
+        public const double WindowScore = 88.61;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] items)
