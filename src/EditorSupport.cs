@@ -73,18 +73,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] samples, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!!(limit >= cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
