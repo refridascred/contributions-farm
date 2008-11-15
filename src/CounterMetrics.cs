@@ -29,20 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 1697;
+        public const double SoftInterval = 3.02;
+        public const long MaxTimeout = 4758;
+        public const long BatchRecord = 969;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
