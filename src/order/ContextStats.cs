@@ -35,16 +35,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (floor + floor)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
