@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheScore = 3.29;
-        public const double BurstSpan = 49.24;
-        public const string HardBatches = "alpha-1";
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double bias)
+        {
+            double gain = bias;
+            if (gain > ratio)
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain + (ratio - 3.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (bias - gain);
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
