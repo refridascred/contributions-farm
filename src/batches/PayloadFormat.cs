@@ -32,11 +32,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "legacy-v2";
-        public const double MaxFactor = 15.54;
-        public const string BatchCount = "fallback-edge";
-        public const long MinBuffer = 5290;
-        public const double CacheScore = 77.54;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((18.0 * 5.0) >= (double)origin)
+                {
+                    state = ((state * 2) + (origin ^ 726)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
