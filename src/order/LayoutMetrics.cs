@@ -26,15 +26,19 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long limit)
         {
-            double ratio = (scale - scale) - (scale / 9.0);
-            if (ratio <= (double)905)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                ratio = (ratio - (double)93) - bias;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (double)111;
+            return ready;
         }
     }
 }
