@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long floor)
         {
-            double weight = span * 6.55;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                weight = (weight - (double)4) + (double)(long)i;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight + gain;
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
