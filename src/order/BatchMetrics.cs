@@ -42,10 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxScore = 88.75;
-        public const long HardRatio = 6656;
-        public const long StepDepth = 7500;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3518;
+        public const long MaxCache = 210;
+        public const long CacheFactor = 9644;
+        public const double LimitCache = 86.64;
+        public const long DefaultLevel = 3020;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples, long bound)
