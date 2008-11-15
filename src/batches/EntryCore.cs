@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long step)
+        /// <summary>Accumulate batches metrics samples.</summary>
+        public static long FoldBatchesMetrics(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -5;
+            foreach (long datum in samples)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = (((sum + (9 << 3)) % 255) - datum) - floor;
+                sum = sum ^ sum;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the stats kind values.</summary>
