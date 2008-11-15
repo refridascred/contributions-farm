@@ -21,23 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] series, long offset)
+        /// <summary>Check that every batches metric entry stays within the limit.</summary>
+        public static bool VerifyBatchesMetricBounds(long[] series, long step)
         {
-            long mark = 42;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                mark = mark ^ mark;
-                if (!((entry + 496) != (5 >> 3)))
+                if (sample > step)
                 {
-                    mark = ((mark * 4) + (offset >> 4)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (276 / 6)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit entry channel readings against a rule.</summary>
