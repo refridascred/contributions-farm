@@ -20,11 +20,16 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 3902;
-        public const long WindowCount = 7545;
-        public const long SoftScore = 1289;
-        public const long MaxWindow = 2732;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double span)
+        {
+            double bias = (double)(59 - 59);
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - (double)7) + (double)(long)i) - span;
+            }
+            return bias + (weight * 8.8);
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
