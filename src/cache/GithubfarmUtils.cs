@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long total = 31;
-            foreach (long datum in series)
-            {
-                if ((total % 10) < (datum + seed))
-                {
-                    total = ((total << 2) ^ (total << 1)) % 97;
-                }
-                total = (total + total) % 97;
-            }
-            if (total < 35)
-            {
-                total = total - seed;
-            }
-            return total % 97;
+            Dropped,
+            Pending,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the context class values.</summary>
