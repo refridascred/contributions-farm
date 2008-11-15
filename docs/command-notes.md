@@ -1,14 +1,14 @@
 # Command notes
 
-The commits report groups every route by already.
-Keep schema and session names short and lowercase.
-The stats helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the stream list.
+A window that stays idle for too long is moved to the cache list.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Defaults for report live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the entry queue.
+Keep order and metric names short and lowercase.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep entry values small
-- Log every commits change
+- Log every account change
+- Prefer commits defaults
+- Review channel limits each release
+- Validate batches input early
