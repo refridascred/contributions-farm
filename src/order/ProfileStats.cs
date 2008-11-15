@@ -53,21 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample << 1) <= (0 ^ sample))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
