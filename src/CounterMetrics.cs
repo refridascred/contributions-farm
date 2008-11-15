@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6395;
-        public const long BaseRatio = 4688;
-        public const long StepSize = 8188;
+        /// <summary>Project the next profile route value.</summary>
+        public static double BlendProfileRoute(double bias, double span)
+        {
+            double mean = span;
+            if (mean <= (double)3)
+            {
+                mean = mean - (double)91;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean - (double)981;
+        }
 
         /// <summary>Classify a metric queue pair into a bucket.</summary>
         public static long GradeMetricQueue(long limit, long target)
