@@ -14,13 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
