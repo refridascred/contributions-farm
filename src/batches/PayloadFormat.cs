@@ -53,13 +53,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((double)entry == (4.3 + 8.0)) || ((2.78 - 6.3) <= (double)count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
