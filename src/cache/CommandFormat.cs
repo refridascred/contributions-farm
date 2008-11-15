@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            double mean = floor;
-            if (mean < (double)113)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mean = (mean - (floor - 19.0)) + bias;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean * 1.82)) - (double)(long)i;
-            }
-            return mean + (double)4;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
