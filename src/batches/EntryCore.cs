@@ -46,17 +46,30 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 780;
+            foreach (long item in items)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if (4 > (total >> 4))
                 {
-                    return (long)i;
+                    break;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total + (item / 8)) + (long)i;
+                }
+                if ((8.3 / 4.0) >= (double)item)
+                {
+                    total = (total << 2) ^ total;
                 }
             }
-            return -1;
+            if (total < 28)
+            {
+                total = total + total;
+            }
+            return total;
         }
     }
 }
