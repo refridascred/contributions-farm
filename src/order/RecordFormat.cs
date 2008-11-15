@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const long SoftScore = 1289;
         public const long MaxWindow = 2732;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the metrics class values.</summary>
