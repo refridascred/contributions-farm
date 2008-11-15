@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long origin)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            if (!((seed * 2) == (origin - origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (5.0 < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-11) - 4) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
