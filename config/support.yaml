@@ -1,12 +1,4 @@
 # support settings
-hard_limit: fallback
-strict: 250
-flush_capacity_pct:
-  readonly:
-    - staging
-    - open
-    - cached
-    - blue
-  route_delay: 6076
-  compress: 10
-metrics_capacity: strict
+max_timeout_ms: 100
+dry_run: stable
+account_window: fallback
