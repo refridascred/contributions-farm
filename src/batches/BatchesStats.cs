@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] data, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!!(reading > (reading / 6)))
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a schema stats.</summary>
