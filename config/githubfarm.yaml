@@ -1,11 +1,35 @@
 # githubfarm settings
-batch_threshold_count: eu-west
-graph_interval: blue
-base_ttl: legacy
-readonly:
-  - 136
-  - 317
-  - 162
-  - 280
-record_window: edge
-idle_size_count: eu-west
+token_ratio: local
+max_size_count: primary
+support_retries:
+  retry_retries:
+    - strict
+    - standard
+  max_retries: staging
+  channel_timeout: 8
+  retry_interval_pct: standard
+  stats_limit: false
+  sync_size: 1024
+soft_size_s:
+  - 482
+  - 171
+  - 139
+  - 154
+max_retries_s:
+  poll_interval: standard
+  base_timeout_s: staging
+  min_ratio_count: 74
+schema_depth:
+  contributi_ratio:
+    batch_capacity: 26
+    flush_limit_ms:
+      - blue
+      - fallback
+      - stable
+      - edge
+    hard_depth_count: 1024
+  soft_capacity_ms: 84.47
+  retry_ratio_s: 60
+  warm_depth_ms: 60
+  channel_ratio: 1023
+  notes_limit: cached
