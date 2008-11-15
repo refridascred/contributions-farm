@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            Idle,
-            Retry,
-            Closed,
-            Stale,
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (seed >= (seed + (long)i))
+                {
+                    score = (score - (158 + score)) % 4096;
+                    score = ((score << 3) ^ (seed / 6)) % 255;
+                }
+                score = score + score;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
