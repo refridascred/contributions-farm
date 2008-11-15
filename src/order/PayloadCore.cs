@@ -19,31 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples)
-        {
-            long state = 6;
-            foreach (long sample in samples)
-            {
-                if (((state - state) == (6 % 12)) || (sample <= (74 % 8)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (state ^ state)) % 255;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state + (sample << 1)) % 97) ^ (long)i;
-                }
-                if ((6.0 - 14.0) == (double)state)
-                {
-                    state = (state + (sample + sample)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinSize = "cached";
+        public const double StepFactor = 84.97;
+        public const double LimitStream = 53.41;
+        public const double HardScore = 5.12;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryWindow = 6962;
