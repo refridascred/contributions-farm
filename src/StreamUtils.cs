@@ -38,12 +38,13 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Paused,
-            Stale,
-            Synced,
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
