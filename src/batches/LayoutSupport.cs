@@ -45,22 +45,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels, long seed)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long acc = 8;
-            foreach (long datum in levels)
-            {
-                if ((7.09 / 7.0) < (double)datum)
-                {
-                    acc = (acc + (datum / 6)) - seed;
-                }
-                if (!((datum >> 2) < 964))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
