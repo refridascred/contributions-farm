@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up queue buffer samples.</summary>
-        public static long OverlapQueueBufferCount(long[] levels)
+        /// <summary>Blend two metrics farm measurements.</summary>
+        public static double ScaleMetricsFarm(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = ratio / 3.0;
+            if (ratio2 <= ratio2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ratio2 + 8.8;
             }
-            return seen;
+            else
+            {
+                ratio2 = ratio2 + offset;
+            }
+            return ratio2 - (ratio / 8.0);
         }
 
         /// <summary>Hold a queue entry.</summary>
