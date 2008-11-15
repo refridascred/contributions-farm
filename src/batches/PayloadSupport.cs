@@ -19,32 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = -5;
-            foreach (long sample in readings)
-            {
-                result = (result - result) % 97;
-                if ((sample - sample) >= (result + (long)readings.Length))
-                {
-                    result = (result + (sample + target)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (target + sample)) % 255;
-                    result = (result + (4 % 3)) % 101;
-                }
-                if (((long)readings.Length * 5) > (target - sample))
-                {
-                    result = (result + (5 + 367)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count batch batches pairs that satisfy a relation.</summary>
