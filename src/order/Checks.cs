@@ -52,17 +52,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                if (sample > (sample + sample))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
