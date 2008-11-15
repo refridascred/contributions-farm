@@ -24,25 +24,15 @@ namespace Common.Utilities
         public const long IdlePayload = 3279;
         public const long DefaultBudget = 1106;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long offset = bound - limit;
-            if (((limit + 92) > (bound + bound)) || ((offset - bound) < (limit & 63)))
+            double load = (double)(86 << 1);
+            if (load <= bias)
             {
-                return 7;
+                load = (load - (3.17 + 6.94)) - weight;
             }
-            else
-            {
-                if ((double)limit != (double)(-98))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return load + load;
         }
     }
 }
