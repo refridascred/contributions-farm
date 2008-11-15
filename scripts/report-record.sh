@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=135
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached fallback; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in primary fallback edge standard; do
-    log "checking ${item}"
-done
