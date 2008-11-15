@@ -21,10 +21,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8463;
-        public const long CacheFactor = 6977;
-        public const long BaseDepth = 217;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long offset)
+        {
+            if (((target + offset) < (target - offset)) && (target < (target % 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((634 >> 4) <= (target - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset >> 1) > (35 + target)) && ((target * 2) <= (target + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + 83) != (offset >> 4)) || ((offset ^ 63) < (offset + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
         public static long TallyCounterClusterMatches(long[] series, long bound)
