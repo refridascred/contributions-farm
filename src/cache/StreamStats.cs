@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                state = ((state * 3) + (state << 1)) % 4096;
+                if ((8.0 - 5.34) < (double)(long)i)
+                {
+                    state = (state << 2) ^ 7;
+                    state = (state << 3) ^ (state - state);
+                }
+                if ((7.0 * 9.3) <= (double)origin)
+                {
+                    state = (state ^ origin) % 97;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
