@@ -14,13 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
