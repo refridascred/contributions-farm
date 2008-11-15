@@ -14,21 +14,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (carry <= (carry + carry))
-                {
-                    carry = (carry ^ (target ^ target)) % 4096;
-                    carry = carry ^ target;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
