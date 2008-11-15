@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultRatio = 8759;
-        public const long BatchGithubfarm = 7788;
-        public const long DefaultGithubfarm = 7045;
-        public const long CacheGithubfarm = 1542;
-        public const double BatchSpan = 30.0;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
