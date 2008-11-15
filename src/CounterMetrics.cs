@@ -30,11 +30,32 @@ namespace Common.Utilities
         public const long BaseRatio = 4688;
         public const long StepSize = 8188;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 91.16;
-        public const double RetryBatches = 42.47;
-        public const double StepLevel = 37.59;
-        public const long SoftRatio = 613;
+        /// <summary>Classify a metric queue pair into a bucket.</summary>
+        public static long GradeMetricQueue(long limit, long target)
+        {
+            if ((519 >> 1) <= (target >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - target) > (target >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= (20.0 * 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long SeriesBatch(long seed)
