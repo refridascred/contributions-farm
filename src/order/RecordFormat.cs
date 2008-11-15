@@ -30,22 +30,15 @@ namespace Common.Utilities
         public const long SoftScore = 1289;
         public const long MaxWindow = 2732;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long mark = 9;
-            foreach (long value in values)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value >> 4) >= (mark + value))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (mark > 98)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Describe the metrics class values.</summary>
