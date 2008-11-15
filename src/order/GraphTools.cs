@@ -49,18 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph tools samples are out of range.</summary>
-        public static long TallyGraphToolsHits(long[] values, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (cell >= (cell - limit))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
