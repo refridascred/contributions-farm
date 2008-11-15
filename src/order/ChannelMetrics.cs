@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Paused,
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitInterval = 69.0;
+        public const long MaxBudget = 6467;
+        public const long CacheBudget = 2556;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 1993;
