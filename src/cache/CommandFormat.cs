@@ -23,12 +23,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 6;
+            foreach (long cell in samples)
+            {
+                if ((sum > (cell % 16)) || (sum < cell))
+                {
+                    sum = ((sum * 3) + (cell - 5)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
