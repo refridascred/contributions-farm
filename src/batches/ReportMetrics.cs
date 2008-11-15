@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate route githubfarm readings against a bound.</summary>
-        public static bool CheckRouteGithubfarmRange(long[] samples, long offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
