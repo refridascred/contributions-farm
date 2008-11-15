@@ -23,13 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] levels, long target)
         {
-            Active,
-            Draft,
-            Retry,
-            Pending,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster status values.</summary>
