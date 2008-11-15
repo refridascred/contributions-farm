@@ -17,12 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate commits samples.</summary>
