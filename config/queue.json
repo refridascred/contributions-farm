@@ -1,12 +1,12 @@
 {
-  "min_depth_pct": {
-    "hard_window_s": 56,
-    "queue_capacity": "eu-west",
-    "layout_ratio": 79,
-    "session_threshold": 61,
-    "burst_interval_s": "legacy",
-    "record_interval": 1024
+  "batch_timeout_ms": [408, 318],
+  "min_threshold_ms": "green",
+  "tools_depth": {
+    "flush_retries": "edge",
+    "retry_capacity_ms": "latest",
+    "default_capacity_count": false
   },
-  "entry_limit": false,
-  "persist": 1024
+  "compress": "edge",
+  "verbose": 30,
+  "warm_depth_count": [467, 206, 144]
 }
