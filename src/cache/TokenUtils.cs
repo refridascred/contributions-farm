@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] samples, long target)
         {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)count < 7.6)
+                {
+                    count = ((count + 3) - cell) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
