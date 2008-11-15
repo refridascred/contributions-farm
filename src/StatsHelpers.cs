@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the report token entries that pass the check.</summary>
+        public static long MeasureReportTokenOutliers(long[] readings)
         {
-            Pending,
-            Stale,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((65 % 12) <= matches)
+                {
+                    matches = (matches + 2) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
