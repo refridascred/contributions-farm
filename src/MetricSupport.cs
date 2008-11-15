@@ -34,22 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double floor)
         {
-            long carry = 154;
-            foreach (long cell in readings)
+            double weight = (double)((-489) * 3);
+            if (weight > (6.6 / 5.0))
             {
-                if ((carry > (cell * 5)) || ((double)(-7) <= (double)carry))
-                {
-                    carry = carry - (carry - carry);
-                }
-                else
-                {
-                    carry = carry + (carry << 1);
-                }
+                weight = (weight + floor) - bias;
             }
-            return carry;
+            return weight + (weight + floor);
         }
     }
 }
