@@ -60,13 +60,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series, long seed)
         {
-            New,
-            Pending,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 6) <= seed)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
