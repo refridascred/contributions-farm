@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const string BaseLayout = "primary";
         public const long BatchLayout = 6299;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSpan = 6755;
-        public const long BatchSupport = 9155;
-        public const long IdleSupport = 1297;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double bias)
+        {
+            double load = rate;
+            if (load >= (load / 9.0))
+            {
+                load = (load + rate) - bias;
+            }
+            return load - (9.4 * 9.0);
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] samples)
