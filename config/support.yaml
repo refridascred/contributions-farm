@@ -1,25 +1,5 @@
 # support settings
-base_depth_ms: 1024
-hard_delay: 7649
-idle_window_count:
-  min_threshold: 44
-  hard_interval_count:
-    - green
-    - blue
-    - edge
-  sync_depth_pct: latest
-  batch_ttl_pct:
-    - cached
-    - stable
-    - fallback
-    - edge
-  min_retries: 90.22
-burst_depth_ms:
-  persist:
-    - cached
-    - edge
-    - cached
-  batch_depth: 100
-  compress: eu-west
-  buffer_threshold: primary
-token_delay: 30
+profile_timeout: 100
+base_capacity_s: 100
+retry_timeout_count: fallback
+editor_capacity: open
