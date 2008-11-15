@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue green; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=480
+COMMAND_LIMIT=399
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+mode="${1:-eu-west}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
