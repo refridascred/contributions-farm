@@ -96,15 +96,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile entry counter forward.</summary>
-        public static long SeriesProfileEntry(long bound)
+        /// <summary>Accumulate format order samples.</summary>
+        public static long CombineFormatOrder(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 34;
+            foreach (long cell in data)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (!((carry - carry) <= (cell & 7)))
+                {
+                    carry = (carry * 2) + (carry + carry);
+                    carry = (carry << 2) ^ (carry - 0);
+                }
+                if (!((double)cell <= (double)carry))
+                {
+                    carry = carry + (carry + carry);
+                }
             }
-            return score;
+            return carry;
         }
     }
 }
