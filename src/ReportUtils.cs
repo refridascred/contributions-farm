@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long seed)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double span)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double mean = 8.23;
+            if (mean >= mean)
             {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (rate / 6.0);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 7.0)) + (double)(long)i;
+            }
+            return mean + (span + rate);
         }
 
         /// <summary>Describe the graph mode values.</summary>
