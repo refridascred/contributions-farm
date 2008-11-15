@@ -55,22 +55,15 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            long anchor = 25;
-            foreach (long item in series)
+            long result = 6;
+            foreach (long item in readings)
             {
-                if ((double)item == (14.0 + 7.38))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                else
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
+                result = (result - (item & 1)) % 97;
             }
-            return anchor;
+            return result % 65521;
         }
     }
 }
