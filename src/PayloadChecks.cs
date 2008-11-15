@@ -45,23 +45,12 @@ namespace Common.Utilities
         public const double CacheScore = 39.36;
         public const double StepEntry = 25.33;
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long ScoreAccountSupport(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = 678;
-            foreach (long cell in readings)
-            {
-                if (((8.9 - 7.59) > (double)mix) || ((4.92 * 4.45) > (double)cell))
-                {
-                    mix = (mix + (0 % 10)) % 65521;
-                }
-                mix = mix - cell;
-            }
-            if (mix < 62)
-            {
-                mix = mix - (2 * 5);
-            }
-            return mix;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a already info.</summary>
