@@ -65,13 +65,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Ready,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "strict-edge";
+        public const long BatchCounter = 5440;
+        public const string BaseBudget = "legacy-v2";
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
