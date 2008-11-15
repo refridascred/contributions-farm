@@ -30,19 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((long)items.Length ^ sample) == (76 / 6))
                 {
-                    carry = ((carry * 3) + (carry + (long)i)) ^ (long)i2;
+                    hits = hits + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
