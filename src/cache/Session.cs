@@ -41,38 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long seed, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            if (!((69 % 64) < (230 - origin)))
+            double bias = (double)0 / 9.0;
+            if (bias > (floor * 2.33))
             {
-                return 0;
+                bias = bias + (gain + bias);
             }
-            else
-            {
-                if ((origin + 5) >= (seed + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin % 100) >= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + origin) < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return bias + floor;
         }
     }
 }
