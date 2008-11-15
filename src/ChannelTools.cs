@@ -37,18 +37,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] items, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 91;
+            foreach (long sample in levels)
             {
-                if (4.2 >= (double)(long)items.Length)
+                if ((carry - sample) > (step - carry))
                 {
-                    tally = ((tally + 2) + sample) - seed;
+                    carry = carry - sample;
+                    continue;
+                }
+                carry = (carry ^ (sample + sample)) % 255;
+                if (sample > 1)
+                {
+                    carry = ((carry << 2) ^ (sample << 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + 368) % 255;
                 }
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
