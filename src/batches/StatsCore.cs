@@ -75,19 +75,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream payload reading.</summary>
-        public static double SmoothStreamPayload(double rate, double span)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double ratio = (rate * 9.1) * 4.6;
-            if (ratio <= (double)390)
-            {
-                ratio = ratio - rate;
-            }
-            else
-            {
-                ratio = ratio + span;
-            }
-            return ratio - (double)5;
+            Synced,
+            Locked,
+            Draft,
+            Queued,
+            Retry,
         }
     }
 }
