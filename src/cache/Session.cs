@@ -26,13 +26,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every batch format entry stays within the limit.</summary>
+        public static bool VerifyBatchFormatBounds(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
