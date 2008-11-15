@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two already schema measurements.</summary>
-        public static double ScaleAlreadySchema(double ratio, double offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double gain = ratio * 7.42;
-            if (gain >= 7.84)
-            {
-                gain = (gain + (20.0 * 8.0)) + offset;
-            }
-            return gain - (gain / 3.0);
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
