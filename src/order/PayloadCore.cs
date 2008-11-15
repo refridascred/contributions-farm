@@ -50,16 +50,17 @@ namespace Common.Utilities
         public const long StepBudget = 8728;
         public const long SoftWindow = 3097;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
