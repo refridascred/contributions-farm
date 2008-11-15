@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1202;
         public const long MinGithubfarm = 1222;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
