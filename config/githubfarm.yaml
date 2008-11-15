@@ -1,5 +1,15 @@
 # githubfarm settings
-queue_ttl: 6160
-retry_threshold: blue
-burst_limit_ms: 85.86
-poll_timeout: true
+cache_delay_s:
+  - strict
+  - open
+  - edge
+  - primary
+strict:
+  - 465
+  - 449
+  - 362
+  - 224
+base_depth: standard
+audit: 60
+channel_delay: 41
+layout_retries: green
