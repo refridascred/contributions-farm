@@ -41,14 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 4686;
+        public const long CacheCount = 5592;
+        public const double LimitSession = 41.08;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
