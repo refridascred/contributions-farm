@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the record report series from a seed.</summary>
+        public static long SeriesRecordReport(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
