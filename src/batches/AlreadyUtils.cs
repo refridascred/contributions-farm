@@ -52,11 +52,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6106;
-        public const long BurstBatches = 6396;
-        public const long IdleInterval = 1213;
-        public const long HardBatches = 6194;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series)
+        {
+            long carry = 91;
+            foreach (long value in series)
+            {
+                carry = (carry ^ (value % 12)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
