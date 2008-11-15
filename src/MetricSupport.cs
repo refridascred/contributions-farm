@@ -40,14 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long target)
         {
-            Locked,
-            Closed,
-            Failed,
-            Stale,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
