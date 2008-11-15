@@ -31,9 +31,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstWidth = 741;
-        public const long CacheLevel = 9647;
-        public const string BurstCount = "fallback-1";
-        public const long MinCount = 9265;
+        public const long MinTools = 2135;
+        public const double IdleTools = 72.87;
+        public const double CacheInterval = 80.63;
     }
 }
