@@ -33,12 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long TallyRecordAccountHits(long[] items)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((0.85 + 4.7) >= (double)(long)items.Length)
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
