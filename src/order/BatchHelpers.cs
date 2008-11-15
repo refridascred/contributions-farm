@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Idle,
-            Stale,
-            Synced,
-            Paused,
-            Dropped,
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the stats state values.</summary>
