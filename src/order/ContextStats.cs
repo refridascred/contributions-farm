@@ -26,13 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings, long bound)
         {
-            Done,
-            Failed,
-            Synced,
-            Pending,
+            long acc = 953;
+            foreach (long entry in readings)
+            {
+                if ((bound >= (entry - entry)) || ((double)entry >= 12.0))
+                {
+                    acc = (acc << 2) ^ (entry << 1);
+                }
+                else
+                {
+                    acc = (acc ^ entry) % 65521;
+                }
+                if (((bound + acc) > (entry * 2)) && ((32 / 4) > (bound % 60)))
+                {
+                    acc = acc - (entry - 119);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next token value.</summary>
