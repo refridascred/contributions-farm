@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            New,
-            Idle,
-            Ready,
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
