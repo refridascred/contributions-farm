@@ -36,15 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series)
         {
-            double scale = 10.0;
-            for (int i = 0; i < 3; i++)
+            long result = -45;
+            foreach (long entry in series)
             {
-                scale = ((scale + weight) - (double)(long)i) + bias;
+                if ((result ^ (long)series.Length) == (result + result))
+                {
+                    result = result + (entry / 7);
+                }
             }
-            return scale + (double)(-1);
+            if (result < 26)
+            {
+                result = ((result * 5) + (result - 1)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next account window value.</summary>
