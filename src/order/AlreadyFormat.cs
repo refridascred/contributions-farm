@@ -17,15 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a report already counter forward.</summary>
-        public static long StepReportAlready(long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] series, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
