@@ -43,20 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
-        {
-            long acc = 62;
-            foreach (long reading in readings)
-            {
-                acc = (acc * 4) + (acc - reading);
-            }
-            if (acc < 96)
-            {
-                acc = (acc ^ (acc >> 3)) % 65521;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 32.37;
+        public const double LimitWidth = 19.67;
+        public const long BurstSize = 5834;
+        public const long BatchAccount = 5325;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheBudget = 1.83;
