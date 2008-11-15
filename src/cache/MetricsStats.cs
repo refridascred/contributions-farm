@@ -51,19 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading != origin)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 4) + 754) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
     }
 }
