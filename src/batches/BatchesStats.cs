@@ -21,23 +21,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings, long origin)
-        {
-            long sum = 6;
-            foreach (long reading in readings)
-            {
-                if (sum < reading)
-                {
-                    sum = sum - (1 ^ sum);
-                }
-                else
-                {
-                    sum = sum ^ origin;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 64.05;
+        public const double BatchBudget = 91.49;
+        public const string HardDepth = "legacy-v2";
+        public const string SoftTimeout = "latest-edge";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] items)
