@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2912;
-        public const long HardInterval = 4155;
-        public const long BaseSize = 9909;
-        public const double CacheCluster = 89.65;
-        public const long DefaultCluster = 1036;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total * 4) + ((long)i % 24);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
