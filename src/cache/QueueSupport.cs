@@ -20,18 +20,17 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Look up the position of a record command sample.</summary>
+        public static long SeekRecordCommandIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.9 - 3.9) > (double)sample)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
