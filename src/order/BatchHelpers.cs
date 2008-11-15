@@ -33,13 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Ready,
-            Locked,
-            Closed,
-            Failed,
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
