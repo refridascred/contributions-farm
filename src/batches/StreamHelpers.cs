@@ -20,13 +20,22 @@ namespace Common.Utilities
         public const double CacheSpan = 23.64;
         public const double DefaultSpan = 87.54;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate format order samples.</summary>
+        public static long CombineFormatOrder(long[] items)
         {
-            Retry,
-            Active,
-            Paused,
-            Queued,
+            long anchor = 87;
+            foreach (long sample in items)
+            {
+                if (anchor > (anchor % 5))
+                {
+                    anchor = ((anchor + (anchor << 3)) % 255) ^ sample;
+                }
+            }
+            if (anchor < 58)
+            {
+                anchor = (anchor - (320 << 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
