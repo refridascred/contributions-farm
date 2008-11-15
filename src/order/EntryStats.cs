@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 6883;
-        public const long DefaultDepth = 9288;
-        public const long HardLevel = 9302;
-        public const string StepRatio = "fallback-1";
-        public const long LimitSpan = 1945;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(((tally % 7) > (66 + tally)) || ((long)items.Length >= (1 + value))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesOutliers(long[] samples)
