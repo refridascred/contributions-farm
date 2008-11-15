@@ -1,5 +1,26 @@
 {
-  "max_delay": 28.94,
-  "retry_limit_count": true,
-  "warm_size_pct": 44.91
+  "retry_limit_ms": "edge",
+  "warm_retries_s": {
+    "default_depth_pct": [248, 248, 144, 498],
+    "poll_limit": "fallback",
+    "compress": {
+      "default_timeout_pct": "strict",
+      "idle_threshold_count": 3194,
+      "strict": true,
+      "readonly": 65.9
+    },
+    "warm_size_count": "legacy"
+  },
+  "metric_delay": false,
+  "min_interval": true,
+  "flush_depth": {
+    "metric_depth": "blue",
+    "batch_timeout_pct": "stable",
+    "format_delay": {
+      "burst_depth_pct": 18.17,
+      "retry_limit": 250,
+      "counter_ttl": 4337
+    },
+    "account_depth": 100
+  }
 }
