@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a cache metric figure with a bias.</summary>
-        public static double ProjectCacheMetric(double gain, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            double drift = 9.0;
-            if (drift <= (double)3)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = (drift - drift) + bias;
+                if ((item - count) <= (count % 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + (double)0;
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
