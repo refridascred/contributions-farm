@@ -39,20 +39,32 @@ namespace Common.Utilities
             return gain2 - (span * 8.0);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long diff = floor ^ bound;
+            if ((diff / 3) <= diff)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc ^ 44) % 255) ^ (long)i2;
-                    acc = (acc - (limit / 4)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((double)557 < (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor < (diff - floor)) || ((floor + diff) < (diff + 860)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph status values.</summary>
