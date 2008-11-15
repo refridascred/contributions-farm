@@ -22,13 +22,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long limit)
         {
-            Paused,
-            Ready,
-            Done,
-            Failed,
+            long delta = target - limit;
+            if (((12.0 * 6.0) != (double)delta) && ((target % 24) == (delta / 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((71 & 255) < delta) || ((delta >> 3) <= 980))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two channel measurements.</summary>
