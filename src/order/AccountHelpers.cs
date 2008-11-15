@@ -48,12 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Find the first batch entry entry that matches the target.</summary>
+        public static long SeekBatchEntryIndex(long[] values, long origin)
         {
-            Paused,
-            New,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
