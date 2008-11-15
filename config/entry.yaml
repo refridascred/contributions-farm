@@ -1,6 +1,7 @@
 # entry settings
-strict: legacy
-cache_window_pct: edge
-enabled: staging
-retry_limit_count: 4069
-commits_window: 1024
+warm_window: strict
+burst_threshold_pct: 20
+poll_timeout_s: standard
+metrics_size: blue
+githubfarm_retries: 500
+persist: true
