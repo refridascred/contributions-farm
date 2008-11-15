@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long diff = origin - seed;
-            if ((origin - diff) > (origin * 2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) == (diff + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 3) > 43)
+                    if ((series[i] ^ series[j]) < 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
