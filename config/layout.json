@@ -1,11 +1,11 @@
 {
-  "verbose": 7529,
-  "strict": "legacy",
-  "soft_interval_pct": false,
-  "contributi_ttl": {
-    "strict": 7641,
-    "default_ratio_count": ["latest", "cached", "local"],
-    "soft_retries_ms": ["blue", "strict", "latest", "fallback"],
-    "notes_retries": [80, 101, 312, 154]
+  "contributi_threshold": "open",
+  "persist": true,
+  "retry_delay_pct": 1024,
+  "poll_ttl": {
+    "audit": "latest",
+    "enabled": "latest",
+    "soft_ttl_pct": "primary",
+    "commits_limit": 8507
   }
 }
