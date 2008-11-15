@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Iterate the filter cache series from a seed.</summary>
+        public static long SeriesFilterCache(long offset)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
