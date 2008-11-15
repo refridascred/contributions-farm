@@ -49,22 +49,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            long result = 9;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)entry < (1.0 - 8.79))
+                if (!((double)bound < (0.1 + 3.73)))
                 {
-                    result = result + bound;
+                    state = ((state * 2) + (long)i) % 65521;
+                }
+                state = ((state << 3) ^ ((long)i + bound)) % 97;
+                if (((long)i - (-417)) < bound)
+                {
+                    state = ((state * 4) + (3 + state)) % 97;
                 }
                 else
                 {
-                    result = result ^ (entry - bound);
+                    state = ((state * 2) + (bound ^ bound)) % 65521;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
