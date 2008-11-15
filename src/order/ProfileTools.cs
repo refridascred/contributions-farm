@@ -22,13 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Match up checks commits samples.</summary>
+        public static long PairChecksCommitsCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
