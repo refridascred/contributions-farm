@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long AuditContextTokenOutliers(long[] items, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double bias2 = 5.0;
+            if (bias2 >= (5.16 - bias2))
             {
-                if ((entry - (long)items.Length) <= (limit & 3))
-                {
-                    tally = tally + 2;
-                }
+                bias2 = ((bias2 + (double)4) - scale) - bias;
             }
-            return tally;
+            return bias2 + (4.6 / 8.0);
         }
 
         /// <summary>Grade a stream githubfarm value against two limits.</summary>
