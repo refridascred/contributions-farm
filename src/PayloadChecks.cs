@@ -23,23 +23,12 @@ namespace Common.Utilities
         public const double MaxFarm = 44.94;
         public const long CacheSize = 7632;
 
-        /// <summary>Fold a list of channel batch readings.</summary>
-        public static long TallyChannelBatch(long[] readings, long step)
-        {
-            long result = 94;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result - (0 + (long)i)) % 1000;
-                }
-                if ((sample << 1) > (sample + result))
-                {
-                    result = result ^ (0 + step);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 9027;
+        public const long WindowRatio = 2570;
+        public const double LimitWidth = 42.19;
+        public const double CacheScore = 39.36;
+        public const double StepEntry = 25.33;
 
         /// <summary>Accumulate account support samples.</summary>
         public static long ScoreAccountSupport(long[] readings)
