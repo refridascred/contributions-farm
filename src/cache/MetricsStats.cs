@@ -58,19 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            long sum = 705;
+            foreach (long reading in data)
             {
-                sum = ((sum * 3) + entry) % 97;
+                sum = ((sum << 2) ^ reading) % 65521;
             }
-            if (sum > 65)
-            {
-                sum = (sum * 2) + (sum - sum);
-            }
-            return sum;
+            return sum % 65521;
         }
     }
 }
