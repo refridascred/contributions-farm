@@ -26,18 +26,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter schema entries that pass the check.</summary>
-        public static long TallyFilterSchemaGaps(long[] values, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((3.35 / 6.0) == (double)sample)
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
+            double load = 0.5 * 9.0;
+            return (load - offset) + gain;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
