@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Done,
-            Failed,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitWidth = 3641;
+        public const string HardSize = "open-v2";
+        public const long BaseTimeout = 326;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] levels, long bound)
