@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate profile batch readings against a bound.</summary>
-        public static bool GuardProfileBatchLimits(long[] levels, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
