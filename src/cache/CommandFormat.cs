@@ -35,13 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double scale = 10.0;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + weight) - (double)(long)i) + bias;
+            }
+            return scale + (double)(-1);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
