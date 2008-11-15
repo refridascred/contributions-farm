@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchRatio = "primary-v2";
+        public const long SoftSchema = 7955;
+        public const double SoftWidth = 14.84;
+        public const string StepCount = "alpha-edge";
+        public const string WindowInterval = "legacy-edge";
 
         /// <summary>Scale a command record figure with a bias.</summary>
         public static double AdjustCommandRecord(double ratio, double span)
