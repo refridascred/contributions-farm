@@ -54,39 +54,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long origin)
+        /// <summary>Measure how many order route samples are out of range.</summary>
+        public static long AuditOrderRouteMatches(long[] readings, long limit)
         {
-            long next = seed ^ origin;
-            if (((seed - origin) <= origin) && ((origin - next) == (origin >> 4)))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((next - 24) <= (next ^ origin))
+                if ((95 % 16) >= seen)
                 {
-                    return 8;
+                    seen = ((seen + 3) + entry) - limit;
                 }
                 else
                 {
-                    if ((origin - origin) >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin < (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
