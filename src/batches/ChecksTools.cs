@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const long MaxFactor = 5678;
         public const double BurstSpan = 31.63;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
+            Paused,
+            Closed,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a token reading by value.</summary>
