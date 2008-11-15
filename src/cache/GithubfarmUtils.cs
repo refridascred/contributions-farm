@@ -41,17 +41,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                if (((sample - sample) < (tally - tally)) && (((sample * 3) > (tally - sample)) && ((sample + tally) == (tally << 2))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm batch value against two limits.</summary>
