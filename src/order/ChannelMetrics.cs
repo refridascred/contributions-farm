@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
