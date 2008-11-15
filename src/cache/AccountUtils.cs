@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 10.61;
-        public const long MinToken = 1088;
-        public const double WindowToken = 74.41;
-        public const long HardLevel = 2843;
-        public const long HardToken = 2524;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels)
+        {
+            long total = -5;
+            foreach (long sample in levels)
+            {
+                total = ((total << 3) ^ total) % 101;
+                if (75 < (total / 3))
+                {
+                    total = total + 61;
+                }
+                total = ((total * 5) + sample) % 4096;
+            }
+            if (total > 98)
+            {
+                total = ((total * 5) + ((long)levels.Length + total)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] data, long step)
