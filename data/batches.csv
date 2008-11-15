@@ -1,7 +1,7 @@
-id,state,active
-1,12.01,open
-2,96.2,79.83
-3,open,edge
-4,34.37,local
-5,33.23,standard
-6,primary,4.07
+id,token,region,level
+1,legacy,30.13,301
+2,eu-west,96.14,726
+3,82.33,stable,94.76
+4,39.11,91.12,local
+5,779,green,35.87
+6,959,57,729
