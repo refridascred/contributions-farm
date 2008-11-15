@@ -46,18 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)4 <= (double)(long)levels.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) ^ entry;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up farm samples.</summary>
