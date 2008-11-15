@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            Closed,
-            Failed,
-            Pending,
-            Locked,
+            long anchor = -6;
+            foreach (long sample in readings)
+            {
+                anchor = anchor + sample;
+            }
+            if (anchor > 40)
+            {
+                anchor = (anchor - (anchor & 127)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
