@@ -41,9 +41,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 6179;
-        public const double SoftRatio = 1.68;
-        public const long StepTools = 1243;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
