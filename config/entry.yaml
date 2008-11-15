@@ -1,4 +1,11 @@
 # entry settings
-hard_timeout_s: staging
-cache_ratio: 79
-compress: 49.1
+compress: strict
+graph_threshold: 8114
+base_threshold_ms:
+  - 12
+  - 493
+  - 197
+  - 158
+strict: 55
+counter_timeout: legacy
+poll_interval_ms: strict
