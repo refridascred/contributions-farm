@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Combine channel support values into a single score.</summary>
+        public static long ScoreChannelSupport(long[] items)
         {
-            long state = 1;
-            foreach (long entry in levels)
+            long anchor = -4;
+            foreach (long item in items)
             {
-                if ((double)state == (3.75 * 5.15))
-                {
-                    state = (state + (entry << 1)) % 1000;
-                }
+                anchor = (anchor ^ (anchor - anchor)) ^ item;
+                anchor = (anchor ^ anchor) % 65521;
             }
-            if (state > 944)
+            if (anchor > 60)
             {
-                state = ((state << 3) ^ (state << 2)) % 255;
+                anchor = anchor - 29;
             }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
