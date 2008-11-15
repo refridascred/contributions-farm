@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double weight, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] data, long target)
         {
-            double bias = floor;
-            if (bias > weight)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                bias = bias - (bias + bias);
+                if ((reading << 3) >= (0 & 3))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            else
-            {
-                bias = bias + (floor - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (weight + weight);
+            return hits;
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
