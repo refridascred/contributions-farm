@@ -1,8 +1,50 @@
 # entry settings
+persist:
+  - stable
+  - local
+base_ratio_pct:
+  min_timeout_s:
+    warm_timeout:
+      - legacy
+      - fallback
+      - green
+    min_limit_s: primary
+    batch_size_s: standard
+    batch_timeout: latest
+    cache_ratio: cached
+  hard_threshold_count:
+    - strict
+    - legacy
+    - strict
+    - stable
+  strict: false
+  hard_ratio_ms: 5.22
+  idle_ttl_count:
+    - 85
+    - 470
+    - 109
+    - 393
+sync_timeout_count: true
 verbose:
-  - stable
-  - stable
-readonly: 24.84
-batch_ratio_s: 96
-min_window_ms: 76.41
-checks_window: false
+  - 494
+  - 336
+  - 247
+  - 401
+hard_delay_s:
+  idle_depth:
+    - green
+    - standard
+    - staging
+    - fallback
+  warm_retries_ms: false
+  editor_retries: 51.49
+  payload_depth:
+    poll_retries_ms: 21.49
+    max_threshold_s: latest
+    compress: 69.76
+    window_ratio: local
+  sync_threshold: green
+  flush_threshold:
+    - green
+    - standard
+    - edge
