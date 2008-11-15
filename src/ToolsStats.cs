@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long slot = limit - floor;
-            if ((259 + slot) >= (slot ^ slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (limit * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + floor) != (slot - slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
