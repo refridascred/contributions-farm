@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the context record series from a seed.</summary>
-        public static long SeriesContextRecord(long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i < (3.54 + 5.5))
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                if (((acc % 2) > ((long)i >> 2)) && ((acc >> 3) > acc))
-                {
-                    acc = ((acc * 2) + ((-5) ^ seed)) % 65521;
-                }
-                acc = (acc + (acc + acc)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the counter level values.</summary>
