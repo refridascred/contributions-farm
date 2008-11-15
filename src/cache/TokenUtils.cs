@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Ready,
-            Locked,
-            Paused,
-            New,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3238;
+        public const long MinBudget = 2212;
+        public const long LimitSize = 2919;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] series, long step)
