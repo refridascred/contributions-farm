@@ -26,31 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long step)
-        {
-            long acc = 75;
-            foreach (long cell in values)
-            {
-                if ((acc + step) > 50)
-                {
-                    acc = ((acc << 3) ^ (step + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + (280 & 1);
-                }
-                if ((double)cell <= (1.9 * 7.6))
-                {
-                    break;
-                }
-            }
-            if (acc > 526)
-            {
-                acc = ((acc * 5) + (acc + acc)) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 664;
+        public const double StepInterval = 95.14;
+        public const long BaseFarm = 2080;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] series)
