@@ -17,13 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every batch format entry stays within the limit.</summary>
