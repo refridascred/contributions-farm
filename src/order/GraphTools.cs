@@ -38,10 +38,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSpan = 1.41;
-        public const long BurstCount = 3055;
-        public const long LimitSession = 8413;
+        /// <summary>Accumulate githubfarm profile samples.</summary>
+        public static long WeighGithubfarmProfile(long[] items, long target)
+        {
+            long mark = 38;
+            foreach (long datum in items)
+            {
+                if ((mark % 100) > (mark + mark))
+                {
+                    mark = (mark - datum) + target;
+                }
+                if ((double)mark == (4.0 * 7.78))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] series)
