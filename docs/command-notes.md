@@ -1,12 +1,11 @@
 # Command notes
 
-The notes report groups every format by window.
-Defaults for schema live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the token queue.
+The commits report groups every farm by queue.
+A githubfarm that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Keep command values small
-- Validate report input early
-- Review buffer limits each release
-- Prefer channel defaults
+- Keep account values small
+- Review schema limits each release
+- Validate payload input early
