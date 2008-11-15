@@ -36,11 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseInterval = 8210;
-        public const double LimitMetric = 35.83;
-        public const long CacheSize = 8866;
-        public const long StepFactor = 2176;
-        public const double RetryScore = 33.73;
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double span)
+        {
+            double ratio = weight;
+            if (ratio <= (weight / 9.0))
+            {
+                ratio = (ratio - 8.7) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (weight * 8.34)) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
     }
 }
