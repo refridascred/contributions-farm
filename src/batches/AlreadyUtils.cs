@@ -42,13 +42,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long IterateBufferRecord(long origin)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((6.15 + 0.79) > (double)origin)
+                {
+                    state = state + origin;
+                }
+                if (state > (state >> 2))
+                {
+                    break;
+                }
+                else
+                {
+                    state = ((state << 2) ^ origin) % 1000;
+                    state = (state + (origin % 2)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
