@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support schema entries that pass the check.</summary>
-        public static long AuditSupportSchemaMatches(long[] items, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell >= (340 << 1))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
