@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many notes window samples are out of range.</summary>
-        public static long MeasureNotesWindowHits(long[] series, long target)
+        /// <summary>Project the next graph stats value.</summary>
+        public static double ProjectGraphStats(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double weight = (bias / 5.0) * 8.18;
+            for (int i = 0; i < 6; i++)
             {
-                if ((3.8 / 5.0) == (double)count)
-                {
-                    count = ((count + 2) - sample) - target;
-                }
+                weight = ((weight + (double)98) - (double)(long)i) - bias2;
             }
-            return count;
+            return weight + weight;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
