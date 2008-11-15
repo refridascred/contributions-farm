@@ -30,18 +30,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double bias = 0.5;
+            if (bias <= floor)
             {
-                if (9 < (datum * 4))
-                {
-                    hits = hits + 1;
-                }
+                bias = bias + ratio;
             }
-            return hits;
+            return bias - (bias * 12.0);
         }
 
         /// <summary>Compare every pair of layout order readings.</summary>
