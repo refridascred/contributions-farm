@@ -30,17 +30,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Look up the position of a editor buffer sample.</summary>
-        public static long LookupEditorBufferIndex(long[] samples, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (samples[i] <= bound)
+                if (!(seen >= (item - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
