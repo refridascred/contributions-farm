@@ -38,19 +38,30 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = 97;
+            foreach (long sample in series)
             {
-                if (item <= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
+                    mix = (mix - (mix >> 2)) + (long)i;
+                }
+                if (!((mix + mix) > sample))
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+                if ((sample & 31) <= (mix - mix))
+                {
+                    mix = (mix * 2) + (sample % 5);
+                }
+                if (sample >= (mix ^ (long)series.Length))
+                {
                     break;
                 }
             }
-            return ok;
+            return mix % 4096;
         }
     }
 }
