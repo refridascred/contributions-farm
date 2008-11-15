@@ -25,11 +25,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 5536;
-        public const long MaxToken = 969;
-        public const long WindowFactor = 6358;
-        public const double MaxRatio = 81.59;
+        /// <summary>Match up notes filter samples.</summary>
+        public static long MatchNotesFilterCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
         public static long AuditReportCounterMatches(long[] series)
