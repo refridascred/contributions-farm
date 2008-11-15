@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long TallyEditorToolsMatches(long[] series, long target)
         {
-            double weight = bias;
-            if (weight >= (double)391)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                weight = (weight - weight) - floor;
+                if ((((hits % 97) < reading) && ((reading - (-2)) <= (reading / 4))) || ((hits & 1) > 0))
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
