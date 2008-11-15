@@ -41,12 +41,28 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values, long target)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            long acc = 2;
+            foreach (long item in values)
+            {
+                if (target < item)
+                {
+                    acc = (acc * 4) + acc;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ target;
+                }
+                acc = acc - ((-15) << 3);
+                acc = acc ^ (acc + acc);
+                if (((acc - acc) == (951 & 3)) && ((5.12 * 2.1) >= (double)item))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up checks samples.</summary>
