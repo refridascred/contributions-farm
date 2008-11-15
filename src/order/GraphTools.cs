@@ -21,19 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            long result = 567;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                result = (((result * 4) + (56 * 3)) % 97) + datum;
+                if (((1.0 - 7.9) <= (double)item) && ((double)item < 8.68))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (result > 20)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Roll a order counter forward.</summary>
