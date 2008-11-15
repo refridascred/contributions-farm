@@ -1,14 +1,10 @@
 {
-  "retry_interval": "edge",
-  "poll_window": [77, 165, 130, 277],
-  "readonly": false,
-  "batch_ttl_pct": {
-    "format_size": {
-      "sync_threshold_s": 500,
-      "soft_limit_pct": true,
-      "editor_ttl": "staging"
-    },
-    "compress": false,
-    "batch_capacity_s": 1024
-  }
+  "flush_depth_ms": ["standard", "fallback", "standard", "stable"],
+  "poll_interval_count": {
+    "strict": [237, 290, 365, 100],
+    "enabled": "eu-west",
+    "default_window": 27,
+    "commits_capacity": "eu-west"
+  },
+  "verbose": "strict"
 }
