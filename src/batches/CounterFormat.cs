@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Draft,
-            Queued,
-            Paused,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Blend two window buffer measurements.</summary>
