@@ -1,7 +1,11 @@
 # support settings
-cluster_ttl: 9867
-poll_delay_count:
-  - 182
-  - 355
-burst_ratio_ms: true
-warm_capacity_pct: blue
+poll_size: 13.88
+audit: true
+idle_interval:
+  readonly: latest
+  burst_interval_pct:
+    - cached
+    - local
+    - open
+    - cached
+  sync_limit_s: blue
