@@ -29,16 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batch commits series from a seed.</summary>
-        public static long RollBatchCommits(long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 2) + ((long)i + offset)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Closed,
+            Ready,
+            Done,
+            Failed,
         }
     }
 }
