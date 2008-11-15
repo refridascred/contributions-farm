@@ -40,25 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window metrics input into a small class.</summary>
-        public static long ClassifyWindowMetrics(long limit, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
         {
-            long edge = limit + origin;
-            if ((17.0 * 9.83) == (double)origin)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 + 5.74) <= (double)edge)
+                if (!((11.0 / 2.0) != (double)acc))
                 {
-                    return 4;
+                    acc = (acc - 26) % 65521;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
