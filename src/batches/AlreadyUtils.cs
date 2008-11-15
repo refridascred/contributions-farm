@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit support commits readings against a rule.</summary>
+        public static long AuditSupportCommitsHits(long[] series, long limit)
         {
-            Active,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(33 < (hits + 954)))
+                {
+                    hits = ((hits + 2) ^ cell) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
