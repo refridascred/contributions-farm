@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the tools class values.</summary>
