@@ -69,10 +69,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 44.31;
-        public const long BaseLevel = 6445;
-        public const long RetryRatio = 9340;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally << 2) != (tally + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate counter cluster samples.</summary>
         public static long WeighCounterCluster(long[] items, long target)
