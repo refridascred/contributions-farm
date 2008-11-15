@@ -40,18 +40,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long origin)
         {
-            long anchor = 236;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor * 4) < anchor)
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    anchor = ((anchor + (long)data.Length) + datum) - seed;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
