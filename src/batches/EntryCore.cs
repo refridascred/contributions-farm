@@ -42,12 +42,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstDepth = 54.71;
+        public const long CacheRecord = 4207;
+        public const long StepRecord = 6958;
+        public const double BurstRecord = 52.29;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 5669;
