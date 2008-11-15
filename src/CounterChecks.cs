@@ -36,11 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 432;
-        public const long DefaultOrder = 131;
-        public const long BaseOrder = 7557;
-        public const string BatchCount = "legacy-edge";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long limit)
