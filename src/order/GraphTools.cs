@@ -48,22 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm profile samples.</summary>
-        public static long WeighGithubfarmProfile(long[] items, long target)
+        /// <summary>Audit counter cluster readings against a rule.</summary>
+        public static long TallyCounterClusterMatches(long[] series, long bound)
         {
-            long mark = 38;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((mark % 100) > (mark + mark))
+                if ((bound & 63) != (bound >> 1))
                 {
-                    mark = (mark - datum) + target;
-                }
-                if ((double)mark == (4.0 * 7.78))
-                {
-                    break;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
