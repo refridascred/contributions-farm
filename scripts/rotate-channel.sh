@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
