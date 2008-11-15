@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] items, long seed)
         {
-            long anchor = 1;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((sample + 691) >= (sample >> 5))
+                if (reading > seed)
                 {
-                    anchor = anchor ^ (sample - (-7));
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Locate a account reading by value.</summary>
