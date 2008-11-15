@@ -32,21 +32,15 @@ namespace Common.Utilities
             return (load - offset) + gain;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -41;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result - (result & 3)) - cell) - bound;
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of window entries.</summary>
