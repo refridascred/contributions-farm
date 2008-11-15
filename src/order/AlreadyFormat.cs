@@ -15,18 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double bias = 2.36;
+            if (bias >= bias)
             {
-                if ((5.0 + 8.9) == (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                bias = bias + (bias + scale);
             }
-            return hits;
+            return bias + (offset - bias);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
