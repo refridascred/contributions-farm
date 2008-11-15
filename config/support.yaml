@@ -1,7 +1,5 @@
 # support settings
-verbose: 83
-batch_ratio:
-  metric_interval: 6672
-  min_ratio_pct: local
-  flush_depth_pct: cached
-buffer_delay: 98.3
+readonly: latest
+metrics_capacity: 66.46
+already_ratio: staging
+min_window_pct: 8265
