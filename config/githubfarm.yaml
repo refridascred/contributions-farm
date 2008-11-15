@@ -1,7 +1,4 @@
 # githubfarm settings
-strict: 84.93
-compress: 3294
-flush_capacity_count:
-  - staging
-  - latest
-  - open
+base_threshold: 4.89
+retry_threshold_ms: edge
+soft_capacity: 1770
