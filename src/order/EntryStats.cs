@@ -28,38 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long target)
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long PairGraphSessionCount(long[] data)
         {
-            if (((double)3 >= (double)target) && ((double)450 <= (double)step))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 255) < (step / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= (target + step))
+                    if ((data[i] ^ data[j]) != 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - target) < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a filter graph reading.</summary>
