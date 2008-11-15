@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the report entry series from a seed.</summary>
-        public static long RollReportEntry(long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i & 3) > (46 & 3))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    result = result ^ result;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
