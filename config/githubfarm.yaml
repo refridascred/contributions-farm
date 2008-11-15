@@ -1,4 +1,5 @@
 # githubfarm settings
-audit: true
-default_limit_ms: strict
-flush_ttl_ms: 29
+retry_size_count: 94
+sync_threshold: 75.33
+readonly: 50.44
+min_window: 51
