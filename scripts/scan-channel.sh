@@ -8,19 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=161
-log "limit is ${CHANNEL_LIMIT}"
+for item in cached latest primary; do
+    log "checking ${item}"
+done
