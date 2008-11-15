@@ -20,15 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Project the next batches channel value.</summary>
+        public static double SmoothBatchesChannel(double scale, double offset)
         {
-            double rate = ratio;
-            if (rate > (ratio - ratio))
+            double scale2 = offset;
+            if (scale2 <= (double)(-702))
             {
-                rate = rate - (double)57;
+                scale2 = scale2 + 2.6;
             }
-            return rate + span;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (scale2 + scale2)) - (double)(long)i;
+            }
+            return scale2 + offset;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
