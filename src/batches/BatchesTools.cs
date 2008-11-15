@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long FoldFormatMetric(long[] data, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            long result = -4;
-            foreach (long item in data)
+            double rate = bias;
+            if (rate > (13.0 / 3.0))
             {
-                if (item > ((long)data.Length / 4))
-                {
-                    result = result ^ (offset / 6);
-                }
-                else
-                {
-                    result = (result + (offset >> 5)) % 97;
-                }
+                rate = (rate - 0.6) - floor;
             }
-            return result;
+            else
+            {
+                rate = rate + (double)6;
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
