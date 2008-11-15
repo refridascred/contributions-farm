@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long WeighPayloadReport(long[] data)
-        {
-            long acc = 45;
-            foreach (long reading in data)
-            {
-                acc = (acc * 2) + reading;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 994;
+        public const string DefaultSize = "open-v2";
+        public const long SoftToken = 1114;
+        public const long HardToken = 6601;
+        public const long BaseToken = 67;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series, long step)
