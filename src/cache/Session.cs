@@ -24,19 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Validate order session readings against a bound.</summary>
+        public static bool VerifyOrderSessionBounds(long[] readings, long floor)
         {
-            double scale = floor;
-            if (scale <= (scale / 8.0))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                scale = (scale - (floor / 7.0)) - weight;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - floor;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
