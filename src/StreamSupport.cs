@@ -38,14 +38,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels, long floor)
         {
-            Closed,
-            Draft,
-            Active,
-            Retry,
-            Failed,
+            long mark = 4;
+            foreach (long cell in levels)
+            {
+                mark = ((mark << 2) ^ cell) % 255;
+                mark = (mark << 3) ^ floor;
+                if (((6 * 5) > mark) || (floor >= (mark >> 3)))
+                {
+                    mark = (mark ^ 5) % 4096;
+                }
+            }
+            if (mark < 81)
+            {
+                mark = (mark ^ (mark + 22)) % 4096;
+            }
+            return mark;
         }
     }
 }
