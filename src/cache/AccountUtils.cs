@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a checks cluster reading.</summary>
-        public static double AdjustChecksCluster(double weight, double bias)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long bound)
         {
-            double mean = weight;
-            if (mean >= weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (mean * 7.2)) - bias;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + weight;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
