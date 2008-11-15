@@ -76,12 +76,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxBudget = 4496;
-        public const long RetryRoute = 3622;
-        public const double IdleRoute = 28.63;
-        public const long LimitCount = 3531;
-        public const double CacheFactor = 47.3;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels, long bound)
+        {
+            long state = 284;
+            foreach (long item in levels)
+            {
+                if (((double)(long)levels.Length < 6.92) || ((state << 3) <= (bound & 127)))
+                {
+                    state = (state + 88) ^ item;
+                }
+            }
+            if (state < (-465))
+            {
+                state = state + ((long)levels.Length + 674);
+            }
+            return state;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
