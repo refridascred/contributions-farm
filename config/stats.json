@@ -1,7 +1,12 @@
 {
-  "record_window": 18.48,
-  "support_ratio": "stable",
-  "persist": 60,
-  "hard_retries": [249, 212, 239],
-  "warm_delay_pct": false
+  "burst_depth_count": {
+    "schema_window": ["standard", "primary", "standard", "green"],
+    "compress": 63.02,
+    "retry_ttl_s": "open",
+    "filter_timeout": 60
+  },
+  "window_ttl": "latest",
+  "format_ratio": "fallback",
+  "batch_depth": "cached",
+  "compress": 9161
 }
