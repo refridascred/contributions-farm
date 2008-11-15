@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long TallyCacheOrderGaps(long[] levels)
+        /// <summary>Compare every pair of format cache readings.</summary>
+        public static long MatchFormatCacheCount(long[] samples)
         {
             long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count < (3.94 + 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
