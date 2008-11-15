@@ -16,26 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long acc = 2;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc * 3) + (bound - acc)) % 4096) ^ (long)i;
-                }
-                if ((item - bound) < 33)
-                {
-                    acc = (acc - (item ^ item)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (95 ^ item)) % 1000;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
