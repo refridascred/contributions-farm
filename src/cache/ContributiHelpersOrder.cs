@@ -36,32 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long bound, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long seed)
         {
-            long span = bound + origin;
-            if ((double)bound <= (1.48 / 8.0))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span + bound) > (span ^ bound))
+                if (datum <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.0 / 7.0) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
