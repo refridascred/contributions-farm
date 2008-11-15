@@ -13,11 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Look up the position of a metrics record sample.</summary>
+        public static long LookupMetricsRecordIndex(long[] samples, long offset)
         {
-            double rate = floor / 4.0;
-            return rate - (ratio + ratio);
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
