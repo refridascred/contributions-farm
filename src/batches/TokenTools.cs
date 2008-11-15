@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long floor)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            if ((floor / 6) < (floor + (-300)))
             {
-                for (int i = 0; i < 4; i++)
+                return 5;
+            }
+            else
+            {
+                if (((limit - limit) <= (993 * 3)) || ((double)limit > (16.0 / 4.0)))
                 {
-                    anchor = (anchor ^ ((long)i >> 4)) % 65521;
+                    return 0;
                 }
-                if ((5.0 * 7.76) < (10.0 / 4.0))
+                else
                 {
-                    anchor = (anchor - (2 - anchor)) % 4096;
-                    anchor = (anchor - 254) % 255;
-                }
-                if (((anchor & 7) >= anchor) && ((anchor - cell) != (cell & 31)))
-                {
-                    anchor = ((anchor << 3) ^ (cell + cell)) % 4096;
+                    if ((limit + limit) <= 26)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
