@@ -55,32 +55,17 @@ namespace Common.Utilities
         public const long MinLayout = 7752;
         public const long BurstLayout = 479;
 
-        /// <summary>Classify a profile window pair into a bucket.</summary>
-        public static long BucketProfileWindow(long offset, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long seed)
         {
-            long diff = offset ^ bound;
-            if (((diff - diff) != (offset * 4)) || ((diff / 5) <= offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff * 2) == (offset - diff))
+                if (series[i] < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (diff > (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
