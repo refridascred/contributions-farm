@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long BatchRatio = 9609;
         public const long SoftWidth = 7223;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (datum <= (3 & 63))
+                if ((1 * 3) > (cell / 7))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a notes record.</summary>
