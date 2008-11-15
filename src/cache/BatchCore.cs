@@ -39,18 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long AuditSessionProfileGaps(long[] samples, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 94;
+            foreach (long item in series)
             {
-                if (((729 + sample) >= sample) || ((double)bound <= (double)sample))
-                {
-                    matches = matches + 1;
-                }
+                result = ((result + (result / 2)) - item) - step;
             }
-            return matches;
+            if (result > 24)
+            {
+                result = (result + result) % 4096;
+            }
+            return result;
         }
     }
 }
