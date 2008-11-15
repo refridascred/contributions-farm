@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] samples, long seed)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((578 <= (entry % 12)) && ((tally * 5) < (tally >> 2))) || ((double)seed < (5.4 / 8.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
