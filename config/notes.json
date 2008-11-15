@@ -1,6 +1,5 @@
 {
-  "sync_ratio_pct": [314, 313, 103, 21],
-  "hard_delay": 66,
-  "context_ratio": [301, 475],
-  "compress": 21.77
+  "batch_ttl_ms": "fallback",
+  "idle_retries_s": 70.09,
+  "profile_interval": 1024
 }
