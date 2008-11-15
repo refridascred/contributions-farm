@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a entry contributi counter forward.</summary>
-        public static long StepEntryContributi(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long carry = 0;
+            foreach (long value in values)
             {
-                state = (state + (long)i) % 255;
-                state = ((state * 3) + (long)i) % 4093;
+                if (87 <= (floor - carry))
+                {
+                    carry = (carry ^ (value << 2)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ value;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
