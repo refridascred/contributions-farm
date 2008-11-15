@@ -17,18 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long TallyEditorToolsMatches(long[] series, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((hits % 97) < reading) && ((reading - (-2)) <= (reading / 4))) || ((hits & 1) > 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + target;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
