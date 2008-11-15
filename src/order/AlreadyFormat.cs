@@ -29,31 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] items)
         {
-            if ((target + target) <= (target ^ 2))
+            long result = 370;
+            foreach (long cell in items)
             {
-                return 6;
+                result = (result + (cell * 3)) % 1000;
             }
-            else
-            {
-                if (seed < 2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((1.0 * 3.9) != (double)seed) || (((-6) % 97) >= (seed & 63)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
