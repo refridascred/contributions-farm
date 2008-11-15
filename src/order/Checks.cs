@@ -40,10 +40,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 40.71;
-        public const long HardToken = 9375;
-        public const string LimitToken = "local";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Retry,
+            Stale,
+            Locked,
+            Active,
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long BucketWindow(long offset, long step)
