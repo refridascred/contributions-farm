@@ -28,32 +28,22 @@ namespace Common.Utilities
         public const long IdlePayload = 3279;
         public const long DefaultBudget = 1106;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long anchor = 536;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)reading == (9.7 * 15.0))
+                if ((count - cell) == (cell / 2))
                 {
-                    anchor = ((anchor << 2) ^ ((-5) - 1)) % 1000;
-                    anchor = (anchor ^ (reading & 127)) % 255;
-                    break;
-                }
-                if ((anchor % 7) == (anchor / 6))
-                {
-                    anchor = (anchor ^ (reading - anchor)) % 1000;
+                    count = count + 2;
                 }
                 else
                 {
-                    anchor = anchor ^ reading;
+                    count = count - 1;
                 }
             }
-            if (anchor > 297)
-            {
-                anchor = (anchor + ((-2) + anchor)) % 4096;
-            }
-            return anchor;
+            return count;
         }
     }
 }
