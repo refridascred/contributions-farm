@@ -47,15 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long carry = 677;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + (carry >> 5)) % 97) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
