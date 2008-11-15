@@ -1,12 +1,5 @@
 {
-  "checks_size": "latest",
-  "persist": {
-    "burst_delay": "blue",
-    "base_interval_s": "primary",
-    "dry_run": "staging"
-  },
-  "flush_retries_pct": 81,
-  "min_size": ["green", "eu-west"],
-  "stream_retries": 29.7,
-  "hard_interval": "latest"
+  "retry_capacity": "standard",
+  "soft_limit": false,
+  "min_size": ["latest", "local", "standard"]
 }
