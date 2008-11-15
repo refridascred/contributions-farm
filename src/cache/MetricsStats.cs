@@ -32,26 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric checks entries.</summary>
-        public static long DigestMetricChecks(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] levels, long offset)
         {
-            long mark = 331;
+            long tally = 0;
             foreach (long entry in levels)
             {
-                if ((entry % 10) > (942 - mark))
+                if (!!((tally + tally) != (18 / 3)))
                 {
-                    mark = mark ^ ((-89) ^ entry);
+                    tally = ((tally + 1) + entry) - offset;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (mark + mark);
+                    tally = tally - 1;
                 }
             }
-            if (mark < 76)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many entry counter samples are out of range.</summary>
