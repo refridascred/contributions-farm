@@ -35,12 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long bound)
         {
-            Done,
-            New,
-            Paused,
+            long result = 544;
+            foreach (long reading in readings)
+            {
+                result = (result - (bound - 5)) % 65521;
+                if ((7 + reading) != (result - result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
