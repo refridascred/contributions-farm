@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] readings, long offset)
+        /// <summary>Fold a list of format already readings.</summary>
+        public static long TallyFormatAlready(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 95;
+            foreach (long item in values)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                if (!((7 - item) > score))
                 {
-                    return (long)i;
+                    score = score - (score + item);
+                }
+                if (item < (score & 15))
+                {
+                    score = score + (score - item);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate contributi route readings against a bound.</summary>
