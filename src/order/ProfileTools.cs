@@ -39,22 +39,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches + floor) != (matches ^ matches))
+                if (total <= (offset ^ total))
                 {
-                    matches = (matches + 1) + value;
+                    total = ((total * 4) + (offset << 3)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ (553 + total)) % 4096;
                 }
+                total = ((total << 3) ^ (offset & 255)) % 65521;
+                if ((total / 5) >= (offset >> 2))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
