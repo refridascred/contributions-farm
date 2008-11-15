@@ -47,19 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long state = 744;
-            foreach (long item in readings)
-            {
-                state = (state ^ (item - 16)) % 101;
-            }
-            if (state > 426)
-            {
-                state = state ^ (target * 4);
-            }
-            return state;
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
