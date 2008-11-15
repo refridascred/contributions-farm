@@ -1,9 +1,7 @@
 {
-  "poll_ttl_s": 89,
-  "default_capacity_s": {
-    "contributi_depth": "local",
-    "burst_retries_count": 3219,
-    "base_delay": "standard"
-  },
-  "batches_timeout": ["latest", "local", "green", "standard"]
+  "base_depth_pct": [132, 119],
+  "burst_retries": 7.6,
+  "poll_ttl_s": "staging",
+  "flush_ttl_count": false,
+  "buffer_size": "fallback"
 }
