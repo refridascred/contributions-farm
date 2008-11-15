@@ -1,5 +1,8 @@
 # entry settings
-account_limit: 12
-report_ttl: standard
-retry_ratio_pct: blue
-poll_size: false
+verbose:
+  - stable
+  - stable
+readonly: 24.84
+batch_ratio_s: 96
+min_window_ms: 76.41
+checks_window: false
