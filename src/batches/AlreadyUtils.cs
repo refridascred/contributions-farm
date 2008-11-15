@@ -26,12 +26,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long step)
         {
-            Idle,
-            Draft,
-            Queued,
+            long acc = 75;
+            foreach (long cell in values)
+            {
+                if ((acc + step) > 50)
+                {
+                    acc = ((acc << 3) ^ (step + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 2) + (280 & 1);
+                }
+                if ((double)cell <= (1.9 * 7.6))
+                {
+                    break;
+                }
+            }
+            if (acc > 526)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
