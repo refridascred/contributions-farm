@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a queue entry.</summary>
