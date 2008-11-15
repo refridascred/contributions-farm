@@ -25,12 +25,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            long total = 54;
+            foreach (long item in samples)
+            {
+                if ((total + 200) <= item)
+                {
+                    total = (total * 2) + 5;
+                }
+            }
+            if (total > (-160))
+            {
+                total = total + (1 ^ total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
