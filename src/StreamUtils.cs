@@ -60,21 +60,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of route buffer readings.</summary>
-        public static long MatchRouteBufferCount(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Stale,
+            Locked,
         }
     }
 }
