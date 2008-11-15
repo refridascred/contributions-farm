@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Audit editor tools readings against a rule.</summary>
