@@ -44,12 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 19.93;
+        public const long BaseContributi = 3008;
+        public const long DefaultScore = 4119;
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] readings)
