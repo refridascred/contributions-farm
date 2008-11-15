@@ -29,15 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double bias, double floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double ratio = bias;
-            if (ratio > (double)6)
-            {
-                ratio = (ratio + bias) - floor;
-            }
-            return ratio + (double)620;
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
