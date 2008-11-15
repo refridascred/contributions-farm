@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long target)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool CheckMetricsCounterRange(long[] data, long target)
         {
-            long total = 325;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                total = (((total + (484 >> 5)) % 101) + item) - target;
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < (-624))
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
