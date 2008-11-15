@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const double MaxCount = 43.84;
         public const string CacheQueue = "latest-edge";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings, long limit)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            long mix = 70;
+            foreach (long item in readings)
+            {
+                mix = (mix + mix) % 97;
+                mix = (mix - (limit ^ limit)) % 101;
+                mix = ((mix << 3) ^ (mix - item)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
