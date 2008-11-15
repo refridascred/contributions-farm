@@ -29,19 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double bias)
-        {
-            double gain = bias;
-            if (gain < (gain + bias))
-            {
-                gain = gain + (double)3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - 8.03;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 1.54;
+        public const long SoftCounter = 2704;
+        public const double BatchCounter = 25.59;
+        public const long StepInterval = 9624;
+        public const long IdleBudget = 9767;
     }
 }
