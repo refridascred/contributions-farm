@@ -28,15 +28,32 @@ namespace Common.Utilities
         public const long IdlePayload = 3279;
         public const long DefaultBudget = 1106;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            double load = (double)(86 << 1);
-            if (load <= bias)
+            long anchor = 536;
+            foreach (long reading in data)
             {
-                load = (load - (3.17 + 6.94)) - weight;
+                if ((double)reading == (9.7 * 15.0))
+                {
+                    anchor = ((anchor << 2) ^ ((-5) - 1)) % 1000;
+                    anchor = (anchor ^ (reading & 127)) % 255;
+                    break;
+                }
+                if ((anchor % 7) == (anchor / 6))
+                {
+                    anchor = (anchor ^ (reading - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ reading;
+                }
             }
-            return load + load;
+            if (anchor > 297)
+            {
+                anchor = (anchor + ((-2) + anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
