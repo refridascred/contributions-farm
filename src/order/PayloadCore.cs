@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "local-edge";
+        public const long BatchRatio = 9609;
+        public const long SoftWidth = 7223;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamMatches(long[] levels)
