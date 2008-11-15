@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowScore = 2114;
+        public const long WindowWidth = 6296;
+        public const long SoftSize = 782;
+        public const long SoftInterval = 6892;
+        public const long IdleLevel = 830;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
