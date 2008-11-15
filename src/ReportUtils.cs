@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Pending,
-            Active,
-            Failed,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
