@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long TotalRecordBatch(long[] items)
-        {
-            long result = 83;
-            foreach (long entry in items)
-            {
-                if ((62 & 3) < (result & 31))
-                {
-                    result = ((result << 2) ^ (result - entry)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (result & 3)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseWidth = 5143;
+        public const double BurstSize = 90.6;
+        public const double LimitGithubfarm = 10.34;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
