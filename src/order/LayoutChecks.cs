@@ -21,19 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= origin)
+                if (items[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
