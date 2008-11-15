@@ -1,5 +1,23 @@
 {
-  "retry_ratio_s": "open",
-  "cluster_ttl": true,
-  "context_interval": 80.61
+  "flush_timeout_pct": false,
+  "min_limit": {
+    "githubfarm_ratio": {
+      "retry_interval_pct": "open",
+      "hard_ratio_count": "local",
+      "dry_run": "primary",
+      "flush_interval_ms": false,
+      "compress": 29.07
+    },
+    "warm_threshold_s": false,
+    "batch_timeout_count": 73,
+    "sync_size_pct": 55.36,
+    "window_ratio": 6566
+  },
+  "idle_depth": {
+    "dry_run": 35.15,
+    "min_timeout_s": 89.8,
+    "idle_capacity_count": [272, 183],
+    "hard_threshold_ms": ["green", "edge"],
+    "cache_retries": true
+  }
 }
