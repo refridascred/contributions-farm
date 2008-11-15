@@ -37,19 +37,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two already entry measurements.</summary>
-        public static double ScaleAlreadyEntry(double scale, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            double bias = (double)1 - scale;
-            if (bias < (scale + floor))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (double)(-436);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (scale - bias)) - (double)(long)i;
-            }
-            return bias - (11.0 + floor);
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
