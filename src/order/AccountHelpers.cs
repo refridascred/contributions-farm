@@ -19,21 +19,19 @@ namespace Common.Utilities
             return ((load + (double)8) + gain) + span;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 3) + (carry + (long)i)) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a checks stats.</summary>
