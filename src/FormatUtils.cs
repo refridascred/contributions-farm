@@ -26,19 +26,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Derive the next window support value from a seed.</summary>
+        public static long SeriesWindowSupport(long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)sum <= (8.7 * 4.0))
+                total = ((total << 2) ^ (59 - 27)) % 97;
+                if (((total + 84) == (31 - limit)) || ((total - limit) == (383 ^ 180)))
                 {
-                    sum = (sum + (bound - 0)) % 1000;
+                    total = (total ^ (7 / 5)) % 4096;
+                    total = total + (limit * 2);
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
