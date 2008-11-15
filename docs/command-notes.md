@@ -1,11 +1,15 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the stream list.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often payload data is refreshed.
+Use channel settings to tune how often payload data is refreshed.
+Use entry settings to tune how often report data is refreshed.
+
+When a commits fails, the report handler retries a few times before giving up.
+Keep payload and commits names short and lowercase.
 
 ## Guidelines
 
-- Keep record values small
-- Log every command change
-- Prefer order defaults
-- Validate checks input early
+- Prefer batch defaults
+- Validate tools input early
+- Log every notes change
+- Document new queue fields
