@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings, long origin)
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long TallySupportCommandGaps(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((12 < origin) && !((18.0 / 4.0) > (double)count))
+                if ((((long)values.Length + origin) >= origin) && ((double)origin <= 5.82))
                 {
-                    count = (count + 1) ^ datum;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
