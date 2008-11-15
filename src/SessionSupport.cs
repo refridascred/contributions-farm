@@ -30,14 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long origin)
         {
-            New,
-            Idle,
-            Retry,
-            Pending,
-            Draft,
+            long step = limit + origin;
+            if (((-60) + step) >= step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit & 63) >= (57 * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((656 + step) != (step / 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 63) > (limit + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
