@@ -55,11 +55,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate graph record samples.</summary>
+        public static long DigestGraphRecord(long[] readings)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 925;
+            foreach (long sample in readings)
+            {
+                if (acc > (acc * 4))
+                {
+                    acc = ((acc * 4) + (acc % 3)) ^ sample;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (-80)) % 97;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
