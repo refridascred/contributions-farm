@@ -33,10 +33,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultDepth = 87.51;
-        public const long MinCluster = 2362;
-        public const string RetryInterval = "stable-v2";
-        public const long RetryCluster = 6047;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Active,
+            Idle,
+            New,
+            Queued,
+            Ready,
+        }
     }
 }
