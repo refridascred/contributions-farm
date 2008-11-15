@@ -23,21 +23,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next layout filter value from a seed.</summary>
-        public static long IterateLayoutFilter(long seed)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                double load = 6.54;
-                double ratio = (load + load) / 7.0;
-                if ((double)(long)i < ratio)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ 42) % 97;
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
