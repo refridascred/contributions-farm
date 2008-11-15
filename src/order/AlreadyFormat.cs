@@ -29,11 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((step << 3) > (step - 975)) && !((11.0 / 7.0) > (double)entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
