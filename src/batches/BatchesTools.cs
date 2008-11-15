@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a route channel counter forward.</summary>
-        public static long StepRouteChannel(long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state * 2) + (target ^ 790);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
