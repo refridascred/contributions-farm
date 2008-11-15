@@ -13,19 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long AuditCounterEntryMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (matches <= (entry % 5))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 5532;
+        public const double BurstSize = 27.3;
+        public const long RetryWidth = 522;
+        public const string MinGithubfarm = "open";
+        public const long BaseInterval = 6896;
 
         /// <summary>Derive the next report profile value from a seed.</summary>
         public static long StepReportProfile(long floor)
