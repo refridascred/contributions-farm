@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const string WindowLevel = "open-v2";
         public const string CacheLevel = "legacy-edge";
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            New,
-            Paused,
-            Stale,
+            Failed,
+            Ready,
+            Done,
+            Synced,
             Dropped,
         }
 
