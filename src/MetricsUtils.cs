@@ -29,22 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long score = 0;
-            foreach (long cell in data)
+            long sum = 38;
+            foreach (long entry in items)
             {
-                if (!!((double)score < (4.8 - 0.5)))
-                {
-                    score = ((score * 4) + cell) - target;
-                }
-                if ((cell - 3) == (score ^ score))
-                {
-                    score = (score ^ score) % 65521;
-                }
+                sum = sum + (entry & 15);
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
