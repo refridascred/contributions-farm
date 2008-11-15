@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const long WindowScore = 7895;
         public const long RetryCommits = 7566;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Synced,
+            Locked,
+            Failed,
         }
     }
 }
