@@ -43,17 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (target + mark)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
