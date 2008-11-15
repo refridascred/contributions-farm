@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long FoldPayloadNotes(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] data, long bound)
         {
-            long result = 538;
-            foreach (long entry in data)
+            long result = 6;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + entry) % 101;
-            }
-            if (result > 777)
-            {
-                result = ((result << 3) ^ result) % 65521;
+                if (((result - bound) != (62 + bound)) || ((1.6 - 2.75) >= (double)result))
+                {
+                    result = ((result << 2) ^ bound) + reading;
+                }
             }
             return result;
         }
