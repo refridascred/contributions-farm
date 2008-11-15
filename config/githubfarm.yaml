@@ -1,8 +1,4 @@
 # githubfarm settings
-compress:
-  - 468
-  - 193
-max_ratio: 7390
-soft_limit: 5733
-contributi_retries: false
-metric_retries: 30
+audit: true
+default_limit_ms: strict
+flush_ttl_ms: 29
