@@ -60,19 +60,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] levels, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long total = 810;
+            foreach (long cell in data)
             {
-                if (cell < offset)
+                if ((total + 7) > total)
                 {
-                    flag = false;
-                    break;
+                    total = ((total + ((-91) * 3)) ^ cell) + origin;
                 }
             }
-            return flag;
+            return total % 1000;
         }
     }
 }
