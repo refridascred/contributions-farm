@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string WindowRoute = "latest-1";
         public const double MinRoute = 59.75;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
+        public static bool ValidateContextGithubfarmLimits(long[] values, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
