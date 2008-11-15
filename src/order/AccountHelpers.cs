@@ -34,13 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long total = -823;
+            foreach (long value in series)
+            {
+                total = ((total * 2) + (seed & 63)) % 101;
+                if (((value + value) == (seed / 5)) || ((102 + total) < (value * 5)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
