@@ -13,21 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
