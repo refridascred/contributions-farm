@@ -19,22 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double weight = (double)(8 ^ 6);
+            if (weight <= (double)3)
             {
-                if ((double)tally < (6.19 + 4.9))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + (rate * 5.1);
             }
-            return tally;
+            else
+            {
+                weight = weight + (rate - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (10.0 + weight)) - (double)(long)i;
+            }
+            return weight - (floor / 5.0);
         }
 
         /// <summary>Hold a notes record.</summary>
