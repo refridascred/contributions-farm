@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinRatio = 4.11;
+        public const long RetryWidth = 1275;
+        public const long SoftSpan = 2677;
+        public const long RetryLevel = 7588;
+        public const long BurstCommits = 6426;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
