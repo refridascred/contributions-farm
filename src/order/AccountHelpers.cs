@@ -47,15 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long sum = -859;
-            foreach (long sample in series)
-            {
-                sum = ((sum ^ (bound * 5)) % 4096) ^ sample;
-            }
-            return sum;
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Digest a series of support entries.</summary>
