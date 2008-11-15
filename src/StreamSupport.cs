@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mean + 7.4;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally & 63) == (tally >> 1))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Classify a buffer channel pair into a bucket.</summary>
