@@ -29,18 +29,25 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long diff = target - floor;
+            if (diff > (diff / 5))
             {
-                if (item > (count - count))
+                return 4;
+            }
+            else
+            {
+                if ((floor << 1) >= (target ^ floor))
                 {
-                    count = (count + 1) + bound;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
