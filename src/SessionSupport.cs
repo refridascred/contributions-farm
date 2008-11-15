@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinRatio = 4.11;
-        public const long RetryWidth = 1275;
-        public const long SoftSpan = 2677;
-        public const long RetryLevel = 7588;
-        public const long BurstCommits = 6426;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long bound)
+        {
+            if (((4.7 - 8.36) > (double)origin) || (bound >= (origin / 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 4) != (74 + 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((20.0 * 2.0) <= (double)origin) && (bound <= (260 / 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesMatches(long[] values)
