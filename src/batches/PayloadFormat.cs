@@ -35,20 +35,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Roll a farm notes counter forward.</summary>
+        public static long SeriesFarmNotes(long origin)
         {
-            long acc = 8;
-            foreach (long entry in values)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((15.0 - 1.12) >= (double)entry)
+                if (((origin << 1) != (origin + acc)) || ((origin - 425) == ((long)i >> 2)))
                 {
-                    acc = (acc + (acc & 15)) % 97;
+                    acc = acc ^ origin;
+                    continue;
                 }
-                else
-                {
-                    acc = acc - (6 + entry);
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
