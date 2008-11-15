@@ -54,19 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            double rate = (double)(4 - 20);
-            if (rate < scale)
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                rate = (rate + scale) + span;
+                sum = ((sum * 3) + entry) % 97;
             }
-            else
+            if (sum > 65)
             {
-                rate = rate + (scale / 8.0);
+                sum = (sum * 2) + (sum - sum);
             }
-            return rate + (double)9;
+            return sum;
         }
     }
 }
