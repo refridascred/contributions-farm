@@ -48,12 +48,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 4942;
+        public const long RetryToken = 1703;
+        public const double LimitToken = 29.26;
+        public const string BurstToken = "alpha-edge";
+        public const long BurstCount = 7921;
     }
 }
