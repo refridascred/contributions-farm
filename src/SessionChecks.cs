@@ -49,16 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Accumulate stats profile samples.</summary>
+        public static long TotalStatsProfile(long[] levels, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = 66;
+            foreach (long value in levels)
             {
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 3) + (long)i) % 97;
+                anchor = ((anchor ^ (value - anchor)) % 4096) + limit;
             }
-            return acc;
+            if (anchor > 38)
+            {
+                anchor = (anchor ^ 750) % 255;
+            }
+            return anchor;
         }
     }
 }
