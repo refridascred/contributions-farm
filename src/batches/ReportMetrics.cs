@@ -19,15 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long target)
         {
-            long mix = 83;
-            foreach (long value in data)
+            if ((target * 5) < (target + 512))
             {
-                mix = ((mix ^ 96) % 65521) - value;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)target >= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two buffer farm measurements.</summary>
