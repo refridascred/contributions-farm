@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
