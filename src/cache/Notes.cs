@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const long MinLayout = 7752;
         public const long BurstLayout = 479;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] items, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= bound)
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
