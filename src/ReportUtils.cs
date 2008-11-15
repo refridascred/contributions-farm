@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const string HardSize = "strict";
         public const long MinEntry = 3294;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                state = state ^ 0;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
