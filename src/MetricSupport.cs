@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] readings, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= origin)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    mark = (((mark << 3) ^ (target * 2)) % 65521) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
