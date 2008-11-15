@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long AuditGithubfarmRouteGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)offset < (double)tally)
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8478;
+        public const double SoftScore = 4.43;
+        public const long HardFactor = 8499;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
