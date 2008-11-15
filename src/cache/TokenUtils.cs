@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long MeasureEntryReportGaps(long[] items, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)items.Length <= (720 << 2)) && ((origin & 1) != (seen + sample)))
+                if (readings[i] <= offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
