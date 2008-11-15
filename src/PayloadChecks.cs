@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long FoldCacheCommits(long[] data, long offset)
-        {
-            long total = 431;
-            foreach (long item in data)
-            {
-                total = (((total ^ (33 - 59)) % 1000) + item) - offset;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinWidth = 2176;
+        public const string DefaultCount = "local-1";
+        public const long BatchSpan = 3565;
+        public const double RetrySpan = 56.85;
+        public const string WindowCount = "fallback-edge";
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamOutliers(long[] levels)
