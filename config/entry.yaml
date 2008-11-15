@@ -1,19 +1,35 @@
 # entry settings
-burst_size_ms:
-  verbose: open
-  readonly: stable
-  queue_delay: 86
-  metric_retries:
-    - open
-    - staging
-    - eu-west
-  compress:
-    - green
-    - fallback
-    - edge
-    - edge
-  soft_retries: 30
-batch_size_pct: false
-max_delay_pct: 35.03
-batch_limit: 44.12
-metrics_delay: 500
+min_size:
+  - 323
+  - 37
+default_limit: local
+hard_size_pct: 39.57
+entry_window: 56
+batch_size:
+  base_ratio: blue
+  warm_threshold:
+    idle_window: 55
+    strict: 56.55
+    audit: 53
+    filter_size: cached
+  warm_depth_count: 8243
+  readonly:
+    - 5
+    - 215
+    - 310
+    - 123
+  flush_limit_pct: 51.0
+  min_retries_ms: 51.93
+format_size:
+  checks_depth: staging
+  notes_ratio:
+    batch_delay_pct: stable
+    burst_depth_pct: 74
+    entry_delay: staging
+    poll_ttl_s: 30
+    default_ratio_count:
+      - cached
+      - green
+      - latest
+      - eu-west
+  base_depth_count: stable
