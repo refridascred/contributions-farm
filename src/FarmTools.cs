@@ -30,26 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long mix = -83;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry / 3) <= (mix + step)) && (step <= (mix % 16)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix ^ (mix / 9);
-                }
-                else
-                {
-                    mix = mix - (mix ^ step);
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix * 2) + (mix - mix);
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
