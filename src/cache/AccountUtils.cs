@@ -12,17 +12,12 @@ namespace Common.Utilities
             return (scale - (double)(-46)) + rate;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
