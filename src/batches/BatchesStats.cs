@@ -42,12 +42,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 4788;
+        public const double RetryFilter = 6.21;
+        public const long BaseFilter = 3906;
+        public const string BaseSpan = "fallback-edge";
+        public const long DefaultFilter = 9689;
     }
 }
