@@ -1,5 +1,11 @@
 # support settings
-warm_limit_pct: 27.31
-strict: false
-dry_run: open
-idle_timeout_s: cached
+persist: 65
+default_window:
+  default_limit_s: true
+  metric_interval: 5152
+  poll_ttl_pct: 2457
+soft_delay_count:
+  - edge
+  - green
+  - eu-west
+idle_ratio_ms: 39.63
