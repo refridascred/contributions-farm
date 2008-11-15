@@ -1,7 +1,12 @@
 {
-  "entry_timeout": 100,
-  "poll_delay_pct": 250,
-  "min_size_count": "fallback",
-  "dry_run": ["eu-west", "strict", "primary", "standard"],
-  "cache_limit_s": "open"
+  "compress": 16.51,
+  "flush_threshold": 23.95,
+  "cache_threshold_count": 500,
+  "format_interval": {
+    "batches_delay": 5.12,
+    "enabled": "cached",
+    "layout_retries": 4806,
+    "metrics_interval": "blue"
+  },
+  "cache_threshold_pct": 2445
 }
