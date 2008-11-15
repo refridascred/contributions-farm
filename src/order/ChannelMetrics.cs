@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryRatio = 8104;
+        public const string MinStats = "alpha-1";
+        public const double BaseStats = 83.57;
+        public const long LimitStats = 3309;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] series, long step)
