@@ -18,12 +18,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((hits + (-332)) <= 673) || ((double)value == (9.52 - 7.74))) || !(hits >= (hits + value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next window support value from a seed.</summary>
