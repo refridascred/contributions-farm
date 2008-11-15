@@ -1,8 +1,5 @@
 {
-  "burst_timeout": false,
-  "base_window_pct": "legacy",
-  "report_limit": "latest",
-  "hard_window_pct": ["stable", "local", "blue"],
-  "max_depth_pct": [486, 231, 490],
-  "persist": true
+  "audit": 4278,
+  "schema_ttl": "green",
+  "idle_retries": "legacy"
 }
