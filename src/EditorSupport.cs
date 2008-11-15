@@ -71,14 +71,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            New,
-            Stale,
-            Paused,
-            Retry,
-            Ready,
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
