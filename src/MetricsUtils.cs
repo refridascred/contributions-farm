@@ -64,21 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)hits != (7.3 + 6.4)))
                 {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + cell) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
