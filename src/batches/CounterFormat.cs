@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long BurstTools = 6387;
         public const long MinTools = 7554;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] series, long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen ^ entry) <= (seen & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
