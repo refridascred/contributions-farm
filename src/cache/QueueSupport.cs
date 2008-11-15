@@ -20,17 +20,14 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Look up the position of a record command sample.</summary>
-        public static long SeekRecordCommandIndex(long[] data, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
