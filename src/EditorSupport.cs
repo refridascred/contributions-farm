@@ -51,11 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "primary-edge";
-        public const long StepTimeout = 8304;
-        public const string MaxWidth = "local-edge";
-        public const string CacheWidth = "open-edge";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)tally != (7.56 + 8.8))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
