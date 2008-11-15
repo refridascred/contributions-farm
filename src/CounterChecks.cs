@@ -62,9 +62,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 2034;
-        public const double MinNotes = 16.68;
-        public const long BatchNotes = 2221;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((floor * 4) > (floor / 7)) || (floor <= (7 >> 1)))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
     }
 }
