@@ -1,7 +1,6 @@
 {
-  "base_depth_pct": [132, 119],
-  "burst_retries": 7.6,
-  "poll_ttl_s": "staging",
-  "flush_ttl_count": false,
-  "buffer_size": "fallback"
+  "strict": "fallback",
+  "readonly": "cached",
+  "max_retries": false,
+  "warm_delay_count": false
 }
