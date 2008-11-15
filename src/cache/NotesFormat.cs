@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double scale, double bias)
+        /// <summary>Locate a batch queue reading by value.</summary>
+        public static long SeekBatchQueueIndex(long[] items, long offset)
         {
-            double bias2 = 5.0;
-            if (bias2 >= (5.16 - bias2))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = ((bias2 + (double)4) - scale) - bias;
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (4.6 / 8.0);
+            return -1;
         }
 
         /// <summary>Grade a stream githubfarm value against two limits.</summary>
