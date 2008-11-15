@@ -20,11 +20,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long bound)
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            if ((double)seed < (1.34 * 9.8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (4.1 * 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) >= (375 & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric kind values.</summary>
