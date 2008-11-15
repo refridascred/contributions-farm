@@ -19,13 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            long sum = -23;
+            foreach (long reading in samples)
+            {
+                if (((double)reading >= (6.44 / 8.0)) || ((reading >> 4) <= step))
+                {
+                    sum = (sum + (step << 2)) % 65521;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum ^ (0 - step)) % 101) + (long)i;
+                }
+                sum = ((sum * 5) + (sum << 1)) % 97;
+            }
+            if (sum > 16)
+            {
+                sum = (sum << 3) ^ (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
