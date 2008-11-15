@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit metric tools readings against a rule.</summary>
+        public static long MeasureMetricToolsGaps(long[] readings)
         {
-            Pending,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.0 * 3.7) != (double)seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
