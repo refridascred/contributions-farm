@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            Retry,
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
