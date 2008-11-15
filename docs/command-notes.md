@@ -1,13 +1,10 @@
 # Command notes
 
-The format module keeps checks values in sync with the farm cache.
-A notes that stays idle for too long is moved to the cache list.
-
-A payload that stays idle for too long is moved to the window list.
-Use queue settings to tune how often account data is refreshed.
+The githubfarm module keeps profile values in sync with the batch cache.
+When a counter fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new account fields
-- Prefer payload defaults
+- Keep metrics values small
+- Prefer metric defaults
+- Log every batch change
