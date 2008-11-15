@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstDepth = 2475;
-        public const double MaxSpan = 36.58;
-        public const long CacheGithubfarm = 9311;
-        public const long RetryGithubfarm = 4384;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((3.5 - 6.3) >= (double)mix) && ((double)bound <= (20.0 * 5.5)))
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
+                    mix = (mix * 2) + (mix << 1);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
