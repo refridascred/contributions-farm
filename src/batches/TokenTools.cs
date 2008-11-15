@@ -51,13 +51,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long step)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long prev = seed ^ step;
+            if ((7.9 + 2.82) == (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((4.27 * 7.0) < (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((prev << 1) <= prev) && ((double)prev < (2.46 * 8.77)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
