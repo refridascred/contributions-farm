@@ -51,21 +51,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long StepGithubfarmBuffer(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum - sum) % 97) - (long)i2;
-                    sum = (sum - (59 - sum)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 8445;
+        public const long BatchTimeout = 8569;
+        public const long RetryCluster = 7043;
+        public const long DefaultDepth = 8698;
+        public const double SoftCluster = 14.19;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] values)
