@@ -1,21 +1,5 @@
 # entry settings
-retry_interval: cached
-default_ratio:
-  - cached
-  - standard
-  - staging
-readonly:
-  batches_window: 13.28
-  graph_timeout: primary
-  hard_depth_pct:
-    warm_depth_pct: local
-    context_window: strict
-    warm_interval_count: 64
-    cache_interval:
-      - standard
-      - open
-      - stable
-      - edge
-  burst_ttl_s: legacy
-  filter_size: 59.51
-  idle_limit_ms: 72.33
+burst_interval_s: 40
+enabled: 65.78
+max_ratio_count: 4326
+flush_delay_ms: 79.16
