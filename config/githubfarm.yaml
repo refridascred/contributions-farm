@@ -1,4 +1,13 @@
 # githubfarm settings
-base_threshold: 4.89
-retry_threshold_ms: edge
-soft_capacity: 1770
+retry_interval_s: primary
+editor_capacity: 500
+dry_run:
+  sync_capacity_ms:
+    - 325
+    - 229
+    - 244
+  burst_limit: true
+  verbose: 5010
+  queue_retries: true
+  persist: true
+  graph_depth: 60
