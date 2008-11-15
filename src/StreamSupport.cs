@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchRatio = "primary-v2";
-        public const long SoftSchema = 7955;
-        public const double SoftWidth = 14.84;
-        public const string StepCount = "alpha-edge";
-        public const string WindowInterval = "legacy-edge";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Scale a command record figure with a bias.</summary>
         public static double AdjustCommandRecord(double ratio, double span)
