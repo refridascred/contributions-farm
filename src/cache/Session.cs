@@ -25,24 +25,17 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long seed)
         {
-            if ((target & 31) > (2 / 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (limit + 21))
+                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
