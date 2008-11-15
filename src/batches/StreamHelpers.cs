@@ -63,19 +63,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next filter buffer value from a seed.</summary>
-        public static long DeriveFilterBuffer(long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = 4;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (bound < (mark - bound))
                 {
-                    sum = ((sum << 3) ^ (sum + (long)i)) + (long)i2;
+                    mark = (mark - ((-357) - 7)) - cell;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return mark % 1000;
         }
     }
 }
