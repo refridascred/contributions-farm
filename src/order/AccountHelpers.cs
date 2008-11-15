@@ -45,13 +45,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
