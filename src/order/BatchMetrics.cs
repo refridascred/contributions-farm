@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long offset)
+        /// <summary>Fold a list of filter context readings.</summary>
+        public static long TallyFilterContext(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long anchor = 115;
+            foreach (long value in items)
             {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + (value & 255)) - target;
             }
-            return stale;
+            return anchor % 97;
         }
 
         /// <summary>Roll a layout format counter forward.</summary>
