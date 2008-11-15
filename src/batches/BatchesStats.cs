@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "strict";
+        public const double BatchOrder = 58.3;
+        public const string HardOrder = "primary-v2";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordGaps(long[] values)
