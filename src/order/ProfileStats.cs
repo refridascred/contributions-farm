@@ -13,32 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long slot = offset ^ offset2;
-            if ((double)offset2 > (2.0 + 1.31))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((slot + slot) == (slot % 100)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot & 3) > 8)
+                    if ((data[i] - data[j]) != 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
