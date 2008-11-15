@@ -20,23 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next batches channel value.</summary>
-        public static double SmoothBatchesChannel(double scale, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double scale2 = offset;
-            if (scale2 <= (double)(-702))
-            {
-                scale2 = scale2 + 2.6;
-            }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (scale2 + scale2)) - (double)(long)i;
-            }
-            return scale2 + offset;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a window value against two limits.</summary>
