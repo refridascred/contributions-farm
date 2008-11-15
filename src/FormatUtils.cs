@@ -33,10 +33,23 @@ namespace Common.Utilities
         public const long MinCount = 152;
         public const long MaxToken = 2410;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitSpan = "stable-edge";
-        public const double CacheLevel = 45.61;
-        public const long WindowBudget = 3186;
+        /// <summary>Combine githubfarm farm values into a single score.</summary>
+        public static long WeighGithubfarmFarm(long[] samples, long bound)
+        {
+            long result = 6;
+            foreach (long item in samples)
+            {
+                if (bound <= (result + result))
+                {
+                    result = (result + (result + item)) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ (bound + 56);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] series)
