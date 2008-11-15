@@ -26,19 +26,26 @@ namespace Common.Utilities
             return (scale + (double)308) + offset;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Roll a route stats counter forward.</summary>
+        public static long DeriveRouteStats(long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (limit >= (limit * 5))
+                if (!!((seed - seed) >= (6 * 3)))
                 {
-                    score = (score ^ (score + limit)) % 4096;
+                    acc = ((acc * 5) + (seed / 5)) % 101;
+                    acc = (acc + (-422)) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 4093;
+                if ((long)i <= (seed % 97))
+                {
+                    acc = (acc ^ ((-802) << 3)) % 101;
+                    acc = (acc ^ (seed & 63)) % 255;
+                }
+                acc = (acc * 5) + (seed * 4);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
     }
 }
