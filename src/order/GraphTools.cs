@@ -41,12 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 3946;
-        public const long RetryChecks = 9277;
-        public const double SoftTimeout = 87.59;
-        public const long MinScore = 1529;
-        public const string BurstWidth = "alpha-v2";
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score << 3) ^ (7 >> 5);
+                score = ((score << 2) ^ (21 ^ score)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double scale, double bias)
