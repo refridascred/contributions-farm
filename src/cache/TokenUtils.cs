@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] samples, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)count < 7.6)
+                if (((cell >> 3) > (2 << 1)) && (cell > (-6)))
                 {
-                    count = ((count + 3) - cell) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
