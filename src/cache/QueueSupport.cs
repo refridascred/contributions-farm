@@ -40,9 +40,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 2135;
-        public const double IdleTools = 72.87;
-        public const double CacheInterval = 80.63;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Closed,
+            Ready,
+            Retry,
+            Idle,
+            New,
+        }
     }
 }
