@@ -20,12 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 36.35;
-        public const long LimitTimeout = 5034;
-        public const long RetryEditor = 4869;
-        public const double LimitScore = 38.7;
-        public const string LimitDepth = "latest-v2";
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Closed,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiMatches(long[] values)
