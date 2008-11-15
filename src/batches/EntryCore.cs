@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
