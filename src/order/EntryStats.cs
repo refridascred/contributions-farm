@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm cache readings.</summary>
-        public static long OverlapGithubfarmCacheCount(long[] data)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 7)
+                    if ((series[i] - series[j]) == 12)
                     {
                         matches = matches + 1;
                     }
