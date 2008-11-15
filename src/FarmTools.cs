@@ -34,21 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Fold a list of farm buffer readings.</summary>
+        public static long DigestFarmBuffer(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 758;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7.95 + 1.2) >= (double)result)
                 {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ entry) % 255;
+                }
+                if (((9.6 * 5.2) != (double)entry) && ((667 * 2) >= entry))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 6)
+            {
+                result = (result ^ (2 - result)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
