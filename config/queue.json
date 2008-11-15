@@ -1,8 +1,17 @@
 {
-  "max_delay": "primary",
-  "audit": "open",
-  "layout_timeout": "green",
-  "default_limit_pct": [464, 309, 274],
-  "warm_timeout_count": "stable",
-  "soft_ttl_count": 60
+  "idle_retries_ms": {
+    "default_size_pct": "stable",
+    "base_capacity_count": {
+      "session_threshold": 500,
+      "idle_capacity_pct": 49.09,
+      "format_limit": [163, 103, 203, 218],
+      "cache_threshold_count": ["staging", "fallback", "green"],
+      "sync_limit_count": "staging"
+    },
+    "cache_window_s": "latest",
+    "graph_timeout": false,
+    "hard_timeout_s": [401, 116, 246]
+  },
+  "flush_delay_count": "open",
+  "batch_capacity_pct": false
 }
