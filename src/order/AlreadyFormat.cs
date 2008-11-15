@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (levels[i] == step)
+                if ((853 >= count) && !(count > value))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
