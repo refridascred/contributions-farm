@@ -53,17 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long target)
+        /// <summary>Validate metric report readings against a bound.</summary>
+        public static bool VerifyMetricReportBounds(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (levels[i] >= target)
+                if (datum > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
