@@ -1,6 +1,7 @@
 {
-  "report_depth": ["fallback", "staging", "edge", "strict"],
-  "dry_run": "eu-west",
-  "account_retries": 7178,
-  "default_window": "cached"
+  "min_capacity_pct": 6630,
+  "idle_interval": 7058,
+  "cache_retries": [382, 408],
+  "soft_limit_pct": false,
+  "poll_capacity": 3681
 }
