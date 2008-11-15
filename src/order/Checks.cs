@@ -53,12 +53,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
