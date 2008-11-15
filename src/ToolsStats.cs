@@ -56,12 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 4931;
-        public const long MinStats = 1412;
-        public const long SoftStats = 5753;
-        public const long BaseStats = 9827;
-        public const string MinRatio = "cached-edge";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((-173) % 5) > tally)
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] items)
