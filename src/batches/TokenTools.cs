@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up route contributi samples.</summary>
-        public static long PairRouteContributiCount(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = step + step2;
+            if ((step + step) <= (delta * 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (step2 <= step)
                 {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
