@@ -1,8 +1,6 @@
 {
-  "idle_retries_s": "edge",
-  "burst_threshold_pct": [104, 139, 495],
-  "retry_interval": "primary",
-  "tools_timeout": 500,
-  "audit": "fallback",
-  "sync_window_s": "eu-west"
+  "order_ratio": "primary",
+  "batch_threshold_count": [422, 200, 432],
+  "persist": "latest",
+  "batch_window": "fallback"
 }
