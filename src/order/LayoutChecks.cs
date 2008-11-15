@@ -52,12 +52,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            Locked,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((9.8 + 4.6) > (double)count)
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next stats value.</summary>
