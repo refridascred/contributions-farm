@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double offset)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            double weight = bias;
+            if (weight > (1.19 - offset))
             {
-                if (anchor < (value & 255))
-                {
-                    anchor = (anchor - (value << 3)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor * 2)) % 4096;
-                }
-                if ((5.6 * 0.6) != (double)anchor)
-                {
-                    break;
-                }
+                weight = weight + weight;
             }
-            if (anchor > 5)
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor % 4096;
+            return weight - (bias + bias);
         }
 
         /// <summary>Define token limits and defaults.</summary>
