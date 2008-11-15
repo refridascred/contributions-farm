@@ -45,11 +45,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long carry = 913;
+            foreach (long cell in samples)
+            {
+                carry = (carry ^ (cell & 1)) % 255;
+                if ((double)carry < 2.18)
+                {
+                    carry = carry - (carry % 3);
+                }
+                else
+                {
+                    carry = (carry + cell) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
