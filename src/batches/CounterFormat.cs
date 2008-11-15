@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long BurstTools = 6387;
         public const long MinTools = 7554;
 
-        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
-        public static long CompareGraphEntryCount(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen ^ entry) <= (seen & 31))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
