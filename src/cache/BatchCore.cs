@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long origin)
+        /// <summary>Rank editor filter input into a small class.</summary>
+        public static long BucketEditorFilter(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin2 / 4) > (origin ^ origin))
             {
-                if (levels[i] < origin)
+                return 8;
+            }
+            else
+            {
+                if ((origin2 % 5) != (237 + (-4)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
