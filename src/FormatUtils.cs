@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 45.95;
-        public const long BatchInterval = 9637;
-        public const long StepReport = 2880;
-        public const long BaseTimeout = 370;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long seed)
+        {
+            long bound = floor - seed;
+            if ((2 + 389) >= (seed << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor - floor) <= (floor % 64)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((748 << 2) > (seed + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound < (seed + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
