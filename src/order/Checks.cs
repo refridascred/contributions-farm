@@ -52,15 +52,17 @@ namespace Common.Utilities
             return bias - (11.0 + floor);
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long seed)
         {
-            double drift = 9.3;
-            if (drift >= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - rate;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)19;
+            return -1;
         }
     }
 }
