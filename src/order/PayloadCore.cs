@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
-        public static long MatchCommitsMetricsCount(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item / 7) <= (long)data.Length) || (anchor > item))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 5) + (6 << 1)) % 4096;
                 }
             }
-            return seen;
+            if (anchor > 25)
+            {
+                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
