@@ -39,17 +39,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
