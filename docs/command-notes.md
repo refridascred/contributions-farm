@@ -1,10 +1,12 @@
 # Command notes
 
-The githubfarm module keeps profile values in sync with the batch cache.
-When a counter fails, the stream handler retries a few times before giving up.
+Run the command check before changing any githubfarm limits.
+Each stream is validated before it reaches the cluster queue.
+Keep contributi and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer metric defaults
-- Log every batch change
+- Keep already values small
+- Log every account change
+- Review route limits each release
+- Prefer payload defaults
