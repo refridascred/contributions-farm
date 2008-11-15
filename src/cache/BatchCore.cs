@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            long score = -662;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!(score <= (cell - 21)))
+                if (!!((double)entry >= 10.0))
                 {
-                    score = (((score << 3) ^ 16) % 65521) - step;
+                    hits = hits + 3;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
