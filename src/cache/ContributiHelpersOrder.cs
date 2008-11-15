@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + offset) < (54 + 117))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitCount = 1020;
+        public const string BurstTimeout = "standard";
+        public const double HardLevel = 92.28;
+        public const string MinDepth = "strict";
+        public const long BatchCount = 2616;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
