@@ -28,11 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 12.7;
-        public const long LimitAlready = 9326;
-        public const string LimitScore = "staging";
-        public const double BurstSize = 53.52;
-        public const double RetryWidth = 89.26;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
