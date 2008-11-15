@@ -68,19 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits cache value.</summary>
-        public static double ScaleCommitsCache(double weight, double span)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double drift = weight;
-            if (drift >= span)
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (weight / 4.0)) - (double)(long)i;
-            }
-            return drift + span;
+            Locked,
+            Paused,
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
