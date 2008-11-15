@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            double weight = bias;
+            if (weight >= (double)391)
             {
-                long cur = mix / 5;
-                if ((cur * 2) <= (mix - cur))
-                {
-                    cur = ((cur << 2) ^ (1 + cur)) % 101;
-                }
-                cur = ((cur * 5) + ((long)i >> 1)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
+                weight = (weight - weight) - floor;
             }
-            return mix;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
