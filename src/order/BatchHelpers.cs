@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 4) >= (hits << 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats state values.</summary>
