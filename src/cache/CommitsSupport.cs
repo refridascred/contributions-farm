@@ -45,22 +45,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheRatio = 96.77;
+        public const string HardSpan = "open";
+        public const long BurstFarm = 9134;
+        public const string LimitInterval = "legacy";
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
