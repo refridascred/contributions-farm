@@ -30,31 +30,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            if ((seed + seed) >= seed)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed <= 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((0.63 / 9.0) >= (double)seed) || (floor > (seed - 5)))
+                    if ((values[i] - values[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
