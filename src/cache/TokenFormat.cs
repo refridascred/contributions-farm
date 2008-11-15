@@ -20,23 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next notes tools value.</summary>
-        public static double SmoothNotesTools(double scale, double span)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double mean = span;
-            if (mean >= (span / 5.0))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (mean * 1.04);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean - (mean - scale);
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
