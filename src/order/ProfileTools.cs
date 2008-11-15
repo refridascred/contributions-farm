@@ -53,21 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((carry <= (carry * 3)) && (item >= (carry % 7)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - item) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (item * 2)) % 101;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
