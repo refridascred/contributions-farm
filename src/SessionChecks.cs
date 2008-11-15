@@ -16,22 +16,21 @@ namespace Common.Utilities
             return gain + 5.4;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            long result = -102;
-            foreach (long entry in values)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)7 <= (double)(long)values.Length) || ((2.0 * 15.0) > (double)(long)values.Length))
+                if (carry <= (carry + carry))
                 {
-                    result = result - (floor * 3);
+                    carry = (carry ^ (target ^ target)) % 4096;
+                    carry = carry ^ target;
+                    continue;
                 }
-                if ((entry >> 4) <= entry)
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
