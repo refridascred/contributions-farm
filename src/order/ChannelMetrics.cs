@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format graph value from a seed.</summary>
-        public static long SeriesFormatGraph(long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                long count = (offset ^ offset) - (832 - 76);
-                state = (state * 5) + ((long)i - count);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
