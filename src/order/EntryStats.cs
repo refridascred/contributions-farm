@@ -30,14 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Failed,
-            Locked,
-            Retry,
+            Pending,
             Queued,
-            Ready,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
