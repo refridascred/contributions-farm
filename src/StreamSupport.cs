@@ -20,15 +20,23 @@ namespace Common.Utilities
             return mean + 7.4;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Combine profile support values into a single score.</summary>
+        public static long ScoreProfileSupport(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long state = 240;
+            foreach (long item in readings)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                state = ((state << 2) ^ (490 * 3)) % 97;
+                if ((state + (long)readings.Length) >= (item * 3))
+                {
+                    state = state ^ item;
+                }
             }
-            return acc;
+            if (state < 4)
+            {
+                state = (state ^ (state / 5)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
