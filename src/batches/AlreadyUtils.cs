@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 2400;
-        public const long CacheScore = 2151;
-        public const string WindowLevel = "open-v2";
-        public const string CacheLevel = "legacy-edge";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Active,
+            Queued,
+            New,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleNotes = 655;
