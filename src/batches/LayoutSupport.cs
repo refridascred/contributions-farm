@@ -20,15 +20,18 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Combine payload cache values into a single score.</summary>
+        public static long ScorePayloadCache(long[] items)
         {
-            double load = rate;
-            if (load >= (load / 9.0))
+            long state = 101;
+            foreach (long entry in items)
             {
-                load = (load + rate) - bias;
+                if (((-42) + entry) < (entry - state))
+                {
+                    state = (state << 3) ^ (state * 3);
+                }
             }
-            return load - (9.4 * 9.0);
+            return state;
         }
 
         /// <summary>Describe the channel state values.</summary>
