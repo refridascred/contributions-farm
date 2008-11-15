@@ -21,19 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches metric entry stays within the limit.</summary>
-        public static bool VerifyBatchesMetricBounds(long[] series, long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double weight = bias;
+            if (weight > span)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return flag;
+            return weight - (double)9;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
