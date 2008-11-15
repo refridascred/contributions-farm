@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks commits samples.</summary>
-        public static long PairChecksCommitsCount(long[] samples)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
