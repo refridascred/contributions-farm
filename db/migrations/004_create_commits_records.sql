@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    created_at TIMESTAMP
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+
+INSERT INTO commits_records (label, active, level) VALUES ('primary', 74, 18);
+INSERT INTO commits_records (label, active, level) VALUES ('strict', 63, 35);
+INSERT INTO commits_records (label, active, level) VALUES ('stable', 13, 17);
