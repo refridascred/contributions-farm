@@ -41,32 +41,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long seed, long bound)
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long AuditReportCounterMatches(long[] series)
         {
-            long diff = seed + bound;
-            if (!((bound & 7) < 1))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 6) > (90 ^ diff))
+                if ((double)cell > (8.45 - 2.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((6.92 + 15.0) < (double)diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
