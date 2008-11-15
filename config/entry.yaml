@@ -1,8 +1,9 @@
 # entry settings
-notes_timeout:
-  - 35
-  - 245
-max_ttl_s: 100
-soft_interval_ms: 22
-channel_size: 42
-audit: cached
+schema_ratio: 83
+poll_retries_pct: blue
+verbose:
+  - eu-west
+  - edge
+  - green
+  - standard
+burst_ratio_pct: 60.91
