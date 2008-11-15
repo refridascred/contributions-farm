@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] levels)
+        /// <summary>Validate window payload readings against a bound.</summary>
+        public static bool ValidateWindowPayloadBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (tally <= 1)
+                if (cell <= origin)
                 {
-                    tally = (tally + 2) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
