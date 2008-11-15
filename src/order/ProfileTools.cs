@@ -39,19 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((target / 5) <= 12)
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 3983;
+        public const string BaseAlready = "latest-edge";
+        public const double RetryFactor = 17.58;
+        public const long StepAlready = 8594;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] samples)
