@@ -27,23 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long limit)
         {
-            long acc = -5;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
-                    acc = ((acc << 3) ^ (long)i) % 255;
-                }
-                acc = acc - acc;
-                if (reading >= (reading * 2))
-                {
-                    acc = (acc + (967 + reading)) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Rank window metrics input into a small class.</summary>
