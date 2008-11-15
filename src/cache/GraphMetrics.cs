@@ -14,20 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 91.26;
+        public const long BaseSize = 2602;
+        public const long MaxLayout = 1820;
+        public const double SoftLayout = 19.4;
 
         /// <summary>Combine tools filter values into a single score.</summary>
         public static long TallyToolsFilter(long[] levels)
