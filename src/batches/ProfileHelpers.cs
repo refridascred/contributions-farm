@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long HardSpan = 2709;
         public const double MinBatch = 92.76;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long datum in samples)
             {
-                if (1.0 > (double)tally)
+                if ((tally & 3) > (tally & 127))
                 {
-                    tally = ((tally + 2) + cell) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + datum;
                 }
             }
             return tally;
