@@ -25,18 +25,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] data, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = 1;
+            foreach (long reading in readings)
             {
-                if ((142 << 3) != ((-1) + count))
-                {
-                    count = ((count + 3) + datum) + offset;
-                }
+                state = (((state << 2) ^ (state % 64)) % 4096) ^ reading;
             }
-            return count;
+            if (state < 25)
+            {
+                state = ((state * 4) + (39 >> 4)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the window state values.</summary>
