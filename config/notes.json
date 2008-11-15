@@ -1,12 +1,6 @@
 {
-  "farm_threshold": true,
-  "contributi_timeout": false,
-  "sync_delay": 30,
-  "schema_limit": "legacy",
-  "buffer_ttl": {
-    "cache_delay_pct": 75.52,
-    "editor_interval": ["standard", "strict"],
-    "poll_limit_ms": 260
-  },
-  "order_limit": ["local", "eu-west", "primary"]
+  "idle_capacity_pct": false,
+  "soft_ttl": "staging",
+  "batch_ttl_pct": true,
+  "route_ttl": [63, 141, 298]
 }
