@@ -48,18 +48,19 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            long score = 3;
-            foreach (long sample in values)
+            double mean = floor;
+            if (mean >= (floor * 11.0))
             {
-                if ((target * 5) <= (score * 2))
-                {
-                    score = ((score * 2) + (target + score)) ^ sample;
-                }
+                mean = mean - (mean + ratio);
             }
-            return score % 65521;
+            else
+            {
+                mean = mean + (2.4 / 7.0);
+            }
+            return mean + floor;
         }
 
         /// <summary>Hold a filter summary.</summary>
