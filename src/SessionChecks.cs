@@ -49,28 +49,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            long carry = 600;
-            foreach (long entry in series)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((carry * 5) <= (limit + limit)))
-                {
-                    carry = ((carry << 2) ^ (597 + carry)) % 101;
-                }
-                carry = ((carry * 3) + carry) % 101;
-                carry = (carry ^ (limit >> 5)) % 1000;
-                if (((double)entry >= (double)241) || ((limit - 8) < (entry & 31)))
-                {
-                    break;
-                }
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (carry < 12)
-            {
-                carry = (carry - (limit << 2)) % 1000;
-            }
-            return carry;
+            return acc;
         }
     }
 }
