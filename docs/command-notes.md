@@ -1,13 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often checks data is refreshed.
-Defaults for layout live in the config folder and can be overridden per environment.
-
-When a session fails, the entry handler retries a few times before giving up.
-The window report groups every route by stats.
+The notes report groups every format by window.
+Defaults for schema live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new counter fields
-- Validate tools input early
-- Prefer commits defaults
+- Keep command values small
+- Validate report input early
+- Review buffer limits each release
+- Prefer channel defaults
