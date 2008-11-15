@@ -66,22 +66,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 45.68;
+        public const string BurstEntry = "fallback";
+        public const long CacheScore = 4385;
+        public const long BatchScore = 8945;
+        public const string BaseBudget = "standard";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordRange(long[] values, long bound)
