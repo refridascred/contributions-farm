@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 5448;
-        public const double BaseRoute = 57.3;
-        public const string WindowRoute = "latest-1";
-        public const double MinRoute = 59.75;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 70.65;
+        public const long BurstSession = 2399;
+        public const long RetryTimeout = 6189;
+        public const string RetrySession = "alpha";
+        public const double MaxSession = 7.3;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 5566;
