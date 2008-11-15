@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Done,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleScore = 5466;
+        public const long RetryTools = 2036;
+        public const long BurstTools = 6387;
+        public const long MinTools = 7554;
 
         /// <summary>Count graph entry pairs that satisfy a relation.</summary>
         public static long CompareGraphEntryCount(long[] samples)
