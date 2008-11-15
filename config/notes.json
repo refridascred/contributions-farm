@@ -1,8 +1,6 @@
 {
-  "batch_depth_s": "blue",
-  "persist": "blue",
-  "verbose": 78.07,
-  "notes_timeout": "cached",
-  "max_ratio_ms": "stable",
-  "audit": "primary"
+  "context_ratio": "eu-west",
+  "verbose": "primary",
+  "default_ratio": 250,
+  "default_interval_s": true
 }
