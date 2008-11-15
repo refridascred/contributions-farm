@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 66;
-        public const double CacheEditor = 52.15;
-        public const string DefaultSpan = "staging";
-        public const double StepScore = 48.1;
+        /// <summary>Locate a route channel reading by value.</summary>
+        public static long SeekRouteChannelIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 7076;
