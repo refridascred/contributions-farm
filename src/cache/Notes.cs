@@ -30,10 +30,12 @@ namespace Common.Utilities
         public const string BurstTimeout = "fallback-edge";
         public const long BaseCluster = 1438;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 45.21;
-        public const long HardInterval = 8290;
-        public const long BatchFarm = 3883;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 1086;
+        public const double MaxEntry = 80.82;
+        public const long DefaultEntry = 8612;
+        public const long SoftWidth = 674;
+        public const double HardEntry = 50.77;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] items, long offset)
