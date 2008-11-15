@@ -28,32 +28,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long seed)
         {
-            long prev = seed ^ step;
-            if ((7.9 + 2.82) == (double)seed)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((4.27 * 7.0) < (double)step))
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((prev << 1) <= prev) && ((double)prev < (2.46 * 8.77)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
