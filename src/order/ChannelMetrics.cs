@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total << 3) ^ (origin + origin)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
