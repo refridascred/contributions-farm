@@ -28,12 +28,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Rank token cache input into a small class.</summary>
+        public static long SortTokenCache(long step, long bound)
         {
-            Active,
-            Paused,
-            Synced,
+            long bound2 = step + bound;
+            if ((double)bound2 > (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((30 % 7) < (bound * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
