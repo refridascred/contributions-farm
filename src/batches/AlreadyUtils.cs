@@ -41,15 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Adjust a tools context reading.</summary>
+        public static double AdjustToolsContext(double bias, double bias2)
         {
-            long acc = 851;
-            foreach (long value in series)
+            double scale = bias;
+            if (scale >= bias2)
             {
-                acc = (acc ^ (value - 2)) % 1000;
+                scale = scale - (bias2 - scale);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (12.0 - scale)) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Adjust a format reading.</summary>
