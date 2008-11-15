@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const string IdleBudget = "latest";
         public const long LimitDepth = 3377;
 
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long AuditContextOrderHits(long[] items, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >= (step / 9)) && (((step - datum) != (hits - 716)) && ((datum + 138) <= (9 << 2))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
