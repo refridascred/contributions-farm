@@ -1,7 +1,8 @@
 {
-  "min_capacity_pct": 6630,
-  "idle_interval": 7058,
-  "cache_retries": [382, 408],
-  "soft_limit_pct": false,
-  "poll_capacity": 3681
+  "min_interval": 500,
+  "idle_delay": 61.75,
+  "persist": [428, 429],
+  "retry_timeout_s": 42,
+  "base_interval_s": 7.99,
+  "idle_threshold_pct": "fallback"
 }
