@@ -24,14 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 5536;
+        public const long MaxToken = 969;
+        public const long WindowFactor = 6358;
+        public const double MaxRatio = 81.59;
 
         /// <summary>Count the report counter entries that pass the check.</summary>
         public static long AuditReportCounterMatches(long[] series)
