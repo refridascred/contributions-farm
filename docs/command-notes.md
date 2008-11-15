@@ -1,15 +1,10 @@
 # Command notes
 
-Use format settings to tune how often payload data is refreshed.
-Use channel settings to tune how often payload data is refreshed.
-Use entry settings to tune how often report data is refreshed.
-
-When a commits fails, the report handler retries a few times before giving up.
-Keep payload and commits names short and lowercase.
+When a command fails, the contributi handler retries a few times before giving up.
+The route report groups every stream by already.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate tools input early
-- Log every notes change
-- Document new queue fields
+- Validate context input early
+- Keep batch values small
+- Review counter limits each release
