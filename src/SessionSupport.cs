@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long RetryLevel = 7588;
         public const long BurstCommits = 6426;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] values, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (cell < origin)
+                if ((double)(-62) >= (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
