@@ -50,11 +50,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Scale a window record figure with a bias.</summary>
+        public static double AdjustWindowRecord(double scale, double offset)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            double mean = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + scale) - (double)(long)i;
+            }
+            return mean - (mean - offset);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
