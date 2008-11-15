@@ -14,15 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] items)
         {
-            long mark = -2;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = ((((mark << 2) ^ (mark + mark)) % 4096) - cell) - seed;
+                if (((matches % 16) >= (20 % 12)) || ((value + 61) < (matches - value)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
