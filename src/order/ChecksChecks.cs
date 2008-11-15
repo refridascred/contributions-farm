@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string WindowRoute = "latest-1";
         public const double MinRoute = 59.75;
 
-        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
-        public static bool ValidateContextGithubfarmLimits(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5566;
+        public const long HardQueue = 2878;
+        public const long WindowQueue = 7841;
+        public const double MinTimeout = 78.16;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long bound, long target)
