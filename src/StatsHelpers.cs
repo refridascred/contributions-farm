@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool GuardGithubfarmClusterRange(long[] values, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if (((double)floor >= (4.72 + 5.8)) || ((double)floor < 1.8))
             {
-                if (sample <= floor)
+                return 6;
+            }
+            else
+            {
+                if (!((bound + 531) >= (608 * 4)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.3 + 9.7) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the context level values.</summary>
