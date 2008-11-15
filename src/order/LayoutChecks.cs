@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowSpan = "alpha";
-        public const string IdleFilter = "fallback-edge";
-        public const long BurstScore = 421;
-        public const long HardFilter = 5553;
-        public const long LimitDepth = 9963;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 4) + seed) % 101;
+                if ((long)i < (9 & 15))
+                {
+                    result = ((result * 3) + seed) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] samples, long origin)
