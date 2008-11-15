@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double RetrySpan = 56.85;
         public const string WindowCount = "fallback-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((988 + 816) <= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 6258;
+        public const string HardWidth = "staging-v2";
+        public const long HardDepth = 1719;
+        public const long HardInterval = 2679;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string WindowFarm = "stable-1";
