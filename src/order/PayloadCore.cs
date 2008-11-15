@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count cache stats pairs that satisfy a relation.</summary>
-        public static long OverlapCacheStatsCount(long[] samples)
+        /// <summary>Validate cache buffer readings against a bound.</summary>
+        public static bool CheckCacheBufferRange(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell >= target)
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
