@@ -1,4 +1,9 @@
 # support settings
-max_timeout_ms: 100
-dry_run: stable
-account_window: fallback
+entry_size:
+  - 449
+  - 234
+cluster_size: blue
+retry_delay_pct: primary
+strict:
+  - 471
+  - 496
