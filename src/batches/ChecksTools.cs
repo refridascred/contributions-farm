@@ -20,18 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long CountChecksBatchHits(long[] samples)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ 381) != (847 & 127))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
