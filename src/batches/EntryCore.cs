@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long ScoreToolsSession(long[] samples, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 641;
-            foreach (long cell in samples)
-            {
-                carry = (((carry + (71 - 20)) % 4096) - cell) + limit;
-            }
-            return carry % 4096;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
