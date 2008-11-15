@@ -63,22 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order route samples are out of range.</summary>
-        public static long AuditOrderRouteMatches(long[] readings, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((95 % 16) >= seen)
+                if (cell >= step)
                 {
-                    seen = ((seen + 3) + entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
