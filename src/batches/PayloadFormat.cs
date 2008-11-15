@@ -50,20 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long score = 301;
-            foreach (long sample in values)
-            {
-                score = score ^ ((long)values.Length >> 2);
-                score = ((score << 3) ^ (sample + 260)) % 101;
-            }
-            if (score < 103)
-            {
-                score = (score * 3) + (score << 1);
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
