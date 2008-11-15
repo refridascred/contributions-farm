@@ -73,11 +73,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 32.37;
-        public const double LimitWidth = 19.67;
-        public const long BurstSize = 5834;
-        public const long BatchAccount = 5325;
+        /// <summary>Digest a series of stats schema entries.</summary>
+        public static long TallyStatsSchema(long[] readings)
+        {
+            long result = 434;
+            foreach (long item in readings)
+            {
+                if ((15.0 + 20.0) <= (double)item)
+                {
+                    result = (result + (item - item)) % 4096;
+                }
+            }
+            if (result > 53)
+            {
+                result = result - (result - result);
+            }
+            return result;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheBudget = 1.83;
