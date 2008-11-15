@@ -1,15 +1,11 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The order report groups every channel by payload.
-The format module keeps metrics values in sync with the payload cache.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-Keep metric and buffer names short and lowercase.
-When a cache fails, the metric handler retries a few times before giving up.
+A cache that stays idle for too long is moved to the stream list.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Validate githubfarm input early
-- Log every tools change
+- Keep record values small
+- Log every command change
+- Prefer order defaults
+- Validate checks input early
