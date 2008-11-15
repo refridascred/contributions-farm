@@ -70,14 +70,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long step)
         {
-            Closed,
-            New,
-            Queued,
-            Idle,
-            Stale,
+            long next = origin + step;
+            if (((next * 4) <= (44 - step)) || ((12.0 / 2.0) > (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((next >> 3) > (47 & 31)) && ((step - 5) >= (next - next)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)next < (4.36 - 12.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + 162) < next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
