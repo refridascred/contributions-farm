@@ -68,14 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Stale,
-            Idle,
-            Draft,
-            Paused,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 4388;
+        public const long WindowDepth = 6206;
+        public const string HardContributi = "cached";
+        public const long MinRatio = 4795;
     }
 }
