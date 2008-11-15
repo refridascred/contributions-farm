@@ -34,10 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 970;
-        public const long HardInterval = 8489;
-        public const long BaseScore = 5938;
+        /// <summary>Digest a series of cache window entries.</summary>
+        public static long ScoreCacheWindow(long[] levels, long offset)
+        {
+            long mix = 170;
+            foreach (long reading in levels)
+            {
+                mix = (((mix * 5) + (92 + reading)) % 4096) + offset;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
