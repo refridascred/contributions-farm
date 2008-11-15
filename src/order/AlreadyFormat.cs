@@ -50,17 +50,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first support counter entry that matches the target.</summary>
-        public static long FindSupportCounterIndex(long[] readings, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = limit ^ step;
+            if ((limit % 3) <= (limit & 255))
             {
-                if (readings[i] == seed)
+                return 0;
+            }
+            else
+            {
+                if (((double)631 >= (double)offset) || ((64 + step) >= step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
