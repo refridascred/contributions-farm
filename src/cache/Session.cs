@@ -38,15 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            double bias = (double)0 / 9.0;
-            if (bias > (floor * 2.33))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (gain + bias);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias + floor;
+            return matches;
         }
     }
 }
