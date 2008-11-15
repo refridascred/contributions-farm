@@ -55,20 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Look up the position of a filter order sample.</summary>
+        public static long LocateFilterOrderIndex(long[] data, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (data[i] > step)
                 {
-                    mix = (((mix << 3) ^ 978) % 1000) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = (mix - (mix - mix)) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
