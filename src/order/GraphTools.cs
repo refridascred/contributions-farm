@@ -50,17 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 9;
+            foreach (long entry in samples)
             {
-                score = (score << 3) ^ (7 >> 5);
-                score = ((score << 2) ^ (21 ^ score)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((double)entry < (1.0 - 8.79))
+                {
+                    result = result + bound;
+                }
+                else
+                {
+                    result = result ^ (entry - bound);
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
