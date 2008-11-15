@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)item != (19.0 * 16.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseLevel = 6312;
+        public const long MinStream = 5666;
+        public const double StepFactor = 59.24;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] series, long seed)
