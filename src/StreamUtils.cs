@@ -46,20 +46,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((8.4 <= (double)total) || ((total + total) == (total * 5)))
-                {
-                    total = (total * 2) + (step % 60);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 51.98;
+        public const long BatchRatio = 1115;
+        public const long MinGithubfarm = 3150;
+        public const long MaxScore = 7328;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] data, long step)
