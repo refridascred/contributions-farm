@@ -37,11 +37,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 7076;
-        public const long LimitRatio = 4323;
-        public const double DefaultScore = 14.81;
-        public const string MinTools = "fallback";
+        /// <summary>Accumulate token entry samples.</summary>
+        public static long TotalTokenEntry(long[] items, long offset)
+        {
+            long acc = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length < (66 - 68))
+                {
+                    acc = (acc - (offset + offset)) - datum;
+                }
+                else
+                {
+                    acc = acc ^ (459 * 3);
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc << 2) ^ offset) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long floor)
