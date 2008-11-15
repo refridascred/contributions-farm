@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] levels, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!!((tally + tally) != (18 / 3)))
-                {
-                    tally = ((tally + 1) + entry) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
