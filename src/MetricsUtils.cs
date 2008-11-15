@@ -25,15 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] values, long floor)
         {
-            long sum = 38;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in values)
             {
-                sum = sum + (entry & 15);
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Adjust a payload reading.</summary>
