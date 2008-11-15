@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] levels, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long mix = 56;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if (((cell & 255) != (mix & 127)) && (cell < 86))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ mix) % 101;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Describe the route status values.</summary>
