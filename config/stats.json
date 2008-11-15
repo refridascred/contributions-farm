@@ -1,5 +1,5 @@
 {
-  "schema_timeout": 20.86,
-  "sync_retries_ms": [197, 436],
-  "account_interval": 95
+  "cache_interval": [411, 94, 334],
+  "cluster_depth": [146, 208, 447],
+  "min_retries": 250
 }
