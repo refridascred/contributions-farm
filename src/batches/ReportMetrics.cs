@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
+        public static bool GuardClusterStatsRange(long[] levels, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batch header.</summary>
