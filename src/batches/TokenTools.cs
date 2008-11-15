@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long floor)
+        /// <summary>Check that every stats session entry stays within the limit.</summary>
+        public static bool CheckStatsSessionLimits(long[] data, long target)
         {
-            if ((floor / 6) < (floor + (-300)))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit - limit) <= (993 * 3)) || ((double)limit > (16.0 / 4.0)))
+                if (sample != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) <= 26)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
