@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i / 3) < total)
-                {
-                    total = (total + (step + 0)) % 97;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
