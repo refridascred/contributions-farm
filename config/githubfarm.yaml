@@ -1,29 +1,8 @@
 # githubfarm settings
-readonly:
-  - fallback
-  - fallback
-  - legacy
-githubfarm_size:
-  burst_capacity_s: 2305
-  max_depth: 83
-  verbose:
-    max_threshold: legacy
-    tools_threshold: 21.61
-    cache_window:
-      - 292
-      - 230
-      - 363
-    poll_depth_s: false
-  report_threshold: true
-  metrics_window: 100
-  flush_ratio_s:
-    format_retries: false
-    warm_depth_count: fallback
-    batch_threshold_count: fallback
-    soft_ttl: fallback
-    counter_window: 60
-    audit: 99
-dry_run: true
-verbose: edge
-queue_ratio: 37.55
-compress: 7.2
+audit: primary
+max_window:
+  - staging
+  - local
+  - open
+  - standard
+flush_interval: blue
