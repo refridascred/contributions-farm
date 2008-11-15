@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseWidth = 5143;
-        public const double BurstSize = 90.6;
-        public const double LimitGithubfarm = 10.34;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
