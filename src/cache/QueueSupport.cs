@@ -26,9 +26,11 @@ namespace Common.Utilities
         public const long LimitStream = 9760;
         public const double DefaultTimeout = 25.06;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 7074;
-        public const double SoftCount = 64.84;
-        public const long WindowOrder = 9305;
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double bias)
+        {
+            double rate = 9.52;
+            return ((rate - (double)53) + gain) + bias;
+        }
     }
 }
