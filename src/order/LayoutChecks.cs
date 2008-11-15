@@ -17,17 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)(559 - 86);
+            return bias + (scale + offset);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
