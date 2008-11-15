@@ -1,5 +1,18 @@
 {
-  "hard_ratio_ms": 21.87,
-  "githubfarm_delay": 68,
-  "base_ratio_s": true
+  "default_depth_count": {
+    "idle_ratio": "staging",
+    "poll_retries_ms": "legacy",
+    "profile_limit": {
+      "cache_depth": 2671,
+      "flush_ratio": 28.84,
+      "hard_retries_pct": "primary",
+      "retry_timeout_pct": 73.56,
+      "min_size_ms": 2283,
+      "default_size_s": false
+    }
+  },
+  "max_depth_count": ["cached", "blue"],
+  "metrics_timeout": 31,
+  "readonly": 55.06,
+  "cache_timeout": 250
 }
