@@ -45,11 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 4942;
-        public const long RetryToken = 1703;
-        public const double LimitToken = 29.26;
-        public const string BurstToken = "alpha-edge";
-        public const long BurstCount = 7921;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            New,
+            Closed,
+            Done,
+        }
     }
 }
