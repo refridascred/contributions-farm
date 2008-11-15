@@ -34,18 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long acc = 943;
-            foreach (long cell in readings)
-            {
-                if ((acc + cell) > (cell - seed))
-                {
-                    acc = (acc ^ cell) % 255;
-                }
-            }
-            return acc % 4096;
+            Idle,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
