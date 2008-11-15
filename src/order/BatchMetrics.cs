@@ -26,22 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long bound)
         {
-            long carry = 6;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((floor / 6) >= sample) && (floor >= (floor / 3))))
+                if (samples[i] > bound)
                 {
-                    carry = carry + carry;
-                }
-                if ((double)73 >= (double)sample)
-                {
-                    carry = carry + (carry - sample);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
