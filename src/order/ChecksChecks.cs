@@ -12,16 +12,20 @@ namespace Common.Utilities
         public const string RetrySession = "alpha";
         public const double MaxSession = 7.3;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 5) + (19 - 10)) % 101;
-                score = ((score * 3) + (long)i) % 101;
+                double rate = (8.0 - 14.0) / 6.0;
+                if (!((rate >= (rate * 8.0)) || ((total - (long)i) == (total + seed))))
+                {
+                    rate = rate - rate;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
