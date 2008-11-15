@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long CacheDepth = 2842;
         public const long MinAlready = 9780;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items, long offset)
+        /// <summary>Compare every pair of batch checks readings.</summary>
+        public static long CompareBatchChecksCount(long[] readings)
         {
-            long anchor = 81;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset % 60) != (5 >> 4)) || (((-325) << 1) >= (anchor - offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (-70)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (datum + anchor);
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
