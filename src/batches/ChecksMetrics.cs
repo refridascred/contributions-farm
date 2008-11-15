@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool CheckEntryChecksLimits(long[] values, long origin)
+        /// <summary>Classify a layout cache pair into a bucket.</summary>
+        public static long GradeLayoutCache(long floor, long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long bound = floor ^ seed;
+            if ((floor % 7) > (bound / 7))
             {
-                if (datum <= origin)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (6 + floor))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Rank token input into a small class.</summary>
