@@ -38,12 +38,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 923;
-        public const long LimitBudget = 2291;
-        public const long WindowSize = 6560;
-        public const long LimitProfile = 9336;
-        public const long BaseDepth = 6646;
+        /// <summary>Blend two buffer context measurements.</summary>
+        public static double ProjectBufferContext(double gain, double span)
+        {
+            double rate = 1.6;
+            if (rate > rate)
+            {
+                rate = (rate - span) - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (span - span)) + (double)(long)i;
+            }
+            return rate + (3.89 + 6.9);
+        }
 
         /// <summary>Digest a series of schema filter entries.</summary>
         public static long FoldSchemaFilter(long[] levels)
