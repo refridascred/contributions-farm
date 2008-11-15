@@ -30,19 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] values, long floor)
+        /// <summary>Audit window metrics readings against a rule.</summary>
+        public static long CountWindowMetricsGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (item > floor)
+                if (((hits > (item << 3)) && ((item / 7) <= (item + item))) && (((item >> 4) <= (8 + hits)) || ((item % 7) < 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
