@@ -44,22 +44,10 @@ namespace Common.Utilities
         public const long SoftWidth = 674;
         public const double HardEntry = 50.77;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((62 - value) == (13 * 2))
-                {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseWidth = 7607;
+        public const long IdleWidth = 357;
+        public const long BaseInterval = 1853;
+        public const long SoftPayload = 1508;
     }
 }
