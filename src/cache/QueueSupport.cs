@@ -20,15 +20,11 @@ namespace Common.Utilities
             return weight + (scale / 2.0);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Synced,
-            Active,
-            Closed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "standard";
+        public const long SoftBudget = 6307;
+        public const long LimitStream = 9760;
+        public const double DefaultTimeout = 25.06;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinOrder = 7074;
