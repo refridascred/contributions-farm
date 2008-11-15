@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = 894;
+            foreach (long datum in samples)
             {
-                if ((tally << 2) < sample)
+                if (datum > 6)
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ (7 << 2)) + seed;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the payload level values.</summary>
