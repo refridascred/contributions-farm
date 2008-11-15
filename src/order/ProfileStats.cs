@@ -14,19 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long FoldClusterSession(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long total = 4;
-            foreach (long reading in data)
-            {
-                if ((total ^ total) > total)
-                {
-                    total = (((total * 3) + (total % 16)) % 101) ^ reading;
-                }
-                total = (total - (586 % 60)) % 97;
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
