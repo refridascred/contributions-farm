@@ -26,19 +26,18 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long bound)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (item <= limit)
+                if (item > (count - count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + bound;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
