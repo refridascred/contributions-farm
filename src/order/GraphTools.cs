@@ -63,15 +63,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double bias)
-        {
-            double mean = (bias + 3.2) + bias;
-            if (mean > (scale - 9.8))
-            {
-                mean = mean - (double)305;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepTimeout = 7480;
+        public const long StepSize = 334;
+        public const long BurstCommand = 6165;
     }
 }
