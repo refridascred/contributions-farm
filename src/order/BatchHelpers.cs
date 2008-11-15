@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long offset)
+        /// <summary>Iterate the context record series from a seed.</summary>
+        public static long SeriesContextRecord(long seed)
         {
-            long mix = 13;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)mix == (9.0 + 6.3))
+                if ((double)(long)i < (3.54 + 5.5))
                 {
-                    mix = (mix + value) % 4096;
+                    acc = (acc - acc) % 65521;
                 }
-                else
+                if (((acc % 2) > ((long)i >> 2)) && ((acc >> 3) > acc))
                 {
-                    mix = mix + mix;
+                    acc = ((acc * 2) + ((-5) ^ seed)) % 65521;
                 }
-                if (offset <= mix)
-                {
-                    break;
-                }
+                acc = (acc + (acc + acc)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mix % 65521;
+            return acc;
         }
 
         /// <summary>Describe the counter level values.</summary>
