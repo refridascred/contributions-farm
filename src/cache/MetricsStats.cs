@@ -59,15 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 705;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 2) ^ reading) % 65521;
-            }
-            return sum % 65521;
+            Retry,
+            Done,
+            Active,
+            Idle,
+            Synced,
         }
     }
 }
