@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long limit, long offset)
-        {
-            if ((limit >> 5) < (limit + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + offset) != (offset >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 > limit) && ((105 * 3) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 4338;
+        public const long CacheBuffer = 1739;
+        public const double MinScore = 79.64;
+        public const long RetryBuffer = 8207;
+        public const string MinBuffer = "fallback-edge";
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
