@@ -72,11 +72,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "fallback-edge";
-        public const long BatchStats = 1405;
-        public const long IdleStats = 8580;
-        public const double StepStats = 64.67;
-        public const long LimitStats = 3066;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((double)value < (20.0 / 6.0)) || ((double)value > (8.99 / 4.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
