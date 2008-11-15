@@ -1,6 +1,25 @@
 # entry settings
-base_threshold: 57
-verbose: 500
-readonly: 48.59
-warm_depth_pct: 67.42
-stream_size: legacy
+channel_ratio: 500
+sync_capacity:
+  - green
+  - local
+  - fallback
+  - blue
+strict:
+  - 56
+  - 362
+  - 203
+max_ttl: edge
+default_interval:
+  base_delay: 1114
+  base_limit_count: legacy
+  support_capacity:
+    - 270
+    - 492
+  report_delay:
+    - staging
+    - cached
+  compress: local
+  poll_window_ms:
+    - 4
+    - 310
