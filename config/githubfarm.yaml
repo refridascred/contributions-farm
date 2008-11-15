@@ -1,9 +1,8 @@
 # githubfarm settings
-enabled: 62
-metric_retries:
-  - strict
-  - cached
-  - fallback
-soft_capacity_pct: green
-audit: blue
-command_depth: 91.58
+default_limit_pct:
+  - 225
+  - 416
+min_delay_s: 43.59
+default_retries_s: 250
+min_threshold_ms: 38.88
+idle_retries: 1179
