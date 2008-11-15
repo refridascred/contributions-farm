@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheScore = 3.29;
+        public const double BurstSpan = 49.24;
+        public const string HardBatches = "alpha-1";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] readings, long seed)
