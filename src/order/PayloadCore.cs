@@ -22,26 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Count commits metrics pairs that satisfy a relation.</summary>
+        public static long MatchCommitsMetricsCount(long[] values)
         {
-            long state = 8;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((10.0 - 0.37) > (double)cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - cell) % 4096;
-                }
-                if ((state % 16) != (state ^ cell))
-                {
-                    state = state ^ (state % 64);
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 69)
-            {
-                state = (state << 2) ^ (state % 10);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
