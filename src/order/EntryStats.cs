@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Compare every pair of githubfarm cache readings.</summary>
+        public static long OverlapGithubfarmCacheCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((tally % 7) > (66 + tally)) || ((long)items.Length >= (1 + value))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the entry state values.</summary>
