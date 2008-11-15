@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepLevel = 1380;
-        public const double MaxPayload = 66.29;
-        public const long IdlePayload = 3279;
-        public const long DefaultBudget = 1106;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] readings)
