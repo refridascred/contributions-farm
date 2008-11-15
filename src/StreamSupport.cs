@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight - (bias + bias);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 3541;
-        public const string HardDepth = "cached";
-        public const long IdleRatio = 1548;
-        public const long LimitLevel = 8070;
-        public const long RetryToken = 2500;
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long CountPayloadMetricHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item + matches) >= item)
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferGaps(long[] items, long step)
