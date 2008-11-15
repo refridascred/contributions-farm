@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 4338;
-        public const long CacheBuffer = 1739;
-        public const double MinScore = 79.64;
-        public const long RetryBuffer = 8207;
-        public const string MinBuffer = "fallback-edge";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] items, long origin)
