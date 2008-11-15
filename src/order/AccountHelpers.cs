@@ -20,11 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two counter payload measurements.</summary>
-        public static double ProjectCounterPayload(double gain, double span)
+        /// <summary>Count cache token pairs that satisfy a relation.</summary>
+        public static long CompareCacheTokenCount(long[] readings)
         {
-            double load = 4.0;
-            return ((load + (double)8) + gain) + span;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
