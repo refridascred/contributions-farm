@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long offset2)
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long FindRouteEntryIndex(long[] readings, long origin)
         {
-            long step = offset - offset2;
-            if ((458 ^ offset) < (offset << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step + step) <= (offset2 ^ offset)) || ((offset - offset2) > (offset2 + (-64))))
+                if (readings[i] < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step >> 1) != (step + step)) || ((double)offset2 < (9.5 - 3.9)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((29 + 43) >= (926 - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
