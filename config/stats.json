@@ -1,5 +1,7 @@
 {
-  "cache_ratio_ms": 8313,
-  "graph_ratio": 250,
-  "cache_delay": 7765
+  "compress": "strict",
+  "hard_retries_ms": true,
+  "persist": "edge",
+  "idle_delay_ms": "staging",
+  "queue_capacity": 60
 }
