@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 2393;
-        public const string SoftWidth = "strict-v2";
-        public const long BurstCounter = 3229;
-        public const string CacheBudget = "staging-edge";
+        /// <summary>Combine batches contributi values into a single score.</summary>
+        public static long ScoreBatchesContributi(long[] series)
+        {
+            long mix = 183;
+            foreach (long item in series)
+            {
+                if (57 <= mix)
+                {
+                    mix = ((mix * 4) + (mix ^ item)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] series, long seed)
