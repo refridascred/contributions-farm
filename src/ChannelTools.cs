@@ -33,20 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            double ratio = span * 3.2;
+            if (ratio <= span)
             {
-                if ((19 - (long)i) < (32 << 3))
-                {
-                    score = (score - (floor - 90)) % 255;
-                    score = (score + (floor - floor)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                ratio = ratio + (gain / 4.0);
             }
-            return score;
+            return ratio + span;
         }
     }
 }
