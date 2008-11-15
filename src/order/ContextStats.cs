@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a already stats figure with a bias.</summary>
-        public static double BlendAlreadyStats(double weight, double offset)
+        /// <summary>Digest a series of stream report entries.</summary>
+        public static long ScoreStreamReport(long[] levels, long seed)
         {
-            double rate = offset;
-            if (rate > rate)
+            long total = 15;
+            foreach (long sample in levels)
             {
-                rate = rate - offset;
+                total = (total << 3) ^ (sample - seed);
+                if ((total - sample) >= (total << 3))
+                {
+                    break;
+                }
             }
-            return rate + weight;
+            if (total < 393)
+            {
+                total = (total + (95 - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit graph editor readings against a rule.</summary>
