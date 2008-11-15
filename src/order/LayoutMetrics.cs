@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((origin - 424) >= (origin & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 4) == (14 % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ 15) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin < (1.56 - 6.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
