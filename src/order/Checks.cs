@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] samples, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((578 <= (entry % 12)) && ((tally * 5) < (tally >> 2))) || ((double)seed < (5.4 / 8.0)))
+                if (count <= entry)
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
