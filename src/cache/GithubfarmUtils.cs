@@ -29,10 +29,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseLevel = "strict";
-        public const long RetryCluster = 9498;
-        public const long CacheWidth = 6079;
-        public const long WindowWidth = 5716;
+        /// <summary>Grade a githubfarm batch value against two limits.</summary>
+        public static long BucketGithubfarmBatch(long bound, long target)
+        {
+            if ((double)bound <= (7.2 + 3.52))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + bound) != (17 + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
