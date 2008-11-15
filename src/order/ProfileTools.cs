@@ -53,18 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long AuditSupportStreamOutliers(long[] items, long seed)
+        /// <summary>Combine metrics order values into a single score.</summary>
+        public static long TallyMetricsOrder(long[] items, long target)
         {
-            long seen = 0;
+            long total = 10;
             foreach (long entry in items)
             {
-                if (seed > (980 * 5))
-                {
-                    seen = (seen + 1) - entry;
-                }
+                total = ((total - (target % 60)) % 255) ^ entry;
             }
-            return seen;
+            if (total > 22)
+            {
+                total = ((total << 3) ^ (target ^ 40)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
