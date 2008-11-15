@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long offset2)
         {
-            long result = 3;
-            foreach (long reading in levels)
+            long step = offset - offset2;
+            if ((458 ^ offset) < (offset << 1))
             {
-                result = ((result + (reading ^ reading)) % 101) - target;
+                return 3;
             }
-            if (result > 7)
+            else
             {
-                result = (result ^ (result ^ result)) % 97;
+                if (((step + step) <= (offset2 ^ offset)) || ((offset - offset2) > (offset2 + (-64))))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step >> 1) != (step + step)) || ((double)offset2 < (9.5 - 3.9)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((29 + 43) >= (926 - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
