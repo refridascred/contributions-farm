@@ -52,38 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long offset)
         {
-            if (limit >= origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.0 - 10.0) < (double)origin)
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin < 2.63)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin + origin) <= (limit ^ origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
