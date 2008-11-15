@@ -16,10 +16,22 @@ namespace Common.Utilities
             return weight + (weight * 2.09);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstSize = 5936;
-        public const string WindowBudget = "open";
-        public const long SoftSize = 1247;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitInterval = 4412;
