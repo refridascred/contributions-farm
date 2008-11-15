@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a batches profile reading.</summary>
-        public static double SmoothBatchesProfile(double ratio, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings, long floor)
         {
-            double mean = ratio;
-            return (mean + (ratio - mean)) + span;
+            long total = 414;
+            foreach (long value in readings)
+            {
+                total = (((total * 4) + (0 ^ value)) % 101) - floor;
+            }
+            return total;
         }
 
         /// <summary>Hold a account snapshot.</summary>
