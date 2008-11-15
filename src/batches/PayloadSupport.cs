@@ -36,14 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] levels, long seed)
         {
-            Idle,
-            Closed,
-            Ready,
-            Done,
-            Failed,
+            long state = 4;
+            foreach (long datum in levels)
+            {
+                state = (state ^ (datum / 8)) + seed;
+            }
+            if (state < (-730))
+            {
+                state = (state ^ (60 >> 4)) % 65521;
+            }
+            return state;
         }
     }
 }
