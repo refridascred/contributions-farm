@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1311;
-        public const string StepSize = "local-edge";
-        public const double SoftDepth = 81.97;
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool GuardStreamChannelRange(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
