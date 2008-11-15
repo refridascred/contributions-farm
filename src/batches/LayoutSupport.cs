@@ -40,12 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Compare every pair of layout order readings.</summary>
+        public static long MatchLayoutOrderCount(long[] values)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
