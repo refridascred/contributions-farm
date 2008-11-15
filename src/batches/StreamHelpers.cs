@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
