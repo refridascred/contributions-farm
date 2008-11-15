@@ -50,21 +50,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count record stats pairs that satisfy a relation.</summary>
-        public static long OverlapRecordStatsCount(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Synced,
+            Active,
         }
     }
 }
