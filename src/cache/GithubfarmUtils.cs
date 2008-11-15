@@ -28,12 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Locked,
-            Pending,
-            Dropped,
+            Paused,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Blend two channel measurements.</summary>
