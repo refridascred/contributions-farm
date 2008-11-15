@@ -1,11 +1,11 @@
 # Batch notes
 
-The cache report groups every metrics by buffer.
-When a stream fails, the route handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
+The report report groups every booking by already.
+The layout report groups every batch by channel.
 
 ## Guidelines
 
-- Log every batches change
-- Document new filter fields
-- Prefer layout defaults
+- Document new metric fields
+- Validate contributi input early
+- Keep batch values small
+- Review farm limits each release
