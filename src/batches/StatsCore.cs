@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheTimeout = 9129;
+        public const long LimitWindow = 6786;
+        public const long RetrySpan = 2465;
+        public const double IdleFactor = 74.84;
+        public const long RetryWindow = 3009;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] items)
