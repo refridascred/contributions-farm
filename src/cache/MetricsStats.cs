@@ -50,15 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long AuditEntryCounterHits(long[] data, long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] series)
         {
             long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seen + 390) >= seen) && ((step >> 5) != (9 / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
