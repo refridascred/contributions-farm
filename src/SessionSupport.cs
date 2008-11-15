@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine support farm values into a single score.</summary>
-        public static long TotalSupportFarm(long[] data, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = 56;
-            foreach (long datum in data)
-            {
-                anchor = (anchor + ((long)data.Length ^ limit)) + datum;
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + limit) % 97;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
