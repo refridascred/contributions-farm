@@ -27,22 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long limit)
+        /// <summary>Count channel stream pairs that satisfy a relation.</summary>
+        public static long CompareChannelStreamCount(long[] levels)
         {
-            long mix = 9;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3.2 <= (7.5 + 0.7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix - (19 * 4)) % 65521) - limit;
-                }
-                else
-                {
-                    mix = (mix + (datum + datum)) % 255;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
