@@ -29,32 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer entry value against two limits.</summary>
-        public static long SortBufferEntry(long floor, long floor2)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            long span = floor ^ floor2;
-            if ((double)span > 9.0)
+            double ratio = bias;
+            if (ratio > (double)6)
             {
-                return 2;
+                ratio = (ratio + bias) - floor;
             }
-            else
-            {
-                if ((double)floor2 != (1.7 * 20.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((span >> 3) < (7 ^ floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio + (double)620;
         }
 
         /// <summary>Accumulate stats samples.</summary>
