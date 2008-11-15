@@ -32,18 +32,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels)
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool CheckToolsEntryBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((758 + cell) < (cell - count))
+                if (datum > seed)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every editor route entry stays within the limit.</summary>
