@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] values, long target)
+        /// <summary>Count schema already pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaAlreadyCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((tally < (sample ^ tally)) || (target < (1 << 1))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
