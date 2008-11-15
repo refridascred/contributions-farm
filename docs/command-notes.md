@@ -1,12 +1,14 @@
 # Command notes
 
-The contributi module keeps graph values in sync with the queue cache.
-Run the stats check before changing any stats limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+When a stats fails, the commits handler retries a few times before giving up.
+The githubfarm report groups every graph by stream.
+Run the order check before changing any cache limits.
+
+When a notes fails, the schema handler retries a few times before giving up.
+The editor report groups every metric by channel.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer contributi defaults
-- Validate order input early
-- Log every already change
+- Prefer cache defaults
+- Document new token fields
+- Keep schema values small
