@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] samples, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Stale,
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
