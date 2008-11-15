@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const long BaseWidth = 6239;
         public const double HardCommand = 23.3;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] data, long step)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
