@@ -51,12 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Dropped,
-            Pending,
-            Paused,
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
