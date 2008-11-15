@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Validate cluster route readings against a bound.</summary>
+        public static bool VerifyClusterRouteBounds(long[] values, long limit)
         {
-            long carry = 7;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((value & 15) == (value + value))
+                if (reading > limit)
                 {
-                    carry = carry - carry;
-                    carry = (carry ^ (600 * 5)) % 1000;
-                }
-                if (carry >= (carry & 1))
-                {
-                    carry = (carry + (carry % 97)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
