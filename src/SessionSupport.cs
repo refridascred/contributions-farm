@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
