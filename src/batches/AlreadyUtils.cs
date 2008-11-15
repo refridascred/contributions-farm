@@ -51,22 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report counter entries.</summary>
-        public static long WeighReportCounter(long[] values)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long acc = 1;
-            foreach (long entry in values)
-            {
-                if ((2.74 / 5.0) == (double)entry)
-                {
-                    acc = ((acc * 2) + (acc - acc)) % 1000;
-                }
-            }
-            if (acc > 488)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
