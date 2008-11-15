@@ -39,11 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 3983;
-        public const string BaseAlready = "latest-edge";
-        public const double RetryFactor = 17.58;
-        public const long StepAlready = 8594;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches + floor) != (matches ^ matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long AuditSupportStreamOutliers(long[] items, long seed)
