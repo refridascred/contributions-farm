@@ -1,29 +1,6 @@
 # githubfarm settings
-default_window_pct:
-  - green
-  - stable
-  - green
-  - edge
-githubfarm_capacity:
-  max_timeout: 30
-  hard_depth_ms: fallback
-  burst_timeout: true
-flush_window_pct: 16.04
-default_limit:
-  batches_retries: local
-  hard_ttl_s: 30
-  batch_limit_s: cached
-  metric_window: 53.49
-  soft_limit_pct:
-    audit:
-      - latest
-      - eu-west
-      - legacy
-      - cached
-    sync_limit_pct: 816
-    entry_window: cached
-    persist: 91.41
-    already_interval: standard
-    idle_delay_s: cached
-  route_ttl: open
-default_interval: standard
+burst_ratio_ms: true
+batch_ttl: fallback
+hard_depth: 8.48
+strict: 24.15
+poll_window_ms: 65
