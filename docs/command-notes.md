@@ -1,14 +1,14 @@
 # Command notes
 
-When a stats fails, the commits handler retries a few times before giving up.
-The githubfarm report groups every graph by stream.
-Run the order check before changing any cache limits.
+The commits report groups every route by already.
+Keep schema and session names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-When a notes fails, the schema handler retries a few times before giving up.
-The editor report groups every metric by channel.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Document new token fields
-- Keep schema values small
+- Document new entry fields
+- Keep entry values small
+- Log every commits change
