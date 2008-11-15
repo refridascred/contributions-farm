@@ -1,11 +1,28 @@
 # entry settings
-audit: 1024
-hard_interval_count:
-  verbose: eu-west
-  batches_ratio: green
-  warm_interval_s: blue
-  poll_limit_ms: staging
-compress: 34
-persist: false
-default_threshold: 9396
-burst_ratio_pct: stable
+filter_retries: standard
+cache_limit_count:
+  filter_ttl: 6441
+  idle_timeout: 9.56
+  route_capacity: 38
+  enabled:
+    - staging
+    - strict
+    - blue
+    - staging
+  burst_delay_s: 21.73
+retry_delay:
+  batch_delay_s: strict
+  default_interval: 30
+  sync_delay: local
+  readonly: 82.63
+  account_ratio:
+    enabled: 42
+    retry_ratio: 79
+    hard_timeout: 250
+    route_threshold: 77
+    min_retries_s: cached
+    notes_limit: false
+  min_threshold_s: 69
+context_threshold: 10.18
+base_ratio_ms: 54
+sync_capacity_ms: 1441
