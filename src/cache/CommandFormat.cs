@@ -27,17 +27,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = floor;
+            if (mean < (double)113)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (floor - 19.0)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean * 1.82)) - (double)(long)i;
+            }
+            return mean + (double)4;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
