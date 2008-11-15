@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 9311;
         public const long RetryGithubfarm = 4384;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
