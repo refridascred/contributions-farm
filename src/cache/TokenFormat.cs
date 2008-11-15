@@ -20,14 +20,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next notes tools value.</summary>
+        public static double SmoothNotesTools(double scale, double span)
         {
-            Queued,
-            Ready,
-            Draft,
-            Active,
-            Dropped,
+            double mean = span;
+            if (mean >= (span / 5.0))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + (mean * 1.04);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean - (mean - scale);
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
