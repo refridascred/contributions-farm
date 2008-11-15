@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Done,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit contributi context readings against a rule.</summary>
