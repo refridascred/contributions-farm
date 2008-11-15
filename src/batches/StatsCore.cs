@@ -63,16 +63,21 @@ namespace Common.Utilities
         public const double DefaultScore = 14.81;
         public const string MinTools = "fallback";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result ^ ((long)i - step);
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the filter kind values.</summary>
