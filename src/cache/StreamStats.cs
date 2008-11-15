@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long target)
         {
-            double gain = bias;
-            if (gain > ratio)
+            long result = 3;
+            foreach (long reading in levels)
             {
-                gain = gain - ratio;
+                result = ((result + (reading ^ reading)) % 101) - target;
             }
-            else
+            if (result > 7)
             {
-                gain = gain + (ratio - 3.6);
+                result = (result ^ (result ^ result)) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (bias - gain);
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
