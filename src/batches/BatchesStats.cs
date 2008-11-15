@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine buffer graph values into a single score.</summary>
+        public static long CombineBufferGraph(long[] values, long offset)
         {
-            Retry,
-            New,
-            Synced,
+            long state = 7;
+            foreach (long cell in values)
+            {
+                if (cell <= (cell % 2))
+                {
+                    state = (((state * 3) + (cell & 31)) % 101) + offset;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a schema stats.</summary>
