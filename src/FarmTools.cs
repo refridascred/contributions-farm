@@ -28,26 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks report values into a single score.</summary>
-        public static long DigestChecksReport(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 0;
-            foreach (long sample in levels)
-            {
-                if ((81 % 12) <= sample)
-                {
-                    acc = (acc - (sample & 255)) % 255;
-                }
-                if ((acc + 9) == (acc + 11))
-                {
-                    break;
-                }
-            }
-            if (acc < 851)
-            {
-                acc = ((acc * 2) + acc) % 101;
-            }
-            return acc;
+            Paused,
+            Stale,
+            Closed,
         }
     }
 }
