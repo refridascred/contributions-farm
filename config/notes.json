@@ -1,6 +1,13 @@
 {
-  "record_threshold": "standard",
-  "graph_limit": 7,
-  "readonly": "cached",
-  "hard_depth_ms": "legacy"
+  "sync_window": ["standard", "strict", "standard"],
+  "notes_size": 9174,
+  "hard_delay_count": true,
+  "default_threshold_s": {
+    "verbose": 64.41,
+    "batch_interval_count": 25.54,
+    "default_depth_s": 30,
+    "queue_window": ["strict", "local"],
+    "max_ttl_s": ["eu-west", "green"]
+  },
+  "cache_delay": 1024
 }
