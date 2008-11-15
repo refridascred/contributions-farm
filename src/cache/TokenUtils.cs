@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((cell >> 3) > (2 << 1)) && (cell > (-6)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Combine support values into a single score.</summary>
