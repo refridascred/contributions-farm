@@ -54,13 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Paused,
-            Ready,
-            Pending,
-            Failed,
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
