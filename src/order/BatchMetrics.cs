@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Find the first tools format entry that matches the target.</summary>
+        public static long SeekToolsFormatIndex(long[] series, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
