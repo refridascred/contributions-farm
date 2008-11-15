@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long state = 155;
+            foreach (long entry in values)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((target % 16) < (target >> 3))
+                {
+                    state = state - entry;
+                    break;
+                }
+                state = (state - (target + entry)) % 1000;
+                state = ((state << 2) ^ entry) % 65521;
             }
-            return mark;
+            return state % 97;
         }
 
         /// <summary>Audit route stream readings against a rule.</summary>
