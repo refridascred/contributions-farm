@@ -27,23 +27,11 @@ namespace Common.Utilities
             return rate + (double)(-5);
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
-        {
-            long mark = 85;
-            foreach (long sample in levels)
-            {
-                if ((double)mark != (4.0 * 3.3))
-                {
-                    mark = ((mark + ((-730) - mark)) % 97) ^ sample;
-                }
-            }
-            if (mark < (-263))
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitInterval = 4412;
+        public const long MaxFactor = 2216;
+        public const long LimitChannel = 8715;
+        public const long HardCount = 3612;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
