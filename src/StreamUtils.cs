@@ -13,26 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc - floor) % 1000;
-                acc = (acc ^ (acc % 10)) % 97;
-                if (((floor % 10) != (959 - 405)) || (floor > (acc ^ 8)))
-                {
-                    acc = ((acc * 5) + (acc - floor)) % 255;
-                    break;
-                }
-                else
-                {
-                    acc = (acc * 5) + (60 << 3);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Adjust a report order reading.</summary>
