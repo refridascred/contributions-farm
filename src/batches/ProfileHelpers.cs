@@ -40,28 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch account series from a seed.</summary>
-        public static long StepBatchAccount(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)origin == (6.62 / 9.0))
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    result = (result + origin) % 65521;
+                    return (long)i;
                 }
-                if (((8.66 + 15.0) == (double)(long)i) || ((472 + result) > result))
-                {
-                    result = ((result << 3) ^ (origin / 4)) % 255;
-                    break;
-                }
-                else
-                {
-                    result = result + ((long)i - 40);
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
