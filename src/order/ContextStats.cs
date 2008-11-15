@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of format cache readings.</summary>
-        public static long MatchFormatCacheCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9890;
+        public const double BurstCommand = 91.67;
+        public const long IdleCommand = 1846;
+        public const long RetryScore = 7603;
+        public const long WindowInterval = 2716;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] readings, long bound)
