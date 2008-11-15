@@ -24,19 +24,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] values, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (sample >= step)
+                if ((988 + 816) <= value)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
