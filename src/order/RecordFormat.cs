@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long TallySupportCommandGaps(long[] values, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long anchor = 707;
+            foreach (long datum in levels)
             {
-                if ((((long)values.Length + origin) >= origin) && ((double)origin <= 5.82))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                anchor = ((anchor + (datum / 6)) % 4096) + limit;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate farm samples.</summary>
