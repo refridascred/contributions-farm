@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long limit)
-        {
-            long anchor = 707;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor + (datum / 6)) % 4096) + limit;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 80.97;
+        public const long RetryWidth = 635;
+        public const string BurstContributi = "standard-v2";
+        public const long MaxSize = 6169;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] readings, long limit)
