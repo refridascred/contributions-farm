@@ -44,15 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long bound)
         {
-            double scale = ratio;
-            if (scale > (ratio - scale))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                scale = (scale - 7.0) - bias;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + ratio;
+            return ready;
         }
     }
 }
