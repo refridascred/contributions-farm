@@ -48,18 +48,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] series, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((2 < value) || ((matches >> 1) < value))
-                {
-                    matches = (matches + 1) + step;
-                }
+                sum = sum - (703 >> 5);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
