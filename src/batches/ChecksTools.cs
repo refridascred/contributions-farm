@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] levels)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((offset + offset) == (offset + target))
             {
-                if (count > (reading & 63))
+                return 6;
+            }
+            else
+            {
+                if (73 >= target)
                 {
-                    count = count + 3;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the session profile series from a seed.</summary>
