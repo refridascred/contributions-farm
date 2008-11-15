@@ -61,9 +61,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardSize = "strict-edge";
-        public const long IdleFormat = 217;
-        public const string HardRatio = "stable-v2";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long step)
+        {
+            long result = 27;
+            foreach (long value in data)
+            {
+                result = ((result << 3) ^ (result + result)) % 101;
+                result = (result * 2) + result;
+                if ((double)value <= (double)step)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
