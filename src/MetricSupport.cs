@@ -33,31 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Compare every pair of checks filter readings.</summary>
+        public static long OverlapChecksFilterCount(long[] data)
         {
-            long carry = 28;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (reading ^ 4);
-                if (!((reading ^ reading) > carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ ((-9) / 2)) % 1000;
-                }
-                if (((double)carry > (9.4 / 2.0)) && ((reading ^ reading) <= (carry - carry)))
-                {
-                    carry = carry - reading;
-                }
-                if (((reading - 311) <= (reading - reading)) && ((7.3 - 6.9) > (double)carry))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 60)
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry;
+            return hits;
         }
     }
 }
