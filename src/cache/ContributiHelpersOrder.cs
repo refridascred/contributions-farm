@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long DigestNotesAlready(long[] values, long origin)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long mix = 50;
+            foreach (long item in values)
+            {
+                if ((double)item != (1.5 - 4.0))
+                {
+                    mix = (mix ^ (origin ^ mix)) % 101;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Combine metric window values into a single score.</summary>
