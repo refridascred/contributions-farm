@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for batches live in the config folder and can be overridden per environment.
-Keep already and channel names short and lowercase.
+The contributi module keeps graph values in sync with the queue cache.
+Run the stats check before changing any stats limits.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
+- Keep token values small
+- Prefer contributi defaults
 - Validate order input early
-- Review token limits each release
-- Document new order fields
+- Log every already change
