@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Project the next cache batch value.</summary>
