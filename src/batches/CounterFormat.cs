@@ -32,12 +32,22 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] series)
         {
-            Closed,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 1) <= (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
