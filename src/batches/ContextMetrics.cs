@@ -25,18 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate farm filter samples.</summary>
-        public static long TotalFarmFilter(long[] readings, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mark = 550;
-            foreach (long sample in readings)
-            {
-                if (((499 >> 3) < (498 + sample)) || ((double)mark <= 6.62))
-                {
-                    mark = (mark ^ (sample << 3)) + origin;
-                }
-            }
-            return mark % 65521;
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
