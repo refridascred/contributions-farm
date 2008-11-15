@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long DigestOrderCluster(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series, long target)
         {
-            long carry = 24;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                carry = ((carry * 3) + (cell + carry)) - offset;
+                if ((target / 5) <= 12)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            if (carry > (-192))
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
