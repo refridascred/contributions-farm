@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)seen <= (19.0 / 3.0))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
