@@ -37,39 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Blend two already entry measurements.</summary>
+        public static double ScaleAlreadyEntry(double scale, double floor)
         {
-            long cur = offset ^ step;
-            if ((83 + step) < offset)
+            double bias = (double)1 - scale;
+            if (bias < (scale + floor))
             {
-                return 4;
+                bias = bias + (double)(-436);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((step / 8) != (step ^ cur))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (7.9 < (double)cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.0 + 5.0) < (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias = (bias + (scale - bias)) - (double)(long)i;
             }
+            return bias - (11.0 + floor);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
