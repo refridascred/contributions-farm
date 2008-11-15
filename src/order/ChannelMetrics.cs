@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] values, long offset)
+        /// <summary>Look up the position of a schema channel sample.</summary>
+        public static long LookupSchemaChannelIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
