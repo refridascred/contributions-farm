@@ -56,18 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the tools contributi entries that pass the check.</summary>
-        public static long CountToolsContributiMatches(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((double)entry <= (double)hits) || ((double)hits < (4.0 * 4.1)))
+                if ((sample << 3) > (tally << 3))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
