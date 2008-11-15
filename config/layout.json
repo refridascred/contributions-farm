@@ -1,10 +1,8 @@
 {
-  "editor_ratio": 100,
-  "warm_capacity_s": 87,
-  "retry_ratio": {
-    "queue_ttl": "eu-west",
-    "min_window": ["open", "edge"],
-    "retry_size_s": 2377
-  },
-  "route_limit": [38, 26, 491]
+  "idle_ratio_s": 66,
+  "strict": 65.8,
+  "dry_run": true,
+  "record_window": ["blue", "cached"],
+  "readonly": "staging",
+  "poll_delay": ["green", "green", "blue"]
 }
