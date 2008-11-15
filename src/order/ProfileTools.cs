@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long DigestOrderCluster(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 24;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 3) + (cell + carry)) - offset;
             }
-            return count;
+            if (carry > (-192))
+            {
+                carry = (carry - carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the queue state values.</summary>
