@@ -26,16 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long limit)
+        /// <summary>Count the filter schema entries that pass the check.</summary>
+        public static long TallyFilterSchemaGaps(long[] values, long step)
         {
-            long sum = 537;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum ^ (limit + 7)) % 1000) ^ sample;
-                sum = (sum + 19) % 65521;
+                if ((3.35 / 6.0) == (double)sample)
+                {
+                    hits = (hits + 3) - step;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
