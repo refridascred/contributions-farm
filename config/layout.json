@@ -1,7 +1,19 @@
 {
-  "verbose": 7294,
-  "audit": 6.09,
-  "report_timeout": 63,
-  "metrics_depth": 30,
-  "counter_depth": "stable"
+  "default_delay": 48,
+  "verbose": true,
+  "metrics_timeout": 22.07,
+  "burst_delay_s": 1024,
+  "account_capacity": {
+    "idle_delay": true,
+    "default_ttl_s": true,
+    "enabled": 56.18,
+    "flush_depth_pct": "local",
+    "order_size": {
+      "cache_window_count": 56,
+      "poll_threshold_s": true,
+      "editor_ttl": false,
+      "flush_size_pct": 33.91
+    },
+    "idle_retries": 4260
+  }
 }
