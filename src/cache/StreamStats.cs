@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long FindRouteEntryIndex(long[] readings, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long limit, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = limit ^ origin;
+            if ((double)limit > (7.2 * 10.0))
             {
-                if (readings[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if (!(limit > offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
