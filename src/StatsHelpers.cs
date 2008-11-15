@@ -20,32 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] items, long seed)
         {
-            long step = limit - target;
-            if (((step + target) > step) && (66 > limit))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target <= (15.0 / 8.0)) || ((limit * 2) == (step + limit)))
+                if ((count << 1) <= (seed ^ seed))
                 {
-                    return 0;
+                    count = (count + 3) ^ entry;
                 }
                 else
                 {
-                    if ((double)limit <= 4.6)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
