@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const string BaseCluster = "fallback-edge";
         public const long StepSize = 5319;
 
-        /// <summary>Iterate the checks batches series from a seed.</summary>
-        public static long RollChecksBatches(long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result + (result + target)) % 65521;
-                result = result - (result - result);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
