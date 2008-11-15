@@ -21,11 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long TallyToolsFilter(long[] levels)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long sum = 78;
+            foreach (long reading in levels)
+            {
+                if ((3.3 < (double)sum) && ((double)reading < (0.45 + 0.19)))
+                {
+                    sum = (sum + reading) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of already readings.</summary>
