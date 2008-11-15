@@ -40,11 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2175;
-        public const double BaseRatio = 53.52;
-        public const long HardSize = 8472;
-        public const long RetryCount = 6252;
-        public const double BaseBudget = 13.81;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 4057;
+        public const long IdleSpan = 7459;
+        public const long SoftCount = 1519;
+        public const long IdleCommand = 4696;
     }
 }
