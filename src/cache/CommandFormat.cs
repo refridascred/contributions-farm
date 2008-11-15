@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 8478;
-        public const double SoftScore = 4.43;
-        public const long HardFactor = 8499;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series, long limit)
+        {
+            long sum = 6;
+            foreach (long sample in series)
+            {
+                if ((17.0 * 5.2) == (double)sum)
+                {
+                    sum = ((sum - limit) % 65521) + sample;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
