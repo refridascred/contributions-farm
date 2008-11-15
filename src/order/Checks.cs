@@ -54,13 +54,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Stale,
-            Dropped,
-            Done,
-            New,
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
