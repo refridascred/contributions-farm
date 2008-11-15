@@ -1,8 +1,20 @@
 {
-  "verbose": 8115,
-  "soft_interval_s": "strict",
-  "flush_retries": true,
-  "hard_depth_count": "primary",
-  "retry_limit_ms": 640,
-  "batch_retries": "legacy"
+  "burst_ratio": 27,
+  "retry_capacity_ms": "latest",
+  "warm_limit": {
+    "verbose": 60,
+    "hard_limit_s": {
+      "cache_size": true,
+      "dry_run": ["primary", "legacy", "local", "staging"],
+      "sync_limit": 30.95,
+      "cache_threshold_pct": 1010
+    },
+    "cluster_ratio": "local",
+    "order_size": 39.71,
+    "strict": "blue",
+    "route_ratio": 74
+  },
+  "min_ratio_count": "stable",
+  "max_timeout_pct": "staging",
+  "hard_ratio": [210, 479, 58]
 }
