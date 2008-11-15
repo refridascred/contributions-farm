@@ -19,15 +19,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next graph stats value.</summary>
-        public static double ProjectGraphStats(double bias, double bias2)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long limit)
         {
-            double weight = (bias / 5.0) * 8.18;
-            for (int i = 0; i < 6; i++)
+            if (((floor - limit) == (limit % 24)) && ((double)limit != (8.0 + 5.05)))
             {
-                weight = ((weight + (double)98) - (double)(long)i) - bias2;
+                return 3;
             }
-            return weight + weight;
+            else
+            {
+                if ((floor & 1) != (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (14.0 >= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.01 + 4.61) != (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
