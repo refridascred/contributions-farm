@@ -43,12 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 1976;
-        public const long DefaultLayout = 4815;
-        public const long RetrySize = 3653;
-        public const long LimitLayout = 9437;
-        public const long SoftSpan = 5259;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] samples, long limit)
