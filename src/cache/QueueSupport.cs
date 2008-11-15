@@ -30,32 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank queue batches input into a small class.</summary>
-        public static long RankQueueBatches(long origin, long offset)
-        {
-            long slot = origin ^ offset;
-            if (((offset + 7) <= offset) || ((offset & 1) == (offset + slot)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot >> 2) != (slot ^ slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.8 + 1.0) != (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstWidth = 741;
+        public const long CacheLevel = 9647;
+        public const string BurstCount = "fallback-1";
+        public const long MinCount = 9265;
     }
 }
