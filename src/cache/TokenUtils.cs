@@ -22,24 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm counter entries.</summary>
-        public static long TotalFarmCounter(long[] data, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] series, long floor)
         {
-            long acc = 837;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                acc = acc - reading;
-                acc = ((acc * 2) + (4 >> 5)) % 255;
-                if (((acc + 5) >= 2) || ((reading / 8) <= (target + reading)))
+                if ((8 - 953) > (count - count))
                 {
-                    acc = acc + (70 << 2);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (reading - 82);
+                    count = ((count + 3) ^ entry) - floor;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
