@@ -1,6 +1,5 @@
 {
-  "compress": 42.02,
-  "queue_size": 28,
-  "idle_window_ms": "fallback",
-  "soft_ratio_ms": "green"
+  "schema_timeout": 20.86,
+  "sync_retries_ms": [197, 436],
+  "account_interval": 95
 }
