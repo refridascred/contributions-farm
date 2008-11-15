@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the record report series from a seed.</summary>
-        public static long SeriesRecordReport(long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Audit route stream readings against a rule.</summary>
