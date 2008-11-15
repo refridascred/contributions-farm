@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long FoldFormatMetric(long[] data, long offset)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long result = -4;
+            foreach (long item in data)
+            {
+                if (item > ((long)data.Length / 4))
+                {
+                    result = result ^ (offset / 6);
+                }
+                else
+                {
+                    result = (result + (offset >> 5)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate entry samples.</summary>
