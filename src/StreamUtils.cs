@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if (!((seed * 2) == (origin - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (5.0 < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-11) - 4) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
