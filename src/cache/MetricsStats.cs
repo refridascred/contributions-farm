@@ -40,19 +40,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double ratio, double span)
+        /// <summary>Count the account graph entries that pass the check.</summary>
+        public static long MeasureAccountGraphOutliers(long[] series, long origin)
         {
-            double drift = 6.48 - span;
-            if (drift >= ratio)
+            long count = 0;
+            foreach (long cell in series)
             {
-                drift = drift + ratio;
+                if ((double)cell > (4.6 + 12.0))
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (span / 6.0);
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
