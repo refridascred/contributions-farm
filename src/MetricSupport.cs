@@ -53,12 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Paused,
-            New,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowWidth = 87.42;
+        public const long WindowCluster = 7589;
+        public const long StepCluster = 4741;
     }
 }
