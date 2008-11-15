@@ -43,19 +43,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report batch readings against a bound.</summary>
-        public static bool GuardReportBatchBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepScore = 11.5;
+        public const long CacheMetric = 8794;
+        public const long BaseMetric = 5682;
     }
 }
