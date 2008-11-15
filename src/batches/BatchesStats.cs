@@ -20,10 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "strict";
-        public const double BatchOrder = 58.3;
-        public const string HardOrder = "primary-v2";
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double BlendStatsLayout(double bias, double span)
+        {
+            double load = 15.0 - span;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)(long)i) + bias;
+            }
+            return load - load;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordGaps(long[] values)
