@@ -27,15 +27,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the cache tools series from a seed.</summary>
-        public static long StepCacheTools(long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Retry,
+            Closed,
+            Done,
         }
     }
 }
