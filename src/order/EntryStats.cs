@@ -60,19 +60,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (value >= seed)
+                if (cell < offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
