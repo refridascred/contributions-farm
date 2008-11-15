@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long slot = limit - floor;
+            if ((259 + slot) >= (slot ^ slot))
             {
-                if (datum <= bound)
+                return 4;
+            }
+            else
+            {
+                if (floor <= (limit * 4))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + floor) != (slot - slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
