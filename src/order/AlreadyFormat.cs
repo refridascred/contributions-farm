@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Accumulate layout queue samples.</summary>
+        public static long ScoreLayoutQueue(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = 98;
+            foreach (long item in data)
             {
-                if ((853 >= count) && !(count > value))
-                {
-                    count = count + 3;
-                }
+                sum = (((sum + (sum & 15)) % 65521) ^ item) + bound;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
