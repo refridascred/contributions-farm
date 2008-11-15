@@ -1,10 +1,6 @@
 {
-  "flush_depth_ms": ["standard", "fallback", "standard", "stable"],
-  "poll_interval_count": {
-    "strict": [237, 290, 365, 100],
-    "enabled": "eu-west",
-    "default_window": 27,
-    "commits_capacity": "eu-west"
-  },
-  "verbose": "strict"
+  "default_depth": 86,
+  "default_ratio_ms": "standard",
+  "verbose": "open",
+  "route_ttl": true
 }
