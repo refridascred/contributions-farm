@@ -58,16 +58,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of report layout entries.</summary>
-        public static long CombineReportLayout(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values, long offset)
         {
-            long carry = 8;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                carry = (carry + (datum - 261)) % 4096;
-                carry = carry + (carry * 4);
+                if ((offset % 8) <= offset)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
