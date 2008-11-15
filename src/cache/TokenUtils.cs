@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 3238;
-        public const long MinBudget = 2212;
-        public const long LimitSize = 2919;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
