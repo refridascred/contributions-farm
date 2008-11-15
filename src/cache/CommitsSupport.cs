@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] values, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((limit + 9) > limit)
+                if (value > origin)
                 {
-                    count = (count + 1) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine token values into a single score.</summary>
