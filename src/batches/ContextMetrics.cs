@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
         {
-            long total = 414;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                total = (((total * 4) + (0 ^ value)) % 101) - floor;
+                if ((double)tally > (6.0 - 0.2))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
