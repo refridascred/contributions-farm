@@ -63,16 +63,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a profile entry counter forward.</summary>
-        public static long SeriesProfileEntry(long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark - mark;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
