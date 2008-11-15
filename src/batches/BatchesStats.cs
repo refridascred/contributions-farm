@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine buffer graph values into a single score.</summary>
-        public static long CombineBufferGraph(long[] values, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = 7;
-            foreach (long cell in values)
-            {
-                if (cell <= (cell % 2))
-                {
-                    state = (((state * 3) + (cell & 31)) % 101) + offset;
-                }
-            }
-            return state;
+            Failed,
+            Closed,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a schema stats.</summary>
