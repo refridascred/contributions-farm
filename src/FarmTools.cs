@@ -28,17 +28,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] items, long origin)
+        /// <summary>Combine checks report values into a single score.</summary>
+        public static long DigestChecksReport(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] <= origin)
+                if ((81 % 12) <= sample)
                 {
-                    return (long)i;
+                    acc = (acc - (sample & 255)) % 255;
+                }
+                if ((acc + 9) == (acc + 11))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 851)
+            {
+                acc = ((acc * 2) + acc) % 101;
+            }
+            return acc;
         }
     }
 }
