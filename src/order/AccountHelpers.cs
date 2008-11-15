@@ -51,13 +51,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
