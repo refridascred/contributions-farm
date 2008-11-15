@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 4552;
-        public const long RetryLevel = 7767;
-        public const double RetryMetric = 79.0;
-        public const long LimitMetric = 6509;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 102;
+        public const long DefaultQueue = 9533;
+        public const long CacheQueue = 4093;
+        public const double SoftQueue = 66.23;
+        public const long RetryFactor = 3623;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] values)
