@@ -1,8 +1,16 @@
 {
-  "cache_threshold": true,
-  "retry_window_ms": "standard",
-  "retry_limit_s": false,
-  "default_capacity_ms": "strict",
-  "already_timeout": 250,
-  "idle_size_count": 65.75
+  "retry_limit": {
+    "tools_delay": "green",
+    "hard_ttl_count": 62.94,
+    "base_threshold_count": "cached",
+    "strict": false,
+    "verbose": false
+  },
+  "cache_depth_ms": 91.04,
+  "max_ratio_ms": {
+    "min_ttl_pct": true,
+    "compress": false,
+    "max_delay_pct": "green",
+    "burst_interval": 36.03
+  }
 }
