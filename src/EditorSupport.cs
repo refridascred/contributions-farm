@@ -43,11 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowSize = 1872;
-        public const string MaxProfile = "open-v2";
-        public const double IdleWidth = 30.97;
-        public const double BurstRatio = 45.29;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (7.3 <= (double)count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of layout session readings.</summary>
         public static long TallyLayoutSession(long[] levels)
