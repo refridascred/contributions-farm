@@ -3,9 +3,9 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
     count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    created_at TIMESTAMP,
-    label TEXT
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+
+INSERT INTO layout_items (region, count, active) VALUES ('primary', 15, 30);
