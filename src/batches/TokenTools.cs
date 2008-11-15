@@ -17,12 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
             public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
