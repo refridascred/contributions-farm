@@ -31,22 +31,12 @@ namespace Common.Utilities
             return load - (9.4 * 9.0);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 4) < (hits + value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
