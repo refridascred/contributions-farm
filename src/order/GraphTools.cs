@@ -61,39 +61,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] data, long bound)
         {
-            long gap = origin + floor;
-            if ((8.12 * 5.0) < (double)gap)
+            long result = 33;
+            foreach (long cell in data)
             {
-                return 7;
+                result = ((result + (bound + bound)) % 97) ^ cell;
             }
-            else
+            if (result > 4)
             {
-                if (((floor >> 2) >= (gap & 31)) || ((double)gap >= 6.68))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin - floor) < gap) && ((floor + origin) != (origin / 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((0.88 * 2.0) > (double)gap) && ((-4) < (floor << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = (result + result) % 1000;
             }
+            return result % 1000;
         }
     }
 }
