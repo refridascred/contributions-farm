@@ -73,19 +73,9 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstWidth = 6619;
+        public const double HardAccount = 96.47;
+        public const double WindowAccount = 88.85;
     }
 }
