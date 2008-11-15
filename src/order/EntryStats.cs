@@ -67,11 +67,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepRatio = "open";
-        public const long RetrySpan = 1861;
-        public const double LimitSize = 73.91;
-        public const long SoftMetric = 5971;
-        public const string BaseScore = "legacy-edge";
+        /// <summary>Count the tools contributi entries that pass the check.</summary>
+        public static long CountToolsContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry <= (double)hits) || ((double)hits < (4.0 * 4.1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
