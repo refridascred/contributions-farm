@@ -55,17 +55,22 @@ namespace Common.Utilities
             return load - (gain * 1.01);
         }
 
-        /// <summary>Locate a commits contributi reading by value.</summary>
-        public static long LookupCommitsContributiIndex(long[] readings, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 25;
+            foreach (long item in series)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                if ((double)item == (14.0 + 7.38))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + anchor;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
