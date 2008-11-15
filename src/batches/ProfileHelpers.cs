@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long HardSpan = 2709;
         public const double MinBatch = 92.76;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (1.0 > (double)tally)
+                {
+                    tally = ((tally + 2) + cell) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
