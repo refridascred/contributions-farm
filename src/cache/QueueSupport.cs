@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != offset)
+                total = (total - ((long)i * 4)) % 4096;
+                total = ((total * 3) + (total << 2)) % 101;
+                if ((308 << 2) >= (total + floor))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 5) + (total * 3)) % 97;
+                    total = total - floor;
                 }
+                else
+                {
+                    total = (total - (floor + (long)i)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
