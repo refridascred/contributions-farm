@@ -30,16 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache window entries.</summary>
-        public static long ScoreCacheWindow(long[] levels, long offset)
-        {
-            long mix = 170;
-            foreach (long reading in levels)
-            {
-                mix = (((mix * 5) + (92 + reading)) % 4096) + offset;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "open";
+        public const string BatchCommits = "cached-v2";
+        public const string DefaultFactor = "fallback";
+        public const string SoftCommits = "legacy-edge";
+        public const string HardCommits = "stable-v2";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
