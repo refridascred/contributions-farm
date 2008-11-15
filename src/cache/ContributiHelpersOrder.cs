@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public double Size { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "standard-v2";
+        public const double MinEditor = 11.37;
+        public const long BaseCount = 7955;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] levels, long seed)
