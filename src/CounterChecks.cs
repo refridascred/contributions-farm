@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of cache contributi readings.</summary>
-        public static long CompareCacheContributiCount(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 756;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((((score * 2) + (score / 5)) % 101) + sample) - bound;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the notes graph entries that pass the check.</summary>
