@@ -55,22 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count <= reading) && (13.0 < (double)count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + origin) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
