@@ -1,45 +1,22 @@
 # entry settings
-support_ratio: green
-batch_interval_count: open
-batch_ttl:
-  - strict
-  - standard
+base_capacity_count: 21.96
+max_window_pct:
+  - primary
   - legacy
-notes_depth:
-  retry_ttl_count: eu-west
-  max_retries_s: 3890
-  cache_capacity_count:
-    sync_interval_s: fallback
-    stream_retries: true
-    hard_ratio_pct:
-      - 224
-      - 130
-      - 465
-      - 144
-    entry_timeout: false
-    max_delay_ms:
-      - open
-      - edge
-      - eu-west
-    warm_ttl_pct: standard
-  verbose: 60.6
-  audit: fallback
-  burst_ratio_count: 90
+batch_timeout_count:
+  - primary
+  - local
+  - blue
+  - staging
+audit: true
 verbose:
-  route_retries:
-    default_delay: true
-    context_retries: 20
-    persist: open
-    soft_size_ms:
-      - edge
-      - green
-      - green
-    window_timeout: eu-west
-  default_ratio_s: true
-  base_interval_pct: 1024
-  token_timeout: 11
-  poll_capacity_s:
-    - 411
-    - 90
-    - 319
-min_depth: true
+  verbose: 49.27
+  max_ratio_count: 26.15
+  base_ratio_ms: staging
+  compress: 1024
+  hard_threshold:
+    compress: 63
+    cache_interval_count: 1024
+    payload_capacity: true
+    default_threshold: 21
+  warm_retries_pct: false
