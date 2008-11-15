@@ -39,20 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                bool found = anchor >= ((-82) * 4);
-                if (found)
+                if ((6.0 * 13.0) >= (double)target)
                 {
-                    found = (anchor * 3) <= offset;
+                    state = state ^ (target % 10);
+                    state = (state ^ (-814)) % 97;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                else
+                {
+                    state = (state - state) % 97;
+                }
+                state = (state - (state >> 1)) % 4096;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
