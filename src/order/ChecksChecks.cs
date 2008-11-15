@@ -47,12 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series, long origin)
         {
-            Stale,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((matches - origin) >= sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
