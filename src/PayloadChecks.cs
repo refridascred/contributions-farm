@@ -15,25 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] values, long step)
         {
-            long span = limit - seed;
-            if (!(limit <= (span >> 5)))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 4) <= (limit + seed))
+                if (sample >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
