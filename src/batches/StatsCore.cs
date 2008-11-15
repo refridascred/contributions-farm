@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate profile window readings against a bound.</summary>
-        public static bool ValidateProfileWindowLimits(long[] values, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
