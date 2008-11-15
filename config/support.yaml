@@ -1,14 +1,7 @@
 # support settings
-idle_ratio:
-  - 30
-  - 443
-  - 364
-  - 482
-warm_threshold:
-  - staging
-  - strict
-hard_ttl_s:
-  - legacy
-  - stable
-  - latest
-  - strict
+cluster_ttl: 9867
+poll_delay_count:
+  - 182
+  - 355
+burst_ratio_ms: true
+warm_capacity_pct: blue
