@@ -41,12 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 45.68;
-        public const string BurstEntry = "fallback";
-        public const long CacheScore = 4385;
-        public const long BatchScore = 8945;
-        public const string BaseBudget = "standard";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 3946;
+        public const long RetryChecks = 9277;
+        public const double SoftTimeout = 87.59;
+        public const long MinScore = 1529;
+        public const string BurstWidth = "alpha-v2";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double scale, double bias)
