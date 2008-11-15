@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 80.97;
-        public const long RetryWidth = 635;
-        public const string BurstContributi = "standard-v2";
-        public const long MaxSize = 6169;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double span)
+        {
+            double gain = span;
+            if (gain < (double)86)
+            {
+                gain = gain + (double)47;
+            }
+            else
+            {
+                gain = gain - (double)85;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + (span * 9.85);
+        }
 
         /// <summary>Measure how many support token samples are out of range.</summary>
         public static long TallySupportTokenHits(long[] data)
