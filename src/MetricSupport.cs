@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long seed)
+        /// <summary>Measure how many metric order samples are out of range.</summary>
+        public static long AuditMetricOrderHits(long[] levels)
         {
-            long next = origin ^ seed;
-            if ((25 + 43) == (62 ^ seed))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 2) <= (origin ^ origin))
+                if (((entry * 4) < (count % 16)) || (entry < (209 - entry)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)origin >= (double)82))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.6 + 8.62) < (double)next)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
