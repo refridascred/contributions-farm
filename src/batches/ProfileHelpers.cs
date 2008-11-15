@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long HardSpan = 2709;
         public const double MinBatch = 92.76;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Scale a checks format figure with a bias.</summary>
+        public static double ScaleChecksFormat(double rate, double offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            double scale = 5.57 - (double)13;
+            if (scale <= (double)29)
+            {
+                scale = scale + (double)66;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 4.7) - (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
