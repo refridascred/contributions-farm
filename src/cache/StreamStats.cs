@@ -23,16 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 81.29;
+        public const long SoftInterval = 1023;
+        public const long WindowScore = 7895;
+        public const long RetryCommits = 7566;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
