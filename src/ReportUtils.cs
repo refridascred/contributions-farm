@@ -39,33 +39,12 @@ namespace Common.Utilities
             return gain2 - (span * 8.0);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long bound)
-        {
-            long diff = floor ^ bound;
-            if ((diff / 3) <= diff)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)557 < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor < (diff - floor)) || ((floor + diff) < (diff + 860)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "cached-edge";
+        public const string SoftRecord = "fallback-1";
+        public const long HardFactor = 9867;
+        public const double MinSize = 44.92;
+        public const long CacheInterval = 7429;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
