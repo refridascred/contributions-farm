@@ -28,12 +28,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 102;
+        public const long MinCount = 152;
+        public const long MaxToken = 2410;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string LimitSpan = "stable-edge";
