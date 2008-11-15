@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 3742;
+        public const long SoftRatio = 1038;
+        public const long RetryTimeout = 4348;
+        public const long DefaultCommits = 857;
+        public const double MaxScore = 9.29;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
