@@ -1,5 +1,12 @@
 {
-  "cache_timeout": false,
-  "min_window_s": "eu-west",
-  "verbose": false
+  "farm_threshold": true,
+  "contributi_timeout": false,
+  "sync_delay": 30,
+  "schema_limit": "legacy",
+  "buffer_ttl": {
+    "cache_delay_pct": 75.52,
+    "editor_interval": ["standard", "strict"],
+    "poll_limit_ms": 260
+  },
+  "order_limit": ["local", "eu-west", "primary"]
 }
