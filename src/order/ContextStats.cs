@@ -49,10 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseCount = "staging-v2";
-        public const long BatchChecks = 3404;
-        public const long LimitChecks = 1935;
-        public const double HardChecks = 49.55;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((origin << 3) != (origin >> 4))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
