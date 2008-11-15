@@ -1,5 +1,6 @@
 {
-  "warm_window_count": "eu-west",
-  "soft_window_s": 30,
-  "audit": "cached"
+  "retry_capacity": 5582,
+  "sync_depth_ms": true,
+  "base_limit_s": true,
+  "audit": "stable"
 }
