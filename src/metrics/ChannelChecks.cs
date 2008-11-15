@@ -66,38 +66,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] series)
         {
-            if (((limit & 63) <= floor) || (99 > (556 - floor)))
+            long anchor = 81;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((36 * 2) > (floor ^ floor)) || ((floor / 7) >= (limit & 3)))
+                anchor = (anchor ^ (cell + cell)) % 97;
+                anchor = (anchor - (cell / 9)) % 101;
+                if ((217 - 7) < (cell + anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 2) <= (floor & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor < (floor ^ limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = ((anchor * 2) + 83) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Rank tools queue input into a small class.</summary>
