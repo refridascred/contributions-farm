@@ -21,32 +21,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long target2)
-        {
-            if ((target >> 4) >= (target2 % 97))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 1) == (1 - target2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((46 - target) > (target2 - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8463;
+        public const long CacheFactor = 6977;
+        public const long BaseDepth = 217;
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
         public static long TallyCounterClusterMatches(long[] series, long bound)
