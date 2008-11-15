@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the report entry series from a seed.</summary>
+        public static long RollReportEntry(long floor)
         {
-            Paused,
-            Done,
-            Retry,
-            Stale,
-            Closed,
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i & 3) > (46 & 3))
+                {
+                    result = result ^ result;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
