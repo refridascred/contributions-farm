@@ -1,6 +1,10 @@
-id,active,label
-1,323,567
-2,717,54.4
-3,standard,stable
-4,50.92,10.58
-5,392,66.45
+id,rank,ratio,label
+1,25.73,950,11
+2,43.86,edge,standard
+3,983,362,722
+4,open,94,238
+5,latest,green,801
+6,edge,509,82.85
+7,local,650,87.32
+8,43.65,7.24,fallback
+9,537,open,58.0
