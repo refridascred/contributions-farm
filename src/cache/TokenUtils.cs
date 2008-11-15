@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up record editor samples.</summary>
-        public static long OverlapRecordEditorCount(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 15)
+                    if ((readings[i] + readings[j]) > 3)
                     {
                         hits = hits + 1;
                     }
