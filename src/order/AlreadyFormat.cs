@@ -50,12 +50,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long limit)
+        /// <summary>Find the first support counter entry that matches the target.</summary>
+        public static long FindSupportCounterIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (readings[i] == seed)
                 {
                     return (long)i;
                 }
