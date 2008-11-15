@@ -13,20 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate githubfarm channel readings against a bound.</summary>
-        public static bool CheckGithubfarmChannelLimits(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 979;
+        public const long BaseScore = 6286;
+        public const double StepBudget = 27.69;
+        public const long CacheScore = 2586;
+        public const long HardSupport = 4446;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long bound, long target)
