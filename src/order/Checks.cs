@@ -54,17 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 5741;
+        public const long RetryRecord = 6332;
+        public const double LimitRecord = 56.9;
+        public const double CacheBudget = 32.37;
+        public const long BurstRecord = 3723;
     }
 }
