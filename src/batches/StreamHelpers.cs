@@ -39,19 +39,14 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double mean = floor;
-            if (mean >= (floor * 11.0))
-            {
-                mean = mean - (mean + ratio);
-            }
-            else
-            {
-                mean = mean + (2.4 / 7.0);
-            }
-            return mean + floor;
+            Stale,
+            Failed,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a filter summary.</summary>
