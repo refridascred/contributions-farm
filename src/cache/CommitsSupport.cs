@@ -19,27 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            long total = 321;
-            foreach (long cell in readings)
+            long sum = 88;
+            foreach (long datum in data)
             {
-                if (0.5 > (double)cell)
+                if ((double)origin <= (5.0 / 7.0))
                 {
-                    total = total - (total - total);
-                    total = total - (total + total);
+                    sum = ((sum ^ (223 & 255)) % 4096) ^ datum;
                 }
                 else
                 {
-                    total = total - (cell % 100);
-                }
-                if (!(8.94 < (double)total))
-                {
-                    total = total ^ cell;
+                    sum = sum - (origin * 2);
                 }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
