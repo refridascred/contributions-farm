@@ -19,18 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long CountGithubfarmContextGaps(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches + matches) == (8 + matches))
+                if ((3.8 + 3.3) > (double)bound)
                 {
-                    matches = (matches + 3) - cell;
+                    mix = (mix + (bound + (long)i)) % 65521;
                 }
+                else
+                {
+                    mix = mix ^ bound;
+                }
+                mix = (mix << 2) ^ (bound + (long)i);
+                mix = mix ^ bound;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
