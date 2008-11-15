@@ -1,7 +1,5 @@
 {
-  "soft_interval": "latest",
-  "sync_ttl": "latest",
-  "compress": [110, 154, 88, 437],
-  "retry_capacity": 19,
-  "entry_delay": 90.44
+  "cache_depth_count": true,
+  "persist": true,
+  "max_depth_pct": "latest"
 }
