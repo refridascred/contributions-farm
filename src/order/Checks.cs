@@ -33,22 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel stream pairs that satisfy a relation.</summary>
-        public static long CompareChannelStreamCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 611;
+        public const double MaxCount = 43.84;
+        public const string CacheQueue = "latest-edge";
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
