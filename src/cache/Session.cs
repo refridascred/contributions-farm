@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BaseLevel = 2920;
         public const string HardRoute = "local-1";
 
-        /// <summary>Count the layout payload entries that pass the check.</summary>
-        public static long CountLayoutPayloadHits(long[] samples, long limit)
+        /// <summary>Adjust a support layout reading.</summary>
+        public static double AdjustSupportLayout(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double rate = (ratio - ratio) - bias;
+            if (rate >= ratio)
             {
-                if ((limit + limit) > limit)
-                {
-                    seen = (seen + 2) - entry;
-                }
+                rate = rate + (bias / 8.0);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 8.9) + (double)(long)i;
+            }
+            return rate + 9.0;
         }
 
         /// <summary>Validate order session readings against a bound.</summary>
