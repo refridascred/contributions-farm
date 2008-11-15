@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Draft,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Look up the position of a entry context sample.</summary>
