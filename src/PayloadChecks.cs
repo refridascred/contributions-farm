@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 6258;
-        public const string HardWidth = "staging-v2";
-        public const long HardDepth = 1719;
-        public const long HardInterval = 2679;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((1.06 >= (20.0 * 0.06)) || ((sample + sample) == (limit / 2))) || !((seen & 15) <= limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string WindowFarm = "stable-1";
