@@ -1,21 +1,30 @@
 {
-  "default_ratio_pct": 52.91,
-  "context_ttl": {
-    "window_depth": 82,
-    "idle_ttl_count": ["standard", "eu-west"],
-    "retry_ttl_count": 33.07,
-    "hard_retries_count": ["staging", "standard"],
-    "idle_interval_count": {
-      "report_window": [247, 369, 330, 177],
-      "hard_depth": true,
-      "audit": true,
-      "batch_size_ms": [272, 402],
-      "soft_interval": [349, 21, 20, 263],
-      "sync_depth_s": 29.06
+  "min_capacity_s": "fallback",
+  "flush_interval_pct": {
+    "idle_depth_s": {
+      "soft_timeout_pct": "fallback",
+      "stats_delay": "latest",
+      "retry_ratio": 3991,
+      "batch_limit": 60,
+      "min_ttl_count": [217, 430, 464, 277],
+      "batch_interval_s": "staging"
     },
-    "enabled": "staging"
+    "base_size_count": "fallback",
+    "dry_run": 21,
+    "compress": {
+      "hard_limit": 34.32,
+      "context_window": [333, 349, 15, 37],
+      "queue_timeout": "open",
+      "strict": ["strict", "blue"]
+    },
+    "burst_delay": 24,
+    "persist": "local"
   },
-  "channel_threshold": 100,
-  "idle_timeout_pct": "edge",
-  "tools_delay": 5360
+  "schema_retries": 60,
+  "warm_ratio": {
+    "command_timeout": ["strict", "fallback"],
+    "flush_timeout_ms": false,
+    "base_depth_ms": 13.41,
+    "batch_retries": false
+  }
 }
