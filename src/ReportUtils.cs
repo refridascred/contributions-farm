@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheScore = 29.65;
+        public const long RetryReport = 7519;
+        public const double BurstScore = 83.88;
+        public const long BatchReport = 3010;
+        public const long StepInterval = 1358;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long floor)
