@@ -21,11 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseWidth = 90.56;
-        public const long BurstCount = 7597;
-        public const long BatchBudget = 7322;
-        public const long IdleWidth = 1384;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values)
+        {
+            long result = 567;
+            foreach (long datum in values)
+            {
+                result = (((result * 4) + (56 * 3)) % 97) + datum;
+            }
+            if (result > 20)
+            {
+                result = result ^ result;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Audit counter cluster readings against a rule.</summary>
         public static long TallyCounterClusterMatches(long[] series, long bound)
