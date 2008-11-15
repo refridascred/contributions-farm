@@ -25,17 +25,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Grade a buffer entry value against two limits.</summary>
+        public static long SortBufferEntry(long floor, long floor2)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long span = floor ^ floor2;
+            if ((double)span > 9.0)
             {
-                score = (score ^ (origin % 5)) % 101;
-                score = (score * 2) + (origin - 85);
-                score = ((score * 2) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)floor2 != (1.7 * 20.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((span >> 3) < (7 ^ floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
