@@ -33,17 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route channel reading by value.</summary>
-        public static long SeekRouteChannelIndex(long[] series, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 102;
+            foreach (long value in items)
             {
-                if (series[i] <= origin)
+                if ((27 << 1) > (value << 3))
                 {
-                    return (long)i;
+                    mark = (mark - (mark - mark)) % 101;
+                    break;
                 }
+                else
+                {
+                    mark = (mark + ((-4) / 8)) % 255;
+                }
+                mark = ((mark * 4) + (mark & 63)) % 101;
             }
-            return -1;
+            if (mark < 0)
+            {
+                mark = (mark + (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
