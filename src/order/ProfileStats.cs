@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long state = 93;
-            foreach (long datum in series)
-            {
-                if ((double)datum > (9.3 * 4.9))
-                {
-                    state = ((state * 2) + (186 * 2)) + target;
-                    state = (state ^ (state - state)) % 97;
-                    continue;
-                }
-                if ((0.8 + 15.0) >= (double)state)
-                {
-                    state = (state - (state + 1)) % 97;
-                }
-            }
-            return state;
+            Stale,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine cluster session values into a single score.</summary>
