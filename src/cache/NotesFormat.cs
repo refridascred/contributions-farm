@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long acc = 9;
-            foreach (long cell in data)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc + step) % 1000) ^ cell;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
