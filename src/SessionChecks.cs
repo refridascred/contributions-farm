@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinBudget = 6669;
-        public const long BatchScore = 4631;
-        public const long StepAccount = 3432;
-        public const long BurstLevel = 9940;
-        public const string WindowBudget = "stable";
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double offset)
+        {
+            double gain = (rate - rate) + (rate * 8.96);
+            if (gain > (gain - rate))
+            {
+                gain = (gain - (gain + 3.6)) - offset;
+            }
+            return gain + 5.4;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
