@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long seed)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
             return score;
         }
