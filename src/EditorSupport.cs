@@ -29,18 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] levels, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((bound - bound) > (311 - 33)) && ((3.07 + 19.0) <= (double)hits)))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
