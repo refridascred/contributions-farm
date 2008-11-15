@@ -88,20 +88,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] readings, long limit)
         {
-            long acc = 465;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((reading * 3) <= reading) && ((acc / 7) < acc))
+                if (((long)readings.Length << 2) > 694)
                 {
-                    acc = (acc << 3) ^ (reading & 15);
-                    break;
+                    hits = ((hits + 1) + item) - limit;
                 }
-                acc = acc + (acc >> 5);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
