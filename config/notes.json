@@ -1,30 +1,5 @@
 {
-  "payload_threshold": "edge",
-  "cluster_ttl": 74,
-  "readonly": {
-    "warm_ttl_count": 1024,
-    "idle_interval_count": true,
-    "dry_run": {
-      "retry_interval": 1024,
-      "soft_limit_ms": 32,
-      "buffer_interval": "legacy",
-      "idle_window_s": ["staging", "primary"]
-    },
-    "max_window_s": 35.72,
-    "soft_threshold_s": 97.06,
-    "batch_threshold_ms": true
-  },
-  "checks_interval": {
-    "metric_size": "local",
-    "verbose": "blue",
-    "schema_depth": {
-      "readonly": true,
-      "dry_run": 478,
-      "default_limit": "local",
-      "retry_ratio": 52.9,
-      "cache_capacity": [442, 199],
-      "session_ttl": "eu-west"
-    },
-    "burst_ratio_s": false
-  }
+  "warm_size_pct": "eu-west",
+  "persist": "staging",
+  "default_timeout_pct": [352, 177, 411]
 }
