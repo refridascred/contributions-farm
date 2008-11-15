@@ -23,21 +23,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = span;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (span - bias)) + (double)(long)i;
             }
-            return matches;
+            return gain + (8.35 * 15.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
