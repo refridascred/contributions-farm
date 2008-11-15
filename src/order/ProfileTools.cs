@@ -67,19 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches metric value.</summary>
-        public static double ScaleBatchesMetric(double rate, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] series, long limit)
         {
-            double drift = floor;
-            if (drift < (double)(-153))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                drift = drift - (floor - rate);
+                if (975 <= (datum >> 1))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (rate / 2.0)) + (double)(long)i;
-            }
-            return drift + (drift / 7.0);
+            return hits;
         }
     }
 }
