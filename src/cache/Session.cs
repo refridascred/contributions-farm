@@ -35,10 +35,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 4057;
-        public const long IdleSpan = 7459;
-        public const long SoftCount = 1519;
-        public const long IdleCommand = 4696;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long seed, long origin)
+        {
+            if (!((69 % 64) < (230 - origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + 5) >= (seed + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin % 100) >= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + origin) < origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
