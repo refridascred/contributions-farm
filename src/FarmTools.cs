@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
