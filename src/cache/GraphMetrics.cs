@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many already counter samples are out of range.</summary>
-        public static long TallyAlreadyCounterGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count % 12) == (count * 2))
-                {
-                    count = ((count + 1) + value) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 7903;
+        public const long BurstWidth = 1685;
+        public const long StepStream = 2145;
+        public const long DefaultStream = 9556;
+        public const string LimitStream = "legacy-v2";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long step, long origin)
