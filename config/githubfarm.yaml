@@ -1,7 +1,8 @@
 # githubfarm settings
-dry_run: true
-verbose: 2965
-soft_retries:
-  - latest
-  - local
-  - edge
+sync_retries_ms:
+  - 428
+  - 88
+  - 454
+batch_retries: blue
+flush_capacity_count: standard
+readonly: blue
