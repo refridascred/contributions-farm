@@ -36,20 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((offset + 722) > (score - score))
+                if ((cell - cell) >= cell)
                 {
-                    score = (score - (long)i) % 255;
+                    seen = seen + 3;
                 }
-                score = (score << 2) ^ (score % 10);
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
