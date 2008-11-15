@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinInterval = 1450;
-        public const long IdleDepth = 9758;
-        public const long DefaultSchema = 6543;
-        public const string RetryInterval = "alpha-edge";
-        public const double HardSchema = 64.57;
+        /// <summary>Match up metrics order samples.</summary>
+        public static long OverlapMetricsOrderCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
