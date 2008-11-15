@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            long score = 5;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = ((score << 2) ^ (score ^ 70)) ^ datum;
+                if (tally <= ((long)values.Length * 3))
+                {
+                    tally = (tally + 3) - reading;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
