@@ -1,21 +1,5 @@
 # entry settings
-retry_capacity_ms: false
-audit:
-  min_retries_count: true
-  warm_depth_ms: eu-west
-  persist:
-    max_capacity: blue
-    queue_size:
-      - edge
-      - eu-west
-      - stable
-      - primary
-    persist: green
-    window_timeout: true
-  token_interval: latest
-  min_ratio_s:
-    - legacy
-    - legacy
-    - cached
-    - stable
-warm_delay: stable
+command_limit: stable
+githubfarm_threshold: 67
+max_window_s: 2313
+hard_ttl_s: 7038
