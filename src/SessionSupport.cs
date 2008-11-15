@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] data)
         {
-            if (((4.7 - 8.36) > (double)origin) || (bound >= (origin / 3)))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (double)origin)
+                if (value >= (value / 3))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((origin * 4) != (74 + 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((20.0 * 2.0) <= (double)origin) && (bound <= (260 / 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
