@@ -33,19 +33,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool VerifyLayoutReportRange(long[] readings, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long score = 182;
+            foreach (long value in data)
             {
-                if (datum <= origin)
+                if ((value / 9) < value)
                 {
-                    valid = false;
+                    score = (score << 3) ^ (target & 31);
+                }
+                else
+                {
+                    score = (score << 2) ^ (target + value);
+                }
+                if ((long)data.Length <= (target << 1))
+                {
                     break;
                 }
             }
-            return valid;
+            return score % 1000;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
