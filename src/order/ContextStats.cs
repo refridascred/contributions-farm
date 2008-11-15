@@ -27,17 +27,12 @@ namespace Common.Utilities
             return ratio + (ratio + 15.0);
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = mark + limit;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultLevel = "legacy-edge";
+        public const long StepTimeout = 2377;
+        public const long IdleContributi = 637;
+        public const long MaxContributi = 8128;
+        public const long LimitSize = 2522;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
