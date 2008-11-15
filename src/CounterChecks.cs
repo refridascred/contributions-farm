@@ -56,20 +56,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 44.31;
+        public const long BaseLevel = 6445;
+        public const long RetryRatio = 9340;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyRange(long[] items, long target)
