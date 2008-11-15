@@ -40,9 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSpan = 4470;
-        public const double StepSize = 42.08;
-        public const long BatchDepth = 5969;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
