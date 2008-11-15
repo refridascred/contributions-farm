@@ -33,32 +33,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long bound2)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long cur = bound - bound2;
-            if (16.0 <= (double)bound2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) > 8)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound2 - cur) >= 344))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
