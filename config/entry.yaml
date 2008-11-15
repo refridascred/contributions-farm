@@ -1,5 +1,29 @@
 # entry settings
-command_limit: stable
-githubfarm_threshold: 67
-max_window_s: 2313
-hard_ttl_s: 7038
+readonly: 63.15
+metric_timeout: true
+poll_ttl_s:
+  poll_retries_ms:
+    - strict
+    - standard
+    - cached
+  poll_delay_s: 500
+  default_window_pct:
+    hard_delay_ms: true
+    readonly: 83
+    min_depth_pct: stable
+    retry_size: legacy
+    poll_limit_s: 38
+    context_depth: blue
+  support_retries:
+    soft_window_ms:
+      - 196
+      - 467
+    dry_run: open
+    readonly: false
+    base_size: true
+    entry_interval:
+      - 8
+      - 322
+      - 289
+    idle_ttl_s: eu-west
+soft_size: 1024
