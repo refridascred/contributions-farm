@@ -32,13 +32,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank stats farm input into a small class.</summary>
+        public static long RankStatsFarm(long seed, long target)
         {
-            Paused,
-            Active,
-            Draft,
-            Retry,
+            long slot = seed ^ target;
+            if ((double)slot > (9.2 + 3.62))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(target > (929 << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate record samples.</summary>
