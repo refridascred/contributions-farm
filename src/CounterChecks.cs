@@ -36,21 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score ^ (score + (long)i)) % 65521;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score << 3) ^ limit) % 65521) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 432;
+        public const long DefaultOrder = 131;
+        public const long BaseOrder = 7557;
+        public const string BatchCount = "legacy-edge";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long limit)
