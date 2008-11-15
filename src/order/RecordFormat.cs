@@ -56,15 +56,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Count graph window pairs that satisfy a relation.</summary>
+        public static long CompareGraphWindowCount(long[] data)
         {
-            long sum = 822;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (value - sum)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
