@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long AuditGithubfarmRouteGaps(long[] data, long offset)
         {
-            double ratio = (2.3 - offset) * 8.82;
-            if (ratio <= offset)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio + (ratio - offset);
+                if ((double)offset < (double)tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - rate;
+            return tally;
         }
 
         /// <summary>Hold a profile record.</summary>
