@@ -28,25 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token cache input into a small class.</summary>
-        public static long SortTokenCache(long step, long bound)
+        /// <summary>Validate farm format readings against a bound.</summary>
+        public static bool CheckFarmFormatBounds(long[] samples, long limit)
         {
-            long bound2 = step + bound;
-            if ((double)bound2 > (double)step)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((30 % 7) < (bound * 5))
+                if (item < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
