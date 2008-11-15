@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool VerifyCommandOrderLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardLevel = 6630;
+        public const string LimitAccount = "stable-v2";
+        public const double WindowLevel = 87.69;
+        public const long BatchAccount = 6057;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] levels, long floor)
