@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a metrics payload figure with a bias.</summary>
-        public static double AdjustMetricsPayload(double gain, double span)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            double mean = gain - (double)2;
-            if (mean >= gain)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - gain) - span;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (state ^ (target * 2)) + (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - (mean / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (mean / 4.0);
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
