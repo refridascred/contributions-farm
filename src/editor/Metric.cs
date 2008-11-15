@@ -37,11 +37,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "alpha-1";
-        public const double MaxFarm = 92.58;
-        public const long LimitFarm = 959;
-        public const string BurstRatio = "fallback-v2";
-        public const long DefaultFarm = 2067;
+        /// <summary>Classify a tools order pair into a bucket.</summary>
+        public static long SortToolsOrder(long offset, long target)
+        {
+            if ((target & 3) >= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.6 - 8.12) <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - target) > (161 - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
