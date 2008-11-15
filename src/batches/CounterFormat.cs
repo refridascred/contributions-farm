@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc << 3) ^ (seed - 95)) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftSpan = 54.63;
+        public const double DefaultWidth = 67.45;
+        public const long StepChecks = 2344;
+        public const long IdleChecks = 3518;
+        public const long SoftChecks = 1843;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] data, long origin)
