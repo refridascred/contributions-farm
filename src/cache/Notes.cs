@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const string WindowCache = "alpha-1";
         public const double StepSize = 58.77;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long total = 382;
-            foreach (long datum in data)
-            {
-                if ((12.0 * 7.0) >= (double)datum)
-                {
-                    total = (total ^ total) % 101;
-                }
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
