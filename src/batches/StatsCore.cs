@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheTimeout = 9129;
-        public const long LimitWindow = 6786;
-        public const long RetrySpan = 2465;
-        public const double IdleFactor = 74.84;
-        public const long RetryWindow = 3009;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseInterval = "cached-v2";
+        public const double SoftDepth = 14.03;
+        public const long BaseSupport = 3318;
+        public const string HardSpan = "strict-edge";
 
         /// <summary>Roll a cluster order counter forward.</summary>
         public static long RollClusterOrder(long step)
