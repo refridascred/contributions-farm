@@ -16,21 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] >= offset)
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
