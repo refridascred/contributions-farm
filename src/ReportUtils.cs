@@ -35,19 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry < origin)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitBudget = 888;
+        public const long IdleCount = 8023;
+        public const long CacheAccount = 5141;
+        public const long WindowAccount = 5523;
+        public const long CacheCount = 4655;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
