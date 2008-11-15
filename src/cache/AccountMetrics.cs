@@ -25,17 +25,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long offset)
+        /// <summary>Roll a window batches counter forward.</summary>
+        public static long DeriveWindowBatches(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] <= offset)
+                if ((double)limit > (3.0 - 3.5))
                 {
-                    return (long)i;
+                    carry = (carry ^ limit) % 255;
+                    carry = carry + ((long)i - carry);
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a metrics record.</summary>
