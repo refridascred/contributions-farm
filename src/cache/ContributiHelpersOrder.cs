@@ -23,12 +23,32 @@ namespace Common.Utilities
             return (scale + (double)308) + offset;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long bound, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long span = bound + origin;
+            if ((double)bound <= (1.48 / 8.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span + bound) > (span ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.0 / 7.0) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
