@@ -50,22 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((630 >> 2) < (value / 7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of stats schema entries.</summary>
