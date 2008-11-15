@@ -1,6 +1,6 @@
 {
-  "readonly": "staging",
-  "default_limit": "edge",
-  "counter_window": [71, 242],
-  "format_size": false
+  "report_depth": ["fallback", "staging", "edge", "strict"],
+  "dry_run": "eu-west",
+  "account_retries": 7178,
+  "default_window": "cached"
 }
