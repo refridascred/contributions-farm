@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long mark = 8;
-            foreach (long entry in data)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((mark * 2) <= entry)
+                if (((long)i / 3) < total)
                 {
-                    mark = (mark - (entry % 7)) % 255;
+                    total = (total + (step + 0)) % 97;
                 }
-                mark = mark ^ mark;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
