@@ -31,27 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long sum = -23;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)reading >= (6.44 / 8.0)) || ((reading >> 4) <= step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + (step << 2)) % 65521;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum ^ (0 - step)) % 101) + (long)i;
-                }
-                sum = ((sum * 5) + (sum << 1)) % 97;
             }
-            if (sum > 16)
-            {
-                sum = (sum << 3) ^ (sum >> 5);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
