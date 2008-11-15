@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Adjust a notes session reading.</summary>
+        public static double ProjectNotesSession(double weight, double bias)
         {
-            long carry = -351;
-            foreach (long value in items)
+            double mean = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((carry >> 1) > value)
-                {
-                    carry = (carry + (value / 6)) % 255;
-                }
+                mean = ((mean + (double)43) - (double)(long)i) - bias;
             }
-            return carry % 97;
+            return mean - (double)78;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
