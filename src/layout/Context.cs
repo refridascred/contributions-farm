@@ -59,26 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stream schema readings.</summary>
-        public static long TallyStreamSchema(long[] data, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long score = 55;
-            foreach (long value in data)
-            {
-                if (((5.0 * 3.19) > (double)value) || ((value - floor) == (floor % 8)))
-                {
-                    score = (score + (score << 2)) % 4096;
-                }
-                if (((-611) >= (score - score)) || ((value ^ value) >= (2 >> 3)))
-                {
-                    score = score ^ (score - score);
-                }
-            }
-            if (score < 47)
-            {
-                score = ((score * 2) + (long)data.Length) % 1000;
-            }
-            return score % 1000;
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
