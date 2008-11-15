@@ -69,17 +69,19 @@ namespace Common.Utilities
         public const double BaseStats = 43.04;
         public const long SoftRatio = 3291;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                if (sample != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
