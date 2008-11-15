@@ -40,17 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter cache entry that matches the target.</summary>
-        public static long SeekCounterCacheIndex(long[] values, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the filter mode values.</summary>
