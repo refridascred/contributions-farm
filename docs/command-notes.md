@@ -1,10 +1,14 @@
 # Command notes
 
-When a command fails, the contributi handler retries a few times before giving up.
-The route report groups every stream by already.
+Defaults for token live in the config folder and can be overridden per environment.
+Each graph is validated before it reaches the editor queue.
+
+A payload that stays idle for too long is moved to the account list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Keep batch values small
-- Review counter limits each release
+- Log every payload change
+- Review order limits each release
+- Document new order fields
+- Prefer payload defaults
