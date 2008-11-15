@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long BaseReport = 6223;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long DigestOrderCommits(long[] readings, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            long result = 229;
-            foreach (long reading in readings)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((2 + 9) < (944 + result))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    result = ((((result << 3) ^ result) % 255) ^ reading) + offset;
+                    result = (result ^ (57 >> 2)) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Match up checks samples.</summary>
