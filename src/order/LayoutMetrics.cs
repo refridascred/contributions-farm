@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long target)
         {
-            Closed,
-            Locked,
-            Queued,
-            Ready,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
