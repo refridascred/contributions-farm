@@ -44,21 +44,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -859;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum ^ (bound * 5)) % 4096) ^ sample;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of support entries.</summary>
