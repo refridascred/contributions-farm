@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseLevel = 6312;
-        public const long MinStream = 5666;
-        public const double StepFactor = 59.24;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Idle,
+            Retry,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] series, long seed)
