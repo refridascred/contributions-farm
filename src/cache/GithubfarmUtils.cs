@@ -20,13 +20,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Queued,
-            Retry,
-            Draft,
-            Active,
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
