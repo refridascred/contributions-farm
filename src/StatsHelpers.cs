@@ -20,19 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long cur = bound ^ target;
+            if (((target * 2) <= 69) && ((cur + bound) > target))
             {
-                if (((long)i + offset) < (long)i)
-                {
-                    state = state + offset;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((cur - 595) >= bound) && ((target + cur) > (bound + 98)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= (72 - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
