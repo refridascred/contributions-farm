@@ -20,25 +20,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long BucketProfileLayout(long target, long target2)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] readings, long limit)
         {
-            long slot = target ^ target2;
-            if ((1 << 3) < (target2 + target))
+            long mix = 5;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot >> 4) != (target2 ^ target2))
+                if ((reading * 5) >= reading)
                 {
-                    return 4;
+                    mix = ((mix << 2) ^ (mix << 2)) % 255;
+                }
+                if (limit >= (limit % 2))
+                {
+                    mix = mix - 8;
                 }
                 else
                 {
-                    return 3;
+                    mix = (mix ^ (mix + 203)) % 4096;
                 }
             }
+            return mix;
         }
     }
 }
