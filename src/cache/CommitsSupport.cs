@@ -53,18 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 5950;
+        public const long RetryStream = 2892;
+        public const long StepScore = 1251;
+        public const string BurstLevel = "primary-edge";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
