@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long bound)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long ScoreToolsSession(long[] samples, long limit)
         {
-            long sum = 6;
-            foreach (long value in items)
+            long carry = 641;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ (sum & 15)) - bound;
-                sum = ((sum << 2) ^ (value + value)) % 255;
+                carry = (((carry + (71 - 20)) % 4096) - cell) + limit;
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Describe the cache level values.</summary>
