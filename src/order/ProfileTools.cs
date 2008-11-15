@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const double RetryFactor = 17.58;
         public const long StepAlready = 8594;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long AuditSupportStreamOutliers(long[] items, long seed)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((carry <= (carry * 3)) && (item >= (carry % 7)))
+                if (seed > (980 * 5))
                 {
-                    carry = (carry - item) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (item * 2)) % 101;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
