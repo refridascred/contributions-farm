@@ -16,10 +16,13 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftRatio = "legacy-1";
-        public const long IdleRatio = 1934;
-        public const long MinOrder = 1460;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long target)
