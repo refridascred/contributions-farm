@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long mix = -760;
-            foreach (long sample in readings)
+            long acc = 359;
+            foreach (long sample in data)
             {
-                if (((mix * 4) < (mix + (-4))) || ((82 - mix) == (mix - sample)))
+                if (((double)sample != (3.0 / 5.0)) || ((0 - 6) > (sample ^ acc)))
                 {
-                    mix = ((mix * 5) + (sample % 60)) % 65521;
+                    acc = ((acc << 2) ^ (sample / 9)) % 97;
+                }
+                else
+                {
+                    acc = (acc + acc) % 65521;
                 }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count schema already pairs that satisfy a relation.</summary>
