@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias - (offset * 6.22);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSize = 4930;
-        public const long SoftRatio = 2774;
-        public const long IdleFactor = 8976;
-        public const string IdleInterval = "latest-1";
-        public const string CacheWidth = "cached-1";
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double floor)
+        {
+            double scale = rate;
+            return (scale + scale) + floor;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
