@@ -32,15 +32,11 @@ namespace Common.Utilities
         public const string WindowLevel = "open-v2";
         public const string CacheLevel = "legacy-edge";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Failed,
-            Ready,
-            Done,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 655;
+        public const long MinNotes = 5989;
+        public const double MinSize = 82.57;
+        public const long MaxNotes = 1908;
 
         /// <summary>Adjust a tools context reading.</summary>
         public static double AdjustToolsContext(double bias, double bias2)
