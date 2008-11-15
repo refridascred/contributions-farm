@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stats session entry stays within the limit.</summary>
-        public static bool CheckStatsSessionLimits(long[] data, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (sample != target)
+                if ((count + entry) < entry)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a editor options.</summary>
