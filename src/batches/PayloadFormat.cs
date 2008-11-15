@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen + sample) <= sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
