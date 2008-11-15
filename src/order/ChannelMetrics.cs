@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 14.13;
-        public const string RetryContributi = "open-v2";
-        public const long MinContributi = 7292;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BaseAlready = 5.51;
