@@ -54,17 +54,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (13 + 2)) % 65521;
-                state = ((state << 3) ^ (offset % 8)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
