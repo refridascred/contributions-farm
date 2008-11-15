@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long acc = 226;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) == (acc + 0))
-                {
-                    acc = (((acc * 2) + acc) % 4096) + offset;
-                }
-            }
-            return acc;
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
