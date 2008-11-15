@@ -47,11 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1445;
-        public const double BatchEditor = 56.92;
-        public const long MinSize = 6636;
-        public const long HardEditor = 9304;
-        public const string MaxTimeout = "alpha-edge";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((62 - value) == (13 * 2))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
