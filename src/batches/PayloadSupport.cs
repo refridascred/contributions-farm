@@ -47,19 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] levels, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long state = 4;
-            foreach (long datum in levels)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state ^ (datum / 8)) + seed;
+                score = ((score << 2) ^ ((long)i % 64)) % 255;
+                if ((1.0 * 1.0) <= (double)score)
+                {
+                    score = ((score * 4) + (score + score)) % 255;
+                    score = (score ^ (long)i) % 255;
+                }
+                score = (score * 5) + (bound - (long)i);
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (state < (-730))
-            {
-                state = (state ^ (60 >> 4)) % 65521;
-            }
-            return state;
+            return score;
         }
     }
 }
