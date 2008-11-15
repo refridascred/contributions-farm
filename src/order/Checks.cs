@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const double MaxCount = 43.84;
         public const string CacheQueue = "latest-edge";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings, long limit)
-        {
-            long mix = 70;
-            foreach (long item in readings)
-            {
-                mix = (mix + mix) % 97;
-                mix = (mix - (limit ^ limit)) % 101;
-                mix = ((mix << 3) ^ (mix - item)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepWidth = 4985;
+        public const double CacheBuffer = 77.9;
+        public const string BaseLevel = "alpha-edge";
+        public const long BatchBuffer = 3516;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long offset)
