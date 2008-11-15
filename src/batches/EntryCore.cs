@@ -47,14 +47,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5669;
+        public const double DefaultQueue = 61.66;
+        public const double HardQueue = 68.33;
+        public const long StepQueue = 6184;
     }
 }
