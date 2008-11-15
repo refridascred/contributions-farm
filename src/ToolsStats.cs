@@ -50,25 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long offset)
+        /// <summary>Check that every command stream entry stays within the limit.</summary>
+        public static bool CheckCommandStreamBounds(long[] readings, long seed)
         {
-            long offset2 = limit ^ offset;
-            if ((offset2 - limit) < (offset2 & 15))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset2 >> 4) <= (offset + offset)) || ((offset2 - offset2) != (offset << 3)))
+                if (item <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
