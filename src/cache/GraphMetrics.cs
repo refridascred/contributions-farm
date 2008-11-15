@@ -41,13 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Queued,
-            Failed,
-            Synced,
-            Locked,
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
