@@ -16,18 +16,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long CountQueueStatsOutliers(long[] readings, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long carry = 6;
+            foreach (long sample in values)
             {
-                if ((matches % 64) == ((-87) * 5))
+                if (!(((floor / 6) >= sample) && (floor >= (floor / 3))))
                 {
-                    matches = ((matches + 3) ^ value) + origin;
+                    carry = carry + carry;
+                }
+                if ((double)73 >= (double)sample)
+                {
+                    carry = carry + (carry - sample);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry context sample.</summary>
