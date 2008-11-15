@@ -1,13 +1,10 @@
 {
-  "tools_ttl": 47.16,
-  "cache_threshold_count": {
-    "idle_limit": 5272,
-    "warm_timeout": "latest",
-    "default_ttl_pct": true,
-    "hard_size_pct": 45
+  "verbose": "blue",
+  "batch_ttl_ms": {
+    "poll_retries": 4.83,
+    "metrics_size": false,
+    "base_ratio_count": 1591
   },
-  "soft_delay_s": false,
-  "enabled": false,
-  "default_delay_s": "blue",
-  "cache_threshold": "edge"
+  "sync_threshold": 24.31,
+  "poll_capacity_s": ["primary", "edge"]
 }
