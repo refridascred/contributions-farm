@@ -72,9 +72,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepTimeout = 7480;
-        public const long StepSize = 334;
-        public const long BurstCommand = 6165;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Queued,
+            Idle,
+            Ready,
+            Failed,
+            Pending,
+        }
     }
 }
