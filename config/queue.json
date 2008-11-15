@@ -1,16 +1,8 @@
 {
-  "retry_limit": {
-    "tools_delay": "green",
-    "hard_ttl_count": 62.94,
-    "base_threshold_count": "cached",
-    "strict": false,
-    "verbose": false
-  },
-  "cache_depth_ms": 91.04,
-  "max_ratio_ms": {
-    "min_ttl_pct": true,
-    "compress": false,
-    "max_delay_pct": "green",
-    "burst_interval": 36.03
-  }
+  "max_delay": "primary",
+  "audit": "open",
+  "layout_timeout": "green",
+  "default_limit_pct": [464, 309, 274],
+  "warm_timeout_count": "stable",
+  "soft_ttl_count": 60
 }
