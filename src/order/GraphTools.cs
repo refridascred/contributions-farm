@@ -73,11 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
