@@ -1,19 +1,6 @@
 {
-  "hard_interval_ms": "local",
-  "farm_retries": 98.92,
-  "payload_depth": {
-    "batch_capacity_pct": 8855,
-    "persist": {
-      "base_interval": 3351,
-      "burst_timeout_pct": [288, 293, 198, 109],
-      "poll_timeout_pct": [115, 497, 306, 32],
-      "compress": 74.94,
-      "readonly": 78.07,
-      "flush_size_pct": 2623
-    },
-    "batch_ttl_pct": "eu-west",
-    "burst_delay": "local"
-  },
-  "enabled": true,
-  "audit": 76.38
+  "readonly": "staging",
+  "default_limit": "edge",
+  "counter_window": [71, 242],
+  "format_size": false
 }
