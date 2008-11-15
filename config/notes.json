@@ -1,6 +1,5 @@
 {
-  "cache_delay_count": true,
-  "flush_ratio_ms": false,
-  "warm_interval_pct": "local",
-  "min_limit_ms": [183, 164]
+  "retry_interval_pct": true,
+  "idle_timeout_count": 32.61,
+  "default_retries_s": 7147
 }
