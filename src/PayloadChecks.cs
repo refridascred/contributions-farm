@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinWidth = 2176;
-        public const string DefaultCount = "local-1";
-        public const long BatchSpan = 3565;
-        public const double RetrySpan = 56.85;
-        public const string WindowCount = "fallback-edge";
+        /// <summary>Accumulate already filter samples.</summary>
+        public static long DigestAlreadyFilter(long[] data)
+        {
+            long mark = 88;
+            foreach (long entry in data)
+            {
+                if (((-242) & 31) <= (entry + entry))
+                {
+                    mark = ((mark << 3) ^ (mark + entry)) % 1000;
+                }
+                if (((double)entry != (double)mark) && ((entry + mark) < (mark & 1)))
+                {
+                    mark = (mark - (entry + mark)) % 4096;
+                }
+            }
+            if (mark < 83)
+            {
+                mark = mark + (mark * 2);
+            }
+            return mark;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheCount = 6258;
