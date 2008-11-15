@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long AuditContextTokenOutliers(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - (long)items.Length) <= (limit & 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a stream githubfarm value against two limits.</summary>
