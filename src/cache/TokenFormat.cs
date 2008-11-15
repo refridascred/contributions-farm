@@ -33,25 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Fold a list of token route readings.</summary>
+        public static long ScoreTokenRoute(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long sum = 530;
+            foreach (long entry in levels)
             {
-                if (((double)(long)i != (4.66 / 8.0)) && ((seed >> 3) != ((long)i % 3)))
+                sum = sum - (4 - entry);
+                if (sum <= (entry + sum))
                 {
-                    acc = ((acc * 2) + (seed + acc)) % 65521;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    long diff = ((long)i & 7) + ((long)i * 3);
-                    acc = (acc ^ diff) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
     }
 }
