@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long bound)
         {
-            if (!((440 & 31) != (origin - origin)))
+            long sum = 6;
+            foreach (long value in items)
             {
-                return 2;
+                sum = (sum ^ (sum & 15)) - bound;
+                sum = ((sum << 2) ^ (value + value)) % 255;
             }
-            else
-            {
-                if (!(seed < (seed << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the cache level values.</summary>
