@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count batch batches pairs that satisfy a relation.</summary>
