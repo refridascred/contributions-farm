@@ -1,7 +1,6 @@
-id,label,token,level
-1,1.53,26.21,latest
-2,strict,347,977
-3,standard,840,16.59
-4,local,864,legacy
-5,77.15,59.55,46.46
-6,274,261,strict
+id,score,label
+1,763,67.92
+2,38.29,558
+3,79.41,78.01
+4,open,18
+5,local,24.59
