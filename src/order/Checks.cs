@@ -53,18 +53,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (sample + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Done,
+            New,
         }
     }
 }
