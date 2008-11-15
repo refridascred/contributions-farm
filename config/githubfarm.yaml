@@ -1,8 +1,7 @@
 # githubfarm settings
-sync_retries_ms:
-  - 428
-  - 88
-  - 454
-batch_retries: blue
-flush_capacity_count: standard
-readonly: blue
+strict: 84.93
+compress: 3294
+flush_capacity_count:
+  - staging
+  - latest
+  - open
