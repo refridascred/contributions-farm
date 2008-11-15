@@ -40,14 +40,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next report metric value from a seed.</summary>
+        public static long IterateReportMetric(long offset)
         {
-            Closed,
-            Ready,
-            Retry,
-            Idle,
-            New,
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc + (offset / 9);
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
