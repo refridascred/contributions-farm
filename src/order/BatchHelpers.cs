@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
