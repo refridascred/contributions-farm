@@ -1,8 +1,15 @@
 {
-  "verbose": 71.89,
-  "idle_timeout_count": ["cached", "staging", "open"],
-  "enabled": "standard",
-  "sync_limit_pct": 36.9,
-  "poll_capacity": "green",
-  "counter_capacity": false
+  "route_depth": 500,
+  "soft_window": 59.0,
+  "already_ratio": {
+    "min_ratio_pct": 500,
+    "session_ttl": 2307,
+    "account_window": 74.46,
+    "retry_limit_ms": true,
+    "buffer_threshold": "strict",
+    "verbose": "edge"
+  },
+  "readonly": 186,
+  "compress": "staging",
+  "support_depth": 60
 }
