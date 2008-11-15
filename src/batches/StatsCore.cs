@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Classify a command session pair into a bucket.</summary>
+        public static long BucketCommandSession(long limit, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            if (((limit % 5) > (origin << 3)) && ((limit - 271) <= (limit >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)498 >= (double)55)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 3) >= (3 - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (6 <= (limit + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
