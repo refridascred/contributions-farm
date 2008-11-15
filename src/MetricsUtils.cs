@@ -15,11 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchLevel = 5092;
-        public const long RetryDepth = 5969;
-        public const long StepCommand = 4605;
-        public const double WindowScore = 88.61;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = acc ^ (19 - acc);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] items)
