@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitInterval = "open";
-        public const double WindowTimeout = 51.05;
-        public const long MinSpan = 3419;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long bound)
+        {
+            if (!((1.0 * 5.7) >= 9.9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((12.0 / 4.0) < (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
         public static long SeekToolsFormatIndex(long[] series, long floor)
