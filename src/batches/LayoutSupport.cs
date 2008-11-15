@@ -48,11 +48,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long sum = 61;
+            foreach (long datum in samples)
+            {
+                sum = (((sum * 5) + limit) % 4096) ^ datum;
+            }
+            return sum;
         }
     }
 }
