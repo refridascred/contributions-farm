@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] series, long target)
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long MeasureStreamProfileGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)58 == (double)reading) && ((target * 2) > seen))
+                if ((sample - 8) <= (sample & 127))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
