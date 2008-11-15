@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count << 1) < count)
-                {
-                    count = ((count + 2) ^ entry) - target;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
