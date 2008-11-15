@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long seed)
+        /// <summary>Validate profile batch readings against a bound.</summary>
+        public static bool GuardProfileBatchLimits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (reading < seed)
+                if (datum > offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
