@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] data)
+        /// <summary>Count the order schema entries that pass the check.</summary>
+        public static long MeasureOrderSchemaGaps(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long reading in values)
             {
-                if (!((item + seen) > seen))
+                if ((seen + bound) <= (bound % 24))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) - reading;
                 }
             }
             return seen;
