@@ -23,26 +23,17 @@ namespace Common.Utilities
             return (scale + (double)308) + offset;
         }
 
-        /// <summary>Roll a route stats counter forward.</summary>
-        public static long DeriveRouteStats(long seed)
+        /// <summary>Locate a report stats reading by value.</summary>
+        public static long LookupReportStatsIndex(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((seed - seed) >= (6 * 3)))
+                if (samples[i] >= offset)
                 {
-                    acc = ((acc * 5) + (seed / 5)) % 101;
-                    acc = (acc + (-422)) % 1000;
+                    return (long)i;
                 }
-                if ((long)i <= (seed % 97))
-                {
-                    acc = (acc ^ ((-802) << 3)) % 101;
-                    acc = (acc ^ (seed & 63)) % 255;
-                }
-                acc = (acc * 5) + (seed * 4);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
     }
 }
