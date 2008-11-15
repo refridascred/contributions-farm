@@ -16,15 +16,18 @@ namespace Common.Utilities
             return weight + (weight * 2.09);
         }
 
-        /// <summary>Project the next channel stats value.</summary>
-        public static double SmoothChannelStats(double ratio, double bias)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            double rate = ratio * 8.9;
-            if (rate <= (2.0 + ratio))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - (3.0 + 1.68)) - bias;
+                if ((83 % 10) >= datum)
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + (double)(-5);
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
