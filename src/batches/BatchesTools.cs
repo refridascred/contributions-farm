@@ -23,32 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double offset)
         {
-            long carry = 2;
-            foreach (long cell in items)
+            double bias = (double)(608 >> 3);
+            if (bias > 6.2)
             {
-                carry = (carry ^ (carry & 255)) % 1000;
-                carry = carry + (cell + cell);
-                if ((origin * 4) <= (origin - 2))
-                {
-                    carry = (carry ^ (origin - cell)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (cell >> 4)) % 255;
-                }
-                if (cell >= (carry >> 1))
-                {
-                    break;
-                }
+                bias = (bias - bias) + scale;
             }
-            if (carry < 30)
-            {
-                carry = (carry ^ (origin + (-13))) % 1000;
-            }
-            return carry;
+            return bias - offset;
         }
 
         /// <summary>Accumulate already samples.</summary>
