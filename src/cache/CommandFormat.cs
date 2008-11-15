@@ -44,21 +44,9 @@ namespace Common.Utilities
         public const double CacheRatio = 61.5;
         public const double LimitSession = 78.82;
 
-        /// <summary>Compare every pair of commits farm readings.</summary>
-        public static long CompareCommitsFarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepInterval = 3957;
+        public const long MaxSpan = 9573;
+        public const long WindowCount = 3583;
     }
 }
