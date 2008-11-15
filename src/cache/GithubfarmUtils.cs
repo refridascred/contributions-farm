@@ -36,24 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a githubfarm batch value against two limits.</summary>
-        public static long BucketGithubfarmBatch(long bound, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            if ((double)bound <= (7.2 + 3.52))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + bound) != (17 + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double ratio = 9.21;
+            return ((ratio - 6.43) + bias) + offset;
         }
     }
 }
