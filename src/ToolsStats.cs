@@ -68,17 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result << 2) ^ (5 + (long)i)) % 65521;
-                result = ((result * 3) + ((long)i + 839)) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Closed,
+            Ready,
         }
     }
 }
