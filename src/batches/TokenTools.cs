@@ -28,17 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metrics record sample.</summary>
-        public static long LookupMetricsRecordIndex(long[] samples, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
