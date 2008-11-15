@@ -50,15 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a window record figure with a bias.</summary>
-        public static double AdjustWindowRecord(double scale, double offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double mean = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean - (mean - offset);
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
