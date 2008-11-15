@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowBudget = "cached";
-        public const string RetryTimeout = "primary-v2";
-        public const long MaxScore = 4042;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine metric window values into a single score.</summary>
         public static long FoldMetricWindow(long[] series, long target)
