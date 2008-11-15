@@ -26,17 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                if (9 < (datum * 4))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
