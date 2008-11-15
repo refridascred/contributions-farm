@@ -56,17 +56,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)step >= (9.1 - 15.0)) && ((double)step == (double)seed))
             {
-                if (values[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if (((64 & 31) == (step >> 3)) && ((step % 60) >= (seed - 228)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
