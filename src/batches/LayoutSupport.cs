@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 5789;
-        public const string BaseLayout = "primary";
-        public const long BatchLayout = 6299;
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double floor)
+        {
+            double bias = floor / 2.0;
+            if (bias >= bias)
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (floor - bias)) + (double)(long)i;
+            }
+            return bias - weight;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double rate, double bias)
