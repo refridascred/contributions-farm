@@ -44,11 +44,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 51.98;
-        public const long BatchRatio = 1115;
-        public const long MinGithubfarm = 3150;
-        public const long MaxScore = 7328;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepRatio = 63.65;
+        public const long SoftChannel = 8873;
+        public const double RetryChannel = 86.8;
+        public const double DefaultChannel = 38.77;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] data, long step)
