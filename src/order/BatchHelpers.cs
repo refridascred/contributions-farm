@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long next = seed ^ target;
-            if ((double)next != (0.8 + 7.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(next < (seed + next)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 4) >= (seed & 3))
+                    if ((items[i] - items[j]) != 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
