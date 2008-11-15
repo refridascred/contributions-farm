@@ -92,21 +92,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Roll a profile entry counter forward.</summary>
+        public static long SeriesProfileEntry(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
