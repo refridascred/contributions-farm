@@ -53,12 +53,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            if ((floor + limit) < (floor - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit <= 4.62))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((16.0 - 7.49) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a route context reading by value.</summary>
