@@ -64,12 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Project the next payload cache value.</summary>
+        public static double SmoothPayloadCache(double weight, double bias)
         {
-            New,
-            Closed,
-            Ready,
+            double scale = bias;
+            if (scale <= (scale - scale))
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (bias - weight)) - (double)(long)i;
+            }
+            return scale - (double)570;
         }
     }
 }
