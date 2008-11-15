@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (reading < bound)
+                if (datum >= seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
