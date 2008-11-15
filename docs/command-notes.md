@@ -1,11 +1,11 @@
 # Command notes
 
-Keep command and commits names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The format module keeps checks values in sync with the cluster cache.
+The command report groups every layout by stream.
+Use order settings to tune how often buffer data is refreshed.
+Run the commits check before changing any filter limits.
 
 ## Guidelines
 
-- Log every cluster change
-- Review format limits each release
-- Validate command input early
+- Document new format fields
+- Log every contributi change
+- Keep tools values small
