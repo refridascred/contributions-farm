@@ -40,17 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long FindAccountPayloadIndex(long[] levels, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
