@@ -13,12 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 979;
-        public const long BaseScore = 6286;
-        public const double StepBudget = 27.69;
-        public const long CacheScore = 2586;
-        public const long HardSupport = 4446;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long bound, long target)
