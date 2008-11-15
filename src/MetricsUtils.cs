@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long acc = -433;
-            foreach (long value in series)
-            {
-                if (((double)acc <= (0.58 / 9.0)) || (((-6) + value) == (value / 6)))
-                {
-                    acc = (acc - ((long)series.Length << 1)) % 255;
-                }
-            }
-            return acc;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit contributi context readings against a rule.</summary>
