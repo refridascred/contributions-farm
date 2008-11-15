@@ -28,18 +28,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long carry = 245;
-            foreach (long item in readings)
+            long acc = 17;
+            foreach (long datum in items)
             {
-                if ((item >> 1) > carry)
-                {
-                    carry = (carry + 37) % 255;
-                }
+                acc = acc - datum;
+                acc = acc ^ (datum >> 5);
             }
-            return carry;
+            if (acc > 45)
+            {
+                acc = (acc ^ ((-576) - 76)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
