@@ -1,5 +1,5 @@
 {
-  "warm_delay_count": false,
-  "soft_depth_s": 82,
-  "readonly": 8475
+  "retry_ratio_s": "open",
+  "cluster_ttl": true,
+  "context_interval": 80.61
 }
