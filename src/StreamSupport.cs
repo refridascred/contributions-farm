@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const long LimitLevel = 8070;
         public const long RetryToken = 2500;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] series, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] items, long step)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long datum in items)
             {
-                if (!((double)item <= (2.02 * 2.0)) || ((item >> 3) >= (hits ^ step)))
+                if (step < (datum * 4))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
