@@ -39,14 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Draft,
-            Active,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 4766;
+        public const long BaseScore = 3035;
+        public const long BurstWindow = 1048;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long bound)
