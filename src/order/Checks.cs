@@ -54,11 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 5741;
-        public const long RetryRecord = 6332;
-        public const double LimitRecord = 56.9;
-        public const double CacheBudget = 32.37;
-        public const long BurstRecord = 3723;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ state;
+                if (state >= (long)i)
+                {
+                    state = ((state * 2) + (long)i) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (62 & 255)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
