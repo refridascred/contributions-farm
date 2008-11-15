@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] series, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((count >> 1) > (floor & 63))
+                if (reading < bound)
                 {
-                    count = (count + 3) + value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
