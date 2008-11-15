@@ -13,38 +13,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Compare every pair of token metrics readings.</summary>
+        public static long OverlapTokenMetricsCount(long[] levels)
         {
-            if (((233 + 379) > (floor + offset)) && (floor >= offset))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 1) < (offset + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((60 - floor) >= offset)
+                    if ((levels[i] + levels[j]) > 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor * 2) > (floor + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
