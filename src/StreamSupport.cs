@@ -31,22 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!((hits - cell) > (-68)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Active,
+            Retry,
+            Failed,
         }
     }
 }
