@@ -44,19 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell > matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinBudget = 6741;
+        public const long BaseContributi = 2846;
+        public const long MaxRatio = 4246;
+        public const string CacheContributi = "standard-1";
+        public const long HardContributi = 8623;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] levels)
