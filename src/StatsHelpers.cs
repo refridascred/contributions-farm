@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long target)
         {
-            New,
-            Paused,
-            Draft,
-            Failed,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
