@@ -70,13 +70,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Pending,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepInterval = "latest-edge";
+        public const long LimitSpan = 9236;
+        public const long SoftWidth = 2123;
+        public const double BaseStats = 43.04;
+        public const long SoftRatio = 3291;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] series, long limit)
