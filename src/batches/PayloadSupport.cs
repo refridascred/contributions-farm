@@ -14,10 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 4510;
-        public const long LimitPayload = 3306;
-        public const long RetrySize = 81;
+        /// <summary>Validate filter channel readings against a bound.</summary>
+        public static bool GuardFilterChannelBounds(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double DefaultInterval = 12.25;
