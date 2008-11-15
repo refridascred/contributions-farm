@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] > offset)
+                if (!!((double)matches <= (1.22 + 3.7)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
