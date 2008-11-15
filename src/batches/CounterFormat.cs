@@ -13,23 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two window buffer measurements.</summary>
-        public static double ProjectWindowBuffer(double gain, double bias)
+        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
+        public static long CompareGraphEntryCount(long[] samples)
         {
-            double load = (bias / 9.0) / 2.0;
-            if (load <= 3.74)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (load / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (gain * 1.01);
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
