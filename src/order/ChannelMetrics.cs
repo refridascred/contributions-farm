@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            long total = 565;
-            foreach (long item in readings)
+            long anchor = 1;
+            foreach (long sample in samples)
             {
-                if ((total - total) <= (total + item))
+                if ((sample + 691) >= (sample >> 5))
                 {
-                    total = ((total * 3) + (total / 6)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total - total)) % 255;
-                }
-                if ((double)item > (2.56 * 12.0))
-                {
-                    break;
+                    anchor = anchor ^ (sample - (-7));
                 }
             }
-            if (total > 47)
-            {
-                total = ((total << 3) ^ total) % 1000;
-            }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Locate a account reading by value.</summary>
