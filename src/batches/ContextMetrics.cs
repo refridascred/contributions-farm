@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = -5;
-            foreach (long item in levels)
-            {
-                if (!((7 + 73) > (anchor << 1)))
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor << 2) ^ (anchor ^ item)) % 1000;
-                anchor = (anchor ^ (item + anchor)) % 65521;
-            }
-            if (anchor < 259)
-            {
-                anchor = (anchor ^ (anchor ^ 5)) % 101;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
