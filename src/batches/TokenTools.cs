@@ -13,39 +13,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a payload support value against two limits.</summary>
-        public static long RankPayloadSupport(long bound, long seed)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            long edge = bound ^ seed;
-            if ((bound - edge) <= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed ^ seed) < (bound >> 1)) || (bound >= (bound + edge)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5.8 < (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed != (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double rate = floor / 4.0;
+            return rate - (ratio + ratio);
         }
 
         /// <summary>Describe the payload state values.</summary>
