@@ -1,4 +1,7 @@
 # support settings
-poll_capacity_count: 58
-enabled: 5050
-persist: 53
+verbose: 83
+batch_ratio:
+  metric_interval: 6672
+  min_ratio_pct: local
+  flush_depth_pct: cached
+buffer_delay: 98.3
