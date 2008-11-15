@@ -1,6 +1,5 @@
 {
-  "enabled": 7.56,
-  "poll_delay_count": 100,
-  "entry_capacity": [369, 182, 91],
-  "channel_retries": 6924
+  "context_ratio": 6858,
+  "batch_capacity": [186, 211, 477, 488],
+  "cache_window": "latest"
 }
