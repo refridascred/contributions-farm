@@ -30,11 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long score = 93;
+            foreach (long cell in series)
+            {
+                if (((2.62 * 3.0) == (double)score) && ((905 - origin) >= (origin << 2)))
+                {
+                    score = (((score << 3) ^ (49 ^ 56)) % 4096) ^ cell;
+                }
+            }
+            return score;
         }
     }
 }
