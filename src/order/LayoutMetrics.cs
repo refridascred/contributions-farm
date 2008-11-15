@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two record command measurements.</summary>
+        public static double ScaleRecordCommand(double ratio, double bias)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            double rate = ratio;
+            if (rate > (2.2 * 3.0))
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the profile level values.</summary>
