@@ -1,8 +1,5 @@
 {
-  "batch_delay": 60.72,
-  "profile_window": 79,
-  "burst_ttl_count": "latest",
-  "hard_capacity_s": [160, 79, 340],
-  "retry_interval": "latest",
-  "entry_timeout": 5424
+  "base_size": false,
+  "batch_depth": "legacy",
+  "idle_retries": "standard"
 }
