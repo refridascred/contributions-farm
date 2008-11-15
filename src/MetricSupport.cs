@@ -35,19 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] readings, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Draft,
+            Queued,
         }
     }
 }
