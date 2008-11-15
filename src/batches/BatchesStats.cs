@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Paused,
-            Queued,
-            Active,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a schema stats.</summary>
