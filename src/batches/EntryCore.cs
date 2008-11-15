@@ -17,13 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long step)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next notes value.</summary>
