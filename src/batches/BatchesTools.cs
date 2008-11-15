@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long bound)
-        {
-            if ((step - bound) >= (bound & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitScore = 5743;
+        public const long WindowContext = 8649;
+        public const string RetryContext = "local-1";
+        public const string DefaultFactor = "open-edge";
+        public const string BatchSpan = "cached-v2";
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
