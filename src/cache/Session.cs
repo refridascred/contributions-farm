@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double CacheCluster = 89.65;
         public const long DefaultCluster = 1036;
 
-        /// <summary>Adjust a support layout reading.</summary>
-        public static double AdjustSupportLayout(double ratio, double bias)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double rate = (ratio - ratio) - bias;
-            if (rate >= ratio)
-            {
-                rate = rate + (bias / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 8.9) + (double)(long)i;
-            }
-            return rate + 9.0;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
