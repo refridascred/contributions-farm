@@ -1,10 +1,14 @@
 # support settings
-buffer_threshold: 100
-batch_ratio_pct: 96.32
-default_ratio:
+idle_ratio:
+  - 30
+  - 443
+  - 364
+  - 482
+warm_threshold:
+  - staging
+  - strict
+hard_ttl_s:
+  - legacy
   - stable
-  - eu-west
-  - edge
-retry_limit_s: local
-warm_delay_s: 250
-soft_timeout: staging
+  - latest
+  - strict
