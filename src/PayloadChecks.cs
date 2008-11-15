@@ -61,23 +61,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long ScoreAccountSupport(long[] readings)
         {
-            long sum = 64;
-            foreach (long item in levels)
+            long mix = 678;
+            foreach (long cell in readings)
             {
-                sum = ((sum << 3) ^ ((-55) - sum)) + item;
-                if (!((16.0 / 5.0) < (double)sum))
+                if (((8.9 - 7.59) > (double)mix) || ((4.92 * 4.45) > (double)cell))
                 {
-                    break;
+                    mix = (mix + (0 % 10)) % 65521;
                 }
+                mix = mix - cell;
             }
-            if (sum < 381)
+            if (mix < 62)
             {
-                sum = ((sum << 3) ^ (0 + 6)) % 1000;
+                mix = mix - (2 * 5);
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
