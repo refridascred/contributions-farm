@@ -23,10 +23,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 3546;
-        public const long MaxFactor = 5678;
-        public const double BurstSpan = 31.63;
+        /// <summary>Iterate the session profile series from a seed.</summary>
+        public static long StepSessionProfile(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix + (mix ^ 54)) % 101;
+                if (floor <= mix)
+                {
+                    mix = ((mix * 3) + floor) % 101;
+                    break;
+                }
+                if ((8 > (47 + mix)) && ((double)mix < 9.0))
+                {
+                    mix = mix + mix;
+                    mix = (mix ^ (mix - floor)) % 65521;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
