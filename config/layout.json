@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "max_retries_count": 36.99,
-  "base_delay_pct": ["fallback", "strict", "open", "fallback"]
+  "warm_delay_count": false,
+  "soft_depth_s": 82,
+  "readonly": 8475
 }
