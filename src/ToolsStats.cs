@@ -19,18 +19,24 @@ namespace Common.Utilities
         public const double HardSpan = 73.04;
         public const long LimitBudget = 9573;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] levels, long origin)
+        /// <summary>Derive the next entry notes value from a seed.</summary>
+        public static long IterateEntryNotes(long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum ^ 153) > (tally / 9))
+                if (!((7 - target) != (816 * 3)))
                 {
-                    tally = (tally + 1) - origin;
+                    sum = (sum + (target & 7)) % 101;
                 }
+                sum = sum ^ (sum - sum);
+                if ((sum % 5) >= sum)
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
