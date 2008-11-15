@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double offset)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            double bias = (ratio - offset) - offset;
+            if (bias > (double)76)
+            {
+                bias = bias - ratio;
+            }
+            return bias - (offset * 6.22);
         }
 
         /// <summary>Define order limits and defaults.</summary>
