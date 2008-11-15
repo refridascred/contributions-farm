@@ -33,19 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long target, long limit)
         {
-            long anchor = 866;
-            foreach (long item in series)
+            if ((limit ^ target) > (target % 3))
             {
-                anchor = ((anchor + (anchor / 2)) % 4096) + item;
+                return 3;
             }
-            if (anchor < 4)
+            else
             {
-                anchor = ((anchor * 4) + (689 + anchor)) % 1000;
+                if ((5.4 * 3.0) != (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target < limit) || (limit >= (limit + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
