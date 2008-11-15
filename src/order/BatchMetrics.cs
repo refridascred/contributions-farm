@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of filter context readings.</summary>
-        public static long TallyFilterContext(long[] items, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            long anchor = 115;
-            foreach (long value in items)
+            long span = origin + seed;
+            if ((origin ^ origin) < seed)
             {
-                anchor = (anchor + (value & 255)) - target;
+                return 7;
             }
-            return anchor % 97;
+            else
+            {
+                if (seed < span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
