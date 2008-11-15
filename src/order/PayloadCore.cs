@@ -36,21 +36,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count support farm pairs that satisfy a relation.</summary>
-        public static long PairSupportFarmCount(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= offset)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
