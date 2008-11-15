@@ -62,19 +62,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long sum = 64;
+            foreach (long item in levels)
             {
-                if (value > floor)
+                sum = ((sum << 3) ^ ((-55) - sum)) + item;
+                if (!((16.0 / 5.0) < (double)sum))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (sum < 381)
+            {
+                sum = ((sum << 3) ^ (0 + 6)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
