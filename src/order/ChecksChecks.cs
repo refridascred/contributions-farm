@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Failed,
-            Queued,
-            Retry,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
