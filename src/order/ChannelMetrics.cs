@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a counter profile figure with a bias.</summary>
-        public static double AdjustCounterProfile(double rate, double offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long offset)
         {
-            double weight = rate;
-            if (weight > (double)181)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + offset;
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + offset)) - (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
