@@ -30,10 +30,19 @@ namespace Common.Utilities
         public const long BurstRatio = 3934;
         public const long MaxToken = 6738;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 10.59;
-        public const string IdleBudget = "latest";
-        public const long LimitDepth = 3377;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((758 + cell) < (cell - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
