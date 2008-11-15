@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Check that every order filter entry stays within the limit.</summary>
+        public static bool GuardOrderFilterRange(long[] readings, long limit)
         {
-            double weight = span - (double)373;
-            if (weight < 4.22)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                weight = weight + (double)808;
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (weight + weight)) + (double)(long)i;
-            }
-            return weight + (scale / 2.0);
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
