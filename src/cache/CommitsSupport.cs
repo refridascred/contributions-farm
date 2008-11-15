@@ -40,20 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((11.0 / 2.0) != (double)acc))
+                if ((values[i] < floor) && ((values[i] % 2) != 0))
                 {
-                    acc = (acc - 26) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
