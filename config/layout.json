@@ -1,11 +1,10 @@
 {
-  "contributi_threshold": "open",
-  "persist": true,
-  "retry_delay_pct": 1024,
-  "poll_ttl": {
-    "audit": "latest",
-    "enabled": "latest",
-    "soft_ttl_pct": "primary",
-    "commits_limit": 8507
-  }
+  "editor_ratio": 100,
+  "warm_capacity_s": 87,
+  "retry_ratio": {
+    "queue_ttl": "eu-west",
+    "min_window": ["open", "edge"],
+    "retry_size_s": 2377
+  },
+  "route_limit": [38, 26, 491]
 }
