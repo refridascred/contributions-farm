@@ -30,18 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] items, long step)
+        /// <summary>Classify a buffer channel pair into a bucket.</summary>
+        public static long GradeBufferChannel(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long delta = seed ^ offset;
+            if ((double)seed < (9.5 + 7.0))
             {
-                if (step < (datum * 4))
+                return 4;
+            }
+            else
+            {
+                if (!((9 % 100) <= (delta ^ seed)))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((490 & 63) >= (seed ^ offset)) && ((6.0 + 6.0) != (double)delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
