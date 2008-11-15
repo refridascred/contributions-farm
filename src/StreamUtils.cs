@@ -50,20 +50,31 @@ namespace Common.Utilities
         public const double RetryChannel = 86.8;
         public const double DefaultChannel = 38.77;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long floor)
         {
-            long result = 27;
-            foreach (long value in data)
+            if (3 < (floor + 906))
             {
-                result = ((result << 3) ^ (result + result)) % 101;
-                result = (result * 2) + result;
-                if ((double)value <= (double)step)
+                return 8;
+            }
+            else
+            {
+                if ((target + floor) > (floor & 255))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target + floor) < (4 + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
     }
 }
