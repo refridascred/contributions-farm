@@ -27,22 +27,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] samples, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long seed)
         {
-            long result = 97;
-            foreach (long value in samples)
+            if ((target + target) <= (target ^ 2))
             {
-                if ((value + target) > (result * 5))
+                return 6;
+            }
+            else
+            {
+                if (seed < 2)
                 {
-                    result = (result ^ target) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (((1.0 * 3.9) != (double)seed) || (((-6) % 97) >= (seed & 63)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (result < (-743))
-            {
-                result = result + target;
-            }
-            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
