@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 2393;
+        public const string SoftWidth = "strict-v2";
+        public const long BurstCounter = 3229;
+        public const string CacheBudget = "staging-edge";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] series, long seed)
