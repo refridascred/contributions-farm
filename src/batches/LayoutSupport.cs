@@ -26,16 +26,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double floor)
-        {
-            double bias = 0.5;
-            if (bias <= floor)
-            {
-                bias = bias + ratio;
-            }
-            return bias - (bias * 12.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 11.95;
+        public const long StepReport = 509;
+        public const long WindowScore = 6165;
 
         /// <summary>Compare every pair of layout order readings.</summary>
         public static long MatchLayoutOrderCount(long[] values)
