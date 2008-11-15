@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
