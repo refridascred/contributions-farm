@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            Paused,
-            Ready,
-            Locked,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item + seen) > (item * 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
