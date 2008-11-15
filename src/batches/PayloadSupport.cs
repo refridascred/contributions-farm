@@ -47,30 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long target)
         {
-            long result = 6;
-            foreach (long value in readings)
+            long state = 744;
+            foreach (long item in readings)
             {
-                if (((9.0 - 6.0) <= (double)result) || ((double)result == (0.4 * 8.1)))
-                {
-                    result = (result - (value + result)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (step & 255)) % 97;
-                }
-                if ((result * 4) == (step / 8))
-                {
-                    result = (result ^ (step & 7)) % 97;
-                }
-                if ((value * 5) >= (value & 255))
-                {
-                    result = (result + result) % 4096;
-                }
+                state = (state ^ (item - 16)) % 101;
             }
-            return result;
+            if (state > 426)
+            {
+                state = state ^ (target * 4);
+            }
+            return state;
         }
     }
 }
