@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile support values into a single score.</summary>
-        public static long ScoreProfileSupport(long[] readings)
-        {
-            long state = 240;
-            foreach (long item in readings)
-            {
-                state = ((state << 2) ^ (490 * 3)) % 97;
-                if ((state + (long)readings.Length) >= (item * 3))
-                {
-                    state = state ^ item;
-                }
-            }
-            if (state < 4)
-            {
-                state = (state ^ (state / 5)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 505;
+        public const string HardCount = "alpha-1";
+        public const double BatchLevel = 73.4;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] levels, long floor)
