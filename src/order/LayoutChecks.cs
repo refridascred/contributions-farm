@@ -36,22 +36,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long TallyEntryChannelOutliers(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((hits + datum) > 636) && (hits <= (datum >> 5)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result ^ seed) % 101;
+                result = ((result * 3) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit layout token readings against a rule.</summary>
