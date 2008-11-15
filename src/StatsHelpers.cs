@@ -38,13 +38,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
