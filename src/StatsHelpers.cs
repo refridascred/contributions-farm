@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] values, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!((limit ^ tally) != (tally - reading)))
+                if (((double)hits >= (3.5 * 3.0)) || (4.0 >= (2.8 - 2.44)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 1) ^ cell) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next contributi value.</summary>
