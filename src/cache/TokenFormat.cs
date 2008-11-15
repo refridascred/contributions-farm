@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            Queued,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (seen >= (item / 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
