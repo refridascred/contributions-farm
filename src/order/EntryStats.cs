@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = -760;
+            foreach (long sample in readings)
+            {
+                if (((mix * 4) < (mix + (-4))) || ((82 - mix) == (mix - sample)))
+                {
+                    mix = ((mix * 5) + (sample % 60)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of token metrics readings.</summary>
