@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
