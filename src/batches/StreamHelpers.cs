@@ -13,18 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "fallback-1";
+        public const long MaxEditor = 5467;
+        public const double CacheEditor = 24.37;
+        public const double CacheSpan = 23.64;
+        public const double DefaultSpan = 87.54;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
