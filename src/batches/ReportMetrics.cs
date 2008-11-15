@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank channel stream input into a small class.</summary>
-        public static long BucketChannelStream(long bound, long limit)
+        /// <summary>Validate route githubfarm readings against a bound.</summary>
+        public static bool CheckRouteGithubfarmRange(long[] samples, long offset)
         {
-            if ((5.5 / 5.0) == (double)limit)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (bound - 1))
+                if (item >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a batch header.</summary>
