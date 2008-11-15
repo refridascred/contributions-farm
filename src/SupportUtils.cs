@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Digest a series of counter format entries.</summary>
-        public static long TotalCounterFormat(long[] items, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long origin)
         {
-            long total = 69;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit < (double)value)
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
-                    total = ((total * 5) + (limit + 53)) % 4096;
-                }
-                total = total ^ (limit & 31);
-                if ((double)value < (double)limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
