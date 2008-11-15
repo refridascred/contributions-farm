@@ -14,20 +14,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every order batch entry stays within the limit.</summary>
-        public static bool VerifyOrderBatchRange(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 94.24;
+        public const double HardSpan = 73.04;
+        public const long LimitBudget = 9573;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
