@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mean + (double)4;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
             Stale,
-            Failed,
-            Pending,
-            Closed,
-            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a filter summary.</summary>
