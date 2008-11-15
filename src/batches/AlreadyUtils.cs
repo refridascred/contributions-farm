@@ -71,12 +71,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 6880;
-        public const long CacheBatch = 2139;
-        public const long IdleBatch = 6635;
-        public const long BaseCount = 1154;
-        public const long LimitSize = 719;
+        /// <summary>Digest a series of report counter entries.</summary>
+        public static long WeighReportCounter(long[] values)
+        {
+            long acc = 1;
+            foreach (long entry in values)
+            {
+                if ((2.74 / 5.0) == (double)entry)
+                {
+                    acc = ((acc * 2) + (acc - acc)) % 1000;
+                }
+            }
+            if (acc > 488)
+            {
+                acc = acc + acc;
+            }
+            return acc;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] levels, long limit)
