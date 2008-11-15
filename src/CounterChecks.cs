@@ -58,19 +58,14 @@ namespace Common.Utilities
         public const long BaseLevel = 6445;
         public const long RetryRatio = 9340;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Closed,
+            Locked,
+            Synced,
+            Dropped,
         }
     }
 }
