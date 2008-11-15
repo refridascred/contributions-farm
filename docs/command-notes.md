@@ -1,12 +1,15 @@
 # Command notes
 
-Run the command check before changing any githubfarm limits.
-Each stream is validated before it reaches the cluster queue.
-Keep contributi and metrics names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The order report groups every channel by payload.
+The format module keeps metrics values in sync with the payload cache.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+Keep metric and buffer names short and lowercase.
+When a cache fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Log every account change
-- Review route limits each release
-- Prefer payload defaults
+- Review contributi limits each release
+- Validate githubfarm input early
+- Log every tools change
