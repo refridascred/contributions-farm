@@ -1,6 +1,8 @@
 {
-  "context_ratio": "eu-west",
-  "verbose": "primary",
-  "default_ratio": 250,
-  "default_interval_s": true
+  "flush_limit_count": "edge",
+  "batch_threshold_ms": 97,
+  "default_depth_s": "eu-west",
+  "verbose": "green",
+  "base_size_s": 42.5,
+  "audit": 6646
 }
