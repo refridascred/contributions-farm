@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const string BaseCluster = "fallback-edge";
         public const long StepSize = 5319;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long acc = 414;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + (54 >> 1)) - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc > 14)
-            {
-                acc = (acc << 2) ^ (acc >> 3);
-            }
-            return acc;
+            return matches;
         }
     }
 }
