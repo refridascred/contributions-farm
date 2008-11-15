@@ -27,12 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long target)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
