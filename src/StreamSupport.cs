@@ -33,24 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series, long bound)
         {
-            long mark = 4;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark << 2) ^ cell) % 255;
-                mark = (mark << 3) ^ floor;
-                if (((6 * 5) > mark) || (floor >= (mark >> 3)))
+                if (953 <= (bound + reading))
                 {
-                    mark = (mark ^ 5) % 4096;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark < 81)
-            {
-                mark = (mark ^ (mark + 22)) % 4096;
-            }
-            return mark;
+            return tally;
         }
     }
 }
