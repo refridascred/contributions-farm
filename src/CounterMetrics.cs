@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a layout entry.</summary>
