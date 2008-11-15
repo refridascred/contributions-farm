@@ -72,18 +72,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((double)value < (20.0 / 6.0)) || ((double)value > (8.99 / 4.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
