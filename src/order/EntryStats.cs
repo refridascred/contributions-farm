@@ -51,23 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long carry = 913;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                carry = (carry ^ (cell & 1)) % 255;
-                if ((double)carry < 2.18)
+                if ((value >> 5) <= (19 + tally))
                 {
-                    carry = carry - (carry % 3);
-                }
-                else
-                {
-                    carry = (carry + cell) % 65521;
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
