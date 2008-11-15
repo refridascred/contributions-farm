@@ -23,15 +23,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
