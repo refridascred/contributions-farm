@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] data)
         {
-            if (!((1.0 * 5.7) >= 9.9))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 / 4.0) < (double)seed)
+                if ((double)value != (5.69 - 16.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first tools format entry that matches the target.</summary>
