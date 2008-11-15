@@ -31,16 +31,21 @@ namespace Common.Utilities
         public const long BaseCount = 8484;
         public const long HardScore = 8878;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ step) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
