@@ -50,22 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools githubfarm readings against a rule.</summary>
-        public static long MeasureToolsGithubfarmHits(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((-597) >= count) || ((cell ^ cell) >= (cell - count)))
+                if ((13.0 / 4.0) == (double)hits)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
