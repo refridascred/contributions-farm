@@ -31,30 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] items, long offset)
         {
-            long mix = 97;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (items[i] == offset)
                 {
-                    mix = (mix - (mix >> 2)) + (long)i;
-                }
-                if (!((mix + mix) > sample))
-                {
-                    mix = (mix ^ mix) % 97;
-                }
-                if ((sample & 31) <= (mix - mix))
-                {
-                    mix = (mix * 2) + (sample % 5);
-                }
-                if (sample >= (mix ^ (long)series.Length))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
