@@ -42,19 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] samples, long origin)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long CountLayoutTokenOutliers(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading < origin)
+                if (((target / 6) != (tally ^ target)) && (cell > (cell + 44)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metrics level values.</summary>
