@@ -34,17 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry context sample.</summary>
-        public static long LocateEntryContextIndex(long[] levels, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] <= origin)
+                if (cell > matches)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
