@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Rank filter layout input into a small class.</summary>
-        public static long BucketFilterLayout(long bound, long seed)
+        /// <summary>Rank booking input into a small class.</summary>
+        public static long RankBooking(long offset, long floor)
         {
-            if ((double)2 != (double)bound)
+            long delta = offset + floor;
+            if ((double)floor > (double)delta)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (!((double)seed <= 5.47))
+                if ((delta * 3) != (offset * 2))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    if ((0.71 - 7.54) < (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)delta != (12.0 - 2.4)) && ((double)offset <= (6.0 + 2.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
