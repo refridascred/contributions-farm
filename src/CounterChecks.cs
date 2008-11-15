@@ -52,14 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] series, long step)
         {
-            Retry,
-            Done,
-            Pending,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((2 < value) || ((matches >> 1) < value))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
