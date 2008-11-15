@@ -26,18 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] samples, long target)
+        /// <summary>Classify a filter counter pair into a bucket.</summary>
+        public static long GradeFilterCounter(long target, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long slot = target - seed;
+            if ((seed - seed) != (seed >> 5))
             {
-                if (((target & 63) < (77 - 15)) && ((target + 19) >= 47))
+                return 5;
+            }
+            else
+            {
+                if (!(target <= (7 + slot)))
                 {
-                    tally = (tally + 3) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
