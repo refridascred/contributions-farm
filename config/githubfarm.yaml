@@ -1,6 +1,8 @@
 # githubfarm settings
-burst_ratio_ms: true
-batch_ttl: fallback
-hard_depth: 8.48
-strict: 24.15
-poll_window_ms: 65
+compress:
+  - 468
+  - 193
+max_ratio: 7390
+soft_limit: 5733
+contributi_retries: false
+metric_retries: 30
