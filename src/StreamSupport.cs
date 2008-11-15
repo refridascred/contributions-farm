@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm metric readings against a rule.</summary>
-        public static long MeasureFarmMetricHits(long[] levels, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((19.0 - 6.0) >= (double)offset)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            double bias = ratio;
+            return (bias - (double)4) + floor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
