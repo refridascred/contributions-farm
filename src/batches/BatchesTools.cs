@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetryRatio = 6102;
         public const long DefaultEditor = 8140;
 
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool ValidateStreamTokenBounds(long[] series, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Rank profile layout input into a small class.</summary>
