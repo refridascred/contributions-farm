@@ -1,13 +1,11 @@
 # entry settings
-base_threshold: 60.31
-cluster_interval: false
-readonly:
-  - 121
-  - 9
-  - 377
-  - 246
-verbose: false
-compress:
-  - 204
-  - 200
-  - 470
+burst_capacity: strict
+tools_window: 47.85
+poll_timeout: 60
+support_interval: 100
+enabled:
+  retry_ttl_s: 27.99
+  base_ratio: 30
+  idle_threshold_count: 2
+  account_ratio: false
+burst_timeout_pct: cached
