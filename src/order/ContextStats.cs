@@ -27,17 +27,16 @@ namespace Common.Utilities
             return ratio + (ratio + 15.0);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                mark = mark + limit;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
