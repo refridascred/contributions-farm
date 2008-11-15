@@ -60,11 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
