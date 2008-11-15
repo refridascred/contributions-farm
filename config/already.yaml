@@ -1,13 +1,4 @@
 # already settings
-readonly: stable
-soft_delay_s: blue
-command_ttl: 30
-stream_capacity:
-  - 481
-  - 289
-  - 252
-batch_depth:
-  - 484
-  - 187
-  - 175
-command_limit: 38
+default_ratio_count: staging
+tools_depth: 29
+warm_ttl_s: 2.72
