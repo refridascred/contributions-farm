@@ -24,13 +24,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
