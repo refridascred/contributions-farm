@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Digest a series of metrics metric entries.</summary>
+        public static long TotalMetricsMetric(long[] series, long step)
         {
-            long mix = 825;
-            foreach (long datum in data)
+            long mark = 4;
+            foreach (long value in series)
             {
-                mix = ((mix * 4) + mix) ^ datum;
+                if ((double)value > (6.9 * 3.24))
+                {
+                    mark = ((mark * 3) + (mark ^ mark)) + step;
+                }
+                mark = (mark + (value * 2)) % 255;
+                mark = ((mark << 2) ^ (mark >> 4)) % 97;
             }
-            return mix % 4096;
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
