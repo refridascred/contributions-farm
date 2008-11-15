@@ -55,17 +55,22 @@ namespace Common.Utilities
             return drift - (span / 6.0);
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                if (7.2 >= (double)seed)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
