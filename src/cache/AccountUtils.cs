@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series, long bound)
+        /// <summary>Compare every pair of account cluster readings.</summary>
+        public static long CompareAccountClusterCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen ^ seen) >= (seen << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 1) + item) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
