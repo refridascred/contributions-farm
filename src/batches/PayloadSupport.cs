@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Closed,
-            Pending,
-            Active,
-            Idle,
-            Locked,
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
