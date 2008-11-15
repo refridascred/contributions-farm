@@ -25,13 +25,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 9;
+            foreach (long value in values)
+            {
+                if ((value >> 4) >= (mark + value))
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
+                }
+            }
+            if (mark > 98)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
