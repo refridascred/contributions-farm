@@ -20,11 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "standard";
-        public const long SoftBudget = 6307;
-        public const long LimitStream = 9760;
-        public const double DefaultTimeout = 25.06;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double gain, double bias)
