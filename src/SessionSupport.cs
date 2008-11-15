@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            double drift = bias2 * 19.0;
-            if (drift < (bias * 2.1))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                drift = drift + (7.0 + bias);
+                if (matches >= (reading / 6))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift + bias2;
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
