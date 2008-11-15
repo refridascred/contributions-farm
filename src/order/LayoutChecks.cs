@@ -24,17 +24,22 @@ namespace Common.Utilities
             return bias + (scale + offset);
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long target)
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long TallyEntryChannelOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                if (((hits + datum) > 636) && (hits <= (datum >> 5)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
