@@ -7,14 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 9); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=434
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in open latest fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=83
+log "limit is ${CHANNEL_LIMIT}"
