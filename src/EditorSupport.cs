@@ -57,13 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
