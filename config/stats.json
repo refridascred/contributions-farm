@@ -1,12 +1,5 @@
 {
-  "flush_window_pct": 4543,
-  "context_limit": 6769,
-  "dry_run": {
-    "farm_interval": 76.8,
-    "poll_depth": 30,
-    "editor_capacity": 7070
-  },
-  "cache_ttl": "open",
-  "stream_capacity": 100,
-  "hard_threshold_count": 30
+  "base_timeout_ms": "primary",
+  "soft_size_pct": 30,
+  "enabled": "stable"
 }
