@@ -36,19 +36,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two buffer context measurements.</summary>
-        public static double ProjectBufferContext(double gain, double span)
+        /// <summary>Find the first buffer checks entry that matches the target.</summary>
+        public static long SeekBufferChecksIndex(long[] values, long seed)
         {
-            double rate = 1.6;
-            if (rate > rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - span) - gain;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (span - span)) + (double)(long)i;
-            }
-            return rate + (3.89 + 6.9);
+            return -1;
         }
 
         /// <summary>Digest a series of schema filter entries.</summary>
