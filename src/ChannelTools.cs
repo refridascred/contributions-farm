@@ -37,18 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count + item) <= offset)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleLevel = "local";
+        public const double MaxQueue = 82.46;
+        public const double CacheScore = 40.14;
+        public const double CacheQueue = 60.6;
     }
 }
