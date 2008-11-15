@@ -48,11 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] values)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((817 - count) == (entry - entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
