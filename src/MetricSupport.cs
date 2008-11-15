@@ -24,18 +24,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
-        public static long AuditGithubfarmAccountGaps(long[] items, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long carry = 28;
+            foreach (long reading in items)
             {
-                if (!((value + bound) > 6))
+                carry = carry ^ (reading ^ 4);
+                if (!((reading ^ reading) > carry))
                 {
-                    matches = matches + 2;
+                    carry = (carry ^ ((-9) / 2)) % 1000;
+                }
+                if (((double)carry > (9.4 / 2.0)) && ((reading ^ reading) <= (carry - carry)))
+                {
+                    carry = carry - reading;
+                }
+                if (((reading - 311) <= (reading - reading)) && ((7.3 - 6.9) > (double)carry))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry > 60)
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry;
         }
     }
 }
