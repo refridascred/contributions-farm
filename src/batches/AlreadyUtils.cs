@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Count the command support entries that pass the check.</summary>
+        public static long TallyCommandSupportGaps(long[] values)
         {
-            long carry = 91;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = (carry ^ (value % 12)) % 1000;
+                if ((tally > (value % 2)) && ((value % 10) < tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
