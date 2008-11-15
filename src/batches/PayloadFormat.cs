@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Blend two already schema measurements.</summary>
+        public static double ScaleAlreadySchema(double ratio, double offset)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            double gain = ratio * 7.42;
+            if (gain >= 7.84)
+            {
+                gain = (gain + (20.0 * 8.0)) + offset;
+            }
+            return gain - (gain / 3.0);
         }
 
         /// <summary>Match up cache samples.</summary>
