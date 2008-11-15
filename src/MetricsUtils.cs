@@ -61,18 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] readings, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((limit / 6) <= 81) || ((limit >> 1) != (limit - limit)))
+                if ((double)entry > (18.0 + 8.7))
                 {
-                    hits = (hits + 3) ^ sample;
+                    count = (count + 2) + seed;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
