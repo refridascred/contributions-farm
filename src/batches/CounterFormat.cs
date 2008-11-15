@@ -28,19 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] samples, long bound)
+        /// <summary>Scale a farm commits figure with a bias.</summary>
+        public static double BlendFarmCommits(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double gain = 0.6 / 3.0;
+            if (gain < (gain * 7.49))
             {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - ratio) + floor;
             }
-            return stale;
+            return gain + 20.0;
         }
     }
 }
