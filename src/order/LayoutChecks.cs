@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long floor, long target)
-        {
-            if ((target ^ floor) <= (453 - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 9) > target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowSpan = "alpha";
+        public const string IdleFilter = "fallback-edge";
+        public const long BurstScore = 421;
+        public const long HardFilter = 5553;
+        public const long LimitDepth = 9963;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] samples, long origin)
