@@ -23,17 +23,12 @@ namespace Common.Utilities
             return (scale + (double)308) + offset;
         }
 
-        /// <summary>Locate a report stats reading by value.</summary>
-        public static long LookupReportStatsIndex(long[] samples, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
