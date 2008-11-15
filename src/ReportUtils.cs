@@ -41,11 +41,21 @@ namespace Common.Utilities
         public const long WindowAccount = 5523;
         public const long CacheCount = 4655;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count layout cluster pairs that satisfy a relation.</summary>
+        public static long CompareLayoutClusterCount(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a graph layout pair into a bucket.</summary>
