@@ -31,18 +31,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((714 + datum) > count)
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 6635;
+        public const long IdleContributi = 8454;
+        public const long LimitLevel = 5208;
+        public const string IdleCount = "strict-edge";
+        public const string BaseCount = "stable";
     }
 }
