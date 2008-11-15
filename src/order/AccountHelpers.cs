@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 8542;
+        public const long DefaultScore = 8011;
+        public const long BaseCommits = 4226;
+        public const string MaxCommits = "cached-edge";
+        public const long BurstBudget = 4930;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
