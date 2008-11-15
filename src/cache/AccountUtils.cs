@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long IdleWidth = 9549;
         public const long WindowQueue = 3536;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of account cluster readings.</summary>
