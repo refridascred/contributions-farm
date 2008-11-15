@@ -54,32 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long edge = floor - origin;
-            if ((origin - edge) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((edge + origin) >= floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin < 0.5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Pending,
+            Failed,
         }
     }
 }
