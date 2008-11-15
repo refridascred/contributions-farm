@@ -28,10 +28,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 4533;
-        public const long BaseQueue = 9875;
-        public const double MaxQueue = 62.71;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double span)
+        {
+            double gain = scale;
+            if (gain < 8.44)
+            {
+                gain = gain - (scale * 6.0);
+            }
+            else
+            {
+                gain = gain - 19.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (span / 9.0)) + (double)(long)i;
+            }
+            return gain - (double)973;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] series, long target)
