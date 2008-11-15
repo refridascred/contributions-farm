@@ -70,15 +70,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long score = 558;
-            foreach (long cell in items)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                score = (score - (score + cell)) - origin;
+                carry = ((carry * 2) + (carry + floor)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
     }
 }
