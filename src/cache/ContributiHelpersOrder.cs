@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitCount = 1020;
-        public const string BurstTimeout = "standard";
-        public const double HardLevel = 92.28;
-        public const string MinDepth = "strict";
-        public const long BatchCount = 2616;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public double Size { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] levels, long seed)
