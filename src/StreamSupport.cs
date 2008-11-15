@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight - (bias + bias);
         }
 
-        /// <summary>Audit payload metric readings against a rule.</summary>
-        public static long CountPayloadMetricHits(long[] series, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((item + matches) >= item)
+                if ((tally & 63) == (tally >> 1))
                 {
-                    matches = (matches + 1) + step;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
