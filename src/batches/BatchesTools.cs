@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long state = 82;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((offset / 2) < state)
-                {
-                    state = (((state * 2) + (state & 3)) % 97) - entry;
-                }
+                mix = (mix - (bound / 7)) % 4096;
+                mix = ((mix * 5) + (bound / 9)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
     }
 }
