@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double floor)
-        {
-            double bias = floor / 2.0;
-            if (bias >= bias)
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (floor - bias)) + (double)(long)i;
-            }
-            return bias - weight;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstCount = 1266;
+        public const long CacheOrder = 1544;
+        public const long LimitInterval = 7709;
+        public const double RetryOrder = 12.12;
+        public const double HardCount = 88.07;
 
         /// <summary>Combine payload cache values into a single score.</summary>
         public static long ScorePayloadCache(long[] items)
