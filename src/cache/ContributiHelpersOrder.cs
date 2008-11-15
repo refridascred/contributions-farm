@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] samples, long offset)
         {
-            long acc = 90;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (acc > (53 / 9))
+                if ((matches + offset) < (54 + 117))
                 {
-                    acc = (acc + (target & 31)) ^ datum;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
