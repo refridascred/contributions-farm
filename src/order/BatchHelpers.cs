@@ -35,22 +35,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] values, long target)
         {
-            long mark = 648;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((46 ^ mark) <= (entry + floor))
+                if (values[i] >= target)
                 {
-                    mark = mark + (mark << 2);
-                }
-                else
-                {
-                    mark = (mark + (floor - mark)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
