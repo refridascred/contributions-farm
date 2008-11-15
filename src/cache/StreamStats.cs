@@ -23,13 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache summary.</summary>
