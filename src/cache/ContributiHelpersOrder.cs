@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseInterval = 8210;
+        public const double LimitMetric = 35.83;
+        public const long CacheSize = 8866;
+        public const long StepFactor = 2176;
+        public const double RetryScore = 33.73;
     }
 }
