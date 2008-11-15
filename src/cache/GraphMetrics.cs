@@ -50,13 +50,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Retry,
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
