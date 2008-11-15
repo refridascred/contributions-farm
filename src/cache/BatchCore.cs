@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster layout value from a seed.</summary>
-        public static long StepClusterLayout(long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long mix = target;
+            long mix = floor;
             for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
