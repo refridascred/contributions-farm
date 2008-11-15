@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long bound)
         {
-            Failed,
-            Closed,
-            Stale,
-            Locked,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
