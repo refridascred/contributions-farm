@@ -1,7 +1,6 @@
-id,level,token,ratio,rank
-1,40.64,457,primary,662
-2,453,0.44,16.1,strict
-3,75.67,edge,727,952
-4,53.58,78.85,66.46,staging
-5,80.43,local,782,open
-6,724,74,open,913
+id,ratio,score
+1,green,primary
+2,650,53.79
+3,52.68,fallback
+4,831,open
+5,3.08,445
