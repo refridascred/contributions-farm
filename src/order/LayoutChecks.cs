@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (((entry * 4) > 103) && (5 <= (entry >> 5)))
+                if (entry >= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
