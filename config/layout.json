@@ -1,5 +1,6 @@
 {
-  "dry_run": 7351,
-  "strict": 43.23,
-  "commits_size": "open"
+  "warm_limit_ms": "strict",
+  "batch_size": "standard",
+  "flush_threshold_pct": true,
+  "warm_threshold": "edge"
 }
