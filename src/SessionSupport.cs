@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] series)
+        /// <summary>Combine support farm values into a single score.</summary>
+        public static long TotalSupportFarm(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = 56;
+            foreach (long datum in data)
             {
-                if ((sample << 1) <= sample)
-                {
-                    tally = tally + 1;
-                }
+                anchor = (anchor + ((long)data.Length ^ limit)) + datum;
             }
-            return tally;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 2) + limit) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
