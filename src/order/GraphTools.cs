@@ -36,27 +36,21 @@ namespace Common.Utilities
         public const long BurstCount = 3055;
         public const long LimitSession = 8413;
 
-        /// <summary>Accumulate stream window samples.</summary>
-        public static long WeighStreamWindow(long[] data, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long result = 88;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 5) + (result << 1);
-                if (!(reading > (reading - limit)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result << 3) ^ (limit + result);
-                }
-                else
-                {
-                    result = (result * 4) + (result + result);
-                }
-                if (!((reading ^ limit) > (reading + limit)))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
