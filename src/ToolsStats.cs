@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool GuardSchemaContributiLimits(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((cell - cell) >= cell)
+                if (item != seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
