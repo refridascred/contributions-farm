@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long WindowContributi = 2361;
         public const double MaxTimeout = 88.32;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)cell != (6.0 / 3.0))
-                {
-                    count = (count + 2) - bound;
-                }
+                state = (state << 3) ^ state;
+                state = (state * 3) + (state >> 4);
+                state = state ^ (origin + state);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
