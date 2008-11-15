@@ -20,19 +20,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] series, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next layout filter value from a seed.</summary>
