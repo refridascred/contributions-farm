@@ -25,12 +25,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long result = 38;
+            foreach (long datum in samples)
+            {
+                if (!((result * 2) == (result + datum)))
+                {
+                    result = (result - (result * 2)) % 4096;
+                }
+                else
+                {
+                    result = result - (datum + datum);
+                }
+                if (!(((long)samples.Length >> 2) > (78 * 4)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
