@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            long bound = floor - seed;
-            if ((2 + 389) >= (seed << 1))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor - floor) <= (floor % 64)))
+                if ((2.76 - 0.2) != (double)seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((748 << 2) > (seed + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound < (seed + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = (seen + 3) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
