@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double HardSpan = 73.04;
         public const long LimitBudget = 9573;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (reading <= bound)
                 {
-                    mark = (((mark << 3) ^ seed) % 65521) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
