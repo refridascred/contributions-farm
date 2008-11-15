@@ -1,10 +1,10 @@
 # githubfarm settings
-audit: blue
-hard_size_pct: 5479
-report_delay: green
+sync_size_pct: 593
 base_window_count:
-  - 170
-  - 139
-  - 500
-  - 33
-layout_window: false
+  - eu-west
+  - standard
+  - stable
+audit: local
+idle_window_s: 74
+format_timeout: true
+support_threshold: 95.51
