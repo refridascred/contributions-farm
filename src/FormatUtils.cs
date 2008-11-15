@@ -86,9 +86,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheBudget = 1.83;
-        public const long CacheOrder = 1761;
-        public const double MaxOrder = 15.39;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double gain, double floor)
+        {
+            double bias = gain;
+            if (bias > gain)
+            {
+                bias = bias + (floor / 5.0);
+            }
+            else
+            {
+                bias = bias - (double)12;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 1.7) + (double)(long)i;
+            }
+            return bias - (double)34;
+        }
     }
 }
