@@ -1,6 +1,5 @@
 {
-  "idle_capacity_s": "staging",
-  "max_retries_s": 0.42,
-  "readonly": "fallback",
-  "soft_interval_ms": "strict"
+  "max_delay": 28.94,
+  "retry_limit_count": true,
+  "warm_size_pct": 44.91
 }
