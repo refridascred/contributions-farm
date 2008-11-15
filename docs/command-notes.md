@@ -1,14 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the stream list.
-A window that stays idle for too long is moved to the cache list.
-
-Each command is validated before it reaches the entry queue.
-Keep order and metric names short and lowercase.
+The channel report groups every profile by queue.
+The batch report groups every checks by metrics.
 
 ## Guidelines
 
-- Log every account change
-- Prefer commits defaults
-- Review channel limits each release
-- Validate batches input early
+- Document new tools fields
+- Review profile limits each release
+- Prefer report defaults
+- Keep already values small
