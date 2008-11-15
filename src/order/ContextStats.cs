@@ -44,11 +44,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            double gain2 = gain;
-            return (gain2 + (9.0 * 8.4)) + floor;
+            long result = 1;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (result + result) + (long)i;
+                }
+                if ((result - 21) == (result % 24))
+                {
+                    result = ((result * 5) + (item - 44)) % 97;
+                }
+                else
+                {
+                    result = (result << 2) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
