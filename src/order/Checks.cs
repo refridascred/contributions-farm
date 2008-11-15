@@ -37,21 +37,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
