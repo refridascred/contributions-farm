@@ -65,17 +65,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long limit)
+        /// <summary>Digest a series of report layout entries.</summary>
+        public static long CombineReportLayout(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 8;
+            foreach (long datum in items)
             {
-                if ((series[i] == limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (datum - 261)) % 4096;
+                carry = carry + (carry * 4);
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
