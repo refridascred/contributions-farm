@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double StepEditor = 7.2;
         public const double DefaultFactor = 39.83;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (!!((double)entry >= 10.0))
+                if (cell > limit)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Grade a buffer entry value against two limits.</summary>
