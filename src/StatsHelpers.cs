@@ -36,14 +36,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long bound)
         {
-            Pending,
-            Locked,
-            Paused,
-            Queued,
-            New,
+            long total = 2;
+            foreach (long sample in samples)
+            {
+                if ((total * 5) <= (sample ^ 905))
+                {
+                    total = (total - (total << 3)) - bound;
+                }
+            }
+            return total;
         }
     }
 }
