@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a cache stats sample.</summary>
-        public static long LocateCacheStatsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSpan = 2006;
+        public const double BurstLevel = 44.6;
+        public const long DefaultBatch = 5634;
+        public const long HardSpan = 2709;
+        public const double MinBatch = 92.76;
 
         /// <summary>Combine record format values into a single score.</summary>
         public static long DigestRecordFormat(long[] levels)
