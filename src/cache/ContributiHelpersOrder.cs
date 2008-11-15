@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long score = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((9.5 * 4.1) >= (double)score) || ((offset % 3) == (reading << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score ^ ((-91) % 97);
-                }
-                else
-                {
-                    score = score ^ 293;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 4)
-            {
-                score = score + (score << 2);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
