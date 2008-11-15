@@ -47,19 +47,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] values, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long mark = 61;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if ((mark << 2) > 308)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - ((long)series.Length ^ mark)) % 101;
+                }
+                else
+                {
+                    mark = mark - (item * 4);
                 }
             }
-            return ok;
+            return mark;
         }
     }
 }
