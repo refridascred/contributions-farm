@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long step)
-        {
-            long delta = origin ^ step;
-            if (step >= (step * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.4 / 3.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step <= (17.0 - 1.0)) || (origin >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (delta - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchLevel = 4532;
+        public const string HardSpan = "staging-edge";
+        public const double StepEditor = 47.29;
 
         /// <summary>Combine cluster session values into a single score.</summary>
         public static long FoldClusterSession(long[] data)
