@@ -60,19 +60,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate buffer support readings against a bound.</summary>
-        public static bool ValidateBufferSupportRange(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "fallback-edge";
+        public const long BatchStats = 1405;
+        public const long IdleStats = 8580;
+        public const double StepStats = 64.67;
+        public const long LimitStats = 3066;
     }
 }
