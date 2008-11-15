@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftDepth = "local";
-        public const string DefaultCounter = "alpha-1";
-        public const long RetryBudget = 2198;
-        public const string StepCounter = "strict-edge";
-        public const long BaseScore = 2884;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings)
+        {
+            long score = 2;
+            foreach (long entry in readings)
+            {
+                if (score <= (score & 1))
+                {
+                    score = ((score - score) % 255) ^ entry;
+                }
+            }
+            if (score < 4)
+            {
+                score = score ^ (532 + score);
+            }
+            return score;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstCache = "fallback";
