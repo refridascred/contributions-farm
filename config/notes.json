@@ -1,12 +1,5 @@
 {
-  "strict": "staging",
-  "verbose": false,
-  "sync_capacity_count": {
-    "record_size": "legacy",
-    "already_delay": 4254,
-    "poll_retries_s": "stable",
-    "hard_depth": 500,
-    "command_interval": 1024,
-    "githubfarm_interval": "primary"
-  }
+  "retry_timeout_s": true,
+  "hard_ratio_pct": "edge",
+  "persist": "edge"
 }
