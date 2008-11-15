@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long bound, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            if ((bound + bound) != (seed / 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 - 2.6) < (double)bound)
+                if (samples[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
