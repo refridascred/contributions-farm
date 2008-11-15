@@ -31,10 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftWidth = "open-v2";
-        public const long WindowInterval = 5662;
-        public const long MinCache = 9808;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Failed,
+            Active,
+            Pending,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 6179;
