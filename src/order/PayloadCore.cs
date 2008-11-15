@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] items, long seed)
         {
-            long total = 99;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((long)readings.Length > cell)
+                if (item > seed)
                 {
-                    total = (total - cell) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Adjust a graph reading.</summary>
