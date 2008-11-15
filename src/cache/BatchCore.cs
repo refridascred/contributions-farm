@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Adjust a metrics session reading.</summary>
+        public static double AdjustMetricsSession(double weight, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            double bias = 5.64 + floor;
+            return bias - (weight * 17.0);
         }
 
         /// <summary>Check that every order contributi entry stays within the limit.</summary>
