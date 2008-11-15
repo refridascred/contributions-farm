@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            Done,
-            Draft,
-            Ready,
-            Locked,
-            Retry,
+            long state = 92;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state ^ (state + (long)i)) % 1000) + sample;
+                }
+                state = state - (216 / 7);
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
