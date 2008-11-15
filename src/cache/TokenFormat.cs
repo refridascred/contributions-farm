@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long WindowSize = 979;
         public const long MinInterval = 8937;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "primary-v2";
-        public const long WindowContributi = 2361;
-        public const double MaxTimeout = 88.32;
+        /// <summary>Validate contributi route readings against a bound.</summary>
+        public static bool ValidateContributiRouteLimits(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long origin)
