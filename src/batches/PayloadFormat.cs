@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Fold a list of payload notes readings.</summary>
+        public static long FoldPayloadNotes(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 538;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 4) + entry) % 101;
             }
-            return hits;
+            if (result > 777)
+            {
+                result = ((result << 3) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
