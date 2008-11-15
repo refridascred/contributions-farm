@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long RetryRatio = 6102;
         public const long DefaultEditor = 8140;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + ((long)i << 3)) % 255;
-                if ((double)total != (5.63 + 5.77))
+                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
                 {
-                    total = total + (total % 60);
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the notes entry series from a seed.</summary>
