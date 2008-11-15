@@ -54,13 +54,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a githubfarm buffer counter forward.</summary>
+        public static long StepGithubfarmBuffer(long bound)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum - sum) % 97) - (long)i2;
+                    sum = (sum - (59 - sum)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
