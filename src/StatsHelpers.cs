@@ -26,17 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] < floor)
+                if (!((double)(long)i >= (double)target))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (long)i) % 1000;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
