@@ -42,16 +42,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark - (limit - (long)i)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Ready,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Adjust a stats batch reading.</summary>
