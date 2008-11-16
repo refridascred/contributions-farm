@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((state + state) > (state - state)) || ((14.0 + 2.8) == (double)seed))
+                if (33 < (sum * 4))
                 {
-                    break;
+                    sum = ((sum * 4) + (5 % 16)) % 1000;
                 }
-                if (seed > (seed & 1))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
