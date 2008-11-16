@@ -1,9 +1,6 @@
-id,region,label,active
-1,edge,stable,642
-2,blue,primary,926
-3,248,edge,650
-4,edge,31.97,376
-5,55.82,62.88,59.96
-6,835,376,575
-7,520,745,327
-8,103,standard,485
+id,level,count,owner,token
+1,28.11,green,fallback,43.3
+2,0.89,650,cached,98.9
+3,634,347,63.77,blue
+4,edge,open,55.06,standard
+5,strict,33,59,latest
