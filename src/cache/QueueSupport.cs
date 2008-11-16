@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-626) + reading) >= (reading >> 3))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
