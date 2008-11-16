@@ -24,12 +24,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxLevel = 9285;
-        public const double MinBatch = 18.36;
-        public const long IdleCount = 7430;
-        public const long BurstBatch = 3572;
-        public const long LimitBudget = 3081;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Dropped,
+            Active,
+            Pending,
+            Done,
+            Failed,
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] items, long target)
