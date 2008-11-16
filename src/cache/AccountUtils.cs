@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values)
         {
-            New,
-            Locked,
-            Idle,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches - entry) >= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
