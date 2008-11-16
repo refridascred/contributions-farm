@@ -14,10 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 94.24;
-        public const double HardSpan = 73.04;
-        public const long LimitBudget = 9573;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 5019;
+        public const string DefaultFarm = "latest-1";
+        public const long MinFarm = 662;
+        public const long BurstFarm = 6265;
+        public const double BaseDepth = 38.7;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardRatio = 8913;
