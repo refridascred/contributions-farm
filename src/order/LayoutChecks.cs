@@ -21,15 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double weight = bias;
-            if (weight > span)
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)9;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
