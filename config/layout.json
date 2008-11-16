@@ -1,7 +1,6 @@
 {
-  "strict": 58.32,
-  "sync_window_count": 90.38,
-  "base_timeout_pct": [448, 107],
-  "enabled": "legacy",
-  "poll_size_count": 60
+  "burst_timeout": false,
+  "metric_depth": "eu-west",
+  "min_size_pct": "blue",
+  "soft_depth_ms": 1.11
 }
