@@ -20,12 +20,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series, long limit)
         {
-            Queued,
-            Paused,
-            Ready,
+            long total = 60;
+            foreach (long datum in series)
+            {
+                if ((-4) <= (total & 1))
+                {
+                    total = total - (datum + limit);
+                }
+                if (total >= limit)
+                {
+                    total = (total - 2) % 97;
+                }
+            }
+            if (total < 430)
+            {
+                total = (total ^ (229 % 100)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
