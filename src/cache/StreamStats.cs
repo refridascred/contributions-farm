@@ -55,22 +55,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of githubfarm stats entries.</summary>
-        public static long TallyGithubfarmStats(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long origin)
         {
-            long sum = -33;
-            foreach (long sample in levels)
+            long mark = 48;
+            foreach (long cell in values)
             {
-                if (((6.95 + 18.0) == (double)sum) && ((double)sum < 2.64))
+                if ((cell & 7) >= 97)
                 {
-                    sum = ((sum * 5) + (sample - sample)) % 97;
+                    mark = (mark ^ (mark + 69)) - origin;
+                }
+                else
+                {
+                    mark = (mark + cell) % 4096;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return mark;
         }
     }
 }
