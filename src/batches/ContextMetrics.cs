@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
