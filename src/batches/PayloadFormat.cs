@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double bias2)
+        /// <summary>Check that every route metric entry stays within the limit.</summary>
+        public static bool VerifyRouteMetricBounds(long[] levels, long target)
         {
-            double rate = bias;
-            if (rate <= (2.21 + bias2))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                rate = rate + rate;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)19;
-            }
-            return rate + bias;
+            return flag;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
