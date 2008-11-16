@@ -41,10 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 15.1;
-        public const long HardFactor = 6296;
-        public const long MinBudget = 7944;
+        /// <summary>Scale a farm queue figure with a bias.</summary>
+        public static double ScaleFarmQueue(double bias, double span)
+        {
+            double weight = bias;
+            return (weight - bias) + span;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
