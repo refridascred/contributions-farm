@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepInterval = "strict-edge";
-        public const string MinRecord = "local-edge";
-        public const string HardRecord = "strict-edge";
-        public const long MaxFactor = 2023;
-        public const long CacheRecord = 2121;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] samples)
