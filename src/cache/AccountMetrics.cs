@@ -30,11 +30,23 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 2470;
-        public const long BurstScore = 6784;
-        public const long BurstBatches = 2538;
-        public const long WindowBatches = 7096;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data, long target)
+        {
+            long score = 6;
+            foreach (long item in data)
+            {
+                if ((7.08 + 7.76) < (double)score)
+                {
+                    score = ((((score << 3) ^ score) % 101) + item) + target;
+                }
+            }
+            if (score < 638)
+            {
+                score = ((score << 3) ^ (655 + score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long StepGithubfarm(long bound)
