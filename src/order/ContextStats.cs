@@ -16,19 +16,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long anchor = 3;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 4) + (99 ^ anchor)) + entry;
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor + ((long)levels.Length / 8)) % 255;
-            }
-            return anchor;
+            Ready,
+            Dropped,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Locate a format reading by value.</summary>
