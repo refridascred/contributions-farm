@@ -16,19 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            double rate = (7.9 + floor) - weight;
-            if (rate > (weight - floor))
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                rate = rate + (double)6;
+                long next = target + target;
+                if (!(((double)target < (double)9) && ((target & 15) >= (target % 97))))
+                {
+                    mark = (mark + (mark + next)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)96) + (double)(long)i;
-            }
-            return rate - rate;
+            return mark;
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
