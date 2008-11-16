@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long TallyMetricFormatHits(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((reading ^ 9) == (hits >> 3))
                 {
-                    result = (result - offset) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                result = ((result * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
