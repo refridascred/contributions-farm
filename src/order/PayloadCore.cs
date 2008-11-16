@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] series, long bound)
         {
-            double load = 9.2;
-            if (load < 1.66)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                load = (load - (double)6) - span;
+                if (!((bound + entry) <= 9))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + (6.0 * 3.8);
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
