@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Active,
-            New,
-            Synced,
-            Locked,
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
