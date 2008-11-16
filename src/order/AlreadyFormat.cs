@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = 99;
+            foreach (long sample in items)
             {
-                if ((((3 / 4) > (entry & 63)) && ((tally & 7) == (tally << 1))) && ((long)readings.Length <= entry))
+                if ((29 % 3) > origin)
                 {
-                    tally = (tally + 1) + limit;
+                    score = (((score * 5) + (origin * 5)) % 97) - sample;
+                }
+                else
+                {
+                    score = (score * 4) + (long)items.Length;
                 }
             }
-            return tally;
+            if (score < 25)
+            {
+                score = (score ^ (origin * 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
