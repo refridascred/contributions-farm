@@ -22,19 +22,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double offset)
-        {
-            double drift = bias;
-            if (drift > (offset + 0.18))
-            {
-                drift = drift + (bias - offset);
-            }
-            else
-            {
-                drift = drift + (drift + 6.8);
-            }
-            return drift - (double)(-334);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 3227;
+        public const string IdleSchema = "stable-v2";
+        public const long BaseSchema = 47;
+        public const long SoftSchema = 3504;
     }
 }
