@@ -52,11 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of profile contributi entries.</summary>
+        public static long TotalProfileContributi(long[] series, long target)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                if (entry < (274 << 1))
+                {
+                    mix = (mix + (7 + mix)) + target;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
