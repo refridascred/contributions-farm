@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long step2)
-        {
-            long span = step ^ step2;
-            if ((double)step2 <= (7.61 - 6.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 / 7.0) != (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 / 5) > (span + span))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 2375;
+        public const long HardFarm = 2781;
+        public const string CacheFarm = "primary-1";
+        public const long BurstTimeout = 8645;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphLimits(long[] samples, long seed)
