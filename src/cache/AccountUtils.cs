@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
