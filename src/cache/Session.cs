@@ -16,14 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Done,
-            Ready,
-            Dropped,
-            Active,
-            Locked,
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every batch format entry stays within the limit.</summary>
