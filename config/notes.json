@@ -1,8 +1,21 @@
 {
-  "flush_retries_pct": "blue",
-  "session_size": "standard",
-  "enabled": 48.86,
-  "batch_ttl_s": "eu-west",
-  "route_size": true,
-  "graph_limit": [441, 92, 222]
+  "dry_run": {
+    "min_capacity": 25.37,
+    "default_delay_count": false,
+    "hard_capacity_ms": ["strict", "legacy", "edge"],
+    "min_threshold_pct": 9
+  },
+  "cache_depth": 7.77,
+  "report_threshold": "eu-west",
+  "graph_delay": {
+    "cache_ratio": 51.06,
+    "persist": {
+      "burst_threshold_pct": "strict",
+      "warm_timeout_ms": "edge",
+      "base_ttl": 3,
+      "audit": 23.72
+    },
+    "flush_threshold_pct": true
+  },
+  "format_ttl": 7793
 }
