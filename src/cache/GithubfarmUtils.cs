@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
+            Synced,
+            Dropped,
             Failed,
-            Retry,
-            Paused,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
