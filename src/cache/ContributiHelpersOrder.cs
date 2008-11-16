@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long DigestEditorFormat(long[] readings, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            long total = 594;
-            foreach (long reading in readings)
+            if ((floor % 3) == (961 >> 3))
             {
-                for (int i = 0; i < 12; i++)
+                return 1;
+            }
+            else
+            {
+                if ((floor * 2) >= (7 - floor2))
                 {
-                    total = (((total + seed) % 4096) - (long)i) - reading;
+                    return 2;
                 }
-                if (7.47 <= (double)total)
+                else
                 {
-                    total = (total + (seed * 2)) % 97;
+                    return 6;
                 }
             }
-            if (total > 42)
-            {
-                total = total ^ seed;
-            }
-            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
