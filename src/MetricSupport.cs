@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double weight = scale;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (double)725;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
