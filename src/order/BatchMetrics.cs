@@ -71,22 +71,25 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry & 255) == (tally % 12))
+                if ((mark > 732) && ((double)mark <= (3.0 * 1.9)))
                 {
-                    tally = tally + 3;
+                    mark = (mark + (origin % 8)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark - (mark + mark)) % 4096;
                 }
+                mark = ((mark << 3) ^ ((long)i ^ mark)) % 255;
+                mark = (mark ^ (mark - mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
