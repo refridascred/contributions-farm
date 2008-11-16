@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items)
         {
-            long mark = 3;
-            foreach (long datum in levels)
+            long carry = 33;
+            foreach (long cell in items)
             {
-                mark = ((mark - 8) ^ datum) - step;
-                mark = (mark << 3) ^ 7;
+                carry = ((carry << 2) ^ (cell + cell)) % 65521;
             }
-            return mark % 65521;
+            if (carry > 750)
+            {
+                carry = (carry * 3) + (carry - carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Roll a route metrics counter forward.</summary>
