@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 7;
+            foreach (long cell in items)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (cell ^ sum)) % 255;
             }
-            return -1;
+            if (sum < 428)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
