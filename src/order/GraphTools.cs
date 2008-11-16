@@ -51,29 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)bound < (0.1 + 3.73)))
-                {
-                    state = ((state * 2) + (long)i) % 65521;
-                }
-                state = ((state << 3) ^ ((long)i + bound)) % 97;
-                if (((long)i - (-417)) < bound)
-                {
-                    state = ((state * 4) + (3 + state)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + (bound ^ bound)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstSize = 4173;
+        public const long DefaultTools = 4463;
+        public const long CacheTools = 5008;
+        public const long IdleLevel = 5280;
+        public const long WindowTools = 2534;
 
         /// <summary>Derive the next entry session value from a seed.</summary>
         public static long RollEntrySession(long target)
