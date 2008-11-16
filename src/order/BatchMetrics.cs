@@ -23,24 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (limit > result)
-                {
-                    long delta = (92 / 8) - (74 % 12);
-                    result = result - (delta - result);
-                }
-                if ((limit & 7) <= (result - (long)i))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up stream route samples.</summary>
