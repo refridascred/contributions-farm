@@ -37,21 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 51;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor - (-4)) >= anchor) || ((86 ^ limit) <= anchor))
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ anchor) ^ sample;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
