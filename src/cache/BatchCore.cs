@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2977;
-        public const double BurstWindow = 43.16;
-        public const double RetryWindow = 33.43;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] samples)
