@@ -1,19 +1,16 @@
 # githubfarm settings
-context_depth: 30
-poll_threshold_ms: local
-idle_limit_s: 37.19
-poll_size_s:
-  - staging
-  - green
+readonly: 30
+burst_timeout_s:
+  flush_depth_s: 29.9
+  batch_threshold_ms: fallback
+  min_ttl_pct: 9991
+  strict: fallback
+  audit: true
+  counter_depth: 60
+default_threshold: legacy
+layout_size:
   - blue
+  - local
+  - stable
   - fallback
-cache_delay_s:
-  enabled: true
-  idle_capacity: 94.25
-  retry_ttl_count: strict
-  audit:
-    base_depth_ms: 12.02
-    compress: 96
-    schema_ratio: open
-    profile_limit: 32.08
-  idle_timeout_s: 98
+compress: 68.6
