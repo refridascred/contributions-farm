@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            Closed,
-            Active,
-            Stale,
-            Draft,
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry ^ (831 - carry)) % 4096;
+                long next = (carry % 8) + (origin << 2);
+                carry = carry + (next + (long)i);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batches channel readings.</summary>
