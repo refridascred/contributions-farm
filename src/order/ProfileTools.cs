@@ -58,19 +58,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine metrics order values into a single score.</summary>
-        public static long TallyMetricsOrder(long[] items, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] readings, long target)
         {
-            long total = 10;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total - (target % 60)) % 255) ^ entry;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 22)
-            {
-                total = ((total << 3) ^ (target ^ 40)) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
