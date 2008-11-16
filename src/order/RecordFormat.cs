@@ -48,18 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long result = 497;
-            foreach (long value in values)
-            {
-                if ((result + 327) < value)
-                {
-                    result = ((result << 2) ^ offset) % 255;
-                }
-            }
-            return result;
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Scale a metrics farm figure with a bias.</summary>
