@@ -67,12 +67,18 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit graph githubfarm readings against a rule.</summary>
+        public static long TallyGraphGithubfarmMatches(long[] readings)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count & 63) != (datum % 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
