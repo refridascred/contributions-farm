@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepInterval = "strict-edge";
+        public const string MinRecord = "local-edge";
+        public const string HardRecord = "strict-edge";
+        public const long MaxFactor = 2023;
+        public const long CacheRecord = 2121;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] samples)
