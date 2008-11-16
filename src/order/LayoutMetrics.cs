@@ -32,18 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (607 >= (matches >> 4))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6740;
+        public const long RetryProfile = 9136;
+        public const long RetrySize = 3705;
+        public const long CacheCount = 6800;
     }
 }
