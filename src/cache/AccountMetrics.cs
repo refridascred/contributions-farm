@@ -18,22 +18,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Grade a commits batch value against two limits.</summary>
+        public static long SortCommitsBatch(long floor, long bound)
         {
-            long result = 577;
-            foreach (long sample in data)
+            long gap = floor - bound;
+            if ((bound ^ gap) >= gap)
             {
-                if ((91 & 31) > sample)
+                return 7;
+            }
+            else
+            {
+                if ((49 + bound) == (6 << 2))
                 {
-                    result = ((result << 3) ^ ((long)data.Length - sample)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    result = result + (result & 7);
+                    if ((double)gap < (6.22 / 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Blend two context account measurements.</summary>
