@@ -57,12 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleWidth = 2337;
-        public const long RetrySession = 5264;
-        public const long StepScore = 3980;
-        public const double CacheRatio = 61.5;
-        public const double LimitSession = 78.82;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                long offset2 = (469 - offset) - (score + score);
+                score = score + (offset2 + (long)i);
+                if (offset < ((long)i * 3))
+                {
+                    offset2 = ((offset2 << 3) ^ (long)i) % 1000;
+                    score = ((score * 4) + (long)i) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] values, long seed)
