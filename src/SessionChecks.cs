@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((-2) * 3) < sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
