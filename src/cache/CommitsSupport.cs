@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const double BatchRatio = 78.65;
         public const long RetrySpan = 80;
 
-        /// <summary>Scale a stream context figure with a bias.</summary>
-        public static double ProjectStreamContext(double ratio, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] data, long limit)
         {
-            double bias = (ratio / 7.0) - span;
-            if (bias > span)
+            long total = 81;
+            foreach (long value in data)
             {
-                bias = bias + bias;
+                if ((value - limit) == (value / 5))
+                {
+                    total = ((total << 3) ^ (461 * 4)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (span * 8.65)) + (double)(long)i;
-            }
-            return bias + 2.2;
+            return total;
         }
     }
 }
