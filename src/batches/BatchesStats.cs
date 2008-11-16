@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long origin)
         {
-            New,
-            Pending,
-            Paused,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
