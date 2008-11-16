@@ -49,19 +49,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long step)
+        /// <summary>Look up the position of a stream context sample.</summary>
+        public static long LocateStreamContextIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > step)
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
