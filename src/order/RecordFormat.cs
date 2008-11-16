@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((reading ^ 28) >= (reading * 2)) && ((hits + 148) > (reading * 3))) && ((reading >> 5) != (hits & 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
