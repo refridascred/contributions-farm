@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long CacheAccount = 3188;
         public const double DefaultBudget = 42.94;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
