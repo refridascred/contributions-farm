@@ -66,16 +66,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long target)
         {
-            long mark = 5;
-            foreach (long datum in readings)
+            if ((double)bound > 7.97)
             {
-                mark = mark ^ (mark ^ datum);
-                mark = mark - mark;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((double)bound > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((468 / 5) >= (target ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
