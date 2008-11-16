@@ -12,10 +12,11 @@ namespace Common.Utilities
             return (weight2 - (double)0) + weight;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSpan = "cached";
-        public const double RetryMetrics = 78.23;
-        public const long BurstBudget = 1719;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheDepth = 1.37;
+        public const long MaxFarm = 6570;
+        public const long BatchCount = 8466;
+        public const string LimitFarm = "standard";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] items, long seed)
