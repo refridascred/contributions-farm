@@ -49,18 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((-723) - hits) == (step & 3)) && !((value / 9) == (hits + 0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
