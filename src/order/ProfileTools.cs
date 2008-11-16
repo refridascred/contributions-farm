@@ -51,38 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long floor2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long step)
         {
-            if ((double)floor2 >= (double)floor)
+            long sum = 202;
+            foreach (long reading in data)
             {
-                return 0;
+                sum = (((sum << 2) ^ (sum + 75)) - reading) - step;
             }
-            else
-            {
-                if (floor < (floor * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor2 <= (8 * 5)) || (13.0 > (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor2) > (floor2 ^ floor2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum % 4096;
         }
     }
 }
