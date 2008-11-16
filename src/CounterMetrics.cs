@@ -30,12 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "local-1";
-        public const long BatchWindow = 7686;
-        public const long BaseWindow = 5331;
-        public const string CacheSpan = "fallback-v2";
-        public const long HardSize = 4154;
+        /// <summary>Roll a context counter counter forward.</summary>
+        public static long RollContextCounter(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((total ^ offset) <= 9)
+                {
+                    total = (total - (offset + total)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
