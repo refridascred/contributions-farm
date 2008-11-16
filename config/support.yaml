@@ -1,8 +1,6 @@
 # support settings
-dry_run:
-  idle_ttl_pct: 22
-  retry_window_pct: true
-  hard_threshold_count: 49.78
-  flush_depth_ms: 75
-default_window_pct: 88.97
-audit: primary
+sync_ttl: 500
+min_size_count: true
+editor_retries: blue
+hard_timeout_count: 7745
+flush_ratio_count: 8252
