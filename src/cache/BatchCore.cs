@@ -20,19 +20,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double load = bias2;
-            if (load < (bias2 - load))
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - (double)85;
-            }
-            return load + (bias / 4.0);
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
