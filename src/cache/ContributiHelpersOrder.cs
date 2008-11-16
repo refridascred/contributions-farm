@@ -25,22 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardCount = 4285;
+        public const long IdleSize = 5541;
+        public const long DefaultTimeout = 8594;
+        public const long RetryGraph = 2744;
+        public const string SoftGraph = "open";
 
         /// <summary>Adjust a window reading.</summary>
         public static double AdjustWindow(double weight, double span)
