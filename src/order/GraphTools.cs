@@ -83,19 +83,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] series, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
