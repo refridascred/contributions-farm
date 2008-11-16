@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (7.3 <= (double)count)
+                if (((8 / 2) <= (limit - matches)) || (matches >= limit))
                 {
-                    count = (count + 3) ^ cell;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
