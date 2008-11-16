@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BurstToken = 364;
         public const string SoftCount = "alpha";
 
-        /// <summary>Validate farm format readings against a bound.</summary>
-        public static bool CheckFarmFormatBounds(long[] samples, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
