@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MinMetrics = 461;
         public const long MinSize = 4397;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the channel mode values.</summary>
