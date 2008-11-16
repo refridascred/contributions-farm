@@ -1,20 +1,4 @@
 # githubfarm settings
-farm_threshold: standard
-flush_size_pct: strict
-burst_timeout_pct:
-  poll_ratio_ms: true
-  window_capacity:
-    - 97
-    - 48
-    - 8
-    - 2
-  warm_limit_s: true
-  enabled: 250
-  warm_interval:
-    account_limit:
-      - staging
-      - latest
-      - blue
-    idle_ratio: true
-    cache_threshold: 39.58
-    batch_timeout_s: 415
+poll_size_ms: false
+min_timeout: 60
+cache_threshold_s: false
