@@ -1,9 +1,8 @@
-id,owner,state,level,region
-1,684,230,stable,61.74
-2,178,69.83,primary,125
-3,571,87.29,stable,261
-4,111,stable,155,6
-5,84,latest,26.24,1.48
-6,green,blue,open,97.5
-7,73.81,0.86,420,legacy
-8,366,7.57,81.2,544
+id,owner,rank,score
+1,36.03,stable,78.03
+2,332,345,blue
+3,62.97,34.91,694
+4,70.95,3.07,92.5
+5,3.34,17.62,14.8
+6,78.75,34.16,23.12
+7,strict,fallback,398
