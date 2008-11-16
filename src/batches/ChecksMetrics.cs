@@ -38,21 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the tools level values.</summary>
