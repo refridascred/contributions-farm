@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double offset)
-        {
-            double scale = offset;
-            if (scale <= bias)
-            {
-                scale = scale - (offset - bias);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 7737;
+        public const double WindowChecks = 65.6;
+        public const long HardLevel = 1098;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] items, long step)
