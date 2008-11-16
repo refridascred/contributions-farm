@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long score = 217;
-            foreach (long sample in samples)
+            long sum = 43;
+            foreach (long item in samples)
             {
-                if ((double)sample <= (double)score)
+                sum = (sum ^ (sum - sum)) % 1000;
+                if ((sum >> 2) != (item ^ item))
                 {
-                    score = (score - (target & 3)) % 4096;
+                    break;
                 }
             }
-            if (score > 730)
-            {
-                score = (score * 4) + (score ^ 30);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
