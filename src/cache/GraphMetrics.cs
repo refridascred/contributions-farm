@@ -46,11 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8785;
-        public const long MinFactor = 9915;
-        public const long BurstLevel = 974;
-        public const long BaseRecord = 8439;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double weight, double floor)
