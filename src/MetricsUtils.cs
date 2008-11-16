@@ -39,18 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long result = 464;
-            foreach (long sample in readings)
-            {
-                if (!(33 < (result + (-1))))
-                {
-                    result = ((result + (result * 5)) % 4096) - sample;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
