@@ -39,19 +39,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
