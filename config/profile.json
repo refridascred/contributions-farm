@@ -1,7 +1,14 @@
 {
-  "compress": 9451,
-  "cluster_capacity": "legacy",
-  "soft_limit_ms": 15,
-  "warm_interval_count": "eu-west",
-  "filter_delay": 79.56
+  "schema_capacity": true,
+  "flush_depth_s": false,
+  "dry_run": 100,
+  "flush_interval_ms": ["stable", "edge", "edge"],
+  "flush_interval_count": {
+    "default_interval": 1,
+    "support_ttl": true,
+    "tools_limit": "legacy",
+    "enabled": "blue",
+    "metrics_retries": "primary"
+  },
+  "max_retries_s": true
 }
