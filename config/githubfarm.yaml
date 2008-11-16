@@ -1,22 +1,16 @@
 # githubfarm settings
-filter_delay: standard
-batch_size_ms: true
-format_capacity: 3988
-idle_delay: standard
-queue_size:
-  burst_interval_count:
-    dry_run: stable
-    readonly:
-      - 32
-      - 154
-    idle_retries: 56
-    metric_delay: 90
-  session_retries: 13.16
-  layout_ratio:
-    base_delay_pct: 7924
-    cache_timeout_s: 73.32
-    stream_window: 71.43
-    warm_depth_ms: 500
-    token_ratio: 36.55
-    already_limit: true
-cache_depth: 24
+hard_retries: green
+dry_run:
+  sync_ttl_ms:
+    - 348
+    - 182
+    - 96
+    - 365
+  batch_size_s: 500
+  batch_window_ms: false
+  warm_retries_count: 60
+flush_ratio: 6317
+poll_size_ms:
+  - primary
+  - fallback
+  - green
