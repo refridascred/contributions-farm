@@ -12,11 +12,12 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 4507;
-        public const long MaxFilter = 6805;
-        public const long BatchFilter = 4244;
-        public const long DefaultFilter = 1928;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Validate token session readings against a bound.</summary>
         public static bool ValidateTokenSessionLimits(long[] series, long target)
