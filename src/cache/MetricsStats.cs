@@ -13,18 +13,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] data, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (((16.0 * 18.0) == (double)target) || ((target % 3) <= (target + origin)))
             {
-                if (!((92 & 127) == (sample >> 3)))
+                return 4;
+            }
+            else
+            {
+                if (((origin >> 3) <= 49) || ((origin * 5) >= origin))
                 {
-                    count = (count + 3) + target;
+                    return 8;
+                }
+                else
+                {
+                    if ((10.0 + 5.1) > (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first stats checks entry that matches the target.</summary>
