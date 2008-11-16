@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of support buffer readings.</summary>
-        public static long WeighSupportBuffer(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = 55;
-            foreach (long datum in items)
-            {
-                if (!((sum + sum) != (sum - sum)))
-                {
-                    sum = ((sum * 3) + (-1)) - datum;
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-            }
-            if (sum > 479)
-            {
-                sum = sum - (sum >> 2);
-            }
-            return sum;
+            New,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Combine already values into a single score.</summary>
