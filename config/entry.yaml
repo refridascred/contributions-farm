@@ -1,15 +1,10 @@
 # entry settings
-flush_retries_ms:
-  burst_ttl_count: false
-  farm_timeout: 2.64
-  hard_ttl_pct: 30
-  min_interval_s: open
-audit: 92
-strict: 87
-sync_timeout_count: 18
-already_capacity: latest
-warm_interval:
-  - 444
-  - 500
-  - 381
-  - 451
+counter_window: 500
+enabled:
+  - 180
+  - 77
+  - 392
+  - 279
+persist: 23.71
+cache_size_pct: 27.29
+soft_ratio_pct: 4436
