@@ -33,12 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Classify a buffer route pair into a bucket.</summary>
+        public static long RankBufferRoute(long floor, long floor2)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long next = floor ^ floor2;
+            if ((7 + 1) >= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (next <= (floor ^ next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + next) <= (41 / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
