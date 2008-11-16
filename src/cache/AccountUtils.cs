@@ -15,11 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up cluster samples.</summary>
