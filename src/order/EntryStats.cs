@@ -62,9 +62,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2381;
-        public const long MinSpan = 7314;
-        public const string MinToken = "strict-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 41.96;
+        public const long WindowGithubfarm = 2545;
+        public const long WindowInterval = 5671;
     }
 }
