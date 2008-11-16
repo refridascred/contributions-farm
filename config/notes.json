@@ -1,5 +1,16 @@
 {
-  "readonly": "open",
-  "notes_depth": "green",
-  "tools_interval": false
+  "soft_interval": 2661,
+  "max_interval_count": {
+    "token_limit": 59,
+    "tools_interval": {
+      "idle_depth_count": ["primary", "local", "strict"],
+      "graph_depth": "primary",
+      "cache_depth_ms": "blue",
+      "flush_size_s": 75.43,
+      "soft_timeout_pct": 4332,
+      "cluster_timeout": 50.38
+    },
+    "flush_window_s": "primary"
+  },
+  "counter_threshold": 6032
 }
