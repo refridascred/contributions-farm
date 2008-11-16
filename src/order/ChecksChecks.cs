@@ -19,13 +19,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Queued,
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((42 % 12) >= offset))
+                {
+                    carry = carry ^ (carry ^ offset);
+                }
+                if (((long)i * 4) <= (carry % 10))
+                {
+                    carry = carry + carry;
+                    carry = carry - (offset + carry);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry << 2) ^ ((long)i2 - 69)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch status values.</summary>
