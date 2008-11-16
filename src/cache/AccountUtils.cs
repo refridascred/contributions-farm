@@ -37,26 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Iterate the filter batches series from a seed.</summary>
+        public static long IterateFilterBatches(long seed)
         {
-            long sum = 3;
-            foreach (long item in series)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((item >> 1) >= (item >> 2)) || ((double)item <= (double)sum))
+                if (!((double)mix != (double)seed))
                 {
-                    sum = (sum ^ (sum - sum)) % 255;
+                    mix = (mix * 2) + (mix << 3);
                 }
-                else
-                {
-                    sum = sum + (799 ^ 4);
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (sum < 245)
-            {
-                sum = (sum << 2) ^ (570 - sum);
-            }
-            return sum;
+            return mix;
         }
     }
 }
