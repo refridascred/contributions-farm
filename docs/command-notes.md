@@ -1,10 +1,10 @@
 # Command notes
 
-Each stream is validated before it reaches the layout queue.
-Run the token check before changing any format limits.
+The filter module keeps profile values in sync with the metric cache.
+A profile that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer report defaults
-- Validate profile input early
+- Document new entry fields
+- Log every buffer change
+- Review filter limits each release
