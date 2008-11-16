@@ -34,22 +34,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long state = 268;
-            foreach (long sample in items)
-            {
-                if ((500 % 24) > (offset - state))
-                {
-                    state = (((state << 3) ^ offset) % 101) - sample;
-                }
-            }
-            if (state > 67)
-            {
-                state = state + state;
-            }
-            return state % 4096;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
