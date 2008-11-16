@@ -40,23 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Find the first record metric entry that matches the target.</summary>
+        public static long SeekRecordMetricIndex(long[] samples, long bound)
         {
-            long sum = 910;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 2) ^ 9;
-                if ((sum << 2) < value)
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    sum = sum ^ (966 + sum);
+                    return (long)i;
                 }
             }
-            if (sum < 737)
-            {
-                sum = ((sum * 5) + (sum * 4)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
