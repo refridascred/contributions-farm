@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((31 * 4) > (item - item)) || ((hits + hits) == (hits / 9)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
