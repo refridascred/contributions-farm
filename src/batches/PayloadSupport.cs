@@ -31,13 +31,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long floor, long floor2)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            if ((floor2 + floor) > (floor ^ floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor < (1.7 * 4.69)) && ((double)53 <= (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (floor2 * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(floor2 >= (22 + floor2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
