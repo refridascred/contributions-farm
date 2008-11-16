@@ -23,19 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi graph readings against a bound.</summary>
-        public static bool VerifyContributiGraphBounds(long[] levels, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long offset = bound - target;
+            if ((467 ^ target) >= (bound + offset))
             {
-                if (cell < limit)
+                return 6;
+            }
+            else
+            {
+                if ((target % 16) > target)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (target > (bound ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset < (target << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
