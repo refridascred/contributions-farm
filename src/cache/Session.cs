@@ -20,20 +20,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] data, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((seed - 492) > (seed + seed)) && ((double)15 != (double)mark))
+                if (datum != bound)
                 {
-                    mark = (mark - (55 + (long)i)) % 1000;
+                    flag = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
