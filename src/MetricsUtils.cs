@@ -62,18 +62,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] data, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry > (18.0 + 8.7))
+                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
                 {
-                    count = (count + 2) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
