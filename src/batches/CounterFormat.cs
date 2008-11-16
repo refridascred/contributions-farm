@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of order stats readings.</summary>
-        public static long DigestOrderStats(long[] readings, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long anchor = 404;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (step + cell)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 23)
-            {
-                anchor = (anchor << 2) ^ (step - step);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Project the next stats contributi value.</summary>
