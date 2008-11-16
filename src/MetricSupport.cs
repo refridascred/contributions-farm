@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9824;
-        public const long DefaultCache = 8795;
-        public const long MaxBudget = 5500;
-        public const double SoftInterval = 13.78;
-        public const long HardCache = 259;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstLevel = 1723;
+        public const long RetryScore = 6527;
+        public const long MinBatch = 9277;
+        public const string BatchScore = "primary";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchLimits(long[] series, long origin)
