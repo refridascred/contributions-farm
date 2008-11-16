@@ -1,6 +1,6 @@
 {
-  "verbose": "stable",
-  "layout_timeout": 250,
-  "payload_ratio": 86,
-  "persist": 18.53
+  "default_window_s": 5263,
+  "retry_size_count": "local",
+  "audit": ["blue", "standard"],
+  "idle_delay_ms": "edge"
 }
