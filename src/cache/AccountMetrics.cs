@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Iterate the context editor series from a seed.</summary>
+        public static long StepContextEditor(long origin)
         {
-            Retry,
-            Stale,
-            Idle,
-            Synced,
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state - state) % 255;
+                state = ((state << 2) ^ (origin ^ origin)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
