@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Paused,
-            Synced,
-            Queued,
+            Retry,
+            Active,
+            Locked,
+            New,
             Stale,
         }
 
