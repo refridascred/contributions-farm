@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double bias2)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            double weight = bias2;
+            if (weight > (double)59)
+            {
+                weight = (weight - weight) + bias;
+            }
+            else
+            {
+                weight = weight - 4.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (bias2 - weight)) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
 
         /// <summary>Digest a series of notes batches entries.</summary>
