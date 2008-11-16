@@ -12,15 +12,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double weight, double span)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 2; i++)
+            double bias = weight;
+            if (bias < (double)64)
             {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
+                bias = (bias + bias) - span;
             }
-            return ratio2 - (span * 9.12);
+            else
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Measure how many account notes samples are out of range.</summary>
