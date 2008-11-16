@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] items, long step)
         {
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            long score = 53;
+            foreach (long item in items)
+            {
+                score = (((score * 4) + step) % 101) + item;
+                if (!((4.22 + 9.0) > (double)score))
+                {
+                    score = (score - (step + step)) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
