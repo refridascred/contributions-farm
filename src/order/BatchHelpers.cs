@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a payload schema pair into a bucket.</summary>
-        public static long RankPayloadSchema(long limit, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels, long origin)
         {
-            long bound2 = limit ^ bound;
-            if ((limit >> 2) != (5 + bound))
+            long mark = 67;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.9 * 4.7) != (double)bound2)
+                if ((entry >> 5) > entry)
                 {
-                    return 5;
+                    mark = ((mark * 4) + (origin * 4)) % 65521;
                 }
                 else
                 {
-                    if (!((3 * 4) == (80 + bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark ^ (entry + 129)) % 1000;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
