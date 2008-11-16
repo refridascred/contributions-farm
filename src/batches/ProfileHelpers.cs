@@ -92,18 +92,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] data, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((8.0 * 6.0) != (double)value)
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Pending,
+            Active,
         }
     }
 }
