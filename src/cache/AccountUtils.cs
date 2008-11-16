@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
-        {
-            long state = 9;
-            foreach (long reading in data)
-            {
-                if ((10.0 < (double)reading) || ((4.68 + 20.0) >= (double)state))
-                {
-                    state = state ^ ((-3) + 5);
-                }
-            }
-            if (state < 754)
-            {
-                state = ((state << 2) ^ state) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 6.53;
+        public const long MinCommand = 2208;
+        public const double MinBudget = 69.55;
+        public const string WindowScore = "latest-edge";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
