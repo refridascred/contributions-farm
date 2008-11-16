@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] samples, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
