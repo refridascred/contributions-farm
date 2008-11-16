@@ -17,12 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
