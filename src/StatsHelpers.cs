@@ -34,11 +34,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a farm queue figure with a bias.</summary>
-        public static double ScaleFarmQueue(double bias, double span)
+        /// <summary>Project the next report tools value.</summary>
+        public static double BlendReportTools(double gain, double offset)
         {
-            double weight = bias;
-            return (weight - bias) + span;
+            double drift = (double)3 * 3.79;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift - 7.6) + (double)(long)i) + gain) - offset;
+            }
+            return drift - (double)59;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
