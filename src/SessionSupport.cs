@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((9 - (long)i) >= (long)i)
-                {
-                    mix = mix - ((long)i & 255);
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
