@@ -12,39 +12,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long target, long step)
-        {
-            if ((step < (step / 7)) && ((step + target) >= target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (2.2 - 0.53))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step < (target / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + target) != (target + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7601;
+        public const string CacheBudget = "open";
+        public const long WindowCluster = 3287;
+        public const long DefaultCluster = 2404;
 
         /// <summary>Compare every pair of graph command readings.</summary>
         public static long CompareGraphCommandCount(long[] readings)
