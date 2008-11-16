@@ -1,6 +1,4 @@
 # githubfarm settings
-sync_ttl_count: 53.97
-token_capacity: primary
-compress: legacy
-stats_window: false
-audit: 2481
+editor_limit: true
+enabled: 1.28
+dry_run: 58.92
