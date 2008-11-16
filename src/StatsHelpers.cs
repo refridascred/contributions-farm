@@ -40,23 +40,23 @@ namespace Common.Utilities
         public const long HardFactor = 6296;
         public const long MinBudget = 7944;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long step, long offset)
         {
-            long diff = origin + step;
-            if (!(origin <= (origin + diff)))
+            long edge = step + offset;
+            if ((double)edge == (1.9 - 1.67))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((step % 16) < ((-595) / 7))
+                if ((double)offset <= 6.22)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
