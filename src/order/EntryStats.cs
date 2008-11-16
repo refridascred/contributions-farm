@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long DigestGraphContributi(long[] levels, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            long result = 89;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((237 + limit) < 0)
+                if (((31 * 4) > (item - item)) || ((hits + hits) == (hits / 9)))
                 {
-                    result = (result - ((-301) ^ 33)) ^ datum;
+                    hits = hits + 1;
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
