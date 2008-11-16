@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double ratio2 = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if ((5 - datum) < (seen >> 1))
-                {
-                    seen = (seen + 2) - step;
-                }
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
             }
-            return seen;
+            return ratio2 - (span * 9.12);
         }
 
         /// <summary>Measure how many account notes samples are out of range.</summary>
