@@ -37,18 +37,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long next = origin + floor;
+            if ((next < origin) || ((next / 8) > (next << 1)))
             {
-                if (((long)items.Length ^ sample) == (76 / 6))
+                return 8;
+            }
+            else
+            {
+                if ((9 <= (origin - origin)) || (0.1 <= (double)next))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (0 <= (next >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
