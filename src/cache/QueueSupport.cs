@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double rate = floor - scale;
-            return rate + scale;
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
