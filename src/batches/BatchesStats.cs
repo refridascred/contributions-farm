@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double mean = span;
-            if (mean >= (mean / 2.0))
-            {
-                mean = mean - (weight / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (span + 1.6)) + (double)(long)i;
-            }
-            return mean + 20.0;
+            Locked,
+            Queued,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate commits stats samples.</summary>
