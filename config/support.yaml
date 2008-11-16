@@ -1,15 +1,6 @@
 # support settings
-warm_ttl:
-  - local
-  - stable
-warm_size_pct:
-  sync_interval_pct: false
-  sync_depth_count: false
-  enabled: green
-  soft_size: 6.12
-  min_limit_s: 57
-cache_retries_pct:
-  - strict
-  - strict
-  - legacy
-  - primary
+audit: 86
+graph_size: true
+batch_delay: 7474
+min_capacity_ms: 61
+compress: true
