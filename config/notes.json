@@ -1,14 +1,7 @@
 {
-  "burst_window_count": 58.54,
-  "audit": 77.12,
-  "strict": {
-    "warm_ratio_pct": 7388,
-    "flush_interval_pct": 100,
-    "flush_capacity": 8949,
-    "poll_threshold_ms": 6.01,
-    "burst_interval": 66.29
-  },
-  "sync_size_s": "green",
-  "max_size_s": "fallback",
-  "sync_retries": true
+  "verbose": "legacy",
+  "command_capacity": "green",
+  "commits_limit": 95,
+  "window_limit": true,
+  "audit": 66
 }
