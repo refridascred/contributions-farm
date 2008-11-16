@@ -59,19 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload order readings against a bound.</summary>
-        public static bool ValidatePayloadOrderBounds(long[] values, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the context status values.</summary>
