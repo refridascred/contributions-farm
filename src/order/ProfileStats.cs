@@ -34,10 +34,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftDepth = 41.29;
-        public const long StepCounter = 7854;
-        public const double StepFactor = 4.97;
-        public const long SoftInterval = 354;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long limit)
+        {
+            long span = floor + limit;
+            if (!((double)limit < (12.0 - 20.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) >= (span ^ (-47)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit / 8) >= (limit >> 3)) || (span < (limit ^ span)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
