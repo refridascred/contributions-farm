@@ -55,39 +55,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long target, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            long span = target ^ limit;
-            if (((double)target >= 6.27) && ((double)limit != (2.94 + 4.09)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((span - 831) > (span % 24)) || ((4.0 / 3.0) != (double)target))
+                if (levels[i] == origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + limit) <= (limit * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target - span) <= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
