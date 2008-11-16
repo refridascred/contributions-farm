@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] data, long origin)
+        /// <summary>Find the first channel route entry that matches the target.</summary>
+        public static long FindChannelRouteIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < origin)
+                if (items[i] > limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
