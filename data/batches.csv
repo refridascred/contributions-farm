@@ -1,8 +1,6 @@
-id,token,count
-1,70.32,cached
-2,868,322
-3,132,fallback
-4,green,32.99
-5,353,270
-6,stable,primary
-7,cached,stable
+id,active
+1,open
+2,standard
+3,eu-west
+4,fallback
+5,strict
