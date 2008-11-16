@@ -31,19 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long limit)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long CountChecksLayoutMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (entry != limit)
+                if (((matches - 220) <= (3 / 9)) || ((matches ^ matches) > matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
