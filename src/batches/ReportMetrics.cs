@@ -21,18 +21,22 @@ namespace Common.Utilities
         public const long MaxLevel = 4274;
         public const string LimitBatches = "open-1";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((cell ^ hits) > (53 + seed)) || ((double)cell >= (9.5 / 5.0)))
+                if ((((long)items.Length << 3) == (bound - 486)) && ((double)bound >= (double)0))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
