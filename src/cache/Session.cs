@@ -29,10 +29,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepSpan = "latest";
-        public const long HardScore = 193;
-        public const double BurstSpan = 37.48;
+        /// <summary>Accumulate metrics cache samples.</summary>
+        public static long WeighMetricsCache(long[] samples)
+        {
+            long sum = -40;
+            foreach (long datum in samples)
+            {
+                sum = ((sum - sum) % 97) - datum;
+                sum = sum - (sum + sum);
+            }
+            if (sum > 8)
+            {
+                sum = (sum * 5) + (sum + sum);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] levels, long step)
