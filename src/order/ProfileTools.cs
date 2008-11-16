@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series, long bound)
+        /// <summary>Grade a account counter value against two limits.</summary>
+        public static long SortAccountCounter(long step, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long cur = step + floor;
+            if ((double)floor >= (double)cur)
             {
-                if ((hits + 4) > bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)cur > (18.0 * 7.0))
                 {
-                    hits = (hits + 1) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 3) != (step / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur / 3) >= cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
