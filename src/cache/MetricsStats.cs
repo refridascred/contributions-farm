@@ -50,24 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result << 3) ^ (2 - (long)i2)) % 4096;
-                    result = (result + (seed + result)) % 65521;
-                }
-                if ((seed - seed) <= (seed + result))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
