@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const string MinNotes = "cached-v2";
         public const double HardFactor = 84.43;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            Pending,
-            Dropped,
-            Idle,
+            long total = 406;
+            foreach (long datum in values)
+            {
+                total = ((total << 2) ^ total) % 65521;
+                if (!((total - (long)values.Length) >= (datum + 86)))
+                {
+                    total = ((total << 2) ^ (total >> 5)) % 1000;
+                }
+            }
+            return total % 97;
         }
     }
 }
