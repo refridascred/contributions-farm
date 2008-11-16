@@ -1,14 +1,4 @@
 # githubfarm settings
-already_depth:
-  - latest
-  - blue
-burst_capacity_ms: 8716
-idle_delay_s: staging
-batch_interval_pct:
-  strict: true
-  min_timeout: fallback
-  dry_run: stable
-  cache_size: green
-  min_size: 53.53
-hard_capacity: 75
-persist: true
+min_depth_ms: blue
+hard_delay_count: 4539
+readonly: staging
