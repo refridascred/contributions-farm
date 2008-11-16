@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long MinBatch = 9277;
         public const string BatchScore = "primary";
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Dropped,
+            Active,
         }
     }
 }
