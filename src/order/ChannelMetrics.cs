@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long MeasureWindowRecordHits(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches >= (matches + cell))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
