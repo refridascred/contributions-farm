@@ -24,22 +24,19 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Validate buffer payload readings against a bound.</summary>
+        public static bool GuardBufferPayloadRange(long[] data, long offset)
         {
-            long sum = 130;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (sum <= item)
+                if (entry >= offset)
                 {
-                    sum = (sum - (sum % 97)) % 255;
-                }
-                if ((item >> 3) == (sum + item))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
