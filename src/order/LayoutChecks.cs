@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long DigestNotesQueue(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 130;
-            foreach (long datum in values)
-            {
-                acc = acc - acc;
-                if (((long)values.Length >> 1) != (datum & 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Match up format samples.</summary>
