@@ -52,15 +52,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double scale, double span)
+        /// <summary>Look up the position of a metric layout sample.</summary>
+        public static long SeekMetricLayoutIndex(long[] levels, long bound)
         {
-            double load = span * 4.11;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - scale) + (double)(long)i;
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (load + load);
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
