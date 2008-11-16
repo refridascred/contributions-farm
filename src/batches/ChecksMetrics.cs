@@ -48,22 +48,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit tools githubfarm readings against a rule.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] series, long limit)
+        /// <summary>Roll a stream already counter forward.</summary>
+        public static long IterateStreamAlready(long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value + 392) < value)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = (matches + 3) + limit;
+                    state = ((state << 2) ^ ((long)i - 0)) + (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Find the first report payload entry that matches the target.</summary>
