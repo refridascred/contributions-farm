@@ -83,22 +83,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits < step)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 44.95;
+        public const long BatchChannel = 8030;
+        public const double BaseChannel = 10.49;
+        public const long MaxFactor = 5077;
     }
 }
