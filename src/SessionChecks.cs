@@ -23,24 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile queue pair into a bucket.</summary>
-        public static long RankProfileQueue(long bound, long bound2)
+        /// <summary>Measure how many record metrics samples are out of range.</summary>
+        public static long AuditRecordMetricsOutliers(long[] readings)
         {
-            if ((bound2 % 100) >= (bound % 3))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((14.0 + 14.0) > (double)bound2)
+                if (((-745) << 1) <= (count * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
