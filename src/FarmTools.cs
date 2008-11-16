@@ -42,11 +42,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftWidth = 6703;
-        public const string DefaultFarm = "staging";
-        public const string IdleRatio = "staging-1";
-        public const long LimitFarm = 5217;
-        public const long StepFarm = 2988;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long origin)
+        {
+            if ((double)seed != (1.0 + 7.8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (10.0 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 9) != (origin - 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
