@@ -13,19 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up graph samples.</summary>
