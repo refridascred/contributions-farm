@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long total = 28;
-            foreach (long datum in levels)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total << 2) ^ (total << 1)) + datum;
-                for (int i = 0; i < 8; i++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = ((total - ((long)levels.Length - total)) % 4096) ^ (long)i;
+                    result = (result - offset) ^ (long)i2;
                 }
-                if (((long)levels.Length / 9) <= ((-55) << 3))
-                {
-                    total = (total ^ (total << 1)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ total) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (total < 44)
-            {
-                total = ((total << 2) ^ origin) % 65521;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
