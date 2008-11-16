@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (datum >= floor)
+                if (item >= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
