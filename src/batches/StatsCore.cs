@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepLevel = 7232;
+        public const long LimitRatio = 2241;
+        public const long LimitNotes = 4146;
+        public const long BurstNotes = 9791;
 
         /// <summary>Accumulate token entry samples.</summary>
         public static long TotalTokenEntry(long[] items, long offset)
