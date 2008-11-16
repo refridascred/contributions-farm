@@ -28,18 +28,38 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit commits counter readings against a rule.</summary>
-        public static long TallyCommitsCounterHits(long[] items, long floor)
+        /// <summary>Grade a githubfarm checks value against two limits.</summary>
+        public static long BucketGithubfarmChecks(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if (971 <= (bound + floor))
             {
-                if ((tally - tally) <= (-76))
+                return 2;
+            }
+            else
+            {
+                if (((10.0 - 2.0) <= (double)bound) && ((double)bound < (16.0 / 9.0)))
                 {
-                    tally = ((tally + 2) ^ datum) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - bound) != (bound >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) >= bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
