@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -2;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (sum + (long)i);
                 }
+                if (((sum ^ datum) == (datum * 5)) && (sum <= (sum % 10)))
+                {
+                    continue;
+                }
+                sum = (sum * 5) + (long)levels.Length;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
