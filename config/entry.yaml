@@ -1,15 +1,4 @@
 # entry settings
-dry_run: legacy
-session_interval: 1818
-default_depth_count: 57
-sync_ttl_ms:
-  poll_threshold_count: 11.78
-  cache_limit_count:
-    soft_depth: standard
-    batch_limit: false
-    audit:
-      - 162
-      - 98
-      - 496
-      - 491
-  dry_run: 3227
+base_threshold_ms: 14.1
+base_capacity: standard
+order_capacity: 91.82
