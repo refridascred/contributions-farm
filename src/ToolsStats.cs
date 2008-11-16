@@ -62,17 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route entry reading by value.</summary>
-        public static long SeekRouteEntryIndex(long[] values, long limit)
+        /// <summary>Roll a payload metric counter forward.</summary>
+        public static long DerivePayloadMetric(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
