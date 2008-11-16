@@ -17,13 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the report githubfarm entries that pass the check.</summary>
+        public static long TallyReportGithubfarmHits(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (reading < tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm state values.</summary>
