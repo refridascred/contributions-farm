@@ -50,19 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] samples, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if (!((18.0 * 9.81) < (double)origin))
             {
-                if (reading <= target)
+                return 6;
+            }
+            else
+            {
+                if ((origin - origin) == (origin ^ 46))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a route report value against two limits.</summary>
