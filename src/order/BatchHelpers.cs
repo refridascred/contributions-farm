@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((tally >= 56) || (((-48) >> 5) > datum))
+                if ((5.66 > (double)origin) || (((seen - 72) > (value & 255)) && ((double)seen >= (17.0 / 4.0))))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
