@@ -1,6 +1,8 @@
 # support settings
-sync_ttl: 500
-min_size_count: true
-editor_retries: blue
-hard_timeout_count: 7745
-flush_ratio_count: 8252
+verbose: eu-west
+record_timeout: green
+max_depth: legacy
+sync_ratio:
+  - blue
+  - standard
+  - open
