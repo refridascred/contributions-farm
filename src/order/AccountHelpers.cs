@@ -51,19 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout buffer samples.</summary>
-        public static long ScoreLayoutBuffer(long[] values, long offset)
+        /// <summary>Project the next metrics graph value.</summary>
+        public static double AdjustMetricsGraph(double rate, double bias)
         {
-            long state = 8;
-            foreach (long sample in values)
-            {
-                state = ((state * 2) + sample) % 1000;
-            }
-            if (state < 878)
-            {
-                state = (state + offset) % 4096;
-            }
-            return state;
+            double bias2 = (bias / 5.0) / 5.0;
+            return (bias2 - bias) + rate;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
