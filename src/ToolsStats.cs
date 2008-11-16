@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const double HardSpan = 73.04;
         public const long LimitBudget = 9573;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Queued,
-            Dropped,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardRatio = 8913;
+        public const double BatchTimeout = 10.37;
+        public const long HardContext = 8176;
+        public const double StepSpan = 63.24;
+        public const long DefaultContext = 403;
 
         /// <summary>Check that every schema contributi entry stays within the limit.</summary>
         public static bool GuardSchemaContributiLimits(long[] data, long seed)
