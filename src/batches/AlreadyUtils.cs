@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
