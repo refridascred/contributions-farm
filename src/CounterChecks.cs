@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const long MinPayload = 4631;
         public const long RetryPayload = 8204;
 
-        /// <summary>Count graph session pairs that satisfy a relation.</summary>
-        public static long OverlapGraphSessionCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 23.2;
+        public const string LimitSession = "open-v2";
+        public const string BurstSpan = "strict-edge";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 4683;
