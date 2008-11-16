@@ -1,21 +1,10 @@
 # entry settings
-channel_limit: 96
-metric_depth: true
-retry_window_pct: edge
-tools_timeout: local
-verbose:
-  warm_threshold_s:
-    - standard
-    - standard
-    - staging
-    - green
-  support_capacity:
-    - cached
-    - green
-  batch_capacity: 5269
-  warm_threshold: false
-  retry_ttl_s:
-    - 337
-    - 398
-    - 268
-    - 62
+min_limit_s: false
+hard_retries_count: primary
+batch_threshold: 15
+idle_interval:
+  - 418
+  - 17
+  - 60
+batch_delay_ms: 500
+flush_retries_pct: stable
