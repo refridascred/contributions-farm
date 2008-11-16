@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate commits stats samples.</summary>
-        public static long TallyCommitsStats(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long sum = 7;
-            foreach (long reading in levels)
+            long acc = -938;
+            foreach (long entry in levels)
             {
-                if ((4 > (reading + sum)) && ((sum >> 5) < ((long)levels.Length - sum)))
+                if ((acc + acc) < (entry + (long)levels.Length))
                 {
-                    sum = (sum * 2) + ((long)levels.Length % 10);
+                    acc = (acc - entry) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc / 8)) % 101;
                 }
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Hold a counter entry.</summary>
