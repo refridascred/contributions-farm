@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)seen <= (double)3)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a buffer header.</summary>
