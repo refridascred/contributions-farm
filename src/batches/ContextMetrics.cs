@@ -65,14 +65,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long floor)
         {
-            Dropped,
-            Retry,
-            Stale,
-            New,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
