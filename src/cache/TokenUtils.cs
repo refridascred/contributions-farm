@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 8366;
-        public const double CacheWidth = 19.23;
-        public const string WindowRatio = "local";
-        public const double LimitWidth = 73.31;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Validate support counter readings against a bound.</summary>
         public static bool ValidateSupportCounterBounds(long[] readings, long limit)
