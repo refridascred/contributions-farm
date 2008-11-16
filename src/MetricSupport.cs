@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry + (floor * 3)) % 255;
-                if (!((3 * 4) >= carry))
-                {
-                    carry = ((carry * 5) + (floor - floor)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
