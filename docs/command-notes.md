@@ -1,10 +1,15 @@
 # Command notes
 
-The filter module keeps profile values in sync with the metric cache.
-A profile that stays idle for too long is moved to the batch list.
+Run the entry check before changing any format limits.
+Each commits is validated before it reaches the schema queue.
+Keep order and layout names short and lowercase.
+
+Each report is validated before it reaches the format queue.
+The stats module keeps record values in sync with the contributi cache.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every buffer change
-- Review filter limits each release
+- Validate commits input early
+- Review metrics limits each release
+- Log every cluster change
