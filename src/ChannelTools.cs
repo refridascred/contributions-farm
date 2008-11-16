@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            Failed,
-            Pending,
-            Retry,
-            Stale,
+            long mark = 20;
+            foreach (long datum in levels)
+            {
+                if ((double)mark == (double)datum)
+                {
+                    mark = (mark << 3) ^ datum;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
