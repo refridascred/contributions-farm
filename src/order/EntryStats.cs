@@ -52,15 +52,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 5;
+            foreach (long datum in readings)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                mark = mark ^ (mark ^ datum);
+                mark = mark - mark;
             }
-            return total;
+            return mark;
         }
     }
 }
