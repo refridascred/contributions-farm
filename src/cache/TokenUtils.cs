@@ -23,18 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long step2 = step - seed;
+            if (seed <= (8 + 668))
             {
-                if (!((count ^ value) >= count))
+                return 8;
+            }
+            else
+            {
+                if ((step2 >= (3 % 2)) && ((step2 + step2) > (seed - seed)))
                 {
-                    count = (count + 3) - origin;
+                    return 5;
+                }
+                else
+                {
+                    if ((step < (step2 * 2)) && ((8.7 + 6.0) != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + seed) <= (seed ^ step2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
