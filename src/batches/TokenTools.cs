@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Ready,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowBudget = 57.96;
+        public const string WindowEditor = "local-1";
+        public const string HardInterval = "cached";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] values, long seed)
