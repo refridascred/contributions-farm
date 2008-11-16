@@ -65,19 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate route checks readings against a bound.</summary>
-        public static bool ValidateRouteChecksLimits(long[] items, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
