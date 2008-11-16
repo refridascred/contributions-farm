@@ -1,19 +1,7 @@
 {
-  "min_window_pct": [488, 496, 66],
-  "min_depth": 80.78,
-  "sync_threshold_ms": 100,
-  "poll_ratio_pct": true,
-  "min_ttl_count": {
-    "metric_threshold": 3911,
-    "default_size_count": false,
-    "soft_interval_ms": 5405,
-    "strict": "blue",
-    "default_limit": {
-      "idle_size_s": "open",
-      "counter_capacity": 9,
-      "verbose": 34,
-      "flush_ratio": [123, 200]
-    }
-  },
-  "min_depth_count": 17
+  "sync_ratio": "green",
+  "sync_delay": 19,
+  "idle_retries": false,
+  "readonly": 63,
+  "hard_size": "standard"
 }
