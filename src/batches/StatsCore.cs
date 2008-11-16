@@ -86,14 +86,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Dropped,
-            Locked,
+            Done,
+            Closed,
+            New,
             Failed,
-            Pending,
-            Idle,
         }
     }
 }
