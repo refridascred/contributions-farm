@@ -23,10 +23,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryDepth = 2064;
-        public const double MinMetric = 70.1;
-        public const long IdleMetric = 2622;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long origin, long offset)
+        {
+            if ((origin << 1) <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (4.0 + 4.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin ^ origin) <= (offset + 91)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset << 1) == (origin % 60)) && ((double)origin >= (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long seed, long floor)
