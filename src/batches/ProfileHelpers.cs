@@ -78,23 +78,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings, long limit)
         {
-            double scale = (double)(13 * 4);
-            if (scale > (double)73)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale + (2.9 - bias)) - span;
+                if (!((7 << 1) > limit))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            else
-            {
-                scale = scale - (scale + 8.48);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (14.0 / 8.0)) + (double)(long)i;
-            }
-            return scale - (double)25;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
