@@ -1,6 +1,14 @@
 # support settings
-min_interval_count: 1024
-audit: 84.66
-batch_ttl: 100
-warm_threshold_ms: false
-warm_delay_ms: 25
+idle_size: 1024
+buffer_depth:
+  cache_retries_count: edge
+  base_timeout_ms: 30
+  warm_window_pct:
+    - 404
+    - 235
+hard_timeout:
+  - 127
+  - 393
+layout_limit:
+  - 13
+  - 206
