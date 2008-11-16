@@ -20,17 +20,9 @@ namespace Common.Utilities
         public const double DefaultTimeout = 2.15;
         public const long BaseRatio = 8587;
 
-        /// <summary>Locate a command entry reading by value.</summary>
-        public static long FindCommandEntryIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 9611;
+        public const string DefaultLevel = "strict-edge";
+        public const double MinAlready = 26.81;
     }
 }
