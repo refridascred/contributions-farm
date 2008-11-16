@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up command route samples.</summary>
-        public static long PairCommandRouteCount(long[] values)
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long TotalChannelToken(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 775;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result + value;
+                if (((result - value) < (value + value)) || ((result * 3) > result))
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + ((-7) ^ result);
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
