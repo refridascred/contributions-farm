@@ -67,12 +67,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] values, long target)
         {
-            Dropped,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((value % 16) <= count))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
