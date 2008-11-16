@@ -1,13 +1,35 @@
 # githubfarm settings
-metrics_ttl: 250
-report_window: legacy
-base_window_ms: latest
-persist:
-  verbose:
-    - 256
-    - 416
-  enabled: local
-  soft_limit: 1102
-  filter_limit: 6215
-  schema_ratio: local
-  warm_size_pct: local
+record_timeout: primary
+audit:
+  retry_capacity_s: edge
+  graph_window:
+    warm_interval_count: 11.29
+    enabled: 2755
+    strict: false
+    idle_interval: false
+    burst_window_count: staging
+    farm_window: green
+  flush_delay: primary
+  warm_window_s: open
+  schema_threshold:
+    context_depth: local
+    layout_depth: 9.85
+    readonly: standard
+    base_limit_ms: true
+    batch_limit: 60.88
+  soft_window: 14.87
+idle_retries_ms: 95
+hard_threshold_ms:
+  retry_threshold_ms:
+    - standard
+    - fallback
+  soft_retries: 71.23
+  soft_threshold:
+    - 137
+    - 497
+    - 430
+  min_depth_ms: 387
+  hard_size_ms:
+    soft_retries: 250
+    sync_window: primary
+    min_retries: edge
