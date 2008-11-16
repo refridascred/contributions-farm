@@ -50,21 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
