@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Ready,
-            Stale,
-            Queued,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Classify a report already pair into a bucket.</summary>
