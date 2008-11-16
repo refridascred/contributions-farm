@@ -76,16 +76,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = total + ((long)i % 24);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Stale,
+            Idle,
+            Locked,
+            Dropped,
         }
     }
 }
