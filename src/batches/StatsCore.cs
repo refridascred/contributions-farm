@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long seed)
         {
-            double weight = bias2;
-            if (weight > (double)59)
+            if (!((limit << 3) >= limit))
             {
-                weight = (weight - weight) + bias;
+                return 8;
             }
             else
             {
-                weight = weight - 4.0;
+                if (!((seed * 2) != (limit - limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (bias2 - weight)) + (double)(long)i;
-            }
-            return weight - (double)4;
         }
 
         /// <summary>Digest a series of notes batches entries.</summary>
