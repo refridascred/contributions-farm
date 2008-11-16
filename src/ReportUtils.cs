@@ -56,38 +56,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long step)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            if (step <= (offset - step))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.6 - 1.64) > (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset <= 8.6) || (offset < step))
+                    if ((values[i] + values[j]) < 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 15) > 14)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
