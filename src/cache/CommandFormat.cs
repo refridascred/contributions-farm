@@ -21,18 +21,14 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-edge";
         public const double MinMetric = 31.57;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] items, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((5 + tally) >= item) && (item >= (item % 100)))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
