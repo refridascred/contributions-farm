@@ -1,8 +1,13 @@
 # support settings
-min_window: true
-sync_timeout: open
-min_timeout: false
-checks_retries: true
-cache_window:
-  - 250
-  - 10
+burst_depth_pct:
+  - blue
+  - cached
+warm_window_s: blue
+soft_delay_ms: true
+cache_retries:
+  sync_capacity_s: 1058
+  stream_size: true
+  already_window: true
+  hard_interval: primary
+flush_ratio: 1989
+burst_delay_s: 250
