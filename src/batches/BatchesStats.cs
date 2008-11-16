@@ -15,22 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] series, long bound)
         {
-            long acc = -938;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((acc + acc) < (entry + (long)levels.Length))
+                if (cell < bound)
                 {
-                    acc = (acc - entry) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc / 8)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Hold a counter entry.</summary>
