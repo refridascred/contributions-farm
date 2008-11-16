@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const double StepSpan = 63.24;
         public const long DefaultContext = 403;
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool GuardSchemaContributiLimits(long[] data, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = result ^ (result + result);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
