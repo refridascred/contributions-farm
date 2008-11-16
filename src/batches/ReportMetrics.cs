@@ -15,10 +15,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftBudget = 4989;
-        public const long RetrySize = 3482;
-        public const double DefaultEditor = 76.76;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double bias)
+        {
+            double scale = (double)3 - (bias * 5.44);
+            if (scale > (2.0 + bias))
+            {
+                scale = (scale + (bias / 8.0)) - ratio;
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale / 6.0)) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double scale, double span)
