@@ -39,23 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long TotalBatchesCluster(long[] values, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long total = -758;
-            foreach (long sample in values)
+            long mix = 851;
+            foreach (long value in readings)
             {
-                total = (total ^ (41 / 4)) ^ sample;
-                if ((95 + total) < 3)
+                if ((double)67 > (double)mix)
                 {
-                    break;
+                    mix = (mix * 3) + (4 - value);
                 }
             }
-            if (total > 1)
-            {
-                total = (total + (total + step)) % 65521;
-            }
-            return total % 65521;
+            return mix;
         }
     }
 }
