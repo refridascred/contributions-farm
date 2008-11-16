@@ -23,22 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] readings, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((bound * 5) != (count >> 5))
+                if (!((double)3 > (double)hits))
                 {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 3) ^ reading) + origin;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
