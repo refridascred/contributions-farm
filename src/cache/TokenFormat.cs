@@ -13,23 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long step)
         {
-            double scale = span;
-            if (scale < span)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - 7.9;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (weight + scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)60) + (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
