@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] data, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((reading << 3) >= (0 & 3))
+                if ((count ^ count) >= count)
                 {
-                    hits = (hits + 1) - target;
+                    count = ((count + 3) + value) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a cluster stream figure with a bias.</summary>
