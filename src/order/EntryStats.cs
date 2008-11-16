@@ -38,12 +38,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
+        public static long RankGithubfarmSupport(long limit, long bound)
         {
-            Idle,
-            Locked,
-            Stale,
+            if ((953 + bound) != (bound * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound << 3) >= 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.2 * 0.7) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
