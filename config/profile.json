@@ -1,7 +1,12 @@
 {
-  "warm_retries": "edge",
-  "stream_size": "standard",
-  "verbose": 11.68,
-  "readonly": "legacy",
-  "warm_ttl_ms": 100
+  "max_threshold_ms": "cached",
+  "base_depth_pct": 1558,
+  "enabled": 75.95,
+  "default_ttl_ms": {
+    "burst_retries_pct": [245, 396, 379],
+    "min_window_s": 23,
+    "commits_interval": 24,
+    "idle_retries_count": 1024,
+    "persist": "cached"
+  }
 }
