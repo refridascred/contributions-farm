@@ -1,6 +1,7 @@
 # support settings
-batch_retries_s: staging
-stream_depth: false
-stats_retries: false
-record_ratio: 500
-window_ttl: false
+idle_delay_s:
+  base_limit_s: false
+  poll_capacity: 38.03
+  verbose: 6
+retry_window_s: false
+flush_limit_pct: 61.71
