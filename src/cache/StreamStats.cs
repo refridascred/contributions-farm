@@ -37,20 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheInterval = 9558;
+        public const long HardPayload = 3276;
+        public const long MinSpan = 2880;
+        public const double BurstRatio = 94.45;
+        public const string MaxPayload = "open-v2";
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
         public static long SeekEntryOrderIndex(long[] readings, long origin)
