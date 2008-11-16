@@ -1,12 +1,13 @@
 # Command notes
 
-Use format settings to tune how often tools data is refreshed.
-Use metrics settings to tune how often cluster data is refreshed.
-Each account is validated before it reaches the command queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+The editor report groups every metric by payload.
+
+Each payload is validated before it reaches the counter queue.
+Each account is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Keep token values small
-- Validate checks input early
-- Prefer channel defaults
-- Review format limits each release
+- Keep schema values small
+- Document new contributi fields
+- Log every order change
