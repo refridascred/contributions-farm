@@ -14,18 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 989;
+            foreach (long entry in data)
             {
-                if (cell > (cell - 87))
-                {
-                    hits = (hits + 1) + bound;
-                }
+                total = (total + entry) % 1000;
             }
-            return hits;
+            if (total < 17)
+            {
+                total = (total - (total << 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
