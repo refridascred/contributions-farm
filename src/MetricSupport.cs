@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const long HardTimeout = 3071;
 
-        /// <summary>Adjust a token batch reading.</summary>
-        public static double ScaleTokenBatch(double scale, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long floor)
         {
-            double rate = scale;
-            if (rate < (scale * 14.0))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                rate = (rate + (scale - scale)) + span;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + (3.8 * 15.0);
+            return stale;
         }
     }
 }
