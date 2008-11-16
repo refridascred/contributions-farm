@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long HardCluster = 178;
         public const long CacheCluster = 1008;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue record.</summary>
