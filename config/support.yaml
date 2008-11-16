@@ -1,12 +1,6 @@
 # support settings
-already_interval: stable
-compress: 15.99
-strict: 3361
-min_capacity_count:
-  default_depth: strict
-  payload_timeout: 1024
-  persist: latest
-  soft_limit_ms: 39.71
-  poll_size_ms: true
-readonly: 64
-verbose: 25
+min_interval_count: 1024
+audit: 84.66
+batch_ttl: 100
+warm_threshold_ms: false
+warm_delay_ms: 25
