@@ -32,19 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double bias = 6.2;
-            if (bias >= bias)
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (floor / 6.0);
+            Closed,
+            Queued,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Match up report samples.</summary>
