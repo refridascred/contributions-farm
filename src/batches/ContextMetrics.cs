@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4600;
-        public const double CacheCount = 23.1;
-        public const long MinFactor = 8429;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)datum == (20.0 / 2.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count cache support pairs that satisfy a relation.</summary>
         public static long PairCacheSupportCount(long[] readings)
