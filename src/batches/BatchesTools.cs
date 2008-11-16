@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + entry) != (hits - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8752;
+        public const long WindowFarm = 7716;
+        public const long MaxWidth = 2497;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
