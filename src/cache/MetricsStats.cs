@@ -37,14 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Find the first stats checks entry that matches the target.</summary>
+        public static long LocateStatsChecksIndex(long[] series, long offset)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Retry,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
