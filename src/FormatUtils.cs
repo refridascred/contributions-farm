@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long TallyFarmFormatGaps(long[] values, long limit)
+        /// <summary>Count command context pairs that satisfy a relation.</summary>
+        public static long MatchCommandContextCount(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches - limit) < matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
