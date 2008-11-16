@@ -1,33 +1,5 @@
 # entry settings
-dry_run: 7282
-min_retries: primary
-batch_capacity_s:
-  base_size_count:
-    poll_ratio_s: 9030
-    strict: 9
-    default_delay_ms: 68
-    dry_run:
-      - 92
-      - 126
-      - 458
-    poll_threshold_ms: 62.21
-    audit:
-      - 7
-      - 275
-      - 79
-      - 41
-  dry_run: 74.66
-  base_retries_count: green
-  batch_limit_ms: staging
-  flush_ratio_s:
-    audit: true
-    sync_limit: 12.09
-    cache_interval_pct: 2511
-    cache_delay_count: false
-    retry_interval: strict
-    flush_ttl:
-      - staging
-      - standard
-      - staging
-  soft_limit_s: 30
-flush_size_count: strict
+record_capacity: true
+burst_interval: strict
+readonly: 72.67
+flush_ttl_ms: 100
