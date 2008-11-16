@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 91.61;
-        public const long MinSpan = 7418;
-        public const long RetryLevel = 3193;
-        public const long MinRoute = 9961;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Closed,
+            Synced,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
