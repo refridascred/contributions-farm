@@ -52,18 +52,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((seen - item) != (seen ^ item))
+                if (((matches ^ value) < (value + matches)) || ((0.66 - 4.8) == (double)value))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
