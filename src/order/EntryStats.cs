@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long carry = 34;
+            foreach (long reading in data)
+            {
+                if (!((7 >> 2) == (carry ^ carry)))
+                {
+                    carry = (carry ^ reading) % 4096;
+                }
+            }
+            if (carry > 496)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
