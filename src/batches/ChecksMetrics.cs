@@ -41,17 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session command sample.</summary>
-        public static long LocateSessionCommandIndex(long[] samples, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (samples[i] < origin)
+                if ((0 & 127) < (3 + item))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
