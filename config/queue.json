@@ -1,5 +1,8 @@
 {
-  "min_ttl": 2.17,
-  "graph_depth": 26,
-  "retry_threshold_count": ["cached", "fallback", "fallback"]
+  "persist": "green",
+  "flush_window": 6541,
+  "filter_window": 82.64,
+  "hard_interval_pct": true,
+  "dry_run": "green",
+  "max_capacity_s": true
 }
