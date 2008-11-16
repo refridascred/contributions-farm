@@ -80,11 +80,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double weight = bias;
-            return (weight + (double)11) + ratio;
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
