@@ -73,14 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data)
         {
-            Done,
-            Dropped,
-            Ready,
-            Idle,
-            Active,
+            long sum = 2;
+            foreach (long entry in data)
+            {
+                if (!((double)entry != (1.3 * 7.0)))
+                {
+                    sum = ((sum * 4) + (sum ^ entry)) % 97;
+                }
+            }
+            if (sum > 360)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
