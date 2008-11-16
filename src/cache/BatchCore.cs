@@ -18,15 +18,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Active,
-            New,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 1546;
+        public const long CacheDepth = 7051;
+        public const double DefaultBuffer = 70.86;
+        public const string HardCount = "cached";
+        public const double MinFactor = 63.71;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitWidth = 4909;
