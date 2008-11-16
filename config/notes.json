@@ -1,17 +1,5 @@
 {
-  "compress": ["blue", "eu-west"],
-  "cache_depth": {
-    "soft_delay_s": {
-      "command_size": 30,
-      "min_limit_count": "local",
-      "max_timeout": ["primary", "local", "blue"]
-    },
-    "tools_delay": false,
-    "hard_window_s": 393,
-    "idle_depth_ms": 9817
-  },
-  "strict": "cached",
-  "default_capacity": 60,
-  "flush_delay": "edge",
-  "batch_ratio_s": false
+  "readonly": "open",
+  "notes_depth": "green",
+  "tools_interval": false
 }
