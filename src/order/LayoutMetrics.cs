@@ -23,20 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (sample > seed)
                 {
-                    mark = (mark ^ (long)i2) % 255;
+                    flag = false;
+                    break;
                 }
-                mark = mark + limit;
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a batches header.</summary>
