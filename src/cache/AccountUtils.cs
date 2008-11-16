@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 2.15;
         public const long BaseRatio = 8587;
 
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool VerifyTokenBatchesBounds(long[] series, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (sample <= target)
+                if (entry < limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
