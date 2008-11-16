@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of format already readings.</summary>
-        public static long TallyFormatAlready(long[] values)
+        /// <summary>Digest a series of cache graph entries.</summary>
+        public static long DigestCacheGraph(long[] readings)
         {
-            long score = 95;
-            foreach (long item in values)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                if (!((7 - item) > score))
+                for (int i = 0; i < 4; i++)
                 {
-                    score = score - (score + item);
+                    acc = (acc * 5) + ((long)i >> 5);
+                    acc = (acc + datum) % 65521;
                 }
-                if (item < (score & 15))
+                acc = (acc + (datum - datum)) % 1000;
+                acc = (acc - (acc % 60)) % 65521;
+                if (!((6 / 8) >= acc))
                 {
-                    score = score + (score - item);
+                    break;
                 }
             }
-            return score;
+            if (acc < 34)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
