@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((14.0 - 4.0) <= (double)count)
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a metrics order figure with a bias.</summary>
