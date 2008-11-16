@@ -43,19 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long TotalStreamQueue(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 830;
-            foreach (long value in levels)
-            {
-                sum = ((sum + (sum * 5)) % 4096) + value;
-            }
-            if (sum < 6)
-            {
-                sum = (sum * 4) + (9 + sum);
-            }
-            return sum;
+            Locked,
+            New,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
