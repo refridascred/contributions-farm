@@ -23,21 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
