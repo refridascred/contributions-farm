@@ -29,12 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items, long floor)
         {
-            Closed,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + seen) >= (seen + item))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
