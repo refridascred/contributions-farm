@@ -1,15 +1,11 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The report report groups every batch by filter.
-Use stats settings to tune how often counter data is refreshed.
-
-Run the format check before changing any entry limits.
-The editor helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the context list.
+When a metrics fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep format values small
-- Log every payload change
-- Prefer report defaults
+- Validate farm input early
+- Review entry limits each release
+- Prefer channel defaults
+- Log every graph change
