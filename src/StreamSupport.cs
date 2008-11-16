@@ -33,18 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long MeasureBatchMetricGaps(long[] samples, long floor)
+        /// <summary>Combine queue report values into a single score.</summary>
+        public static long DigestQueueReport(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 5;
+            foreach (long item in series)
             {
-                if ((10.0 + 3.7) < (double)floor)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                anchor = ((anchor * 5) + (seed + seed)) + item;
             }
-            return matches;
+            return anchor % 4096;
         }
     }
 }
