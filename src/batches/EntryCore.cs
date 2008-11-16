@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account editor readings.</summary>
-        public static long OverlapAccountEditorCount(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
