@@ -14,17 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a token counter reading by value.</summary>
-        public static long SeekTokenCounterIndex(long[] readings, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
