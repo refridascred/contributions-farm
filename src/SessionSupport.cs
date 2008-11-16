@@ -42,15 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor context entries.</summary>
-        public static long TallyEditorContext(long[] levels, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor + (floor << 2)) + cell;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
