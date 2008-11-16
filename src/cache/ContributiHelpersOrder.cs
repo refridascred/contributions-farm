@@ -27,19 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen >= (9.0 - 7.0))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheTimeout = 7.46;
+        public const double HardDepth = 65.33;
+        public const long HardBatches = 6705;
+        public const long RetryBatches = 5785;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BatchSpan = "legacy-1";
