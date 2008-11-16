@@ -1,15 +1,19 @@
 {
-  "report_retries": "standard",
-  "report_timeout": {
-    "verbose": 250,
-    "audit": "fallback",
-    "dry_run": true,
-    "sync_interval": "edge",
-    "poll_interval_ms": 81,
-    "max_interval": ["strict", "standard", "standard", "local"]
-  },
-  "burst_depth_count": "primary",
-  "burst_limit_pct": ["blue", "blue", "primary", "open"],
-  "retry_ratio_count": "eu-west",
-  "base_interval": ["standard", "legacy", "blue"]
+  "burst_depth": false,
+  "route_timeout": 30,
+  "retry_depth": 88,
+  "entry_capacity": 12.33,
+  "editor_size": {
+    "audit": 706,
+    "compress": "standard",
+    "sync_capacity_s": {
+      "strict": false,
+      "tools_retries": [73, 207, 100],
+      "burst_depth_count": [302, 367, 291],
+      "soft_capacity_ms": 1024
+    },
+    "graph_window": 4250,
+    "default_timeout_pct": true,
+    "min_window": false
+  }
 }
