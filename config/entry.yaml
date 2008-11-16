@@ -1,13 +1,18 @@
 # entry settings
-poll_interval_ms: standard
-cache_retries_s:
-  record_capacity: false
-  warm_window_ms: false
-  strict: 9626
-  default_limit_pct:
-    - open
-    - cached
-    - cached
-window_delay: 8709
-retry_threshold_ms: legacy
-soft_interval_s: 250
+default_interval: 1046
+hard_threshold_count: false
+dry_run:
+  poll_interval: 66.64
+  burst_size: legacy
+  enabled: true
+  verbose: 500
+idle_capacity:
+  soft_ratio:
+    - 309
+    - 251
+    - 135
+    - 324
+  dry_run: 8954
+  soft_window: true
+already_threshold: 8.26
+min_interval_ms: 4821
