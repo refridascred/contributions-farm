@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const double SoftBudget = 52.08;
         public const long BurstEditor = 1275;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long bound)
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long SeekRouteAccountIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                if (values[i] < target)
                 {
                     return (long)i;
                 }
