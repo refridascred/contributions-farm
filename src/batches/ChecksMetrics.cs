@@ -80,9 +80,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstWidth = 6619;
-        public const double HardAccount = 96.47;
-        public const double WindowAccount = 88.85;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long bound)
+        {
+            if ((bound + 64) < (70 + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1 + origin) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 1) == (bound << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
