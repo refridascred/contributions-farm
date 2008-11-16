@@ -35,18 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((long)readings.Length != (hits >> 1))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
