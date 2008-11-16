@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 5218;
         public const long StepRoute = 1762;
 
-        /// <summary>Compare every pair of batch entry readings.</summary>
-        public static long CompareBatchEntryCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value > (value + value)) && ((double)value <= (double)seen))
                 {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
