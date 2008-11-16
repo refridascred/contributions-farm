@@ -30,20 +30,17 @@ namespace Common.Utilities
             return weight + (2.0 + weight);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long target)
         {
-            long sum = 265;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (cell >> 2)) % 65521;
-                sum = sum - (cell - sum);
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 479)
-            {
-                sum = (sum << 2) ^ (sum - limit);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
