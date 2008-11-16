@@ -66,32 +66,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record session pair into a bucket.</summary>
-        public static long GradeRecordSession(long origin, long offset)
-        {
-            long offset2 = origin + offset;
-            if ((((-6) % 10) >= (offset << 1)) && ((origin - offset) == (offset + offset2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + offset) <= (1 >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 >= (626 ^ origin)) || ((origin - origin) < (offset % 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "legacy-edge";
+        public const long SoftCount = 1806;
+        public const double BaseBatch = 72.12;
     }
 }
