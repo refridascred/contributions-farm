@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long bound)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
