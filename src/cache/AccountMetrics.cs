@@ -25,13 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Paused,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 2470;
+        public const long BurstScore = 6784;
+        public const long BurstBatches = 2538;
+        public const long WindowBatches = 7096;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
