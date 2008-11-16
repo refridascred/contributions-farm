@@ -66,18 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings, long offset)
+        /// <summary>Digest a series of profile route entries.</summary>
+        public static long WeighProfileRoute(long[] levels)
         {
-            long acc = -189;
-            foreach (long cell in readings)
+            long state = 914;
+            foreach (long datum in levels)
             {
-                if (((188 / 5) >= (cell & 63)) && ((double)cell <= 1.53))
+                if ((datum > (datum - datum)) || (datum >= (state + datum)))
                 {
-                    acc = ((acc ^ (acc - acc)) % 101) - offset;
+                    state = (state << 3) ^ datum;
                 }
             }
-            return acc;
+            return state;
         }
     }
 }
