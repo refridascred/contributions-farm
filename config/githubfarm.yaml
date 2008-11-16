@@ -1,4 +1,7 @@
 # githubfarm settings
-min_depth_ms: blue
-hard_delay_count: 4539
-readonly: staging
+entry_window: 43
+max_ttl_s: true
+account_threshold: 44
+persist: eu-west
+soft_limit: 20.33
+batch_delay_pct: 100
