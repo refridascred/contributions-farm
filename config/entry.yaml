@@ -1,17 +1,5 @@
 # entry settings
-poll_depth_ms:
-  - 75
-  - 495
-flush_depth: 250
-base_limit:
-  - 343
-  - 333
-  - 297
-poll_window_count:
-  hard_limit_pct: 69.47
-  cache_capacity_ms: standard
-  idle_ttl_count: edge
-base_delay_ms:
-  - eu-west
-  - eu-west
-  - legacy
+enabled: 89.37
+warm_threshold: legacy
+flush_size_count: 74.65
+readonly: staging
