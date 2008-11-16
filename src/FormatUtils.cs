@@ -80,12 +80,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4978;
-        public const long HardRatio = 5142;
-        public const long BaseCount = 7838;
-        public const string MinRecord = "primary-1";
-        public const string RetryBudget = "primary-v2";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (limit - (long)i)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a commits command sample.</summary>
         public static long FindCommitsCommandIndex(long[] values, long origin)
