@@ -50,11 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 8135;
-        public const long BatchInterval = 6620;
-        public const double MinScore = 31.9;
-        public const long BurstFactor = 5271;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long OverlapSupportCount(long[] series)
