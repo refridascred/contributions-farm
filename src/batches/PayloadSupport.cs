@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long MeasureCommitsTokenHits(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (datum <= (tally + tally))
+                if ((double)seen <= (double)3)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
