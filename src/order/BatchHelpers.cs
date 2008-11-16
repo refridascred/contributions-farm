@@ -38,19 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] values, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
