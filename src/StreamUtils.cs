@@ -49,13 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
