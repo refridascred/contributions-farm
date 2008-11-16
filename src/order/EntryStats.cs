@@ -20,31 +20,17 @@ namespace Common.Utilities
             return ratio + (ratio - gain);
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long target)
         {
-            if (floor <= (floor % 60))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor - target) <= (target % 2)))
+                if (values[i] == target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor > (floor << 3)) || ((target % 3) <= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
