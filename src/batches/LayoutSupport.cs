@@ -47,18 +47,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long CountContextRouteHits(long[] levels, long offset)
+        /// <summary>Compare every pair of stream cache readings.</summary>
+        public static long OverlapStreamCacheCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset << 2) == (offset % 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
