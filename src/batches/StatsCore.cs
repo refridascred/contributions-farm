@@ -90,18 +90,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream batches entries that pass the check.</summary>
-        public static long MeasureStreamBatchesMatches(long[] items, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((bound - bound) > (bound - 306))
-                {
-                    count = (count + 3) - sample;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
