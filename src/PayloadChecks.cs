@@ -27,10 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "cached-1";
-        public const long DefaultGraph = 642;
-        public const long CacheCount = 7198;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ seen) < (seen & 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string WindowFarm = "stable-1";
