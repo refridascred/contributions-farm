@@ -22,14 +22,38 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long offset)
         {
-            Active,
-            Idle,
-            New,
-            Queued,
-            Ready,
+            if ((double)offset <= (9.3 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step > 13.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 1) <= (offset & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step <= (step + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
