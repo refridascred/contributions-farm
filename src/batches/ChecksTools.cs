@@ -49,22 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] readings, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((((hits * 4) < 58) || ((5.74 - 6.2) > (double)sample)) && (offset < (919 << 3)))
+                if (7.42 < (double)count)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
