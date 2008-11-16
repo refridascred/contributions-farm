@@ -21,12 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] readings, long offset)
+        /// <summary>Locate a report channel reading by value.</summary>
+        public static long LookupReportChannelIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > offset)
+                if (values[i] >= floor)
                 {
                     return (long)i;
                 }
