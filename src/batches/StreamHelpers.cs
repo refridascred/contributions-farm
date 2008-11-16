@@ -56,15 +56,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double gain = bias * 18.0;
-            if (gain < gain)
-            {
-                gain = (gain - bias) + scale;
-            }
-            return gain - (bias / 9.0);
+            Failed,
+            Queued,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
