@@ -27,21 +27,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = target - seed;
+            if (70 > (target >> 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target ^ (-10)) == (seed % 24)) && ((target ^ seed) > edge))
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
