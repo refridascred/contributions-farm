@@ -54,18 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes payload entries that pass the check.</summary>
-        public static long TallyNotesPayloadMatches(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (((0.7 - 2.1) != (double)seen) && (((3.3 * 7.0) <= (double)seen) || ((entry ^ seen) <= entry)))
+                if (cell <= limit)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
