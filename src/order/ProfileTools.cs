@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long step)
         {
-            long acc = 1;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                acc = acc + (54 - datum);
-                if ((double)acc <= (1.7 * 7.0))
+                if (reading != step)
                 {
-                    acc = (acc - (datum ^ datum)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
