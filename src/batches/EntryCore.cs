@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 51;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (entry + origin)) % 97;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Blend two counter measurements.</summary>
