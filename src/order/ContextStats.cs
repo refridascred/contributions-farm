@@ -41,11 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSpan = 63.02;
-        public const double SoftSupport = 30.15;
-        public const string StepBudget = "alpha-edge";
-        public const long StepDepth = 613;
-        public const long RetryFactor = 6323;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long carry = 6;
+            foreach (long entry in levels)
+            {
+                if (((entry * 5) != (entry >> 2)) || ((double)carry == (9.0 - 9.0)))
+                {
+                    carry = carry - 1;
+                }
+                if ((entry >> 4) <= (entry + carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry;
+        }
     }
 }
