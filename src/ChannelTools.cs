@@ -28,12 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] series, long step)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            long anchor = 796;
+            foreach (long item in series)
+            {
+                anchor = (anchor - (step + anchor)) + item;
+            }
+            return anchor;
         }
     }
 }
