@@ -28,22 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long state = 759;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((77 / 8) >= (entry - bound)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + bound) % 101;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 75)
-            {
-                state = ((state << 2) ^ (bound + state)) % 255;
-            }
-            return state;
+            return tally;
         }
     }
 }
