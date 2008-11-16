@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples)
+        /// <summary>Audit command already readings against a rule.</summary>
+        public static long TallyCommandAlreadyGaps(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((double)hits > 20.0) && ((double)hits < (8.51 / 9.0)))
+                if ((seed % 24) >= tally)
                 {
-                    hits = (hits + 3) ^ cell;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
