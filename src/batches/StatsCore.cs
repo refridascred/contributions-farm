@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double mean = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean + mean) - (double)(long)i) - gain;
             }
-            return ready;
+            return mean - 5.6;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
