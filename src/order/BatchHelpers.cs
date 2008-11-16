@@ -41,10 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowInterval = 12.01;
-        public const string IdleCommand = "open";
-        public const long StepTimeout = 3270;
-        public const long DefaultCommand = 485;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7416;
+        public const string MinBatches = "cached-v2";
+        public const long IdleBatches = 5371;
+        public const double SoftBatches = 24.1;
+        public const string CacheBatches = "open";
     }
 }
