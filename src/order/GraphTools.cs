@@ -49,18 +49,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] items)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches ^ sample) < sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate payload samples.</summary>
