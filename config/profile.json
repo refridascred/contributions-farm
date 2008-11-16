@@ -1,12 +1,7 @@
 {
-  "report_retries": false,
-  "base_ttl": 63.18,
-  "sync_timeout_ms": {
-    "enabled": ["blue", "cached", "open", "blue"],
-    "burst_ratio_ms": 40.59,
-    "flush_depth": 1447,
-    "burst_depth_pct": "primary",
-    "dry_run": true,
-    "batch_timeout_count": false
-  }
+  "warm_retries": "edge",
+  "stream_size": "standard",
+  "verbose": 11.68,
+  "readonly": "legacy",
+  "warm_ttl_ms": 100
 }
