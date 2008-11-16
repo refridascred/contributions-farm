@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long MeasureOrderChecksGaps(long[] readings)
         {
-            Queued,
-            Active,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((7.8 - 1.0) == (double)item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
