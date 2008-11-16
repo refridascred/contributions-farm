@@ -65,13 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
