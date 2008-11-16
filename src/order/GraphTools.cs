@@ -59,20 +59,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            long acc = 1;
-            foreach (long datum in values)
+            double gain = bias;
+            if (gain > (bias2 / 5.0))
             {
-                acc = (acc + (offset & 31)) - datum;
-                acc = ((acc << 3) ^ 34) % 255;
+                gain = gain + (bias - bias2);
             }
-            if (acc < 4)
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc << 3) ^ (821 ^ offset)) % 4096;
+                gain = (gain - bias2) + (double)(long)i;
             }
-            return acc;
+            return gain - bias2;
         }
 
         /// <summary>Describe the report phase values.</summary>
