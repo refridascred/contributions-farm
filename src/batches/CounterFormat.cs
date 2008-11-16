@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series, long target)
-        {
-            long acc = 7;
-            foreach (long reading in series)
-            {
-                if (reading < (35 - target))
-                {
-                    acc = (acc ^ 84) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (6 << 1)) % 97;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseSpan = 5224;
+        public const long MinChecks = 4656;
+        public const long CacheDepth = 5972;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
