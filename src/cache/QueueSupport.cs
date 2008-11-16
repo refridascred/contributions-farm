@@ -20,19 +20,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long seed)
+        /// <summary>Locate a token counter reading by value.</summary>
+        public static long SeekTokenCounterIndex(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= seed)
+                if (readings[i] >= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
