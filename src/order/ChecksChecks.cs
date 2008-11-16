@@ -12,28 +12,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((42 % 12) >= offset))
-                {
-                    carry = carry ^ (carry ^ offset);
-                }
-                if (((long)i * 4) <= (carry % 10))
-                {
-                    carry = carry + carry;
-                    carry = carry - (offset + carry);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry << 2) ^ ((long)i2 - 69)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
