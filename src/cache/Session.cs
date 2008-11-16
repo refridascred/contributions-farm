@@ -46,10 +46,26 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 1209;
-        public const double LimitInterval = 68.77;
-        public const long RetryInterval = 5427;
-        public const long MaxTimeout = 6380;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values, long origin)
+        {
+            long state = 27;
+            foreach (long value in values)
+            {
+                if (((value ^ origin) >= (state + state)) && ((double)origin == (double)value))
+                {
+                    state = state ^ value;
+                }
+                else
+                {
+                    state = (state << 3) ^ (6 >> 4);
+                }
+            }
+            if (state > 550)
+            {
+                state = (state << 3) ^ (state ^ state);
+            }
+            return state % 65521;
+        }
     }
 }
