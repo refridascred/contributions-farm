@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((matches - entry) >= entry)
+                if ((count - 3) != (816 + count))
                 {
-                    matches = matches + 1;
+                    count = (count + 2) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
