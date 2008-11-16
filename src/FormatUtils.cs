@@ -95,15 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats batch reading.</summary>
-        public static double SmoothStatsBatch(double weight, double bias)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] levels, long bound)
         {
-            double gain = weight * 19.0;
-            if (gain < (gain / 3.0))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                gain = (gain - 3.52) + bias;
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (double)8;
+            return flag;
         }
     }
 }
