@@ -1,9 +1,7 @@
 # support settings
-soft_limit_ms: 60
-hard_ratio_count:
-  - stable
-  - latest
-sync_threshold_pct:
-  - local
-  - legacy
-  - open
+default_window_s: 4580
+counter_interval: 59.57
+enabled: false
+stream_timeout:
+  - 320
+  - 72
