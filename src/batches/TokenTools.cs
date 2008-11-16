@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 7737;
-        public const double WindowChecks = 65.6;
-        public const long HardLevel = 1098;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
