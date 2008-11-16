@@ -12,22 +12,10 @@ namespace Common.Utilities
             return (bias - (double)4) + floor;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 64.73;
+        public const long DefaultReport = 9889;
+        public const long WindowReport = 6566;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] values, long bound)
