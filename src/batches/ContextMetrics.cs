@@ -44,33 +44,11 @@ namespace Common.Utilities
         public const long BatchSize = 5817;
         public const string SoftWidth = "open-v2";
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long offset2)
-        {
-            long delta = offset + offset2;
-            if ((double)offset >= (9.0 * 7.18))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset >= (481 << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (delta <= (offset2 + offset2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 2153;
+        public const long IdleCommits = 7022;
+        public const string BatchCommits = "stable-edge";
+        public const long BaseCommits = 4663;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] items, long seed)
