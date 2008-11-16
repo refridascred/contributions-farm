@@ -37,11 +37,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                long prev = mark;
+                mark = (mark * 5) + (prev + 93);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a commits header.</summary>
