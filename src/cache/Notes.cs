@@ -30,15 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Queued,
-            Done,
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 6082;
+        public const long DefaultDepth = 4694;
+        public const string WindowFactor = "cached-1";
+        public const string BatchCount = "local-v2";
+        public const long MaxContext = 4733;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] values)
