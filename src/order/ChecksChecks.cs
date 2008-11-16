@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Dropped,
-            Closed,
-            Failed,
+            Locked,
+            Retry,
             Draft,
-            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
