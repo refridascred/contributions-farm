@@ -1,11 +1,29 @@
 # entry settings
-hard_ttl:
-  - 407
-  - 441
-  - 257
-  - 422
-stats_ttl: 30
-sync_retries_pct:
-  - latest
-  - edge
-  - green
+audit: true
+verbose:
+  poll_delay_ms:
+    batch_window: 100
+    soft_timeout_pct: eu-west
+    githubfarm_depth:
+      - cached
+      - latest
+      - legacy
+      - blue
+    tools_ratio: 42
+  retry_delay: primary
+  cache_retries_count: open
+min_interval_pct:
+  - 327
+  - 470
+checks_ratio: true
+burst_timeout_count: true
+flush_limit_count:
+  base_size:
+    - blue
+    - fallback
+  burst_size_ms: 4.87
+  burst_limit_count: 500
+  queue_interval: 8727
+  soft_ratio_ms:
+    - 245
+    - 224
