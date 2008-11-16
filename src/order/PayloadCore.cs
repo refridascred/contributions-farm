@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length << 3) > seed)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
