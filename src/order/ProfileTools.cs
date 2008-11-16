@@ -53,18 +53,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] series, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((double)floor2 >= (double)floor)
             {
-                if (975 <= (datum >> 1))
+                return 0;
+            }
+            else
+            {
+                if (floor < (floor * 5))
                 {
-                    hits = (hits + 3) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor2 <= (8 * 5)) || (13.0 > (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor2) > (floor2 ^ floor2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
