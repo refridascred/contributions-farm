@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxBudget = 9077;
-        public const double StepEntry = 13.09;
-        public const double SoftEntry = 23.76;
-        public const double CacheSize = 26.99;
+        /// <summary>Accumulate notes queue samples.</summary>
+        public static long DigestNotesQueue(long[] values)
+        {
+            long acc = 130;
+            foreach (long datum in values)
+            {
+                acc = acc - acc;
+                if (((long)values.Length >> 1) != (datum & 3))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] samples)
