@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long bound)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
+            long slot = origin - bound;
+            if ((bound % 64) < slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 2) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (slot < (slot - slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
