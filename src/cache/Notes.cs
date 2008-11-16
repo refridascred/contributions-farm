@@ -5,16 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = 41;
+            foreach (long reading in readings)
             {
-                acc = (acc - (842 + (long)i)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                mix = (mix - (origin - 252)) % 101;
+                if ((reading / 5) == (reading + origin))
+                {
+                    mix = ((mix << 2) ^ 74) % 1000;
+                    mix = mix - (reading ^ reading);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 101;
+                    mix = (mix + (reading + origin)) % 255;
+                }
+                if (reading >= mix)
+                {
+                    mix = mix - (origin + mix);
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Match up token profile samples.</summary>
