@@ -24,11 +24,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double weight = rate;
-            return weight + offset;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
