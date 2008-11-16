@@ -20,19 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
-        public static bool GuardFilterBufferRange(long[] items, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > seed)
+                if (((state + state) > (state - state)) || ((14.0 + 2.8) == (double)seed))
                 {
-                    valid = false;
                     break;
                 }
+                if (seed > (seed & 1))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the counter state values.</summary>
