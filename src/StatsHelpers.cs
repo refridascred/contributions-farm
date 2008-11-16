@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 977;
-        public const long LimitSize = 8115;
-        public const long BatchFormat = 9;
-        public const long WindowBudget = 314;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(anchor > bound))
+                {
+                    anchor = ((anchor * 2) + (anchor + bound)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] data, long target)
