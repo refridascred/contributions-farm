@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            Idle,
-            Closed,
-            Synced,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((matches - matches) < (matches ^ matches)))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
