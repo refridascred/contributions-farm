@@ -1,10 +1,11 @@
 # Command notes
 
-Keep profile and context names short and lowercase.
-The cluster module keeps token values in sync with the token cache.
+The support helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Keep schema values small
-- Log every queue change
-- Validate queue input early
+- Validate route input early
+- Review commits limits each release
+- Keep githubfarm values small
+- Prefer counter defaults
