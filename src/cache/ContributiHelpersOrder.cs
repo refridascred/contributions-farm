@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool VerifyToolsEntryLimits(long[] readings, long limit)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the route state values.</summary>
