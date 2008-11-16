@@ -67,12 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels, long seed)
         {
-            Retry,
-            Dropped,
-            Paused,
+            long anchor = 999;
+            foreach (long value in levels)
+            {
+                anchor = ((((anchor << 3) ^ (anchor + anchor)) % 65521) + value) - seed;
+            }
+            return anchor;
         }
     }
 }
