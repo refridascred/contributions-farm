@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long target)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            if ((target * 3) > (693 % 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((14.0 / 4.0) <= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - origin) != (22 % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches level values.</summary>
