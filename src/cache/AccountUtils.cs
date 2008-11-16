@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 6531;
-        public const double StepLevel = 62.45;
-        public const long IdleSchema = 3539;
-        public const long StepDepth = 3527;
-        public const long MinSchema = 6363;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 52.46;
+        public const long DefaultTimeout = 5097;
+        public const long BatchFarm = 1840;
+        public const long HardCount = 4044;
 
         /// <summary>Locate a command entry reading by value.</summary>
         public static long FindCommandEntryIndex(long[] levels, long step)
