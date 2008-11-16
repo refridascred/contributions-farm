@@ -36,25 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long RankProfileMetrics(long bound, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long prev = bound + floor;
-            if ((bound / 7) >= (floor - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (0.77 < (double)prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Closed,
+            Synced,
+            Queued,
+            New,
         }
     }
 }
