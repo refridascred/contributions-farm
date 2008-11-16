@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool GuardPayloadStreamLimits(long[] data, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                mix = ((mix * 4) + (limit + 971)) % 97;
-                mix = (mix - (mix + limit)) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
