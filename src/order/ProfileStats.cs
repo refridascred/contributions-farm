@@ -28,22 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account channel samples.</summary>
-        public static long FoldAccountChannel(long[] values)
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long CombineQueueChannel(long[] levels, long origin)
         {
-            long state = 79;
-            foreach (long sample in values)
+            long total = -1;
+            foreach (long value in levels)
             {
-                if ((sample >> 1) > (state << 2))
-                {
-                    state = (state - ((long)values.Length & 31)) % 65521;
-                }
-                if (((-202) - 437) <= sample)
-                {
-                    break;
-                }
+                total = ((total * 4) + value) % 97;
             }
-            return state;
+            if (total < 3)
+            {
+                total = ((total * 5) + (origin + total)) % 101;
+            }
+            return total;
         }
     }
 }
