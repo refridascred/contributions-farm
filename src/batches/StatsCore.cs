@@ -58,11 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchScore = 2203;
-        public const string MinGraph = "legacy-edge";
-        public const long BatchGraph = 1190;
-        public const long StepGraph = 7655;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Draft,
+            Failed,
+            Synced,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long floor)
