@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long MaxScore = 9402;
         public const double DefaultRatio = 96.08;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            long total = 19;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift > (offset + 0.18))
             {
-                if (((double)item != (8.0 + 20.0)) || (((-5) & 15) < (item / 8)))
-                {
-                    total = total - (total + item);
-                }
+                drift = drift + (bias - offset);
             }
-            return total % 4096;
+            else
+            {
+                drift = drift + (drift + 6.8);
+            }
+            return drift - (double)(-334);
         }
     }
 }
