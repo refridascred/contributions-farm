@@ -46,14 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Failed,
-            Pending,
-            Queued,
-            Done,
-            Synced,
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
