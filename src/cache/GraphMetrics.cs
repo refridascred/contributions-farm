@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Done,
-            Failed,
+            Ready,
+            Draft,
             Locked,
-            Pending,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
