@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi route readings against a bound.</summary>
-        public static bool ValidateContributiRouteLimits(long[] items, long target)
+        /// <summary>Validate contributi graph readings against a bound.</summary>
+        public static bool VerifyContributiGraphBounds(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (cell > target)
+                if (cell < limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
