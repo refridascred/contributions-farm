@@ -18,15 +18,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long FoldCounterOrder(long[] readings, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] samples, long origin)
         {
-            long score = 6;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                score = ((score << 2) ^ (step ^ sample)) % 65521;
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
