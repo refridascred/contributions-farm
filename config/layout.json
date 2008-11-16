@@ -1,5 +1,7 @@
 {
-  "idle_interval_s": 88.74,
-  "metrics_depth": "strict",
-  "strict": "legacy"
+  "poll_timeout": "latest",
+  "batches_capacity": "latest",
+  "sync_interval": 500,
+  "batch_size_ms": "latest",
+  "verbose": 26
 }
