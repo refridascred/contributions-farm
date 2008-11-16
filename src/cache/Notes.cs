@@ -30,12 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
