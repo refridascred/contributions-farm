@@ -19,11 +19,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseInterval = "cached-v2";
-        public const double SoftDepth = 14.03;
-        public const long BaseSupport = 3318;
-        public const string HardSpan = "strict-edge";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long floor)
+        {
+            long carry = 80;
+            foreach (long entry in samples)
+            {
+                carry = (carry - (carry - entry)) % 4096;
+                if (((floor >> 3) == (carry - floor)) || (17.0 < (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LocateCacheIndex(long[] readings, long offset)
