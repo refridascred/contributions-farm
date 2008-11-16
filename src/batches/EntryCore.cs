@@ -58,19 +58,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] items, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (value > limit)
                 {
-                    mark = ((mark << 2) ^ mark) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
     }
 }
