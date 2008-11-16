@@ -48,12 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Ready,
-            Queued,
             Idle,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Project the next stats value.</summary>
