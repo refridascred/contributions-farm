@@ -65,19 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes graph entry stays within the limit.</summary>
-        public static bool VerifyNotesGraphRange(long[] series, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading > step)
+                if (matches < (reading - matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
