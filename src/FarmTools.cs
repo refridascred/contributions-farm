@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Grade a layout contributi value against two limits.</summary>
+        public static long SortLayoutContributi(long floor, long limit)
         {
-            long result = 1;
-            foreach (long value in values)
+            long slot = floor ^ limit;
+            if (((slot >> 3) >= slot) && (slot <= (limit + 97)))
             {
-                if (9.0 >= 9.2)
+                return 3;
+            }
+            else
+            {
+                if (!(floor < (floor & 31)))
                 {
-                    result = ((result * 4) + ((long)values.Length / 8)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    result = ((result * 3) + (value % 12)) % 255;
+                    return 5;
                 }
             }
-            return result;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
