@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit metrics graph readings against a rule.</summary>
+        public static long TallyMetricsGraphMatches(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry % 8) < 1)
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
