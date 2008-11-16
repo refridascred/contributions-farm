@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data, long target)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long state = 5;
+            foreach (long entry in data)
+            {
+                if ((entry % 8) > (0 >> 4))
+                {
+                    state = ((state << 3) ^ 199) % 97;
+                }
+                if (((state ^ entry) <= entry) || ((83 ^ target) < state))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
     }
 }
