@@ -45,38 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long floor, long offset)
+        /// <summary>Count metric stream pairs that satisfy a relation.</summary>
+        public static long PairMetricStreamCount(long[] levels)
         {
-            if ((offset * 3) <= (offset / 8))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (1.0 * 7.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset >= (7.74 / 5.0))
+                    if ((levels[i] - levels[j]) > 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset < (2 << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
