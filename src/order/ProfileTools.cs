@@ -20,13 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
+        public static bool GuardFilterBufferRange(long[] items, long seed)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the counter state values.</summary>
