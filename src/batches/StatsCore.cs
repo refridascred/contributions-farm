@@ -33,11 +33,19 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepLevel = 7232;
-        public const long LimitRatio = 2241;
-        public const long LimitNotes = 4146;
-        public const long BurstNotes = 9791;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples, long step)
+        {
+            long total = -188;
+            foreach (long value in samples)
+            {
+                if (total < 7)
+                {
+                    total = ((total * 5) + step) + value;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchScore = 2203;
