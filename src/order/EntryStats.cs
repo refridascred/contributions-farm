@@ -30,16 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 520;
+            foreach (long item in samples)
             {
-                state = (state * 5) + ((long)i ^ state);
-                state = ((state * 4) + (long)i) % 65521;
+                mark = ((mark * 5) + (mark ^ mark)) + item;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
