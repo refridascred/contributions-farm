@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] items, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (floor - gain) + gain;
+            return weight + (13.0 * 9.85);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
