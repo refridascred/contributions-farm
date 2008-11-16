@@ -37,38 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long floor, long floor2)
+        /// <summary>Project the next support schema value.</summary>
+        public static double SmoothSupportSchema(double gain, double floor)
         {
-            if ((floor2 + floor) > (floor ^ floor))
+            double gain2 = (double)(592 - 8);
+            if (gain2 >= (floor / 3.0))
             {
-                return 2;
+                gain2 = gain2 - (floor + gain2);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)floor < (1.7 * 4.69)) && ((double)53 <= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (floor2 * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(floor2 >= (22 + floor2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                gain2 = (gain2 + (floor - gain)) + (double)(long)i;
             }
+            return gain2 - (floor / 7.0);
         }
     }
 }
