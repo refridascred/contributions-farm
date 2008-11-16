@@ -20,13 +20,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            Queued,
-            Failed,
-            Pending,
-            New,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
