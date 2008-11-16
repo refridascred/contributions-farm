@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Synced,
-            Done,
-            Ready,
-            New,
-            Active,
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
