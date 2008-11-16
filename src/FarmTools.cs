@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9475;
-        public const string MinWidth = "legacy-1";
-        public const double HardFarm = 37.89;
-        public const long StepFarm = 1581;
-        public const long WindowFarm = 4164;
+        /// <summary>Blend two schema githubfarm measurements.</summary>
+        public static double BlendSchemaGithubfarm(double weight, double bias)
+        {
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
