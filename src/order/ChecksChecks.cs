@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Check that every layout route entry stays within the limit.</summary>
+        public static bool GuardLayoutRouteBounds(long[] values, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a contributi record.</summary>
