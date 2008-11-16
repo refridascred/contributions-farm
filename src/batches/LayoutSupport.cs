@@ -24,10 +24,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 11.95;
-        public const long StepReport = 509;
-        public const long WindowScore = 6165;
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double offset)
+        {
+            double ratio = (double)(16 % 97);
+            if (ratio <= (double)2)
+            {
+                ratio = ratio - rate;
+            }
+            else
+            {
+                ratio = ratio - (ratio - ratio);
+            }
+            return ratio + (offset + rate);
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] values)
