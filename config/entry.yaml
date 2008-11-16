@@ -1,9 +1,17 @@
 # entry settings
-githubfarm_depth:
-  - green
-  - latest
-  - green
-  - edge
-strict: 63.88
-entry_capacity: false
-default_threshold_ms: standard
+poll_depth_ms:
+  - 75
+  - 495
+flush_depth: 250
+base_limit:
+  - 343
+  - 333
+  - 297
+poll_window_count:
+  hard_limit_pct: 69.47
+  cache_capacity_ms: standard
+  idle_ttl_count: edge
+base_delay_ms:
+  - eu-west
+  - eu-west
+  - legacy
