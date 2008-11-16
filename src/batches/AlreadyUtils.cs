@@ -25,13 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit cluster buffer readings against a rule.</summary>
+        public static long CountClusterBufferGaps(long[] items)
         {
-            New,
-            Active,
-            Done,
-            Locked,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 1) != (sample - (long)items.Length))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
