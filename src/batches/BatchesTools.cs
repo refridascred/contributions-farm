@@ -31,11 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 1.54;
-        public const long SoftCounter = 2704;
-        public const double BatchCounter = 25.59;
-        public const long StepInterval = 9624;
-        public const long IdleBudget = 9767;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Idle,
+            Paused,
+            Draft,
+        }
     }
 }
