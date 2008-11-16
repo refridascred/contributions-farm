@@ -39,12 +39,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Ready,
-            Stale,
-            Idle,
+            Dropped,
+            New,
+            Pending,
         }
     }
 }
