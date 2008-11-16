@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double span)
         {
-            long carry = 785;
-            foreach (long item in data)
+            double scale2 = (13.0 - span) * 3.29;
+            if (scale2 > scale2)
             {
-                carry = ((carry + 383) % 4096) - item;
-                if ((7 + carry) <= carry)
-                {
-                    break;
-                }
+                scale2 = scale2 - scale;
             }
-            return carry % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
     }
 }
