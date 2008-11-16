@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 1049;
-        public const long BurstToken = 364;
-        public const string SoftCount = "alpha";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels, long offset)
+        {
+            long acc = 774;
+            foreach (long item in levels)
+            {
+                if (91 >= (acc % 5))
+                {
+                    acc = (acc ^ (item + offset)) % 65521;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
