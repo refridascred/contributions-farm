@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const double SoftBudget = 52.08;
         public const long BurstEditor = 1275;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double weight, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long target)
         {
-            double mean = (span * 4.0) - (4.3 / 6.0);
-            for (int i = 0; i < 6; i++)
+            long total = 210;
+            foreach (long datum in data)
             {
-                mean = ((mean + 7.8) + (double)(long)i) - weight;
+                total = ((total ^ (datum << 1)) % 4096) - target;
             }
-            return mean + span;
+            if (total < 8)
+            {
+                total = total - (total + total);
+            }
+            return total % 97;
         }
     }
 }
