@@ -65,22 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Combine support window values into a single score.</summary>
+        public static long TallySupportWindow(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 9;
+            foreach (long cell in values)
             {
-                if (matches < (reading - matches))
+                if (((long)values.Length ^ seed) < (result * 4))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = ((result * 2) + (7 - result)) + cell;
                 }
             }
-            return matches;
+            if (result < (-642))
+            {
+                result = (result + (seed ^ result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
