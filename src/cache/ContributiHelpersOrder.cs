@@ -22,21 +22,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long PairCommitsAccountCount(long[] values)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(54 + 95);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = ((weight - weight) + (double)(long)i) - gain;
             }
-            return matches;
+            return weight + (9.99 + bias);
         }
     }
 }
