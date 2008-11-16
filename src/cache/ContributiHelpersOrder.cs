@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
         {
-            if ((floor % 3) == (961 >> 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) >= (7 - floor2))
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every batches commits entry stays within the limit.</summary>
