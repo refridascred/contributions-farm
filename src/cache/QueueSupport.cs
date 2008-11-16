@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double span)
+        /// <summary>Iterate the profile cluster series from a seed.</summary>
+        public static long IterateProfileCluster(long bound)
         {
-            double rate = (bias + span) * 1.0;
-            return rate - (double)344;
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next filter tools value from a seed.</summary>
