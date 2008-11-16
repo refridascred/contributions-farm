@@ -1,10 +1,6 @@
 {
-  "soft_capacity_ms": {
-    "default_limit_s": "cached",
-    "default_depth": 18.7,
-    "sync_depth": "open",
-    "window_ttl": "green"
-  },
-  "sync_limit_count": 49,
-  "route_size": "staging"
+  "persist": 9475,
+  "strict": 2370,
+  "idle_size_count": 60,
+  "warm_timeout_ms": 63
 }
