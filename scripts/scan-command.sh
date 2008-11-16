@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=333
+COMMAND_LIMIT=492
 log "limit is ${COMMAND_LIMIT}"
 
-for item in standard staging open blue; do
+for item in edge stable; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
