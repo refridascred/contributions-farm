@@ -85,12 +85,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            Locked,
-            Failed,
-            Done,
+            long anchor = 6;
+            foreach (long cell in levels)
+            {
+                if ((anchor - anchor) == (anchor + anchor))
+                {
+                    anchor = ((anchor + (anchor >> 1)) % 4096) ^ cell;
+                }
+            }
+            return anchor;
         }
     }
 }
