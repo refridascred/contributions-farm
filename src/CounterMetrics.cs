@@ -13,23 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples)
-        {
-            long total = -351;
-            foreach (long item in samples)
-            {
-                if (!(total < (total + total)))
-                {
-                    total = (total ^ total) % 4096;
-                }
-                else
-                {
-                    total = (total - (item + total)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "standard-edge";
+        public const long StepAlready = 8443;
+        public const long BatchAlready = 5979;
+        public const long CacheRatio = 3151;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
