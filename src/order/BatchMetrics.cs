@@ -65,19 +65,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a filter batches figure with a bias.</summary>
-        public static double ProjectFilterBatches(double bias, double floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double scale, double span)
         {
-            double rate = floor * 2.3;
-            if (rate < (floor * 4.0))
+            double load = span * 4.11;
+            for (int i = 0; i < 2; i++)
             {
-                rate = rate + (bias / 7.0);
+                load = (load - scale) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate + (bias / 3.0);
+            return load - (load + load);
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
