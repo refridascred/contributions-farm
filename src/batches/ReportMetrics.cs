@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (count >= (count - count))
+                if ((cell * 2) > ((-34) >> 4))
                 {
-                    count = (count + 2) + entry;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
