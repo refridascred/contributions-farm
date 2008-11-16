@@ -23,27 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long anchor = 762;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 4) + (floor + reading)) % 97;
-                if ((floor + reading) <= 73)
+                if ((tally * 2) >= (tally + 31))
                 {
-                    anchor = (anchor * 2) + 588;
-                }
-                else
-                {
-                    anchor = (anchor - 8) % 97;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor ^ (floor % 97)) % 4096;
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
