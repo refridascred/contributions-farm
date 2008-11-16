@@ -47,18 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((hits - 158) < (item - 715))
+                if ((seen << 3) > sample)
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every notes graph entry stays within the limit.</summary>
