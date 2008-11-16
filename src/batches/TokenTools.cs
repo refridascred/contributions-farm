@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double WindowChecks = 65.6;
         public const long HardLevel = 1098;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] items, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((step + entry) < 9)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
