@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const double SoftEntry = 23.76;
         public const double CacheSize = 26.99;
 
-        /// <summary>Fold a list of route entry readings.</summary>
-        public static long DigestRouteEntry(long[] values, long seed)
+        /// <summary>Iterate the payload context series from a seed.</summary>
+        public static long SeriesPayloadContext(long seed)
         {
-            long carry = 740;
-            foreach (long item in values)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry * 5) + (item - seed);
-            }
-            if (carry < 56)
-            {
-                carry = (carry * 3) + (seed + seed);
+                if (((long)i <= (6 ^ seed)) && ((double)carry == (18.0 / 6.0)))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
