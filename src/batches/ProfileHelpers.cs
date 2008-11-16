@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 30.83;
-        public const double StepScore = 46.03;
-        public const string LimitFarm = "primary-edge";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Idle,
+            Synced,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] samples, long target)
