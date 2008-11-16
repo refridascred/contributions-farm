@@ -41,38 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data, long seed)
         {
-            if ((2.0 - 5.0) >= (double)limit)
+            long score = 644;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) >= (7 ^ limit))
+                if (!((9.03 * 16.0) > (double)cell))
                 {
-                    return 0;
+                    score = score - (21 - seed);
                 }
-                else
-                {
-                    if (limit < (bound - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)limit != (9.0 * 6.21)) && ((-22) <= (bound ^ bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score + (seed & 255)) % 1000;
             }
+            return score;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
