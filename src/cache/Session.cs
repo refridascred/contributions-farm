@@ -20,13 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((seed - 492) > (seed + seed)) && ((double)15 != (double)mark))
+                {
+                    mark = (mark - (55 + (long)i)) % 1000;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metrics cache samples.</summary>
