@@ -32,13 +32,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
