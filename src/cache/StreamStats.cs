@@ -42,11 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long score = 69;
+            foreach (long datum in values)
+            {
+                if (((offset / 9) == (8 << 2)) || ((score + offset) == (datum + score)))
+                {
+                    score = (score - datum) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the channel state values.</summary>
