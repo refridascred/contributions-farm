@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string CacheFarm = "primary-1";
         public const long BurstTimeout = 8645;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (sample > seed)
+                if (!(origin < datum))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
