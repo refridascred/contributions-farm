@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Synced,
-            Idle,
-            Paused,
-            New,
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
