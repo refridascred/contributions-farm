@@ -31,15 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double drift = floor;
-            if (drift < (floor - gain))
-            {
-                drift = drift + floor;
-            }
-            return drift - drift;
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
