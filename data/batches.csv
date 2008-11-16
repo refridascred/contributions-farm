@@ -1,7 +1,9 @@
-id,token,state,rank,owner
-1,687,23.34,local,256
-2,1.16,68.59,84.57,80.75
-3,strict,19.69,50.17,220
-4,edge,941,primary,eu-west
-5,50.14,primary,464,34.19
-6,811,4.93,73.33,legacy
+id,region,label,active
+1,edge,stable,642
+2,blue,primary,926
+3,248,edge,650
+4,edge,31.97,376
+5,55.82,62.88,59.96
+6,835,376,575
+7,520,745,327
+8,103,standard,485
