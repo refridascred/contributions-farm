@@ -29,26 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format commits values into a single score.</summary>
-        public static long DigestFormatCommits(long[] values, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = 26;
-            foreach (long item in values)
-            {
-                if ((result << 3) >= (result - 9))
-                {
-                    result = (result ^ (item * 3)) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 4) % 4096;
-                }
-            }
-            if (result > 7)
-            {
-                result = (result ^ bound) % 65521;
-            }
-            return result;
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
