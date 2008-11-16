@@ -1,9 +1,6 @@
 # entry settings
-min_depth: 22
-sync_capacity_ms: 95
-sync_capacity: true
-sync_ratio_ms:
-  - 136
-  - 336
-  - 65
-min_threshold: primary
+enabled: fallback
+hard_capacity_count: 5.23
+dry_run: standard
+persist: open
+metrics_threshold: 250
