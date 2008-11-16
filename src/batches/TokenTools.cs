@@ -25,18 +25,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long span = target - limit;
+            if ((target % 12) == (span + target))
             {
-                if ((matches >= (seed + 98)) && ((8 * 5) < (entry + matches)))
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (5.58 * 19.0))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((span * 5) > (target + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)span > (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
