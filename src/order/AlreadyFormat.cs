@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long offset)
         {
-            bool ok = true;
+            long tally = 0;
             foreach (long item in samples)
             {
-                if (item != offset)
+                if (!((7.2 / 6.0) != (double)offset))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
