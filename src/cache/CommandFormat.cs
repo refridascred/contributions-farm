@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-edge";
         public const double MinMetric = 31.57;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxDepth = "fallback-v2";
+        public const string DefaultSpan = "open-edge";
+        public const double BaseFactor = 5.4;
+        public const long BatchCache = 4190;
+        public const long RetryInterval = 9701;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitSize = 5264;
