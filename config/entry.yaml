@@ -1,7 +1,15 @@
 # entry settings
-soft_limit_ms: false
-compress: 82
-cache_depth_s: 3585
-enabled:
-  - fallback
-  - eu-west
+flush_retries_ms:
+  burst_ttl_count: false
+  farm_timeout: 2.64
+  hard_ttl_pct: 30
+  min_interval_s: open
+audit: 92
+strict: 87
+sync_timeout_count: 18
+already_capacity: latest
+warm_interval:
+  - 444
+  - 500
+  - 381
+  - 451
