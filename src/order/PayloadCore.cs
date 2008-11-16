@@ -32,21 +32,13 @@ namespace Common.Utilities
         public const string MinNotes = "cached-v2";
         public const double HardFactor = 84.43;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
