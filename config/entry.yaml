@@ -1,9 +1,21 @@
 # entry settings
-verbose: 92
-warm_depth: true
-soft_ratio_pct: 13
-retry_retries_ms: stable
-channel_threshold:
-  - 178
-  - 450
-  - 273
+channel_limit: 96
+metric_depth: true
+retry_window_pct: edge
+tools_timeout: local
+verbose:
+  warm_threshold_s:
+    - standard
+    - standard
+    - staging
+    - green
+  support_capacity:
+    - cached
+    - green
+  batch_capacity: 5269
+  warm_threshold: false
+  retry_ttl_s:
+    - 337
+    - 398
+    - 268
+    - 62
