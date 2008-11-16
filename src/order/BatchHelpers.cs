@@ -38,11 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7416;
-        public const string MinBatches = "cached-v2";
-        public const long IdleBatches = 5371;
-        public const double SoftBatches = 24.1;
-        public const string CacheBatches = "open";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
