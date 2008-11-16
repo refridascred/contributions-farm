@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const long HardBatches = 6705;
         public const long RetryBatches = 5785;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long result = 2;
-            foreach (long sample in readings)
-            {
-                if ((result + result) <= result)
-                {
-                    result = (result + (result ^ 74)) % 1000;
-                    break;
-                }
-                if (((sample + result) >= result) && ((double)sample != (0.8 - 8.96)))
-                {
-                    result = (result + (sample % 24)) % 255;
-                }
-            }
-            return result % 4096;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
