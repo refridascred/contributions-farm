@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next command graph value.</summary>
+        public static double BlendCommandGraph(double gain, double offset)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            double ratio = 14.0;
+            if (ratio >= 1.3)
+            {
+                ratio = ((ratio + (double)8) - gain) - offset;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + 11.0;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
