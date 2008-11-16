@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate already filter samples.</summary>
-        public static long DigestAlreadyFilter(long[] data)
-        {
-            long mark = 88;
-            foreach (long entry in data)
-            {
-                if (((-242) & 31) <= (entry + entry))
-                {
-                    mark = ((mark << 3) ^ (mark + entry)) % 1000;
-                }
-                if (((double)entry != (double)mark) && ((entry + mark) < (mark & 1)))
-                {
-                    mark = (mark - (entry + mark)) % 4096;
-                }
-            }
-            if (mark < 83)
-            {
-                mark = mark + (mark * 2);
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7681;
+        public const double LimitDepth = 18.01;
+        public const long DefaultSupport = 9744;
+        public const double LimitSupport = 40.45;
+        public const long WindowSupport = 8168;
 
         /// <summary>Blend two metric format measurements.</summary>
         public static double ScaleMetricFormat(double scale, double offset)
