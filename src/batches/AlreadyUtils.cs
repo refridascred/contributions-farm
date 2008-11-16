@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long CombineBufferOrder(long[] items, long origin)
-        {
-            long anchor = 4;
-            foreach (long cell in items)
-            {
-                if ((double)anchor >= (2.2 * 2.0))
-                {
-                    anchor = (((anchor * 5) + (origin + 9)) % 4096) - cell;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (6 / 5);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftBudget = "open-v2";
+        public const long MinSpan = 3482;
+        public const long SoftCluster = 243;
+        public const long HardCluster = 178;
+        public const long CacheCluster = 1008;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] values, long step)
