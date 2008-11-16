@@ -26,17 +26,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                result = (result ^ seed) % 101;
-                result = ((result * 3) + (long)i) % 101;
-                result = ((result * 3) + (long)i) % 97;
+                if (offset <= state)
+                {
+                    state = (state ^ (627 - state)) % 101;
+                    state = ((state * 3) + state) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (state - offset)) % 1000;
+                    state = (state ^ (offset + offset)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Match up buffer samples.</summary>
