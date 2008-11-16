@@ -1,6 +1,6 @@
 # support settings
-soft_depth: false
-poll_ratio_pct:
-  - eu-west
-  - fallback
-stats_threshold: 1258
+default_size_pct: primary
+retry_interval_count: false
+base_retries_pct: 1478
+hard_delay_s: green
+sync_interval: cached
