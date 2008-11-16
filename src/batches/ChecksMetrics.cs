@@ -33,21 +33,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Derive the next report profile value from a seed.</summary>
-        public static long StepReportProfile(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc - acc) % 255) ^ (long)i2;
-                    acc = (acc * 5) + (floor - acc);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxInterval = 9859;
+        public const long HardStats = 5390;
+        public const double LimitLevel = 23.43;
+        public const long LimitCount = 9583;
 
         /// <summary>Audit tools githubfarm readings against a rule.</summary>
         public static long TallyToolsGithubfarmMatches(long[] series, long limit)
