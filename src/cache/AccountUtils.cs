@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseSize = 6358;
-        public const double IdleReport = 67.89;
-        public const long MaxTimeout = 4736;
-        public const string BatchReport = "strict-edge";
-        public const long BurstReport = 9208;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Iterate the filter batches series from a seed.</summary>
         public static long IterateFilterBatches(long seed)
