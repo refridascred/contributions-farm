@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long MinChecks = 4656;
         public const long CacheDepth = 5972;
 
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long CompareGithubfarmWindowCount(long[] levels)
+        /// <summary>Derive the next githubfarm format value from a seed.</summary>
+        public static long IterateGithubfarmFormat(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
