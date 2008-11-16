@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleFactor = 413;
+        public const long StepInterval = 7193;
+        public const long CacheAccount = 3188;
+        public const double DefaultBudget = 42.94;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
