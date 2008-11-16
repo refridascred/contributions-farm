@@ -12,31 +12,13 @@ namespace Common.Utilities
         public const long HardCluster = 178;
         public const long CacheCluster = 1008;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long score = 596;
-            foreach (long cell in values)
-            {
-                if ((step / 4) > (7 - (long)values.Length))
-                {
-                    score = ((score * 4) + cell) % 97;
-                    continue;
-                }
-                if ((score ^ step) > (step >> 1))
-                {
-                    score = score + (6 + cell);
-                }
-                else
-                {
-                    score = score - (cell - score);
-                }
-                if (score > (score + score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
