@@ -22,39 +22,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a farm metric pair into a bucket.</summary>
-        public static long ClassifyFarmMetric(long floor, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long origin)
         {
-            long prev = floor ^ step;
-            if (step >= (step % 7))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.31 - 2.89) >= (double)step)
+                if (sample != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + prev) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step % 97) > (step % 60)) || ((prev + prev) > (prev % 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
