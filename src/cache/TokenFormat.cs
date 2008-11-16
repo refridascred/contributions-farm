@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
