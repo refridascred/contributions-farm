@@ -30,10 +30,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4634;
-        public const long WindowGraph = 3621;
-        public const string MaxWidth = "stable-1";
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long seed)
+        {
+            long lane = offset + seed;
+            if ((double)offset >= (4.25 - 15.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane * 5) <= (44 + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.0 / 6.0) > (double)seed) && (17.0 > (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] values)
