@@ -16,19 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two payload stream measurements.</summary>
-        public static double BlendPayloadStream(double weight, double span)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double bias = weight;
-            if (bias <= (double)31)
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (span / 7.0)) + (double)(long)i;
-            }
-            return bias - weight;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
