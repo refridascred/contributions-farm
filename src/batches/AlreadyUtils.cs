@@ -25,22 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster buffer readings against a rule.</summary>
-        public static long CountClusterBufferGaps(long[] items)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 1) != (sample - (long)items.Length))
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
