@@ -50,13 +50,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long mix = 3;
+            foreach (long entry in values)
+            {
+                mix = ((mix * 5) + (entry * 3)) + floor;
+                if (entry >= (mix >> 2))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
