@@ -42,21 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchBatchesCount(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item & 3) != (item << 2))
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + offset;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
