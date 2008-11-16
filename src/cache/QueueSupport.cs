@@ -34,9 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepTimeout = "stable-1";
-        public const long LimitRoute = 3765;
-        public const long BatchRoute = 8720;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
