@@ -23,21 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -351;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(total < (total + total)))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ total) % 4096;
+                }
+                else
+                {
+                    total = (total - (item + total)) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
