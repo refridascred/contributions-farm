@@ -34,10 +34,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 23.2;
-        public const string LimitSession = "open-v2";
-        public const string BurstSpan = "strict-edge";
+        /// <summary>Adjust a route order reading.</summary>
+        public static double SmoothRouteOrder(double bias, double span)
+        {
+            double load = 6.0 / 6.0;
+            return ((load + (double)507) + bias) + span;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 4964;
