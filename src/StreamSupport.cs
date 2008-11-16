@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long StepAlready = 9933;
         public const long LimitAlready = 4632;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            Ready,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Match up graph samples.</summary>
