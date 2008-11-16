@@ -45,9 +45,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowCount = 71.51;
-        public const long DefaultSpan = 1404;
-        public const long WindowSize = 7312;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
