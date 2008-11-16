@@ -65,17 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long seed)
+        /// <summary>Accumulate layout buffer samples.</summary>
+        public static long ScoreLayoutBuffer(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 8;
+            foreach (long sample in values)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + sample) % 1000;
             }
-            return -1;
+            if (state < 878)
+            {
+                state = (state + offset) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
