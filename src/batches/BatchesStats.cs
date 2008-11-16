@@ -42,13 +42,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Stale,
-            Active,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepBudget = 4451;
+        public const long MaxTimeout = 2093;
+        public const long DefaultCount = 9181;
+        public const long MinReport = 2656;
     }
 }
