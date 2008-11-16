@@ -38,30 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values, long origin)
+        /// <summary>Scale a record context figure with a bias.</summary>
+        public static double ScaleRecordContext(double gain, double floor)
         {
-            long acc = 3;
-            foreach (long item in values)
+            double drift = gain / 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)origin == (9.2 / 4.0))
-                {
-                    acc = ((acc * 2) + (item + item)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - item)) % 255;
-                }
-                if (origin < (acc ^ acc))
-                {
-                    break;
-                }
-                if (((-97) / 6) >= item)
-                {
-                    acc = acc + (item >> 1);
-                }
+                drift = (drift + (floor + 7.0)) + (double)(long)i;
             }
-            return acc % 97;
+            return drift - drift;
         }
     }
 }
