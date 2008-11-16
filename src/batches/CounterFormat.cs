@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const long MinChecks = 4656;
         public const long CacheDepth = 5972;
 
-        /// <summary>Derive the next githubfarm format value from a seed.</summary>
-        public static long IterateGithubfarmFormat(long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            if ((limit + offset) > (offset - limit))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((double)limit < 0.98) && ((offset + offset) <= (483 % 10)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6 ^ (-294)) >= (limit / 6)) || ((18 >> 4) != (offset + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
