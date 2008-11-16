@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 4682;
-        public const string BaseCommits = "latest-edge";
-        public const long LimitRatio = 5877;
-        public const long MinBudget = 2392;
-        public const long MinCommits = 5276;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardWindow = 2977;
