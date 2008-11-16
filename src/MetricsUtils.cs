@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample * 2) != (count * 5))
+                if (readings[i] > offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the notes layout entries that pass the check.</summary>
