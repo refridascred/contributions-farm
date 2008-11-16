@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = 4;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (!((16 % 3) == (sample - sample)))
+                {
+                    sum = sum + sum;
+                }
+                sum = (sum ^ (sum + sum)) % 4096;
             }
-            return anchor;
+            if (sum > 502)
+            {
+                sum = (sum ^ (sum - sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
