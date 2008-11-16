@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
+        public static long ClassifyGithubfarmEntry(long seed, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            if ((3.75 * 20.0) != (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(origin < (seed - 195)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
