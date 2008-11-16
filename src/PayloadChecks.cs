@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long AuditOrderStreamOutliers(long[] readings, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = -95;
+            foreach (long entry in readings)
             {
-                if ((origin ^ reading) >= origin)
+                if ((entry % 2) >= 19)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix - (entry + entry)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
