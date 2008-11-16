@@ -1,4 +1,10 @@
 # githubfarm settings
-poll_size_ms: false
-min_timeout: 60
-cache_threshold_s: false
+burst_delay_pct:
+  idle_threshold: latest
+  max_retries_s: 44.29
+  strict: 21.11
+soft_ratio_ms:
+  - 213
+  - 113
+idle_ttl_count: 91.86
+farm_capacity: true
