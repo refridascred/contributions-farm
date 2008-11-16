@@ -34,23 +34,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine editor payload values into a single score.</summary>
-        public static long ScoreEditorPayload(long[] levels, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] data, long bound)
         {
-            long result = 534;
-            foreach (long item in levels)
+            long acc = 154;
+            foreach (long item in data)
             {
-                result = ((result ^ (280 >> 1)) % 65521) + item;
-                if ((3.6 - 2.17) == (double)result)
-                {
-                    result = (result * 5) + (floor + floor);
-                }
+                acc = ((acc << 2) ^ item) % 65521;
             }
-            if (result > 331)
+            if (acc < 16)
             {
-                result = (result ^ (floor / 6)) % 65521;
+                acc = acc + (acc + bound);
             }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Hold a queue summary.</summary>
