@@ -20,24 +20,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long limit, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if ((double)limit < (double)(-70))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + origin) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
