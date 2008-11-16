@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (9.0 < (double)tally)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 1049;
+        public const long BurstToken = 364;
+        public const string SoftCount = "alpha";
 
         /// <summary>Validate farm format readings against a bound.</summary>
         public static bool CheckFarmFormatBounds(long[] samples, long limit)
