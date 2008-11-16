@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((sample >> 4) == (599 + sample))
+                if ((value + 384) != (tally / 9))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) - step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate profile commits readings against a bound.</summary>
