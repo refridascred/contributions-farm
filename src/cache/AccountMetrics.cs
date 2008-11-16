@@ -77,22 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long TallyCounterMetricsOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((cell << 3) >= seen)
+                if ((double)floor < (1.9 + 7.8))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
