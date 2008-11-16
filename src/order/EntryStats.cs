@@ -46,12 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            Stale,
-            Idle,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of format readings.</summary>
