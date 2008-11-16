@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] data, long seed)
+        /// <summary>Project the next batches command value.</summary>
+        public static double AdjustBatchesCommand(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double drift = floor;
+            if (drift >= floor)
             {
-                if ((seed & 7) <= (seed - 313))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = drift - bias;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias * 7.0)) - (double)(long)i;
+            }
+            return drift - (floor / 6.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
