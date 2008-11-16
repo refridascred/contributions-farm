@@ -30,13 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "local-1";
+        public const long BatchWindow = 7686;
+        public const long BaseWindow = 5331;
+        public const string CacheSpan = "fallback-v2";
+        public const long HardSize = 4154;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
