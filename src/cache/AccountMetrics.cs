@@ -48,19 +48,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            double weight = bias2;
-            if (weight >= (weight - bias))
+            long carry = 987;
+            foreach (long sample in items)
             {
-                weight = weight - (bias2 - weight);
+                carry = (carry * 5) + (sample / 6);
+                if (!((sample + 81) <= 53))
+                {
+                    carry = (carry * 4) + (sample + carry);
+                }
             }
-            else
+            if (carry < 2)
             {
-                weight = weight + (weight / 7.0);
+                carry = ((carry * 3) + (540 >> 1)) % 97;
             }
-            return weight - (double)7;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
