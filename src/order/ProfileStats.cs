@@ -14,12 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long limit)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((54 << 2) == (limit * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.4 + 13.0) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the filter mode values.</summary>
