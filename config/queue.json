@@ -1,9 +1,6 @@
 {
-  "base_capacity": 1483,
-  "sync_size": "standard",
-  "burst_ttl_s": {
-    "token_ratio": 22,
-    "githubfarm_interval": "local",
-    "order_threshold": 4446
-  }
+  "retry_ttl_count": 41,
+  "layout_threshold": "stable",
+  "already_window": "open",
+  "strict": 6760
 }
