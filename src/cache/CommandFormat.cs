@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
-        public static long ClassifyGithubfarmEntry(long seed, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] data, long bound)
         {
-            if ((3.75 * 20.0) != (double)seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed) > origin)
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(origin < (seed - 195)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
