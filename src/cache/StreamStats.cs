@@ -50,13 +50,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            Closed,
-            Synced,
-            Locked,
-            Failed,
+            double weight = (double)(279 >> 4);
+            if (weight < ratio)
+            {
+                weight = weight + 8.3;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (bias / 3.0)) + (double)(long)i;
+            }
+            return weight + (bias + 12.0);
         }
     }
 }
