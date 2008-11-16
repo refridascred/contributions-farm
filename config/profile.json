@@ -1,6 +1,5 @@
 {
-  "idle_threshold": "local",
-  "soft_interval": "legacy",
-  "cluster_retries": "cached",
-  "token_depth": [12, 175]
+  "min_limit": "cached",
+  "dry_run": 100,
+  "poll_ratio_count": ["staging", "fallback"]
 }
