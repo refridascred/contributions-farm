@@ -20,17 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)201 / 9.0;
+            if (weight > (ratio - ratio))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + (9.66 / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (ratio - span)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Project the next contributi stream value.</summary>
