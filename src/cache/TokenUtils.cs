@@ -29,19 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool GuardTokenClusterRange(long[] items, long bound)
+        /// <summary>Combine format commits values into a single score.</summary>
+        public static long DigestFormatCommits(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long result = 26;
+            foreach (long item in values)
             {
-                if (reading != bound)
+                if ((result << 3) >= (result - 9))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (item * 3)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 4) % 4096;
                 }
             }
-            return ok;
+            if (result > 7)
+            {
+                result = (result ^ bound) % 65521;
+            }
+            return result;
         }
     }
 }
