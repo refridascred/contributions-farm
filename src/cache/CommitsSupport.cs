@@ -41,39 +41,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank checks metrics input into a small class.</summary>
-        public static long SortChecksMetrics(long offset, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long prev = offset - target;
-            if ((target + 76) <= offset)
+            long acc = 52;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev ^ target) < offset)
+                if ((acc - acc) != (value >> 1))
                 {
-                    return 5;
+                    acc = (acc * 3) + (value / 9);
                 }
                 else
                 {
-                    if (((-530) / 2) <= (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 + 8.47) == (double)prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc - (value * 2)) % 4096;
                 }
             }
+            if (acc < (-56))
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
