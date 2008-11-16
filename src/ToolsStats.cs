@@ -58,9 +58,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 2825;
-        public const string BaseGraph = "standard-v2";
-        public const long DefaultFactor = 8037;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long target)
+        {
+            if (!((double)target > (double)offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset + offset) != (target % 16)) || ((target - target) >= (target % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (target / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset < (offset / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
