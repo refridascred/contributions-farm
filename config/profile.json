@@ -1,7 +1,19 @@
 {
-  "persist": 250,
-  "cache_threshold": 2442,
-  "filter_retries": true,
-  "default_capacity_count": 93.5,
-  "idle_timeout": 78.16
+  "layout_ratio": 1024,
+  "sync_delay": {
+    "contributi_capacity": "stable",
+    "batch_interval_s": "local",
+    "soft_ttl_s": {
+      "poll_window": "green",
+      "strict": 500,
+      "dry_run": ["open", "eu-west", "blue"],
+      "schema_interval": 8698,
+      "support_delay": true,
+      "retry_threshold": "cached"
+    },
+    "stats_size": [331, 294],
+    "audit": 100
+  },
+  "persist": ["local", "green", "latest", "local"],
+  "poll_delay_count": [258, 38, 193, 172]
 }
