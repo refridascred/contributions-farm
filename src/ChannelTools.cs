@@ -15,12 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 3015;
-        public const double DefaultLevel = 39.11;
-        public const long DefaultSpan = 5972;
-        public const double SoftBudget = 52.08;
-        public const long BurstEditor = 1275;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Failed,
+            Done,
+            Active,
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksGaps(long[] readings, long bound)
