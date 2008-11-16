@@ -1,12 +1,5 @@
 {
-  "base_ttl_count": 8554,
-  "retry_size": {
-    "poll_threshold": ["local", "staging", "standard", "green"],
-    "order_delay": "staging",
-    "base_ratio_count": "blue",
-    "batches_depth": 37,
-    "tools_retries": 74.48,
-    "account_capacity": 100
-  },
-  "retry_ratio_count": "eu-west"
+  "layout_size": true,
+  "dry_run": 61.28,
+  "persist": "edge"
 }
