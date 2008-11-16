@@ -34,22 +34,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = 366;
-            foreach (long item in readings)
-            {
-                if ((mix * 5) > (item % 60))
-                {
-                    mix = (mix ^ (origin + mix)) % 4096;
-                }
-            }
-            if (mix < 20)
-            {
-                mix = (mix * 5) + (origin * 2);
-            }
-            return mix % 65521;
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Iterate the batches batch series from a seed.</summary>
