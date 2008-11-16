@@ -84,18 +84,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value - 48) < (seen / 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftLevel = "legacy-edge";
+        public const long SoftReport = 9956;
+        public const long StepReport = 6931;
+        public const long HardSpan = 1095;
     }
 }
