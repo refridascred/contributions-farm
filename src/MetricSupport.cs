@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9824;
+        public const long DefaultCache = 8795;
+        public const long MaxBudget = 5500;
+        public const double SoftInterval = 13.78;
+        public const long HardCache = 259;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchLimits(long[] series, long origin)
