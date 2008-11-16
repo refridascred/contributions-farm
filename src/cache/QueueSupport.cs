@@ -12,26 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total - ((long)i * 4)) % 4096;
-                total = ((total * 3) + (total << 2)) % 101;
-                if ((308 << 2) >= (total + floor))
-                {
-                    total = ((total * 5) + (total * 3)) % 97;
-                    total = total - floor;
-                }
-                else
-                {
-                    total = (total - (floor + (long)i)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
