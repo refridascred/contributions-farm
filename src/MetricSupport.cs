@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a graph contributi reading by value.</summary>
+        public static long SeekGraphContributiIndex(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
