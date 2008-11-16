@@ -48,19 +48,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a stream already counter forward.</summary>
-        public static long IterateStreamAlready(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = 330;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state << 2) ^ ((long)i - 0)) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                sum = (sum ^ (sample % 3)) % 65521;
             }
-            return state;
+            if (sum < 647)
+            {
+                sum = (sum * 2) + (9 * 3);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first report payload entry that matches the target.</summary>
