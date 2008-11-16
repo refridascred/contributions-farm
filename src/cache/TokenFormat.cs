@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next already entry value from a seed.</summary>
-        public static long RollAlreadyEntry(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] data, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                carry = (carry ^ (carry - floor)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Check that every schema window entry stays within the limit.</summary>
