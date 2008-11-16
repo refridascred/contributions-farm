@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state << 2) ^ (state + step);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Paused,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate record samples.</summary>
