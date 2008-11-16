@@ -67,15 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] data, long step)
         {
-            long anchor = 999;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = ((((anchor << 3) ^ (anchor + anchor)) % 65521) + value) - seed;
+                if (hits < step)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
