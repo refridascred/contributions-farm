@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue already readings against a rule.</summary>
-        public static long CountQueueAlreadyGaps(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= (531 & 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the account class values.</summary>
