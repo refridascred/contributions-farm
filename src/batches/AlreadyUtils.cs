@@ -12,15 +12,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long FoldFarmReport(long[] levels, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long state = 34;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                state = ((state << 3) ^ (510 + sample)) % 101;
+                if ((state - limit) <= limit)
+                {
+                    state = (state + (limit & 127)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (long)levels.Length;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
