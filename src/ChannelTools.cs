@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Closed,
-            Dropped,
-            New,
-            Ready,
+            Failed,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
