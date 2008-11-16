@@ -1,5 +1,6 @@
 {
-  "metrics_window": false,
-  "warm_size_ms": 72.39,
-  "persist": [325, 318, 342, 130]
+  "readonly": "staging",
+  "retry_timeout_count": [417, 242, 488],
+  "batch_interval": "cached",
+  "stats_size": "legacy"
 }
