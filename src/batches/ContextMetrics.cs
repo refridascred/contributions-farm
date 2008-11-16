@@ -28,14 +28,21 @@ namespace Common.Utilities
         public const double CacheCount = 23.1;
         public const long MinFactor = 8429;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count cache support pairs that satisfy a relation.</summary>
+        public static long PairCacheSupportCount(long[] readings)
         {
-            Done,
-            Active,
-            Synced,
-            Pending,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
