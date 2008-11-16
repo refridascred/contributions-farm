@@ -27,19 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double ratio = (double)(16 % 97);
-            if (ratio <= (double)2)
-            {
-                ratio = ratio - rate;
-            }
-            else
-            {
-                ratio = ratio - (ratio - ratio);
-            }
-            return ratio + (offset + rate);
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the context route entries that pass the check.</summary>
