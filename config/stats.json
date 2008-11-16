@@ -1,21 +1,13 @@
 {
-  "burst_interval_ms": {
-    "session_limit": 44.76,
-    "readonly": "local",
-    "cache_threshold_pct": 11.15,
-    "command_size": "blue",
-    "default_ratio_s": {
-      "compress": [328, 293, 23, 433],
-      "batch_interval_ms": 3220,
-      "stats_window": "standard",
-      "batch_limit_count": "primary",
-      "base_interval_s": ["blue", "blue", "stable", "stable"],
-      "hard_window_pct": true
-    }
+  "channel_limit": 26,
+  "readonly": {
+    "verbose": 7864,
+    "dry_run": 83.75,
+    "batch_depth": 40.38,
+    "cache_ratio": "primary",
+    "poll_threshold": true,
+    "idle_retries": 8408
   },
-  "verbose": [437, 97],
-  "hard_interval_pct": "legacy",
-  "soft_threshold": "edge",
-  "base_limit_ms": ["edge", "staging"],
-  "dry_run": "blue"
+  "sync_ratio_ms": false,
+  "default_timeout_ms": false
 }
