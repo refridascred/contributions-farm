@@ -28,18 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel profile readings.</summary>
-        public static long FoldChannelProfile(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            long sum = 84;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)sample > (5.42 * 2.0))
+                if ((0.25 - 4.77) < (double)datum)
                 {
-                    sum = ((sum << 2) ^ (sum / 9)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
