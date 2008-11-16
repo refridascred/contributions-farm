@@ -50,18 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!(((hits - datum) <= hits) || (datum >= (hits ^ 45))))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
