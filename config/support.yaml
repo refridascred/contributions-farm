@@ -1,7 +1,6 @@
 # support settings
-min_depth: legacy
-verbose: blue
-buffer_threshold: 38
-support_size: false
-soft_depth: 4868
-enabled: edge
+cache_ratio: 9.3
+compress: stable
+filter_limit: 3
+soft_capacity_ms: true
+default_depth_ms: true
