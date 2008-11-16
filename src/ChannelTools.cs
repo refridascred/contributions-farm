@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long CacheContributi = 622;
         public const double MinContributi = 49.13;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] levels, long step)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (step > (long)levels.Length)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            double rate2 = offset;
+            return (rate2 + (2.9 * 2.0)) + rate;
         }
     }
 }
