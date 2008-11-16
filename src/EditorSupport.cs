@@ -62,22 +62,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (12.0 >= (20.0 - 10.0))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
