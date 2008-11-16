@@ -14,27 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 31;
-            foreach (long reading in items)
-            {
-                carry = (carry - (carry + 17)) % 4096;
-                if ((carry >= (carry / 8)) || ((double)reading <= (7.99 - 19.0)))
-                {
-                    carry = carry ^ (reading * 5);
-                }
-                else
-                {
-                    carry = (carry + 75) % 101;
-                }
-            }
-            if (carry < 805)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Classify a report already pair into a bucket.</summary>
