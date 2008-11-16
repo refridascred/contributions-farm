@@ -37,22 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long FoldQueueStats(long[] readings, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long origin)
         {
-            long score = 131;
+            bool found = true;
             foreach (long cell in readings)
             {
-                if ((limit - limit) <= 473)
+                if (cell < origin)
                 {
-                    score = ((score ^ (long)readings.Length) % 65521) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 887)
-            {
-                score = ((score << 2) ^ (score % 12)) % 1000;
-            }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
