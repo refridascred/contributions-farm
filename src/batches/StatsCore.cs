@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long bound)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor < (235 >> 2))
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
                 {
-                    mark = ((mark - floor) % 1000) - cell;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
