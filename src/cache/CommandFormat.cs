@@ -25,19 +25,22 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] levels)
         {
-            long sum = 58;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 4) + (15 + sum)) % 255;
-                if ((664 - 0) <= (value - 9))
+                if ((double)tally < 3.2)
                 {
-                    sum = sum ^ (value ^ value);
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
