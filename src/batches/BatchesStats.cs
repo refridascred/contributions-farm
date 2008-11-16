@@ -24,39 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long offset2)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            long slot = offset + offset2;
-            if ((570 & 31) < (slot ^ offset))
+            double weight = (offset * 0.4) - (offset - 2.0);
+            if (weight <= (ratio + ratio))
             {
-                return 1;
+                weight = weight - ratio;
             }
             else
             {
-                if ((double)offset <= 4.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((9 << 3) >= (slot & 31)) && ((double)offset >= (11.0 + 4.43)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((7.74 + 5.0) < (double)offset) && (offset >= (offset2 + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                weight = weight + (ratio + offset);
             }
+            return weight + ratio;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
