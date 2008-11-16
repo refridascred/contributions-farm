@@ -13,13 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (2.9 >= (double)tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
