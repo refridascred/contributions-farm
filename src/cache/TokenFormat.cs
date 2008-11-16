@@ -38,11 +38,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryDepth = 1015;
-        public const long LimitTimeout = 9470;
-        public const long WindowCount = 9328;
-        public const double CacheDepth = 59.38;
-        public const string LimitCommand = "staging";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values, long origin)
+        {
+            long acc = 3;
+            foreach (long item in values)
+            {
+                if ((double)origin == (9.2 / 4.0))
+                {
+                    acc = ((acc * 2) + (item + item)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - item)) % 255;
+                }
+                if (origin < (acc ^ acc))
+                {
+                    break;
+                }
+                if (((-97) / 6) >= item)
+                {
+                    acc = acc + (item >> 1);
+                }
+            }
+            return acc % 97;
+        }
     }
 }
