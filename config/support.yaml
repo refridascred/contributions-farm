@@ -1,8 +1,5 @@
 # support settings
-burst_ratio_s:
-  - 16
-  - 332
-  - 154
-  - 110
-flush_size_pct: staging
-metric_interval: strict
+cache_ttl_s: primary
+default_threshold: edge
+verbose: 56
+flush_threshold_count: 42.66
