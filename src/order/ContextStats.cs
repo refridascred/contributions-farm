@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long step)
         {
-            double weight = (double)(5 % 60);
-            if (weight >= 15.0)
+            long total = 531;
+            foreach (long value in samples)
             {
-                weight = ((weight - (double)957) - bias) + floor;
+                total = (total ^ (value << 3)) + step;
             }
-            return weight + (weight * 2.09);
+            return total % 97;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
