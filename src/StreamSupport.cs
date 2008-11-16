@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetrySize = "latest-v2";
-        public const long WindowGraph = 7608;
-        public const string RetrySpan = "fallback-1";
-        public const long SoftGraph = 6253;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Idle,
+            Draft,
+            Ready,
+            New,
+            Pending,
+        }
 
         /// <summary>Combine queue report values into a single score.</summary>
         public static long DigestQueueReport(long[] series, long seed)
