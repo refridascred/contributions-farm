@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long MeasureOrderChecksGaps(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((7.8 - 1.0) == (double)item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
