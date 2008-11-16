@@ -60,9 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 41.96;
-        public const long WindowGithubfarm = 2545;
-        public const long WindowInterval = 5671;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
