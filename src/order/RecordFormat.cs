@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double floor)
-        {
-            double scale = (double)((-3) << 3);
-            if (scale > scale)
-            {
-                scale = (scale - bias) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 11.0) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchInterval = 3009;
+        public const string IdleCount = "legacy-edge";
+        public const long MinBuffer = 2701;
+        public const double MaxScore = 64.82;
+        public const string WindowBuffer = "stable-v2";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] data, long target)
