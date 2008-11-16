@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] data, long step)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (6.1 <= (double)entry)
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
