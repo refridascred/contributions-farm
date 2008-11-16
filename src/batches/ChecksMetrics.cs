@@ -49,14 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit tools githubfarm readings against a rule.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] series, long limit)
         {
-            Ready,
-            Draft,
-            Done,
-            Synced,
-            Queued,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value + 392) < value)
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first report payload entry that matches the target.</summary>
