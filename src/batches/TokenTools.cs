@@ -25,18 +25,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many batch cache samples are out of range.</summary>
-        public static long TallyBatchCacheMatches(long[] readings, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((hits * 2) < (-34)) && ((origin < (item - hits)) && ((double)hits <= (double)item)))
+                if ((matches >= (seed + 98)) && ((8 * 5) < (entry + matches)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
