@@ -63,14 +63,22 @@ namespace Common.Utilities
             return weight - (double)7;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] levels)
         {
-            Stale,
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 3) >= seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
