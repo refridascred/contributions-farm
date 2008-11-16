@@ -62,31 +62,19 @@ namespace Common.Utilities
         public const long HardInterval = 4676;
         public const double DefaultTimeout = 80.63;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long origin, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] values, long limit)
         {
-            if ((double)offset <= (5.89 + 1.79))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + offset) == (offset + origin))
+                if (value <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 15) < (origin - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
