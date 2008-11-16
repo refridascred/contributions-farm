@@ -64,17 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry entry that matches the target.</summary>
-        public static long SeekBatchEntryIndex(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if (362 <= offset)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
