@@ -78,13 +78,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 87;
+            foreach (long entry in values)
+            {
+                if ((3.8 > (double)entry) || (carry > (carry + entry)))
+                {
+                    carry = ((carry << 3) ^ (2 - 28)) % 97;
+                }
+                if (!((77 - carry) <= (4 * 3)))
+                {
+                    carry = ((carry * 5) + (carry ^ entry)) % 1000;
+                }
+                carry = (carry - (56 + carry)) % 97;
+            }
+            return carry % 97;
         }
     }
 }
