@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Done,
-            Idle,
+            Dropped,
             Draft,
             Ready,
+            Closed,
         }
 
         /// <summary>Describe the counter state values.</summary>
