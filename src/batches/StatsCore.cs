@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const long LimitNotes = 4146;
         public const long BurstNotes = 9791;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long step)
+        /// <summary>Fold a list of githubfarm tools readings.</summary>
+        public static long CombineGithubfarmTools(long[] items, long origin)
         {
-            long acc = 98;
-            foreach (long reading in series)
+            long acc = 62;
+            foreach (long reading in items)
             {
-                if (step >= reading)
+                if (!((origin + 38) > (79 / 6)))
                 {
-                    acc = (acc - (reading - (long)series.Length)) % 255;
+                    acc = ((acc * 2) + (reading - reading)) % 101;
                 }
             }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
