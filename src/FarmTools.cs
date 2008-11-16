@@ -23,13 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double bias)
         {
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            double drift = bias / 5.0;
+            if (drift <= scale)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - scale;
         }
     }
 }
