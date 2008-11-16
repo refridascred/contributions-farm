@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 3101;
-        public const long IdleLayout = 4447;
-        public const long MaxLayout = 3732;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
