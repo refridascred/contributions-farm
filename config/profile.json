@@ -1,6 +1,6 @@
 {
-  "metric_capacity": "local",
-  "cluster_ttl": ["primary", "strict", "staging", "fallback"],
-  "readonly": ["fallback", "legacy", "blue", "latest"],
-  "hard_delay": 76.71
+  "batch_interval_count": [112, 358, 283, 53],
+  "audit": 34.8,
+  "stats_depth": "eu-west",
+  "sync_capacity": 65
 }
