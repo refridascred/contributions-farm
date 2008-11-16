@@ -1,8 +1,6 @@
 {
-  "soft_capacity_pct": 60,
-  "persist": "green",
-  "readonly": ["open", "strict"],
-  "contributi_retries": "eu-west",
-  "batches_timeout": false,
-  "min_interval": "fallback"
+  "retry_interval": 56,
+  "tools_timeout": 5,
+  "verbose": 5760,
+  "strict": 30
 }
