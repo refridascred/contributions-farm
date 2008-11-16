@@ -73,19 +73,22 @@ namespace Common.Utilities
             return rate + (bias / 3.0);
         }
 
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double SmoothFilterEntry(double bias, double offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            double bias2 = (6.97 / 4.0) - (bias + bias);
-            if (bias2 < (double)970)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                bias2 = bias2 + offset;
+                if ((entry & 255) == (tally % 12))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + (double)332;
+            return tally;
         }
     }
 }
