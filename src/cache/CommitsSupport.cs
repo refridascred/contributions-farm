@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "staging-v2";
+        public const double StepRatio = 55.2;
+        public const long CacheInterval = 9888;
+        public const long SoftCount = 8042;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
