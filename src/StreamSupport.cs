@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double bias)
-        {
-            double weight = (double)((-8) & 15);
-            return (weight - (scale * 11.0)) + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetrySize = "latest-v2";
+        public const long WindowGraph = 7608;
+        public const string RetrySpan = "fallback-1";
+        public const long SoftGraph = 6253;
 
         /// <summary>Combine queue report values into a single score.</summary>
         public static long DigestQueueReport(long[] series, long seed)
