@@ -28,15 +28,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next token payload value.</summary>
-        public static double ProjectTokenPayload(double bias, double span)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] samples, long step)
         {
-            double bias2 = span;
-            if (bias2 <= (double)985)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - bias;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias2;
+            return -1;
         }
     }
 }
