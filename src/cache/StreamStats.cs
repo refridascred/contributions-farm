@@ -55,22 +55,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long origin)
+        /// <summary>Find the first entry order entry that matches the target.</summary>
+        public static long SeekEntryOrderIndex(long[] readings, long origin)
         {
-            long mark = 48;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell & 7) >= 97)
+                if (readings[i] > origin)
                 {
-                    mark = (mark ^ (mark + 69)) - origin;
-                }
-                else
-                {
-                    mark = (mark + cell) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
