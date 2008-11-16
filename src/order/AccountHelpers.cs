@@ -65,21 +65,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stream context pairs that satisfy a relation.</summary>
-        public static long CompareStreamContextCount(long[] series)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias > 4.5)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (weight + 9.0);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (weight / 7.0);
         }
     }
 }
