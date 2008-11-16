@@ -1,25 +1,5 @@
 # support settings
-min_delay: standard
-batch_limit_ms: 1024
-audit: 29.05
-flush_capacity_ms:
-  contributi_timeout: 58.19
-  retry_capacity_pct: false
-  hard_window_pct: stable
-strict: true
-compress:
-  schema_threshold: 75
-  enabled:
-    hard_delay_count: standard
-    dry_run: 95.2
-    max_limit_s: legacy
-    warm_threshold_s: 20
-    readonly:
-      - open
-      - latest
-      - cached
-      - legacy
-    enabled: true
-  contributi_threshold: 2.68
-  retry_window_ms: fallback
-  account_timeout: latest
+retry_ratio_pct: staging
+audit: true
+cache_retries: fallback
+layout_window: false
