@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Locate a tools window reading by value.</summary>
+        public static long SeekToolsWindowIndex(long[] values, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
