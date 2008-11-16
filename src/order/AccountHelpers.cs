@@ -37,32 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] values)
         {
-            long next = origin + floor;
-            if ((next < origin) || ((next / 8) > (next << 1)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 <= (origin - origin)) || (0.1 <= (double)next))
+                if (!(((hits / 7) >= (45 - hits)) && ((20.0 / 3.0) >= (double)hits)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (0 <= (next >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
