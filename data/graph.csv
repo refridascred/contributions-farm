@@ -1,6 +1,7 @@
-id,rank,state,region
-1,39.59,900,40.82
-2,50.86,442,60.26
-3,86.65,latest,eu-west
-4,716,388,988
-5,429,strict,460
+id,region,rank,count
+1,948,open,12.17
+2,21.4,57.67,stable
+3,open,324,86.18
+4,17.52,eu-west,30.28
+5,92.08,standard,7
+6,strict,595,320
