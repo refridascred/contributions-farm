@@ -1,5 +1,10 @@
 {
-  "cache_ttl": 78,
-  "flush_size": 74,
-  "command_capacity": "green"
+  "base_size_s": "eu-west",
+  "burst_ttl_ms": "legacy",
+  "dry_run": {
+    "poll_size_s": "stable",
+    "soft_ratio": "legacy",
+    "tools_window": 9037
+  },
+  "sync_size": 30
 }
