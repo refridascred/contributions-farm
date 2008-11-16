@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] samples, long limit)
         {
-            Stale,
-            Active,
-            Paused,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
