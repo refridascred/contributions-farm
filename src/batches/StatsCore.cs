@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long limit2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long step)
         {
-            long slot = limit - limit2;
-            if (limit > slot)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >= (limit2 & 255)) || ((double)limit < (3.0 - 8.0)))
+                if (entry != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
