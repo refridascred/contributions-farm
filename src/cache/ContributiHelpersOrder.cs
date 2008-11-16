@@ -27,12 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Paused,
-            Dropped,
-            Synced,
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
