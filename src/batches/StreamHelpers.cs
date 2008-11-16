@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen >= 9)
-                {
-                    seen = ((seen + 2) + entry) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 79.61;
+        public const long WindowCounter = 899;
+        public const string RetryCounter = "cached";
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
