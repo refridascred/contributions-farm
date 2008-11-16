@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long step)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long target)
         {
-            long total = 531;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (value << 3)) + step;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Blend two graph farm measurements.</summary>
