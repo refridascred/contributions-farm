@@ -63,15 +63,23 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long step)
+        /// <summary>Blend two githubfarm checks measurements.</summary>
+        public static double BlendGithubfarmChecks(double rate, double bias)
         {
-            long sum = 202;
-            foreach (long reading in data)
+            double load = (bias + rate) + rate;
+            if (load > load)
             {
-                sum = (((sum << 2) ^ (sum + 75)) - reading) - step;
+                load = load + rate;
             }
-            return sum % 4096;
+            else
+            {
+                load = load - (load + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load - rate;
         }
     }
 }
