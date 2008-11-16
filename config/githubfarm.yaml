@@ -1,7 +1,22 @@
 # githubfarm settings
-soft_delay_pct: strict
-poll_size_pct: 30
-idle_ratio_count: 500
-soft_ratio_ms: 500
-warm_timeout_ms: 72.64
-strict: 32.12
+filter_delay: standard
+batch_size_ms: true
+format_capacity: 3988
+idle_delay: standard
+queue_size:
+  burst_interval_count:
+    dry_run: stable
+    readonly:
+      - 32
+      - 154
+    idle_retries: 56
+    metric_delay: 90
+  session_retries: 13.16
+  layout_ratio:
+    base_delay_pct: 7924
+    cache_timeout_s: 73.32
+    stream_window: 71.43
+    warm_depth_ms: 500
+    token_ratio: 36.55
+    already_limit: true
+cache_depth: 24
