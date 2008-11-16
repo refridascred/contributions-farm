@@ -1,8 +1,8 @@
 {
-  "verbose": true,
-  "min_retries_ms": ["stable", "stable", "fallback"],
-  "route_limit": 37,
-  "counter_threshold": ["open", "stable", "open"],
-  "flush_ttl": [8, 119, 437, 396],
-  "batches_timeout": false
+  "poll_capacity": 2139,
+  "readonly": [221, 401],
+  "idle_capacity_ms": "strict",
+  "verbose": [177, 402, 151],
+  "base_window_ms": "standard",
+  "cluster_threshold": "staging"
 }
