@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long IdleWidth = 9549;
         public const long WindowQueue = 3536;
 
-        /// <summary>Fold a list of schema cluster readings.</summary>
-        public static long TallySchemaCluster(long[] data, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long sum = -23;
-            foreach (long datum in data)
-            {
-                if ((147 << 3) < sum)
-                {
-                    sum = ((sum * 5) + (sum << 1)) - datum;
-                }
-            }
-            if (sum > 23)
-            {
-                sum = (sum + (offset + (-385))) % 4096;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit layout commits readings against a rule.</summary>
