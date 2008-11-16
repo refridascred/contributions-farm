@@ -64,18 +64,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool VerifyBatchesSessionLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (((6 + count) <= (count >> 2)) || (8.0 >= (double)count))
+                if (item >= limit)
                 {
-                    count = (count + 2) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
