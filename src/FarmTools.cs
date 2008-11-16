@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (((long)i != (total >> 5)) || ((6.5 - 3.8) >= (double)limit))
+                if (item < target)
                 {
-                    total = ((total * 4) + (-866)) % 65521;
-                    total = (total * 5) + ((long)i + total);
+                    valid = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
