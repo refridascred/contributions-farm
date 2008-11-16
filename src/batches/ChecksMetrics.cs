@@ -22,21 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Fold a list of session context readings.</summary>
+        public static long TotalSessionContext(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 32;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((sum << 3) <= (sum >> 5)) || (sum >= entry)))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (716 - entry)) % 255;
                 }
+                if (!!((sum % 64) != (entry + sum)))
+                {
+                    sum = (sum + entry) % 101;
+                }
+                sum = sum + entry;
             }
-            return count;
+            if (sum < 181)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
