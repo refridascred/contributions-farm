@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ratio + (ratio - gain);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] readings, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double rate = (double)(62 * 2);
+            if (rate > (weight - 2.5))
             {
-                if (count > (cell * 5))
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + floor;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (floor * 0.23)) - (double)(long)i;
+            }
+            return rate + (0.67 + floor);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
