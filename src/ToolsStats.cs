@@ -46,13 +46,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long score = 844;
+            foreach (long cell in series)
+            {
+                if ((2.5 * 15.0) >= (double)score)
+                {
+                    score = (score << 2) ^ cell;
+                }
+                else
+                {
+                    score = score ^ (9 << 1);
+                }
+            }
+            if (score > 962)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a route entry reading by value.</summary>
