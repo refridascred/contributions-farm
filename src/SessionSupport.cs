@@ -30,19 +30,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] items, long origin)
+        /// <summary>Blend two batches stream measurements.</summary>
+        public static double BlendBatchesStream(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double weight = 9.9;
+            if (weight <= weight)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = ((weight + weight) - scale) + floor;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 3.0) + (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
     }
 }
