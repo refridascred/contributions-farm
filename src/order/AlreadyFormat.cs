@@ -31,19 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next contributi stream value.</summary>
-        public static double SmoothContributiStream(double gain, double span)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double gain2 = (double)(435 + (-6));
-            if (gain2 > (gain / 5.0))
-            {
-                gain2 = gain2 + (double)62;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (span * 1.4)) - (double)(long)i;
-            }
-            return gain2 + (span - span);
+            Synced,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine editor payload values into a single score.</summary>
