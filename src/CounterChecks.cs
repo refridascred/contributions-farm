@@ -42,22 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((anchor - 7) == (75 ^ anchor))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                    anchor = anchor ^ (limit - 1);
-                }
-                anchor = (anchor + limit) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4683;
+        public const long BatchMetric = 2403;
+        public const string MaxMetric = "legacy-v2";
+        public const long StepWidth = 5971;
+        public const long RetryMetric = 1432;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] samples, long target)
