@@ -1,7 +1,27 @@
 {
-  "contributi_timeout": "staging",
-  "burst_threshold_ms": "cached",
-  "soft_timeout_s": 8220,
-  "persist": 25.34,
-  "min_ratio_ms": 44.14
+  "base_interval_pct": {
+    "soft_ttl": "latest",
+    "max_window_s": "primary",
+    "min_depth_ms": 49.44,
+    "audit": true,
+    "retry_timeout_s": 9119,
+    "min_threshold_s": 250
+  },
+  "sync_threshold_count": {
+    "audit": 22.66,
+    "enabled": 79.96,
+    "poll_timeout": false,
+    "batch_timeout_count": true,
+    "sync_threshold": false
+  },
+  "sync_retries_ms": {
+    "metric_interval": "green",
+    "record_timeout": 73,
+    "soft_interval_s": false,
+    "cache_ratio": false,
+    "base_retries": [164, 328, 462, 409],
+    "idle_depth": "cached"
+  },
+  "sync_limit_ms": 24,
+  "verbose": ["staging", "open", "fallback"]
 }
