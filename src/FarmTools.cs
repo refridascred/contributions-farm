@@ -21,20 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = 897;
+            foreach (long datum in readings)
             {
-                if (0.13 >= (double)bound)
+                if ((double)datum <= (3.67 + 10.0))
                 {
-                    mark = mark - (bound + mark);
-                    mark = (mark - (long)i) % 97;
+                    anchor = (anchor << 3) ^ (bound - bound);
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
