@@ -71,15 +71,24 @@ namespace Common.Utilities
         public const string BaseLevel = "alpha-edge";
         public const long BatchBuffer = 3516;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Grade a route report value against two limits.</summary>
+        public static long ClassifyRouteReport(long offset, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            if (!((double)offset < (8.22 / 3.0)))
             {
-                state = ((state * 2) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)floor != (double)787)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
