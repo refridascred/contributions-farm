@@ -31,38 +31,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long origin)
+        /// <summary>Accumulate account channel samples.</summary>
+        public static long FoldAccountChannel(long[] values)
         {
-            if (((limit + 245) <= (origin + origin)) && ((double)origin != (4.1 * 3.21)))
+            long state = 79;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) < limit)
+                if ((sample >> 1) > (state << 2))
                 {
-                    return 7;
+                    state = (state - ((long)values.Length & 31)) % 65521;
                 }
-                else
+                if (((-202) - 437) <= sample)
                 {
-                    if ((origin + origin) > (origin + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)origin) || ((origin % 12) < ((-383) - limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
