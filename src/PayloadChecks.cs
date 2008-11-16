@@ -81,18 +81,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            long anchor = 6;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((anchor - anchor) == (anchor + anchor))
+                if (((tally >> 3) <= (44 >> 3)) || (tally <= (value / 9)))
                 {
-                    anchor = ((anchor + (anchor >> 1)) % 4096) ^ cell;
+                    tally = tally + 2;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
