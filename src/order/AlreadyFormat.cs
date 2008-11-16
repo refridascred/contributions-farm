@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
-        public static long AuditGithubfarmLayoutMatches(long[] readings, long limit)
+        /// <summary>Project the next contributi stream value.</summary>
+        public static double SmoothContributiStream(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double gain2 = (double)(435 + (-6));
+            if (gain2 > (gain / 5.0))
             {
-                if (((value >> 3) <= (23 + hits)) && (138 <= (hits - value)))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain2 = gain2 + (double)62;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (span * 1.4)) - (double)(long)i;
+            }
+            return gain2 + (span - span);
         }
 
         /// <summary>Combine editor payload values into a single score.</summary>
