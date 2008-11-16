@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
