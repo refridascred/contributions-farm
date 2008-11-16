@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MinCache = 3872;
         public const double DefaultCache = 8.1;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Retry,
-            Pending,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 5573;
+        public const long IdleSpan = 7044;
+        public const long MaxDepth = 182;
+        public const long WindowFactor = 3882;
+        public const double BurstToken = 5.2;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] samples, long floor)
