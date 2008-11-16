@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "legacy-v2";
-        public const long LimitRecord = 3345;
-        public const long HardRecord = 3334;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double span)
+        {
+            double mean = span;
+            if (mean >= (mean / 2.0))
+            {
+                mean = mean - (weight / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (span + 1.6)) + (double)(long)i;
+            }
+            return mean + 20.0;
+        }
 
         /// <summary>Accumulate commits stats samples.</summary>
         public static long TallyCommitsStats(long[] levels)
