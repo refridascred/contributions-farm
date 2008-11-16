@@ -29,38 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long origin)
         {
-            if ((double)offset <= (9.3 / 5.0))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > 13.0)
+                if (sample >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step << 1) <= (offset & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step <= (step + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
