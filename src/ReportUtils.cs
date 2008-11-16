@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!(((cell + seen) > (cell << 1)) && ((10.0 - 3.6) == (double)cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
