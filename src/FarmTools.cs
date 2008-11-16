@@ -25,12 +25,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Stale,
-            New,
-            Queued,
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
