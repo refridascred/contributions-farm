@@ -77,18 +77,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long CountEntryAlreadyGaps(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = 66;
+            foreach (long reading in series)
             {
-                if ((entry ^ entry) > (entry ^ 6))
+                if (1.2 < (double)bound)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 3) ^ (reading - bound);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
