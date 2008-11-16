@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheBudget = 1092;
-        public const string IdleCounter = "standard-1";
-        public const long MaxCount = 4027;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "legacy-v2";
+        public const long LimitRecord = 3345;
+        public const long HardRecord = 3334;
 
         /// <summary>Accumulate commits stats samples.</summary>
         public static long TallyCommitsStats(long[] levels)
