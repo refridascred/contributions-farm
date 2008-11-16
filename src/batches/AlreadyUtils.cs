@@ -44,19 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command support entries that pass the check.</summary>
-        public static long TallyCommandSupportGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally > (value % 2)) && ((value % 10) < tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 8135;
+        public const long BatchInterval = 6620;
+        public const double MinScore = 31.9;
+        public const long BurstFactor = 5271;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] values)
