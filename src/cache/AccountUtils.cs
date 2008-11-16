@@ -27,19 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the filter batches series from a seed.</summary>
-        public static long IterateFilterBatches(long seed)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((double)mix != (double)seed))
-                {
-                    mix = (mix * 2) + (mix << 3);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
