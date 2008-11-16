@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long origin)
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool VerifySchemaWindowBounds(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (value < origin)
+                if (entry > offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
