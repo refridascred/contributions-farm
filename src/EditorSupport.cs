@@ -56,11 +56,11 @@ namespace Common.Utilities
         public const long MaxBatches = 7141;
         public const long BatchDepth = 2890;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
