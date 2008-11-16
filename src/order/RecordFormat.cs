@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Blend two record order measurements.</summary>
+        public static double ProjectRecordOrder(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)880 / 9.0;
+            if (gain <= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (gain - rate)) - floor;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)171;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
