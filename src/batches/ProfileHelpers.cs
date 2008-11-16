@@ -24,21 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((offset - total) > total))
-                {
-                    total = (total + (total * 2)) % 97;
-                    continue;
-                }
-                total = ((total << 2) ^ ((long)i + total)) % 101;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
