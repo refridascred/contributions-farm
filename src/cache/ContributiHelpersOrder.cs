@@ -40,21 +40,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 67;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor * 5) + (anchor - anchor)) ^ datum;
+                anchor = (anchor + (limit >> 3)) % 65521;
+                if (!((double)anchor >= (1.0 + 3.51)))
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
