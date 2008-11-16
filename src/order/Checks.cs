@@ -49,13 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Failed,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftWidth = 11.11;
+        public const long HardGithubfarm = 9741;
+        public const long BatchGithubfarm = 7382;
+        public const double MaxInterval = 95.37;
+        public const string MinWidth = "staging-v2";
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double bias, double offset)
