@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of route entry readings.</summary>
+        public static long DigestRouteEntry(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 740;
+            foreach (long item in values)
+            {
+                carry = (carry * 5) + (item - seed);
+            }
+            if (carry < 56)
+            {
+                carry = (carry * 3) + (seed + seed);
+            }
+            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
