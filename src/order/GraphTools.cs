@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route window samples are out of range.</summary>
-        public static long MeasureRouteWindowMatches(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((double)sample != (double)seen) && (seen > (273 / 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
