@@ -1,5 +1,8 @@
 # support settings
-readonly: latest
-metrics_capacity: 66.46
-already_ratio: staging
-min_window_pct: 8265
+warm_window:
+  - edge
+  - primary
+  - edge
+  - staging
+schema_window: green
+retry_retries_count: green
