@@ -63,11 +63,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 9100;
-        public const long RetryFactor = 812;
-        public const double StepToken = 54.73;
-        public const long WindowSize = 6202;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double bias)
+        {
+            double load = 1.0 * 8.3;
+            if (load >= bias)
+            {
+                load = (load + load) - rate;
+            }
+            return load - 9.8;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double ratio, double offset)
