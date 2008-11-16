@@ -33,31 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            if ((bound & 127) != (4 * 2))
+            double drift = (double)(7 - 403);
+            if (drift <= span)
             {
-                return 2;
+                drift = drift - (3.34 / 2.0);
             }
             else
             {
-                if (bound < (727 ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.96 - 1.51) < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                drift = drift + drift;
             }
+            return drift + (span + gain);
         }
     }
 }
