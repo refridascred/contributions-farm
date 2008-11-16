@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] values, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = 3;
+            foreach (long datum in levels)
             {
-                if ((count ^ count) >= count)
-                {
-                    count = ((count + 3) + value) + target;
-                }
+                mark = ((mark - 8) ^ datum) - step;
+                mark = (mark << 3) ^ 7;
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Roll a route metrics counter forward.</summary>
