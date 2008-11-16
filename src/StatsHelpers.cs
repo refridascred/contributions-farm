@@ -60,18 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long bound)
+        /// <summary>Validate batches profile readings against a bound.</summary>
+        public static bool ValidateBatchesProfileBounds(long[] levels, long seed)
         {
-            long total = 2;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((total * 5) <= (sample ^ 905))
+                if (reading <= seed)
                 {
-                    total = (total - (total << 3)) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
     }
 }
