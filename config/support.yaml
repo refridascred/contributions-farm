@@ -1,5 +1,8 @@
 # support settings
-filter_threshold: 7205
-enabled: 30.15
-min_limit_pct: eu-west
-poll_ttl_s: 38
+min_window: true
+sync_timeout: open
+min_timeout: false
+checks_retries: true
+cache_window:
+  - 250
+  - 10
