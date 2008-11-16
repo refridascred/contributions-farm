@@ -31,18 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] series, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((double)3 > (double)hits))
+                if (cell >= origin)
                 {
-                    hits = ((hits + 3) ^ reading) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
