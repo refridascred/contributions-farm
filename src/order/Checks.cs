@@ -47,11 +47,19 @@ namespace Common.Utilities
         public const double MaxInterval = 95.37;
         public const string MinWidth = "staging-v2";
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long origin)
         {
-            double rate = offset;
-            return rate - bias;
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
