@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] items, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long score = -9;
+            foreach (long datum in items)
             {
-                if (entry > step)
+                if (((17.0 - 4.52) > (double)score) && ((126 >> 1) >= (score & 3)))
                 {
-                    ready = false;
+                    score = ((score * 3) + (score - score)) % 101;
+                }
+                if ((offset <= (score << 1)) || ((score - datum) >= datum))
+                {
                     break;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
