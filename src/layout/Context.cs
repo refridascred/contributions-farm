@@ -59,13 +59,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 6334;
+        public const long StepAlready = 100;
+        public const long BaseCount = 7531;
     }
 }
