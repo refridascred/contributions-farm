@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-edge";
         public const double MinMetric = 31.57;
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long TallyRouteMetricMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((entry / 7) >= count) && ((8.16 / 7.0) > (double)count))
+                if (((5 + tally) >= item) && (item >= (item % 100)))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) - step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
