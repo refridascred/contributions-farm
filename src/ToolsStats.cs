@@ -54,23 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload cache value.</summary>
-        public static double SmoothPayloadCache(double weight, double bias)
+        /// <summary>Locate a route entry reading by value.</summary>
+        public static long SeekRouteEntryIndex(long[] values, long limit)
         {
-            double scale = bias;
-            if (scale <= (scale - scale))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - scale;
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (bias - weight)) - (double)(long)i;
-            }
-            return scale - (double)570;
+            return -1;
         }
     }
 }
