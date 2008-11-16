@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSize = 7607;
-        public const double SoftAccount = 37.09;
-        public const string StepFactor = "strict";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3729;
+        public const string WindowSupport = "stable-1";
+        public const double CacheWidth = 6.49;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] items)
