@@ -1,10 +1,11 @@
 # Command notes
 
-Keep counter and session names short and lowercase.
-A batch that stays idle for too long is moved to the queue list.
+Run the queue check before changing any buffer limits.
+Use already settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new queue fields
-- Prefer cluster defaults
+- Validate token input early
+- Log every commits change
+- Review tools limits each release
+- Document new editor fields
