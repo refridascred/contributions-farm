@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings, long floor)
         {
-            if (((double)limit != (9.1 * 8.0)) || ((double)limit <= 11.0))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((4 + origin) == (limit % 24)))
+                if ((floor <= (floor << 2)) && ((39 + entry) < (hits + (long)readings.Length)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= (6.0 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin / 6)) || (242 > (limit - origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
