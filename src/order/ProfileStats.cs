@@ -16,10 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "legacy-v2";
-        public const long RetryCommand = 5733;
-        public const long MaxScore = 1341;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            New,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
         public static bool VerifyTokenSchemaBounds(long[] samples, long seed)
