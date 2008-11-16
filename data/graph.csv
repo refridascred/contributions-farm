@@ -1,7 +1,6 @@
-id,owner,state
-1,970,cached
-2,latest,37
-3,4.22,852
-4,88.51,812
-5,staging,77.96
-6,fallback,357
+id,rank,weight
+1,367,fallback
+2,27.72,edge
+3,standard,strict
+4,legacy,66.45
+5,47.03,38
