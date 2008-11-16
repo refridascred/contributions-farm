@@ -32,15 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series, long limit)
         {
-            long acc = -8;
-            foreach (long value in levels)
+            long sum = 98;
+            foreach (long cell in series)
             {
-                acc = ((acc ^ acc) % 4096) + value;
+                if ((-3) > (474 - limit))
+                {
+                    sum = ((sum ^ (limit % 100)) % 1000) ^ cell;
+                }
+                sum = (sum ^ (sum ^ limit)) % 255;
             }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Hold a report info.</summary>
