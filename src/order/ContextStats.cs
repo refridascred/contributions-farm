@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long limit)
+        /// <summary>Digest a series of queue graph entries.</summary>
+        public static long ScoreQueueGraph(long[] items, long offset)
         {
-            long score = 7;
-            foreach (long datum in readings)
+            long carry = 61;
+            foreach (long reading in items)
             {
-                score = (score + (limit % 60)) - datum;
+                if (199 >= (offset - 358))
+                {
+                    carry = ((carry * 4) + (carry - reading)) % 1000;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Grade a order metric value against two limits.</summary>
