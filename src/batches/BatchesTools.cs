@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Check that every support cluster entry stays within the limit.</summary>
-        public static bool GuardSupportClusterRange(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (sample > step)
+                if ((8.09 + 7.4) == (double)sample)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
