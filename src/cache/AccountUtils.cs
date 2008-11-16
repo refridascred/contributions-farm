@@ -20,9 +20,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 2.15;
         public const long BaseRatio = 8587;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 9611;
-        public const string DefaultLevel = "strict-edge";
-        public const double MinAlready = 26.81;
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool VerifyTokenBatchesBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
