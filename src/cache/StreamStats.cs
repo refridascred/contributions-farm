@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long TotalChannelToken(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long offset)
         {
-            long result = 775;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result + value;
-                if (((result - value) < (value + value)) || ((result * 3) > result))
+                if (data[i] > offset)
                 {
-                    result = result + ((-7) ^ result);
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
