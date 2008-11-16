@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long origin)
         {
-            Idle,
-            Synced,
-            Paused,
-            Pending,
+            if (((double)origin != (7.0 + 8.5)) && (seed > (seed + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (5.3 > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 7) <= (3 * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
