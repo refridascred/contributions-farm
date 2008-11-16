@@ -1,5 +1,8 @@
 {
-  "layout_size": true,
-  "dry_run": 61.28,
-  "persist": "edge"
+  "soft_capacity_pct": 60,
+  "persist": "green",
+  "readonly": ["open", "strict"],
+  "contributi_retries": "eu-west",
+  "batches_timeout": false,
+  "min_interval": "fallback"
 }
