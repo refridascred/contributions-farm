@@ -92,17 +92,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits command sample.</summary>
-        public static long FindCommitsCommandIndex(long[] values, long origin)
+        /// <summary>Adjust a stats batch reading.</summary>
+        public static double SmoothStatsBatch(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = weight * 19.0;
+            if (gain < (gain / 3.0))
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - 3.52) + bias;
             }
-            return -1;
+            return gain - (double)8;
         }
     }
 }
