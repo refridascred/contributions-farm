@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const long MaxNotes = 883;
         public const long BurstDepth = 8163;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Failed,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
