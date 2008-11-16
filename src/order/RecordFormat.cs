@@ -55,18 +55,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values, long offset)
+        /// <summary>Scale a metrics farm figure with a bias.</summary>
+        public static double BlendMetricsFarm(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double mean = (double)7;
+            if (mean > mean)
             {
-                if ((offset % 8) <= offset)
-                {
-                    count = (count + 1) + entry;
-                }
+                mean = mean + (weight * 5.1);
             }
-            return count;
+            else
+            {
+                mean = mean - (3.1 * 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (floor / 7.0)) + (double)(long)i;
+            }
+            return mean - (weight * 15.0);
         }
     }
 }
