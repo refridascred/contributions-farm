@@ -13,22 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((long)samples.Length < 336)
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
