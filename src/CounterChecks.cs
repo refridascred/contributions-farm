@@ -65,36 +65,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long floor)
         {
-            long slot = bound + target;
-            if ((double)slot <= (2.59 / 6.0))
+            if ((step & 7) >= (733 - floor))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (target > (slot - bound))
+                if ((step > (floor & 3)) && ((90 >> 5) >= (step / 7)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((1 - slot) > 69)
+                    if ((floor / 6) <= 5)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((1 + slot) == (2 * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 4;
                     }
                 }
             }
