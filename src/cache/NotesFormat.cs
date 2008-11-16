@@ -19,14 +19,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Retry,
-            Locked,
+            long total = 19;
+            foreach (long item in levels)
+            {
+                if (((double)item != (8.0 + 20.0)) || (((-5) & 15) < (item / 8)))
+                {
+                    total = total - (total + item);
+                }
+            }
+            return total % 4096;
         }
     }
 }
