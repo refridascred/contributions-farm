@@ -80,23 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Look up the position of a commits command sample.</summary>
+        public static long FindCommitsCommandIndex(long[] values, long origin)
         {
-            double bias = gain;
-            if (bias > gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (floor / 5.0);
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (double)12;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 1.7) + (double)(long)i;
-            }
-            return bias - (double)34;
+            return -1;
         }
     }
 }
