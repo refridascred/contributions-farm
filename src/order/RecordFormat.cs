@@ -56,12 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every commits cache entry stays within the limit.</summary>
+        public static bool ValidateCommitsCacheBounds(long[] items, long limit)
         {
-            Synced,
-            Locked,
-            Draft,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
