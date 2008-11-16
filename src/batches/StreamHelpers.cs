@@ -74,9 +74,12 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSpan = 173;
-        public const long BaseFactor = 8514;
-        public const long BatchLayout = 6486;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
