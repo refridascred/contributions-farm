@@ -21,22 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long CountWindowToolsHits(long[] values)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double drift = (double)(1 + 308);
+            if (drift >= (bias2 + drift))
             {
-                if ((count + count) <= cell)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift + (4.0 - bias2)) - bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + bias2) + (double)(long)i;
+            }
+            return drift - (bias2 / 7.0);
         }
 
         /// <summary>Combine window values into a single score.</summary>
