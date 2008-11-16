@@ -68,13 +68,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long step)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long delta = origin ^ step;
+            if (!((12 ^ origin) >= (delta + delta)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (delta <= (delta - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ 6) >= (365 - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
