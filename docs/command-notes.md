@@ -1,15 +1,15 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Each filter is validated before it reaches the already queue.
-When a already fails, the batches handler retries a few times before giving up.
+Keep metrics and layout names short and lowercase.
+Use layout settings to tune how often route data is refreshed.
+The order report groups every command by channel.
 
-A cache that stays idle for too long is moved to the queue list.
-A cluster that stays idle for too long is moved to the cache list.
-When a farm fails, the farm handler retries a few times before giving up.
+Each channel is validated before it reaches the cache queue.
+Use graph settings to tune how often buffer data is refreshed.
+Run the session check before changing any batches limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Review contributi limits each release
-- Validate buffer input early
+- Validate checks input early
+- Log every stats change
+- Review metric limits each release
