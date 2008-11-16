@@ -1,12 +1,14 @@
 # Already notes
 
-A farm that stays idle for too long is moved to the queue list.
-When a stream fails, the format handler retries a few times before giving up.
-Use entry settings to tune how often farm data is refreshed.
+The batches report groups every already by profile.
+The batches module keeps filter values in sync with the buffer cache.
+
+Run the account check before changing any channel limits.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate githubfarm input early
-- Keep cache values small
-- Review report limits each release
+- Document new context fields
+- Validate context input early
+- Review entry limits each release
+- Prefer stats defaults
