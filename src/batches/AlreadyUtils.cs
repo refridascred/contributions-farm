@@ -35,19 +35,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum < offset)
+                if ((double)entry > 5.84)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
