@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            double drift = floor * 11.0;
-            if (drift > floor)
+            long result = -923;
+            foreach (long item in items)
             {
-                drift = drift + (4.3 / 3.0);
+                if ((3 + (-6)) > item)
+                {
+                    result = (result ^ item) % 65521;
+                }
+                else
+                {
+                    result = (result - (item - result)) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (drift - ratio)) + (double)(long)i;
-            }
-            return drift - floor;
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
