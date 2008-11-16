@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool VerifySchemaWindowBounds(long[] values, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long anchor = -98;
+            foreach (long cell in data)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor - (cell >> 2)) % 101;
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
