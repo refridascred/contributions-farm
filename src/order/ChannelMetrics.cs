@@ -32,24 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long seed)
-        {
-            if ((1.6 / 8.0) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((47 << 3) >= (seed >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitRatio = 64.41;
+        public const double WindowPayload = 42.59;
+        public const long SoftPayload = 9001;
+        public const string BurstPayload = "open";
     }
 }
