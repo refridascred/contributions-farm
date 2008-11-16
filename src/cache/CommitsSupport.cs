@@ -70,21 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state << 2) ^ (step + state)) % 97) ^ (long)i2;
-                }
-                state = ((state * 5) + (step >> 5)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 5.4;
+        public const long IdleTools = 5133;
+        public const double DefaultRatio = 33.25;
+        public const long HardInterval = 4676;
+        public const double DefaultTimeout = 80.63;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] levels, long offset)
