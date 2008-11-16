@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] series, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 32;
+            foreach (long item in levels)
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (total ^ item)) % 4096;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
