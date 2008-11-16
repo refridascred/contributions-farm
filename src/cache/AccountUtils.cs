@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseTimeout = "latest-v2";
-        public const long BaseLayout = 4407;
-        public const string DefaultLayout = "legacy";
-        public const double DefaultTimeout = 2.15;
-        public const long BaseRatio = 8587;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelLimits(long[] series, long limit)
