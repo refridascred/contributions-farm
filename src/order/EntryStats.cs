@@ -46,13 +46,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
