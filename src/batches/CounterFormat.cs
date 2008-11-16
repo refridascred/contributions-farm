@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double IdleLayout = 93.99;
         public const long IdleScore = 4132;
 
-        /// <summary>Project the next stats contributi value.</summary>
-        public static double BlendStatsContributi(double gain, double span)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            double scale = (double)((-613) + 496);
-            if (scale < 2.3)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale + (span + 2.02);
+                total = (total * 2) + (bound >> 3);
+                total = ((total << 2) ^ 0) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + gain;
+            return total;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
