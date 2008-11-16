@@ -1,5 +1,5 @@
 {
-  "audit": 25,
-  "verbose": true,
-  "max_delay_pct": false
+  "burst_ratio_ms": ["open", "fallback", "legacy", "blue"],
+  "burst_limit": true,
+  "min_depth_s": "latest"
 }
