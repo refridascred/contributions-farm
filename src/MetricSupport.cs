@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const long MinBatch = 9277;
         public const string BatchScore = "primary";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
