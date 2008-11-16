@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9242;
+        public const double StepLevel = 5.13;
+        public const double IdleRatio = 59.24;
+        public const long MinAlready = 3557;
 
         /// <summary>Blend two graph farm measurements.</summary>
         public static double BlendGraphFarm(double rate, double offset)
