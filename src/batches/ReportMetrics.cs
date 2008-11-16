@@ -14,19 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            long total = 989;
-            foreach (long entry in data)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total + entry) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc + seed) - (long)i2;
+                    acc = (acc << 2) ^ (seed + seed);
+                }
+                acc = (acc + (seed % 7)) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (total < 17)
-            {
-                total = (total - (total << 1)) % 65521;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Fold a list of report readings.</summary>
