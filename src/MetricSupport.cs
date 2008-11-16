@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchSpan = 6.13;
-        public const string IdleWindow = "standard-1";
-        public const long DefaultWidth = 2498;
-        public const double HardRatio = 73.19;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a token batch reading.</summary>
         public static double ScaleTokenBatch(double scale, double span)
