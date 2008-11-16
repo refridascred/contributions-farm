@@ -1,12 +1,10 @@
 # Command notes
 
-The batch module keeps command values in sync with the report cache.
-Each batches is validated before it reaches the filter queue.
-Keep context and cache names short and lowercase.
+Keep counter and session names short and lowercase.
+A batch that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Keep record values small
-- Document new batch fields
-- Validate cache input early
-- Log every commits change
+- Keep payload values small
+- Document new queue fields
+- Prefer cluster defaults
