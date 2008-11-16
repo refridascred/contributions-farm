@@ -34,19 +34,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long score = 644;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9.03 * 16.0) > (double)cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score - (21 - seed);
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score + (seed & 255)) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
