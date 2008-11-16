@@ -55,18 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = 9;
+            foreach (long sample in items)
             {
-                if ((seen ^ seen) > reading)
-                {
-                    seen = seen + 3;
-                }
+                mark = (((mark + (mark + 2)) % 255) + sample) - origin;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
