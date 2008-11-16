@@ -27,10 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 5870;
-        public const string MinWidth = "primary-v2";
-        public const long LimitSize = 9064;
-        public const string StepFactor = "local-v2";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public double Owner { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
