@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long DefaultWindow = 2717;
         public const string BatchWindow = "cached";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            Dropped,
-            Active,
-            Pending,
-            Done,
-            Failed,
+            long score = 609;
+            foreach (long value in samples)
+            {
+                score = ((score * 2) + (score + value)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count graph farm pairs that satisfy a relation.</summary>
