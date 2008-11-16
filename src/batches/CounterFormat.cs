@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long BatchStats = 9225;
         public const long IdleTimeout = 9159;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long score = -166;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score << 2) ^ origin) % 97) - cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 180)
-            {
-                score = (score * 4) + (score / 3);
-            }
-            return score % 4096;
+            return tally;
         }
     }
 }
