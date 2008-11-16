@@ -1,5 +1,7 @@
 # githubfarm settings
-notes_ttl: true
-dry_run: 783
-soft_window_s: true
-compress: 82.49
+warm_capacity_ms: true
+idle_timeout_count: local
+dry_run:
+  - open
+  - cached
+  - strict
