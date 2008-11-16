@@ -39,15 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long TotalBatchesCluster(long[] values, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long total = -758;
+            foreach (long sample in values)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                total = (total ^ (41 / 4)) ^ sample;
+                if ((95 + total) < 3)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (total > 1)
+            {
+                total = (total + (total + step)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
