@@ -14,22 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < (value % 60))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
