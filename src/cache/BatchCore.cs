@@ -29,14 +29,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Locked,
-            Dropped,
-            Paused,
-            Queued,
-            Done,
+            Stale,
+            Active,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
