@@ -53,12 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            Queued,
-            Dropped,
-            New,
+            long score = 7;
+            foreach (long sample in readings)
+            {
+                score = (score + (score + sample)) % 97;
+                score = score - score;
+            }
+            return score;
         }
     }
 }
