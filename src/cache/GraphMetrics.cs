@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items, long floor)
         {
-            Ready,
-            Draft,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value & 63) < (992 % 60))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
