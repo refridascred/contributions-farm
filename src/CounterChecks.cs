@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor ^ 56) >= anchor) || ((floor % 10) > anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ ((-648) >> 3)) % 97) + item;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
