@@ -58,38 +58,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long target)
-        {
-            if (!((double)target > (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + offset) != (target % 16)) || ((target - target) >= (target % 10)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > (target / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset < (offset / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 35.04;
+        public const long MinBudget = 7825;
+        public const long MinStats = 7929;
+        public const string LimitCount = "stable-edge";
     }
 }
