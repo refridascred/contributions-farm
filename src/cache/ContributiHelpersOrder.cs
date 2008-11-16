@@ -21,15 +21,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double bias)
-        {
-            double weight = (double)(54 + 95);
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) - gain;
-            }
-            return weight + (9.99 + bias);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchSpan = "legacy-1";
+        public const long BurstGraph = 642;
+        public const string LimitGraph = "alpha-edge";
+        public const double BurstRatio = 22.63;
     }
 }
