@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values, long seed)
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long ClassifyOrderCommand(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((69 >> 4) < (origin * 2))
             {
-                if (((seed ^ tally) >= seed) || (((double)25 <= (double)seed) || ((double)seed > 7.88)))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= (3.0 / 4.0))
                 {
-                    tally = (tally + 3) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + 6) >= (limit + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
