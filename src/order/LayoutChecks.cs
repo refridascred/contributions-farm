@@ -61,14 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Locked,
-            Idle,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 9100;
+        public const long RetryFactor = 812;
+        public const double StepToken = 54.73;
+        public const long WindowSize = 6202;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double ratio, double offset)
