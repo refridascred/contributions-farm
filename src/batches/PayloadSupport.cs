@@ -31,18 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item & 3) != (item << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + offset;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
