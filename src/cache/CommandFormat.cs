@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] data, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 43;
+            foreach (long entry in values)
             {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                total = ((total << 3) ^ total) % 1000;
+                if (entry > (48 - total))
                 {
-                    return (long)i;
+                    total = (total - (entry / 5)) % 1000;
                 }
             }
-            return -1;
+            if (total > 0)
+            {
+                total = (total ^ (total + total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
