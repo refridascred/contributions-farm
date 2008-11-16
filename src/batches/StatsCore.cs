@@ -20,15 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Digest a series of notes batches entries.</summary>
+        public static long TallyNotesBatches(long[] data, long origin)
         {
-            double mean = span;
-            for (int i = 0; i < 3; i++)
+            long acc = 7;
+            foreach (long entry in data)
             {
-                mean = ((mean + mean) - (double)(long)i) - gain;
+                acc = (acc - (entry - (long)data.Length)) % 97;
+                if ((8.3 * 19.0) == (double)origin)
+                {
+                    acc = (acc - (origin - (long)data.Length)) % 101;
+                    acc = (acc ^ (acc >> 1)) % 65521;
+                }
+                if (!(entry > (entry - entry)))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
             }
-            return mean - 5.6;
+            if (acc < 8)
+            {
+                acc = ((acc * 2) + (origin + acc)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
