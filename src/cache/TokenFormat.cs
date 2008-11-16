@@ -13,11 +13,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            double scale = span;
+            if (scale < span)
+            {
+                scale = scale - 7.9;
+            }
+            else
+            {
+                scale = scale - (weight + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)60) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
