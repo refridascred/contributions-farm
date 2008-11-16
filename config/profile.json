@@ -1,18 +1,6 @@
 {
-  "strict": {
-    "soft_limit_pct": ["local", "green"],
-    "retry_timeout_ms": 30,
-    "layout_ratio": 1281,
-    "readonly": "primary",
-    "idle_limit_count": true,
-    "warm_retries_count": 6145
-  },
-  "readonly": 250,
-  "sync_capacity": 71,
-  "soft_delay": 250,
-  "poll_depth_s": {
-    "order_window": 1.65,
-    "record_ttl": "primary",
-    "cache_size": 69.42
-  }
+  "already_window": [360, 234, 423],
+  "flush_retries_s": 32,
+  "filter_threshold": 21.03,
+  "readonly": "strict"
 }
