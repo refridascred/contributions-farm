@@ -1,6 +1,16 @@
 {
-  "readonly": "staging",
-  "retry_timeout_count": [417, 242, 488],
-  "batch_interval": "cached",
-  "stats_size": "legacy"
+  "githubfarm_capacity": {
+    "burst_limit_count": 1024,
+    "base_size": {
+      "payload_ratio": 30,
+      "layout_ratio": 6528,
+      "queue_depth": false
+    },
+    "base_ratio_pct": 83.78,
+    "default_timeout_s": 57
+  },
+  "warm_window_s": 82,
+  "order_delay": 65,
+  "warm_size_ms": 7366,
+  "default_interval": 54.02
 }
