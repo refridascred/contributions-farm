@@ -65,17 +65,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
