@@ -34,12 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowScore = 2560;
-        public const long MinScore = 3305;
-        public const double LimitTimeout = 78.17;
-        public const long CachePayload = 8719;
-        public const string MaxPayload = "standard";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelHits(long[] readings, long step)
