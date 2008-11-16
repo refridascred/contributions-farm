@@ -48,16 +48,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double bias)
-        {
-            double drift = (double)(1 & 63);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - ratio) + (double)(long)i) + bias;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSize = 8488;
+        public const long StepCommand = 5525;
+        public const long SoftScore = 3948;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesRange(long[] levels, long bound)
