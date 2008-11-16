@@ -74,15 +74,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            double scale = (weight / 5.0) / 9.0;
+            if (scale > (double)19)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                scale = scale - (span / 6.0);
             }
-            return carry;
+            return scale + scale;
         }
     }
 }
