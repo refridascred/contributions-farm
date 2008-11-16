@@ -28,25 +28,19 @@ namespace Common.Utilities
         public const long BatchCount = 8466;
         public const string LimitFarm = "standard";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((13.0 - 7.2) < (double)acc)
+                if (entry < step)
                 {
-                    acc = ((acc * 3) + (acc * 4)) % 4096;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                    acc = acc - acc;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
