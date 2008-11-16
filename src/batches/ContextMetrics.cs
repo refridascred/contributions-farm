@@ -61,21 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel counter samples.</summary>
-        public static long CompareChannelCounterCount(long[] series)
+        /// <summary>Measure how many tools notes samples are out of range.</summary>
+        public static long CountToolsNotesHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + item) == (hits ^ hits))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
