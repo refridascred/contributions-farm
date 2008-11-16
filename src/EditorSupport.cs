@@ -34,19 +34,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long target)
+        /// <summary>Count graph farm pairs that satisfy a relation.</summary>
+        public static long MatchGraphFarmCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
