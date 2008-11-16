@@ -30,21 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)46 / 4.0;
+            if (drift >= (offset / 6.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (16.0 + 10.0)) - weight;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (1.0 / 7.0)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
