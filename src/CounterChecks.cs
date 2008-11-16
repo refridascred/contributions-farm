@@ -73,11 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "legacy-edge";
-        public const long BatchFormat = 1576;
-        public const long MaxRatio = 2513;
-        public const long BatchRatio = 9816;
-        public const double SoftFormat = 44.43;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] data, long step)
+        {
+            long sum = -25;
+            foreach (long cell in data)
+            {
+                if ((double)cell < (13.0 * 6.1))
+                {
+                    sum = (sum ^ (sum << 2)) - step;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
