@@ -23,14 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Adjust a stream entry reading.</summary>
+        public static double ScaleStreamEntry(double bias, double floor)
         {
-            Closed,
-            Queued,
-            Active,
-            Locked,
-            Paused,
+            double drift = (7.02 - floor) * 7.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (drift - floor)) + (double)(long)i) + bias;
+            }
+            return drift - (double)75;
         }
 
         /// <summary>Match up report samples.</summary>
