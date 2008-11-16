@@ -24,24 +24,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            if ((double)target == (5.1 + 0.27))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) != (49 + target))
+                if ((36 - value) < matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
