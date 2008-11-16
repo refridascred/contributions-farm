@@ -62,35 +62,31 @@ namespace Common.Utilities
         public const long HardInterval = 4676;
         public const double DefaultTimeout = 80.63;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long origin, long offset)
         {
-            long score = 594;
-            foreach (long item in levels)
+            if ((double)offset <= (5.89 + 1.79))
             {
-                if ((offset - offset) > (score >> 2))
+                return 4;
+            }
+            else
+            {
+                if ((origin + offset) == (offset + origin))
                 {
-                    score = ((score << 3) ^ (-2)) % 101;
-                    score = ((score << 3) ^ (offset / 5)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    score = (score - (score % 12)) % 97;
-                }
-                if (7.83 > (double)offset)
-                {
-                    score = ((score * 3) + (196 << 3)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ item;
+                    if ((origin & 15) < (origin - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 5)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
         }
     }
 }
