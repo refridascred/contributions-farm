@@ -29,18 +29,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (9.2 * 2.6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the layout phase values.</summary>
