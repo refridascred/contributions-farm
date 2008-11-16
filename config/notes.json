@@ -1,8 +1,5 @@
 {
-  "poll_interval_ms": true,
-  "flush_capacity_s": 53,
-  "metric_ttl": "standard",
-  "hard_timeout_s": ["edge", "blue"],
-  "hard_delay_s": 1024,
-  "sync_depth_pct": "strict"
+  "dry_run": 73.05,
+  "persist": [149, 491, 348, 380],
+  "format_threshold": [59, 43, 129]
 }
