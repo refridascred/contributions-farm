@@ -1,6 +1,7 @@
 {
-  "enabled": 27.07,
-  "compress": "legacy",
-  "poll_interval_s": "stable",
-  "warm_capacity_count": 80
+  "min_retries": 9198,
+  "min_interval": false,
+  "readonly": false,
+  "context_window": false,
+  "soft_ttl_pct": 60
 }
