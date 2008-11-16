@@ -61,10 +61,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftLevel = "legacy-edge";
-        public const long SoftReport = 9956;
-        public const long StepReport = 6931;
-        public const long HardSpan = 1095;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double offset)
+        {
+            double scale = (double)(201 + 7);
+            if (scale <= scale)
+            {
+                scale = (scale + (double)13) + offset;
+            }
+            return scale - rate;
+        }
     }
 }
