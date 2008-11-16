@@ -37,19 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
