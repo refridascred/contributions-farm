@@ -28,10 +28,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 6170;
-        public const long IdleFilter = 181;
-        public const double RetryFactor = 62.3;
-        public const string LimitFilter = "latest-edge";
+        /// <summary>Audit commits counter readings against a rule.</summary>
+        public static long TallyCommitsCounterHits(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally - tally) <= (-76))
+                {
+                    tally = ((tally + 2) ^ datum) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
