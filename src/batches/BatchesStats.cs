@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a already command counter forward.</summary>
-        public static long StepAlreadyCommand(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix << 3) ^ (long)i) % 255;
-                if (((offset - offset) > (offset * 5)) && ((0.81 * 20.0) >= (double)offset))
-                {
-                    mix = (mix - ((long)i ^ (long)i)) % 101;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - (mix * 4)) % 255;
-                    mix = (mix * 2) + (990 - 433);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseBudget = "alpha";
+        public const long HardCluster = 6558;
+        public const double StepWidth = 2.6;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] samples)
