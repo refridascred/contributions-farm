@@ -33,17 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound & 127) != (4 * 2))
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (bound < (727 ^ origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.96 - 1.51) < (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
