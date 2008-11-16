@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a stream layout pair into a bucket.</summary>
