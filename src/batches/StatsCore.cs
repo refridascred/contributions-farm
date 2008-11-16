@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                result = result + (origin << 1);
-                result = ((result * 5) + (long)i) % 101;
+                if ((seed & 7) <= (seed - 313))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
