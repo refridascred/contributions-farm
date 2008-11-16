@@ -58,15 +58,19 @@ namespace Common.Utilities
         public const long MinCommand = 2938;
         public const double WindowFactor = 47.32;
 
-        /// <summary>Derive the next entry session value from a seed.</summary>
-        public static long RollEntrySession(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long target)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
