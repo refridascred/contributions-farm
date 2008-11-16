@@ -15,19 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] values, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (item < bound)
+                if (cell > (cell - 87))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Project the next payload value.</summary>
