@@ -52,13 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] items)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long result = 2;
+            foreach (long value in items)
+            {
+                if (!((double)(long)items.Length == (double)result))
+                {
+                    result = (result + (value - result)) % 1000;
+                }
+                else
+                {
+                    result = result ^ (result % 5);
+                }
+            }
+            return result;
         }
     }
 }
