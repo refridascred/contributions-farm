@@ -49,19 +49,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool CheckFilterClusterLimits(long[] samples, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
