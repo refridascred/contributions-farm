@@ -14,28 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine notes filter values into a single score.</summary>
-        public static long CombineNotesFilter(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels, long offset)
         {
-            long score = 95;
-            foreach (long value in items)
+            long result = 425;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if ((2.87 / 4.0) > (double)entry)
                 {
-                    score = ((score * 2) + ((long)i - score)) + value;
+                    result = (result + (result % 8)) % 65521;
                 }
-                if ((double)score >= (5.96 - 4.17))
+                if ((entry < (offset - result)) && ((3.41 + 16.0) <= (double)entry))
                 {
-                    score = score - score;
-                    score = score ^ (score & 7);
+                    break;
                 }
-                score = (score + (score + score)) % 65521;
             }
-            if (score < (-44))
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
