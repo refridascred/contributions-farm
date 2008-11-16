@@ -36,16 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + seed) % 97;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
