@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 8011;
-        public const string CacheReport = "standard-1";
-        public const long DefaultSize = 9539;
-        public const long BurstFactor = 1489;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            New,
+            Done,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long step)
