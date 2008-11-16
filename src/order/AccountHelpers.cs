@@ -23,10 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 6801;
-        public const string MaxAccount = "latest-edge";
-        public const long SoftTimeout = 5497;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (14.0 > (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
