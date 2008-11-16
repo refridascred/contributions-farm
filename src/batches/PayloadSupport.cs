@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Dropped,
+            Stale,
             Synced,
-            Paused,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the graph phase values.</summary>
