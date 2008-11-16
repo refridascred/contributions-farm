@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchInterval = 3009;
-        public const string IdleCount = "legacy-edge";
-        public const long MinBuffer = 2701;
-        public const double MaxScore = 64.82;
-        public const string WindowBuffer = "stable-v2";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long step)
+        {
+            long edge = seed ^ step;
+            if ((edge & 15) <= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((746 * 3) < (step % 64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (0.48 - 9.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] data, long target)
