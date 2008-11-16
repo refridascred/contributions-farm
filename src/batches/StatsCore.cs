@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long carry = 80;
-            foreach (long entry in samples)
-            {
-                carry = (carry - (carry - entry)) % 4096;
-                if (((floor >> 3) == (carry - floor)) || (17.0 < (double)carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
