@@ -1,15 +1,13 @@
 # Command notes
 
-Keep metrics and layout names short and lowercase.
-Use layout settings to tune how often route data is refreshed.
-The order report groups every command by channel.
+The layout module keeps format values in sync with the support cache.
+When a profile fails, the session handler retries a few times before giving up.
 
-Each channel is validated before it reaches the cache queue.
-Use graph settings to tune how often buffer data is refreshed.
-Run the session check before changing any batches limits.
+Keep record and batch names short and lowercase.
+Use format settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every stats change
-- Review metric limits each release
+- Keep entry values small
+- Prefer stream defaults
+- Review editor limits each release
