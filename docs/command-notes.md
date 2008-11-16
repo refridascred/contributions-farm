@@ -1,12 +1,15 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Each counter is validated before it reaches the support queue.
-Each account is validated before it reaches the profile queue.
+Run the cluster check before changing any session limits.
+Keep editor and stream names short and lowercase.
+When a batch fails, the tools handler retries a few times before giving up.
+
+Use editor settings to tune how often channel data is refreshed.
+The tools report groups every support by command.
+Run the window check before changing any graph limits.
 
 ## Guidelines
 
-- Review already limits each release
-- Validate notes input early
-- Keep notes values small
-- Prefer tools defaults
+- Prefer account defaults
+- Review format limits each release
+- Keep queue values small
