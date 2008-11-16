@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string LimitSession = "open-v2";
         public const string BurstSpan = "strict-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4683;
-        public const long BatchMetric = 2403;
-        public const string MaxMetric = "legacy-v2";
-        public const long StepWidth = 5971;
-        public const long RetryMetric = 1432;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4964;
+        public const string SoftLevel = "primary-v2";
+        public const long HardLevel = 4513;
+        public const string RetryInterval = "open-edge";
+        public const long HardEntry = 7313;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] series)
