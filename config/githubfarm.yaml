@@ -1,11 +1,20 @@
 # githubfarm settings
-commits_window: primary
-soft_window:
-  - 26
-  - 16
-  - 498
-  - 85
-retry_ratio_pct: blue
-editor_window: true
-cache_depth: edge
-metrics_capacity: true
+farm_threshold: standard
+flush_size_pct: strict
+burst_timeout_pct:
+  poll_ratio_ms: true
+  window_capacity:
+    - 97
+    - 48
+    - 8
+    - 2
+  warm_limit_s: true
+  enabled: 250
+  warm_interval:
+    account_limit:
+      - staging
+      - latest
+      - blue
+    idle_ratio: true
+    cache_threshold: 39.58
+    batch_timeout_s: 415
