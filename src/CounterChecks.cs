@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two already commits measurements.</summary>
-        public static double SmoothAlreadyCommits(double scale, double span)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double weight = span;
-            if (weight > (scale * 7.0))
-            {
-                weight = weight - (scale / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (scale - 9.9)) - (double)(long)i;
-            }
-            return weight + (span - 13.0);
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
