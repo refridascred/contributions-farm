@@ -43,12 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long MeasureBatchMetricGaps(long[] samples, long floor)
         {
-            Pending,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((10.0 + 3.7) < (double)floor)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
