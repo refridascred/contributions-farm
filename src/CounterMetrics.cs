@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool GuardPayloadStreamLimits(long[] data, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
