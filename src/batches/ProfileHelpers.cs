@@ -70,21 +70,22 @@ namespace Common.Utilities
             return scale - (double)25;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long AuditBufferContextOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell > 4.4)
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
