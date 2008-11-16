@@ -56,22 +56,13 @@ namespace Common.Utilities
         public const double MinScore = 31.9;
         public const long BurstFactor = 5271;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((817 - count) == (entry - entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
