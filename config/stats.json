@@ -1,10 +1,8 @@
 {
-  "base_size_s": "eu-west",
-  "burst_ttl_ms": "legacy",
-  "dry_run": {
-    "poll_size_s": "stable",
-    "soft_ratio": "legacy",
-    "tools_window": 9037
-  },
-  "sync_size": 30
+  "soft_ratio_count": "staging",
+  "verbose": [412, 15, 133, 230],
+  "flush_capacity_count": 408,
+  "poll_depth": "staging",
+  "warm_depth_ms": 53.44,
+  "strict": [450, 6]
 }
