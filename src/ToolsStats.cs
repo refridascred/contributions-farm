@@ -62,15 +62,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload metric counter forward.</summary>
-        public static long DerivePayloadMetric(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultLevel = 2825;
+        public const string BaseGraph = "standard-v2";
+        public const long DefaultFactor = 8037;
     }
 }
