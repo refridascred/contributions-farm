@@ -80,22 +80,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long bound)
         {
-            long mark = 4;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark * 5) <= (target - target))
+                if (data[i] == bound)
                 {
-                    mark = (((mark * 3) + (target & 127)) % 65521) + value;
-                }
-                else
-                {
-                    mark = mark + (mark % 10);
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
