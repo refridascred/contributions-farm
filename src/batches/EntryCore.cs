@@ -49,22 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] samples, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((datum / 5) < (count + seed)) || (88 < seed)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
