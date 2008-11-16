@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "cached-1";
-        public const string SoftQueue = "staging-1";
-        public const string BatchWidth = "local-edge";
-        public const long IdleWidth = 9549;
-        public const long WindowQueue = 3536;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
+        {
+            long state = 9;
+            foreach (long reading in data)
+            {
+                if ((10.0 < (double)reading) || ((4.68 + 20.0) >= (double)state))
+                {
+                    state = state ^ ((-3) + 5);
+                }
+            }
+            if (state < 754)
+            {
+                state = ((state << 2) ^ state) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
