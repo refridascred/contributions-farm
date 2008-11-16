@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long origin)
         {
-            long mark = -6;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (162 <= (entry / 8))
+                if (samples[i] < origin)
                 {
-                    mark = ((mark * 4) + (entry - entry)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the layout metric series from a seed.</summary>
