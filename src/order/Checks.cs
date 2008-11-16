@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepWidth = 4985;
-        public const double CacheBuffer = 77.9;
-        public const string BaseLevel = "alpha-edge";
-        public const long BatchBuffer = 3516;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a route report value against two limits.</summary>
         public static long ClassifyRouteReport(long offset, long floor)
