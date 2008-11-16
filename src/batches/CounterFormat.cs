@@ -27,18 +27,21 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((9 + reading) < (0 - reading))
+                result = (result ^ (long)i) % 255;
+                result = (result << 2) ^ (offset + (-33));
+                if ((offset % 24) >= (result + result))
                 {
-                    tally = tally + 2;
+                    result = ((result << 2) ^ (offset + offset)) % 1000;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
