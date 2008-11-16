@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two record command measurements.</summary>
-        public static double ScaleRecordCommand(double ratio, double bias)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double rate = ratio;
-            if (rate > (2.2 * 3.0))
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - rate;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
