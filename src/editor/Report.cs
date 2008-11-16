@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4169;
+        public const string BatchBuffer = "latest-v2";
+        public const long BurstBuffer = 5594;
+        public const long MinBuffer = 5187;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
