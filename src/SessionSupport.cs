@@ -13,22 +13,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count session payload pairs that satisfy a relation.</summary>
-        public static long MatchSessionPayloadCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4665;
+        public const double CacheContributi = 88.98;
+        public const long HardBudget = 7265;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
