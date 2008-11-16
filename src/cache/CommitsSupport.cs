@@ -48,15 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long offset)
+        /// <summary>Compare every pair of format filter readings.</summary>
+        public static long OverlapFormatFilterCount(long[] readings)
         {
-            long mix = 179;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (item - offset)) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
