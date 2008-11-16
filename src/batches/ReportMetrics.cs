@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            Retry,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
