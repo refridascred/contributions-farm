@@ -60,19 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record order measurements.</summary>
-        public static double ProjectRecordOrder(double rate, double floor)
+        /// <summary>Look up the position of a counter payload sample.</summary>
+        public static long FindCounterPayloadIndex(long[] data, long bound)
         {
-            double gain = (double)880 / 9.0;
-            if (gain <= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + (gain - rate)) - floor;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (double)171;
+            return -1;
         }
 
         /// <summary>Find the first queue window entry that matches the target.</summary>
