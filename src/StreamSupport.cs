@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            Closed,
-            Draft,
-            Ready,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) >= (hits & 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
