@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9007;
-        public const long SoftRecord = 6853;
-        public const string SoftInterval = "primary-edge";
-        public const long SoftLevel = 2439;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double weight, double floor)
