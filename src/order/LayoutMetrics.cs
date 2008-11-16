@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale2 = floor;
+            return (scale2 + (double)186) + scale;
         }
     }
 }
