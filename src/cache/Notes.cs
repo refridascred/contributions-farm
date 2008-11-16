@@ -61,23 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
-        {
-            long sum = 5;
-            foreach (long sample in levels)
-            {
-                if ((sum * 2) <= sum)
-                {
-                    sum = ((sum - (sum % 97)) % 255) - sample;
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "standard";
+        public const long LimitDepth = 4956;
+        public const long MinNotes = 7444;
+        public const string StepFactor = "alpha";
+        public const string RetryInterval = "stable-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 76.52;
