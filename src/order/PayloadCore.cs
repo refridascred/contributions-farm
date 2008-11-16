@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)samples.Length << 3) > seed)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
