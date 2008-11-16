@@ -21,17 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (values[i] == offset)
+                if (!((hits * 5) > (reading >> 4)) && ((reading - hits) <= (reading * 4)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
