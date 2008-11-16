@@ -53,25 +53,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values, long target)
         {
-            long lane = target ^ origin;
-            if ((lane > 575) || ((double)target > 7.3))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane - lane) >= target)
+                if (!(count >= (16 + value)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 1) + target;
                 }
             }
+            return count;
         }
     }
 }
