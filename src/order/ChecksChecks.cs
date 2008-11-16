@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long seed)
         {
-            double weight = floor / 3.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = ((weight + (2.0 / 5.0)) + (double)(long)i) + gain;
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)6;
+            return -1;
         }
 
         /// <summary>Digest a series of schema profile entries.</summary>
