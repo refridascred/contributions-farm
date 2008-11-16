@@ -43,10 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSize = 5264;
-        public const long SoftSpan = 5371;
-        public const long WindowDepth = 5881;
-        public const long LimitFactor = 1475;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double floor)
+        {
+            double mean = rate;
+            if (mean > (0.2 / 9.0))
+            {
+                mean = mean + (double)57;
+            }
+            else
+            {
+                mean = mean + (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (floor / 7.0)) + (double)(long)i;
+            }
+            return mean - (11.0 / 7.0);
+        }
     }
 }
