@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 857;
         public const double MaxScore = 9.29;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = 622;
+            foreach (long cell in items)
             {
-                if ((reading ^ reading) > matches)
+                if (((target % 3) == (target ^ cell)) && ((cell + (-9)) >= (anchor + target)))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor - target) % 4096;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Count the already channel entries that pass the check.</summary>
