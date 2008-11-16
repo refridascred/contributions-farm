@@ -42,11 +42,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowCount = 71.51;
+        public const long DefaultSpan = 1404;
+        public const long WindowSize = 7312;
     }
 }
