@@ -77,27 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((236 & 3) >= ((long)i - anchor)) || (offset < (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - offset)) % 65521;
-                }
-                if (anchor > ((long)i % 8))
-                {
-                    anchor = (anchor - offset) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
