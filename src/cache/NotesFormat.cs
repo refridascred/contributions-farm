@@ -27,11 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + seed) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
