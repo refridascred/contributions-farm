@@ -44,15 +44,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long item in samples)
             {
-                if ((1.92 * 3.5) == (double)step)
+                if (seed > (9 + seed))
                 {
-                    hits = (hits + 1) + item;
+                    hits = (hits + 1) - item;
                 }
             }
             return hits;
