@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (mix < (mix << 1))
+                {
+                    mix = (mix + (long)i) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
