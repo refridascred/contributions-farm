@@ -41,10 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3341;
-        public const long BaseSchema = 5608;
-        public const double BaseCount = 25.87;
+        /// <summary>Audit queue already readings against a rule.</summary>
+        public static long CountQueueAlreadyGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= (531 & 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] data, long origin)
