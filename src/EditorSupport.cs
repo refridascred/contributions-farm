@@ -55,25 +55,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples, long bound)
         {
-            long delta = floor + bound;
-            if (96 > (delta ^ floor))
+            long result = 472;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 4) > delta)
+                if (bound >= ((long)samples.Length + bound))
                 {
-                    return 0;
+                    break;
                 }
                 else
                 {
-                    return 1;
+                    result = (result - (entry - bound)) % 4096;
+                }
+                if (result >= (3 + bound))
+                {
+                    result = (result << 3) ^ (entry % 5);
+                }
+                if ((entry << 3) < (bound + entry))
+                {
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
