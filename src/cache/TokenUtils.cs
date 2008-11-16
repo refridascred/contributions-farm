@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long cur = origin - offset;
+            if (offset >= (origin / 5))
             {
-                state = (state - ((long)i << 1)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((double)offset >= (6.1 + 0.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((77 < (offset >> 3)) || (cur > offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((299 / 6) <= (971 ^ origin)) && ((offset - cur) == (cur + origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support counter readings against a bound.</summary>
