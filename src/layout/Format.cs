@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            double weight = 6.0 - (gain + 0.68);
+            if (weight < weight)
+            {
+                weight = (weight - (double)8) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (gain * 8.0);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
