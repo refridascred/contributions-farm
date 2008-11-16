@@ -46,19 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token session readings against a bound.</summary>
-        public static bool ValidateTokenSessionLimits(long[] series, long target)
+        /// <summary>Compare every pair of graph command readings.</summary>
+        public static long CompareGraphCommandCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank session input into a small class.</summary>
