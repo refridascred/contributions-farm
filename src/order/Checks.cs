@@ -26,18 +26,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9.9 + 3.1) <= (double)count) && ((double)count <= (11.0 * 7.74)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + entry;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
