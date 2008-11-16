@@ -83,12 +83,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] series, long seed)
         {
-            Pending,
-            Paused,
-            Ready,
+            long anchor = 91;
+            foreach (long sample in series)
+            {
+                anchor = (anchor - sample) % 255;
+            }
+            if (anchor > 686)
+            {
+                anchor = (anchor << 3) ^ seed;
+            }
+            return anchor % 97;
         }
     }
 }
