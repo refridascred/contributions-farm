@@ -56,12 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples, long target)
         {
-            Pending,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((((target - item) <= item) && ((207 / 2) > (count ^ count))) && ((count > item) && ((53 + count) > (count + target))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
