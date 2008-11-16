@@ -13,14 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool VerifyLayoutChecksBounds(long[] levels, long origin)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
-            Pending,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
