@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support format readings against a bound.</summary>
-        public static bool CheckSupportFormatBounds(long[] samples, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
