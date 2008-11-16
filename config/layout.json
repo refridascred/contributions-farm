@@ -1,6 +1,7 @@
 {
-  "order_threshold": true,
-  "channel_depth": 69.83,
-  "flush_depth_pct": 85,
-  "dry_run": [175, 135, 190, 385]
+  "readonly": "green",
+  "editor_interval": 13,
+  "verbose": 90.8,
+  "soft_threshold_pct": 1024,
+  "default_delay_s": "open"
 }
