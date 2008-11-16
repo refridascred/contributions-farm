@@ -1,9 +1,7 @@
 # githubfarm settings
-dry_run: 97
-farm_retries:
-  - blue
-  - eu-west
-  - open
-cache_size: false
-verbose: 11
-audit: true
+soft_delay_pct: strict
+poll_size_pct: 30
+idle_ratio_count: 500
+soft_ratio_ms: 500
+warm_timeout_ms: 72.64
+strict: 32.12
