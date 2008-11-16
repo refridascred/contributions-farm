@@ -20,15 +20,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long bound)
         {
-            double bias = (double)(59 - 59);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = ((bias - (double)7) + (double)(long)i) - span;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (weight * 8.8);
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
