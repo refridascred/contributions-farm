@@ -23,18 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((tally * 2) >= (tally + 31))
+                if (limit > result)
                 {
-                    tally = (tally + 3) + sample;
+                    long delta = (92 / 8) - (74 % 12);
+                    result = result - (delta - result);
                 }
+                if ((limit & 7) <= (result - (long)i))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a window options.</summary>
