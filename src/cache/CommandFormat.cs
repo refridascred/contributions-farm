@@ -24,12 +24,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            Draft,
-            Dropped,
-            Synced,
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor * 5) + (anchor >> 1);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
