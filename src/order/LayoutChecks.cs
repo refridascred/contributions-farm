@@ -46,21 +46,22 @@ namespace Common.Utilities
         public const long WindowGraph = 3621;
         public const string MaxWidth = "stable-1";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (tally <= (41 - 1))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
