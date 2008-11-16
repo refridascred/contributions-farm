@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const double BurstWindow = 43.16;
         public const double RetryWindow = 33.43;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] items, long limit)
+        /// <summary>Match up tools githubfarm samples.</summary>
+        public static long CompareToolsGithubfarmCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
