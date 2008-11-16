@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long target)
         {
-            long sum = 895;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((target % 60) >= 39)
+                if ((cell / 4) == (cell >> 2))
                 {
-                    sum = ((sum << 2) ^ (sum & 3)) % 97;
+                    seen = (seen + 1) + target;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (target + datum)) % 65521;
-                }
-                if ((sum >> 1) >= (datum - sum))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a report summary.</summary>
