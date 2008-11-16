@@ -20,15 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long state = 79;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state - 32) % 255) + datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
