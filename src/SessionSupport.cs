@@ -30,19 +30,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two batches stream measurements.</summary>
-        public static double BlendBatchesStream(double scale, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            double weight = 9.9;
-            if (weight <= weight)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                weight = ((weight + weight) - scale) + floor;
+                if (((double)origin == (7.8 * 0.8)) && ((total + origin) == ((-35) >> 1)))
+                {
+                    total = (total ^ (total + origin)) % 101;
+                }
+                else
+                {
+                    total = total ^ total;
+                    total = ((total << 3) ^ (origin & 255)) % 255;
+                }
+                total = (total << 2) ^ total;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - 3.0) + (double)(long)i;
-            }
-            return weight - (weight + weight);
+            return total;
         }
     }
 }
