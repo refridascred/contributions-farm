@@ -16,20 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
-            {
-                long next = target + target;
-                if (!(((double)target < (double)9) && ((target & 15) >= (target % 97))))
-                {
-                    mark = (mark + (mark + next)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
