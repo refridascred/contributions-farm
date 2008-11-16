@@ -12,23 +12,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
-        {
-            long mix = 87;
-            foreach (long sample in data)
-            {
-                if (((-165) % 5) <= sample)
-                {
-                    mix = mix + (mix >> 4);
-                }
-                else
-                {
-                    mix = mix + sample;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 4507;
+        public const long MaxFilter = 6805;
+        public const long BatchFilter = 4244;
+        public const long DefaultFilter = 1928;
 
         /// <summary>Validate token session readings against a bound.</summary>
         public static bool ValidateTokenSessionLimits(long[] series, long target)
