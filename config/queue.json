@@ -1,8 +1,5 @@
 {
-  "poll_capacity": 2139,
-  "readonly": [221, 401],
-  "idle_capacity_ms": "strict",
-  "verbose": [177, 402, 151],
-  "base_window_ms": "standard",
-  "cluster_threshold": "staging"
+  "persist": true,
+  "compress": 61,
+  "command_depth": 38.18
 }
