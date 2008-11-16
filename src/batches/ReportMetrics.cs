@@ -31,22 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long state = 13;
-            foreach (long sample in items)
-            {
-                if ((double)target < 2.7)
-                {
-                    state = state ^ (sample ^ state);
-                }
-                if ((3.07 / 3.0) <= (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
