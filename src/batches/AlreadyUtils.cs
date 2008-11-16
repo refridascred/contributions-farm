@@ -43,12 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 96.71;
+        public const long WindowSize = 9674;
+        public const long LimitSession = 8045;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] readings)
