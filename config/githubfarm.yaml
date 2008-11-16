@@ -1,22 +1,6 @@
 # githubfarm settings
-already_capacity:
-  - 313
-  - 499
-  - 476
-  - 413
-batch_ttl_pct:
-  verbose: 10.56
-  idle_interval: 77.05
-  buffer_ttl:
-    - 185
-    - 77
-    - 14
-    - 121
-  burst_delay_count: primary
-  support_timeout: false
-  retry_ratio_ms: 6425
-report_interval:
-  - fallback
-  - strict
-  - local
-  - legacy
+warm_delay_pct: true
+default_depth_s: 30
+window_size: 47.46
+cache_ttl: false
+default_depth_ms: fallback
