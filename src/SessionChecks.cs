@@ -44,24 +44,17 @@ namespace Common.Utilities
         public const double WindowSize = 42.77;
         public const long MinDepth = 3615;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long seed)
+        /// <summary>Look up the position of a record batch sample.</summary>
+        public static long SeekRecordBatchIndex(long[] items, long seed)
         {
-            if ((seed - seed) != (step / 8))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step >= (7.6 + 8.0))
+                if (items[i] <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
