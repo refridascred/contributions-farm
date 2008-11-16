@@ -45,18 +45,14 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] samples, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (seed > (9 + seed))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Ready,
+            Active,
+            Locked,
         }
     }
 }
