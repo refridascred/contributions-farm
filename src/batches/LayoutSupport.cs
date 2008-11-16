@@ -34,17 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = 11;
-            foreach (long sample in items)
-            {
-                mark = ((mark << 3) ^ (mark - sample)) % 65521;
-                mark = mark ^ mark;
-                mark = mark + (mark + sample);
-            }
-            return mark;
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Compare every pair of stream cache readings.</summary>
