@@ -37,15 +37,18 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Iterate the editor account series from a seed.</summary>
-        public static long SeriesEditorAccount(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((9 + reading) < (0 - reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
