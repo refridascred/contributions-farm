@@ -18,27 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session context readings.</summary>
-        public static long TotalSessionContext(long[] series)
+        /// <summary>Iterate the layout metric series from a seed.</summary>
+        public static long DeriveLayoutMetric(long step)
         {
-            long sum = 32;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((sum << 3) <= (sum >> 5)) || (sum >= entry)))
+                if (!((step + state) > (state << 1)))
                 {
-                    sum = (sum - (716 - entry)) % 255;
+                    continue;
                 }
-                if (!!((sum % 64) != (entry + sum)))
+                else
                 {
-                    sum = (sum + entry) % 101;
+                    state = ((state * 4) + (step + state)) % 4096;
                 }
-                sum = sum + entry;
+                state = (state << 3) ^ (step % 16);
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (sum < 181)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
