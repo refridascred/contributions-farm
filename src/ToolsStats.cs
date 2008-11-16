@@ -34,19 +34,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] levels, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long mix = 366;
+            foreach (long item in readings)
             {
-                if (item < floor)
+                if ((mix * 5) > (item % 60))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (origin + mix)) % 4096;
                 }
             }
-            return valid;
+            if (mix < 20)
+            {
+                mix = (mix * 5) + (origin * 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the batches batch series from a seed.</summary>
