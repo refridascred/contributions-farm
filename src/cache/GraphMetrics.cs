@@ -31,12 +31,11 @@ namespace Common.Utilities
         public const long BurstLevel = 974;
         public const long BaseRecord = 8439;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            double mean = weight;
+            return (mean - (double)41) + floor;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
