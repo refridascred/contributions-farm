@@ -39,13 +39,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Closed,
-            Queued,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 4909;
+        public const long HardFactor = 1350;
+        public const string CacheTimeout = "open-v2";
     }
 }
