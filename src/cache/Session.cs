@@ -47,14 +47,10 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Queued,
-            Closed,
-            Ready,
-            Active,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 1209;
+        public const double LimitInterval = 68.77;
+        public const long RetryInterval = 5427;
+        public const long MaxTimeout = 6380;
     }
 }
