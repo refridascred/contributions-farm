@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate report channel readings against a bound.</summary>
-        public static bool CheckReportChannelBounds(long[] items, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
