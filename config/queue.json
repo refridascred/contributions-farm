@@ -1,8 +1,8 @@
 {
-  "idle_depth_ms": false,
-  "audit": "stable",
-  "readonly": 2880,
-  "min_depth_count": 21.77,
-  "poll_limit_count": 1024,
-  "farm_ttl": 3101
+  "burst_retries_pct": 72,
+  "stream_retries": "standard",
+  "persist": "cached",
+  "default_limit_count": "stable",
+  "sync_limit": 10.1,
+  "cache_window": 76.02
 }
