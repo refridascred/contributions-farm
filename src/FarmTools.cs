@@ -25,11 +25,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            Stale,
+            New,
+            Queued,
         }
     }
 }
