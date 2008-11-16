@@ -42,18 +42,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values, long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)count >= (double)datum)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
