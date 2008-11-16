@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] levels, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
+                if ((hits << 1) != (entry << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
