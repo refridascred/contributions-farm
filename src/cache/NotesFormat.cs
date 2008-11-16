@@ -13,12 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheDepth = 93.98;
-        public const long LimitCount = 669;
-        public const long SoftStats = 6257;
-        public const long BaseStats = 6988;
-        public const double IdleSize = 29.96;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long limit)
+        {
+            long state = 46;
+            foreach (long value in data)
+            {
+                if (((value * 5) >= (limit ^ value)) || ((value - value) <= value))
+                {
+                    state = (state + (value << 3)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (limit + state)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitWidth = 8670;
