@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long CacheContributi = 622;
         public const double MinContributi = 49.13;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] items, long bound)
         {
-            double rate2 = offset;
-            return (rate2 + (2.9 * 2.0)) + rate;
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
