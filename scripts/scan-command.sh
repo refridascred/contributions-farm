@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open local; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=28
+COMMAND_LIMIT=324
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
