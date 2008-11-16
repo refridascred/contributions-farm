@@ -70,11 +70,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = total + ((long)i % 24);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
