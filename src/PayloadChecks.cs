@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long seed)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long offset = target + seed;
+            if ((double)offset >= 2.8)
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed >= (seed % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= 14.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) >= (offset + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
