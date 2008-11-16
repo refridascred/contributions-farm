@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double gain, double floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] readings)
         {
-            double drift = (double)(10 + 8);
-            if (drift > (double)61)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + (gain + gain);
+                if ((sample >> 4) == (599 + sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - (floor + 9.0);
+            return hits;
         }
 
         /// <summary>Validate profile commits readings against a bound.</summary>
