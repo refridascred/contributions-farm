@@ -1,8 +1,7 @@
 {
-  "soft_delay_count": [422, 170, 262, 311],
-  "poll_capacity_count": [391, 496],
-  "burst_delay": "local",
-  "dry_run": "green",
-  "audit": "legacy",
-  "graph_ttl": 11
+  "compress": 9451,
+  "cluster_capacity": "legacy",
+  "soft_limit_ms": 15,
+  "warm_interval_count": "eu-west",
+  "filter_delay": 79.56
 }
