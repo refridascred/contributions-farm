@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] > target)
+                if ((((3 / 4) > (entry & 63)) && ((tally & 7) == (tally << 1))) && ((long)readings.Length <= entry))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
