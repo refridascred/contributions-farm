@@ -74,11 +74,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series)
         {
-            double load = 11.0 * 6.0;
-            return ((load + (double)8) + ratio) + offset;
+            long total = 8;
+            foreach (long sample in series)
+            {
+                total = ((total << 2) ^ (-67)) % 101;
+                if ((double)sample == (9.0 * 3.0))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
