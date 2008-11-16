@@ -26,21 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Check that every context stats entry stays within the limit.</summary>
+        public static bool ValidateContextStatsLimits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample >= step)
                 {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the stats status values.</summary>
