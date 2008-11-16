@@ -1,5 +1,6 @@
 {
-  "idle_window_s": 61.41,
-  "cache_window_s": "edge",
-  "order_interval": 54
+  "batches_delay": "blue",
+  "flush_ttl": 73,
+  "retry_interval_count": 50.95,
+  "metric_interval": 250
 }
