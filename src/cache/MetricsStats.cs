@@ -59,18 +59,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((value + value) > value)
+                if (item < bound)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a counter header.</summary>
