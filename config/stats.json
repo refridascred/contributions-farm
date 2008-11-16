@@ -1,7 +1,8 @@
 {
-  "retry_retries": "primary",
-  "editor_size": 30,
-  "max_limit_pct": false,
-  "soft_threshold_pct": 1666,
-  "cache_depth_pct": "primary"
+  "commits_size": 47,
+  "base_retries": [22, 22, 24, 483],
+  "burst_limit_ms": [381, 142, 279],
+  "dry_run": "cached",
+  "base_depth_count": "blue",
+  "compress": [387, 87, 133, 380]
 }
