@@ -40,17 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats checks entry that matches the target.</summary>
-        public static long LocateStatsChecksIndex(long[] series, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                if (((double)hits > 20.0) && ((double)hits < (8.51 / 9.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
