@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            long total = 950;
+            foreach (long sample in samples)
+            {
+                total = (((total << 3) ^ (62 % 2)) % 1000) ^ sample;
+            }
+            return total;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
