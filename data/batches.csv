@@ -1,8 +1,7 @@
-id,score,rank
-1,blue,8.01
-2,914,latest
-3,staging,433
-4,primary,strict
-5,40.74,594
-6,latest,90.85
-7,local,248
+id,token,state,rank,owner
+1,687,23.34,local,256
+2,1.16,68.59,84.57,80.75
+3,strict,19.69,50.17,220
+4,edge,941,primary,eu-west
+5,50.14,primary,464,34.19
+6,811,4.93,73.33,legacy
