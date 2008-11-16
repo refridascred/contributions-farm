@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry notes value against two limits.</summary>
-        public static long GradeEntryNotes(long offset, long target)
-        {
-            if ((target + 721) <= (target / 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if (0.36 < (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 9435;
+        public const long SoftFactor = 4950;
+        public const long RetryDepth = 7147;
+        public const string MinTimeout = "primary";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSpan = 3986;
