@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the filter batches series from a seed.</summary>
