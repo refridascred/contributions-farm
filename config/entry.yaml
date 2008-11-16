@@ -1,29 +1,16 @@
 # entry settings
-audit: true
-verbose:
-  poll_delay_ms:
-    batch_window: 100
-    soft_timeout_pct: eu-west
-    githubfarm_depth:
-      - cached
-      - latest
-      - legacy
-      - blue
-    tools_ratio: 42
-  retry_delay: primary
-  cache_retries_count: open
-min_interval_pct:
-  - 327
-  - 470
-checks_ratio: true
-burst_timeout_count: true
-flush_limit_count:
-  base_size:
-    - blue
-    - fallback
-  burst_size_ms: 4.87
-  burst_limit_count: 500
-  queue_interval: 8727
-  soft_ratio_ms:
-    - 245
-    - 224
+base_size: false
+farm_retries:
+  - 243
+  - 421
+  - 457
+  - 367
+command_window:
+  strict: staging
+  retry_delay: false
+  commits_retries:
+    - local
+    - edge
+    - open
+  default_depth_s: 1024
+  checks_timeout: fallback
