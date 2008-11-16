@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long floor)
         {
-            double load = bias + bias;
-            if (load < (load / 6.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (gain * 19.0);
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)7;
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
