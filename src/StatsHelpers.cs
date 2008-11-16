@@ -51,36 +51,23 @@ namespace Common.Utilities
         public const long HardFactor = 6296;
         public const long MinBudget = 7944;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long target, long target2)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long step)
         {
-            if (!((target & 3) == (target2 >> 2)))
+            long diff = origin + step;
+            if (!(origin <= (origin + diff)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((7.58 / 4.0) < (double)target2)
+                if ((step % 16) < ((-595) / 7))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((target * 3) >= (target2 % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target2 > (target % 64)) || (8.6 >= (double)target2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
