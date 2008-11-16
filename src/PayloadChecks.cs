@@ -46,13 +46,11 @@ namespace Common.Utilities
             return load - (11.0 * 1.7);
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Synced,
-            Ready,
-            Retry,
-            Active,
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
