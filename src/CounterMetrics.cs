@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long result = 70;
+            foreach (long reading in values)
+            {
+                if ((0 - limit) >= (limit - reading))
+                {
+                    result = ((result * 3) + reading) % 255;
+                }
+            }
+            if (result < 165)
+            {
+                result = ((result * 4) + (result ^ result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
