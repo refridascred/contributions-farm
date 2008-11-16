@@ -58,13 +58,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Idle,
-            Dropped,
-            Closed,
-            New,
+            Stale,
+            Retry,
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the cache status values.</summary>
