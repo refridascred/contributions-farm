@@ -24,22 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] levels, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (!(((8.79 * 7.6) < (double)floor) || (hits < (value + hits))))
+                if (cell != offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
