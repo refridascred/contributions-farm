@@ -1,16 +1,26 @@
 # githubfarm settings
-hard_retries: green
 dry_run:
-  sync_ttl_ms:
-    - 348
-    - 182
-    - 96
-    - 365
-  batch_size_s: 500
-  batch_window_ms: false
-  warm_retries_count: 60
-flush_ratio: 6317
-poll_size_ms:
-  - primary
-  - fallback
-  - green
+  token_timeout: fallback
+  idle_timeout_count: 37
+  verbose: 60
+  burst_ttl: 1024
+  hard_delay: 30
+retry_capacity_s: primary
+verbose: true
+poll_depth_count: 72
+poll_ttl_ms:
+  audit:
+    - 292
+    - 355
+  warm_capacity_count: 85
+  compress:
+    min_window_s: 41.52
+    layout_threshold: 31
+    sync_retries_count: 500
+    route_ttl: strict
+    flush_threshold_pct: 15
+  readonly:
+    order_retries: 40.97
+    min_timeout_s: 100
+    editor_interval: latest
+buffer_interval: local
