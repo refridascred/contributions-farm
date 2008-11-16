@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the window class values.</summary>
