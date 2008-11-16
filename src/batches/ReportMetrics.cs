@@ -14,22 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (acc + seed) - (long)i2;
-                    acc = (acc << 2) ^ (seed + seed);
-                }
-                acc = (acc + (seed % 7)) % 65521;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepFactor = 75.11;
+        public const long BaseFactor = 7326;
+        public const long MinBatches = 6592;
+        public const long MaxLevel = 4274;
+        public const string LimitBatches = "open-1";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenOutliers(long[] items, long seed)
