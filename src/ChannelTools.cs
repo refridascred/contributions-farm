@@ -14,19 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
             long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (2.9 >= (double)tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
