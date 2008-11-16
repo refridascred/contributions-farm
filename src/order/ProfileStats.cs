@@ -34,11 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftInterval = 8139;
-        public const long MaxFactor = 6573;
-        public const double RetryCount = 4.43;
-        public const long MaxWindow = 7693;
-        public const long CacheBudget = 9969;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftDepth = 41.29;
+        public const long StepCounter = 7854;
+        public const double StepFactor = 4.97;
+        public const long SoftInterval = 354;
     }
 }
