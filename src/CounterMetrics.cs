@@ -51,18 +51,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 15) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 2921;
+        public const long WindowWidth = 2994;
+        public const string BatchGraph = "primary-v2";
     }
 }
