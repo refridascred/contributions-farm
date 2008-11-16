@@ -19,39 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long bound)
         {
-            long edge = floor + target;
-            if ((edge % 2) < (floor << 1))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.36 * 14.0) > (double)floor)
+                if ((entry + entry) >= tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)edge == (2.0 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target < (edge * 3)) || ((edge ^ 8) > (target + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next filter value.</summary>
