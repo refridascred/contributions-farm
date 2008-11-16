@@ -75,18 +75,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = 526;
+            foreach (long entry in items)
             {
-                if ((long)levels.Length != (tally << 1))
+                if (!(anchor >= (entry + (long)items.Length)))
                 {
-                    tally = (tally + 1) ^ value;
+                    anchor = (anchor ^ (entry + entry)) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
