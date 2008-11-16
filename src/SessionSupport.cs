@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 4) == (cell >> 2))
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
