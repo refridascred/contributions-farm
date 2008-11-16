@@ -56,17 +56,11 @@ namespace Common.Utilities
         public const long MaxBatches = 7141;
         public const long BatchDepth = 2890;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
