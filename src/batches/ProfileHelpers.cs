@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2519;
+        public const long BurstGithubfarm = 2586;
+        public const long SoftFactor = 5743;
+        public const long HardGithubfarm = 8991;
+        public const string DefaultWidth = "staging-v2";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long CombineAccount(long[] readings)
