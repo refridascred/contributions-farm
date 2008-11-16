@@ -52,21 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
