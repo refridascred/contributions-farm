@@ -17,19 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout checks entry stays within the limit.</summary>
-        public static bool VerifyLayoutChecksBounds(long[] levels, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Paused,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
