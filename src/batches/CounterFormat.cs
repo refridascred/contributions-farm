@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseSpan = 5224;
-        public const long MinChecks = 4656;
-        public const long CacheDepth = 5972;
+        /// <summary>Fold a list of order stats readings.</summary>
+        public static long DigestOrderStats(long[] readings, long step)
+        {
+            long anchor = 404;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor * 2) + (step + cell)) % 65521;
+            }
+            if (anchor < 23)
+            {
+                anchor = (anchor << 2) ^ (step - step);
+            }
+            return anchor;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 2140;
