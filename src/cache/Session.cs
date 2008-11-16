@@ -29,13 +29,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Retry,
-            Idle,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepSpan = "latest";
+        public const long HardScore = 193;
+        public const double BurstSpan = 37.48;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] levels, long step)
