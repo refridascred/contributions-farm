@@ -78,17 +78,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long offset)
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long TallyMetricsSchemaGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] >= offset)
+                if (!((double)seen <= 14.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) - sample) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
