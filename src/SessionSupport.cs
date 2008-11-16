@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long sum = 4;
-            foreach (long reading in readings)
-            {
-                sum = ((sum * 5) + (offset ^ offset)) ^ reading;
-            }
-            return sum % 65521;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
