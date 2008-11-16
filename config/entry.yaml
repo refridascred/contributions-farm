@@ -1,15 +1,19 @@
 # entry settings
-idle_ratio_pct:
-  - legacy
-  - eu-west
-  - fallback
-context_retries: cached
-hard_ratio_s:
-  - 4
-  - 369
-  - 332
-  - 157
-payload_interval:
-  - edge
-  - edge
-  - green
+already_depth: 77
+idle_retries_ms:
+  - 76
+  - 473
+  - 202
+  - 46
+readonly: 1
+entry_window:
+  - 122
+  - 173
+  - 400
+  - 240
+layout_delay: 3621
+default_interval_ms:
+  support_threshold: primary
+  max_depth_ms: 61.68
+  commits_timeout: 5397
+  default_delay_pct: 37.39
