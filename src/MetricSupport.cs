@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinScore = "open";
-        public const long CacheFactor = 888;
-        public const double MinGithubfarm = 27.55;
-        public const string BaseLevel = "latest-v2";
-        public const long HardTimeout = 3071;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double bias)
+        {
+            double mean = (bias + bias) / 6.0;
+            if (mean > rate)
+            {
+                mean = mean + (mean * 7.16);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaRange(long[] samples, long floor)
