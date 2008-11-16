@@ -35,14 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Closed,
-            Ready,
+            double load = 9.2;
+            if (load < 1.66)
+            {
+                load = (load - (double)6) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (6.0 * 3.8);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
