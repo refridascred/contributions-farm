@@ -7,13 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+RECORD_LIMIT=46
+log "limit is ${RECORD_LIMIT}"
+
+for item in blue eu-west standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
