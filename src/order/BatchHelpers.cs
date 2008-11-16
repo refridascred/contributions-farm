@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter buffer counter forward.</summary>
-        public static long IterateCounterBuffer(long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
