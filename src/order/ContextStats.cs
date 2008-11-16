@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const double IdleRatio = 59.24;
         public const long MinAlready = 3557;
 
-        /// <summary>Blend two graph farm measurements.</summary>
-        public static double BlendGraphFarm(double rate, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values, long seed)
         {
-            double scale = (double)(627 >> 2);
-            if (scale > scale)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                scale = (scale - 0.97) - rate;
+                if ((double)tally == (8.08 - 8.99))
+                {
+                    tally = ((tally + 2) ^ reading) + seed;
+                }
             }
-            else
-            {
-                scale = scale - (offset * 19.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (double)559;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
