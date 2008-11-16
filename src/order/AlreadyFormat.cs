@@ -33,22 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] items, long step)
+        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
+        public static long AuditGithubfarmLayoutMatches(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((step << 3) > (step - 975)) && !((11.0 / 7.0) > (double)entry))
+                if (((value >> 3) <= (23 + hits)) && (138 <= (hits - value)))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + limit;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit account batch readings against a rule.</summary>
