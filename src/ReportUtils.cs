@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total << 2) ^ step) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
