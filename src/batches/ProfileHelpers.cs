@@ -62,10 +62,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardCount = "local";
-        public const long RetryTools = 4287;
-        public const long BurstDepth = 6651;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long bound)
+        {
+            long carry = 7;
+            foreach (long datum in readings)
+            {
+                if (!((107 - bound) >= (datum + datum)))
+                {
+                    carry = carry - (bound - carry);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 95) % 97;
+                }
+                if (6 < (datum + datum))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double bias, double span)
