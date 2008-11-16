@@ -31,18 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long CountWindowMetricsGaps(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((hits > (item << 3)) && ((item / 7) <= (item + item))) && (((item >> 4) <= (8 + hits)) || ((item % 7) < 3)))
+                if ((double)value >= 17.0)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
