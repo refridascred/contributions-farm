@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile contributi entries.</summary>
-        public static long TotalProfileContributi(long[] series, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long step)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry < (274 << 1))
+                if ((((-723) - hits) == (step & 3)) && !((value / 9) == (hits + 0)))
                 {
-                    mix = (mix + (7 + mix)) + target;
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
