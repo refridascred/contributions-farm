@@ -12,24 +12,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long step, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items, long seed)
         {
-            if ((target & 255) != (step - step))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (10.0 - 4.0))
+                if (((6.0 - 5.81) == (double)hits) || !(hits > (reading + reading)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 1) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
