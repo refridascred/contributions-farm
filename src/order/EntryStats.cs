@@ -34,15 +34,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series, long limit)
         {
-            long mark = 520;
-            foreach (long item in samples)
+            long sum = 265;
+            foreach (long cell in series)
             {
-                mark = ((mark * 5) + (mark ^ mark)) + item;
+                sum = (sum - (cell >> 2)) % 65521;
+                sum = sum - (cell - sum);
             }
-            return mark;
+            if (sum > 479)
+            {
+                sum = (sum << 2) ^ (sum - limit);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
