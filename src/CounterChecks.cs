@@ -63,13 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up batches context samples.</summary>
+        public static long PairBatchesContextCount(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
