@@ -35,20 +35,16 @@ namespace Common.Utilities
             return rate + (0.67 + floor);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long anchor = 19;
-            foreach (long datum in values)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor ^ datum) % 65521;
-                anchor = (anchor << 2) ^ (anchor - seed);
+                state = (state * 5) + ((long)i ^ state);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (anchor < (-59))
-            {
-                anchor = (anchor << 3) ^ (71 / 8);
-            }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
