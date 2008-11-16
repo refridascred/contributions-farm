@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of window order readings.</summary>
-        public static long FoldWindowOrder(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long total = 30;
-            foreach (long sample in series)
-            {
-                if ((total - 535) != (22 % 7))
-                {
-                    total = ((total + total) % 65521) - sample;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
