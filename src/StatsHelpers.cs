@@ -39,17 +39,13 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
