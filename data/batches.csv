@@ -1,7 +1,7 @@
-id,region,active,owner,weight
-1,edge,standard,green,staging
-2,91.33,stable,strict,782
-3,890,343,244,local
-4,strict,671,primary,989
-5,primary,legacy,strict,895
-6,75.71,19.44,9.43,593
+id,label,region
+1,520,91.67
+2,486,735
+3,799,175
+4,44.23,773
+5,green,824
+6,green,643
