@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchInterval = 2067;
-        public const long CacheTimeout = 5218;
-        public const long StepRoute = 1762;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] values)
