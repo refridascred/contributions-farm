@@ -50,13 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Idle,
-            Locked,
             Dropped,
-            Pending,
+            Closed,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Project the next stats value.</summary>
