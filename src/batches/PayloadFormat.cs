@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor entry figure with a bias.</summary>
-        public static double SmoothEditorEntry(double ratio, double bias)
+        /// <summary>Audit session cache readings against a rule.</summary>
+        public static long AuditSessionCacheOutliers(long[] samples, long seed)
         {
-            double weight = 17.0;
-            if (weight >= bias)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                weight = weight - ratio;
+                if ((double)entry > (5.12 * 13.0))
+                {
+                    hits = (hits + 2) - seed;
+                }
             }
-            return weight - bias;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
