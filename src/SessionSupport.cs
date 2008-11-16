@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double BatchWindow = 45.49;
         public const long CacheWidth = 7621;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double bias, double offset)
+        /// <summary>Count session payload pairs that satisfy a relation.</summary>
+        public static long MatchSessionPayloadCount(long[] data)
         {
-            double load = offset;
-            if (load > offset)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - 9.27) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load / 5.0)) + (double)(long)i;
-            }
-            return load + (double)48;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
