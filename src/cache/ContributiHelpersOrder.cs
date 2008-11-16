@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            Stale,
-            Idle,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen >= (9.0 - 7.0))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
