@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinTimeout = 6222;
-        public const string LimitEditor = "latest-1";
-        public const string BaseEditor = "primary-1";
-        public const string SoftSpan = "fallback-1";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(((hits - datum) <= hits) || (datum >= (hits ^ 45))))
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double bias, double offset)
