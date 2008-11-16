@@ -41,10 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 4277;
-        public const double RetryTimeout = 39.65;
-        public const string CacheTools = "alpha-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3341;
+        public const long BaseSchema = 5608;
+        public const double BaseCount = 25.87;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] data, long origin)
