@@ -12,13 +12,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long step, long target)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((target & 255) != (step - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (10.0 - 4.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a command snapshot.</summary>
