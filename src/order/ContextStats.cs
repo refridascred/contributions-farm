@@ -28,17 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
