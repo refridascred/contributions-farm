@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double ratio = bias;
-            if (ratio < (ratio / 7.0))
-            {
-                ratio = ratio + (double)432;
-            }
-            else
-            {
-                ratio = ratio + (bias - bias);
-            }
-            return ratio + (ratio - gain);
+            Active,
+            Synced,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
