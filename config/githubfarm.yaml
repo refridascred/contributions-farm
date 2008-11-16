@@ -1,4 +1,9 @@
 # githubfarm settings
-editor_limit: true
-enabled: 1.28
-dry_run: 58.92
+enabled: open
+warm_size_count: 68.09
+batch_capacity: 250
+cache_ratio:
+  - 425
+  - 302
+  - 288
+  - 250
