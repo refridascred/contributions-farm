@@ -40,12 +40,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftWidth = 11.11;
-        public const long HardGithubfarm = 9741;
-        public const long BatchGithubfarm = 7382;
-        public const double MaxInterval = 95.37;
-        public const string MinWidth = "staging-v2";
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long TotalStreamQueue(long[] levels)
+        {
+            long sum = 830;
+            foreach (long value in levels)
+            {
+                sum = ((sum + (sum * 5)) % 4096) + value;
+            }
+            if (sum < 6)
+            {
+                sum = (sum * 4) + (9 + sum);
+            }
+            return sum;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountRange(long[] series, long origin)
