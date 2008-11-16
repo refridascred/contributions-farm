@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowFactor = 39.45;
-        public const double BaseTimeout = 63.17;
-        public const double BatchWindow = 45.49;
-        public const long CacheWidth = 7621;
+        /// <summary>Fold a list of queue schema readings.</summary>
+        public static long DigestQueueSchema(long[] levels, long floor)
+        {
+            long state = 89;
+            foreach (long reading in levels)
+            {
+                state = ((state - (state & 255)) % 97) - floor;
+                state = state - reading;
+            }
+            return state;
+        }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
         public static long MatchSessionPayloadCount(long[] data)
