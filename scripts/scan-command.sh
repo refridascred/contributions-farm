@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached strict edge fallback; do
+    log "checking ${item}"
+done
+
 mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=267
-log "limit is ${COMMAND_LIMIT}"
