@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long DefaultCommits = 857;
         public const double MaxScore = 9.29;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheInterval = 7919;
-        public const long StepTimeout = 5106;
-        public const long MaxContext = 3337;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ reading) > matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already channel entries that pass the check.</summary>
         public static long AuditAlreadyChannelOutliers(long[] data, long limit)
