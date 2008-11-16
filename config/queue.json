@@ -1,8 +1,21 @@
 {
-  "burst_retries_pct": 72,
-  "stream_retries": "standard",
-  "persist": "cached",
-  "default_limit_count": "stable",
-  "sync_limit": 10.1,
-  "cache_window": 76.02
+  "hard_limit": ["open", "edge", "latest", "strict"],
+  "editor_depth": 9733,
+  "hard_interval_pct": 2527,
+  "retry_interval": false,
+  "format_ratio": {
+    "poll_timeout_ms": 85,
+    "strict": {
+      "command_window": "open",
+      "idle_threshold": 16,
+      "soft_interval_count": 1024,
+      "retry_timeout_pct": "blue",
+      "stream_ttl": 100,
+      "cache_size": "standard"
+    },
+    "dry_run": "eu-west",
+    "sync_threshold": "green",
+    "graph_size": "blue",
+    "soft_ttl_pct": [312, 40, 390, 154]
+  }
 }
