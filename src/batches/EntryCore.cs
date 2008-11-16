@@ -59,19 +59,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every command stream entry stays within the limit.</summary>
-        public static bool CheckCommandStreamLimits(long[] items, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long seed)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long edge = bound - seed;
+            if ((double)seed != (0.73 + 17.0))
             {
-                if (datum > origin)
+                return 7;
+            }
+            else
+            {
+                if ((7 - seed) <= bound)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((96 > (bound + bound)) || ((edge << 3) == (seed + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((((-96) + bound) > seed) || (792 <= (seed + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
