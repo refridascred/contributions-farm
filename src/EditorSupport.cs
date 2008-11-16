@@ -49,14 +49,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Ready,
-            Draft,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9864;
+        public const long CacheAlready = 9760;
+        public const double BaseAlready = 27.28;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] data)
