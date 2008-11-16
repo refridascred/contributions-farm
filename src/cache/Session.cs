@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] data, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
