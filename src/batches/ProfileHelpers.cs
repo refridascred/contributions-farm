@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Dropped,
-            Stale,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 30.83;
+        public const double StepScore = 46.03;
+        public const string LimitFarm = "primary-edge";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] samples, long target)
