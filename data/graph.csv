@@ -1,6 +1,7 @@
-id,level,weight,region
-1,29.94,12.53,edge
-2,58.84,80.67,831
-3,77.87,50.03,193
-4,342,primary,630
-5,fallback,19.44,66.47
+id,owner,state
+1,970,cached
+2,latest,37
+3,4.22,852
+4,88.51,812
+5,staging,77.96
+6,fallback,357
