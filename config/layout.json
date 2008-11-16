@@ -1,7 +1,5 @@
 {
-  "sync_capacity_count": "local",
-  "hard_size": "open",
-  "warm_ttl_s": [433, 490, 145, 331],
-  "batch_depth_count": true,
-  "audit": "edge"
+  "idle_interval_s": 88.74,
+  "metrics_depth": "strict",
+  "strict": "legacy"
 }
