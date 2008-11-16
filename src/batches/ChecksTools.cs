@@ -18,26 +18,25 @@ namespace Common.Utilities
         public const long BatchCount = 8466;
         public const string LimitFarm = "standard";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
         {
-            long mark = 47;
-            foreach (long item in items)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item + 3) < (seed ^ item))
+                if ((13.0 - 7.2) < (double)acc)
                 {
-                    mark = (mark * 5) + ((long)items.Length * 2);
+                    acc = ((acc * 3) + (acc * 4)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    mark = mark ^ (mark + mark);
+                    acc = (acc << 3) ^ acc;
+                    acc = acc - acc;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (mark > 7)
-            {
-                mark = ((mark * 5) + (mark << 2)) % 4096;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Project the next cache value.</summary>
