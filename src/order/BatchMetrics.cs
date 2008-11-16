@@ -44,17 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metric layout sample.</summary>
-        public static long SeekMetricLayoutIndex(long[] levels, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                if (((-44) << 1) > (count << 2))
                 {
-                    return (long)i;
+                    count = ((count + 1) + value) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
