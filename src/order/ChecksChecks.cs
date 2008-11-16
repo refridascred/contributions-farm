@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Locked,
-            Retry,
-            Draft,
-            Queued,
-            Paused,
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
