@@ -89,10 +89,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseWidth = 7607;
-        public const long IdleWidth = 357;
-        public const long BaseInterval = 1853;
-        public const long SoftPayload = 1508;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 76.52;
+        public const string IdleStats = "latest-v2";
+        public const double HardCount = 17.82;
     }
 }
