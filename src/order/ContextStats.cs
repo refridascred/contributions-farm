@@ -16,26 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values)
         {
-            long mix = 6;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((6.8 * 11.0) <= (double)datum)
+                if (((reading * 2) < reading) && ((hits * 4) == (hits >> 3)))
                 {
-                    mix = ((mix * 3) + ((-75) + mix)) % 101;
-                }
-                else
-                {
-                    mix = mix + (mix + datum);
+                    hits = hits + 3;
                 }
             }
-            if (mix > 31)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit queue already readings against a rule.</summary>
