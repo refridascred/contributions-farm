@@ -1,5 +1,31 @@
 {
-  "stream_retries": "cached",
-  "flush_size": 62,
-  "contributi_threshold": 30
+  "buffer_ratio": {
+    "compress": "local",
+    "default_interval_ms": 71.64,
+    "idle_limit_pct": {
+      "metrics_window": 2.36,
+      "poll_depth_ms": 71,
+      "hard_timeout_pct": 37,
+      "audit": 31,
+      "cache_timeout_ms": true,
+      "retry_window_count": 81
+    },
+    "audit": 60,
+    "counter_capacity": "blue"
+  },
+  "audit": "cached",
+  "idle_retries": ["blue", "stable", "local"],
+  "warm_capacity_count": 250,
+  "persist": {
+    "verbose": {
+      "retry_limit_count": false,
+      "record_size": 500,
+      "strict": 75,
+      "profile_depth": 4
+    },
+    "contributi_size": 250,
+    "notes_interval": 250,
+    "default_timeout_s": 5928
+  },
+  "max_window": ["latest", "local", "strict", "fallback"]
 }
