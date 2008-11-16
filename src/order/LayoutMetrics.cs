@@ -22,22 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!(origin < datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
