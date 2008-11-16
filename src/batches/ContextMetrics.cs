@@ -32,21 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)reading != (1.7 - 8.0)))
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix ^ reading) % 65521) + floor;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
