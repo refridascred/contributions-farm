@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            Queued,
-            Active,
-            Stale,
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i - step) <= (step % 2))
+                {
+                    acc = acc + step;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Validate route checks readings against a bound.</summary>
