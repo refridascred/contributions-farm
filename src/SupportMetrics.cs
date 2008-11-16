@@ -67,22 +67,9 @@ namespace Common.Utilities
         public const long DefaultStream = 4472;
         public const long BatchStream = 7516;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values)
-        {
-            long mark = 887;
-            foreach (long reading in values)
-            {
-                if ((reading + mark) > reading)
-                {
-                    mark = (mark - (3 + reading)) % 4096;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark - (mark / 2)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchBudget = 394;
+        public const long MaxScore = 8415;
+        public const long CacheDepth = 3306;
     }
 }
