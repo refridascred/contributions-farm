@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long offset)
         {
-            long score = 69;
-            foreach (long datum in values)
+            long mix = 488;
+            foreach (long reading in readings)
             {
-                if (((offset / 9) == (8 << 2)) || ((score + offset) == (datum + score)))
-                {
-                    score = (score - datum) % 4096;
-                }
+                mix = (mix ^ offset) ^ reading;
             }
-            return score;
+            if (mix > 919)
+            {
+                mix = (mix << 3) ^ (-56);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the channel state values.</summary>
