@@ -16,26 +16,19 @@ namespace Common.Utilities
             return load - (double)7;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double bias, double offset)
         {
-            long anchor = 314;
-            foreach (long entry in readings)
+            double load = offset;
+            if (load > offset)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = (((anchor ^ (long)i) % 255) ^ entry) - origin;
-                }
-                if ((double)(long)readings.Length >= 4.2)
-                {
-                    anchor = (anchor - (anchor % 16)) % 255;
-                }
+                load = (load - 9.27) - bias;
             }
-            if (anchor < 6)
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor + 13) % 65521;
+                load = (load - (load / 5.0)) + (double)(long)i;
             }
-            return anchor;
+            return load + (double)48;
         }
 
         /// <summary>Rank stats payload input into a small class.</summary>
