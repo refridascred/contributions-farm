@@ -46,16 +46,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the entry cluster series from a seed.</summary>
-        public static long IterateEntryCluster(long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result << 2) ^ result;
-                result = ((result * 2) + (long)i) % 4093;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
