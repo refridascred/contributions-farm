@@ -1,6 +1,6 @@
 {
-  "readonly": "strict",
-  "default_ttl_pct": true,
-  "sync_window_ms": 56.74,
-  "base_interval_pct": "fallback"
+  "audit": 50.97,
+  "buffer_limit": 27,
+  "poll_limit_s": ["cached", "latest", "green", "fallback"],
+  "sync_retries_pct": "standard"
 }
