@@ -23,13 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            Closed,
-            Synced,
-            Ready,
-            Queued,
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (0.13 >= (double)bound)
+                {
+                    mark = mark - (bound + mark);
+                    mark = (mark - (long)i) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
