@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2519;
-        public const long BurstGithubfarm = 2586;
-        public const long SoftFactor = 5743;
-        public const long HardGithubfarm = 8991;
-        public const string DefaultWidth = "staging-v2";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((offset - total) > total))
+                {
+                    total = (total + (total * 2)) % 97;
+                    continue;
+                }
+                total = ((total << 2) ^ ((long)i + total)) % 101;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] values, long offset)
