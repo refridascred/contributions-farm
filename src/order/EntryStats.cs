@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const double MaxEntry = 1.22;
         public const long LimitBudget = 1097;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate graph samples.</summary>
