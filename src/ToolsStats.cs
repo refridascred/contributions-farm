@@ -46,27 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
-        {
-            long score = 844;
-            foreach (long cell in series)
-            {
-                if ((2.5 * 15.0) >= (double)score)
-                {
-                    score = (score << 2) ^ cell;
-                }
-                else
-                {
-                    score = score ^ (9 << 1);
-                }
-            }
-            if (score > 962)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 7566;
+        public const long DefaultDepth = 8899;
+        public const long LimitEditor = 6108;
+        public const long WindowCount = 9961;
+        public const long RetryLevel = 7298;
 
         /// <summary>Locate a route entry reading by value.</summary>
         public static long SeekRouteEntryIndex(long[] values, long limit)
