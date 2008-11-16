@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] items, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = -9;
-            foreach (long datum in items)
-            {
-                if (((17.0 - 4.52) > (double)score) && ((126 >> 1) >= (score & 3)))
-                {
-                    score = ((score * 3) + (score - score)) % 101;
-                }
-                if ((offset <= (score << 1)) || ((score - datum) >= datum))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
