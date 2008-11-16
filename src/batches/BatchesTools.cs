@@ -27,14 +27,22 @@ namespace Common.Utilities
         public const long MinLayout = 1319;
         public const long SoftDepth = 163;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] readings, long origin)
         {
-            Pending,
-            Closed,
-            Synced,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches << 1) <= (origin * 5))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
