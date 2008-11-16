@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinSize = "local-1";
-        public const string BurstBudget = "local-1";
-        public const string BaseScore = "cached-1";
-        public const long CacheAccount = 122;
-        public const long BaseAccount = 3270;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSpan = 3806;
+        public const long MaxStream = 1036;
+        public const long BurstSpan = 9992;
+        public const long IdleStream = 9063;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long seed)
