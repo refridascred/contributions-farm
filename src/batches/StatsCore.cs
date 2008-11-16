@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches command value.</summary>
-        public static double AdjustBatchesCommand(double bias, double floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long limit2)
         {
-            double drift = floor;
-            if (drift >= floor)
+            long slot = limit - limit2;
+            if (limit > slot)
             {
-                drift = drift - bias;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + (bias * 7.0)) - (double)(long)i;
+                if ((limit >= (limit2 & 255)) || ((double)limit < (3.0 - 8.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift - (floor / 6.0);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
