@@ -40,22 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi already readings against a rule.</summary>
-        public static long CountContributiAlreadyGaps(long[] items, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen > (2.1 / 7.0))
-                {
-                    seen = ((seen + 2) - item) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
