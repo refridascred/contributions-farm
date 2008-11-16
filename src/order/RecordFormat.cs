@@ -42,16 +42,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long offset)
         {
-            long result = 544;
-            foreach (long reading in readings)
+            long result = 497;
+            foreach (long value in values)
             {
-                result = (result - (bound - 5)) % 65521;
-                if ((7 + reading) != (result - result))
+                if ((result + 327) < value)
                 {
-                    break;
+                    result = ((result << 2) ^ offset) % 255;
                 }
             }
             return result;
