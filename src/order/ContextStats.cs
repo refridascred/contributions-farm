@@ -16,16 +16,19 @@ namespace Common.Utilities
             return weight + (weight * 2.09);
         }
 
-        /// <summary>Derive the next schema account value from a seed.</summary>
-        public static long StepSchemaAccount(long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] readings, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                score = (score + (score + (long)i)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
