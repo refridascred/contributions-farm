@@ -11,9 +11,9 @@ namespace Common.Utilities
         public const double MinLevel = 38.65;
 
         /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 5747;
-        public const long WindowCommand = 4923;
-        public const long BurstCommand = 4905;
+        public const string DefaultCommand = "legacy-v2";
+        public const long RetryCommand = 5733;
+        public const long MaxScore = 1341;
 
         /// <summary>Locate a profile schema reading by value.</summary>
         public static long LookupProfileSchemaIndex(long[] data, long limit)
