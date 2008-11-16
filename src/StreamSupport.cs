@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] series, long seed)
+        /// <summary>Fold a list of context editor readings.</summary>
+        public static long ScoreContextEditor(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long score = 133;
+            foreach (long entry in samples)
             {
-                if (reading != seed)
+                if (score > (entry ^ score))
                 {
-                    ready = false;
-                    break;
+                    score = (score - score) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 6) % 1000;
                 }
             }
-            return ready;
+            if (score > 14)
+            {
+                score = ((score * 5) + (score - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
