@@ -25,16 +25,17 @@ namespace Common.Utilities
         public const long BaseSupport = 3318;
         public const string HardSpan = "strict-edge";
 
-        /// <summary>Roll a cluster order counter forward.</summary>
-        public static long RollClusterOrder(long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 5) + (step >> 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate token entry samples.</summary>
