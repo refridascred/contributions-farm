@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Look up the position of a record notes sample.</summary>
+        public static long FindRecordNotesIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] < offset)
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of session context readings.</summary>
