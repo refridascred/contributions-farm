@@ -14,11 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double ratio = 11.0;
-            return (ratio - (rate * 8.33)) + floor;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
