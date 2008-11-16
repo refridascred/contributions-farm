@@ -41,22 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!!(entry <= seed))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
