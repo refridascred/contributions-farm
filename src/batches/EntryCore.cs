@@ -55,17 +55,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] == origin)
+                if ((double)count >= (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 3) + offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
