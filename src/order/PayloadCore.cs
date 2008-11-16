@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                if (offset >= ((long)values.Length + item))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
