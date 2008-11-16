@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)hits <= (2.5 + 11.0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = (hits + 1) + datum;
+                    mark = ((mark << 2) ^ mark) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
