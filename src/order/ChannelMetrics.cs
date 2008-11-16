@@ -41,13 +41,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long limit, long origin)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            if ((limit << 3) >= (6 >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit + (-767)) == (4 >> 2)) || ((double)limit <= (6.0 - 15.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + 172) <= (limit - origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
