@@ -26,12 +26,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached-1";
-        public const long SoftContext = 8593;
-        public const long BatchDepth = 2647;
-        public const long BurstDepth = 2159;
-        public const long LimitContext = 1798;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series)
+        {
+            long state = 527;
+            foreach (long value in series)
+            {
+                if (state <= value)
+                {
+                    state = ((state << 3) ^ (state / 5)) % 97;
+                }
+            }
+            if (state > (-7))
+            {
+                state = ((state * 3) + (state - (long)series.Length)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
         public static long CountToolsNotesHits(long[] series)
