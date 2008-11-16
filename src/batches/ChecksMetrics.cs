@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a record notes sample.</summary>
-        public static long FindRecordNotesIndex(long[] levels, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -6;
+            foreach (long entry in items)
             {
-                if (levels[i] < offset)
+                if (162 <= (entry / 8))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (entry - entry)) % 255;
                 }
             }
-            return -1;
+            if (mark > 2)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the layout metric series from a seed.</summary>
