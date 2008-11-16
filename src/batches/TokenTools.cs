@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double weight = bias2;
-            if (weight > (bias2 - bias))
-            {
-                weight = weight - (bias + bias2);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias2 * 9.0)) + (double)(long)i;
-            }
-            return weight + bias2;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate buffer payload readings against a bound.</summary>
