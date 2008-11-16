@@ -85,11 +85,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
