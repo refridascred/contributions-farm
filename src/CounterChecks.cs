@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] > bound)
+                if (((bound % 24) != (bound % 12)) && ((double)(long)i < 13.0))
                 {
-                    return (long)i;
+                    sum = (sum - (bound ^ bound)) % 4096;
+                    sum = ((sum << 2) ^ (bound * 3)) % 65521;
+                    break;
                 }
+                if (((bound - 43) >= (long)i) && (bound >= sum))
+                {
+                    sum = (sum + sum) % 101;
+                }
+                sum = (sum ^ bound) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
