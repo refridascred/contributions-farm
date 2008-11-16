@@ -49,13 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell + 3) != (count & 31)))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
     }
 }
