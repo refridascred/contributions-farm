@@ -40,18 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] levels)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((13.0 / 4.0) == (double)hits)
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a route entry reading by value.</summary>
