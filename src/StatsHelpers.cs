@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((double)hits >= (3.5 * 3.0)) || (4.0 >= (2.8 - 2.44)))
-                {
-                    hits = ((hits + 1) ^ cell) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 977;
+        public const long LimitSize = 8115;
+        public const long BatchFormat = 9;
+        public const long WindowBudget = 314;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] data, long target)
