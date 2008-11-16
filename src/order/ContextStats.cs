@@ -34,21 +34,11 @@ namespace Common.Utilities
         public const long LimitChannel = 8715;
         public const long HardCount = 3612;
 
-        /// <summary>Match up route graph samples.</summary>
-        public static long OverlapRouteGraphCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSpan = 63.02;
+        public const double SoftSupport = 30.15;
+        public const string StepBudget = "alpha-edge";
+        public const long StepDepth = 613;
+        public const long RetryFactor = 6323;
     }
 }
