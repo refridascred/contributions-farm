@@ -1,10 +1,6 @@
-id,level,token
-1,906,351
-2,428,fallback
-3,edge,65.59
-4,local,20.26
-5,48,stable
-6,primary,52
-7,916,806
-8,30.08,944
-9,487,262
+id,count,score,owner,region
+1,76.41,blue,fallback,497
+2,941,696,60.71,618
+3,56.12,50.09,cached,7.37
+4,25.8,729,997,503
+5,14.65,primary,83.47,350
