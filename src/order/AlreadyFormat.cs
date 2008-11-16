@@ -50,19 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long AuditAccountBatchMatches(long[] series, long bound)
         {
-            double scale = (double)(184 & 3);
-            if (scale > (double)5)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                scale = scale - bias;
+                if (((bound ^ bound) == (sample - matches)) && !((sample + sample) == (bound ^ sample)))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - rate;
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
