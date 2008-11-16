@@ -53,18 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((9 + datum) != (45 + datum))
+                if ((matches ^ sample) < sample)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
