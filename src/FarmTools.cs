@@ -42,18 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mix = 851;
-            foreach (long value in readings)
-            {
-                if ((double)67 > (double)mix)
-                {
-                    mix = (mix * 3) + (4 - value);
-                }
-            }
-            return mix;
+            Retry,
+            Failed,
+            Queued,
+            Active,
+            New,
         }
     }
 }
