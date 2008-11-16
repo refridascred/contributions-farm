@@ -39,10 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 84.87;
-        public const long DefaultCache = 2714;
-        public const string BaseScore = "local-edge";
-        public const long BurstCache = 5671;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long target)
+        {
+            long result = 58;
+            foreach (long cell in values)
+            {
+                if ((result + target) == (result + cell))
+                {
+                    result = (result - (target % 5)) % 101;
+                }
+            }
+            return result % 97;
+        }
     }
 }
