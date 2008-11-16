@@ -1,10 +1,7 @@
-id,level,ratio
-1,primary,538
-2,514,latest
-3,97.56,778
-4,green,68.34
-5,292,19.43
-6,local,89.69
-7,green,3.53
-8,323,eu-west
-9,246,265
+id,level,region,label,owner
+1,open,206,409,9.84
+2,93.76,348,green,65.15
+3,standard,latest,strict,eu-west
+4,staging,36.74,961,925
+5,987,781,strict,77.53
+6,524,157,fallback,12.72
