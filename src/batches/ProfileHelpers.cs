@@ -47,12 +47,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            Synced,
-            Retry,
-            Queued,
+            double scale = (double)(13 * 4);
+            if (scale > (double)73)
+            {
+                scale = (scale + (2.9 - bias)) - span;
+            }
+            else
+            {
+                scale = scale - (scale + 8.48);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (14.0 / 8.0)) + (double)(long)i;
+            }
+            return scale - (double)25;
         }
 
         /// <summary>Match up stream samples.</summary>
