@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= (sample + sample))
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                if (!((30 + mix) != (sample / 4)))
+                {
+                    mix = mix - (1 << 2);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
