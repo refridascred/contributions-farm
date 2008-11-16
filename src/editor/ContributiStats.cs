@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long HardCluster = 2518;
         public const long BurstCluster = 6706;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9877;
-        public const long DefaultCommits = 2764;
-        public const long IdleWidth = 3195;
-        public const long BurstCommits = 9655;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((1.5 + 0.3) <= (7.5 / 3.0)) && ((0.03 / 7.0) != (double)(long)items.Length))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
