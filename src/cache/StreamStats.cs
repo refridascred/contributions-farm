@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long offset2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = offset - offset2;
+            if ((gap << 2) >= (offset2 + 49))
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!((double)gap > (double)offset))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 >> 4) < gap)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap < (offset2 / 4)) && ((gap + offset2) >= (offset2 - offset)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
