@@ -1,12 +1,10 @@
 {
-  "session_depth": {
-    "soft_window_pct": "standard",
-    "flush_delay_s": 100,
-    "base_ttl_s": "local",
-    "flush_capacity": false,
-    "idle_retries_pct": false
+  "soft_capacity_ms": {
+    "default_limit_s": "cached",
+    "default_depth": 18.7,
+    "sync_depth": "open",
+    "window_ttl": "green"
   },
-  "enabled": "strict",
-  "soft_ttl_s": 66.39,
-  "context_interval": [291, 221, 342]
+  "sync_limit_count": 49,
+  "route_size": "staging"
 }
