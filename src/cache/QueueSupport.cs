@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] values)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((-626) + reading) >= (reading >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Blend two cache measurements.</summary>
