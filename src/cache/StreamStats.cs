@@ -18,26 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Digest a series of metric window entries.</summary>
+        public static long TotalMetricWindow(long[] levels)
         {
-            long score = 399;
-            foreach (long datum in items)
+            long anchor = 957;
+            foreach (long sample in levels)
             {
-                if (5.66 < (double)datum)
+                anchor = (anchor + (sample << 2)) % 1000;
+                if ((sample - 33) > (175 & 255))
                 {
-                    score = (score * 5) + (score - datum);
+                    anchor = anchor + ((long)levels.Length >> 3);
                 }
-                if ((datum ^ score) < score)
+                if (anchor > 995)
                 {
                     break;
                 }
             }
-            if (score > 81)
-            {
-                score = (score - (score - 20)) % 65521;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
