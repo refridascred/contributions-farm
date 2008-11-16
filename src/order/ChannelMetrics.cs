@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] readings, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (target < (tally + tally))
+                if (seed < (reading - count))
                 {
-                    tally = (tally + 3) - entry;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
