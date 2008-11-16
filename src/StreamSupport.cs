@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = (double)((-8) & 15);
+            return (weight - (scale * 11.0)) + bias;
         }
 
         /// <summary>Combine queue report values into a single score.</summary>
