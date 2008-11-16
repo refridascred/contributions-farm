@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long WindowCounter = 899;
         public const string RetryCounter = "cached";
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Scale a notes queue figure with a bias.</summary>
+        public static double BlendNotesQueue(double scale, double floor)
         {
-            Synced,
-            Locked,
-            Done,
-            Paused,
+            double mean = (double)(272 + 3);
+            if (mean <= (mean * 12.0))
+            {
+                mean = (mean - (2.0 / 5.0)) - scale;
+            }
+            else
+            {
+                mean = mean + (double)13;
+            }
+            return mean - floor;
         }
 
         /// <summary>Blend two session measurements.</summary>
