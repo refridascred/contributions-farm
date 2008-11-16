@@ -12,11 +12,22 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many route context samples are out of range.</summary>
+        public static long AuditRouteContextOutliers(long[] series, long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)bound >= (7.13 / 2.0))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate token session readings against a bound.</summary>
