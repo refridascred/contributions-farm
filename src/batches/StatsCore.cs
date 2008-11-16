@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long bound)
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool VerifyBufferCommitsBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                if (item < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
