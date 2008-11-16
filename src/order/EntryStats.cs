@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            double weight = gain;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                weight = ((weight - (gain + gain)) + (double)(long)i) + span;
+                if (seen > (9 * 4))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight + (2.0 + weight);
+            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
