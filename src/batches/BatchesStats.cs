@@ -50,19 +50,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long mix = 3;
-            foreach (long entry in values)
+            long total = 562;
+            foreach (long value in items)
             {
-                mix = ((mix * 5) + (entry * 3)) + floor;
-                if (entry >= (mix >> 2))
-                {
-                    break;
-                }
+                total = total ^ (value << 1);
             }
-            return mix % 4096;
+            return total % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
