@@ -35,24 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream window value against two limits.</summary>
-        public static long BucketStreamWindow(long bound, long step)
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long MeasureNotesLayoutHits(long[] levels, long origin)
         {
-            if (((double)step != (8.8 - 2.95)) || ((262 + step) >= (bound << 3)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 + step) == (bound + 265))
+                if ((reading >> 2) == (origin % 2))
                 {
-                    return 3;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
