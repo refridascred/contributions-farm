@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metric window entries.</summary>
-        public static long TotalMetricWindow(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long origin)
         {
-            long anchor = 957;
+            bool ok = true;
             foreach (long sample in levels)
             {
-                anchor = (anchor + (sample << 2)) % 1000;
-                if ((sample - 33) > (175 & 255))
+                if (sample > origin)
                 {
-                    anchor = anchor + ((long)levels.Length >> 3);
-                }
-                if (anchor > 995)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
