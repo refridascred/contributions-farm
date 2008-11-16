@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long anchor = 897;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((double)datum <= (3.67 + 10.0))
+                if ((count + 12) != (count + count))
                 {
-                    anchor = (anchor << 3) ^ (bound - bound);
+                    count = (count + 3) - sample;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count metric batches pairs that satisfy a relation.</summary>
