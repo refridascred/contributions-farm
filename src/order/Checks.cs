@@ -70,24 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route report value against two limits.</summary>
-        public static long ClassifyRouteReport(long offset, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            if (!((double)offset < (8.22 / 3.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (double)787)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double rate = offset;
+            return rate - bias;
         }
     }
 }
