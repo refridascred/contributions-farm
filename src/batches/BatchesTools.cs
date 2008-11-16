@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a checks contributi reading.</summary>
-        public static double SmoothChecksContributi(double scale, double offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double drift = 8.3;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - (drift - offset)) - (double)(long)i) - scale;
-            }
-            return drift + offset;
+            Idle,
+            Closed,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
