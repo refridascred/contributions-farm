@@ -18,19 +18,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] samples, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
