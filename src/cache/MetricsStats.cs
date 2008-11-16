@@ -58,38 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long bound)
         {
-            if (seed >= (target >> 1))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 2) <= (target / 7))
+                if ((6 << 3) <= count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target == (9.8 + 8.36)) || (target < seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((9 ^ (-3)) >= (seed - seed)) && (4 < (target & 63)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 2) - entry) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
