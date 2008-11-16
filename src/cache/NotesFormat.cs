@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long MinMetrics = 461;
         public const long MinSize = 4397;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Paused,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 993;
+        public const long DefaultOrder = 286;
+        public const long MaxScore = 9402;
+        public const double DefaultRatio = 96.08;
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] levels)
