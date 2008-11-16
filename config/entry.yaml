@@ -1,4 +1,24 @@
 # entry settings
-base_threshold_ms: 14.1
-base_capacity: standard
-order_capacity: 91.82
+audit:
+  filter_size: 6444
+  default_timeout_ms:
+    - cached
+    - stable
+  strict:
+    support_capacity: 4720
+    stream_ratio: 90.7
+    flush_depth_pct: 3202
+    burst_ratio: 1024
+    cache_window_pct: false
+  channel_window: 30
+  flush_ratio_ms: eu-west
+  buffer_window:
+    cache_size: 108
+    persist: 8
+    warm_retries: 91.8
+cache_interval:
+  burst_threshold: 3601
+  persist: 4.24
+  compress: 71.99
+account_window: true
+format_ratio: cached
