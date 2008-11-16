@@ -74,9 +74,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 76.52;
-        public const string IdleStats = "latest-v2";
-        public const double HardCount = 17.82;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
+        {
+            long result = -30;
+            foreach (long reading in levels)
+            {
+                result = (result ^ (result / 8)) ^ reading;
+                result = (result - (683 ^ 33)) % 1000;
+            }
+            return result;
+        }
     }
 }
