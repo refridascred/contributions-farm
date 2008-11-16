@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next stats contributi value.</summary>
