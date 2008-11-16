@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseRatio = 34.44;
+        public const string BurstCache = "cached-v2";
+        public const long MinBudget = 5136;
+        public const long HardCache = 584;
 
         /// <summary>Digest a series of metric window entries.</summary>
         public static long TotalMetricWindow(long[] levels)
