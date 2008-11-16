@@ -22,12 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 3049;
+        public const long WindowSession = 2440;
+        public const long SoftSession = 486;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long bound)
