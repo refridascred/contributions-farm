@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const long BurstBatches = 2538;
         public const long WindowBatches = 7096;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = carry - (carry % 24);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
