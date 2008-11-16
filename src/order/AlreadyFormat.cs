@@ -49,19 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] data, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long step)
         {
-            long acc = 154;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                acc = ((acc << 2) ^ item) % 65521;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc < 16)
-            {
-                acc = acc + (acc + bound);
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a queue summary.</summary>
