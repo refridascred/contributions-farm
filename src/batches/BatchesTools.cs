@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((5.9 - 0.4) >= (double)sample) || ((sample - sample) > (hits - 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
