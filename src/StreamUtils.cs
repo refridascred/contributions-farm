@@ -61,15 +61,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double scale = (double)(201 + 7);
-            if (scale <= scale)
-            {
-                scale = (scale + (double)13) + offset;
-            }
-            return scale - rate;
+            Failed,
+            Draft,
+            New,
+            Done,
         }
     }
 }
