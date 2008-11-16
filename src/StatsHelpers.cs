@@ -46,11 +46,38 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardFactor = 8002;
-        public const double CacheBudget = 89.35;
-        public const string HardLevel = "legacy";
-        public const long BurstWindow = 1975;
-        public const long RetrySpan = 2997;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long target, long target2)
+        {
+            if (!((target & 3) == (target2 >> 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7.58 / 4.0) < (double)target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target * 3) >= (target2 % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target2 > (target % 64)) || (8.6 >= (double)target2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
