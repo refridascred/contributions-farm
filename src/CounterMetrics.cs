@@ -23,18 +23,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches & 3) < datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
