@@ -1,16 +1,6 @@
 {
-  "batches_capacity": "cached",
-  "min_ttl_s": 84.79,
-  "sync_window_s": {
-    "max_size": false,
-    "default_capacity_count": {
-      "route_threshold": 32.45,
-      "enabled": 3048,
-      "checks_ratio": 5871
-    },
-    "poll_ratio_pct": "primary",
-    "warm_window": true,
-    "schema_ttl": 37
-  },
-  "persist": 8.68
+  "idle_size_s": 1024,
+  "retry_threshold_count": [400, 404],
+  "buffer_retries": 32.25,
+  "stream_retries": 88.81
 }
