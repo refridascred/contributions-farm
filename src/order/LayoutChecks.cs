@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double SoftEntry = 23.76;
         public const double CacheSize = 26.99;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheRatio = 12.06;
-        public const double IdleSchema = 79.76;
-        public const double SoftSchema = 84.05;
-        public const double MaxSchema = 30.85;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 4634;
