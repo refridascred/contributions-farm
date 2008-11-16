@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
