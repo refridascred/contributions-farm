@@ -1,5 +1,16 @@
 {
-  "enabled": "staging",
-  "token_delay": 1024,
-  "persist": "cached"
+  "buffer_interval": [96, 385, 100],
+  "token_depth": "staging",
+  "tools_depth": 5725,
+  "readonly": ["staging", "primary"],
+  "metrics_delay": {
+    "warm_delay_pct": [96, 196, 493, 441],
+    "flush_interval_ms": 35.28,
+    "default_ttl_count": {
+      "route_ratio": "blue",
+      "dry_run": "cached",
+      "order_retries": "strict"
+    },
+    "idle_interval": 66
+  }
 }
