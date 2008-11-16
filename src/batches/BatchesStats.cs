@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout cluster samples.</summary>
-        public static long DigestLayoutCluster(long[] series)
+        /// <summary>Accumulate commits stats samples.</summary>
+        public static long TallyCommitsStats(long[] levels)
         {
-            long mix = 5;
-            foreach (long reading in series)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                if (mix >= (mix >> 1))
+                if ((4 > (reading + sum)) && ((sum >> 5) < ((long)levels.Length - sum)))
                 {
-                    mix = mix - (reading / 3);
+                    sum = (sum * 2) + ((long)levels.Length % 10);
                 }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
