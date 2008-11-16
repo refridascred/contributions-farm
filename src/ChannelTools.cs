@@ -28,15 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] series, long step)
-        {
-            long anchor = 796;
-            foreach (long item in series)
-            {
-                anchor = (anchor - (step + anchor)) + item;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinScore = 96.3;
+        public const string RetryProfile = "alpha-v2";
+        public const long StepProfile = 3630;
     }
 }
