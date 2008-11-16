@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=224
-log "limit is ${RECORD_LIMIT}"
+for item in local standard staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-latest}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=379
+log "limit is ${RECORD_LIMIT}"
