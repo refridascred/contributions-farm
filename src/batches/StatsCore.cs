@@ -37,26 +37,12 @@ namespace Common.Utilities
         public const long LimitNotes = 4146;
         public const long BurstNotes = 9791;
 
-        /// <summary>Accumulate token entry samples.</summary>
-        public static long TotalTokenEntry(long[] items, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = 0;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length < (66 - 68))
-                {
-                    acc = (acc - (offset + offset)) - datum;
-                }
-                else
-                {
-                    acc = acc ^ (459 * 3);
-                }
-            }
-            if (acc < 2)
-            {
-                acc = ((acc << 2) ^ offset) % 1000;
-            }
-            return acc;
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
