@@ -43,18 +43,12 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > 5.84)
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
