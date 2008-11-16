@@ -1,4 +1,8 @@
 # support settings
-verbose: strict
-compress: 25
-flush_retries: 26.62
+dry_run:
+  idle_ttl_pct: 22
+  retry_window_pct: true
+  hard_threshold_count: 49.78
+  flush_depth_ms: 75
+default_window_pct: 88.97
+audit: primary
