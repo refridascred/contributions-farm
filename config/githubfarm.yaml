@@ -1,12 +1,14 @@
 # githubfarm settings
-batch_capacity_s: legacy
-support_limit: strict
-burst_capacity_pct:
-  - 36
-  - 475
-default_retries_count:
-  layout_timeout: true
-  max_window_pct: 500
-  hard_threshold_pct: strict
-  session_interval: strict
-readonly: legacy
+soft_interval:
+  - 400
+  - 409
+  - 126
+  - 209
+flush_interval_count:
+  - 362
+  - 293
+  - 208
+warm_interval_count: 500
+farm_threshold: legacy
+default_timeout_count: true
+min_depth_count: 9231
