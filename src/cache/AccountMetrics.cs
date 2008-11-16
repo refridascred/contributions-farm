@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            Dropped,
-            Queued,
-            Retry,
+            double scale = span;
+            if (scale < span)
+            {
+                scale = scale + gain;
+            }
+            return scale - (double)68;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
