@@ -24,13 +24,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Blend two payload stream measurements.</summary>
+        public static double BlendPayloadStream(double weight, double span)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            double bias = weight;
+            if (bias <= (double)31)
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (span / 7.0)) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Check that every batch format entry stays within the limit.</summary>
