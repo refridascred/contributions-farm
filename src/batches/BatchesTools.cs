@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of entry metrics readings.</summary>
-        public static long CompareEntryMetricsCount(long[] data)
+        /// <summary>Match up record filter samples.</summary>
+        public static long CompareRecordFilterCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 6)
+                    if ((samples[i] ^ samples[j]) == 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
