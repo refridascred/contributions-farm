@@ -38,18 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                long delta = carry >> 4;
-                carry = ((carry * 3) + (delta + step)) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 46.35;
+        public const string HardProfile = "stable-v2";
+        public const string BurstProfile = "fallback-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstSize = 4173;
