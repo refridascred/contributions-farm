@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings, long offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count < (long)readings.Length)
-                {
-                    count = ((count + 2) - datum) - offset;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
