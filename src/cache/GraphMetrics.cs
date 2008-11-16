@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const long MaxLayout = 1820;
         public const double SoftLayout = 19.4;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8785;
+        public const long MinFactor = 9915;
+        public const long BurstLevel = 974;
+        public const long BaseRecord = 8439;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
