@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series, long bound)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits + 4) > bound)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
