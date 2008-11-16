@@ -26,19 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] data, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = floor;
+            return (rate + (double)390) + bias;
         }
     }
 }
