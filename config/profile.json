@@ -1,18 +1,8 @@
 {
-  "min_limit_count": true,
-  "editor_limit": 93.72,
-  "default_size_s": ["edge", "legacy", "local", "edge"],
-  "flush_interval_pct": 3592,
-  "retry_limit_ms": {
-    "default_delay_ms": {
-      "flush_timeout": "edge",
-      "hard_ttl_ms": 100,
-      "verbose": ["stable", "green", "staging", "stable"]
-    },
-    "support_threshold": 49,
-    "compress": 1150,
-    "editor_retries": 100,
-    "token_capacity": "edge"
-  },
-  "retry_limit": "legacy"
+  "readonly": ["blue", "staging", "latest", "primary"],
+  "schema_window": "fallback",
+  "batch_ratio_s": 228,
+  "hard_retries_pct": [23, 56, 296],
+  "audit": 666,
+  "cache_ttl_pct": 500
 }
