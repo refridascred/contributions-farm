@@ -49,9 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "legacy-edge";
-        public const long SoftCount = 1806;
-        public const double BaseBatch = 72.12;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Paused,
+            Retry,
+            Dropped,
+        }
     }
 }
