@@ -29,19 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            double scale2 = (13.0 - span) * 3.29;
-            if (scale2 > scale2)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                scale2 = scale2 - scale;
+                if (count >= (count - count))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return count;
         }
     }
 }
