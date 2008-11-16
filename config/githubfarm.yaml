@@ -1,24 +1,34 @@
 # githubfarm settings
-max_retries_ms:
-  base_ratio: true
-  base_window_s: 24
-  schema_window:
-    - 86
-    - 202
-  editor_capacity: 80
-  sync_window: cached
-  retry_interval_count: true
-compress: green
-soft_capacity_count:
-  cache_timeout:
-    - 317
-    - 405
-  idle_window:
+default_ttl_pct: eu-west
+persist:
+  readonly: true
+  retry_depth: 250
+  dry_run: 500
+  support_timeout:
+    - primary
+    - local
+    - blue
     - strict
-    - stable
-    - standard
-  strict: 56
-  compress: green
-  entry_interval: 60
-  base_size_ms: stable
-channel_timeout: 14.9
+  hard_ratio:
+    token_delay: open
+    channel_delay: 18
+    metric_ratio: strict
+    sync_delay_s:
+      - 373
+      - 366
+      - 35
+    stream_ratio: staging
+  max_capacity_pct:
+    - 122
+    - 96
+    - 221
+    - 141
+compress:
+  - 95
+  - 395
+  - 2
+flush_interval_ms:
+  - primary
+  - standard
+  - strict
+queue_timeout: 75.98
