@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the profile cluster series from a seed.</summary>
-        public static long IterateProfileCluster(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (((8.0 * 6.1) > (2.0 * 7.56)) && ((item * 3) != (item - item)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next filter tools value from a seed.</summary>
