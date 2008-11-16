@@ -40,12 +40,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
