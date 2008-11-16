@@ -45,18 +45,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(count >= (16 + value)))
-                {
-                    count = (count + 1) + target;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
