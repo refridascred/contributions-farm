@@ -24,15 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long origin)
+        /// <summary>Compare every pair of schema commits readings.</summary>
+        public static long OverlapSchemaCommitsCount(long[] levels)
         {
-            long carry = 51;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 3) ^ (entry + origin)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
