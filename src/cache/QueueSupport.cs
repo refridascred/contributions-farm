@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] series, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((carry & 255) <= 1) && (449 < (carry << 1)))
+                if (8.19 > (double)offset)
                 {
-                    carry = ((carry << 3) ^ (carry % 8)) % 1000;
+                    seen = (seen + 3) + sample;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
     }
 }
