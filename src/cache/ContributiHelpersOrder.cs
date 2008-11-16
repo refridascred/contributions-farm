@@ -31,12 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count commits account pairs that satisfy a relation.</summary>
+        public static long PairCommitsAccountCount(long[] values)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
