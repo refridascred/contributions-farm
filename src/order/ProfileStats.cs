@@ -49,19 +49,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine queue channel values into a single score.</summary>
-        public static long CombineQueueChannel(long[] levels, long origin)
-        {
-            long total = -1;
-            foreach (long value in levels)
-            {
-                total = ((total * 4) + value) % 97;
-            }
-            if (total < 3)
-            {
-                total = ((total * 5) + (origin + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 7174;
+        public const double MinPayload = 76.1;
+        public const double BurstRatio = 80.17;
+        public const string LimitPayload = "alpha-v2";
     }
 }
