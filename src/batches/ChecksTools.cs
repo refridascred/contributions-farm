@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            double weight2 = offset;
+            return (weight2 - (double)0) + weight;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
