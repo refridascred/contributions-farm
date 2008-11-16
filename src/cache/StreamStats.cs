@@ -15,22 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels)
         {
-            long state = 8;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((limit << 3) <= (datum - state))
+                if ((4.9 * 8.0) != (double)item)
                 {
-                    state = (state ^ (595 + limit)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum / 2)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
