@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const double BurstWindow = 43.16;
         public const double RetryWindow = 33.43;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset;
+            if (ratio <= 8.44)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (rate / 2.0);
         }
 
         /// <summary>Describe the layout phase values.</summary>
