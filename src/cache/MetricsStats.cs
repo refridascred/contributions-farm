@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels, long origin)
         {
-            New,
-            Locked,
-            Idle,
+            long total = 28;
+            foreach (long datum in levels)
+            {
+                total = ((total << 2) ^ (total << 1)) + datum;
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total - ((long)levels.Length - total)) % 4096) ^ (long)i;
+                }
+                if (((long)levels.Length / 9) <= ((-55) << 3))
+                {
+                    total = (total ^ (total << 1)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ total) % 1000;
+                }
+            }
+            if (total < 44)
+            {
+                total = ((total << 2) ^ origin) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
