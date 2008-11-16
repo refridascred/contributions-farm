@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheTimeout = 7.46;
-        public const double HardDepth = 65.33;
-        public const long HardBatches = 6705;
-        public const long RetryBatches = 5785;
+        /// <summary>Check that every batches commits entry stays within the limit.</summary>
+        public static bool CheckBatchesCommitsLimits(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
