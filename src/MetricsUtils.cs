@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values, long limit)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample << 2) != (tally + sample))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
