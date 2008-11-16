@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.9 * 8.0) != (double)item)
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
