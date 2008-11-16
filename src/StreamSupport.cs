@@ -12,23 +12,21 @@ namespace Common.Utilities
             return (bias - (double)4) + floor;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            double gain = 8.7 + (weight / 6.0);
-            if (gain <= (double)90)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (span + span)) + (double)(long)i;
-            }
-            return gain - (gain * 8.5);
+            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
