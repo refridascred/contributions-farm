@@ -58,14 +58,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            Stale,
-            Retry,
-            Synced,
-            Active,
-            Done,
+            long anchor = 48;
+            foreach (long value in levels)
+            {
+                if ((19.0 - 5.3) < (double)value)
+                {
+                    anchor = anchor - value;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor - 1);
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = ((anchor * 4) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache status values.</summary>
