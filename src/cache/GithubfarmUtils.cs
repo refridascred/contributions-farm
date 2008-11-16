@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a stream entry reading.</summary>
-        public static double ScaleStreamEntry(double bias, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] data, long origin)
         {
-            double drift = (7.02 - floor) * 7.0;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                drift = ((drift - (drift - floor)) + (double)(long)i) + bias;
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (double)75;
+            return valid;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
