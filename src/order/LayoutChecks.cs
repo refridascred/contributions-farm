@@ -43,22 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long CountLayoutTokenOutliers(long[] data, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target / 6) != (tally ^ target)) && (cell > (cell + 44)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
