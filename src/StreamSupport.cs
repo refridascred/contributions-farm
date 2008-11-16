@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long seed)
         {
-            long acc = 1;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((acc + floor) <= (datum - datum))
+                if (datum < seed)
                 {
-                    acc = acc ^ (acc - acc);
-                }
-                if (((acc / 6) > (long)levels.Length) && ((double)datum > (3.23 - 4.48)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (acc > 24)
-            {
-                acc = (acc ^ (acc ^ floor)) % 255;
-            }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
