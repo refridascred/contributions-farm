@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double bias = ratio;
-            return (bias - (double)4) + floor;
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
