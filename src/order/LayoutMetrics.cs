@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool GuardCacheGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= origin)
+                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
