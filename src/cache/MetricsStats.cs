@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long TallyMetricFormatHits(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ 9) == (hits >> 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
