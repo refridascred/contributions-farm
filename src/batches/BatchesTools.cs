@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] data, long bound)
         {
-            Stale,
-            Synced,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (reading - bound))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a payload stats.</summary>
