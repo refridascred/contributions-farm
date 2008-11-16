@@ -38,11 +38,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long edge = limit ^ seed;
+            if ((1.93 - 8.61) > (double)edge)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge >= (edge + limit)) || ((seed - 0) >= (edge << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit <= (edge % 97)) && ((2.52 / 5.0) == (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0 & 7) == (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
