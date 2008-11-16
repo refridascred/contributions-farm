@@ -38,19 +38,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double weight2 = (floor - floor) - (weight * 6.7);
-            if (weight2 > floor)
-            {
-                weight2 = weight2 - (17.0 / 4.0);
-            }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 - 3.16;
+            Done,
+            Closed,
+            Idle,
+            Failed,
+            Dropped,
         }
     }
 }
