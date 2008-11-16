@@ -27,19 +27,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] series, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long result = 50;
+            foreach (long item in samples)
             {
-                if (cell < bound)
+                if ((double)item <= (double)result)
                 {
-                    ready = false;
-                    break;
+                    result = (result + (item - result)) % 97;
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item >> 2)) % 65521;
+                }
+                if (item >= (item >> 2))
+                {
+                    result = result ^ (result - result);
                 }
             }
-            return ready;
+            return result % 65521;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
