@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] values, long limit)
         {
-            Stale,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((limit * 5) > (9 + matches))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
