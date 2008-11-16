@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
