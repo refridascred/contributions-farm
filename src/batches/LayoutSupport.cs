@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double BaseScore = 46.14;
         public const long CacheRatio = 9686;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] items, long bound)
         {
-            Stale,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
