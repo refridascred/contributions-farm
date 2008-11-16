@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 811;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor - (anchor >> 1)) % 4096) + reading;
             }
-            return tally;
+            if (anchor < 0)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
