@@ -1,6 +1,6 @@
 {
-  "batch_interval_count": [112, 358, 283, 53],
-  "audit": 34.8,
-  "stats_depth": "eu-west",
-  "sync_capacity": 65
+  "verbose": "stable",
+  "layout_timeout": 250,
+  "payload_ratio": 86,
+  "persist": 18.53
 }
