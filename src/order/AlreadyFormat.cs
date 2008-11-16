@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] readings, long target)
         {
-            long total = 950;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total << 3) ^ (62 % 2)) % 1000) ^ sample;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
