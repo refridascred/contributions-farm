@@ -39,13 +39,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a already counter reading by value.</summary>
+        public static long SeekAlreadyCounterIndex(long[] items, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
