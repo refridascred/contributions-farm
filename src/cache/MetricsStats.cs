@@ -50,11 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long seed)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            if (seed >= (target >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) <= (target / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target == (9.8 + 8.36)) || (target < seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((9 ^ (-3)) >= (seed - seed)) && (4 < (target & 63)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
