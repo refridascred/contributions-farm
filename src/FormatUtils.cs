@@ -27,10 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 102;
-        public const long MinCount = 152;
-        public const long MaxToken = 2410;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinFactor = 8022;
+        public const long BaseCommand = 6505;
+        public const long MaxBudget = 6926;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
