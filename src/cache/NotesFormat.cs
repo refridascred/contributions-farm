@@ -27,11 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 8670;
-        public const long IdleTimeout = 7661;
-        public const long MinLayout = 3012;
-        public const double IdleLayout = 71.84;
-        public const long BatchLayout = 8744;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count != (2.4 + 4.2))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
