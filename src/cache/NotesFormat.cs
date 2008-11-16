@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Ready,
-            Locked,
-            Pending,
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
