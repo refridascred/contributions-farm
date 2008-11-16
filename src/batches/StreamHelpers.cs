@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] data, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (cell > floor)
+                if (seen >= 9)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) + entry) - offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
