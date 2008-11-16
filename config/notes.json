@@ -1,19 +1,5 @@
 {
-  "context_interval": 9034,
-  "max_timeout_s": false,
-  "cache_size": {
-    "retry_interval_pct": 36,
-    "flush_interval": 2053,
-    "sync_interval_s": {
-      "max_capacity_count": 87.2,
-      "enabled": "local",
-      "support_interval": "blue",
-      "audit": 25,
-      "strict": 500,
-      "farm_interval": "fallback"
-    },
-    "hard_interval": [193, 210, 160],
-    "retry_interval_ms": false,
-    "graph_limit": "legacy"
-  }
+  "record_threshold": 4.34,
+  "flush_retries_count": "standard",
+  "route_threshold": "legacy"
 }
