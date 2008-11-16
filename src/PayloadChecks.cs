@@ -46,12 +46,33 @@ namespace Common.Utilities
         public const double MaxFarm = 44.94;
         public const long CacheSize = 7632;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 9027;
-        public const long WindowRatio = 2570;
-        public const double LimitWidth = 42.19;
-        public const double CacheScore = 39.36;
-        public const double StepEntry = 25.33;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long step2)
+        {
+            long step3 = step - step2;
+            if ((step2 ^ step3) > (step2 % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step3 ^ step3) == (step3 % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 / 6) > (step3 / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
