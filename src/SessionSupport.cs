@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if ((double)floor <= 7.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit >= (78 + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
