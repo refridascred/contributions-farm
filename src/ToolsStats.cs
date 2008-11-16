@@ -45,17 +45,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batches batch series from a seed.</summary>
-        public static long StepBatchesBatch(long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc - 481;
-                acc = (acc ^ (offset % 2)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
