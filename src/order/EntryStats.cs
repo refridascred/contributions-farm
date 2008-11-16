@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const double MaxEntry = 1.22;
         public const long LimitBudget = 1097;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 50.92;
-        public const long WindowSpan = 476;
-        public const double SoftSupport = 63.25;
-        public const long BatchSupport = 1887;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] items, long offset)
