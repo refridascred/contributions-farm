@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long LimitLevel = 5904;
         public const long SoftSize = 6844;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
