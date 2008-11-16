@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long mark = 33;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - (mark + entry);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
