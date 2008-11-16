@@ -15,18 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long limit)
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool ValidateSupportCounterBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (((hits / 3) > (entry + entry)) && ((-65) <= (limit + 0)))
+                if (cell <= limit)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a metrics info.</summary>
