@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor report samples.</summary>
-        public static long CombineEditorReport(long[] levels, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = 21;
-            foreach (long cell in levels)
-            {
-                carry = (((carry + carry) % 65521) - cell) + limit;
-            }
-            if (carry > 251)
-            {
-                carry = ((carry << 3) ^ (carry ^ 96)) % 255;
-            }
-            return carry;
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
