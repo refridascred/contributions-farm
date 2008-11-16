@@ -55,12 +55,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long delta = floor + bound;
+            if (96 > (delta ^ floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 4) > delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
