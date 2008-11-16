@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine farm batches values into a single score.</summary>
-        public static long TotalFarmBatches(long[] data, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long offset)
         {
-            long total = 67;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((total + total) <= step) && ((0.8 - 17.0) < (double)reading))
+                if (levels[i] >= offset)
                 {
-                    total = ((total * 3) + total) % 65521;
-                }
-                else
-                {
-                    total = (total + (reading + total)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
