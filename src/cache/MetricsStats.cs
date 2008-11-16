@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long MeasureCacheCommitsMatches(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((4.0 / 3.0) != (double)matches) && ((matches * 3) != (entry % 97)))
+                if ((origin / 5) > 84)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) ^ reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
