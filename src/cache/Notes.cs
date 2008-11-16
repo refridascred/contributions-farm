@@ -30,21 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up token profile samples.</summary>
-        public static long PairTokenProfileCount(long[] items)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
