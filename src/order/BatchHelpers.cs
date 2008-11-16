@@ -37,12 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowInterval = 12.01;
+        public const string IdleCommand = "open";
+        public const long StepTimeout = 3270;
+        public const long DefaultCommand = 485;
     }
 }
