@@ -28,18 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long acc = 4;
-            foreach (long sample in levels)
-            {
-                if (((double)acc <= (2.2 / 6.0)) && ((acc & 255) <= (acc + 52)))
-                {
-                    acc = ((acc * 3) + sample) % 4096;
-                }
-            }
-            return acc % 4096;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
