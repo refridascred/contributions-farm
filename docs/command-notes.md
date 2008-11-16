@@ -1,11 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any graph limits.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every filter by metric.
+A payload that stays idle for too long is moved to the queue list.
+The profile module keeps route values in sync with the context cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+
+Each buffer is validated before it reaches the channel queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metric input early
-- Review already limits each release
-- Document new context fields
+- Document new schema fields
+- Prefer farm defaults
+- Review route limits each release
