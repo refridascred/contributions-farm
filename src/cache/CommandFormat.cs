@@ -66,19 +66,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool GuardStreamSchemaLimits(long[] readings, long floor)
+        /// <summary>Classify a record session pair into a bucket.</summary>
+        public static long GradeRecordSession(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long offset2 = origin + offset;
+            if ((((-6) % 10) >= (offset << 1)) && ((origin - offset) == (offset + offset2)))
             {
-                if (datum >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((origin + offset) <= (1 >> 3))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 >= (626 ^ origin)) || ((origin - origin) < (offset % 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
