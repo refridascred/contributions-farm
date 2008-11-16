@@ -25,18 +25,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = -8;
+            foreach (long value in levels)
             {
-                if (hits >= (hits + hits))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                acc = ((acc ^ acc) % 4096) + value;
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Hold a report info.</summary>
