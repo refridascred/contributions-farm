@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Failed,
-            Queued,
-            New,
-            Stale,
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
