@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8752;
-        public const long WindowFarm = 7716;
-        public const long MaxWidth = 2497;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Dropped,
+            Pending,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
