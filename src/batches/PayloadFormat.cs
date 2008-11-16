@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleWidth = 21.05;
-        public const double BatchSize = 7.84;
-        public const long CacheGraph = 5728;
-        public const long IdleGraph = 8134;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] levels)
