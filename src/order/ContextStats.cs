@@ -52,19 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] data, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double ratio = bias * 8.4;
+            if (ratio <= 8.0)
             {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + bias) - gain;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (1.0 / 7.0)) + (double)(long)i;
+            }
+            return ratio + (double)649;
         }
     }
 }
