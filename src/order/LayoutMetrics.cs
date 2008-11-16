@@ -29,14 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Done,
             Closed,
-            Idle,
-            Failed,
-            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
