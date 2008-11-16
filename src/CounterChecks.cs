@@ -27,12 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Queued,
-            Pending,
-            New,
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
