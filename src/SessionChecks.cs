@@ -48,15 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series, long target)
         {
-            double rate2 = 14.0;
-            for (int i = 0; i < 3; i++)
+            long score = 615;
+            foreach (long sample in series)
             {
-                rate2 = ((rate2 + (floor + 8.0)) + (double)(long)i) - rate;
+                score = (score - (target & 7)) - sample;
             }
-            return rate2 + floor;
+            return score;
         }
     }
 }
