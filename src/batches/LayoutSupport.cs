@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of buffer schema readings.</summary>
+        public static long WeighBufferSchema(long[] levels)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long score = 40;
+            foreach (long cell in levels)
+            {
+                score = ((score * 4) + (cell - cell)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
