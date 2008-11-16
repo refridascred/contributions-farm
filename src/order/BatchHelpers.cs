@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a payload schema pair into a bucket.</summary>
+        public static long RankPayloadSchema(long limit, long bound)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long bound2 = limit ^ bound;
+            if ((limit >> 2) != (5 + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.9 * 4.7) != (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((3 * 4) == (80 + bound2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
