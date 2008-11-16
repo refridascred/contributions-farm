@@ -1,5 +1,7 @@
 {
-  "cache_window": "open",
-  "retry_limit_s": "eu-west",
-  "poll_size": "standard"
+  "poll_depth_count": 9113,
+  "strict": "standard",
+  "min_timeout_pct": 39,
+  "audit": [234, 287, 32, 75],
+  "persist": 100
 }
