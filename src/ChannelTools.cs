@@ -52,9 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftSpan = 7.17;
-        public const long MaxLevel = 8956;
-        public const long MaxCounter = 2463;
+        /// <summary>Derive the next token editor value from a seed.</summary>
+        public static long SeriesTokenEditor(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
