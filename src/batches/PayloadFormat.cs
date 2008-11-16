@@ -45,22 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Digest a series of buffer report entries.</summary>
+        public static long CombineBufferReport(long[] values)
         {
-            long result = 2;
-            foreach (long value in items)
+            long result = 943;
+            foreach (long cell in values)
             {
-                if (!((double)(long)items.Length == (double)result))
+                if ((9.0 - 6.6) <= (double)result)
                 {
-                    result = (result + (value - result)) % 1000;
-                }
-                else
-                {
-                    result = result ^ (result % 5);
+                    result = ((result << 3) ^ (952 << 1)) - cell;
                 }
             }
-            return result;
+            if (result > 79)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result % 1000;
         }
     }
 }
