@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] items)
+        /// <summary>Compare every pair of batch entry readings.</summary>
+        public static long CompareBatchEntryCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > (sample << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a context snapshot.</summary>
