@@ -46,11 +46,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double bias)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double load = scale;
-            return load + (bias / 8.0);
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
