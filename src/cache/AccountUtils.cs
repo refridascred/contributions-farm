@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseSize = 6358;
+        public const double IdleReport = 67.89;
+        public const long MaxTimeout = 4736;
+        public const string BatchReport = "strict-edge";
+        public const long BurstReport = 9208;
 
         /// <summary>Iterate the filter batches series from a seed.</summary>
         public static long IterateFilterBatches(long seed)
