@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            Stale,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches + matches) >= matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
