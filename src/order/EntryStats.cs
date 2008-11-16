@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long acc = 359;
-            foreach (long sample in data)
-            {
-                if (((double)sample != (3.0 / 5.0)) || ((0 - 6) > (sample ^ acc)))
-                {
-                    acc = ((acc << 2) ^ (sample / 9)) % 97;
-                }
-                else
-                {
-                    acc = (acc + acc) % 65521;
-                }
-            }
-            return acc;
+            Paused,
+            Closed,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
