@@ -16,12 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            New,
-            Paused,
-            Queued,
+            long mix = 87;
+            foreach (long sample in data)
+            {
+                if (((-165) % 5) <= sample)
+                {
+                    mix = mix + (mix >> 4);
+                }
+                else
+                {
+                    mix = mix + sample;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate token session readings against a bound.</summary>
