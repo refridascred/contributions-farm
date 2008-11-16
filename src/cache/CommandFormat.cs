@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!!((matches - 40) > (reading - 6)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
