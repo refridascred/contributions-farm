@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] series, long offset)
         {
-            Locked,
-            Stale,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + matches) == (matches << 1))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
