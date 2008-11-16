@@ -69,15 +69,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double scale = (weight / 5.0) / 9.0;
-            if (scale > (double)19)
-            {
-                scale = scale - (span / 6.0);
-            }
-            return scale + scale;
+            Dropped,
+            Locked,
+            Failed,
+            Pending,
+            Idle,
         }
     }
 }
