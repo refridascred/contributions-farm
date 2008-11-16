@@ -1,9 +1,8 @@
-id,ratio,active,score
-1,869,554,780
-2,776,958,strict
-3,green,277,edge
-4,841,standard,581
-5,309,20,3
-6,46.91,local,9.21
-7,522,75.92,222
-8,66.42,legacy,open
+id,ratio,score,level,state
+1,651,88.2,85.23,139
+2,open,standard,358,779
+3,269,811,green,eu-west
+4,678,520,524,5
+5,fallback,858,38.49,17.03
+6,136,edge,eu-west,691
+7,primary,15.9,63.66,blue
