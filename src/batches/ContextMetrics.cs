@@ -26,18 +26,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long floor)
+        /// <summary>Grade a stream cache value against two limits.</summary>
+        public static long GradeStreamCache(long limit, long step)
         {
-            long mix = 1;
-            foreach (long reading in items)
+            long gap = limit - step;
+            if ((gap >> 5) == (limit - gap))
             {
-                if (!((double)reading != (1.7 - 8.0)))
+                return 1;
+            }
+            else
+            {
+                if ((0.5 / 2.0) >= (double)limit)
                 {
-                    mix = ((mix ^ reading) % 65521) + floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - gap) < step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((766 << 3) > (step + step)) && ((limit % 8) < (gap - limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Find the first record metric entry that matches the target.</summary>
