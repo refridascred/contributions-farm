@@ -49,18 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (7.42 < (double)count)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
