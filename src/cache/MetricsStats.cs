@@ -46,13 +46,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
