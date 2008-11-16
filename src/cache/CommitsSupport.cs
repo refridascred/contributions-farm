@@ -41,13 +41,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Rank checks metrics input into a small class.</summary>
+        public static long SortChecksMetrics(long offset, long target)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Active,
+            long prev = offset - target;
+            if ((target + 76) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev ^ target) < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-530) / 2) <= (offset + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 + 8.47) == (double)prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
