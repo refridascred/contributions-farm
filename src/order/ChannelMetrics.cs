@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long IdleChecks = 7767;
         public const double CacheRatio = 8.92;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) <= (sample >> 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
