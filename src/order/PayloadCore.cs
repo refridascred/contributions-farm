@@ -31,12 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3855;
-        public const long BaseSpan = 7256;
-        public const long IdleScore = 1382;
-        public const long CacheCount = 1787;
-        public const long RetryScore = 8419;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long offset, long target)
