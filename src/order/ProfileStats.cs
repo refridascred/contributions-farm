@@ -12,22 +12,38 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long AuditRouteContextOutliers(long[] series, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long target, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((step < (step / 7)) && ((step + target) >= target))
             {
-                if ((double)bound >= (7.13 / 2.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (2.2 - 0.53))
                 {
-                    seen = (seen + 3) + value;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (step < (target / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + target) != (target + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate token session readings against a bound.</summary>
