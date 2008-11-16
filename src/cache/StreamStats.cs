@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (data[i] > offset)
+                if (entry <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
