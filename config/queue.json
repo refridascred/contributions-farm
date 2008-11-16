@@ -1,18 +1,7 @@
 {
-  "warm_retries_s": {
-    "dry_run": 30,
-    "route_threshold": true,
-    "hard_capacity_count": "staging",
-    "idle_threshold_ms": true
-  },
-  "hard_interval_ms": "latest",
-  "retry_timeout_ms": 33.83,
-  "retry_depth_count": [434, 290],
-  "audit": 87,
-  "sync_depth_pct": {
-    "max_limit_ms": true,
-    "base_limit": "edge",
-    "burst_ratio_ms": ["primary", "legacy", "open"],
-    "filter_window": 71
-  }
+  "base_ttl_pct": 44.1,
+  "max_depth_pct": 30,
+  "max_depth_ms": true,
+  "cache_retries": ["strict", "primary"],
+  "account_delay": "local"
 }
