@@ -30,15 +30,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine queue report values into a single score.</summary>
-        public static long DigestQueueReport(long[] series, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = 5;
-            foreach (long item in series)
-            {
-                anchor = ((anchor * 5) + (seed + seed)) + item;
-            }
-            return anchor % 4096;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
