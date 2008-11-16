@@ -25,20 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long DeriveWindowBatches(long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)limit > (3.0 - 3.5))
-                {
-                    carry = (carry ^ limit) % 255;
-                    carry = carry + ((long)i - carry);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a metrics record.</summary>
