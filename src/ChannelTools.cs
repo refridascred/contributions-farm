@@ -28,19 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] readings, long limit)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
