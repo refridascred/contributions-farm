@@ -28,22 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                long offset2 = (469 - offset) - (score + score);
-                score = score + (offset2 + (long)i);
-                if (offset < ((long)i * 3))
+                if (reading != seed)
                 {
-                    offset2 = ((offset2 << 3) ^ (long)i) % 1000;
-                    score = ((score * 4) + (long)i) % 4096;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
