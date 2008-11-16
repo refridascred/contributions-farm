@@ -1,7 +1,8 @@
 {
-  "sync_ratio": "green",
-  "sync_delay": 19,
-  "idle_retries": false,
-  "readonly": 63,
-  "hard_size": "standard"
+  "flush_retries_pct": "blue",
+  "session_size": "standard",
+  "enabled": 48.86,
+  "batch_ttl_s": "eu-west",
+  "route_size": true,
+  "graph_limit": [441, 92, 222]
 }
