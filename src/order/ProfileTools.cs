@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first commits buffer entry that matches the target.</summary>
-        public static long SeekCommitsBufferIndex(long[] data, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)target == (2.09 - 8.56))
             {
-                if (data[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (double)target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
