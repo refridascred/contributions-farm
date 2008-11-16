@@ -23,11 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a cache entry figure with a bias.</summary>
