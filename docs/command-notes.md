@@ -1,14 +1,12 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the queue list.
-The profile module keeps route values in sync with the context cache.
-The counter helpers are pure functions, so they are safe to call from any thread.
-
-Each buffer is validated before it reaches the channel queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often tools data is refreshed.
+Use metrics settings to tune how often cluster data is refreshed.
+Each account is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer farm defaults
-- Review route limits each release
+- Keep token values small
+- Validate checks input early
+- Prefer channel defaults
+- Review format limits each release
