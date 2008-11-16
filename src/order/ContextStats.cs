@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] items, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = 7;
+            foreach (long datum in readings)
             {
-                if ((tally / 4) <= 675)
-                {
-                    tally = ((tally + 1) + item) + limit;
-                }
+                score = (score + (limit % 60)) - datum;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate order samples.</summary>
