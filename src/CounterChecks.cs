@@ -37,18 +37,11 @@ namespace Common.Utilities
         public const long StepWidth = 5971;
         public const long RetryMetric = 1432;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((target - item) <= item) && ((207 / 2) > (count ^ count))) && ((count > item) && ((53 + count) > (count + target))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
