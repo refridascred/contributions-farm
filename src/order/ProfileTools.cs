@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public bool Mode { get; set; }
             public bool Count { get; set; }
-            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
