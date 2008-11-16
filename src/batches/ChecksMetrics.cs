@@ -54,19 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            long sum = 330;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (sample % 3)) % 65521;
+                if ((seen ^ seen) > reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            if (sum < 647)
-            {
-                sum = (sum * 2) + (9 * 3);
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Find the first report payload entry that matches the target.</summary>
