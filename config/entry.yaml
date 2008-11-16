@@ -1,28 +1,9 @@
 # entry settings
-dry_run:
-  burst_window_count: 0.19
-  poll_ttl_count: eu-west
-  compress: true
-  strict: 250
-  base_window_ms:
-    context_limit: 500
-    compress: green
-    cache_size_ms: 5322
-    retry_ttl_count: stable
-    batch_size: 64.47
-  metric_threshold: false
-verbose: 85.71
-editor_window:
-  entry_timeout: 4532
-  default_depth: 82.41
-  poll_retries_pct: open
-  warm_capacity_count:
-    - blue
-    - green
-    - standard
-    - latest
-  verbose: green
-  poll_capacity: 1024
-compress: false
-burst_threshold_ms: 33
-hard_timeout_count: 2006
+githubfarm_depth:
+  - green
+  - latest
+  - green
+  - edge
+strict: 63.88
+entry_capacity: false
+default_threshold_ms: standard
