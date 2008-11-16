@@ -1,7 +1,8 @@
 {
-  "burst_capacity": "cached",
-  "min_delay_count": ["latest", "staging"],
-  "retry_interval": 85,
-  "batch_depth": "green",
-  "context_size": "eu-west"
+  "verbose": true,
+  "min_retries_ms": ["stable", "stable", "fallback"],
+  "route_limit": 37,
+  "counter_threshold": ["open", "stable", "open"],
+  "flush_ttl": [8, 119, 437, 396],
+  "batches_timeout": false
 }
