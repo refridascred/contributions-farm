@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            Locked,
-            Queued,
-            Draft,
-            Dropped,
-            Active,
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
