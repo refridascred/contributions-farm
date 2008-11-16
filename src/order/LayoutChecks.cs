@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxBudget = 9077;
+        public const double StepEntry = 13.09;
+        public const double SoftEntry = 23.76;
+        public const double CacheSize = 26.99;
 
         /// <summary>Fold a list of route entry readings.</summary>
         public static long DigestRouteEntry(long[] values, long seed)
