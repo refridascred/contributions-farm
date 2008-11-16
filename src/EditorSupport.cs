@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] series, long target)
         {
-            Queued,
-            New,
-            Locked,
-            Pending,
+            long mark = 16;
+            foreach (long value in series)
+            {
+                mark = ((mark << 2) ^ (value + (long)series.Length)) + target;
+                if (value > mark)
+                {
+                    mark = ((mark * 5) + value) % 101;
+                }
+            }
+            if (mark < 94)
+            {
+                mark = (mark ^ (mark >> 3)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
