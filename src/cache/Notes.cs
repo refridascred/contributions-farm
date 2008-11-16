@@ -41,21 +41,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric stats readings.</summary>
-        public static long PairMetricStatsCount(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = bound - bound2;
+            if (((939 ^ lane) <= (bound >> 3)) && ((double)bound2 <= 18.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound >> 2))
                 {
-                    if ((levels[i] - levels[j]) == 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane <= (double)bound)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
