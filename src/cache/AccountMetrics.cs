@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long floor, long offset)
         {
-            Paused,
-            Pending,
-            Queued,
-            Retry,
+            if (((3.4 / 8.0) <= (double)offset) && ((double)floor == (0.58 * 0.98)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((734 << 3) <= offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset & 1) < (floor * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < (13.0 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile info.</summary>
