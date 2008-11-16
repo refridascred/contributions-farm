@@ -37,16 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi support series from a seed.</summary>
-        public static long StepContributiSupport(long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (9 - step)) % 4096;
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
