@@ -38,31 +38,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long limit, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            if ((limit << 3) >= (6 >> 2))
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((limit + (-767)) == (4 >> 2)) || ((double)limit <= (6.0 - 15.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + 172) <= (limit - origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
