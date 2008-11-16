@@ -39,11 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Locate a already graph reading by value.</summary>
+        public static long LookupAlreadyGraphIndex(long[] readings, long step)
         {
-            double rate = bias / 5.0;
-            return (rate + bias) + ratio;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
