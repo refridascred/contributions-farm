@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            double drift = floor;
+            return drift - scale;
         }
 
         /// <summary>Accumulate tools samples.</summary>
