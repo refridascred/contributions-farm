@@ -1,5 +1,15 @@
 {
-  "retry_ttl": false,
-  "channel_window": "fallback",
-  "batch_depth": "open"
+  "report_retries": "standard",
+  "report_timeout": {
+    "verbose": 250,
+    "audit": "fallback",
+    "dry_run": true,
+    "sync_interval": "edge",
+    "poll_interval_ms": 81,
+    "max_interval": ["strict", "standard", "standard", "local"]
+  },
+  "burst_depth_count": "primary",
+  "burst_limit_pct": ["blue", "blue", "primary", "open"],
+  "retry_ratio_count": "eu-west",
+  "base_interval": ["standard", "legacy", "blue"]
 }
