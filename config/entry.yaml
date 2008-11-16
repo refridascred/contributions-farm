@@ -1,13 +1,8 @@
 # entry settings
-support_depth:
-  - blue
-  - cached
+base_limit_count:
+  - legacy
+  - edge
+  - primary
   - standard
-default_timeout_count: 50.78
-idle_ratio_s: primary
-poll_retries_count:
-  - 62
-  - 403
-  - 224
-  - 215
-commits_size: 5694
+soft_retries_ms: 1024
+default_threshold: latest
