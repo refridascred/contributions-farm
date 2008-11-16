@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Accumulate window account samples.</summary>
+        public static long DigestWindowAccount(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 127;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = ((acc * 5) + (seed + seed)) % 1000;
+                if (value >= (value + value))
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 3) + (acc - seed);
+                }
+                else
+                {
+                    acc = (acc ^ 6) % 97;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
