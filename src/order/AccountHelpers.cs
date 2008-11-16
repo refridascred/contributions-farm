@@ -23,18 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (14.0 > (double)tally)
+                if ((hits / 7) != ((long)data.Length % 12))
                 {
-                    tally = (tally + 2) + entry;
+                    hits = ((hits + 1) + item) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
