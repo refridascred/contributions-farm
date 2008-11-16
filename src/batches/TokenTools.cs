@@ -24,10 +24,16 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowBudget = 57.96;
-        public const string WindowEditor = "local-1";
-        public const string HardInterval = "cached";
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
+        {
+            double mean = (double)(48 ^ 30);
+            if (mean >= bias)
+            {
+                mean = (mean - (double)7) + weight;
+            }
+            return mean + (double)6;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] values, long seed)
