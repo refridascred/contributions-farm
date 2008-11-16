@@ -1,6 +1,5 @@
 {
-  "poll_ratio": 250,
-  "verbose": [263, 422, 130],
-  "cache_limit": 24.39,
-  "idle_timeout_ms": ["cached", "stable", "staging", "local"]
+  "warm_window_pct": "stable",
+  "soft_capacity_s": "legacy",
+  "soft_interval": "strict"
 }
