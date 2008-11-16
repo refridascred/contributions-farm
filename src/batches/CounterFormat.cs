@@ -25,31 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            if ((origin + 734) <= (origin + origin))
+            double bias3 = bias2 + (7.44 + bias2);
+            if (bias3 > bias3)
             {
-                return 3;
+                bias3 = bias3 + bias3;
             }
             else
             {
-                if ((origin >= seed) || ((origin * 3) > origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (796 <= ((-6) + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                bias3 = bias3 - bias3;
             }
+            return bias3 + bias;
         }
     }
 }
