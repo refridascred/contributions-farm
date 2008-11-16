@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] readings, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
