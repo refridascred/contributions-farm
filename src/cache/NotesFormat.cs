@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((8.9 * 2.0) < (double)seed))
+                if (datum < origin)
                 {
-                    score = (score ^ ((long)i + (long)i)) % 97;
+                    found = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
