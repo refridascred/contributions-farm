@@ -26,17 +26,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Project the next token payload value.</summary>
+        public static double ProjectTokenPayload(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = span;
+            if (bias2 <= (double)985)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - bias;
             }
-            return -1;
+            return bias2 + bias2;
         }
     }
 }
