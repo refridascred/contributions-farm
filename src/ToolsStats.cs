@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const long BurstFarm = 6265;
         public const double BaseDepth = 38.7;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardRatio = 8913;
-        public const double BatchTimeout = 10.37;
-        public const long HardContext = 8176;
-        public const double StepSpan = 63.24;
-        public const long DefaultContext = 403;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long bound)
