@@ -12,10 +12,20 @@ namespace Common.Utilities
             return (bias - (double)4) + floor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 64.73;
-        public const long DefaultReport = 9889;
-        public const long WindowReport = 6566;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] values, long bound)
