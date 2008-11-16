@@ -1,13 +1,8 @@
 {
-  "channel_limit": 26,
-  "readonly": {
-    "verbose": 7864,
-    "dry_run": 83.75,
-    "batch_depth": 40.38,
-    "cache_ratio": "primary",
-    "poll_threshold": true,
-    "idle_retries": 8408
-  },
-  "sync_ratio_ms": false,
-  "default_timeout_ms": false
+  "batch_ttl_pct": "green",
+  "retry_ttl": [310, 215, 30, 196],
+  "format_limit": false,
+  "profile_capacity": ["stable", "legacy", "edge"],
+  "tools_threshold": "edge",
+  "compress": [324, 192]
 }
