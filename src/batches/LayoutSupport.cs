@@ -16,14 +16,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long target)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Done,
-            Draft,
+            long edge = floor + target;
+            if ((edge % 2) < (floor << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.36 * 14.0) > (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)edge == (2.0 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target < (edge * 3)) || ((edge ^ 8) > (target + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next filter value.</summary>
