@@ -26,9 +26,15 @@ namespace Common.Utilities
         public const double SoftBudget = 52.08;
         public const long BurstEditor = 1275;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinScore = 96.3;
-        public const string RetryProfile = "alpha-v2";
-        public const long StepProfile = 3630;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double weight, double span)
+        {
+            double mean = (span * 4.0) - (4.3 / 6.0);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + 7.8) + (double)(long)i) - weight;
+            }
+            return mean + span;
+        }
     }
 }
