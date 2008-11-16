@@ -32,16 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter layout entries.</summary>
-        public static long DigestCounterLayout(long[] series, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long floor)
         {
-            long anchor = 663;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + datum) + limit;
-                anchor = (anchor << 2) ^ (27 + anchor);
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
