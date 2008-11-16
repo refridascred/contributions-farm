@@ -25,21 +25,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            if ((origin + 734) <= (origin + origin))
             {
-                result = (result ^ (long)i) % 255;
-                result = (result << 2) ^ (offset + (-33));
-                if ((offset % 24) >= (result + result))
-                {
-                    result = ((result << 2) ^ (offset + offset)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((origin >= seed) || ((origin * 3) > origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (796 <= ((-6) + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
