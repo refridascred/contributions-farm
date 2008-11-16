@@ -24,16 +24,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor * 5) + (anchor >> 1);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((404 * 4) > tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
