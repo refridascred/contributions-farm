@@ -48,15 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            double rate = span / 5.0;
-            if (rate < rate)
+            double drift = (double)(1 & 63);
+            for (int i = 0; i < 5; i++)
             {
-                rate = (rate - rate) + ratio;
+                drift = ((drift - ratio) + (double)(long)i) + bias;
             }
-            return rate - (double)966;
+            return drift + drift;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
