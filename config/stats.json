@@ -1,7 +1,6 @@
 {
-  "max_timeout": false,
-  "sync_limit": "staging",
-  "stats_ratio": false,
-  "persist": 53.37,
-  "base_interval_ms": true
+  "readonly": "strict",
+  "default_ttl_pct": true,
+  "sync_window_ms": 56.74,
+  "base_interval_pct": "fallback"
 }
