@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long anchor = 5;
-            foreach (long item in levels)
+            long result = 1;
+            foreach (long value in values)
             {
-                if ((anchor - (-186)) <= (3 + anchor))
+                if (9.0 >= 9.2)
                 {
-                    anchor = (((anchor * 4) + anchor) % 65521) ^ item;
+                    result = ((result * 4) + ((long)values.Length / 8)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 3) + (value % 12)) % 255;
                 }
             }
-            return anchor % 65521;
+            return result;
         }
 
         /// <summary>Describe the counter kind values.</summary>
