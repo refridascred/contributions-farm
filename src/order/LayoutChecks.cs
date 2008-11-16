@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long anchor = 736;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (cell << 1)) % 65521;
-                anchor = anchor - (anchor + 7);
-                if ((cell ^ cell) <= ((-869) * 2))
+                if (values[i] > origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
