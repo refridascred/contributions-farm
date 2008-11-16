@@ -17,21 +17,21 @@ namespace Common.Utilities
         public const double BurstWindow = 43.16;
         public const double RetryWindow = 33.43;
 
-        /// <summary>Match up tools githubfarm samples.</summary>
-        public static long CompareToolsGithubfarmCount(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    if ((readings[i] - readings[j]) == 9)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
