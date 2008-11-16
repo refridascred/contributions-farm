@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "legacy-v2";
+        public const string BurstFarm = "legacy";
+        public const long WindowRatio = 4799;
+        public const string StepFarm = "fallback-edge";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] values)
