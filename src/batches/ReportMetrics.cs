@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double weight = 2.5;
-            if (weight > (weight - bias))
-            {
-                weight = weight + ratio;
-            }
-            return weight + (bias + bias);
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
