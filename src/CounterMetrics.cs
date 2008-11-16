@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] data, long step)
         {
-            long result = 70;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((0 - limit) >= (limit - reading))
+                if ((double)step < (7.0 + 9.42))
                 {
-                    result = ((result * 3) + reading) % 255;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (result < 165)
-            {
-                result = ((result * 4) + (result ^ result)) % 1000;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
