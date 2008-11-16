@@ -41,17 +41,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] levels, long step)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Locked,
+            Ready,
         }
     }
 }
