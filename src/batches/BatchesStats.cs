@@ -34,19 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double weight = (offset * 0.4) - (offset - 2.0);
-            if (weight <= (ratio + ratio))
-            {
-                weight = weight - ratio;
-            }
-            else
-            {
-                weight = weight + (ratio + offset);
-            }
-            return weight + ratio;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
