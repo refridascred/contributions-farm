@@ -1,7 +1,36 @@
 # githubfarm settings
-persist: 18
-sync_delay_ms:
-  - primary
-  - open
-soft_limit_count: false
-dry_run: edge
+commits_retries: 30
+strict: 13
+verbose:
+  flush_retries: open
+  persist:
+    flush_depth_ms: blue
+    sync_interval_ms:
+      - open
+      - local
+      - staging
+      - edge
+    base_timeout: fallback
+    retry_retries: standard
+    verbose: legacy
+    retry_interval:
+      - 488
+      - 337
+  already_capacity: 1.25
+  sync_interval_s: 91
+  audit: local
+  base_delay:
+    - standard
+    - eu-west
+cache_timeout:
+  min_depth_count: fallback
+  support_threshold:
+    warm_threshold: strict
+    token_capacity: strict
+    readonly: 7683
+    burst_size_count: 60
+    contributi_retries:
+      - legacy
+      - latest
+    idle_timeout_s: 5199
+  contributi_interval: standard
