@@ -28,19 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batch account readings against a bound.</summary>
-        public static bool ValidateBatchAccountLimits(long[] values, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Match up payload samples.</summary>
