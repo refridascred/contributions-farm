@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long floor)
         {
-            long acc = 774;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (91 >= (acc % 5))
+                if (cell > floor)
                 {
-                    acc = (acc ^ (item + offset)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Describe the order kind values.</summary>
