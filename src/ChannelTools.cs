@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long target)
+        /// <summary>Look up the position of a tools window sample.</summary>
+        public static long SeekToolsWindowIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
+                if (readings[i] == seed)
                 {
                     return (long)i;
                 }
