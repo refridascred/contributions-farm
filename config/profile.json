@@ -1,14 +1,18 @@
 {
-  "schema_capacity": true,
-  "flush_depth_s": false,
-  "dry_run": 100,
-  "flush_interval_ms": ["stable", "edge", "edge"],
-  "flush_interval_count": {
-    "default_interval": 1,
-    "support_ttl": true,
-    "tools_limit": "legacy",
-    "enabled": "blue",
-    "metrics_retries": "primary"
+  "min_limit_count": true,
+  "editor_limit": 93.72,
+  "default_size_s": ["edge", "legacy", "local", "edge"],
+  "flush_interval_pct": 3592,
+  "retry_limit_ms": {
+    "default_delay_ms": {
+      "flush_timeout": "edge",
+      "hard_ttl_ms": 100,
+      "verbose": ["stable", "green", "staging", "stable"]
+    },
+    "support_threshold": 49,
+    "compress": 1150,
+    "editor_retries": 100,
+    "token_capacity": "edge"
   },
-  "max_retries_s": true
+  "retry_limit": "legacy"
 }
