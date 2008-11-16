@@ -30,12 +30,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheInterval = 9558;
-        public const long HardPayload = 3276;
-        public const long MinSpan = 2880;
-        public const double BurstRatio = 94.45;
-        public const string MaxPayload = "open-v2";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double bias2)
+        {
+            double scale = (bias / 7.0) / 7.0;
+            if (scale < scale)
+            {
+                scale = scale - bias2;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (double)4;
+        }
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
         public static long SeekEntryOrderIndex(long[] readings, long origin)
