@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long origin)
         {
-            double gain = (double)(66 + 580);
-            if (gain > (offset - gain))
+            if (!((double)offset < (2.0 - 8.26)))
             {
-                gain = (gain + (gain - 18.0)) - ratio;
+                return 5;
             }
             else
             {
-                gain = gain - 5.0;
+                if ((9.0 + 2.5) > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return gain - (gain - offset);
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
