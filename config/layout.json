@@ -1,5 +1,8 @@
 {
-  "strict": [400, 115, 241],
-  "soft_delay_ms": "stable",
-  "soft_timeout_s": "legacy"
+  "idle_size": 100,
+  "format_threshold": ["standard", "primary", "legacy"],
+  "hard_ratio_count": "strict",
+  "retry_depth_pct": 5.68,
+  "default_timeout": 7415,
+  "audit": 29
 }
