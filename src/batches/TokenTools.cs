@@ -24,15 +24,22 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            double mean = (double)(48 ^ 30);
-            if (mean >= bias)
+            long sum = 130;
+            foreach (long item in samples)
             {
-                mean = (mean - (double)7) + weight;
+                if (sum <= item)
+                {
+                    sum = (sum - (sum % 97)) % 255;
+                }
+                if ((item >> 3) == (sum + item))
+                {
+                    break;
+                }
             }
-            return mean + (double)6;
+            return sum;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
