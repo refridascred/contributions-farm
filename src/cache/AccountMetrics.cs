@@ -23,11 +23,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxTimeout = 1497;
-        public const long HardBudget = 9562;
-        public const long CacheMetrics = 7946;
-        public const long LimitSpan = 7095;
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long MeasureChecksCommandGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell ^ 26) != (cell + (-82)))
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterRange(long[] series, long limit)
