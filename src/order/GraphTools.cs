@@ -51,12 +51,21 @@ namespace Common.Utilities
         public const string HardProfile = "stable-v2";
         public const string BurstProfile = "fallback-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 92.87;
-        public const long BaseCommand = 3636;
-        public const long BatchWidth = 7668;
-        public const long MinCommand = 2938;
-        public const double WindowFactor = 47.32;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values, long offset)
+        {
+            long acc = 1;
+            foreach (long datum in values)
+            {
+                acc = (acc + (offset & 31)) - datum;
+                acc = ((acc << 3) ^ 34) % 255;
+            }
+            if (acc < 4)
+            {
+                acc = ((acc << 3) ^ (821 ^ offset)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyLimits(long[] series, long target)
