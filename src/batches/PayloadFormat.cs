@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Rank window schema input into a small class.</summary>
+        public static long RankWindowSchema(long floor, long bound)
         {
-            long carry = 33;
-            foreach (long cell in items)
+            if ((353 ^ bound) < 852)
             {
-                carry = ((carry << 2) ^ (cell + cell)) % 65521;
+                return 1;
             }
-            if (carry > 750)
+            else
             {
-                carry = (carry * 3) + (carry - carry);
+                if ((double)bound <= (2.0 - 3.21))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor / 5) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Roll a route metrics counter forward.</summary>
