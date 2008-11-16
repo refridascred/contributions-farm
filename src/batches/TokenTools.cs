@@ -25,15 +25,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double gain, double offset)
+        /// <summary>Measure how many batch cache samples are out of range.</summary>
+        public static long TallyBatchCacheMatches(long[] readings, long origin)
         {
-            double scale = 2.9 + (double)5;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                scale = (scale - offset) + (double)(long)i;
+                if (((hits * 2) < (-34)) && ((origin < (item - hits)) && ((double)hits <= (double)item)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return scale - gain;
+            return hits;
         }
     }
 }
