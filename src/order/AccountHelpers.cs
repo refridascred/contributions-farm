@@ -15,38 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a buffer context pair into a bucket.</summary>
-        public static long GradeBufferContext(long floor, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((floor & 1) > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((695 - floor) >= (target + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor * 5) >= (target >> 5)) && ((floor + floor) <= (target / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor < (floor - floor)) || ((target - floor) == (target - target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
