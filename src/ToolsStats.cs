@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long TallyClusterSessionHits(long[] values, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.51 * 1.0) != (double)tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) + value) - floor;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
