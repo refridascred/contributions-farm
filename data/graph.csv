@@ -1,6 +1,10 @@
-id,rank,weight
-1,367,fallback
-2,27.72,edge
-3,standard,strict
-4,legacy,66.45
-5,47.03,38
+id,level,ratio
+1,primary,538
+2,514,latest
+3,97.56,778
+4,green,68.34
+5,292,19.43
+6,local,89.69
+7,green,3.53
+8,323,eu-west
+9,246,265
