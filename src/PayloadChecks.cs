@@ -77,17 +77,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout metrics value from a seed.</summary>
-        public static long StepLayoutMetrics(long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total ^ (limit - limit)) % 97;
-                total = ((total << 2) ^ (4 + (long)i)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
+                if (((236 & 3) >= ((long)i - anchor)) || (offset < (long)i))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - offset)) % 65521;
+                }
+                if (anchor > ((long)i % 8))
+                {
+                    anchor = (anchor - offset) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
     }
 }
