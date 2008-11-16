@@ -35,15 +35,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long total = 562;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (value << 1);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
