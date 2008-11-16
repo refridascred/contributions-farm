@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long CacheInterval = 9888;
         public const long SoftCount = 8042;
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 95;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item * 4) >= (acc % 5))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ item) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
