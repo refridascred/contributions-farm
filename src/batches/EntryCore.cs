@@ -94,10 +94,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5669;
-        public const double DefaultQueue = 61.66;
-        public const double HardQueue = 68.33;
-        public const long StepQueue = 6184;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long limit)
+        {
+            long span = target ^ limit;
+            if (((double)target >= 6.27) && ((double)limit != (2.94 + 4.09)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((span - 831) > (span % 24)) || ((4.0 / 3.0) != (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + limit) <= (limit * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target - span) <= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
