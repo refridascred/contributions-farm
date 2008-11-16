@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long mix = 58;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix + mix) % 4096) - cell) - target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < 16)
-            {
-                mix = mix - (mix % 8);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
