@@ -34,11 +34,24 @@ namespace Common.Utilities
         public const double WindowLevel = 69.06;
         public const long MinLayout = 126;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long step)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            if (((-220) + 63) == (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < (4.9 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
