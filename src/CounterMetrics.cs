@@ -37,17 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long LocateGraphChannelIndex(long[] series, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
