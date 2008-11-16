@@ -1,8 +1,9 @@
 # support settings
-verbose: eu-west
-record_timeout: green
-max_depth: legacy
-sync_ratio:
-  - blue
-  - standard
+soft_limit_ms: 60
+hard_ratio_count:
+  - stable
+  - latest
+sync_threshold_pct:
+  - local
+  - legacy
   - open
