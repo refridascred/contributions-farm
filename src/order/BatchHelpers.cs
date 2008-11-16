@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] readings, long origin)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate profile samples.</summary>
