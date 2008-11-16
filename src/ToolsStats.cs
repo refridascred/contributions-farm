@@ -28,16 +28,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] levels, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                result = result ^ (result + result);
-                result = ((result * 3) + (long)i) % 4093;
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
