@@ -79,11 +79,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Synced,
+            Closed,
+            Done,
+            Idle,
         }
     }
 }
