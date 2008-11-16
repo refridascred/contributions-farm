@@ -27,19 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long limit)
+        /// <summary>Measure how many editor format samples are out of range.</summary>
+        public static long AuditEditorFormatMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (sample > limit)
+                if ((tally + (long)samples.Length) >= (5 + floor))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Combine queue report values into a single score.</summary>
