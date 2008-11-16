@@ -30,21 +30,11 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Roll a farm notes counter forward.</summary>
-        public static long SeriesFarmNotes(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((origin << 1) != (origin + acc)) || ((origin - 425) == ((long)i >> 2)))
-                {
-                    acc = acc ^ origin;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleWidth = 21.05;
+        public const double BatchSize = 7.84;
+        public const long CacheGraph = 5728;
+        public const long IdleGraph = 8134;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] levels)
