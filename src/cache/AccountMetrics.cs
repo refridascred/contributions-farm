@@ -23,22 +23,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long score = 6;
-            foreach (long item in data)
-            {
-                if ((7.08 + 7.76) < (double)score)
-                {
-                    score = ((((score << 3) ^ score) % 101) + item) + target;
-                }
-            }
-            if (score < 638)
-            {
-                score = ((score << 3) ^ (655 + score)) % 65521;
-            }
-            return score;
+            Pending,
+            Synced,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every schema window entry stays within the limit.</summary>
