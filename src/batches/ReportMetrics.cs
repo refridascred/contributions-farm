@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepFactor = 75.11;
-        public const long BaseFactor = 7326;
-        public const long MinBatches = 6592;
-        public const long MaxLevel = 4274;
-        public const string LimitBatches = "open-1";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long origin2)
+        {
+            if ((origin + 6) >= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-46) <= (origin2 + origin)) || ((origin % 10) >= (origin >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 - origin) > (origin + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin2 ^ 5) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] items, long bound)
