@@ -1,7 +1,9 @@
 {
-  "audit": "strict",
-  "max_depth": [6, 462],
-  "hard_delay": ["stable", "green"],
-  "sync_timeout_s": "open",
-  "counter_timeout": 5532
+  "base_capacity": 1483,
+  "sync_size": "standard",
+  "burst_ttl_s": {
+    "token_ratio": 22,
+    "githubfarm_interval": "local",
+    "order_threshold": 4446
+  }
 }
