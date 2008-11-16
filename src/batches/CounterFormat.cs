@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long IdleChecks = 3518;
         public const long SoftChecks = 1843;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (floor + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of support entries.</summary>
