@@ -13,11 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "standard-edge";
-        public const long StepAlready = 8443;
-        public const long BatchAlready = 5979;
-        public const long CacheRatio = 3151;
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long MatchBatchesChannelCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
