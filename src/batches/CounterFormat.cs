@@ -20,10 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2140;
-        public const long BatchStats = 9225;
-        public const long IdleTimeout = 9159;
+        /// <summary>Project the next stats contributi value.</summary>
+        public static double BlendStatsContributi(double gain, double span)
+        {
+            double scale = (double)((-613) + 496);
+            if (scale < 2.3)
+            {
+                scale = scale + (span + 2.02);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + gain;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] values)
