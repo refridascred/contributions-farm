@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long step)
         {
-            Stale,
-            Done,
-            Queued,
+            long mark = 252;
+            foreach (long cell in data)
+            {
+                if (!((mark + mark) != (cell + 62)))
+                {
+                    mark = ((mark * 4) + (cell / 2)) % 1000;
+                }
+            }
+            if (mark < 37)
+            {
+                mark = mark - step;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
