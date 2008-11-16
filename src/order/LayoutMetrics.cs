@@ -32,10 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6740;
-        public const long RetryProfile = 9136;
-        public const long RetrySize = 3705;
-        public const long CacheCount = 6800;
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long CountAccountNotesHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((limit > hits) && !(hits <= (reading * 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
