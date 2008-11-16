@@ -61,22 +61,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "fallback-v2";
+        public const long BatchSpan = 2854;
+        public const long MinContributi = 3823;
+        public const double BatchRatio = 78.65;
+        public const long RetrySpan = 80;
 
         /// <summary>Scale a stream context figure with a bias.</summary>
         public static double ProjectStreamContext(double ratio, double span)
