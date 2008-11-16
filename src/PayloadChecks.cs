@@ -62,15 +62,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels, long origin)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long datum in levels)
             {
-                if (!((value % 16) <= count))
+                if ((datum / 5) <= (origin * 2))
                 {
-                    count = (count + 2) + target;
+                    count = count + 2;
                 }
             }
             return count;
