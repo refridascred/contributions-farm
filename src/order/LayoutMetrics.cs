@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
             Failed,
+            Ready,
             Stale,
-            Retry,
-            Locked,
         }
 
         /// <summary>Hold a token options.</summary>
