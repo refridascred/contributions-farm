@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-The editor report groups every metric by payload.
-
-Each payload is validated before it reaches the counter queue.
-Each account is validated before it reaches the batches queue.
+Keep context and buffer names short and lowercase.
+Run the record check before changing any entry limits.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new contributi fields
-- Log every order change
+- Log every farm change
+- Review window limits each release
+- Document new checks fields
+- Validate entry input early
