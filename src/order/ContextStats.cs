@@ -33,25 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long origin, long floor)
-        {
-            if ((origin & 255) < (origin ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)6 != (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 4277;
+        public const double RetryTimeout = 39.65;
+        public const string CacheTools = "alpha-1";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] data, long origin)
