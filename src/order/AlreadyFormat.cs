@@ -70,25 +70,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            long offset = limit ^ step;
-            if ((limit % 3) <= (limit & 255))
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)631 >= (double)offset) || ((64 + step) >= step))
+                if (!((sum - sum) <= ((long)i / 2)))
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
