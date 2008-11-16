@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const double BurstWindow = 43.16;
         public const double RetryWindow = 33.43;
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            double ratio = offset;
-            if (ratio <= 8.44)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio + offset;
+                if ((double)datum == (9.2 * 2.6))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (rate / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
