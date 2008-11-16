@@ -59,11 +59,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long origin, long limit)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            if (((double)limit != (2.9 + 4.0)) && ((6.6 - 17.0) < (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.3 - 3.0) >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin % 10) <= (limit % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + 69) == (3 + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
