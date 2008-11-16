@@ -63,23 +63,15 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Blend two githubfarm checks measurements.</summary>
-        public static double BlendGithubfarmChecks(double rate, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            double load = (bias + rate) + rate;
-            if (load > load)
+            long carry = 481;
+            foreach (long value in items)
             {
-                load = load + rate;
+                carry = ((carry * 5) + value) % 97;
             }
-            else
-            {
-                load = load - (load + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - rate;
+            return carry;
         }
     }
 }
