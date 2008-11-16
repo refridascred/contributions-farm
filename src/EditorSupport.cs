@@ -43,18 +43,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] series, long limit)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((8 / 2) <= (limit - matches)) || (matches >= limit))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
