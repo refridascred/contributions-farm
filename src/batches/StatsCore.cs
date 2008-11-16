@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const long LimitNotes = 4146;
         public const long BurstNotes = 9791;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long step)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            long acc = 98;
+            foreach (long reading in series)
+            {
+                if (step >= reading)
+                {
+                    acc = (acc - (reading - (long)series.Length)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
