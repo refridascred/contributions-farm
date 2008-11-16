@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitLevel = 5904;
         public const long SoftSize = 6844;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (readings[i] >= offset)
+                if (cell < bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
