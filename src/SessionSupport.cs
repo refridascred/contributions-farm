@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleLevel = 4506;
-        public const double MinSize = 2.9;
-        public const double SoftReport = 49.74;
-        public const long WindowReport = 8931;
-        public const double DefaultSpan = 81.85;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 4665;
