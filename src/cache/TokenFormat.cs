@@ -32,15 +32,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Scale a record context figure with a bias.</summary>
-        public static double ScaleRecordContext(double gain, double floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            double drift = gain / 3.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (floor + 7.0)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return tally;
         }
     }
 }
