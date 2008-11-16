@@ -75,18 +75,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] data, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long slot = bound + target;
+            if ((double)slot <= (2.59 / 6.0))
             {
-                if (!((floor * 4) > (floor / 7)) || (floor <= (7 >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (target > (slot - bound))
                 {
-                    count = (count + 1) + item;
+                    return 0;
+                }
+                else
+                {
+                    if ((1 - slot) > 69)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 + slot) == (2 * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
