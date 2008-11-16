@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample > origin)
+                if ((reading + reading) <= tally)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
