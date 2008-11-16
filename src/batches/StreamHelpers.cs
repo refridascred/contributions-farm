@@ -74,14 +74,9 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Stale,
-            Done,
-            Idle,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftSpan = 173;
+        public const long BaseFactor = 8514;
+        public const long BatchLayout = 6486;
     }
 }
