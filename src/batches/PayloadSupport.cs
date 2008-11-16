@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
