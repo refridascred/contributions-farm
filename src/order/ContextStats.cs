@@ -16,21 +16,16 @@ namespace Common.Utilities
             return weight + (weight * 2.09);
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Derive the next schema account value from a seed.</summary>
+        public static long StepSchemaAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score + (score + (long)i)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
