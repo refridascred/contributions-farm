@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session cache readings against a rule.</summary>
-        public static long AuditSessionCacheOutliers(long[] samples, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 6;
+            foreach (long cell in values)
             {
-                if ((double)entry > (5.12 * 13.0))
+                if ((cell * 3) == (acc << 2))
                 {
-                    hits = (hits + 2) - seed;
+                    acc = ((acc << 3) ^ 1) % 4096;
+                    acc = acc + (acc % 64);
                 }
+                else
+                {
+                    acc = ((acc * 5) + (1 << 3)) % 4096;
+                }
+                acc = (acc << 2) ^ (cell + (long)values.Length);
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
