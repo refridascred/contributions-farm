@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long CacheAccount = 7955;
         public const long BurstAccount = 521;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long acc = 95;
-            foreach (long item in series)
-            {
-                if ((item * 4) >= (acc % 5))
-                {
-                    acc = ((acc << 2) ^ item) % 4096;
-                }
-            }
-            return acc;
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every context stats entry stays within the limit.</summary>
