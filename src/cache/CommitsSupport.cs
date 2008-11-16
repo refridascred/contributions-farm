@@ -42,14 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Pending,
+            Closed,
             Dropped,
-            Failed,
-            Draft,
-            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
