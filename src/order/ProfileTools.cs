@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
