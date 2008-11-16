@@ -29,14 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 51;
+        public const double WindowLevel = 69.06;
+        public const long MinLayout = 126;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
