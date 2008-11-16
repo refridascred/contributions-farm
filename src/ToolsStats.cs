@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 5019;
-        public const string DefaultFarm = "latest-1";
-        public const long MinFarm = 662;
-        public const long BurstFarm = 6265;
-        public const double BaseDepth = 38.7;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((525 + bound) == (matches + matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
