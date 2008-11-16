@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Combine support checks values into a single score.</summary>
+        public static long TallySupportChecks(long[] values, long bound)
         {
-            long sum = 4;
-            foreach (long sample in readings)
+            long result = 4;
+            foreach (long sample in values)
             {
-                if (!((16 % 3) == (sample - sample)))
-                {
-                    sum = sum + sum;
-                }
-                sum = (sum ^ (sum + sum)) % 4096;
+                result = (((result + (result << 1)) % 4096) + sample) + bound;
             }
-            if (sum > 502)
-            {
-                sum = (sum ^ (sum - sum)) % 65521;
-            }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Blend two payload stream measurements.</summary>
