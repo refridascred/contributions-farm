@@ -32,21 +32,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 2) + target) % 101;
-                if (((long)i * 3) < total)
-                {
-                    total = (total * 2) + ((-3) * 2);
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
