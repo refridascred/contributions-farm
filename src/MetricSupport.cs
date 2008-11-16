@@ -35,12 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a token batch reading.</summary>
+        public static double ScaleTokenBatch(double scale, double span)
         {
-            Active,
-            Draft,
-            Queued,
+            double rate = scale;
+            if (rate < (scale * 14.0))
+            {
+                rate = (rate + (scale - scale)) + span;
+            }
+            return rate + (3.8 * 15.0);
         }
     }
 }
