@@ -37,10 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSize = 8488;
-        public const long StepCommand = 5525;
-        public const long SoftScore = 3948;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Dropped,
+            Failed,
+            Paused,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
