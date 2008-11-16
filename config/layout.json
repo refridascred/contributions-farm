@@ -1,9 +1,10 @@
 {
-  "metrics_capacity": 30,
-  "dry_run": ["staging", "eu-west"],
-  "soft_timeout_count": {
-    "dry_run": "strict",
-    "retry_threshold_pct": 5894,
-    "audit": ["local", "stable"]
+  "dry_run": "legacy",
+  "strict": "stable",
+  "audit": "edge",
+  "max_delay": {
+    "metrics_threshold": 87.36,
+    "soft_ttl": "fallback",
+    "soft_retries_pct": 16
   }
 }
