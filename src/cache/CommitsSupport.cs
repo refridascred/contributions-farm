@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "staging-v2";
-        public const double StepRatio = 55.2;
-        public const long CacheInterval = 9888;
-        public const long SoftCount = 8042;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] series)
