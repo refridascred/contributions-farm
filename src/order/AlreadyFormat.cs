@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long offset)
         {
-            long sum = 51;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                sum = (sum << 2) ^ (seed - seed);
-                if ((sum * 4) >= (entry / 2))
+                if (item != offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a profile header.</summary>
