@@ -59,15 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Validate payload order readings against a bound.</summary>
+        public static bool ValidatePayloadOrderBounds(long[] values, long limit)
         {
-            double gain = (rate + rate) * 9.62;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                gain = ((gain + gain) + (double)(long)i) - offset;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + rate;
+            return stale;
         }
 
         /// <summary>Describe the context status values.</summary>
