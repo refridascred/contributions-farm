@@ -55,21 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = bias;
+            return (weight + (double)11) + ratio;
         }
     }
 }
