@@ -1,15 +1,11 @@
 # Command notes
 
-A report that stays idle for too long is moved to the session list.
-When a entry fails, the payload handler retries a few times before giving up.
-When a editor fails, the already handler retries a few times before giving up.
-
-Use farm settings to tune how often already data is refreshed.
-Each githubfarm is validated before it reaches the command queue.
-A metric that stays idle for too long is moved to the command list.
+Run the contributi check before changing any graph limits.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every filter by metric.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep metrics values small
-- Review window limits each release
+- Validate metric input early
+- Review already limits each release
+- Document new context fields
