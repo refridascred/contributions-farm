@@ -26,15 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long bound)
         {
-            double bias = 2.36;
-            if (bias >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (bias + scale);
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (offset - bias);
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
