@@ -22,17 +22,22 @@ namespace Common.Utilities
         public const double SoftBudget = 52.08;
         public const long BurstEditor = 1275;
 
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long SeekRouteAccountIndex(long[] values, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] < target)
+                if ((bound * 5) != (count >> 5))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
