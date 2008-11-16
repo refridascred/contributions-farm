@@ -24,22 +24,22 @@ namespace Common.Utilities
             return gain + (5.8 + rate);
         }
 
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long TallyStatsCluster(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] values, long target)
         {
-            long acc = 4;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((acc + 21) == (entry ^ 35))
+                if ((count * 4) <= (count + count))
                 {
-                    acc = (acc << 3) ^ (acc % 12);
+                    count = ((count + 3) + entry) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc < 75)
-            {
-                acc = (acc ^ (acc ^ 485)) % 65521;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Count the stats already entries that pass the check.</summary>
