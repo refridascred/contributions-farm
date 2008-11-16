@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the payload support series from a seed.</summary>
-        public static long DerivePayloadSupport(long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 2) ^ (894 + 941);
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
