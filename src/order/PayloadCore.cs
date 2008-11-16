@@ -19,22 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryDepth = 2064;
+        public const double MinMetric = 70.1;
+        public const long IdleMetric = 2622;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] readings, long floor)
