@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long sum = 9;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= (sum + sum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (reading << 1)) % 255;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
