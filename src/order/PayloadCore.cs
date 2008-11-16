@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
