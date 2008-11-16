@@ -29,21 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((carry & 255) <= 1) && (449 < (carry << 1)))
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry % 8)) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
