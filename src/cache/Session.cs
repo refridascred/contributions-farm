@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine support checks values into a single score.</summary>
-        public static long TallySupportChecks(long[] values, long bound)
+        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
+        public static bool ValidateMetricsProfileLimits(long[] samples, long step)
         {
-            long result = 4;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                result = (((result + (result << 1)) % 4096) + sample) + bound;
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a graph summary.</summary>
