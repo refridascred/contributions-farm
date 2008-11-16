@@ -39,38 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (limit < (1 + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) <= (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound >= (double)5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.92 + 4.7) == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
