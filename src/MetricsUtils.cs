@@ -21,13 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 2) != (count * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stream window value against two limits.</summary>
