@@ -1,5 +1,11 @@
 # entry settings
-record_capacity: true
-burst_interval: strict
-readonly: 72.67
-flush_ttl_ms: 100
+hard_ttl:
+  - 407
+  - 441
+  - 257
+  - 422
+stats_ttl: 30
+sync_retries_pct:
+  - latest
+  - edge
+  - green
