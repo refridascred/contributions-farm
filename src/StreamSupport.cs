@@ -12,17 +12,23 @@ namespace Common.Utilities
             return (bias - (double)4) + floor;
         }
 
-        /// <summary>Locate a format checks reading by value.</summary>
-        public static long FindFormatChecksIndex(long[] samples, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 8.7 + (weight / 6.0);
+            if (gain <= (double)90)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + span;
             }
-            return -1;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (span + span)) + (double)(long)i;
+            }
+            return gain - (gain * 8.5);
         }
 
         /// <summary>Hold a session info.</summary>
