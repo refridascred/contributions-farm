@@ -1,5 +1,5 @@
 {
-  "poll_retries_s": 16.35,
-  "batch_ttl": [247, 418, 378, 51],
-  "counter_ratio": "edge"
+  "cache_ttl": 78,
+  "flush_size": 74,
+  "command_capacity": "green"
 }
