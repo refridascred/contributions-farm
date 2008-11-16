@@ -34,21 +34,9 @@ namespace Common.Utilities
         public const double WindowLevel = 69.06;
         public const long MinLayout = 126;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSize = 54.72;
+        public const string MinProfile = "open-v2";
+        public const long IdleScore = 1618;
     }
 }
