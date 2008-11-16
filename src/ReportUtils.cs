@@ -46,10 +46,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySize = 2489;
-        public const string BatchFilter = "alpha-1";
-        public const long BatchInterval = 8542;
-        public const string IdleFilter = "fallback-v2";
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Locked,
+            Paused,
+            Dropped,
+            Active,
+            Synced,
+        }
     }
 }
