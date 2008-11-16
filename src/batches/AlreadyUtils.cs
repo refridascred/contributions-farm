@@ -63,18 +63,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values, long target)
+        /// <summary>Rank batch layout input into a small class.</summary>
+        public static long ClassifyBatchLayout(long target, long target2)
         {
-            long mark = 771;
-            foreach (long datum in values)
+            long lane = target - target2;
+            if (lane <= (lane + target))
             {
-                if ((mark % 24) < mark)
+                return 0;
+            }
+            else
+            {
+                if ((target2 >> 3) >= (lane * 4))
                 {
-                    mark = ((mark + (datum * 4)) % 255) - target;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark;
         }
     }
 }
