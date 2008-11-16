@@ -31,12 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels, long limit)
         {
-            Idle,
-            Paused,
-            Draft,
+            long carry = 9;
+            foreach (long entry in levels)
+            {
+                carry = (carry - (limit & 1)) ^ entry;
+                if (!(((long)levels.Length - carry) != (690 * 4)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
