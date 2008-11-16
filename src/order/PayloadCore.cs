@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a order profile sample.</summary>
+        public static long LocateOrderProfileIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor <= (floor << 2)) && ((39 + entry) < (hits + (long)readings.Length)))
+                if (items[i] <= seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
