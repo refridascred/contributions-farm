@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double bias = (ratio - offset) - offset;
-            if (bias > (double)76)
-            {
-                bias = bias - ratio;
-            }
-            return bias - (offset * 6.22);
+            Idle,
+            New,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
