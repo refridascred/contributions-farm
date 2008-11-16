@@ -57,18 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((6 << 3) <= count)
-                {
-                    count = ((count + 2) - entry) - bound;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
