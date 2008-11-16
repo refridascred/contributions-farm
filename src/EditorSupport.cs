@@ -70,14 +70,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            Pending,
-            Stale,
-            Idle,
-            Locked,
-            Dropped,
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((result - result) < ((long)i & 15)))
+                {
+                    result = result + ((long)i + (long)i);
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
