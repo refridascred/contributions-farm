@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long anchor = 11;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((anchor / 4) < (sample - anchor)) && (anchor < (sample ^ sample)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 5) + (anchor * 5);
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
