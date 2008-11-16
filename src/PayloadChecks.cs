@@ -41,10 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "stable-1";
-        public const double MaxFarm = 44.94;
-        public const long CacheSize = 7632;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long bound)
+        {
+            if ((2.0 - 5.0) >= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) >= (7 ^ limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (bound - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)limit != (9.0 * 6.21)) && ((-22) <= (bound ^ bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long step, long step2)
