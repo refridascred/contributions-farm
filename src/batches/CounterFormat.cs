@@ -25,38 +25,19 @@ namespace Common.Utilities
         public const long BatchStats = 9225;
         public const long IdleTimeout = 9159;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long origin)
         {
-            if ((step + step) < step)
+            long score = -166;
+            foreach (long cell in items)
             {
-                return 5;
+                score = (((score << 2) ^ origin) % 97) - cell;
             }
-            else
+            if (score > 180)
             {
-                if (((1.16 * 1.4) > (double)step) || ((step * 3) == (bound >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound + step) < (step + step)) || ((step & 3) < bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + bound) > (78 - 78))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score * 4) + (score / 3);
             }
+            return score % 4096;
         }
     }
 }
