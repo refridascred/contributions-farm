@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long offset)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
