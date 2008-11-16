@@ -35,31 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long origin)
+        /// <summary>Count metric batches pairs that satisfy a relation.</summary>
+        public static long PairMetricBatchesCount(long[] levels)
         {
-            if ((double)seed != (1.0 + 7.8))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (10.0 / 7.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 9) != (origin - 7))
+                    if ((levels[i] ^ levels[j]) < 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
