@@ -41,18 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!(entry <= seed))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
