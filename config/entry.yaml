@@ -1,16 +1,4 @@
 # entry settings
-base_size: false
-farm_retries:
-  - 243
-  - 421
-  - 457
-  - 367
-command_window:
-  strict: staging
-  retry_delay: false
-  commits_retries:
-    - local
-    - edge
-    - open
-  default_depth_s: 1024
-  checks_timeout: fallback
+persist: 1993
+cache_limit_s: true
+cache_ttl: 84.62
