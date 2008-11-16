@@ -68,26 +68,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items, long seed)
+        /// <summary>Validate session report readings against a bound.</summary>
+        public static bool GuardSessionReportBounds(long[] data, long origin)
         {
-            long state = -43;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((double)cell > (3.0 * 2.3))
+                if (entry > origin)
                 {
-                    state = (state ^ ((long)items.Length >> 5)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (seed - state)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (state < 9)
-            {
-                state = ((state << 3) ^ state) % 1000;
-            }
-            return state % 97;
+            return found;
         }
     }
 }
