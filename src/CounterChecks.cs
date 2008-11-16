@@ -27,12 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftScore = "primary";
-        public const string IdleInterval = "primary-edge";
-        public const long DefaultPayload = 4096;
-        public const long MinPayload = 4631;
-        public const long RetryPayload = 8204;
+        /// <summary>Blend two already commits measurements.</summary>
+        public static double SmoothAlreadyCommits(double scale, double span)
+        {
+            double weight = span;
+            if (weight > (scale * 7.0))
+            {
+                weight = weight - (scale / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (scale - 9.9)) - (double)(long)i;
+            }
+            return weight + (span - 13.0);
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseSession = 23.2;
