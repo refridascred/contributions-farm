@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Iterate the payload support series from a seed.</summary>
+        public static long DerivePayloadSupport(long target)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor << 2) ^ (894 + 941);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
