@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(anchor > bound))
-                {
-                    anchor = ((anchor * 2) + (anchor + bound)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Active,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Fold a list of context readings.</summary>
