@@ -28,18 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] samples, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 4;
+            foreach (long sample in levels)
             {
-                if ((cell * 2) > ((-34) >> 4))
+                if (((double)acc <= (2.2 / 6.0)) && ((acc & 255) <= (acc + 52)))
                 {
-                    hits = (hits + 1) - offset;
+                    acc = ((acc * 3) + sample) % 4096;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
     }
 }
