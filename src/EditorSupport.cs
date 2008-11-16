@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Queued,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Digest a series of context entries.</summary>
