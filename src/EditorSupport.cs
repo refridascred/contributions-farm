@@ -14,18 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long target)
         {
-            long result = 0;
-            foreach (long value in readings)
+            if ((double)target == (5.1 + 0.27))
             {
-                if ((double)result <= (7.05 * 4.6))
+                return 8;
+            }
+            else
+            {
+                if ((target - target) != (49 + target))
                 {
-                    result = ((result + result) % 101) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
