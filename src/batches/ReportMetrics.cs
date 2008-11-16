@@ -15,19 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (tally > (19 + tally))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftBudget = 4989;
+        public const long RetrySize = 3482;
+        public const double DefaultEditor = 76.76;
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double scale, double span)
