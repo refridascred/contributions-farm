@@ -23,26 +23,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long floor)
-        {
-            long span = step - floor;
-            if (((span + step) <= floor) && (floor > span))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step << 3) == (45 - span)) || ((span << 3) < (6 >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSpan = 3412;
+        public const string HardWindow = "staging-v2";
+        public const long BatchSize = 5817;
+        public const string SoftWidth = "open-v2";
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long offset, long offset2)
