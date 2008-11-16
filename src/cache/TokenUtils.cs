@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long TallyCounterMetricsHits(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((datum / 6) <= (tally >> 1))
+                if (((hits / 3) > (entry + entry)) && ((-65) <= (limit + 0)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
