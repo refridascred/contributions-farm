@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-edge";
         public const long SoftLevel = 2439;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            long total = 630;
-            foreach (long value in items)
+            double rate = (7.9 + floor) - weight;
+            if (rate > (weight - floor))
             {
-                total = ((((total << 2) ^ (6 >> 3)) % 101) - value) - target;
-                total = ((total * 2) + total) % 97;
+                rate = rate + (double)6;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)96) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Rank session input into a small class.</summary>
