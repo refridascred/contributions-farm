@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftScore = "primary";
+        public const string IdleInterval = "primary-edge";
+        public const long DefaultPayload = 4096;
+        public const long MinPayload = 4631;
+        public const long RetryPayload = 8204;
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
         public static long CountChecksLayoutMatches(long[] readings)
