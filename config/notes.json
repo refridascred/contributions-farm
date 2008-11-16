@@ -1,5 +1,17 @@
 {
-  "dry_run": 73.05,
-  "persist": [149, 491, 348, 380],
-  "format_threshold": [59, 43, 129]
+  "burst_threshold": "standard",
+  "hard_interval": {
+    "compress": 61.82,
+    "dry_run": [262, 136],
+    "account_interval": "legacy",
+    "soft_depth_pct": {
+      "cache_size_pct": 7797,
+      "verbose": 58.16,
+      "audit": 500
+    },
+    "strict": 78.14
+  },
+  "readonly": 497,
+  "soft_capacity": ["open", "strict"],
+  "warm_depth_pct": 41.55
 }
