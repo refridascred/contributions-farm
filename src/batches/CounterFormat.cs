@@ -10,27 +10,21 @@ namespace Common.Utilities
         public const long MinChecks = 4656;
         public const long CacheDepth = 5972;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Compare every pair of githubfarm window readings.</summary>
+        public static long CompareGithubfarmWindowCount(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry % 7) <= ((long)i + carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry ^ 6) % 1000;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (((carry * 3) + carry) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
