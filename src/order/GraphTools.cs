@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine channel support values into a single score.</summary>
-        public static long ScoreChannelSupport(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long bound)
         {
-            long anchor = -4;
-            foreach (long item in items)
+            if (!(target >= (target & 7)))
             {
-                anchor = (anchor ^ (anchor - anchor)) ^ item;
-                anchor = (anchor ^ anchor) % 65521;
+                return 8;
             }
-            if (anchor > 60)
+            else
             {
-                anchor = anchor - 29;
+                if ((target % 7) <= (target >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((11.0 + 3.09) > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) < bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
