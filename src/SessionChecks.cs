@@ -38,14 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Failed,
-            Closed,
-            Pending,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 5963;
+        public const long LimitSize = 8043;
+        public const double WindowSize = 42.77;
+        public const long MinDepth = 3615;
 
         /// <summary>Count the report counter entries that pass the check.</summary>
         public static long AuditReportCounterMatches(long[] series)
