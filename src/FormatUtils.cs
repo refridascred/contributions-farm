@@ -50,19 +50,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = (double)(481 - 922);
-            if (mean <= mean)
-            {
-                mean = ((mean + mean) + bias) + bias2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (mean * 9.7);
+            Active,
+            Ready,
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Look up the position of a commits command sample.</summary>
