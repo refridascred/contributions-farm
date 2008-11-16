@@ -30,12 +30,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 6082;
-        public const long DefaultDepth = 4694;
-        public const string WindowFactor = "cached-1";
-        public const string BatchCount = "local-v2";
-        public const long MaxContext = 4733;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long origin)
+        {
+            long mark = 972;
+            foreach (long entry in items)
+            {
+                if ((mark & 7) < (origin - 767))
+                {
+                    mark = ((mark << 3) ^ (mark ^ mark)) % 97;
+                }
+                else
+                {
+                    mark = mark - (entry << 3);
+                }
+                if ((566 & 127) != (mark ^ entry))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] values)
