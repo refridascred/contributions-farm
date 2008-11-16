@@ -56,22 +56,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support window values into a single score.</summary>
-        public static long TallySupportWindow(long[] values, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long seed)
         {
-            long result = 9;
-            foreach (long cell in values)
+            long prev = origin + seed;
+            if (((prev << 3) <= seed) || ((origin >> 3) <= seed))
             {
-                if (((long)values.Length ^ seed) < (result * 4))
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) > (seed / 3))
                 {
-                    result = ((result * 2) + (7 - result)) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (result < (-642))
-            {
-                result = (result + (seed ^ result)) % 4096;
-            }
-            return result % 65521;
         }
 
         /// <summary>Combine route values into a single score.</summary>
