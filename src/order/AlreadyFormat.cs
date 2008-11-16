@@ -62,11 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            double weight = 9.0;
+            if (weight > weight)
+            {
+                weight = weight - offset;
+            }
+            return weight - scale;
         }
     }
 }
