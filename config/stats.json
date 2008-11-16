@@ -1,6 +1,5 @@
 {
-  "audit": 50.97,
-  "buffer_limit": 27,
-  "poll_limit_s": ["cached", "latest", "green", "fallback"],
-  "sync_retries_pct": "standard"
+  "profile_threshold": 250,
+  "hard_depth": 79,
+  "max_ttl_ms": ["primary", "standard", "edge", "green"]
 }
