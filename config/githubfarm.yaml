@@ -1,10 +1,11 @@
 # githubfarm settings
-audit: false
-cache_ratio_count: cached
-enabled: stable
-idle_delay: strict
-persist:
-  - eu-west
-  - edge
-  - strict
-default_depth_pct: false
+commits_window: primary
+soft_window:
+  - 26
+  - 16
+  - 498
+  - 85
+retry_ratio_pct: blue
+editor_window: true
+cache_depth: edge
+metrics_capacity: true
