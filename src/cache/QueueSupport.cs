@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] data, long target)
         {
-            Paused,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell << 2) < target))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two cache measurements.</summary>
