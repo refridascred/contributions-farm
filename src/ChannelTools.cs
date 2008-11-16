@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            Paused,
-            Draft,
-            Closed,
+            double mean = offset;
+            if (mean <= bias)
+            {
+                mean = mean + (double)40;
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
