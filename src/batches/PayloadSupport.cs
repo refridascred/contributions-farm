@@ -13,12 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 5573;
-        public const long IdleSpan = 7044;
-        public const long MaxDepth = 182;
-        public const long WindowFactor = 3882;
-        public const double BurstToken = 5.2;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Retry,
+            Locked,
+            Failed,
+            Closed,
+            Active,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] readings)
