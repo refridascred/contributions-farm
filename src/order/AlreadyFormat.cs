@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double span)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double weight = (double)201 / 9.0;
-            if (weight > (ratio - ratio))
-            {
-                weight = weight + (9.66 / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (ratio - span)) + (double)(long)i;
-            }
-            return weight - weight;
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next contributi stream value.</summary>
