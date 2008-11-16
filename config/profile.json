@@ -1,13 +1,8 @@
 {
-  "checks_retries": {
-    "default_delay": "fallback",
-    "batch_delay": 91.89,
-    "retry_retries_pct": ["cached", "open", "strict", "latest"],
-    "schema_window": 9.63,
-    "cache_ratio_count": 54.07,
-    "burst_ttl": 15
-  },
-  "cache_ttl_count": 7257,
-  "cache_ratio": true,
-  "cache_capacity": 29.79
+  "soft_delay_count": [422, 170, 262, 311],
+  "poll_capacity_count": [391, 496],
+  "burst_delay": "local",
+  "dry_run": "green",
+  "audit": "legacy",
+  "graph_ttl": 11
 }
