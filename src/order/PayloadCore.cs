@@ -27,10 +27,18 @@ namespace Common.Utilities
         public const double MinMetric = 70.1;
         public const long IdleMetric = 2622;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseRatio = 4520;
-        public const string MinNotes = "cached-v2";
-        public const double HardFactor = 84.43;
+        /// <summary>Find the first checks schema entry that matches the target.</summary>
+        public static long LocateChecksSchemaIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
