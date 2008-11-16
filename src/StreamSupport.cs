@@ -26,12 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            Pending,
+            Ready,
+            Locked,
         }
     }
 }
