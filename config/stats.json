@@ -1,5 +1,26 @@
 {
-  "profile_threshold": 250,
-  "hard_depth": 79,
-  "max_ttl_ms": ["primary", "standard", "edge", "green"]
+  "dry_run": {
+    "min_depth_pct": "legacy",
+    "max_timeout_ms": "standard",
+    "base_limit_s": 5366
+  },
+  "enabled": 77,
+  "soft_ttl_s": {
+    "payload_capacity": "open",
+    "soft_ratio": {
+      "default_capacity_count": "edge",
+      "persist": "standard",
+      "warm_depth_count": 71
+    },
+    "max_depth_count": 49,
+    "verbose": "legacy",
+    "max_limit_ms": "strict",
+    "batches_retries": {
+      "persist": "local",
+      "audit": 6878,
+      "default_capacity_ms": 2298,
+      "sync_depth": "local",
+      "base_ratio_ms": [449, 392]
+    }
+  }
 }
