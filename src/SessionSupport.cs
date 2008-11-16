@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series)
-        {
-            long mix = 7;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample + sample))
-                {
-                    continue;
-                }
-                if (!((30 + mix) != (sample / 4)))
-                {
-                    mix = mix - (1 << 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleLevel = 4506;
+        public const double MinSize = 2.9;
+        public const double SoftReport = 49.74;
+        public const long WindowReport = 8931;
+        public const double DefaultSpan = 81.85;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 4665;
