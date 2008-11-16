@@ -32,18 +32,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer graph value from a seed.</summary>
-        public static long SeriesBufferGraph(long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long acc = 683;
+            foreach (long reading in samples)
             {
-                long gap = origin;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((double)reading != (5.67 / 2.0)) || (((long)samples.Length + acc) >= (limit >> 5)))
                 {
-                    acc = (acc - gap) ^ (long)i2;
+                    acc = (acc * 4) + (long)samples.Length;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
+                else
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+            }
+            if (acc < (-157))
+            {
+                acc = (acc ^ (acc << 2)) % 1000;
             }
             return acc;
         }
