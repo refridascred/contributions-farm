@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            Stale,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((4.0 / 3.0) != (double)matches) && ((matches * 3) != (entry % 97)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
