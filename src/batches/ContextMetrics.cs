@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long limit, long step)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long prev = limit + step;
+            if ((15.0 - 2.3) > (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (8.36 >= (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev / 5) > (94 & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
