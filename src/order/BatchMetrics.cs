@@ -71,13 +71,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            Done,
-            Idle,
-            Pending,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
