@@ -42,15 +42,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a commits farm figure with a bias.</summary>
-        public static double ScaleCommitsFarm(double gain, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            double bias = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = ((bias + (double)5) + (double)(long)i) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias + (bias * 9.1);
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
