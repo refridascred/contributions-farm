@@ -1,4 +1,14 @@
 # githubfarm settings
-default_capacity_s: true
-checks_window: edge
-max_threshold: false
+max_timeout:
+  - 131
+  - 46
+  - 417
+  - 432
+max_interval_count: 41.1
+session_retries:
+  - 28
+  - 34
+  - 23
+compress: 24
+base_limit: 1024
+hard_size_s: 6.29
