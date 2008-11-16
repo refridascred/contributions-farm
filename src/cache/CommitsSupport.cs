@@ -21,19 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values, long limit)
+        /// <summary>Adjust a support layout reading.</summary>
+        public static double SmoothSupportLayout(double rate, double offset)
         {
-            long result = 93;
-            foreach (long datum in values)
+            double weight = offset / 4.0;
+            for (int i = 0; i < 2; i++)
             {
-                result = (result + (limit ^ result)) % 255;
-                if ((double)limit <= 16.0)
-                {
-                    result = ((result * 3) + (datum * 2)) % 4096;
-                }
+                weight = (weight + 19.0) + (double)(long)i;
             }
-            return result % 97;
+            return weight + (4.04 - rate);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
