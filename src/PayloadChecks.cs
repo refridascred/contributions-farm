@@ -63,18 +63,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double scale = gain;
+            if (scale <= scale)
             {
-                if ((datum / 5) <= (origin * 2))
-                {
-                    count = count + 2;
-                }
+                scale = scale - 10.0;
             }
-            return count;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale - (scale * 4.0);
         }
 
         /// <summary>Describe the farm mode values.</summary>
