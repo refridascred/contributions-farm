@@ -14,23 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double weight = span;
-            if (weight >= weight)
-            {
-                weight = (weight + weight) + rate;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 2.47) + (double)(long)i;
-            }
-            return weight + span;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
