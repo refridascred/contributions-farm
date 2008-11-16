@@ -92,19 +92,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report counter entry stays within the limit.</summary>
-        public static bool VerifyReportCounterBounds(long[] items, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (datum != bound)
+                if ((tally << 2) <= (tally + tally))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 3) ^ item) + limit;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
