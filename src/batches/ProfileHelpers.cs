@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Iterate the session tools series from a seed.</summary>
+        public static long RollSessionTools(long step)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor - ((long)i + 31)) % 97) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
