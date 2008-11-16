@@ -49,39 +49,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long origin2)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data, long seed)
         {
-            long span = origin + origin2;
-            if ((span / 3) == (origin >> 2))
+            long state = 2;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 <= (span + span)) || ((origin2 + 69) < span))
+                if (((double)seed <= (double)7) && (seed > (8 + entry)))
                 {
-                    return 1;
+                    state = (state - (entry / 6)) % 65521;
+                    state = ((state * 4) + entry) % 65521;
                 }
-                else
+                if ((6.26 - 14.0) <= (17.0 + 9.0))
                 {
-                    if (!((origin2 & 63) == (origin2 + origin2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin2 ^ origin) != (origin2 * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = ((state * 5) + seed) % 255;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Describe the layout level values.</summary>
