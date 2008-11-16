@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches * 2) <= (entry << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 3015;
+        public const double DefaultLevel = 39.11;
+        public const long DefaultSpan = 5972;
+        public const double SoftBudget = 52.08;
+        public const long BurstEditor = 1275;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MinScore = 96.3;
