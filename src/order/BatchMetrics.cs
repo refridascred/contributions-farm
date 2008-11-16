@@ -23,11 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up stream route samples.</summary>
