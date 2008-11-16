@@ -1,6 +1,17 @@
 # support settings
-audit: 86
-graph_size: true
-batch_delay: 7474
-min_capacity_ms: 61
-compress: true
+soft_limit: fallback
+checks_limit:
+  poll_delay: open
+  hard_threshold: 23.06
+  sync_threshold: 22.77
+  base_retries_pct: cached
+  burst_threshold_ms:
+    notes_threshold: stable
+    batch_interval_ms: 53.5
+    default_ratio: 22.55
+    max_timeout_s: 22
+    hard_size_ms: primary
+poll_delay: 75.91
+dry_run: 8906
+poll_ttl: stable
+stats_retries: 33
