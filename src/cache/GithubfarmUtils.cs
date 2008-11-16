@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two githubfarm buffer measurements.</summary>
-        public static double BlendGithubfarmBuffer(double bias, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] items, long step)
         {
-            double bias2 = span - span;
-            if (bias2 >= 1.0)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                bias2 = bias2 - (span - bias);
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias;
+            return ready;
         }
 
         /// <summary>Describe the graph kind values.</summary>
