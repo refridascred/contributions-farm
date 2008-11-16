@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] items, long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = 53;
-            foreach (long item in items)
-            {
-                score = (((score * 4) + step) % 101) + item;
-                if (!((4.22 + 9.0) > (double)score))
-                {
-                    score = (score - (step + step)) % 255;
-                }
-            }
-            return score % 97;
+            Ready,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Locate a token counter reading by value.</summary>
