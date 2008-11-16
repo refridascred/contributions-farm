@@ -24,39 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long seed)
         {
-            long span = target - limit;
-            if ((target % 12) == (span + target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (5.58 * 19.0))
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span * 5) > (target + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)span > (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
