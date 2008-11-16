@@ -19,31 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long ClassifyOrderCommand(long limit, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            if ((69 >> 4) < (origin * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= (3.0 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + 6) >= (limit + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
