@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long target)
         {
-            Stale,
-            Idle,
-            Paused,
+            long carry = -310;
+            foreach (long datum in values)
+            {
+                carry = ((carry ^ (target % 12)) % 101) + datum;
+            }
+            if (carry > (-141))
+            {
+                carry = (carry + (carry >> 1)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
