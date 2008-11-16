@@ -40,14 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Validate route checks readings against a bound.</summary>
+        public static bool ValidateRouteChecksLimits(long[] items, long floor)
         {
-            Stale,
-            Closed,
-            Paused,
-            Pending,
-            Queued,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
