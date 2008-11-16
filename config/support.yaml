@@ -1,8 +1,16 @@
 # support settings
-flush_ratio_ms: open
-idle_limit_ms:
-  - 143
-  - 24
-  - 450
-  - 165
-dry_run: false
+warm_threshold_ms:
+  warm_threshold_ms: true
+  default_limit:
+    enabled: 250
+    hard_ratio: 91.71
+    hard_timeout_ms: 37.49
+  batch_delay: 250
+  default_ttl_ms:
+    - fallback
+    - stable
+    - standard
+    - strict
+  verbose: 1977
+verbose: primary
+min_delay: 76
