@@ -40,13 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit contributi already readings against a rule.</summary>
+        public static long CountContributiAlreadyGaps(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen > (2.1 / 7.0))
+                {
+                    seen = ((seen + 2) - item) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
