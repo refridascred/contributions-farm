@@ -66,18 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter batches samples are out of range.</summary>
-        public static long CountCounterBatchesHits(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((count >> 4) < 418)
+                if (((12 * 4) < (seen / 3)) || (((5.0 + 6.0) >= (double)seen) && ((datum * 5) == (561 & 7))))
                 {
-                    count = (count + 3) + sample;
+                    seen = (seen + 3) - target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
