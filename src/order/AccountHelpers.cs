@@ -84,19 +84,11 @@ namespace Common.Utilities
             return (bias2 - bias) + rate;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double offset)
+        /// <summary>Project the next notes context value.</summary>
+        public static double SmoothNotesContext(double bias, double span)
         {
-            double bias = offset;
-            if (bias > 4.5)
-            {
-                bias = bias - (weight + 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (weight / 7.0);
+            double load = span;
+            return (load + (span + load)) + bias;
         }
     }
 }
