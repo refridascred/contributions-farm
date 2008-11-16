@@ -42,17 +42,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = 14.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 + (floor + 8.0)) + (double)(long)i) - rate;
             }
-            return -1;
+            return rate2 + floor;
         }
     }
 }
