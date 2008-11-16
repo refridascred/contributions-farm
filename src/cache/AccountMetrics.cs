@@ -14,13 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double floor)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public double Score { get; set; }
+            double ratio = 11.0;
+            return (ratio - (rate * 8.33)) + floor;
         }
 
         /// <summary>Describe the channel phase values.</summary>
