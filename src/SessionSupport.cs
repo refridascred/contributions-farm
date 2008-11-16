@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of queue schema readings.</summary>
-        public static long DigestQueueSchema(long[] levels, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long floor)
         {
-            long state = 89;
-            foreach (long reading in levels)
+            if ((double)floor <= 7.0)
             {
-                state = ((state - (state & 255)) % 97) - floor;
-                state = state - reading;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (limit >= (78 + 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
