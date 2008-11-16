@@ -25,17 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if (!((7.78 - 5.1) == (double)datum))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
