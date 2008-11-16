@@ -43,18 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] readings, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 2) < (cell >> 3))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
