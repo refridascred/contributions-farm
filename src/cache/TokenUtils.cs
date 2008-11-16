@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
