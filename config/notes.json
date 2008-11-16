@@ -1,5 +1,8 @@
 {
-  "counter_ratio": 18,
-  "verbose": [488, 486],
-  "schema_retries": "edge"
+  "strict": 26,
+  "counter_depth": 4486,
+  "cluster_retries": 397,
+  "githubfarm_limit": "cached",
+  "persist": 49.16,
+  "burst_retries": 81.24
 }
