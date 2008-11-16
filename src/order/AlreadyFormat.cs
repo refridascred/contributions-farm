@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the stream commits series from a seed.</summary>
-        public static long SeriesStreamCommits(long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long gap = step - offset;
+            if (!(gap > (step - gap)))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score + score) + (long)i2;
-                }
-                score = (score + 2) % 101;
-                score = ((score * 3) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((557 * 4) > (step - step)) && ((gap % 64) <= 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
