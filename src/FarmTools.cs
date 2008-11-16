@@ -42,14 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Retry,
-            Failed,
-            Queued,
-            Active,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftWidth = 6703;
+        public const string DefaultFarm = "staging";
+        public const string IdleRatio = "staging-1";
+        public const long LimitFarm = 5217;
+        public const long StepFarm = 2988;
     }
 }
