@@ -31,17 +31,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + (offset & 127);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a session reading by value.</summary>
