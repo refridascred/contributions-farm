@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command already readings against a rule.</summary>
-        public static long TallyCommandAlreadyGaps(long[] data, long seed)
+        /// <summary>Count already checks pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyChecksCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed % 24) >= tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
