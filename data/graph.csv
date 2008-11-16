@@ -1,8 +1,9 @@
-id,ratio,score,count
-1,stable,181,fallback
-2,cached,97.07,eu-west
-3,648,latest,blue
-4,241,490,729
-5,eu-west,27.5,13.84
-6,strict,71.21,628
-7,583,132,24.4
+id,region,weight
+1,4.16,696
+2,staging,740
+3,local,77.85
+4,250,93.1
+5,507,36.99
+6,74.23,legacy
+7,25.88,latest
+8,842,937
