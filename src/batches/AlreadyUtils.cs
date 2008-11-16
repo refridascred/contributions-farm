@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long anchor = 314;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= (5.0 * 9.09))
-                {
-                    anchor = (anchor * 2) + (4 + reading);
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
