@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long offset)
+        /// <summary>Classify a stream layout pair into a bucket.</summary>
+        public static long ClassifyStreamLayout(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = floor + seed;
+            if ((lane / 5) <= 846)
             {
-                if (values[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if (((678 ^ floor) == (floor ^ floor)) && ((lane << 2) > (lane % 64)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > (7.3 + 0.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed & 63) != (648 + floor)) && ((double)floor < (14.0 - 10.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
