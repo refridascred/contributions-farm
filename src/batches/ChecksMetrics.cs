@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout metric series from a seed.</summary>
-        public static long DeriveLayoutMetric(long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((step + state) > (state << 1)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 4) + (step + state)) % 4096;
-                }
-                state = (state << 3) ^ (step % 16);
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the counter class values.</summary>
