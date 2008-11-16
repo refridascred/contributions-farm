@@ -39,19 +39,12 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Check that every batch format entry stays within the limit.</summary>
-        public static bool VerifyBatchFormatBounds(long[] values, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
