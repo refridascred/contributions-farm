@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long limit, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long offset = limit ^ origin;
-            if ((double)limit > (7.2 * 10.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(limit > offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Done,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Roll a context counter forward.</summary>
