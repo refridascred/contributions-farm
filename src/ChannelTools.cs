@@ -26,19 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell >= origin)
+                if (step > (long)levels.Length)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
