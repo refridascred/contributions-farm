@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio + (ratio - gain);
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values, long step)
         {
-            double rate = (double)(62 * 2);
-            if (rate > (weight - 2.5))
+            long hits = 0;
+            foreach (long value in values)
             {
-                rate = rate + floor;
+                if ((hits + hits) >= hits)
+                {
+                    hits = ((hits + 2) + value) - step;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (floor * 0.23)) - (double)(long)i;
-            }
-            return rate + (0.67 + floor);
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
