@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            if (((double)limit != (9.1 * 8.0)) || ((double)limit <= 11.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((4 + origin) == (limit % 24)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= (6.0 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin / 6)) || (242 > (limit - origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
