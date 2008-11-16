@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const double WindowLevel = 87.69;
         public const long BatchAccount = 6057;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double weight = span;
+            if (weight >= weight)
             {
-                if (((3 + floor) == (tally + tally)) && ((datum * 4) <= (982 & 15)))
-                {
-                    tally = tally + 1;
-                }
+                weight = (weight + weight) + rate;
             }
-            return tally;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 2.47) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
