@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster stream figure with a bias.</summary>
-        public static double ScaleClusterStream(double scale, double offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long target)
         {
-            double drift = (scale - scale) * 4.0;
-            if (drift < drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (scale * 1.78)) + offset;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return drift + scale;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
