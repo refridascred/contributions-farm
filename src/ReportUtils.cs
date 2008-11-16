@@ -50,17 +50,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (step <= (offset - step))
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((9.6 - 1.64) > (double)offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset <= 8.6) || (offset < step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 15) > 14)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
