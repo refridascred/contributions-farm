@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const double MinMetric = 70.1;
         public const long IdleMetric = 2622;
 
-        /// <summary>Find the first checks schema entry that matches the target.</summary>
-        public static long LocateChecksSchemaIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseTimeout = 48.97;
+        public const long BatchSize = 1589;
+        public const long MaxQueue = 1959;
+        public const double HardQueue = 48.92;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
