@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset;
+            if (scale <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (offset - bias);
             }
-            return matches;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
