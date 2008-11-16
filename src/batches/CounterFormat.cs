@@ -37,21 +37,21 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 6)
+                    if ((values[i] ^ values[j]) < 9)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
