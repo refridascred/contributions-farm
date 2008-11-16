@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long TallyRouteMetricMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (reading != seed)
+                if (!((entry / 7) >= count) && ((8.16 / 7.0) > (double)count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
