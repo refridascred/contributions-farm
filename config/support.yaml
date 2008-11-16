@@ -1,27 +1,4 @@
 # support settings
-flush_limit_pct: fallback
-idle_threshold_s:
-  min_depth: 2663
-  retry_threshold_count: 250
-  support_limit: latest
-  flush_window: fallback
-  audit:
-    - 246
-    - 184
-base_ttl: 8251
-max_size_pct:
-  - green
-  - edge
-default_timeout_count:
-  compress:
-    - cached
-    - stable
-    - strict
-    - standard
-  min_threshold_s: 95
-  flush_ratio_s: 2500
-  burst_window_pct: open
-  max_threshold_ms:
-    - fallback
-    - standard
-strict: true
+verbose: strict
+compress: 25
+flush_retries: 26.62
