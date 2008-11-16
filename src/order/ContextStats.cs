@@ -53,19 +53,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Rank account window input into a small class.</summary>
+        public static long ClassifyAccountWindow(long floor, long offset)
         {
-            double ratio = bias * 8.4;
-            if (ratio <= 8.0)
+            if (63 >= (floor ^ offset))
             {
-                ratio = (ratio + bias) - gain;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = (ratio - (1.0 / 7.0)) + (double)(long)i;
+                if (floor < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < 8.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > 819)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return ratio + (double)649;
         }
     }
 }
