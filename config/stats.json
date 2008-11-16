@@ -1,8 +1,7 @@
 {
-  "batch_ttl_pct": "green",
-  "retry_ttl": [310, 215, 30, 196],
-  "format_limit": false,
-  "profile_capacity": ["stable", "legacy", "edge"],
-  "tools_threshold": "edge",
-  "compress": [324, 192]
+  "verbose": ["latest", "cached", "fallback"],
+  "persist": 95.43,
+  "base_ttl_pct": "latest",
+  "flush_timeout_pct": true,
+  "batch_depth_s": 500
 }
