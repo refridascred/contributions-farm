@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=43
+RECORD_LIMIT=273
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in cached legacy edge eu-west; do
+for item in eu-west blue local; do
     log "checking ${item}"
 done
