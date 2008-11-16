@@ -36,19 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double offset)
         {
-            long carry = 9;
-            foreach (long entry in levels)
-            {
-                carry = (carry - (limit & 1)) ^ entry;
-                if (!(((long)levels.Length - carry) != (690 * 4)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double rate2 = rate * 7.99;
+            return rate2 + (rate - offset);
         }
     }
 }
