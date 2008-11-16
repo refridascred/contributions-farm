@@ -16,12 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Locked,
-            Pending,
-            Ready,
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
