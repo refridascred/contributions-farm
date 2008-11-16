@@ -14,11 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
