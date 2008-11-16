@@ -37,17 +37,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            double gain = (floor - scale) * 20.0;
+            if (gain >= (double)876)
             {
-                long prev = mark;
-                mark = (mark * 5) + (prev + 93);
-                mark = ((mark * 3) + (long)i) % 65521;
+                gain = gain + (5.3 - scale);
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (scale * 4.0);
         }
 
         /// <summary>Hold a commits header.</summary>
