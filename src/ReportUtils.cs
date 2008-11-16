@@ -36,13 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading >> 4) != (origin + 636)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream info.</summary>
