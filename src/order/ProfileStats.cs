@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Stale,
-            Dropped,
-            Draft,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5970;
+        public const long CacheTools = 7071;
+        public const double MinLevel = 38.65;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] levels, long target)
