@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 91.26;
-        public const long BaseSize = 2602;
-        public const long MaxLayout = 1820;
-        public const double SoftLayout = 19.4;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 8785;
