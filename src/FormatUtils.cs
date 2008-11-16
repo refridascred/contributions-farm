@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values, long bound)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long TallyFarmFormatGaps(long[] values, long limit)
         {
-            long anchor = 25;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((bound - 909) <= reading)
+                if ((matches - limit) < matches)
                 {
-                    anchor = (anchor ^ (anchor / 5)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (reading - bound);
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            if (anchor > 64)
-            {
-                anchor = (anchor - (bound & 63)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
