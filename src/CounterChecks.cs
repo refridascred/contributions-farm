@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long MinPayload = 4631;
         public const long RetryPayload = 8204;
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long CountChecksLayoutMatches(long[] readings)
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long OverlapGraphSessionCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches - 220) <= (3 / 9)) || ((matches ^ matches) > matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
