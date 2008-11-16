@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((count + count) <= (datum ^ count)) || ((count + count) != (datum + datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two already measurements.</summary>
