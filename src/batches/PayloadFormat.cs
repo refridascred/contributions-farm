@@ -32,15 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route metrics counter forward.</summary>
-        public static long SeriesRouteMetrics(long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (!((score ^ limit) < (score * 3)))
+                {
+                    score = (score + (limit << 2)) % 255;
+                    score = (score * 2) + limit;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score + (282 + (long)i2)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Match up layout samples.</summary>
