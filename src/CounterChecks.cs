@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a commits cache pair into a bucket.</summary>
-        public static long BucketCommitsCache(long seed, long offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long diff = seed + offset;
-            if (((822 >> 5) <= (offset + 67)) || ((6.0 + 8.84) != (double)diff))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset * 2) < (offset >> 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
