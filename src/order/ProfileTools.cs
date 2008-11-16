@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((double)target == (2.09 - 8.56))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
