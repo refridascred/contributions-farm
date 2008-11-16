@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] data, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (reading > (reading - bound))
+                if ((5.94 + 12.0) >= (double)matches)
                 {
-                    tally = tally + 1;
+                    matches = ((matches + 2) ^ datum) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a buffer route pair into a bucket.</summary>
