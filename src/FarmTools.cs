@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a layout contributi value against two limits.</summary>
-        public static long SortLayoutContributi(long floor, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            long slot = floor ^ limit;
-            if (((slot >> 3) >= slot) && (slot <= (limit + 97)))
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(floor < (floor & 31)))
+                if (((long)i != (total >> 5)) || ((6.5 - 3.8) >= (double)limit))
                 {
-                    return 6;
+                    total = ((total * 4) + (-866)) % 65521;
+                    total = (total * 5) + ((long)i + total);
                 }
-                else
-                {
-                    return 5;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
