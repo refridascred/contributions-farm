@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Adjust a checks contributi reading.</summary>
+        public static double SmoothChecksContributi(double scale, double offset)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            double drift = 8.3;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - (drift - offset)) - (double)(long)i) - scale;
+            }
+            return drift + offset;
         }
 
         /// <summary>Check that every support cluster entry stays within the limit.</summary>
