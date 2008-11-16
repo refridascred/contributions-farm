@@ -29,12 +29,21 @@ namespace Common.Utilities
         public const long BurstFarm = 6265;
         public const double BaseDepth = 38.7;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
