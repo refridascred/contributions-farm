@@ -1,6 +1,6 @@
 {
-  "warm_size": 12.13,
-  "burst_capacity": 8546,
-  "min_ratio": ["local", "edge", "staging"],
-  "poll_retries": 8.89
+  "enabled": 7799,
+  "idle_window_pct": 60,
+  "cache_timeout_count": true,
+  "sync_ttl": 20.34
 }
