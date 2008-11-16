@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = 51;
+            foreach (long entry in levels)
+            {
+                sum = (sum << 2) ^ (seed - seed);
+                if ((sum * 4) >= (entry / 2))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
