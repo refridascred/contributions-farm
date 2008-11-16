@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] series, long offset)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long MeasureFarmRecordGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((datum + matches) == (matches << 1))
+                if (!(((763 + 28) >= origin) || (origin < ((-909) >> 2))))
                 {
-                    matches = (matches + 3) + offset;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
