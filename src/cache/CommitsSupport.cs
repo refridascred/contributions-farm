@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value & 3) <= value)
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardBudget = 6546;
+        public const long StepLevel = 6942;
+        public const long MaxContributi = 3753;
+        public const double BaseContributi = 16.38;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] values, long limit)
