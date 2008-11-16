@@ -77,11 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
