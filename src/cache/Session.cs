@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            Pending,
-            Active,
-            New,
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the tools mode values.</summary>
