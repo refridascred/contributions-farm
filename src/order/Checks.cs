@@ -26,32 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long floor, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] series)
         {
-            long gap = floor - target;
-            if ((19.0 + 5.86) == (double)target)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap <= (floor >> 1)) || (target > (9 - target)))
+                if (((9.9 + 3.1) <= (double)count) && ((double)count <= (11.0 * 7.74)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target - target) >= (1 - gap)) || (floor > (gap ^ gap)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
