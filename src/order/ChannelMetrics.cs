@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSpan = 3806;
-        public const long MaxStream = 1036;
-        public const long BurstSpan = 9992;
-        public const long IdleStream = 9063;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long seed)
