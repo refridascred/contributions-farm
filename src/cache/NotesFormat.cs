@@ -38,19 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double span)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double drift = scale;
-            if (drift < (scale + scale))
-            {
-                drift = (drift + (drift + 18.0)) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)(-161)) + (double)(long)i;
-            }
-            return drift - (drift / 8.0);
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
