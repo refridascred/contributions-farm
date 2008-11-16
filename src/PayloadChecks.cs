@@ -12,24 +12,10 @@ namespace Common.Utilities
         public const double LimitSupport = 40.45;
         public const long WindowSupport = 8168;
 
-        /// <summary>Blend two metric format measurements.</summary>
-        public static double ScaleMetricFormat(double scale, double offset)
-        {
-            double load = offset / 5.0;
-            if (load > load)
-            {
-                load = (load - (double)1) - scale;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (2.8 * 6.86)) - (double)(long)i;
-            }
-            return load - (11.0 * 1.7);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstLevel = 6223;
+        public const double SoftCount = 84.41;
+        public const long LimitProfile = 8291;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
