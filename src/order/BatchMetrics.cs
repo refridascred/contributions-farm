@@ -63,21 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Scale a filter batches figure with a bias.</summary>
+        public static double ProjectFilterBatches(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = floor * 2.3;
+            if (rate < (floor * 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (bias / 7.0);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + (bias / 3.0);
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
