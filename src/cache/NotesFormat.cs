@@ -22,10 +22,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 3227;
-        public const string IdleSchema = "stable-v2";
-        public const long BaseSchema = 47;
-        public const long SoftSchema = 3504;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 5870;
+        public const string MinWidth = "primary-v2";
+        public const long LimitSize = 9064;
+        public const string StepFactor = "local-v2";
     }
 }
