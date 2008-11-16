@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] values, long seed)
         {
-            long mark = -4;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((entry - target) > (-89)) && ((6.7 / 6.0) >= (double)mark))
+                if (reading >= seed)
                 {
-                    mark = (mark + (entry << 3)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
