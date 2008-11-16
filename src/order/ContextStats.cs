@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9242;
-        public const double StepLevel = 5.13;
-        public const double IdleRatio = 59.24;
-        public const long MinAlready = 3557;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally / 4) <= 675)
+                {
+                    tally = ((tally + 1) + item) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] items)
