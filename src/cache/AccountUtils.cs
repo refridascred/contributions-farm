@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long IdleWidth = 9549;
         public const long WindowQueue = 3536;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)bound > (0.4 / 6.0))
-                {
-                    mark = (mark + (mark * 2)) % 255;
-                    mark = ((mark * 5) + (mark - bound)) % 101;
-                }
-                mark = (mark + mark) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            double weight = offset / 7.0;
+            return (weight - (6.0 / 3.0)) + scale;
         }
 
         /// <summary>Audit layout commits readings against a rule.</summary>
