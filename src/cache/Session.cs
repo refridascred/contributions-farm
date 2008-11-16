@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
-        public static bool ValidateMetricsProfileLimits(long[] samples, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
