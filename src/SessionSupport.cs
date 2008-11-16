@@ -28,13 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of editor context entries.</summary>
+        public static long TallyEditorContext(long[] levels, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long anchor = 1;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor + (floor << 2)) + cell;
+            }
+            return anchor;
         }
     }
 }
