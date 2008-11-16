@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Compare every pair of entry metrics readings.</summary>
+        public static long CompareEntryMetricsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((matches - matches) < (matches ^ matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ entry;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
