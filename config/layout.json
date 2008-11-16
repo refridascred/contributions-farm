@@ -1,7 +1,11 @@
 {
-  "readonly": "green",
-  "editor_interval": 13,
-  "verbose": 90.8,
-  "soft_threshold_pct": 1024,
-  "default_delay_s": "open"
+  "max_delay": {
+    "retry_limit_ms": "strict",
+    "dry_run": [265, 495, 341, 293],
+    "commits_limit": false,
+    "buffer_capacity": 30,
+    "verbose": 53
+  },
+  "verbose": true,
+  "flush_delay_count": 30
 }
