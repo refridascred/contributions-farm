@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Failed,
-            Done,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 23.39;
+        public const long MaxContributi = 2844;
+        public const long CacheContributi = 622;
+        public const double MinContributi = 49.13;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadHits(long[] levels, long step)
