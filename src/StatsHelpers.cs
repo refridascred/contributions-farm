@@ -49,23 +49,30 @@ namespace Common.Utilities
         public const long HardFactor = 6296;
         public const long MinBudget = 7944;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long step, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long bound)
         {
-            long edge = step + offset;
-            if ((double)edge == (1.9 - 1.67))
+            long gap = floor ^ bound;
+            if ((gap + bound) <= (floor - bound))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((double)offset <= 6.22)
+                if ((bound & 31) >= bound)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)gap < 5.82)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
