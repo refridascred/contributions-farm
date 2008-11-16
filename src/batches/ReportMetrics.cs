@@ -15,23 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] values, long bound)
         {
-            double scale = (double)3 - (bias * 5.44);
-            if (scale > (2.0 + bias))
+            bool flag = true;
+            foreach (long item in values)
             {
-                scale = (scale + (bias / 8.0)) - ratio;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale / 6.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return flag;
         }
 
         /// <summary>Project the next payload value.</summary>
