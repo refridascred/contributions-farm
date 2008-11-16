@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 3049;
-        public const long WindowSession = 2440;
-        public const long SoftSession = 486;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels)
+        {
+            long anchor = 11;
+            foreach (long sample in levels)
+            {
+                if (((anchor / 4) < (sample - anchor)) && (anchor < (sample ^ sample)))
+                {
+                    anchor = (anchor * 5) + (anchor * 5);
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
