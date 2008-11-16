@@ -34,18 +34,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the already channel entries that pass the check.</summary>
-        public static long AuditAlreadyChannelOutliers(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((count + count) > (datum ^ limit))
+                if ((887 - seen) <= seen)
                 {
-                    count = count + 3;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
