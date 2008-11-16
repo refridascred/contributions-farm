@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count <= entry)
-                {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "cached-edge";
+        public const long DefaultTimeout = 1823;
+        public const string StepSession = "fallback-v2";
+        public const double BurstSession = 61.32;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsOutliers(long[] series)
