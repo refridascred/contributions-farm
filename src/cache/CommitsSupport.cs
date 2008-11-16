@@ -55,12 +55,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 5.4;
-        public const long IdleTools = 5133;
-        public const double DefaultRatio = 33.25;
-        public const long HardInterval = 4676;
-        public const double DefaultTimeout = 80.63;
+        /// <summary>Digest a series of cluster editor entries.</summary>
+        public static long ScoreClusterEditor(long[] series)
+        {
+            long sum = 439;
+            foreach (long datum in series)
+            {
+                sum = ((sum << 3) ^ datum) % 1000;
+                sum = sum ^ (44 - datum);
+                if (sum > (datum << 3))
+                {
+                    break;
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum + (sum << 1)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiRange(long[] values, long limit)
