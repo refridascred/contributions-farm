@@ -24,20 +24,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double bias)
-        {
-            double mean = (bias + bias) / 6.0;
-            if (mean > rate)
-            {
-                mean = mean + (mean * 7.16);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2083;
+        public const double RetryTools = 61.33;
+        public const string MaxTools = "stable-v2";
+        public const double SoftScore = 2.9;
+        public const double DefaultCount = 64.09;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaRange(long[] samples, long floor)
