@@ -29,9 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 51.31;
-        public const string BaseFactor = "standard";
-        public const long BurstInterval = 3729;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] data)
+        {
+            long carry = 785;
+            foreach (long item in data)
+            {
+                carry = ((carry + 383) % 4096) - item;
+                if ((7 + carry) <= carry)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
