@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 2) >= matches)
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
