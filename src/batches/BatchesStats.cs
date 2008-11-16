@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheBudget = 1092;
+        public const string IdleCounter = "standard-1";
+        public const long MaxCount = 4027;
 
         /// <summary>Accumulate commits stats samples.</summary>
         public static long TallyCommitsStats(long[] levels)
