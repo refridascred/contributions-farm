@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already graph reading by value.</summary>
-        public static long LookupAlreadyGraphIndex(long[] readings, long step)
+        /// <summary>Measure how many route window samples are out of range.</summary>
+        public static long MeasureRouteWindowMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] >= step)
+                if (((double)sample != (double)seen) && (seen > (273 / 5)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
