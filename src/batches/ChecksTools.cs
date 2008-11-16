@@ -57,18 +57,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data, long limit)
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long ScoreStreamAccount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 9;
+            foreach (long sample in data)
             {
-                if (!((cell + 3) != (count & 31)))
+                if (((score + 941) == (976 - sample)) || ((1.05 + 7.5) <= (double)score))
                 {
-                    count = (count + 1) + limit;
+                    score = (score - (score + 295)) % 4096;
                 }
             }
-            return count;
+            return score % 1000;
         }
     }
 }
