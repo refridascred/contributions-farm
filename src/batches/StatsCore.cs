@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool VerifyBufferCommitsBounds(long[] readings, long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of notes batches entries.</summary>
