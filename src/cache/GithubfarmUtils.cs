@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series, long origin)
-        {
-            long carry = 7;
-            foreach (long item in series)
-            {
-                carry = ((carry + item) % 1000) - origin;
-                if ((carry > (item - item)) || ((long)series.Length < (item ^ item)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 9332;
+        public const long IdleSupport = 6577;
+        public const long BurstSupport = 9938;
+        public const string HardInterval = "primary-v2";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long offset)
