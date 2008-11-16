@@ -38,18 +38,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > (sample ^ sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
