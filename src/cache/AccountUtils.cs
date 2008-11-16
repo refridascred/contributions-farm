@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 6.53;
-        public const long MinCommand = 2208;
-        public const double MinBudget = 69.55;
-        public const string WindowScore = "latest-edge";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            New,
+            Locked,
+            Idle,
+            Stale,
+            Done,
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
