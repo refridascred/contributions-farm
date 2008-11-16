@@ -49,10 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 7174;
-        public const double MinPayload = 76.1;
-        public const double BurstRatio = 80.17;
-        public const string LimitPayload = "alpha-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftInterval = 8139;
+        public const long MaxFactor = 6573;
+        public const double RetryCount = 4.43;
+        public const long MaxWindow = 7693;
+        public const long CacheBudget = 9969;
     }
 }
