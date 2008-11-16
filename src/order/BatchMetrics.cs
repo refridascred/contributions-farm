@@ -93,23 +93,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long CombineFormatOrder(long[] data)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double SmoothFilterEntry(double bias, double offset)
         {
-            long carry = 34;
-            foreach (long cell in data)
+            double bias2 = (6.97 / 4.0) - (bias + bias);
+            if (bias2 < (double)970)
             {
-                if (!((carry - carry) <= (cell & 7)))
-                {
-                    carry = (carry * 2) + (carry + carry);
-                    carry = (carry << 2) ^ (carry - 0);
-                }
-                if (!((double)cell <= (double)carry))
-                {
-                    carry = carry + (carry + carry);
-                }
+                bias2 = bias2 + offset;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (double)332;
         }
     }
 }
