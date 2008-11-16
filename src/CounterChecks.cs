@@ -73,31 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long floor)
-        {
-            if ((step & 7) >= (733 - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step > (floor & 3)) && ((90 >> 5) >= (step / 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 6) <= 5)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "legacy-edge";
+        public const long BatchFormat = 1576;
+        public const long MaxRatio = 2513;
+        public const long BatchRatio = 9816;
+        public const double SoftFormat = 44.43;
     }
 }
