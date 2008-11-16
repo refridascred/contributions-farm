@@ -35,11 +35,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long state = 295;
+            foreach (long entry in series)
+            {
+                state = (((state * 2) + (state << 1)) % 97) ^ entry;
+            }
+            return state;
         }
     }
 }
