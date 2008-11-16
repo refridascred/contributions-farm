@@ -58,14 +58,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            Queued,
-            Retry,
-            Done,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits <= (2.5 + 11.0))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
