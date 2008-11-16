@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = ratio;
+            return (rate + (ratio - 1.6)) + span;
         }
 
         /// <summary>Describe the record kind values.</summary>
