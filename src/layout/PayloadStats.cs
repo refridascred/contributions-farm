@@ -56,19 +56,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer report entries.</summary>
-        public static long FoldBufferReport(long[] data, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long step)
         {
-            long result = 417;
-            foreach (long value in data)
+            long bound = offset ^ step;
+            if ((double)step > (0.24 + 8.52))
             {
-                result = ((result - (value - value)) % 101) - origin;
-                if (690 < value)
+                return 6;
+            }
+            else
+            {
+                if ((step - bound) == (offset + step))
                 {
-                    result = (result ^ (value / 6)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if ((856 + 5) > (offset & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step <= (11 * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
