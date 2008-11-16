@@ -51,39 +51,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long offset, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long step = offset - target;
-            if ((offset / 2) == (385 / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (target * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ step) > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Idle,
         }
     }
 }
