@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
-        {
-            long result = -923;
-            foreach (long item in items)
-            {
-                if ((3 + (-6)) > item)
-                {
-                    result = (result ^ item) % 65521;
-                }
-                else
-                {
-                    result = (result - (item - result)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 89.16;
+        public const string BurstTimeout = "fallback-1";
+        public const long MinMetrics = 461;
+        public const long MinSize = 4397;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchRange(long[] data, long origin)
