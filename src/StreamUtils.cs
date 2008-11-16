@@ -46,13 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Dropped,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheCount = "cached-1";
+        public const long MaxLayout = 9752;
+        public const string WindowInterval = "open-1";
+        public const long RetryLayout = 3594;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
