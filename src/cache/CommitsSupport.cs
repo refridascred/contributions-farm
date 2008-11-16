@@ -26,18 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] values, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 7) <= (sample % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - limit;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the stats status values.</summary>
