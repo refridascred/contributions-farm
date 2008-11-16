@@ -32,25 +32,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long seed)
+        /// <summary>Fold a list of checks counter readings.</summary>
+        public static long ScoreChecksCounter(long[] values)
         {
-            long edge = target - seed;
-            if (70 > (target >> 1))
+            long state = 840;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target ^ (-10)) == (seed % 24)) && ((target ^ seed) > edge))
+                if ((state >> 2) <= (entry ^ 32))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    state = (state - (2 - entry)) % 65521;
                 }
             }
+            return state;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
