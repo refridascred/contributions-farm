@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double bias = 6.2;
+            if (bias >= bias)
             {
-                if ((887 - seen) <= seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                bias = bias + scale;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (floor / 6.0);
         }
 
         /// <summary>Match up report samples.</summary>
