@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 6531;
+        public const double StepLevel = 62.45;
+        public const long IdleSchema = 3539;
+        public const long StepDepth = 3527;
+        public const long MinSchema = 6363;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
