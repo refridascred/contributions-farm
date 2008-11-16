@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter checks value from a seed.</summary>
-        public static long SeriesCounterChecks(long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
