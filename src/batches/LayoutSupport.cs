@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] values, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Dropped,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
