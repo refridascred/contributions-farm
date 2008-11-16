@@ -46,19 +46,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate batches profile readings against a bound.</summary>
-        public static bool ValidateBatchesProfileBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardFactor = 8002;
+        public const double CacheBudget = 89.35;
+        public const string HardLevel = "legacy";
+        public const long BurstWindow = 1975;
+        public const long RetrySpan = 2997;
     }
 }
