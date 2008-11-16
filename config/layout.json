@@ -1,17 +1,6 @@
 {
-  "persist": true,
-  "default_limit_pct": {
-    "poll_interval_ms": [419, 381, 129],
-    "audit": "local",
-    "retry_capacity": "standard",
-    "default_limit": "primary",
-    "window_limit": "staging"
-  },
-  "burst_ttl": {
-    "min_interval": 2420,
-    "editor_limit": 60,
-    "default_timeout_pct": 0.23
-  },
-  "warm_delay_pct": true,
-  "min_window_s": 10
+  "order_threshold": true,
+  "channel_depth": 69.83,
+  "flush_depth_pct": 85,
+  "dry_run": [175, 135, 190, 385]
 }
