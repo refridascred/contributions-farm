@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const string MinNotes = "cached-v2";
         public const double HardFactor = 84.43;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long total = 406;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ total) % 65521;
-                if (!((total - (long)values.Length) >= (datum + 86)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total << 2) ^ (total >> 5)) % 1000;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
