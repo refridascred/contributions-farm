@@ -37,18 +37,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] samples, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.43 * 7.23) < (double)reading)
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit tools githubfarm readings against a rule.</summary>
