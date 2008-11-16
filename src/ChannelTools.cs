@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double mean = offset;
-            if (mean <= bias)
-            {
-                mean = mean + (double)40;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean + bias;
+            Closed,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
