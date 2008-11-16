@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 5594;
         public const long MinBuffer = 5187;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a buffer account counter forward.</summary>
