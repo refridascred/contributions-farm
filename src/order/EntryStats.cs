@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 5467;
-        public const long RetrySpan = 4841;
-        public const double MaxEntry = 1.22;
-        public const long LimitBudget = 1097;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (count > (cell * 5))
+                {
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
