@@ -1,14 +1,7 @@
 # support settings
-idle_size: 1024
-buffer_depth:
-  cache_retries_count: edge
-  base_timeout_ms: 30
-  warm_window_pct:
-    - 404
-    - 235
-hard_timeout:
-  - 127
-  - 393
-layout_limit:
-  - 13
-  - 206
+verbose: 39.69
+warm_window_pct: latest
+queue_threshold: 73
+batch_size_pct: cached
+max_limit_count: 3460
+enabled: 85
