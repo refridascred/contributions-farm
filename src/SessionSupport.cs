@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] data, long seed)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache phase values.</summary>
