@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((seed ^ tally) >= seed) || (((double)25 <= (double)seed) || ((double)seed > 7.88)))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
