@@ -1,18 +1,9 @@
 # entry settings
-default_interval: 1046
-hard_threshold_count: false
-dry_run:
-  poll_interval: 66.64
-  burst_size: legacy
-  enabled: true
-  verbose: 500
-idle_capacity:
-  soft_ratio:
-    - 309
-    - 251
-    - 135
-    - 324
-  dry_run: 8954
-  soft_window: true
-already_threshold: 8.26
-min_interval_ms: 4821
+min_depth: 22
+sync_capacity_ms: 95
+sync_capacity: true
+sync_ratio_ms:
+  - 136
+  - 336
+  - 65
+min_threshold: primary
