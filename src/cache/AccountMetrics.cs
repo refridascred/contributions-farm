@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardLevel = 6630;
-        public const string LimitAccount = "stable-v2";
-        public const double WindowLevel = 87.69;
-        public const long BatchAccount = 6057;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Paused,
+            Pending,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double rate, double span)
