@@ -1,6 +1,9 @@
 {
-  "burst_timeout": false,
-  "metric_depth": "eu-west",
-  "min_size_pct": "blue",
-  "soft_depth_ms": 1.11
+  "metrics_capacity": 30,
+  "dry_run": ["staging", "eu-west"],
+  "soft_timeout_count": {
+    "dry_run": "strict",
+    "retry_threshold_pct": 5894,
+    "audit": ["local", "stable"]
+  }
 }
