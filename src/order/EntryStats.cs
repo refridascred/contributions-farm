@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (seen > (9 * 4))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
