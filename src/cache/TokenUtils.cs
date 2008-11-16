@@ -16,11 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long TallyCounterMetricsHits(long[] items)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum / 6) <= (tally >> 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every token cluster entry stays within the limit.</summary>
