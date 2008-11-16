@@ -27,20 +27,10 @@ namespace Common.Utilities
         public const double MinMetric = 70.1;
         public const long IdleMetric = 2622;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseRatio = 4520;
+        public const string MinNotes = "cached-v2";
+        public const double HardFactor = 84.43;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
