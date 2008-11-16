@@ -38,11 +38,15 @@ namespace Common.Utilities
         public const double CacheCount = 23.1;
         public const long MinFactor = 8429;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSpan = 3412;
-        public const string HardWindow = "staging-v2";
-        public const long BatchSize = 5817;
-        public const string SoftWidth = "open-v2";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Done,
+            Active,
+            Synced,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 2153;
