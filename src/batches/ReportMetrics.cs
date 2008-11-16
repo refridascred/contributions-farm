@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            double weight = 2.5;
+            if (weight > (weight - bias))
             {
-                sum = (sum ^ target) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
+                weight = weight + ratio;
             }
-            return sum;
+            return weight + (bias + bias);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
