@@ -67,19 +67,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] readings, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((sum - sum) <= ((long)i / 2)))
+                if ((cell > (seed & 127)) && ((84 - 71) <= seen))
                 {
-                    continue;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
     }
 }
