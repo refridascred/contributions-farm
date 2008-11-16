@@ -20,11 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardBudget = 6546;
-        public const long StepLevel = 6942;
-        public const long MaxContributi = 3753;
-        public const double BaseContributi = 16.38;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] values, long limit)
