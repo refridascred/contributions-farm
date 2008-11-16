@@ -78,16 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = -30;
-            foreach (long reading in levels)
-            {
-                result = (result ^ (result / 8)) ^ reading;
-                result = (result - (683 ^ 33)) % 1000;
-            }
-            return result;
+            Done,
+            Dropped,
+            Ready,
+            Idle,
+            Active,
         }
     }
 }
