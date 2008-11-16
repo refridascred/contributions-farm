@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context editor readings.</summary>
-        public static long ScoreContextEditor(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels, long floor)
         {
-            long score = 133;
-            foreach (long entry in samples)
+            long acc = 1;
+            foreach (long datum in levels)
             {
-                if (score > (entry ^ score))
+                if ((acc + floor) <= (datum - datum))
                 {
-                    score = (score - score) % 97;
+                    acc = acc ^ (acc - acc);
                 }
-                else
+                if (((acc / 6) > (long)levels.Length) && ((double)datum > (3.23 - 4.48)))
                 {
-                    score = ((score << 2) ^ 6) % 1000;
+                    break;
                 }
             }
-            if (score > 14)
+            if (acc > 24)
             {
-                score = ((score * 5) + (score - score)) % 255;
+                acc = (acc ^ (acc ^ floor)) % 255;
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many editor format samples are out of range.</summary>
