@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-edge";
         public const double MinMetric = 31.57;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Synced,
-            Closed,
-            Dropped,
-            Retry,
-            Active,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
