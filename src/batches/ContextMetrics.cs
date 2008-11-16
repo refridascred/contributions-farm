@@ -48,11 +48,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 2153;
-        public const long IdleCommits = 7022;
-        public const string BatchCommits = "stable-edge";
-        public const long BaseCommits = 4663;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items)
+        {
+            long sum = 910;
+            foreach (long value in items)
+            {
+                sum = (sum << 2) ^ 9;
+                if ((sum << 2) < value)
+                {
+                    sum = sum ^ (966 + sum);
+                }
+            }
+            if (sum < 737)
+            {
+                sum = ((sum * 5) + (sum * 4)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] items, long seed)
