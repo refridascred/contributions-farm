@@ -36,21 +36,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 3;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item >> 1) >= (item >> 2)) || ((double)item <= (double)sum))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (sum - sum)) % 255;
+                }
+                else
+                {
+                    sum = sum + (799 ^ 4);
                 }
             }
-            return tally;
+            if (sum < 245)
+            {
+                sum = (sum << 2) ^ (570 - sum);
+            }
+            return sum;
         }
     }
 }
