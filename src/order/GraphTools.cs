@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const string HardProfile = "stable-v2";
         public const string BurstProfile = "fallback-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstSize = 4173;
-        public const long DefaultTools = 4463;
-        public const long CacheTools = 5008;
-        public const long IdleLevel = 5280;
-        public const long WindowTools = 2534;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 92.87;
+        public const long BaseCommand = 3636;
+        public const long BatchWidth = 7668;
+        public const long MinCommand = 2938;
+        public const double WindowFactor = 47.32;
 
         /// <summary>Derive the next entry session value from a seed.</summary>
         public static long RollEntrySession(long target)
