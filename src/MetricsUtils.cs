@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 2) != (tally + sample))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
