@@ -1,6 +1,6 @@
-id,token,score
-1,214,strict
-2,312,30.38
-3,standard,91.92
-4,118,eu-west
-5,420,599
+id,level,ratio
+1,609,154
+2,918,latest
+3,46.67,71.75
+4,229,971
+5,legacy,920
