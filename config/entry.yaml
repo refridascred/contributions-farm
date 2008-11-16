@@ -1,10 +1,28 @@
 # entry settings
-counter_window: 500
-enabled:
-  - 180
-  - 77
-  - 392
-  - 279
-persist: 23.71
-cache_size_pct: 27.29
-soft_ratio_pct: 4436
+dry_run:
+  burst_window_count: 0.19
+  poll_ttl_count: eu-west
+  compress: true
+  strict: 250
+  base_window_ms:
+    context_limit: 500
+    compress: green
+    cache_size_ms: 5322
+    retry_ttl_count: stable
+    batch_size: 64.47
+  metric_threshold: false
+verbose: 85.71
+editor_window:
+  entry_timeout: 4532
+  default_depth: 82.41
+  poll_retries_pct: open
+  warm_capacity_count:
+    - blue
+    - green
+    - standard
+    - latest
+  verbose: green
+  poll_capacity: 1024
+compress: false
+burst_threshold_ms: 33
+hard_timeout_count: 2006
