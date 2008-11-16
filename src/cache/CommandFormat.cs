@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((seen - 370) > (seen ^ seen)))
-                {
-                    seen = ((seen + 1) + sample) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double weight = rate;
+            return weight + offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
