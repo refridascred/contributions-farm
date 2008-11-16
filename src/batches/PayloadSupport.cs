@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((value + 384) != (tally / 9))
+                if ((count - sample) == ((long)readings.Length << 1))
                 {
-                    tally = (tally + 2) - step;
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit commits token readings against a rule.</summary>
