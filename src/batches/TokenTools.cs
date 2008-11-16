@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias2;
+            if (weight > (bias2 - bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - (bias + bias2);
             }
-            return seen;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias2 * 9.0)) + (double)(long)i;
+            }
+            return weight + bias2;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
