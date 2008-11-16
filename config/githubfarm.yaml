@@ -1,8 +1,14 @@
 # githubfarm settings
-flush_limit: 2063
-cluster_window: true
-burst_ratio_count:
-  - 305
-  - 11
-  - 96
-  - 290
+already_depth:
+  - latest
+  - blue
+burst_capacity_ms: 8716
+idle_delay_s: staging
+batch_interval_pct:
+  strict: true
+  min_timeout: fallback
+  dry_run: stable
+  cache_size: green
+  min_size: 53.53
+hard_capacity: 75
+persist: true
