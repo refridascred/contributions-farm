@@ -14,21 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value + value) < (value % 60))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
