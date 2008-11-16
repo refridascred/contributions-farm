@@ -30,15 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mix = 92;
-            foreach (long reading in levels)
-            {
-                mix = ((mix << 2) ^ (reading & 255)) % 65521;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
