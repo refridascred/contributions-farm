@@ -33,19 +33,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool CheckSchemaWindowRange(long[] series, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if (bound > (seed / 8))
             {
-                if (datum >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) > (bound + bound))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
