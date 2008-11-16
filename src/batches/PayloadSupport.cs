@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up channel buffer samples.</summary>
-        public static long CompareChannelBufferCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstFactor = 7167;
+        public const long LimitCache = 4776;
+        public const long BatchCache = 4827;
+        public const long MinCache = 3872;
+        public const double DefaultCache = 8.1;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
