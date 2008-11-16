@@ -1,6 +1,11 @@
-id,weight,count
-1,30.93,942
-2,4.87,local
-3,210,50.15
-4,17.24,69.98
-5,92.52,68.58
+id,level,active,label,region
+1,762,126,legacy,latest
+2,fallback,26.48,30.1,468
+3,332,staging,329,724
+4,eu-west,stable,3,fallback
+5,142,stable,312,786
+6,53.11,837,72.76,eu-west
+7,44.19,413,37,339
+8,184,544,staging,262
+9,local,314,standard,298
+10,50.03,359,8.25,open
