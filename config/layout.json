@@ -1,11 +1,7 @@
 {
-  "max_delay": {
-    "retry_limit_ms": "strict",
-    "dry_run": [265, 495, 341, 293],
-    "commits_limit": false,
-    "buffer_capacity": 30,
-    "verbose": 53
-  },
-  "verbose": true,
-  "flush_delay_count": 30
+  "sync_capacity_count": "local",
+  "hard_size": "open",
+  "warm_ttl_s": [433, 490, 145, 331],
+  "batch_depth_count": true,
+  "audit": "edge"
 }
