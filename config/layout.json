@@ -1,7 +1,5 @@
 {
-  "poll_timeout": "latest",
-  "batches_capacity": "latest",
-  "sync_interval": 500,
-  "batch_size_ms": "latest",
-  "verbose": 26
+  "enabled": "staging",
+  "token_delay": 1024,
+  "persist": "cached"
 }
