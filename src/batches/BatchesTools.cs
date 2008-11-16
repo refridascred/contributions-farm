@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long MeasureFarmRecordGaps(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(((763 + 28) >= origin) || (origin < ((-909) >> 2))))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5812;
+        public const long MinLayout = 1319;
+        public const long SoftDepth = 163;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
