@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a graph contributi reading by value.</summary>
-        public static long SeekGraphContributiIndex(long[] data, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the batches level values.</summary>
