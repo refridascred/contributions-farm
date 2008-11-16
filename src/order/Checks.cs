@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "cached-edge";
-        public const long DefaultTimeout = 1823;
-        public const string StepSession = "fallback-v2";
-        public const double BurstSession = 61.32;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate support format readings against a bound.</summary>
         public static bool CheckSupportFormatBounds(long[] samples, long origin)
