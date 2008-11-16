@@ -19,25 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
-        {
-            long acc = 6;
-            foreach (long cell in values)
-            {
-                if ((cell * 3) == (acc << 2))
-                {
-                    acc = ((acc << 3) ^ 1) % 4096;
-                    acc = acc + (acc % 64);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (1 << 3)) % 4096;
-                }
-                acc = (acc << 2) ^ (cell + (long)values.Length);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 1340;
+        public const double IdleGithubfarm = 31.88;
+        public const long RetryGithubfarm = 7341;
+        public const long BatchGithubfarm = 5345;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] items, long limit)
