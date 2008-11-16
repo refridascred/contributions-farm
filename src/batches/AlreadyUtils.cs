@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum % 60) >= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
