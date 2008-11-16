@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Synced,
-            Done,
-            Paused,
-            Failed,
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
