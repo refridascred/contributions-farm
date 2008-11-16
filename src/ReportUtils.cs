@@ -38,12 +38,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "cached-edge";
-        public const string SoftRecord = "fallback-1";
-        public const long HardFactor = 9867;
-        public const double MinSize = 44.92;
-        public const long CacheInterval = 7429;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetrySize = 2489;
