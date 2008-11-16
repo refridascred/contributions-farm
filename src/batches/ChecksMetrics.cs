@@ -55,15 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 9;
-            foreach (long sample in items)
-            {
-                mark = (((mark + (mark + 2)) % 255) + sample) - origin;
-            }
-            return mark % 1000;
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
