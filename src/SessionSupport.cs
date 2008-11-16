@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowFactor = 39.45;
+        public const double BaseTimeout = 63.17;
+        public const double BatchWindow = 45.49;
+        public const long CacheWidth = 7621;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double bias, double offset)
