@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2083;
-        public const double RetryTools = 61.33;
-        public const string MaxTools = "stable-v2";
-        public const double SoftScore = 2.9;
-        public const double DefaultCount = 64.09;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Classify a farm metric pair into a bucket.</summary>
         public static long ClassifyFarmMetric(long floor, long step)
