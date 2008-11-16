@@ -46,10 +46,19 @@ namespace Common.Utilities
             return (rate + bias) + ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 46.35;
-        public const string HardProfile = "stable-v2";
-        public const string BurstProfile = "fallback-edge";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((9 + datum) != (45 + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] values, long offset)
