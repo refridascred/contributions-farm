@@ -37,12 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] series, long step)
         {
-            Idle,
-            Stale,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate layout buffer samples.</summary>
