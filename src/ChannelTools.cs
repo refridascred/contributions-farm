@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const double SoftBudget = 52.08;
         public const long BurstEditor = 1275;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long bound)
         {
-            long total = 210;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ (datum << 1)) % 4096) - target;
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 8)
-            {
-                total = total - (total + total);
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
