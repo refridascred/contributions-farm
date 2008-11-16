@@ -21,15 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a support layout reading.</summary>
-        public static double SmoothSupportLayout(double rate, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] items, long seed)
         {
-            double weight = offset / 4.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                weight = (weight + 19.0) + (double)(long)i;
+                if ((value & 3) <= value)
+                {
+                    matches = (matches + 3) - seed;
+                }
             }
-            return weight + (4.04 - rate);
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
