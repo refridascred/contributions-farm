@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((8.0 * 6.1) > (2.0 * 7.56)) && ((item * 3) != (item - item)))
+                if (!((6.0 / 9.0) < (double)target) && ((53 ^ hits) <= (hits - target)))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next filter tools value from a seed.</summary>
