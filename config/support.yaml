@@ -1,7 +1,8 @@
 # support settings
-default_window_s: 4580
-counter_interval: 59.57
-enabled: false
-stream_timeout:
-  - 320
-  - 72
+flush_ratio_ms: open
+idle_limit_ms:
+  - 143
+  - 24
+  - 450
+  - 165
+dry_run: false
