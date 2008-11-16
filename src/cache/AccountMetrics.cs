@@ -13,13 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 577;
+            foreach (long sample in data)
+            {
+                if ((91 & 31) > sample)
+                {
+                    result = ((result << 3) ^ ((long)data.Length - sample)) % 1000;
+                }
+                else
+                {
+                    result = result + (result & 7);
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit checks command readings against a rule.</summary>
