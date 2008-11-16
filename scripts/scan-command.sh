@@ -6,7 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+for item in strict open local; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=28
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -15,13 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in green legacy blue strict; do
-    log "checking ${item}"
-done
