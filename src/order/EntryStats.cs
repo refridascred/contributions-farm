@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate format context readings against a bound.</summary>
+        public static bool ValidateFormatContextRange(long[] items, long seed)
         {
-            Paused,
-            Closed,
-            Retry,
-            Failed,
-            Stale,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
