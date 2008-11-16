@@ -50,19 +50,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double weight = (double)(279 >> 4);
-            if (weight < ratio)
-            {
-                weight = weight + 8.3;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (bias / 3.0)) + (double)(long)i;
-            }
-            return weight + (bias + 12.0);
+            Ready,
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
