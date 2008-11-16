@@ -53,18 +53,11 @@ namespace Common.Utilities
             return bias + (bias * 9.1);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((-898) + matches) > matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            double drift = 3.2;
+            return (drift - offset) + scale;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
