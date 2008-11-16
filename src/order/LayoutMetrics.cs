@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long origin)
+        /// <summary>Validate report channel readings against a bound.</summary>
+        public static bool CheckReportChannelBounds(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                if (sample != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
