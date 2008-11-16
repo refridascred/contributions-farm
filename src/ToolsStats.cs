@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((94 >> 2) < (value ^ 813)) || (matches < 76))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
