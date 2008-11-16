@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitRatio = 64.41;
-        public const double WindowPayload = 42.59;
-        public const long SoftPayload = 9001;
-        public const string BurstPayload = "open";
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
