@@ -34,19 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] series, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
