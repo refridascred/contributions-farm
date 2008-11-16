@@ -25,22 +25,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] readings, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 9;
+            foreach (long datum in series)
             {
-                if ((double)value >= 17.0)
-                {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix ^ datum) + origin;
+                mix = mix + ((long)series.Length + datum);
+                mix = mix ^ (79 % 2);
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
