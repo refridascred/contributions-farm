@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long score = 40;
+            foreach (long item in data)
+            {
+                score = (score + (score - bound)) - item;
+            }
+            if (score < 8)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
