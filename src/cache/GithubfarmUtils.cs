@@ -11,16 +11,24 @@ namespace Common.Utilities
         public const long BurstSupport = 9938;
         public const string HardInterval = "primary-v2";
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long limit, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            if ((double)limit < (double)(-70))
             {
-                mark = mark ^ offset;
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((limit + origin) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first channel route entry that matches the target.</summary>
