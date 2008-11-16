@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the stream commits series from a seed.</summary>
+        public static long SeriesStreamCommits(long target)
         {
-            Draft,
-            Stale,
-            Ready,
-            Pending,
-            Done,
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score + score) + (long)i2;
+                }
+                score = (score + 2) % 101;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
