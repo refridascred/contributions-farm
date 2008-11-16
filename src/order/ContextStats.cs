@@ -28,11 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitInterval = 4412;
-        public const long MaxFactor = 2216;
-        public const long LimitChannel = 8715;
-        public const long HardCount = 3612;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheSpan = 63.02;
