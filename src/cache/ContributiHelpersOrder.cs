@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
