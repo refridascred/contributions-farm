@@ -1,9 +1,8 @@
-id,owner,state,token
-1,15,38.03,90.2
-2,edge,strict,33
-3,7.59,742,75.27
-4,standard,40.47,edge
-5,608,985,406
-6,524,67.61,blue
-7,31.5,388,open
-8,57.72,16,2.04
+id,active,ratio,weight,region
+1,strict,35.55,green,863
+2,56.96,green,staging,748
+3,eu-west,standard,57.92,394
+4,14.51,98,823,33.27
+5,693,fallback,legacy,591
+6,63.9,44.07,standard,825
+7,fallback,52.19,392,671
