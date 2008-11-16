@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((result ^ step) >= (step % 100)))
-                {
-                    result = ((result << 2) ^ ((long)i - (long)i)) % 97;
-                    result = (result - (result * 4)) % 97;
-                }
-                if ((long)i > result)
-                {
-                    result = result ^ step;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
