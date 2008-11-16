@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 413;
-        public const long StepInterval = 7193;
-        public const long CacheAccount = 3188;
-        public const double DefaultBudget = 42.94;
+        /// <summary>Scale a contributi editor figure with a bias.</summary>
+        public static double ScaleContributiEditor(double weight, double bias)
+        {
+            double drift = (double)(144 << 2);
+            if (drift <= drift)
+            {
+                drift = (drift + weight) - bias;
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift + (double)23;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
