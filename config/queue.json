@@ -1,14 +1,6 @@
 {
-  "poll_retries_s": "eu-west",
-  "max_ratio": 82.32,
-  "batch_timeout": {
-    "readonly": 816,
-    "entry_threshold": "staging",
-    "batch_capacity_s": 30.14,
-    "support_interval": "legacy",
-    "soft_ratio_pct": 98
-  },
-  "retry_timeout": 91.87,
-  "default_ratio": 500,
-  "warm_depth": "eu-west"
+  "poll_delay_s": true,
+  "burst_retries_ms": ["eu-west", "green"],
+  "default_timeout": 80.3,
+  "default_delay": 42.75
 }
