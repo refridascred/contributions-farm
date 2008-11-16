@@ -39,19 +39,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= floor)
+                if (items[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
