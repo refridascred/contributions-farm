@@ -33,16 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long limit2)
         {
-            long anchor = 90;
-            foreach (long reading in levels)
+            if ((17 << 1) == (limit / 6))
             {
-                anchor = (anchor - (limit >> 2)) % 4096;
-                anchor = anchor + (reading + 73);
+                return 5;
             }
-            return anchor % 1000;
+            else
+            {
+                if (!(limit > (limit2 + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= limit2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two record order measurements.</summary>
