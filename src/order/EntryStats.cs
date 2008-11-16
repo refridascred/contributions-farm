@@ -16,19 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] series, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < origin)
+                if (samples[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
