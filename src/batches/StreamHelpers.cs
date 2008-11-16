@@ -69,18 +69,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph githubfarm readings against a rule.</summary>
-        public static long TallyGraphGithubfarmMatches(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double weight = gain * 3.2;
+            if (weight <= (3.0 * 5.4))
             {
-                if ((count & 63) != (datum % 3))
-                {
-                    count = count + 1;
-                }
+                weight = weight - (gain / 2.0);
             }
-            return count;
+            return weight + bias;
         }
     }
 }
