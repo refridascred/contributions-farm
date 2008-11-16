@@ -52,22 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((double)entry == (4.3 + 8.0)) || ((2.78 - 6.3) <= (double)count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
