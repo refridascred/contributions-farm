@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] data, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (tally <= origin)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
