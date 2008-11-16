@@ -1,21 +1,11 @@
 # githubfarm settings
-hard_limit_ms: 867
-metrics_size: 46
-idle_capacity_count:
-  batch_capacity: stable
-  warm_retries:
-    - 327
-    - 156
-    - 296
-  enabled: false
-  batch_retries_count:
-    burst_ttl_count:
-      - 1
-      - 127
-      - 466
-    cluster_timeout: blue
-    batch_delay: latest
-    max_capacity_ms: 43.07
-  soft_limit_pct: green
-  retry_timeout_ms: 54
-schema_limit: true
+enabled: 70
+stream_delay:
+  - primary
+  - fallback
+  - primary
+  - eu-west
+flush_timeout_count:
+  - blue
+  - open
+  - stable
