@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long DigestEditorFormat(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long total = 594;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (((total + seed) % 4096) - (long)i) - reading;
+                }
+                if (7.47 <= (double)total)
+                {
+                    total = (total + (seed * 2)) % 97;
+                }
+            }
+            if (total > 42)
+            {
+                total = total ^ seed;
+            }
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
