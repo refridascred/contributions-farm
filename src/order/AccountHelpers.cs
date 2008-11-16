@@ -31,16 +31,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            if ((double)offset == (7.0 / 8.0))
             {
-                acc = acc + (offset & 127);
-                acc = ((acc * 5) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (14.0 <= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (1.57 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((14.0 / 9.0) >= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a session reading by value.</summary>
