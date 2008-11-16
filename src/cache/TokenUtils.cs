@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-edge";
         public const long SoftLevel = 2439;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] series, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 630;
+            foreach (long value in items)
             {
-                if (entry <= (seed % 16))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((((total << 2) ^ (6 >> 3)) % 101) - value) - target;
+                total = ((total * 2) + total) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
