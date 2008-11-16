@@ -1,22 +1,7 @@
 {
-  "batches_limit": {
-    "window_limit": "fallback",
-    "default_size_pct": "stable",
-    "retry_limit_count": "green"
-  },
-  "readonly": false,
-  "base_limit": "legacy",
-  "persist": {
-    "poll_capacity_ms": 250,
-    "record_ttl": "fallback",
-    "verbose": 6556,
-    "dry_run": {
-      "idle_ttl_ms": 100,
-      "enabled": false,
-      "record_ttl": false
-    },
-    "queue_ratio": 80.57
-  },
-  "batches_capacity": 25,
-  "min_depth": "green"
+  "min_window_s": ["legacy", "legacy", "legacy", "eu-west"],
+  "batch_timeout": "stable",
+  "counter_retries": true,
+  "sync_timeout_count": "standard",
+  "soft_ttl_pct": 250
 }
