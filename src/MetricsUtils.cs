@@ -25,17 +25,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] readings)
         {
-            long mix = 9;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix ^ datum) + origin;
-                mix = mix + ((long)series.Length + datum);
-                mix = mix ^ (79 % 2);
+                if (hits >= (hits + hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
