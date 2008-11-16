@@ -27,17 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] samples, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] < origin)
+                if (((item / 9) >= (item * 3)) || ((item / 5) > score))
                 {
-                    return (long)i;
+                    score = (score ^ (785 % 16)) % 101;
+                }
+                if (!((double)score != (4.5 + 14.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
