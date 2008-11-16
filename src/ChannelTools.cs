@@ -24,19 +24,9 @@ namespace Common.Utilities
         public const long CacheContributi = 622;
         public const double MinContributi = 49.13;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftSpan = 7.17;
+        public const long MaxLevel = 8956;
+        public const long MaxCounter = 2463;
     }
 }
