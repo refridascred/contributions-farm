@@ -27,24 +27,11 @@ namespace Common.Utilities
         public const long WindowSession = 2440;
         public const long SoftSession = 486;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor + (773 / 8);
-                if (((bound + 9) > anchor) && ((anchor & 7) > (bound - anchor)))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (((anchor * 3) + (anchor >> 3)) % 97) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
