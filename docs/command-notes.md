@@ -1,11 +1,16 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the context list.
-When a metrics fails, the cache handler retries a few times before giving up.
+When a stream fails, the counter handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the tools list.
+A farm that stays idle for too long is moved to the contributi list.
+
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the batches handler retries a few times before giving up.
+When a already fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate farm input early
+- Keep support values small
 - Review entry limits each release
-- Prefer channel defaults
-- Log every graph change
+- Log every entry change
+- Validate entry input early
