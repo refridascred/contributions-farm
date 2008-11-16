@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long sum = 895;
+            foreach (long datum in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((target % 60) >= 39)
+                {
+                    sum = ((sum << 2) ^ (sum & 3)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (target + datum)) % 65521;
+                }
+                if ((sum >> 1) >= (datum - sum))
+                {
+                    break;
+                }
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Hold a report summary.</summary>
