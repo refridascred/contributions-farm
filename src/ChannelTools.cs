@@ -42,19 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] readings, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
