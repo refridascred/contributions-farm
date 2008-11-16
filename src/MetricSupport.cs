@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if ((target * 3) > (693 % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((14.0 / 4.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) != (22 % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
