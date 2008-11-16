@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            Closed,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
