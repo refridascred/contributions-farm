@@ -1,8 +1,7 @@
 {
-  "commits_size": 47,
-  "base_retries": [22, 22, 24, 483],
-  "burst_limit_ms": [381, 142, 279],
-  "dry_run": "cached",
-  "base_depth_count": "blue",
-  "compress": [387, 87, 133, 380]
+  "contributi_timeout": "staging",
+  "burst_threshold_ms": "cached",
+  "soft_timeout_s": 8220,
+  "persist": 25.34,
+  "min_ratio_ms": 44.14
 }
