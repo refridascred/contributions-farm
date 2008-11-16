@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = bias + bias;
+            if (load < (load / 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (gain * 19.0);
             }
-            return hits;
+            return load - (double)7;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
