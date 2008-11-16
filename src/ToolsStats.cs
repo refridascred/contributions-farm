@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long TallyClusterSessionHits(long[] values, long floor)
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((4.51 * 1.0) != (double)tally)
+                {
+                    tally = ((tally + 1) + value) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
