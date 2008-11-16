@@ -27,18 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!((5.0 * 7.04) == (double)count))
+                if ((18.0 * 5.9) < (double)seen)
                 {
-                    count = (count + 1) + datum;
+                    seen = (seen + 2) + value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
