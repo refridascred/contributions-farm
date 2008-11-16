@@ -49,19 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] readings)
         {
-            double drift = span;
-            if (drift >= span)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                drift = drift - gain;
+                if (((double)matches == (3.92 / 3.0)) && (((matches - entry) >= matches) || ((9 & 15) >= (matches & 63))))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                drift = drift - (gain * 4.0);
-            }
-            return drift - (double)97;
+            return matches;
         }
     }
 }
