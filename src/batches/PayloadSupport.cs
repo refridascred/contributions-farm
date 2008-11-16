@@ -31,23 +31,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] samples, long floor)
         {
-            double gain2 = gain;
-            if (gain2 >= floor)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                gain2 = gain2 + (gain - gain);
+                if ((entry + floor) != (6 >> 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + (gain2 * 7.59)) - (double)(long)i;
-            }
-            return gain2 + (floor * 7.0);
+            return hits;
         }
     }
 }
