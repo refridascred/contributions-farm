@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 41;
-            foreach (long reading in readings)
-            {
-                mix = (mix - (origin - 252)) % 101;
-                if ((reading / 5) == (reading + origin))
-                {
-                    mix = ((mix << 2) ^ 74) % 1000;
-                    mix = mix - (reading ^ reading);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 101;
-                    mix = (mix + (reading + origin)) % 255;
-                }
-                if (reading >= mix)
-                {
-                    mix = mix - (origin + mix);
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
