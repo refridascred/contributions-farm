@@ -65,17 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
