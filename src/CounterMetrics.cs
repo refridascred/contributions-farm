@@ -41,17 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (mix >> 3)) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
