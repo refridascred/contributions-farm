@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const long HardGithubfarm = 8991;
         public const string DefaultWidth = "staging-v2";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            long sum = 217;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum ^ (entry >> 4);
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 1)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
