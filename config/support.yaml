@@ -1,16 +1,22 @@
 # support settings
-warm_threshold_ms:
-  warm_threshold_ms: true
-  default_limit:
-    enabled: 250
-    hard_ratio: 91.71
-    hard_timeout_ms: 37.49
-  batch_delay: 250
-  default_ttl_ms:
-    - fallback
-    - stable
-    - standard
+readonly: staging
+max_delay_s:
+  contributi_window: 67
+  cache_timeout_s: 15.24
+  graph_capacity: standard
+  soft_retries_ms:
     - strict
-  verbose: 1977
-verbose: primary
-min_delay: 76
+    - standard
+    - edge
+  contributi_size:
+    support_window: 1024
+    context_delay:
+      - 373
+      - 290
+    poll_depth_count:
+      - blue
+      - strict
+    counter_threshold: legacy
+    strict: true
+  audit: 8258
+channel_retries: 38
