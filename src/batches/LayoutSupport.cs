@@ -48,22 +48,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long mark = 3;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample >= (1.99 - 3.11)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (sample ^ sample)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (mark << 1)) % 65521;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
