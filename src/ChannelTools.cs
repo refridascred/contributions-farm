@@ -31,21 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
