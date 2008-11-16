@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheDepth = 93.98;
+        public const long LimitCount = 669;
+        public const long SoftStats = 6257;
+        public const long BaseStats = 6988;
+        public const double IdleSize = 29.96;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
