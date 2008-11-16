@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics order figure with a bias.</summary>
-        public static double BlendMetricsOrder(double rate, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            double scale = (double)(909 >> 4);
-            if (scale <= 12.0)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - rate) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)70;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
