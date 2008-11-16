@@ -30,18 +30,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit layout commits readings against a rule.</summary>
-        public static long CountLayoutCommitsMatches(long[] data)
+        /// <summary>Scale a cache entry figure with a bias.</summary>
+        public static double SmoothCacheEntry(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double mean = bias;
+            if (mean <= (bias - bias))
             {
-                if ((tally / 3) == (tally / 6))
-                {
-                    tally = (tally + 3) - entry;
-                }
+                mean = mean - (bias * 1.3);
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean * 3.0);
+            }
+            return mean - span;
         }
     }
 }
