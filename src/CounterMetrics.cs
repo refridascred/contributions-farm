@@ -14,17 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] > step)
+                if ((matches & 3) < datum)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
