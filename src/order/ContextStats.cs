@@ -16,18 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values)
+        /// <summary>Grade a order metric value against two limits.</summary>
+        public static long BucketOrderMetric(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (!(origin > (offset + origin)))
             {
-                if (((reading * 2) < reading) && ((hits * 4) == (hits >> 3)))
+                return 4;
+            }
+            else
+            {
+                if (origin > (offset + 32))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit queue already readings against a rule.</summary>
