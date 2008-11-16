@@ -61,12 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many counter batches samples are out of range.</summary>
+        public static long CountCounterBatchesHits(long[] readings)
         {
-            Dropped,
-            Synced,
-            Draft,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count >> 4) < 418)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account phase values.</summary>
