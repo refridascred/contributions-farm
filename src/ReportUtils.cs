@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Paused,
-            Idle,
-            Failed,
-            Retry,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
