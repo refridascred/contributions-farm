@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count command context pairs that satisfy a relation.</summary>
-        public static long MatchCommandContextCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7279;
+        public const long SoftCommits = 4227;
+        public const long HardRatio = 5590;
+        public const string WindowCommits = "staging";
+        public const long RetryRatio = 2946;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 8011;
