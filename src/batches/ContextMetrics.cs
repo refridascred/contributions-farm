@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)datum == (20.0 / 2.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
