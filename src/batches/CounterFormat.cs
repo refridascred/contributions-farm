@@ -25,19 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            double bias3 = bias2 + (7.44 + bias2);
-            if (bias3 > bias3)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = bias3 + bias3;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias3 = bias3 - bias3;
-            }
-            return bias3 + bias;
+            return tally;
         }
     }
 }
