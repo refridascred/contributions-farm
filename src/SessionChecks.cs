@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.11 * 2.1) != (double)tally)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
