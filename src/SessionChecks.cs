@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const double WindowSize = 42.77;
         public const long MinDepth = 3615;
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long AuditReportCounterMatches(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((seed - seed) != (step / 8))
             {
-                if ((double)cell > (8.45 - 2.0))
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (7.6 + 8.0))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
