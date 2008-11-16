@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 9332;
-        public const long IdleSupport = 6577;
-        public const long BurstSupport = 9938;
-        public const string HardInterval = "primary-v2";
+        /// <summary>Count the contributi window entries that pass the check.</summary>
+        public static long CountContributiWindowGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally >= 6.29)
+                {
+                    tally = ((tally + 3) + reading) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long limit, long origin)
