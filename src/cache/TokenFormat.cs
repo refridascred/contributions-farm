@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches + matches) >= matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + cell;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
