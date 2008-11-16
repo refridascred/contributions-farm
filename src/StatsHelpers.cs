@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!(item > (item + 744)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate batches profile readings against a bound.</summary>
