@@ -65,26 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate graph record samples.</summary>
-        public static long DigestGraphRecord(long[] readings)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long acc = 925;
-            foreach (long sample in readings)
-            {
-                if (acc > (acc * 4))
-                {
-                    acc = ((acc * 4) + (acc % 3)) ^ sample;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (-80)) % 97;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            New,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
