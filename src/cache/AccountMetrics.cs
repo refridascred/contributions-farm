@@ -23,15 +23,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Active,
-            Draft,
-            Retry,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxTimeout = 1497;
+        public const long HardBudget = 9562;
+        public const long CacheMetrics = 7946;
+        public const long LimitSpan = 7095;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long seed, long bound)
