@@ -15,12 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Classify a buffer context pair into a bucket.</summary>
+        public static long GradeBufferContext(long floor, long target)
         {
-            Paused,
-            Closed,
-            Dropped,
+            if ((floor & 1) > floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((695 - floor) >= (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor * 5) >= (target >> 5)) && ((floor + floor) <= (target / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor < (floor - floor)) || ((target - floor) == (target - target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
