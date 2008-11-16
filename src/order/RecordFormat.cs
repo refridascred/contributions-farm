@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] samples, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (reading != limit)
+                if ((((reading ^ 28) >= (reading * 2)) && ((hits + 148) > (reading * 3))) && ((reading >> 5) != (hits & 1)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
