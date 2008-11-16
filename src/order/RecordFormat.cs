@@ -33,31 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long limit2)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((17 << 1) == (limit / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(limit > (limit2 + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= limit2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
