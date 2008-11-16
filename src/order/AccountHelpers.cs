@@ -22,38 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a report already pair into a bucket.</summary>
-        public static long ClassifyReportAlready(long target, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if (95 < target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (2.19 + 5.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - 3) >= (target ^ target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 5) <= (origin + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
