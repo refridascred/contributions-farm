@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long target)
         {
-            Done,
-            Synced,
-            Locked,
-            Stale,
-            Closed,
+            long carry = 2;
+            foreach (long value in data)
+            {
+                carry = (((carry ^ (carry - carry)) % 101) + value) + target;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
