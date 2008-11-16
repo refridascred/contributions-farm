@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepTimeout = "strict";
-        public const long HardBatch = 2051;
-        public const long BaseBatch = 7543;
-        public const long LimitLevel = 5904;
-        public const long SoftSize = 6844;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Dropped,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
