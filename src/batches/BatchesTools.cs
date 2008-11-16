@@ -36,11 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double offset)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long RankProfileMetrics(long bound, long floor)
         {
-            double rate2 = rate * 7.99;
-            return rate2 + (rate - offset);
+            long prev = bound + floor;
+            if ((bound / 7) >= (floor - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0.77 < (double)prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
