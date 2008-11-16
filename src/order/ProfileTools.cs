@@ -49,22 +49,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] values, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!!((datum << 3) <= (80 >> 1)))
-                {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine metrics order values into a single score.</summary>
