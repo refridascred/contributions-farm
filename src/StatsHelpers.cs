@@ -26,19 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((double)(long)i >= (double)target))
-                {
-                    result = ((result << 2) ^ (long)i) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a farm queue figure with a bias.</summary>
