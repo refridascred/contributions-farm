@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double scale = span;
-            if (scale < span)
-            {
-                scale = scale + gain;
-            }
-            return scale - (double)68;
+            Retry,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
