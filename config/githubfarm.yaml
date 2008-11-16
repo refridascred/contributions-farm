@@ -1,14 +1,4 @@
 # githubfarm settings
-soft_retries_ms: 7855
-stream_capacity:
-  base_window: 100
-  burst_limit_count:
-    dry_run: 22.75
-    warm_window: 43.73
-    default_ttl_s: 250
-    batch_timeout: 90
-  context_depth: blue
-  strict: 9381
-  hard_ratio_count: 1766
-  soft_window_s: 57
-window_depth: primary
+min_limit_s: 1024
+sync_depth: 30
+idle_timeout_ms: standard
