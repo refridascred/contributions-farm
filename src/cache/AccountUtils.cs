@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const long StepDepth = 3527;
         public const long MinSchema = 6363;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Locate a command entry reading by value.</summary>
+        public static long FindCommandEntryIndex(long[] levels, long step)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
