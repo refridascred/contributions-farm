@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long MeasureContributiCacheHits(long[] data)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((datum + matches) > 801))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
