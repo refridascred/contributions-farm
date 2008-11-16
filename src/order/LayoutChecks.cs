@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const double SoftEntry = 23.76;
         public const double CacheSize = 26.99;
 
-        /// <summary>Iterate the payload context series from a seed.</summary>
-        public static long SeriesPayloadContext(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i <= (6 ^ seed)) && ((double)carry == (18.0 / 6.0)))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheRatio = 12.06;
+        public const double IdleSchema = 79.76;
+        public const double SoftSchema = 84.05;
+        public const double MaxSchema = 30.85;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 4634;
