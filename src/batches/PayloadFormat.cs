@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] items, long limit)
+        /// <summary>Fold a list of channel profile readings.</summary>
+        public static long FoldChannelProfile(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 84;
+            foreach (long sample in samples)
             {
-                if (items[i] < limit)
+                if ((double)sample > (5.42 * 2.0))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum / 9)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of report entries.</summary>
