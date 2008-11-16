@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of cluster queue readings.</summary>
-        public static long WeighClusterQueue(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            long total = -390;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((datum ^ (long)samples.Length) > (datum + 0)) && ((datum - datum) <= (datum >> 2)))
+                if ((3.11 * 2.1) != (double)tally)
                 {
-                    total = total ^ (datum % 100);
-                }
-                if (6.0 > (double)datum)
-                {
-                    total = ((total * 4) + (total + datum)) % 101;
-                }
-                else
-                {
-                    total = (total * 2) + (total % 24);
+                    tally = (tally + 3) + cell;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
