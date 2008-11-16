@@ -29,19 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] items, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long sum = 217;
+            foreach (long entry in readings)
             {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum ^ (entry >> 4);
             }
-            return found;
+            if (sum < 1)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a already record.</summary>
