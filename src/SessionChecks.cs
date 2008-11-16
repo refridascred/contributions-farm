@@ -37,11 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 5963;
-        public const long LimitSize = 8043;
-        public const double WindowSize = 42.77;
-        public const long MinDepth = 3615;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a record batch sample.</summary>
         public static long SeekRecordBatchIndex(long[] items, long seed)
