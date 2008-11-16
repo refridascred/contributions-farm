@@ -85,32 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long step)
+        /// <summary>Scale a stream context figure with a bias.</summary>
+        public static double ProjectStreamContext(double ratio, double span)
         {
-            long delta = origin ^ step;
-            if (!((12 ^ origin) >= (delta + delta)))
+            double bias = (ratio / 7.0) - span;
+            if (bias > span)
             {
-                return 4;
+                bias = bias + bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (delta <= (delta - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ 6) >= (365 - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                bias = (bias - (span * 8.65)) + (double)(long)i;
             }
+            return bias + 2.2;
         }
     }
 }
