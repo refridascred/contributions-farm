@@ -74,22 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values, long target)
         {
-            long mix = -53;
-            foreach (long entry in levels)
+            long mark = 771;
+            foreach (long datum in values)
             {
-                if (!((mix - limit) <= (mix + 927)))
+                if ((mark % 24) < mark)
                 {
-                    mix = ((mix ^ (mix / 5)) % 101) - entry;
+                    mark = ((mark + (datum * 4)) % 255) - target;
                 }
             }
-            if (mix > 65)
-            {
-                mix = ((mix * 2) + (-8)) % 97;
-            }
-            return mix % 4096;
+            return mark;
         }
     }
 }
