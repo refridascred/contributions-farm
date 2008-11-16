@@ -1,8 +1,5 @@
 {
-  "entry_limit": 91,
-  "cache_retries_count": 20.5,
-  "max_depth": 26,
-  "hard_delay": "primary",
-  "flush_threshold": [385, 263, 486, 452],
-  "sync_capacity": true
+  "metrics_window": false,
+  "warm_size_ms": 72.39,
+  "persist": [325, 318, 342, 130]
 }
