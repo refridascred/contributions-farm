@@ -19,12 +19,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long origin)
         {
-            Dropped,
-            Done,
-            Closed,
+            long result = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result + (origin << 1);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
