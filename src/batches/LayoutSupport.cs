@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const long StepReport = 509;
         public const long WindowScore = 6165;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            long carry = 830;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((cell - cell) <= (floor + cell))
+                if (((4.9 / 3.0) != (double)matches) && ((matches < (sample & 127)) || (matches > (matches - matches))))
                 {
-                    carry = (carry - carry) % 101;
+                    matches = matches + 3;
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry * 4) + (carry << 1);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
