@@ -1,34 +1,5 @@
 # githubfarm settings
-default_ttl_pct: eu-west
-persist:
-  readonly: true
-  retry_depth: 250
-  dry_run: 500
-  support_timeout:
-    - primary
-    - local
-    - blue
-    - strict
-  hard_ratio:
-    token_delay: open
-    channel_delay: 18
-    metric_ratio: strict
-    sync_delay_s:
-      - 373
-      - 366
-      - 35
-    stream_ratio: staging
-  max_capacity_pct:
-    - 122
-    - 96
-    - 221
-    - 141
-compress:
-  - 95
-  - 395
-  - 2
-flush_interval_ms:
-  - primary
-  - standard
-  - strict
-queue_timeout: 75.98
+notes_ttl: true
+dry_run: 783
+soft_window_s: true
+compress: 82.49
