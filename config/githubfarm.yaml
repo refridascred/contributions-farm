@@ -1,7 +1,12 @@
 # githubfarm settings
-contributi_threshold: 250
-cache_window_count: primary
-batch_delay_count: 70
-strict: 83
-min_timeout_pct: 100
-enabled: 500
+batch_capacity_s: legacy
+support_limit: strict
+burst_capacity_pct:
+  - 36
+  - 475
+default_retries_count:
+  layout_timeout: true
+  max_window_pct: 500
+  hard_threshold_pct: strict
+  session_interval: strict
+readonly: legacy
