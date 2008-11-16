@@ -29,10 +29,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 51;
-        public const double WindowLevel = 69.06;
-        public const long MinLayout = 126;
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long CountWindowToolsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count + count) <= cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxSize = 54.72;
