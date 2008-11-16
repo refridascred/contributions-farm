@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of buffer schema readings.</summary>
-        public static long WeighBufferSchema(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] samples, long origin)
         {
-            long score = 40;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                score = ((score * 4) + (cell - cell)) % 255;
+                if (item >= origin)
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
