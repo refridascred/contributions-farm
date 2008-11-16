@@ -59,38 +59,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long origin, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] samples, long seed)
         {
-            if (((double)limit != (2.9 + 4.0)) && ((6.6 - 17.0) < (double)origin))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.3 - 3.0) >= (double)limit)
+                if (!(((datum / 5) < (count + seed)) || (88 < seed)))
                 {
-                    return 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((origin % 10) <= (limit % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + 69) == (3 + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
