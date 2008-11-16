@@ -1,13 +1,12 @@
 {
-  "audit": true,
-  "editor_interval": {
-    "retry_timeout_ms": "fallback",
-    "command_ratio": [392, 354, 321, 115],
-    "idle_size_s": "eu-west",
-    "retry_window": false
-  },
-  "min_window_s": "latest",
-  "retry_threshold_s": 90.1,
-  "farm_window": 88.98,
-  "sync_timeout_pct": "local"
+  "report_retries": false,
+  "base_ttl": 63.18,
+  "sync_timeout_ms": {
+    "enabled": ["blue", "cached", "open", "blue"],
+    "burst_ratio_ms": 40.59,
+    "flush_depth": 1447,
+    "burst_depth_pct": "primary",
+    "dry_run": true,
+    "batch_timeout_count": false
+  }
 }
