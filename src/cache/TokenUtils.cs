@@ -23,15 +23,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a notes contributi counter forward.</summary>
-        public static long RollNotesContributi(long step)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool GuardTokenClusterRange(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
