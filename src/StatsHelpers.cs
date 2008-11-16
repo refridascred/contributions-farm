@@ -39,14 +39,10 @@ namespace Common.Utilities
         public const string BaseCount = "standard-edge";
         public const long StepSchema = 4663;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 15.1;
+        public const long HardFactor = 6296;
+        public const long MinBudget = 7944;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long target, long target2)
