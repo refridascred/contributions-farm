@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile commits readings against a bound.</summary>
-        public static bool GuardProfileCommitsRange(long[] values, long step)
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long MeasureCommitsTokenHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (entry < step)
+                if (datum <= (tally + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
