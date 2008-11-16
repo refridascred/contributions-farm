@@ -69,18 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile route entries.</summary>
-        public static long WeighProfileRoute(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long target)
         {
-            long state = 914;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((datum > (datum - datum)) || (datum >= (state + datum)))
+                if (reading <= target)
                 {
-                    state = (state << 3) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
