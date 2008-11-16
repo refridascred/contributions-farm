@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 9435;
-        public const long SoftFactor = 4950;
-        public const long RetryDepth = 7147;
-        public const string MinTimeout = "primary";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSpan = 3986;
