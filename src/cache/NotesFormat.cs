@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 78;
-            foreach (long sample in values)
-            {
-                if (state > sample)
-                {
-                    state = (state ^ (state + sample)) % 1000;
-                }
-            }
-            if (state > 17)
-            {
-                state = state + (state - 705);
-            }
-            return state;
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
