@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseBudget = "alpha";
-        public const long HardCluster = 6558;
-        public const double StepWidth = 2.6;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] samples)
