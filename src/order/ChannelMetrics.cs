@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const long IdleChecks = 7767;
         public const double CacheRatio = 8.92;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            long carry = -2;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)carry > (6.0 * 5.0))
+                if ((sample - sample) <= (sample >> 5))
                 {
-                    carry = ((carry * 5) + (floor & 31)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (value + floor)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
