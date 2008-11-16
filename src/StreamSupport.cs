@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (bias - (double)4) + floor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] series, long floor)
+        /// <summary>Locate a format checks reading by value.</summary>
+        public static long FindFormatChecksIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < floor)
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
