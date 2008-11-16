@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7279;
-        public const long SoftCommits = 4227;
-        public const long HardRatio = 5590;
-        public const string WindowCommits = "staging";
-        public const long RetryRatio = 2946;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long step)
+        {
+            long diff = target - step;
+            if (target >= ((-46) & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.0 + 3.74) >= (double)diff)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 127) <= (target % 24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 8011;
