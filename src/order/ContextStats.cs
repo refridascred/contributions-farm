@@ -28,15 +28,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long origin, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            if ((origin & 255) < (origin ^ floor))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((double)6 != (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
