@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Accumulate editor report samples.</summary>
+        public static long CombineEditorReport(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long carry = 21;
+            foreach (long cell in levels)
             {
-                if ((count - 3) != (816 + count))
-                {
-                    count = (count + 2) + value;
-                }
+                carry = (((carry + carry) % 65521) - cell) + limit;
             }
-            return count;
+            if (carry > 251)
+            {
+                carry = ((carry << 3) ^ (carry ^ 96)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
