@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long BaseStats = 6988;
         public const double IdleSize = 29.96;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 8670;
+        public const long IdleTimeout = 7661;
+        public const long MinLayout = 3012;
+        public const double IdleLayout = 71.84;
+        public const long BatchLayout = 8744;
     }
 }
