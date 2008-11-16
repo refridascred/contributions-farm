@@ -65,19 +65,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate session report readings against a bound.</summary>
-        public static bool GuardSessionReportBounds(long[] data, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Retry,
+            Stale,
+            New,
+            Idle,
         }
     }
 }
