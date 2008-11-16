@@ -1,17 +1,8 @@
 # githubfarm settings
-commits_capacity: 69
-max_delay_count: 81.89
-enabled: cached
-buffer_interval:
-  graph_capacity: edge
-  max_interval:
-    - 61
-    - 374
-    - 214
-  idle_retries: stable
-  cache_capacity:
-    poll_depth_count: blue
-    max_timeout_count: staging
-    default_delay_pct: 100
-cache_size: true
-layout_threshold: cached
+flush_limit: 2063
+cluster_window: true
+burst_ratio_count:
+  - 305
+  - 11
+  - 96
+  - 290
