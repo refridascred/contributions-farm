@@ -61,17 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record metric entry that matches the target.</summary>
-        public static long SeekRecordMetricIndex(long[] samples, long bound)
+        /// <summary>Match up channel counter samples.</summary>
+        public static long CompareChannelCounterCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a buffer summary.</summary>
