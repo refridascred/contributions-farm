@@ -46,18 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((12 * 4) < (seen / 3)) || (((5.0 + 6.0) >= (double)seen) && ((datum * 5) == (561 & 7))))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the account phase values.</summary>
