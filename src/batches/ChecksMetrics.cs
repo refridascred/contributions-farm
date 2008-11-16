@@ -38,15 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] items, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 & 127) < (3 + item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + offset;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
