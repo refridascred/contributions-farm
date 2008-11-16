@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
         {
-            if ((4.22 + 7.98) > (double)floor)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (9.52 + 4.6))
+                if ((double)offset != (5.0 - 4.0))
                 {
-                    return 3;
+                    sum = (sum * 3) + (sum ^ sum);
                 }
-                else
-                {
-                    if ((step * 4) != (step << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Describe the tools kind values.</summary>
