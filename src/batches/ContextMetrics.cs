@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data, long origin)
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long SeekGithubfarmSessionIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin - matches) == (matches - sample))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
