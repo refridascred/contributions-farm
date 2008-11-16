@@ -23,15 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long seed)
         {
-            long anchor = 869;
-            foreach (long entry in data)
+            if (!((offset + 200) != (offset - seed)))
             {
-                anchor = (((anchor << 2) ^ (entry - 170)) % 4096) + bound;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((offset - seed) != ((-5) + 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the notes class values.</summary>
