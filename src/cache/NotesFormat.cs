@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 89.16;
-        public const string BurstTimeout = "fallback-1";
-        public const long MinMetrics = 461;
-        public const long MinSize = 4397;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
