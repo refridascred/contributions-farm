@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels, long origin)
         {
-            long anchor = 51;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((anchor - (-4)) >= anchor) || ((86 ^ limit) <= anchor))
+                if (!((count ^ value) >= count))
                 {
-                    anchor = ((anchor << 3) ^ anchor) ^ sample;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    count = (count + 3) - origin;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
