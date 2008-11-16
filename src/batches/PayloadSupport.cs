@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift - (floor + 9.0);
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long origin)
+        /// <summary>Validate profile commits readings against a bound.</summary>
+        public static bool GuardProfileCommitsRange(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (datum <= origin)
+                if (entry < step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a contributi header.</summary>
