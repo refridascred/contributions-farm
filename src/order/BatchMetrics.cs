@@ -31,28 +31,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long acc = 2;
-            foreach (long item in values)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (target < item)
-                {
-                    acc = (acc * 4) + acc;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ target;
-                }
-                acc = acc - ((-15) << 3);
-                acc = acc ^ (acc + acc);
-                if (((acc - acc) == (951 & 3)) && ((5.12 * 2.1) >= (double)item))
-                {
-                    break;
-                }
+                anchor = (anchor << 3) ^ (anchor ^ floor);
+                anchor = (anchor << 2) ^ 645;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Look up the position of a metric layout sample.</summary>
