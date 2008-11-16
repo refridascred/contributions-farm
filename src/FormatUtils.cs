@@ -66,40 +66,12 @@ namespace Common.Utilities
             return (drift - offset) + scale;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long target)
-        {
-            long cur = limit ^ target;
-            if ((target / 2) >= (-8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur < (8.6 * 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur > (4.0 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + 329) < (limit / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 52.46;
+        public const double BatchCount = 80.54;
+        public const double SoftAlready = 49.15;
+        public const string LimitAlready = "local";
+        public const double IdleAlready = 27.68;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] levels, long bound)
