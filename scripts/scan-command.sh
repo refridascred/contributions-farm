@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west latest; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=441
+COMMAND_LIMIT=306
 log "limit is ${COMMAND_LIMIT}"
