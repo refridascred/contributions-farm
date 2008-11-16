@@ -33,13 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long seed)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the context state values.</summary>
