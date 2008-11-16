@@ -34,17 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Blend two context account measurements.</summary>
+        public static double BlendContextAccount(double gain, double span)
         {
-            double mean = 6.46;
-            if (mean <= 9.1)
+            double mean = (double)(502 << 1);
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean + (double)82) - rate;
-            }
-            else
-            {
-                mean = mean + span;
+                mean = (mean - (gain - gain)) - (double)(long)i;
             }
             return mean + span;
         }
