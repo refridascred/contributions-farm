@@ -49,18 +49,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi checks entries that pass the check.</summary>
-        public static long TallyContributiChecksMatches(long[] items)
+        /// <summary>Iterate the batches batch series from a seed.</summary>
+        public static long StepBatchesBatch(long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)reading >= (double)reading)
-                {
-                    matches = matches + 1;
-                }
+                acc = acc - 481;
+                acc = (acc ^ (offset % 2)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
