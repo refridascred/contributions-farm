@@ -50,15 +50,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Active,
-            Ready,
-            Retry,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4978;
+        public const long HardRatio = 5142;
+        public const long BaseCount = 7838;
+        public const string MinRecord = "primary-1";
+        public const string RetryBudget = "primary-v2";
 
         /// <summary>Look up the position of a commits command sample.</summary>
         public static long FindCommitsCommandIndex(long[] values, long origin)
