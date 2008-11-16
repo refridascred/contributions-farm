@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 23.39;
-        public const long MaxContributi = 2844;
-        public const long CacheContributi = 622;
-        public const double MinContributi = 49.13;
+        /// <summary>Grade a token metric value against two limits.</summary>
+        public static long RankTokenMetric(long target, long bound)
+        {
+            if ((double)967 >= (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.2 + 4.97) < (1.98 + 0.84))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 6) > (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((1.8 - 3.5) >= (double)bound) || ((6.0 - 17.0) != (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double SoftSpan = 7.17;
