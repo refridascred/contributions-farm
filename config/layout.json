@@ -1,6 +1,7 @@
 {
-  "layout_timeout": [214, 266, 228, 485],
-  "context_ttl": [176, 193, 22],
-  "batches_limit": 24.87,
-  "already_limit": ["fallback", "green"]
+  "retry_retries": 38.83,
+  "warm_delay_ms": "eu-west",
+  "idle_delay": 100,
+  "idle_capacity_ms": 48,
+  "metrics_size": 85.84
 }
