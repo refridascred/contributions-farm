@@ -21,19 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double bias2)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double drift = (double)(1 + 308);
-            if (drift >= (bias2 + drift))
-            {
-                drift = (drift + (4.0 - bias2)) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias2) + (double)(long)i;
-            }
-            return drift - (bias2 / 7.0);
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine window values into a single score.</summary>
