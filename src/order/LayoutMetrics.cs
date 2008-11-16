@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool GuardCacheGithubfarmLimits(long[] readings, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-                anchor = ((anchor * 4) + seed) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (item >= origin)
                 {
-                    anchor = ((anchor ^ (seed ^ seed)) % 101) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the entry state values.</summary>
