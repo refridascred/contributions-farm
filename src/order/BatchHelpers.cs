@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] data, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = 5;
+            foreach (long cell in readings)
             {
-                if (tally <= origin)
+                if ((1.0 <= (double)acc) || (8 >= (7 + cell)))
                 {
-                    tally = (tally + 1) + entry;
+                    acc = acc + (acc * 5);
                 }
             }
-            return tally;
+            if (acc < 90)
+            {
+                acc = (acc << 2) ^ (acc >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
