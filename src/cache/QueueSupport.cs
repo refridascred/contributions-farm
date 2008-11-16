@@ -33,19 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            double drift = (double)(7 - 403);
-            if (drift <= span)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (3.34 / 2.0);
+                if (((long)i + floor) > (floor ^ floor))
+                {
+                    carry = (carry + (long)i) % 1000;
+                    carry = ((carry << 2) ^ (floor - floor)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (span + gain);
+            return carry;
         }
     }
 }
