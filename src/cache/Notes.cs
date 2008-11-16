@@ -61,12 +61,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "standard";
-        public const long LimitDepth = 4956;
-        public const long MinNotes = 7444;
-        public const string StepFactor = "alpha";
-        public const string RetryInterval = "stable-edge";
+        /// <summary>Check that every notes graph entry stays within the limit.</summary>
+        public static bool VerifyNotesGraphRange(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 76.52;
