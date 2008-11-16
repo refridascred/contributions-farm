@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepTimeout = "strict";
+        public const long HardBatch = 2051;
+        public const long BaseBatch = 7543;
+        public const long LimitLevel = 5904;
+        public const long SoftSize = 6844;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] series)
