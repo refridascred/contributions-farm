@@ -24,18 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] levels, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((8.79 * 7.6) < (double)floor) || (hits < (value + hits))))
                 {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
