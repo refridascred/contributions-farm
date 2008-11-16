@@ -27,13 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long mark = 11;
+            foreach (long sample in items)
+            {
+                mark = ((mark << 3) ^ (mark - sample)) % 65521;
+                mark = mark ^ mark;
+                mark = mark + (mark + sample);
+            }
+            return mark;
         }
 
         /// <summary>Count the context route entries that pass the check.</summary>
