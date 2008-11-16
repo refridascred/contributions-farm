@@ -1,14 +1,8 @@
 # githubfarm settings
-soft_interval:
-  - 400
-  - 409
-  - 126
-  - 209
-flush_interval_count:
-  - 362
-  - 293
-  - 208
-warm_interval_count: 500
-farm_threshold: legacy
-default_timeout_count: true
-min_depth_count: 9231
+default_threshold_count: edge
+base_threshold:
+  - stable
+  - legacy
+  - local
+  - standard
+record_capacity: latest
