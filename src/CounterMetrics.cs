@@ -55,16 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = ((mix * 3) + (mix >> 3)) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((sample & 15) < count)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
