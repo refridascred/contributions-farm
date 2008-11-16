@@ -13,14 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Ready,
-            Stale,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchSpan = 6.13;
+        public const string IdleWindow = "standard-1";
+        public const long DefaultWidth = 2498;
+        public const double HardRatio = 73.19;
 
         /// <summary>Adjust a token batch reading.</summary>
         public static double ScaleTokenBatch(double scale, double span)
