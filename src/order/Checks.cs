@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long floor)
         {
-            Failed,
-            Pending,
-            Done,
-            Stale,
+            if ((4.22 + 7.98) > (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor > (9.52 + 4.6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 4) != (step << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format options.</summary>
