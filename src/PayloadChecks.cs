@@ -27,19 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((1.06 >= (20.0 * 0.06)) || ((sample + sample) == (limit / 2))) || !((seen & 15) <= limit))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "cached-1";
+        public const long DefaultGraph = 642;
+        public const long CacheCount = 7198;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string WindowFarm = "stable-1";
