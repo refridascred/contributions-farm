@@ -34,23 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long MeasureNotesLayoutHits(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 2) == (origin % 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowScore = 2560;
+        public const long MinScore = 3305;
+        public const double LimitTimeout = 78.17;
+        public const long CachePayload = 8719;
+        public const string MaxPayload = "standard";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelHits(long[] readings, long step)
