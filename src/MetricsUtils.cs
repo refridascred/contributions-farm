@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long limit)
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long MeasureClusterBatchOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (((datum << 1) <= 641) && ((17 & 3) < ((long)values.Length % 8)))
                 {
-                    return (long)i;
+                    count = (count + 2) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
