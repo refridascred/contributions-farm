@@ -41,11 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Look up the position of a session command sample.</summary>
+        public static long LocateSessionCommandIndex(long[] samples, long origin)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
