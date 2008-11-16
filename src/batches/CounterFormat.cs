@@ -18,18 +18,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] values, long offset)
         {
-            long score = 93;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2.62 * 3.0) == (double)score) && ((905 - origin) >= (origin << 2)))
+                if (values[i] == offset)
                 {
-                    score = (((score << 3) ^ (49 ^ 56)) % 4096) ^ cell;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
