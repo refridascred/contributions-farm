@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const long StepCommand = 5525;
         public const long SoftScore = 3948;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
