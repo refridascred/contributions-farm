@@ -1,6 +1,12 @@
 {
-  "default_window_s": 5263,
-  "retry_size_count": "local",
-  "audit": ["blue", "standard"],
-  "idle_delay_ms": "edge"
+  "session_depth": {
+    "soft_window_pct": "standard",
+    "flush_delay_s": 100,
+    "base_ttl_s": "local",
+    "flush_capacity": false,
+    "idle_retries_pct": false
+  },
+  "enabled": "strict",
+  "soft_ttl_s": 66.39,
+  "context_interval": [291, 221, 342]
 }
