@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] samples, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] data, long target)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long sample in data)
             {
-                if ((double)seed < (7.04 - 3.29))
+                if (!((92 & 127) == (sample >> 3)))
                 {
-                    count = (count + 3) - sample;
+                    count = (count + 3) + target;
                 }
             }
             return count;
