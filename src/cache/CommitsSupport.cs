@@ -48,31 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long floor, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long offset)
         {
-            if ((floor & 7) < (seed >> 2))
+            long mix = 179;
+            foreach (long item in data)
             {
-                return 7;
+                mix = (mix ^ (item - offset)) % 4096;
             }
-            else
-            {
-                if (!(seed <= (floor << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + seed) == (seed >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
