@@ -16,14 +16,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Iterate the entry session series from a seed.</summary>
+        public static long StepEntrySession(long offset)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Stale,
-            Pending,
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state + (state & 63);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
