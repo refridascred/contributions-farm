@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long CountFormatAlreadyOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((6 << 3) <= tally)
-                {
-                    tally = ((tally + 2) - item) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheInterval = "alpha-1";
+        public const long BatchFactor = 8444;
+        public const long WindowMetric = 6080;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long floor, long offset)
