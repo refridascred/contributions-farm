@@ -56,19 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout session readings.</summary>
-        public static long TallyLayoutSession(long[] levels)
-        {
-            long state = 13;
-            foreach (long cell in levels)
-            {
-                if ((18 ^ state) >= cell)
-                {
-                    state = ((state * 2) + state) % 65521;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 4556;
+        public const long LimitWidth = 2479;
+        public const long LimitLevel = 9958;
+        public const long MaxBatches = 7141;
+        public const long BatchDepth = 2890;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] values, long limit)
