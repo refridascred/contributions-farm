@@ -42,18 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((step + step) != (matches + step)) || (((7.88 / 2.0) >= (double)matches) && ((step + value) > (value + 813))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
