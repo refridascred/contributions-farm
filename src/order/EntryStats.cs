@@ -76,22 +76,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings)
-        {
-            long acc = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + acc) == ((long)readings.Length % 10))
-                {
-                    acc = (acc + acc) % 97;
-                }
-                else
-                {
-                    acc = (acc + (entry ^ acc)) % 101;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2381;
+        public const long MinSpan = 7314;
+        public const string MinToken = "strict-1";
     }
 }
