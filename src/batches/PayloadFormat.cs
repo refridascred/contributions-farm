@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long origin)
+        /// <summary>Roll a route metrics counter forward.</summary>
+        public static long SeriesRouteMetrics(long limit)
         {
-            if (!((double)offset < (2.0 - 8.26)))
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((9.0 + 2.5) > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of channel profile readings.</summary>
