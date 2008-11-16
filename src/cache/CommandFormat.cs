@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSize = 1676;
-        public const long MinInterval = 2810;
-        public const double BurstSpan = 18.25;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!!((matches - 40) > (reading - 6)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long offset)
