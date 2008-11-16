@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long StepReport = 509;
         public const long WindowScore = 6165;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long offset)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long AuditFormatOrderGaps(long[] samples, long origin)
         {
-            long total = 34;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((total & 3) > total) && (285 > (offset % 97)))
+                if (origin <= 8)
                 {
-                    total = (total + (2 + cell)) % 255;
-                }
-                else
-                {
-                    total = (total + (offset + total)) % 1000;
+                    count = (count + 3) + value;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
