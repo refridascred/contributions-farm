@@ -1,15 +1,13 @@
 # githubfarm settings
-retry_limit_pct: cached
-burst_interval: 60
-command_size: 53.74
-soft_ttl_s:
-  - 115
-  - 376
-  - 396
-  - 365
-max_size_s: 59.03
-cache_capacity_pct:
-  - 35
-  - 372
-  - 6
-  - 165
+metrics_ttl: 250
+report_window: legacy
+base_window_ms: latest
+persist:
+  verbose:
+    - 256
+    - 416
+  enabled: local
+  soft_limit: 1102
+  filter_limit: 6215
+  schema_ratio: local
+  warm_size_pct: local
