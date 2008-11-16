@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a tools window reading by value.</summary>
-        public static long SeekToolsWindowIndex(long[] values, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
