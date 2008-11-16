@@ -14,39 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a stream layout pair into a bucket.</summary>
-        public static long ClassifyStreamLayout(long floor, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long lane = floor + seed;
-            if ((lane / 5) <= 846)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((678 ^ floor) == (floor ^ floor)) && ((lane << 2) > (lane % 64)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > (7.3 + 0.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed & 63) != (648 + floor)) && ((double)floor < (14.0 - 10.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
