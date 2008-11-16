@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel route entry that matches the target.</summary>
-        public static long FindChannelRouteIndex(long[] items, long limit)
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long CountFormatAlreadyOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (items[i] > limit)
+                if ((6 << 3) <= tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - item) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
