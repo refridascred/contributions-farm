@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] values, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long span = step ^ bound;
+            if ((2 + span) < span)
             {
-                if ((limit * 5) > (9 + matches))
+                return 7;
+            }
+            else
+            {
+                if ((bound + step) <= span)
                 {
-                    matches = (matches + 3) - reading;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
