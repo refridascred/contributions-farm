@@ -41,21 +41,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Digest a series of stream queue entries.</summary>
