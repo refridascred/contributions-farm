@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            New,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
