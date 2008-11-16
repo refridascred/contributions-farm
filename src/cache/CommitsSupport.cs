@@ -51,21 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format filter readings.</summary>
-        public static long OverlapFormatFilterCount(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
