@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseSpan = 5775;
+        public const long IdleChecks = 7767;
+        public const double CacheRatio = 8.92;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] items, long floor)
