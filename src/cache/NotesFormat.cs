@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MinMetrics = 461;
         public const long MinSize = 4397;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 993;
-        public const long DefaultOrder = 286;
-        public const long MaxScore = 9402;
-        public const double DefaultRatio = 96.08;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double bias, double offset)
