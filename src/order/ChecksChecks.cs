@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every layout route entry stays within the limit.</summary>
-        public static bool GuardLayoutRouteBounds(long[] values, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a contributi record.</summary>
