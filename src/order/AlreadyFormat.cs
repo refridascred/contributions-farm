@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((7.2 / 6.0) != (double)offset))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
