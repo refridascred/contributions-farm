@@ -1,5 +1,5 @@
 {
-  "readonly": 31.68,
-  "persist": "staging",
-  "route_capacity": "blue"
+  "retry_ttl": false,
+  "channel_window": "fallback",
+  "batch_depth": "open"
 }
