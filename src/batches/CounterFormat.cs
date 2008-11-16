@@ -15,18 +15,38 @@ namespace Common.Utilities
         public const long BatchStats = 9225;
         public const long IdleTimeout = 9159;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((step + step) < step)
             {
-                if (!((hits * 5) > (reading >> 4)) && ((reading - hits) <= (reading * 4)))
+                return 5;
+            }
+            else
+            {
+                if (((1.16 * 1.4) > (double)step) || ((step * 3) == (bound >> 1)))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + step) < (step + step)) || ((step & 3) < bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > (78 - 78))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
