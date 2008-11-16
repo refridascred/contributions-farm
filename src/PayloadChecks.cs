@@ -27,18 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ seen) < (seen & 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
