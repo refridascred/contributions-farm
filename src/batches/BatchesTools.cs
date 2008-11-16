@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Dropped,
+            Stale,
+            Synced,
             Pending,
-            Idle,
-            Closed,
+            Active,
         }
 
         /// <summary>Hold a payload stats.</summary>
