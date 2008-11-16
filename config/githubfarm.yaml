@@ -1,6 +1,16 @@
 # githubfarm settings
-warm_delay_pct: true
-default_depth_s: 30
-window_size: 47.46
-cache_ttl: false
-default_depth_ms: fallback
+report_delay:
+  - legacy
+  - edge
+  - local
+  - primary
+flush_window_pct: standard
+batch_window_pct:
+  dry_run: standard
+  min_capacity_s:
+    batch_ratio_pct: strict
+    contributi_limit: local
+    base_interval_ms: 51
+  default_size_count: eu-west
+strict: 66.18
+enabled: 30
