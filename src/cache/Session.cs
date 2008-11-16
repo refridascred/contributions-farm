@@ -36,19 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            double drift = (double)46 / 4.0;
-            if (drift >= (offset / 6.0))
+            double rate = offset * 4.0;
+            if (rate <= offset)
             {
-                drift = (drift + (16.0 + 10.0)) - weight;
+                rate = rate - offset;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (1.0 / 7.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            return rate + ratio;
         }
 
         /// <summary>Describe the notes level values.</summary>
