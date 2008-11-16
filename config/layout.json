@@ -1,7 +1,5 @@
 {
-  "min_window_s": ["legacy", "legacy", "legacy", "eu-west"],
-  "batch_timeout": "stable",
-  "counter_retries": true,
-  "sync_timeout_count": "standard",
-  "soft_ttl_pct": 250
+  "idle_window_s": 61.41,
+  "cache_window_s": "edge",
+  "order_interval": 54
 }
