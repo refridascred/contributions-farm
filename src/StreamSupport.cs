@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long StepAlready = 9933;
         public const long LimitAlready = 4632;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long bound)
         {
-            Ready,
-            Closed,
-            Done,
-            Failed,
+            long anchor = 869;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor << 2) ^ (entry - 170)) % 4096) + bound;
+            }
+            return anchor;
         }
 
         /// <summary>Match up graph samples.</summary>
