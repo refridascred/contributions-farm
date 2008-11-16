@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseBudget = 12.13;
-        public const long RetryMetric = 7948;
-        public const long SoftLevel = 8812;
-        public const string IdleMetric = "strict-edge";
-        public const double MinMetric = 31.57;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen - 370) > (seen ^ seen)))
+                {
+                    seen = ((seen + 1) + sample) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string MaxDepth = "fallback-v2";
