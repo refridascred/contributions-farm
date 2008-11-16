@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            long acc = 5;
-            foreach (long cell in readings)
+            long score = 3;
+            foreach (long cell in samples)
             {
-                if ((1.0 <= (double)acc) || (8 >= (7 + cell)))
+                score = score ^ (cell + cell);
+                if (score > (score & 3))
                 {
-                    acc = acc + (acc * 5);
+                    break;
                 }
             }
-            if (acc < 90)
-            {
-                acc = (acc << 2) ^ (acc >> 2);
-            }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Hold a metric info.</summary>
