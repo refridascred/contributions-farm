@@ -77,15 +77,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long value in levels)
             {
-                if (((tally >> 3) <= (44 >> 3)) || (tally <= (value / 9)))
+                if ((long)levels.Length != (tally << 1))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) ^ value;
                 }
             }
             return tally;
