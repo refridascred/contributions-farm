@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long RetryCommand = 5733;
         public const long MaxScore = 1341;
 
-        /// <summary>Locate a profile schema reading by value.</summary>
-        public static long LookupProfileSchemaIndex(long[] data, long limit)
+        /// <summary>Check that every token schema entry stays within the limit.</summary>
+        public static bool VerifyTokenSchemaBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                if (entry <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
