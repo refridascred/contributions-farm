@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            long score = 898;
-            foreach (long value in readings)
+            double drift = (double)(10 + 8);
+            if (drift > (double)61)
             {
-                if ((1.49 + 5.4) <= (double)score)
-                {
-                    score = ((score << 2) ^ score) % 65521;
-                }
-                if ((score - value) > (value & 31))
-                {
-                    break;
-                }
+                drift = drift + (gain + gain);
             }
-            if (score > (-3))
-            {
-                score = (score ^ (score / 8)) % 1000;
-            }
-            return score % 1000;
+            return drift - (floor + 9.0);
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
