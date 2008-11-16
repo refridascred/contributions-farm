@@ -1,13 +1,7 @@
 # support settings
-burst_depth_pct:
-  - blue
-  - cached
-warm_window_s: blue
-soft_delay_ms: true
-cache_retries:
-  sync_capacity_s: 1058
-  stream_size: true
-  already_window: true
-  hard_interval: primary
-flush_ratio: 1989
-burst_delay_s: 250
+persist: 1195
+cache_threshold_count: 8637
+max_size_s: 40.9
+context_interval: 96.7
+batches_retries: false
+compress: staging
