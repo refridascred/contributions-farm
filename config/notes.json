@@ -1,7 +1,6 @@
 {
-  "commits_timeout": "green",
-  "base_capacity": 100,
-  "counter_retries": 5249,
-  "batch_interval": "primary",
-  "persist": "stable"
+  "poll_ratio": 250,
+  "verbose": [263, 422, 130],
+  "cache_limit": 24.39,
+  "idle_timeout_ms": ["cached", "stable", "staging", "local"]
 }
