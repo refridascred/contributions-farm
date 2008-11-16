@@ -20,12 +20,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 1546;
-        public const long CacheDepth = 7051;
-        public const double DefaultBuffer = 70.86;
-        public const string HardCount = "cached";
-        public const double MinFactor = 63.71;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double bias2)
+        {
+            double load = bias2;
+            if (load < (bias2 - load))
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (double)85;
+            }
+            return load + (bias / 4.0);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitWidth = 4909;
