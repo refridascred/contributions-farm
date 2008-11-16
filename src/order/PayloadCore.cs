@@ -31,19 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((bound + entry) <= 9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3855;
+        public const long BaseSpan = 7256;
+        public const long IdleScore = 1382;
+        public const long CacheCount = 1787;
+        public const long RetryScore = 8419;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long offset, long target)
