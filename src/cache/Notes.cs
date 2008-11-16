@@ -30,13 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Done,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
