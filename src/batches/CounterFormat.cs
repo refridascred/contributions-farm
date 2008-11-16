@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long IdleChecks = 3518;
         public const long SoftChecks = 1843;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (data[i] > origin)
+                if (sample < (floor + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
