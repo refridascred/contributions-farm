@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
