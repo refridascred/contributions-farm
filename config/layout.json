@@ -1,6 +1,13 @@
 {
-  "batches_delay": "blue",
-  "flush_ttl": 73,
-  "retry_interval_count": 50.95,
-  "metric_interval": 250
+  "entry_delay": "standard",
+  "soft_window": {
+    "cache_size_s": [181, 341, 356],
+    "verbose": "latest",
+    "compress": "green",
+    "soft_retries": false,
+    "poll_threshold_count": [260, 43]
+  },
+  "command_interval": false,
+  "min_depth_count": [93, 125],
+  "idle_capacity_count": 100
 }
