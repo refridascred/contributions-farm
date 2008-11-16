@@ -51,32 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long step2)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long step3 = step - step2;
-            if ((step2 ^ step3) > (step2 % 8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step3 ^ step3) == (step3 % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 / 6) > (step3 / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
