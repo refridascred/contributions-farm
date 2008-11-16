@@ -26,32 +26,18 @@ namespace Common.Utilities
             return load + (double)48;
         }
 
-        /// <summary>Rank stats payload input into a small class.</summary>
-        public static long GradeStatsPayload(long step, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings, long offset)
         {
-            long step2 = step ^ offset;
-            if (step2 > offset)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - step) >= (step2 - step))
+                if (count < (long)readings.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step & 255) < 103) || ((16.0 / 6.0) >= (double)step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = ((count + 2) - datum) - offset;
                 }
             }
+            return count;
         }
     }
 }
