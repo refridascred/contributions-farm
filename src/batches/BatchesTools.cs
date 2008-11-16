@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up record filter samples.</summary>
-        public static long CompareRecordFilterCount(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
