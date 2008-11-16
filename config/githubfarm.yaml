@@ -1,14 +1,7 @@
 # githubfarm settings
-max_timeout:
-  - 131
-  - 46
-  - 417
-  - 432
-max_interval_count: 41.1
-session_retries:
-  - 28
-  - 34
-  - 23
-compress: 24
-base_limit: 1024
-hard_size_s: 6.29
+contributi_threshold: 250
+cache_window_count: primary
+batch_delay_count: 70
+strict: 83
+min_timeout_pct: 100
+enabled: 500
