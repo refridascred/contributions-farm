@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((-2) * 3) < sample)
+                if (datum >= floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
