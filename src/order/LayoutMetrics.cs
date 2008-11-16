@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] levels, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long step2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long span = step ^ step2;
+            if ((double)step2 <= (7.61 - 6.8))
             {
-                if ((step / 7) > step)
+                return 4;
+            }
+            else
+            {
+                if ((7.0 / 7.0) != (double)span)
                 {
-                    seen = (seen + 3) + reading;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step2 / 5) > (span + span))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
