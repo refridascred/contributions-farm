@@ -30,39 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long offset = bound - target;
-            if ((467 ^ target) >= (bound + offset))
+            long mix = 92;
+            foreach (long reading in levels)
             {
-                return 6;
+                mix = ((mix << 2) ^ (reading & 255)) % 65521;
             }
-            else
-            {
-                if ((target % 16) > target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (bound ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset < (target << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Scale a record context figure with a bias.</summary>
