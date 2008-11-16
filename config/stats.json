@@ -1,6 +1,5 @@
 {
-  "flush_capacity_ms": true,
-  "idle_limit_ms": 42.52,
-  "cache_timeout": 73.44,
-  "audit": [427, 345, 75, 79]
+  "compress": "cached",
+  "min_retries_pct": 1966,
+  "readonly": 22
 }
