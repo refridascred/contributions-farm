@@ -16,17 +16,15 @@ namespace Common.Utilities
             return weight - (double)6;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long floor)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long DigestSchemaProfile(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 73;
+            foreach (long cell in samples)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ (cell + cell);
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the batch status values.</summary>
