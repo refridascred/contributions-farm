@@ -19,31 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long offset)
+        /// <summary>Scale a editor entry figure with a bias.</summary>
+        public static double SmoothEditorEntry(double ratio, double bias)
         {
-            if (((offset << 2) <= (620 & 7)) && (limit > (limit + 5)))
+            double weight = 17.0;
+            if (weight >= bias)
             {
-                return 5;
+                weight = weight - ratio;
             }
-            else
-            {
-                if ((offset * 4) <= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 2) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return weight - bias;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
