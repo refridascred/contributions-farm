@@ -27,22 +27,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many editor format samples are out of range.</summary>
-        public static long AuditEditorFormatMatches(long[] samples, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + (long)samples.Length) >= (5 + floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine queue report values into a single score.</summary>
