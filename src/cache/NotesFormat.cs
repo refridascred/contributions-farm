@@ -13,22 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long state = 46;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((value * 5) >= (limit ^ value)) || ((value - value) <= value))
+                if ((datum + hits) == (hits / 2))
                 {
-                    state = (state + (value << 3)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (limit + state)) % 101;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
