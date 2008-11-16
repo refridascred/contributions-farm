@@ -1,9 +1,6 @@
-id,label,state,active,count
-1,18.24,951,403,86.31
-2,60.13,725,82.81,edge
-3,standard,latest,62,standard
-4,57,217,34.88,840
-5,377,249,863,edge
-6,12.59,86.78,cached,fallback
-7,2.1,504,524,454
-8,eu-west,818,126,7.35
+id,token,region
+1,legacy,986
+2,811,947
+3,18.84,edge
+4,10.41,open
+5,fallback,145
