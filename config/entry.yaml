@@ -1,6 +1,9 @@
 # entry settings
-sync_capacity_pct: 8668
-burst_capacity_count: 5038
-commits_window: 421
-cache_threshold: staging
-soft_interval: local
+verbose: 92
+warm_depth: true
+soft_ratio_pct: 13
+retry_retries_ms: stable
+channel_threshold:
+  - 178
+  - 450
+  - 273
