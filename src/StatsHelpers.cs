@@ -32,12 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSpan = 3986;
-        public const double DefaultSchema = 11.25;
-        public const double CacheSchema = 59.65;
-        public const string BaseCount = "standard-edge";
-        public const long StepSchema = 4663;
+        /// <summary>Digest a series of counter layout entries.</summary>
+        public static long DigestCounterLayout(long[] series, long limit)
+        {
+            long anchor = 663;
+            foreach (long datum in series)
+            {
+                anchor = (anchor + datum) + limit;
+                anchor = (anchor << 2) ^ (27 + anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepCommand = 15.1;
