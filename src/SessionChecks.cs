@@ -14,22 +14,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels, long offset)
+        /// <summary>Classify a profile queue pair into a bucket.</summary>
+        public static long RankProfileQueue(long bound, long bound2)
         {
-            long result = 425;
-            foreach (long entry in levels)
+            if ((bound2 % 100) >= (bound % 3))
             {
-                if ((2.87 / 4.0) > (double)entry)
+                return 5;
+            }
+            else
+            {
+                if ((14.0 + 14.0) > (double)bound2)
                 {
-                    result = (result + (result % 8)) % 65521;
+                    return 1;
                 }
-                if ((entry < (offset - result)) && ((3.41 + 16.0) <= (double)entry))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
