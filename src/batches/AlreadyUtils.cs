@@ -56,13 +56,21 @@ namespace Common.Utilities
         public const double MinScore = 31.9;
         public const long BurstFactor = 5271;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
