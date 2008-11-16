@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long mark = 20;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mark == (double)datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark << 3) ^ datum;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
