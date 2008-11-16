@@ -42,21 +42,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of stream cache readings.</summary>
-        public static long OverlapStreamCacheCount(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)readings.Length != (hits >> 1))
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
