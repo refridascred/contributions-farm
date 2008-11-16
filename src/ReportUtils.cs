@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const string WindowSupport = "stable-1";
         public const double CacheWidth = 6.49;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = 961;
+            foreach (long cell in samples)
             {
-                if (((matches % 16) >= (20 % 12)) || ((value + 61) < (matches - value)))
+                score = score ^ (60 + score);
+                if ((limit >> 5) < limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score << 2) ^ (limit ^ cell);
                 }
             }
-            return matches;
+            if (score < 5)
+            {
+                score = ((score << 3) ^ (limit ^ 0)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema entry.</summary>
