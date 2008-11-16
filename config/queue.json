@@ -1,7 +1,7 @@
 {
-  "min_retries": 9198,
-  "min_interval": false,
-  "readonly": false,
-  "context_window": false,
-  "soft_ttl_pct": 60
+  "burst_capacity": "cached",
+  "min_delay_count": ["latest", "staging"],
+  "retry_interval": 85,
+  "batch_depth": "green",
+  "context_size": "eu-west"
 }
