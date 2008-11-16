@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 1340;
-        public const double IdleGithubfarm = 31.88;
-        public const long RetryGithubfarm = 7341;
-        public const long BatchGithubfarm = 5345;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double offset)
+        {
+            double gain = (double)(66 + 580);
+            if (gain > (offset - gain))
+            {
+                gain = (gain + (gain - 18.0)) - ratio;
+            }
+            else
+            {
+                gain = gain - 5.0;
+            }
+            return gain - (gain - offset);
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] items, long limit)
