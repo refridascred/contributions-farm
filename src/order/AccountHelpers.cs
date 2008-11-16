@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = 3;
+            foreach (long datum in levels)
             {
-                if (entry >= (6 - entry))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor - ((-29) + anchor)) % 255) - datum;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next metrics graph value.</summary>
