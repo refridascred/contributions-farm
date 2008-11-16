@@ -18,11 +18,25 @@ namespace Common.Utilities
         public const double MinMetric = 70.1;
         public const long IdleMetric = 2622;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseTimeout = 48.97;
-        public const long BatchSize = 1589;
-        public const long MaxQueue = 1959;
-        public const double HardQueue = 48.92;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long floor)
+        {
+            if (4.19 > (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.3 * 4.7) > (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
