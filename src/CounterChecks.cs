@@ -31,12 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long limit)
         {
-            Stale,
-            Paused,
-            Failed,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
