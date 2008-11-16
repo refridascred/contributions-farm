@@ -33,18 +33,22 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long limit)
         {
-            long total = -188;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (total < 7)
+                if ((value & 127) == ((long)data.Length * 2))
                 {
-                    total = ((total * 5) + step) + value;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
