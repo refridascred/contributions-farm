@@ -53,38 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account window input into a small class.</summary>
-        public static long ClassifyAccountWindow(long floor, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if (63 >= (floor ^ offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < 8.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset > 819)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Pending,
+            Stale,
+            Locked,
         }
     }
 }
