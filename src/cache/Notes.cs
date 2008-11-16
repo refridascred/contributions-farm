@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc - (842 + (long)i)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every layout checks entry stays within the limit.</summary>
