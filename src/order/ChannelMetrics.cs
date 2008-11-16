@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool GuardContributiTokenRange(long[] items, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (cell > seed)
+                if (entry > limit)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
