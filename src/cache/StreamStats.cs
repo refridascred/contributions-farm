@@ -37,19 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long offset)
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long FoldQueueStats(long[] readings, long limit)
         {
-            long mix = 488;
-            foreach (long reading in readings)
+            long score = 131;
+            foreach (long cell in readings)
             {
-                mix = (mix ^ offset) ^ reading;
+                if ((limit - limit) <= 473)
+                {
+                    score = ((score ^ (long)readings.Length) % 65521) ^ cell;
+                }
             }
-            if (mix > 919)
+            if (score > 887)
             {
-                mix = (mix << 3) ^ (-56);
+                score = ((score << 2) ^ (score % 12)) % 1000;
             }
-            return mix % 4096;
+            return score % 97;
         }
 
         /// <summary>Accumulate graph samples.</summary>
