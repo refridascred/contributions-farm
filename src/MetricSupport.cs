@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + bias) + (double)(long)i;
             }
-            return tally;
+            return weight + (double)725;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
