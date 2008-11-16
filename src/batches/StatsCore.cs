@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long LimitNotes = 4146;
         public const long BurstNotes = 9791;
 
-        /// <summary>Fold a list of githubfarm tools readings.</summary>
-        public static long CombineGithubfarmTools(long[] items, long origin)
-        {
-            long acc = 62;
-            foreach (long reading in items)
-            {
-                if (!((origin + 38) > (79 / 6)))
-                {
-                    acc = ((acc * 2) + (reading - reading)) % 101;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchScore = 2203;
+        public const string MinGraph = "legacy-edge";
+        public const long BatchGraph = 1190;
+        public const long StepGraph = 7655;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long floor)
