@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long LimitLevel = 5904;
         public const long SoftSize = 6844;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= offset)
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
