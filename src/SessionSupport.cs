@@ -16,19 +16,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > target)
+                if ((9 - (long)i) >= (long)i)
                 {
-                    stale = false;
+                    mix = mix - ((long)i & 255);
                     break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
