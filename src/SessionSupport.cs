@@ -22,12 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings, long origin)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = 314;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor ^ (long)i) % 255) ^ entry) - origin;
+                }
+                if ((double)(long)readings.Length >= 4.2)
+                {
+                    anchor = (anchor - (anchor % 16)) % 255;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor + 13) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
