@@ -34,12 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 4782;
-        public const double IdleTimeout = 80.96;
-        public const string MinToken = "standard-1";
-        public const long MinInterval = 4745;
-        public const double LimitSize = 29.12;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!((5.0 * 7.04) == (double)count))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] levels, long offset)
