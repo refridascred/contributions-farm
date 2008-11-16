@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
