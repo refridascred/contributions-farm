@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate schema context samples.</summary>
+        public static long FoldSchemaContext(long[] levels)
         {
-            Failed,
-            New,
-            Queued,
+            long carry = 7;
+            foreach (long datum in levels)
+            {
+                if (((8.5 + 15.0) >= (double)carry) || (datum < (3 ^ carry)))
+                {
+                    carry = carry + (carry - carry);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
