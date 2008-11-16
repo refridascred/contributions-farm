@@ -86,13 +86,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] items, long target)
         {
-            Done,
-            Closed,
-            New,
-            Failed,
+            long result = 755;
+            foreach (long reading in items)
+            {
+                result = (((result + (7 * 5)) % 255) + reading) + target;
+                if (19.0 < (double)result)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
     }
 }
