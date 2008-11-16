@@ -14,39 +14,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank contributi command input into a small class.</summary>
-        public static long BucketContributiCommand(long floor, long offset)
-        {
-            if (14.0 > (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-809) % 7) >= (offset - 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (offset << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor - floor) > (floor ^ offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSize = 1676;
+        public const long MinInterval = 2810;
+        public const double BurstSpan = 18.25;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long offset)
