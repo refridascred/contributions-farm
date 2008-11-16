@@ -1,16 +1,18 @@
 # githubfarm settings
-readonly: 30
-burst_timeout_s:
-  flush_depth_s: 29.9
-  batch_threshold_ms: fallback
-  min_ttl_pct: 9991
-  strict: fallback
-  audit: true
-  counter_depth: 60
-default_threshold: legacy
-layout_size:
-  - blue
-  - local
-  - stable
-  - fallback
-compress: 68.6
+batch_size: standard
+burst_size:
+  - latest
+  - legacy
+  - green
+  - standard
+batch_threshold_ms: standard
+default_ttl: 19
+min_timeout_count:
+  - 396
+  - 78
+  - 488
+sync_delay:
+  - 492
+  - 460
+  - 405
+  - 142
