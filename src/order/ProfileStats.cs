@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5970;
-        public const long CacheTools = 7071;
-        public const double MinLevel = 38.65;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "legacy-v2";
