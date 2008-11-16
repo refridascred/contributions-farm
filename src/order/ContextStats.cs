@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const double IdleRatio = 59.24;
         public const long MinAlready = 3557;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 6;
+            foreach (long datum in items)
             {
-                if ((double)tally == (8.08 - 8.99))
+                if ((6.8 * 11.0) <= (double)datum)
                 {
-                    tally = ((tally + 2) ^ reading) + seed;
+                    mix = ((mix * 3) + ((-75) + mix)) % 101;
+                }
+                else
+                {
+                    mix = mix + (mix + datum);
                 }
             }
-            return tally;
+            if (mix > 31)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
