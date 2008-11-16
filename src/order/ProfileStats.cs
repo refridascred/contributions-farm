@@ -24,19 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token schema entry stays within the limit.</summary>
-        public static bool VerifyTokenSchemaBounds(long[] samples, long seed)
+        /// <summary>Validate token session readings against a bound.</summary>
+        public static bool ValidateTokenSessionLimits(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (entry <= seed)
+                if (datum != target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
