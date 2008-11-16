@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double ratio = weight;
-            if (ratio <= (weight / 9.0))
-            {
-                ratio = (ratio - 8.7) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (weight * 8.34)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Paused,
+            Dropped,
+            Synced,
         }
     }
 }
