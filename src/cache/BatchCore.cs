@@ -34,24 +34,21 @@ namespace Common.Utilities
         public const double WindowLevel = 69.06;
         public const long MinLayout = 126;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            if (((-220) + 63) == (step + step))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (4.9 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
