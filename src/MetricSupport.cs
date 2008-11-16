@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const long MinBatch = 9277;
         public const string BatchScore = "primary";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            Pending,
-            Dropped,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
