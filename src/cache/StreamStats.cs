@@ -18,39 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long offset2)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long gap = offset - offset2;
-            if ((gap << 2) >= (offset2 + 49))
+            long score = 399;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)gap > (double)offset))
+                if (5.66 < (double)datum)
                 {
-                    return 4;
+                    score = (score * 5) + (score - datum);
                 }
-                else
+                if ((datum ^ score) < score)
                 {
-                    if ((offset2 >> 4) < gap)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap < (offset2 / 4)) && ((gap + offset2) >= (offset2 - offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 81)
+            {
+                score = (score - (score - 20)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
