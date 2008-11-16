@@ -57,11 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 85.35;
-        public const double CacheChecks = 36.21;
-        public const double MinTimeout = 92.74;
-        public const string HardWidth = "primary-v2";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((-898) + matches) > matches)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long limit, long target)
