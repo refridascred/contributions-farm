@@ -30,21 +30,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up stream route samples.</summary>
-        public static long MatchStreamRouteCount(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
