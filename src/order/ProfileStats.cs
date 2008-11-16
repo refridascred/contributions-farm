@@ -15,13 +15,17 @@ namespace Common.Utilities
         public const long WindowCommand = 4923;
         public const long BurstCommand = 4905;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Locate a profile schema reading by value.</summary>
+        public static long LookupProfileSchemaIndex(long[] data, long limit)
         {
-            Pending,
-            Done,
-            Paused,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate account channel samples.</summary>
