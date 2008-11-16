@@ -56,14 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the notes payload entries that pass the check.</summary>
+        public static long TallyNotesPayloadMatches(long[] levels)
         {
-            Failed,
-            Queued,
-            Idle,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((0.7 - 2.1) != (double)seen) && (((3.3 * 7.0) <= (double)seen) || ((entry ^ seen) <= entry)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
