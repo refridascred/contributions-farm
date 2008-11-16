@@ -53,19 +53,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next token counter value from a seed.</summary>
-        public static long RollTokenCounter(long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor - (7 << 1)) % 97) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
