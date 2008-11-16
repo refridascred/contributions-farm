@@ -49,13 +49,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long origin2)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long span = origin + origin2;
+            if ((span / 3) == (origin >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 <= (span + span)) || ((origin2 + 69) < span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin2 & 63) == (origin2 + origin2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin2 ^ origin) != (origin2 * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout level values.</summary>
