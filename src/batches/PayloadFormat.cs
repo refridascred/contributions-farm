@@ -40,21 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count & 15) <= ((-45) * 3))
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of buffer report entries.</summary>
