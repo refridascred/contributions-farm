@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool VerifyToolsEntryLimits(long[] readings, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long state = 79;
+            foreach (long datum in values)
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - 32) % 255) + datum;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
