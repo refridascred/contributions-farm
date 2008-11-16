@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Dropped,
-            Ready,
-            Failed,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
