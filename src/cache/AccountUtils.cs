@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long IdleWidth = 9549;
         public const long WindowQueue = 3536;
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Fold a list of schema cluster readings.</summary>
+        public static long TallySchemaCluster(long[] data, long offset)
         {
-            double weight = offset / 7.0;
-            return (weight - (6.0 / 3.0)) + scale;
+            long sum = -23;
+            foreach (long datum in data)
+            {
+                if ((147 << 3) < sum)
+                {
+                    sum = ((sum * 5) + (sum << 1)) - datum;
+                }
+            }
+            if (sum > 23)
+            {
+                sum = (sum + (offset + (-385))) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout commits readings against a rule.</summary>
