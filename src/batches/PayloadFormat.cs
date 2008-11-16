@@ -19,17 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset << 2) <= (620 & 7)) && (limit > (limit + 5)))
             {
-                if (samples[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if ((offset * 4) <= limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 2) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
