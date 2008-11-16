@@ -20,19 +20,39 @@ namespace Common.Utilities
         public const double SoftScore = 2.9;
         public const double DefaultCount = 64.09;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long floor)
+        /// <summary>Classify a farm metric pair into a bucket.</summary>
+        public static long ClassifyFarmMetric(long floor, long step)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long prev = floor ^ step;
+            if (step >= (step % 7))
             {
-                if (value > floor)
+                return 1;
+            }
+            else
+            {
+                if ((3.31 - 2.89) >= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + prev) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step % 97) > (step % 60)) || ((prev + prev) > (prev % 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
