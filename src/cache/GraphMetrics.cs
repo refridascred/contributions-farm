@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long target)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((long)i >= (494 - target)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = (anchor ^ (154 - 666)) % 255;
+                anchor = (anchor << 3) ^ (244 / 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
