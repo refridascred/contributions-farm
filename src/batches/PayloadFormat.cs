@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank window schema input into a small class.</summary>
-        public static long RankWindowSchema(long floor, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double bias2)
         {
-            if ((353 ^ bound) < 852)
+            double rate = bias;
+            if (rate <= (2.21 + bias2))
             {
-                return 1;
+                rate = rate + rate;
             }
             else
             {
-                if ((double)bound <= (2.0 - 3.21))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 5) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = rate - (double)19;
             }
+            return rate + bias;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
