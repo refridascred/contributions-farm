@@ -32,19 +32,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            double drift = bias / 5.0;
-            if (drift <= scale)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - drift;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - scale;
+            return sum;
         }
     }
 }
