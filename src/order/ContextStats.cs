@@ -16,21 +16,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Blend two graph farm measurements.</summary>
+        public static double BlendGraphFarm(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(627 >> 2);
+            if (scale > scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - 0.97) - rate;
             }
-            return hits;
+            else
+            {
+                scale = scale - (offset * 19.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (double)559;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
