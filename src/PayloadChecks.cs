@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7681;
-        public const double LimitDepth = 18.01;
-        public const long DefaultSupport = 9744;
-        public const double LimitSupport = 40.45;
-        public const long WindowSupport = 8168;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstLevel = 6223;
