@@ -49,11 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
