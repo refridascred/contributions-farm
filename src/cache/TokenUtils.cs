@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Ready,
-            New,
-            Queued,
+            Retry,
+            Draft,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
