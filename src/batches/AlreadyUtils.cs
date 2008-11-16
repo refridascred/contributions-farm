@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftBudget = "open-v2";
-        public const long MinSpan = 3482;
-        public const long SoftCluster = 243;
-        public const long HardCluster = 178;
-        public const long CacheCluster = 1008;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Queued,
+            Dropped,
+            Ready,
+            New,
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long offset)
