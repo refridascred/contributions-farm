@@ -46,15 +46,21 @@ namespace Common.Utilities
             return (mean - (double)41) + floor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double span)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            double drift = 3.51;
-            if (drift > (drift / 7.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (double)47) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + (19.0 + span);
+            return count;
         }
     }
 }
