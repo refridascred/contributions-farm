@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (mix - mix)) - value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
