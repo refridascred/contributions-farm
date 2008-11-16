@@ -1,6 +1,8 @@
 {
-  "retry_ttl_count": 41,
-  "layout_threshold": "stable",
-  "already_window": "open",
-  "strict": 6760
+  "entry_limit": [348, 307, 112, 184],
+  "format_ttl": 7689,
+  "default_threshold_ms": "eu-west",
+  "retry_window_count": "blue",
+  "batch_window": "edge",
+  "schema_limit": [162, 243]
 }
