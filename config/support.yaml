@@ -1,19 +1,7 @@
 # support settings
-counter_delay:
-  retry_depth_s: 80.32
-  githubfarm_threshold: staging
-  githubfarm_ttl: 500
-  idle_timeout_pct:
-    - 83
-    - 489
-  enabled: false
-  verbose: eu-west
-default_capacity_s: false
-checks_threshold: true
-burst_depth_s: legacy
-strict:
-  min_size_ms: 10.19
-  session_depth:
-    - 302
-    - 153
-  session_timeout: fallback
+min_depth: legacy
+verbose: blue
+buffer_threshold: 38
+support_size: false
+soft_depth: 4868
+enabled: edge
