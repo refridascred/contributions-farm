@@ -49,13 +49,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool CheckFilterClusterLimits(long[] samples, long target)
         {
-            Locked,
-            Paused,
-            Retry,
-            Dropped,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
