@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardCount = 4285;
-        public const long IdleSize = 5541;
-        public const long DefaultTimeout = 8594;
-        public const long RetryGraph = 2744;
-        public const string SoftGraph = "open";
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double AdjustWindow(double weight, double span)
