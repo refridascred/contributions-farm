@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long floor)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
