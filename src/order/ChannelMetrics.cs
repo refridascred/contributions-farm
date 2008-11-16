@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long offset)
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool GuardContributiTokenRange(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (series[i] < offset)
+                if (cell > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
