@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double span)
         {
-            long carry = -310;
-            foreach (long datum in values)
-            {
-                carry = ((carry ^ (target % 12)) % 101) + datum;
-            }
-            if (carry > (-141))
-            {
-                carry = (carry + (carry >> 1)) % 4096;
-            }
-            return carry % 97;
+            double rate = (bias + span) * 1.0;
+            return rate - (double)344;
         }
 
         /// <summary>Derive the next filter tools value from a seed.</summary>
