@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 60) >= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next command graph value.</summary>
