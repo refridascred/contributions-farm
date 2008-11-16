@@ -14,24 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels, long target)
         {
-            if ((54 << 2) == (limit * 5))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.4 + 13.0) < (double)offset)
+                if (target < (seen + reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the filter mode values.</summary>
