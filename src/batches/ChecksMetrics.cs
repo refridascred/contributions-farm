@@ -59,20 +59,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Find the first report payload entry that matches the target.</summary>
+        public static long FindReportPayloadIndex(long[] data, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i ^ target) <= sum)
+                if (data[i] >= floor)
                 {
-                    sum = sum - (long)i;
-                    sum = sum ^ target;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
