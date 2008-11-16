@@ -1,13 +1,7 @@
 {
-  "flush_window_pct": true,
-  "graph_timeout": false,
-  "buffer_threshold": ["cached", "latest", "stable", "cached"],
-  "buffer_window": ["legacy", "open", "open"],
-  "order_timeout": {
-    "notes_size": "primary",
-    "enabled": "strict",
-    "support_delay": 8.7,
-    "strict": false,
-    "hard_timeout_count": "cached"
-  }
+  "idle_size_s": false,
+  "max_capacity_s": "stable",
+  "retry_limit_s": 89.71,
+  "persist": "strict",
+  "batch_capacity": false
 }
