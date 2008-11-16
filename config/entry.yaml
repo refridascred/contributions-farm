@@ -1,10 +1,7 @@
 # entry settings
-min_limit_s: false
-hard_retries_count: primary
-batch_threshold: 15
-idle_interval:
-  - 418
-  - 17
-  - 60
-batch_delay_ms: 500
-flush_retries_pct: stable
+metrics_window: blue
+verbose: staging
+enabled: legacy
+flush_retries_count: green
+compress: primary
+batches_timeout: green
