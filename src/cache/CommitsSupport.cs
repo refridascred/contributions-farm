@@ -79,18 +79,35 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] data, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels, long offset)
         {
-            long total = 81;
-            foreach (long value in data)
+            long score = 594;
+            foreach (long item in levels)
             {
-                if ((value - limit) == (value / 5))
+                if ((offset - offset) > (score >> 2))
                 {
-                    total = ((total << 3) ^ (461 * 4)) % 97;
+                    score = ((score << 3) ^ (-2)) % 101;
+                    score = ((score << 3) ^ (offset / 5)) % 65521;
+                }
+                else
+                {
+                    score = (score - (score % 12)) % 97;
+                }
+                if (7.83 > (double)offset)
+                {
+                    score = ((score * 3) + (196 << 3)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ item;
                 }
             }
-            return total;
+            if (score > 5)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
     }
 }
