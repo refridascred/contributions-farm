@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
