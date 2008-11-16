@@ -21,18 +21,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry / 2) > (877 ^ entry)) && ((double)seen > (4.48 + 4.76)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a token batch reading.</summary>
