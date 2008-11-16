@@ -50,17 +50,39 @@ namespace Common.Utilities
             return load + (6.0 * 3.8);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset - target;
+            if ((offset / 2) == (385 / 5))
             {
-                if (readings[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if (step <= offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (target * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ step) > target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
