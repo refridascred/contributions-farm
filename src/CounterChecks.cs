@@ -63,18 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] data, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long sum = -25;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (13.0 * 6.1))
-                {
-                    sum = (sum ^ (sum << 2)) - step;
-                }
-            }
-            return sum % 4096;
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
