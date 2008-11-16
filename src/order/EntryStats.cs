@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ratio + (ratio - gain);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if (floor <= (floor % 60))
             {
-                if ((hits + hits) >= hits)
+                return 2;
+            }
+            else
+            {
+                if (!((floor - target) <= (target % 2)))
                 {
-                    hits = ((hits + 2) + value) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor > (floor << 3)) || ((target % 3) <= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
