@@ -48,12 +48,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "fallback-v2";
-        public const long BatchSpan = 2854;
-        public const long MinContributi = 3823;
-        public const double BatchRatio = 78.65;
-        public const long RetrySpan = 80;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (((state << 2) ^ (step + state)) % 97) ^ (long)i2;
+                }
+                state = ((state * 5) + (step >> 5)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] data, long limit)
