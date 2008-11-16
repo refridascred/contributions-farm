@@ -52,9 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 2921;
-        public const long WindowWidth = 2994;
-        public const string BatchGraph = "primary-v2";
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Ready,
+            Stale,
+            Idle,
+        }
     }
 }
