@@ -26,26 +26,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (offset <= state)
-                {
-                    state = (state ^ (627 - state)) % 101;
-                    state = ((state * 3) + state) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + (state - offset)) % 1000;
-                    state = (state ^ (offset + offset)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4634;
+        public const long WindowGraph = 3621;
+        public const string MaxWidth = "stable-1";
 
         /// <summary>Match up buffer samples.</summary>
         public static long OverlapBufferCount(long[] items)
