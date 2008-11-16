@@ -33,19 +33,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long score = 136;
+            foreach (long value in readings)
             {
-                if (sample > seed)
+                if ((double)value != (double)403)
                 {
-                    flag = false;
+                    score = score + (value ^ score);
+                }
+                else
+                {
+                    score = score + (score / 6);
+                }
+                if ((double)value <= (3.62 / 4.0))
+                {
                     break;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the context state values.</summary>
