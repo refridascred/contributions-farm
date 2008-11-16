@@ -46,21 +46,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
