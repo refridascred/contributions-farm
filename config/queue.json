@@ -1,6 +1,6 @@
 {
-  "compress": 2404,
-  "strict": [57, 491, 182, 213],
-  "readonly": true,
-  "buffer_threshold": 14
+  "warm_size": 12.13,
+  "burst_capacity": 8546,
+  "min_ratio": ["local", "edge", "staging"],
+  "poll_retries": 8.89
 }
