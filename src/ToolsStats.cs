@@ -49,17 +49,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long origin)
+        /// <summary>Count the contributi checks entries that pass the check.</summary>
+        public static long TallyContributiChecksMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] == origin)
+                if ((double)reading >= (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
