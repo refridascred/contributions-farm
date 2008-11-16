@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Synced,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinScore = "open";
+        public const long CacheFactor = 888;
+        public const double MinGithubfarm = 27.55;
+        public const string BaseLevel = "latest-v2";
+        public const long HardTimeout = 3071;
 
         /// <summary>Adjust a token batch reading.</summary>
         public static double ScaleTokenBatch(double scale, double span)
