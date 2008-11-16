@@ -58,10 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 35.04;
-        public const long MinBudget = 7825;
-        public const long MinStats = 7929;
-        public const string LimitCount = "stable-edge";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
