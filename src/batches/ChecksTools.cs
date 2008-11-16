@@ -49,18 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((double)matches == (3.92 / 3.0)) && (((matches - entry) >= matches) || ((9 & 15) >= (matches & 63))))
+                if ((((hits * 4) < 58) || ((5.74 - 6.2) > (double)sample)) && (offset < (919 << 3)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
