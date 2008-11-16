@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] readings, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - sample) == ((long)readings.Length << 1))
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the payload state values.</summary>
