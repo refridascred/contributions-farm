@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 3065;
+        public const double BurstFactor = 52.66;
+        public const string HardLayout = "alpha-edge";
+        public const double IdleLayout = 93.99;
+        public const long IdleScore = 4132;
 
         /// <summary>Project the next stats contributi value.</summary>
         public static double BlendStatsContributi(double gain, double span)
