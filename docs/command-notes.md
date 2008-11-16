@@ -1,13 +1,10 @@
 # Command notes
 
-The layout module keeps format values in sync with the support cache.
-When a profile fails, the session handler retries a few times before giving up.
-
-Keep record and batch names short and lowercase.
-Use format settings to tune how often metric data is refreshed.
+The account module keeps metric values in sync with the checks cache.
+A batch that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
+- Validate batch input early
+- Review filter limits each release
 - Keep entry values small
-- Prefer stream defaults
-- Review editor limits each release
