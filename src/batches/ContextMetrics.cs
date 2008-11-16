@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long limit, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data, long origin)
         {
-            long prev = limit + step;
-            if ((15.0 - 2.3) > (double)limit)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.36 >= (double)step)
+                if ((origin - matches) == (matches - sample))
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((prev / 5) > (94 & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
