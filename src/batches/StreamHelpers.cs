@@ -41,13 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] levels, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long floor)
         {
             bool ok = true;
-            foreach (long sample in levels)
+            foreach (long item in values)
             {
-                if (sample < offset)
+                if (item >= floor)
                 {
                     ok = false;
                     break;
