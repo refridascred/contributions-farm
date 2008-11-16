@@ -23,25 +23,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long step)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long score = 596;
+            foreach (long cell in values)
             {
-                if ((6.0 * 13.0) >= (double)target)
+                if ((step / 4) > (7 - (long)values.Length))
                 {
-                    state = state ^ (target % 10);
-                    state = (state ^ (-814)) % 97;
+                    score = ((score * 4) + cell) % 97;
+                    continue;
+                }
+                if ((score ^ step) > (step >> 1))
+                {
+                    score = score + (6 + cell);
                 }
                 else
                 {
-                    state = (state - state) % 97;
+                    score = score - (cell - score);
                 }
-                state = (state - (state >> 1)) % 4096;
-                state = ((state * 3) + (long)i) % 65521;
+                if (score > (score + score))
+                {
+                    break;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
