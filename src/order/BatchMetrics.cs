@@ -43,13 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Match up stream route samples.</summary>
+        public static long MatchStreamRouteCount(long[] items)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
