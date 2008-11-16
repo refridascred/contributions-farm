@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Draft,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchCount = 7483;
+        public const string WindowScore = "primary-v2";
+        public const long StepAlready = 9933;
+        public const long LimitAlready = 4632;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
