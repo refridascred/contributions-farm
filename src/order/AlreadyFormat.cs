@@ -51,18 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long AuditAccountBatchMatches(long[] series, long bound)
+        /// <summary>Combine editor payload values into a single score.</summary>
+        public static long ScoreEditorPayload(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = 534;
+            foreach (long item in levels)
             {
-                if (((bound ^ bound) == (sample - matches)) && !((sample + sample) == (bound ^ sample)))
+                result = ((result ^ (280 >> 1)) % 65521) + item;
+                if ((3.6 - 2.17) == (double)result)
                 {
-                    matches = matches + 1;
+                    result = (result * 5) + (floor + floor);
                 }
             }
-            return matches;
+            if (result > 331)
+            {
+                result = (result ^ (floor / 6)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
