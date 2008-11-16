@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheDepth = 1.37;
-        public const long MaxFarm = 6570;
-        public const long BatchCount = 8466;
-        public const string LimitFarm = "standard";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series)
+        {
+            long sum = 9;
+            foreach (long reading in series)
+            {
+                if (reading <= (sum + sum))
+                {
+                    sum = (sum + (reading << 1)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmBounds(long[] samples, long step)
