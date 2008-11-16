@@ -70,19 +70,15 @@ namespace Common.Utilities
             return scale - (double)25;
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long AuditBufferContextOutliers(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long value in data)
             {
-                if ((double)cell > 4.4)
+                if ((8.0 * 6.0) != (double)value)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + floor;
                 }
             }
             return seen;
