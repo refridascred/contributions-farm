@@ -55,13 +55,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long floor)
         {
-            Pending,
-            Ready,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
