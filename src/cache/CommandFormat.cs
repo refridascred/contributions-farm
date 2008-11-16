@@ -47,11 +47,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitSize = 5264;
+        public const long SoftSpan = 5371;
+        public const long WindowDepth = 5881;
+        public const long LimitFactor = 1475;
     }
 }
