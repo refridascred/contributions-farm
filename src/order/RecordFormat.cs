@@ -56,23 +56,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a metrics farm figure with a bias.</summary>
-        public static double BlendMetricsFarm(double weight, double floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double mean = (double)7;
-            if (mean > mean)
-            {
-                mean = mean + (weight * 5.1);
-            }
-            else
-            {
-                mean = mean - (3.1 * 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (floor / 7.0)) + (double)(long)i;
-            }
-            return mean - (weight * 15.0);
+            Synced,
+            Locked,
+            Draft,
         }
     }
 }
