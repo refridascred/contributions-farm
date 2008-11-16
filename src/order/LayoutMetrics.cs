@@ -13,13 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark ^ (long)i2) % 255;
+                }
+                mark = mark + limit;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
