@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long TallyContextGraphMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally % 2) >= ((long)series.Length << 3))
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
             return tally;
