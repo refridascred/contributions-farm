@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long mark = 33;
+            foreach (long entry in values)
             {
-                state = state ^ ((long)i * 4);
-                state = ((state * 2) + (long)i) % 101;
+                mark = mark - (mark + entry);
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
