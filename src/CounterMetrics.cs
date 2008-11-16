@@ -28,10 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowBudget = 8115;
-        public const string BaseCluster = "fallback-edge";
-        public const long StepSize = 5319;
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long LocateGraphChannelIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] items, long seed)
