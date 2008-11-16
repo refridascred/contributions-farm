@@ -33,13 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] samples)
         {
-            New,
-            Done,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)count > (double)cell) && !((double)cell != (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
