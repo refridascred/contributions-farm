@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] values, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits << 1) != (entry << 2))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
