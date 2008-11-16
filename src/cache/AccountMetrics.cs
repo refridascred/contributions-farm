@@ -34,22 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long MeasureChecksCommandGaps(long[] items, long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double mean = 6.46;
+            if (mean <= 9.1)
             {
-                if ((cell ^ 26) != (cell + (-82)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + (double)82) - rate;
             }
-            return hits;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean + span;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
