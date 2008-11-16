@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] readings, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (!(((8.27 + 1.3) != (double)sample) && ((5 * 5) >= (limit - 47))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
