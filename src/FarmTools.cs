@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] values)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value > (value + value)) && ((double)value <= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a context snapshot.</summary>
