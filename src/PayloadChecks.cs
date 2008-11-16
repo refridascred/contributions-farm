@@ -81,18 +81,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Derive the next layout metrics value from a seed.</summary>
+        public static long StepLayoutMetrics(long limit)
         {
-            long anchor = 526;
-            foreach (long entry in items)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(anchor >= (entry + (long)items.Length)))
-                {
-                    anchor = (anchor ^ (entry + entry)) % 97;
-                }
+                total = (total ^ (limit - limit)) % 97;
+                total = ((total << 2) ^ (4 + (long)i)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
     }
 }
