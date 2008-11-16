@@ -24,19 +24,17 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long step)
         {
-            long anchor = 811;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor - (anchor >> 1)) % 4096) + reading;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
