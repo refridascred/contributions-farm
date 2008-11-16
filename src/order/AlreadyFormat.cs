@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long gap = step - offset;
-            if (!(gap > (step - gap)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((557 * 4) > (step - step)) && ((gap % 64) <= 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
