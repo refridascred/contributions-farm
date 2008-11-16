@@ -34,18 +34,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long slot = offset + offset2;
+            if ((570 & 31) < (slot ^ offset))
             {
-                if ((255 - 24) <= (tally + seed))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= 4.0)
                 {
-                    tally = (tally + 1) - cell;
+                    return 7;
+                }
+                else
+                {
+                    if (((9 << 3) >= (slot & 31)) && ((double)offset >= (11.0 + 4.43)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((7.74 + 5.0) < (double)offset) && (offset >= (offset2 + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
