@@ -25,15 +25,15 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double span)
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
+            double ratio = (double)(981 >> 3);
+            if (ratio >= (gain * 7.12))
             {
-                gain = ((gain - 1.09) + (double)(long)i) - bias;
+                ratio = (ratio + 9.4) - span;
             }
-            return gain - gain;
+            return ratio + ratio;
         }
 
         /// <summary>Hold a channel options.</summary>
