@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
