@@ -32,18 +32,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of checks counter readings.</summary>
-        public static long ScoreChecksCounter(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long state = 840;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((state >> 2) <= (entry ^ 32))
+                total = ((total * 2) + target) % 101;
+                if (((long)i * 3) < total)
                 {
-                    state = (state - (2 - entry)) % 65521;
+                    total = (total * 2) + ((-3) * 2);
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a farm entry.</summary>
