@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 1066;
-        public const long CacheSize = 5806;
-        public const double StepCache = 47.11;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double bias)
+        {
+            double rate = bias / 5.0;
+            return (rate + bias) + ratio;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 46.35;
