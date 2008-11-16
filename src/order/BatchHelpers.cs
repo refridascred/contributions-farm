@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = 67;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 5) > entry)
-                {
-                    mark = ((mark * 4) + (origin * 4)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (entry + 129)) % 1000;
-                }
-            }
-            return mark;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
