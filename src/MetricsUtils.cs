@@ -30,19 +30,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series, long limit)
+        /// <summary>Grade a stream window value against two limits.</summary>
+        public static long BucketStreamWindow(long bound, long step)
         {
-            long sum = 98;
-            foreach (long cell in series)
+            if (((double)step != (8.8 - 2.95)) || ((262 + step) >= (bound << 3)))
             {
-                if ((-3) > (474 - limit))
-                {
-                    sum = ((sum ^ (limit % 100)) % 1000) ^ cell;
-                }
-                sum = (sum ^ (sum ^ limit)) % 255;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((6 + step) == (bound + 265))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
