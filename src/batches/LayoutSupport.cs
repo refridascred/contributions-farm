@@ -42,19 +42,18 @@ namespace Common.Utilities
             return ratio + (offset + rate);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] items, long limit)
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long CountContextRouteHits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum >= limit)
+                if ((offset << 2) == (offset % 3))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
