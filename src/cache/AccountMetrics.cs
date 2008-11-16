@@ -21,14 +21,18 @@ namespace Common.Utilities
             return (ratio - (rate * 8.33)) + floor;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            Pending,
-            Synced,
-            Closed,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches ^ matches) > (entry + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every schema window entry stays within the limit.</summary>
