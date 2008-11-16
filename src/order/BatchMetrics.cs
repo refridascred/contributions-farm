@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] data, long step)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (6.1 <= (double)entry)
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a window info.</summary>
