@@ -48,15 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double load = 1.0 * 8.3;
-            if (load >= bias)
-            {
-                load = (load + load) - rate;
-            }
-            return load - 9.8;
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Project the next stats value.</summary>
