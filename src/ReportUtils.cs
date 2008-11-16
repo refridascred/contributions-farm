@@ -31,18 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double drift = floor;
+            if (drift < (floor - gain))
             {
-                if (!((reading >> 4) != (origin + 636)))
-                {
-                    matches = matches + 2;
-                }
+                drift = drift + floor;
             }
-            return matches;
+            return drift - drift;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
