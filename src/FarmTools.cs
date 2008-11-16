@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two schema githubfarm measurements.</summary>
-        public static double BlendSchemaGithubfarm(double weight, double bias)
-        {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchInterval = 2067;
+        public const long CacheTimeout = 5218;
+        public const long StepRoute = 1762;
 
         /// <summary>Compare every pair of batch entry readings.</summary>
         public static long CompareBatchEntryCount(long[] readings)
