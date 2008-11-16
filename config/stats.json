@@ -1,7 +1,7 @@
 {
-  "verbose": ["latest", "cached", "fallback"],
-  "persist": 95.43,
-  "base_ttl_pct": "latest",
-  "flush_timeout_pct": true,
-  "batch_depth_s": 500
+  "max_timeout": false,
+  "sync_limit": "staging",
+  "stats_ratio": false,
+  "persist": 53.37,
+  "base_interval_ms": true
 }
