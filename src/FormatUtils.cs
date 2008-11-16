@@ -27,10 +27,33 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinFactor = 8022;
-        public const long BaseCommand = 6505;
-        public const long MaxBudget = 6926;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long limit)
+        {
+            long lane = origin - limit;
+            if ((origin >= lane) && (51 < (limit / 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.31 + 11.0) <= (double)lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + lane) > (lane / 3)) && ((limit ^ origin) < (origin + (-9))))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
