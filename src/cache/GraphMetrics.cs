@@ -41,19 +41,15 @@ namespace Common.Utilities
             return (mean - (double)41) + floor;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] readings, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double drift = 3.51;
+            if (drift > (drift / 7.0))
             {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - (double)47) - weight;
             }
-            return valid;
+            return drift + (19.0 + span);
         }
     }
 }
