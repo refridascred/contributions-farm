@@ -15,20 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long state = 8;
+            foreach (long datum in series)
             {
-                if ((mark * 5) < limit)
+                if ((limit << 3) <= (datum - state))
                 {
-                    mark = mark ^ (mark - 5);
+                    state = (state ^ (595 + limit)) % 65521;
                 }
-                mark = ((mark * 4) + mark) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                else
+                {
+                    state = ((state << 3) ^ (datum / 2)) % 1000;
+                }
             }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
