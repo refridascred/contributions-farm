@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const string WindowSupport = "stable-1";
         public const double CacheWidth = 6.49;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long score = 961;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                score = score ^ (60 + score);
-                if ((limit >> 5) < limit)
+                if (!(((cell + seen) > (cell << 1)) && ((10.0 - 3.6) == (double)cell)))
                 {
-                    score = (score << 2) ^ (limit ^ cell);
+                    seen = seen + 2;
                 }
             }
-            if (score < 5)
-            {
-                score = ((score << 3) ^ (limit ^ 0)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
