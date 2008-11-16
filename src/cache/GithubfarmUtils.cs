@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi window entries that pass the check.</summary>
-        public static long CountContributiWindowGaps(long[] items, long bound)
+        /// <summary>Blend two githubfarm buffer measurements.</summary>
+        public static double BlendGithubfarmBuffer(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias2 = span - span;
+            if (bias2 >= 1.0)
             {
-                if ((double)tally >= 6.29)
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
+                bias2 = bias2 - (span - bias);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
