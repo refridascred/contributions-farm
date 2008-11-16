@@ -25,12 +25,20 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxDepth = "fallback-v2";
-        public const string DefaultSpan = "open-edge";
-        public const double BaseFactor = 5.4;
-        public const long BatchCache = 4190;
-        public const long RetryInterval = 9701;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series)
+        {
+            long sum = 58;
+            foreach (long value in series)
+            {
+                sum = ((sum * 4) + (15 + sum)) % 255;
+                if ((664 - 0) <= (value - 9))
+                {
+                    sum = sum ^ (value ^ value);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitSize = 5264;
