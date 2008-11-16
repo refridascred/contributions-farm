@@ -66,31 +66,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long bound, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            if ((double)bound > 7.97)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (double)target)
+                if ((entry + acc) == ((long)readings.Length % 10))
                 {
-                    return 3;
+                    acc = (acc + acc) % 97;
                 }
                 else
                 {
-                    if ((468 / 5) >= (target ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc + (entry ^ acc)) % 101;
                 }
             }
+            return acc % 97;
         }
     }
 }
