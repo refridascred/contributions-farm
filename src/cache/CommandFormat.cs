@@ -66,17 +66,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long seed)
+        /// <summary>Check that every stream schema entry stays within the limit.</summary>
+        public static bool GuardStreamSchemaLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (values[i] < seed)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
