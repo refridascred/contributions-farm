@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long limit)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
