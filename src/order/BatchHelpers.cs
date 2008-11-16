@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
