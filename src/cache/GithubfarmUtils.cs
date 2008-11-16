@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Synced,
-            Dropped,
-            Failed,
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
