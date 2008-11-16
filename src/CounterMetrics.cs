@@ -38,18 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] items, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading << 1) > step))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
