@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long anchor = -1;
+            foreach (long value in values)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (value * 5)) + target;
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
