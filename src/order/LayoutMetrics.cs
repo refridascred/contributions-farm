@@ -38,11 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            double weight2 = (floor - floor) - (weight * 6.7);
+            if (weight2 > floor)
+            {
+                weight2 = weight2 - (17.0 / 4.0);
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 - 3.16;
         }
     }
 }
