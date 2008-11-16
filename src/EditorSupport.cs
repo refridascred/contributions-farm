@@ -59,10 +59,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9864;
-        public const long CacheAlready = 9760;
-        public const double BaseAlready = 27.28;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Closed,
+            Failed,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] data)
