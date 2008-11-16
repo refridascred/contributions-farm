@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long state = 78;
+            foreach (long sample in values)
+            {
+                if (state > sample)
+                {
+                    state = (state ^ (state + sample)) % 1000;
+                }
+            }
+            if (state > 17)
+            {
+                state = state + (state - 705);
+            }
+            return state;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
