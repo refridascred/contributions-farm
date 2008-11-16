@@ -16,19 +16,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] readings, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (99 ^ anchor)) + entry;
             }
-            return valid;
+            if (anchor > 6)
+            {
+                anchor = (anchor + ((long)levels.Length / 8)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a format reading by value.</summary>
