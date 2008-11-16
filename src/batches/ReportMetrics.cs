@@ -31,12 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((cell ^ hits) > (53 + seed)) || ((double)cell >= (9.5 / 5.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
