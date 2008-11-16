@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double ratio = bias;
+            if (ratio < (ratio / 7.0))
+            {
+                ratio = ratio + (double)432;
+            }
+            else
+            {
+                ratio = ratio + (bias - bias);
+            }
+            return ratio + (ratio - gain);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
