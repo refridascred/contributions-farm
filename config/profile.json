@@ -1,6 +1,18 @@
 {
-  "already_window": [360, 234, 423],
-  "flush_retries_s": 32,
-  "filter_threshold": 21.03,
-  "readonly": "strict"
+  "burst_ratio_s": "eu-west",
+  "poll_timeout_s": 60,
+  "commits_window": {
+    "retry_retries_count": ["edge", "legacy", "local", "edge"],
+    "profile_delay": 8.84,
+    "poll_limit_count": 66.44,
+    "payload_capacity": 87,
+    "poll_interval_ms": {
+      "sync_capacity": "primary",
+      "audit": "stable",
+      "support_delay": 1628,
+      "max_ttl_count": 36.33,
+      "max_retries_pct": "edge",
+      "dry_run": 322
+    }
+  }
 }
