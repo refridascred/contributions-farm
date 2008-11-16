@@ -56,13 +56,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            New,
-            Dropped,
-            Failed,
-            Paused,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
