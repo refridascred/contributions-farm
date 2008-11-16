@@ -65,10 +65,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepBudget = 4451;
-        public const long MaxTimeout = 2093;
-        public const long DefaultCount = 9181;
-        public const long MinReport = 2656;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 39.9;
+        public const double SoftSession = 14.03;
+        public const double BaseRatio = 49.14;
+        public const long HardLevel = 1603;
     }
 }
