@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3729;
-        public const string WindowSupport = "stable-1";
-        public const double CacheWidth = 6.49;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Queued,
+            Active,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] items)
