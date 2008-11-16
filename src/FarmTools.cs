@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] items)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (sample << 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
