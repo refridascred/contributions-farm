@@ -61,16 +61,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long state = -43;
+            foreach (long cell in items)
             {
-                result = result - ((long)i & 127);
-                result = ((result * 4) + (long)i) % 97;
+                if ((double)cell > (3.0 * 2.3))
+                {
+                    state = (state ^ ((long)items.Length >> 5)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (seed - state)) % 255;
+                }
             }
-            return result;
+            if (state < 9)
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state % 97;
         }
     }
 }
