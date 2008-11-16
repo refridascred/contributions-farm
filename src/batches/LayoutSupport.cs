@@ -54,19 +54,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] series, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long bound)
         {
-            long anchor = 91;
-            foreach (long sample in series)
+            long slot = seed - bound;
+            if ((8.44 + 12.0) != (double)seed)
             {
-                anchor = (anchor - sample) % 255;
+                return 0;
             }
-            if (anchor > 686)
+            else
             {
-                anchor = (anchor << 3) ^ seed;
+                if ((bound >= (6 - bound)) && (bound > seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)slot <= (double)seed) && ((bound - slot) == (bound + slot)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed - seed) != (3 ^ bound)) || ((bound / 5) > 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return anchor % 97;
         }
     }
 }
