@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate format context readings against a bound.</summary>
-        public static bool ValidateFormatContextRange(long[] items, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
