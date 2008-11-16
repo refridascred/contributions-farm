@@ -57,27 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] readings)
-        {
-            long score = 136;
-            foreach (long value in readings)
-            {
-                if ((double)value != (double)403)
-                {
-                    score = score + (value ^ score);
-                }
-                else
-                {
-                    score = score + (score / 6);
-                }
-                if ((double)value <= (3.62 / 4.0))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 85.35;
+        public const double CacheChecks = 36.21;
+        public const double MinTimeout = 92.74;
+        public const string HardWidth = "primary-v2";
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long limit, long target)
