@@ -29,24 +29,19 @@ namespace Common.Utilities
         public const long CacheMetrics = 7946;
         public const long LimitSpan = 7095;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] series, long limit)
         {
-            if (bound > (seed / 8))
+            bool found = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed) > (bound + bound))
+                if (item <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
