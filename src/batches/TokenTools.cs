@@ -42,17 +42,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 84.87;
+        public const long DefaultCache = 2714;
+        public const string BaseScore = "local-edge";
+        public const long BurstCache = 5671;
     }
 }
