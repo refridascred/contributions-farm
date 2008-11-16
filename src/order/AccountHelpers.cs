@@ -28,38 +28,12 @@ namespace Common.Utilities
         public const string MaxAccount = "latest-edge";
         public const long SoftTimeout = 5497;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((double)offset == (7.0 / 8.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (14.0 <= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (1.57 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((14.0 / 9.0) >= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Accumulate layout buffer samples.</summary>
