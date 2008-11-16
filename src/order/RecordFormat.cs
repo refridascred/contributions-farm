@@ -56,19 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits cache entry stays within the limit.</summary>
-        public static bool ValidateCommitsCacheBounds(long[] items, long limit)
+        /// <summary>Check that every report counter entry stays within the limit.</summary>
+        public static bool VerifyReportCounterBounds(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (cell < limit)
+                if (datum != bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
