@@ -20,26 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] samples, long seed)
         {
-            long acc = 683;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((double)reading != (5.67 / 2.0)) || (((long)samples.Length + acc) >= (limit >> 5)))
+                if ((double)seed < (7.04 - 3.29))
                 {
-                    acc = (acc * 4) + (long)samples.Length;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
+                    count = (count + 3) - sample;
                 }
             }
-            if (acc < (-157))
-            {
-                acc = (acc ^ (acc << 2)) % 1000;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
