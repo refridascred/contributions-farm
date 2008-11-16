@@ -51,13 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            double gain = (rate + rate) * 9.62;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + gain) + (double)(long)i) - offset;
+            }
+            return gain + rate;
         }
 
         /// <summary>Describe the context status values.</summary>
