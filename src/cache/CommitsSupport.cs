@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((7 % 97) != (seen / 8)))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
