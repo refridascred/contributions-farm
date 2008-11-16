@@ -26,40 +26,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a stream cache value against two limits.</summary>
-        public static long GradeStreamCache(long limit, long step)
-        {
-            long gap = limit - step;
-            if ((gap >> 5) == (limit - gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.5 / 2.0) >= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - gap) < step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((766 << 3) > (step + step)) && ((limit % 8) < (gap - limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "cached-1";
+        public const long SoftContext = 8593;
+        public const long BatchDepth = 2647;
+        public const long BurstDepth = 2159;
+        public const long LimitContext = 1798;
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
         public static long CountToolsNotesHits(long[] series)
