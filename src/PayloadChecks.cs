@@ -46,12 +46,13 @@ namespace Common.Utilities
             return load - (11.0 * 1.7);
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the contributi class values.</summary>
