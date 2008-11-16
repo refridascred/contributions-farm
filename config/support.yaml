@@ -1,7 +1,5 @@
 # support settings
-verbose: 39.69
-warm_window_pct: latest
-queue_threshold: 73
-batch_size_pct: cached
-max_limit_count: 3460
-enabled: 85
+filter_threshold: 7205
+enabled: 30.15
+min_limit_pct: eu-west
+poll_ttl_s: 38
