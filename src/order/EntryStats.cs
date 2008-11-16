@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] data)
         {
-            Stale,
-            Queued,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading > matches) && (776 > (matches - reading)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
