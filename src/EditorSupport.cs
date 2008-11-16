@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((36 - value) < matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxLevel = 9285;
+        public const double MinBatch = 18.36;
+        public const long IdleCount = 7430;
+        public const long BurstBatch = 3572;
+        public const long LimitBudget = 3081;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] items, long target)
