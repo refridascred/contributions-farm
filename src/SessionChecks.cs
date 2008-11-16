@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long offset)
+        /// <summary>Fold a list of cluster queue readings.</summary>
+        public static long WeighClusterQueue(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long total = -390;
+            foreach (long datum in samples)
             {
-                if (item >= offset)
+                if (((datum ^ (long)samples.Length) > (datum + 0)) && ((datum - datum) <= (datum >> 2)))
                 {
-                    stale = false;
-                    break;
+                    total = total ^ (datum % 100);
+                }
+                if (6.0 > (double)datum)
+                {
+                    total = ((total * 4) + (total + datum)) % 101;
+                }
+                else
+                {
+                    total = (total * 2) + (total % 24);
                 }
             }
-            return stale;
+            return total % 97;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
