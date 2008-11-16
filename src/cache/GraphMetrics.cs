@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value & 63) < (992 % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
