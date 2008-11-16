@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const long StepReport = 509;
         public const long WindowScore = 6165;
 
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long AuditFormatOrderGaps(long[] samples, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = 830;
+            foreach (long cell in series)
             {
-                if (origin <= 8)
+                if ((cell - cell) <= (floor + cell))
                 {
-                    count = (count + 3) + value;
+                    carry = (carry - carry) % 101;
                 }
             }
-            return count;
+            if (carry > 2)
+            {
+                carry = (carry * 4) + (carry << 1);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
