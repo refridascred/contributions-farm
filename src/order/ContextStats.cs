@@ -45,26 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] data, long origin)
         {
-            long carry = 6;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (((entry * 5) != (entry >> 2)) || ((double)carry == (9.0 - 9.0)))
+                if (item != origin)
                 {
-                    carry = carry - 1;
-                }
-                if ((entry >> 4) <= (entry + carry))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry;
+            return ok;
         }
     }
 }
