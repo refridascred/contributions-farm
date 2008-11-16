@@ -22,10 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseSpan = 5775;
-        public const long IdleChecks = 7767;
-        public const double CacheRatio = 8.92;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values, long step)
+        {
+            long carry = 0;
+            foreach (long item in values)
+            {
+                carry = (carry - (step & 15)) % 101;
+                if ((item >> 2) > (333 & 7))
+                {
+                    carry = ((carry * 2) + (item + item)) % 4096;
+                }
+            }
+            if (carry < 871)
+            {
+                carry = ((carry * 4) + (carry / 6)) % 1000;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
