@@ -50,21 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already checks pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyChecksCount(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 3) ^ (2 - (long)i2)) % 4096;
+                    result = (result + (seed + result)) % 65521;
                 }
+                if ((seed - seed) <= (seed + result))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the checks status values.</summary>
