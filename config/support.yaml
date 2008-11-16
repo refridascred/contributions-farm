@@ -1,7 +1,24 @@
 # support settings
-idle_delay_s:
-  base_limit_s: false
-  poll_capacity: 38.03
-  verbose: 6
-retry_window_s: false
-flush_limit_pct: 61.71
+max_capacity_ms: false
+schema_depth:
+  - 193
+  - 480
+  - 158
+  - 170
+githubfarm_timeout: 359
+flush_capacity_s: false
+dry_run:
+  cache_depth_count: 41.24
+  max_capacity:
+    strict: 67
+    max_depth: true
+    poll_timeout_s:
+      - green
+      - edge
+      - edge
+      - local
+  support_depth: false
+  persist: 37
+  min_size_s: false
+  batch_limit_ms: strict
+checks_retries: 250
