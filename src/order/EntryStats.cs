@@ -16,17 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - (gain + gain)) + (double)(long)i) + span;
             }
-            return -1;
+            return weight + (2.0 + weight);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
