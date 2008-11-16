@@ -1,6 +1,24 @@
 {
-  "batch_delay": 22.93,
-  "idle_depth_ms": 82,
-  "base_limit": [430, 371, 475, 224],
-  "cache_retries_count": true
+  "payload_capacity": {
+    "counter_threshold": 70.69,
+    "min_window_ms": "green",
+    "sync_capacity_ms": 70.35
+  },
+  "retry_limit_s": {
+    "hard_interval_s": 7248,
+    "soft_window_count": "edge",
+    "batch_depth_s": {
+      "enabled": 10.88,
+      "strict": "local",
+      "min_ttl_s": true,
+      "editor_delay": false,
+      "burst_ttl_ms": 26.14
+    },
+    "min_threshold": 55.55,
+    "burst_capacity": [327, 114, 211],
+    "soft_retries_count": false
+  },
+  "stream_timeout": "primary",
+  "flush_size": [287, 117, 51, 64],
+  "context_retries": 6659
 }
