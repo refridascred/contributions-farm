@@ -58,22 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long FoldRecordBatches(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 460;
+            foreach (long reading in data)
             {
-                if (tally <= (41 - 1))
+                if (!((mix + reading) > (reading + 192)))
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix * 3) + (mix - mix)) + seed;
                 }
             }
-            return tally;
+            if (mix > (-88))
+            {
+                mix = (mix ^ (849 - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the context mode values.</summary>
