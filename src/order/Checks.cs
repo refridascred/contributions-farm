@@ -50,25 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long origin)
-        {
-            if (!((18.0 * 9.81) < (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - origin) == (origin ^ 46))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinTimeout = 6222;
+        public const string LimitEditor = "latest-1";
+        public const string BaseEditor = "primary-1";
+        public const string SoftSpan = "fallback-1";
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double bias, double offset)
