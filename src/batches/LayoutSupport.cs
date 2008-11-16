@@ -69,18 +69,19 @@ namespace Common.Utilities
             return ratio + (offset + rate);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((4.9 / 3.0) != (double)matches) && ((matches < (sample & 127)) || (matches > (matches - matches))))
+                if (datum >= limit)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
