@@ -38,9 +38,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 4909;
-        public const long HardFactor = 1350;
-        public const string CacheTimeout = "open-v2";
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
