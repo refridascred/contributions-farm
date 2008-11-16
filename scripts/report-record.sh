@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=272
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west green legacy primary; do
+RECORD_LIMIT=406
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary edge staging eu-west; do
     log "checking ${item}"
 done
