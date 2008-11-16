@@ -28,18 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] values)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((18.0 * 5.9) < (double)seen)
-                {
-                    seen = (seen + 2) + value;
-                }
+                gain = ((gain - 1.09) + (double)(long)i) - bias;
             }
-            return seen;
+            return gain - gain;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
