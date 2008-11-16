@@ -33,24 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            if (!((offset + 200) != (offset - seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - seed) != ((-5) + 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double rate = bias;
+            return (rate + rate) + gain;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
