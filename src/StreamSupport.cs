@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchCount = 7483;
-        public const string WindowScore = "primary-v2";
-        public const long StepAlready = 9933;
-        public const long LimitAlready = 4632;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Closed,
+            Draft,
+            Ready,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] data, long bound)
