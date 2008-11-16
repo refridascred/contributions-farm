@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] samples, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            long state = 42;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((item << 3) < state))
+                if (9.0 < (double)tally)
                 {
-                    state = ((state * 4) + (state / 8)) % 4096;
-                    continue;
-                }
-                if ((96 >> 5) == (item << 1))
-                {
-                    state = (state - (seed << 3)) % 65521;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            if (state > 36)
-            {
-                state = ((state * 5) + (seed - seed)) % 65521;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate farm format readings against a bound.</summary>
