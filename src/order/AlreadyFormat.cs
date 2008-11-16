@@ -50,21 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(184 & 3);
+            if (scale > (double)5)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
