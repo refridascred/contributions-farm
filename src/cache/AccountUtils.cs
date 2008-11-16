@@ -41,19 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] series, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
     }
 }
