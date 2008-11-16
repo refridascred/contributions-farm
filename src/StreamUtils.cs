@@ -44,13 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the account phase values.</summary>
