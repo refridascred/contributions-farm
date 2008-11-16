@@ -45,12 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            Stale,
-            Idle,
-            New,
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
