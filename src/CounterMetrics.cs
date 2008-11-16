@@ -37,14 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] items, long step)
         {
-            Ready,
-            Queued,
-            Draft,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading << 1) > step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
