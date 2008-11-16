@@ -1,11 +1,9 @@
 # githubfarm settings
-enabled: 70
-stream_delay:
-  - primary
-  - fallback
-  - primary
-  - eu-west
-flush_timeout_count:
-  - blue
-  - open
-  - stable
+max_timeout_ms:
+  - 221
+  - 476
+  - 30
+  - 20
+enabled: standard
+layout_interval: 42
+min_timeout_s: 89
