@@ -16,10 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4665;
-        public const double CacheContributi = 88.98;
-        public const long HardBudget = 7265;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Locked,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
