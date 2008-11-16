@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long CacheTools = 7071;
         public const double MinLevel = 38.65;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 5747;
+        public const long WindowCommand = 4923;
+        public const long BurstCommand = 4905;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
