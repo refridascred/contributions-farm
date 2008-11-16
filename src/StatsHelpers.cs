@@ -46,32 +46,21 @@ namespace Common.Utilities
         public const long HardFactor = 6296;
         public const long MinBudget = 7944;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long gap = floor ^ bound;
-            if ((gap + bound) <= (floor - bound))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 31) >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)gap < 5.82)
+                    if ((levels[i] + levels[j]) == 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
