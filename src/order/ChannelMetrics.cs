@@ -27,17 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -2;
+            foreach (long value in items)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                if ((double)carry > (6.0 * 5.0))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (floor & 31)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (value + floor)) % 65521;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
