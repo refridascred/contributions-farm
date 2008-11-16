@@ -42,19 +42,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Scale a commits farm figure with a bias.</summary>
+        public static double ScaleCommitsFarm(double gain, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            double bias = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i - step) <= (step % 2))
-                {
-                    acc = acc + step;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                bias = ((bias + (double)5) + (double)(long)i) + gain;
             }
-            return acc;
+            return bias + (bias * 9.1);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
