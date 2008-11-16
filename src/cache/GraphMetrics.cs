@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long MaxLayout = 1820;
         public const double SoftLayout = 19.4;
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long TallyToolsFilter(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long sum = 78;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.3 < (double)sum) && ((double)reading < (0.45 + 0.19)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + reading) % 1000;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a support options.</summary>
