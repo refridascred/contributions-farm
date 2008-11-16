@@ -28,12 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items, long target)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long state = 13;
+            foreach (long sample in items)
+            {
+                if ((double)target < 2.7)
+                {
+                    state = state ^ (sample ^ state);
+                }
+                if ((3.07 / 3.0) <= (double)state)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
     }
 }
