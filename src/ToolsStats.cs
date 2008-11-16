@@ -53,12 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long target)
         {
-            Stale,
-            Closed,
-            Retry,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
