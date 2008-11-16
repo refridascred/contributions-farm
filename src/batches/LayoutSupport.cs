@@ -49,39 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long slot = seed - bound;
-            if ((8.44 + 12.0) != (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= (6 - bound)) && (bound > seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)slot <= (double)seed) && ((bound - slot) == (bound + slot)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed - seed) != (3 ^ bound)) || ((bound / 5) > 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
