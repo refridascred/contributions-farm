@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] levels, long step)
         {
-            Failed,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((step / 7) > step)
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
