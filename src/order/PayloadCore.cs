@@ -23,19 +23,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (offset >= ((long)values.Length + item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinInterval = 3507;
+        public const double HardBatch = 86.77;
+        public const long SoftBatch = 4019;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long seed, long floor)
