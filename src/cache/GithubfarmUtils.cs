@@ -20,18 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            long anchor = 622;
-            foreach (long cell in items)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((target % 3) == (target ^ cell)) && ((cell + (-9)) >= (anchor + target)))
-                {
-                    anchor = (anchor - target) % 4096;
-                }
+                mark = mark ^ offset;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
