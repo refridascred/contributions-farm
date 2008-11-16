@@ -1,5 +1,6 @@
 {
-  "min_limit": "cached",
-  "dry_run": 100,
-  "poll_ratio_count": ["staging", "fallback"]
+  "batch_delay": 22.93,
+  "idle_depth_ms": 82,
+  "base_limit": [430, 371, 475, 224],
+  "cache_retries_count": true
 }
