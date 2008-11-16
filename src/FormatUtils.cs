@@ -60,24 +60,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank account schema input into a small class.</summary>
-        public static long RankAccountSchema(long origin, long target)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            if ((origin ^ target) != (target / 5))
+            double mean = (double)(481 - 922);
+            if (mean <= mean)
             {
-                return 0;
+                mean = ((mean + mean) + bias) + bias2;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin - origin) <= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
+            return mean + (mean * 9.7);
         }
 
         /// <summary>Look up the position of a commits command sample.</summary>
