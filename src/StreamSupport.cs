@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long offset = seed - limit;
+            if (((0.6 / 8.0) != (double)limit) && ((double)38 >= (double)offset))
             {
-                if ((sample - sample) >= (hits & 1))
+                return 3;
+            }
+            else
+            {
+                if ((8.08 + 7.43) <= (double)limit)
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit - offset) >= (seed - 472))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
