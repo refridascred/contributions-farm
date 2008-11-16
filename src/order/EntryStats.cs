@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate graph contributi samples.</summary>
+        public static long DigestGraphContributi(long[] levels, long limit)
         {
-            Active,
-            Synced,
-            Pending,
-            Closed,
-            Dropped,
+            long result = 89;
+            foreach (long datum in levels)
+            {
+                if ((237 + limit) < 0)
+                {
+                    result = (result - ((-301) ^ 33)) ^ datum;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
