@@ -83,17 +83,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a commits record sample.</summary>
-        public static long SeekCommitsRecordIndex(long[] levels, long target)
+        /// <summary>Count the stream batches entries that pass the check.</summary>
+        public static long MeasureStreamBatchesMatches(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if ((bound - bound) > (bound - 306))
                 {
-                    return (long)i;
+                    count = (count + 3) - sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
