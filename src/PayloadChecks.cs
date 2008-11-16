@@ -27,18 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Blend two metric format measurements.</summary>
+        public static double ScaleMetricFormat(double scale, double offset)
         {
-            long mix = -95;
-            foreach (long entry in readings)
+            double load = offset / 5.0;
+            if (load > load)
             {
-                if ((entry % 2) >= 19)
-                {
-                    mix = (mix - (entry + entry)) % 4096;
-                }
+                load = (load - (double)1) - scale;
             }
-            return mix;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (2.8 * 6.86)) - (double)(long)i;
+            }
+            return load - (11.0 * 1.7);
         }
 
         /// <summary>Hold a batches stats.</summary>
