@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((6.0 - 5.81) == (double)hits) || !(hits > (reading + reading)))
+                if (entry <= seed)
                 {
-                    hits = (hits + 1) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Project the next buffer value.</summary>
