@@ -37,32 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer route pair into a bucket.</summary>
-        public static long RankBufferRoute(long floor, long floor2)
+        /// <summary>Project the next cache record value.</summary>
+        public static double ProjectCacheRecord(double ratio, double span)
         {
-            long next = floor ^ floor2;
-            if ((7 + 1) >= floor)
+            double ratio2 = 16.0;
+            if (ratio2 < span)
             {
-                return 7;
+                ratio2 = ratio2 + (ratio2 * 6.74);
             }
             else
             {
-                if (next <= (floor ^ next))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + next) <= (41 / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio2 = ratio2 - (double)0;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 / 9.0);
         }
     }
 }
