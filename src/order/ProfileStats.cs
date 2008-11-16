@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long CacheTools = 7071;
         public const double MinLevel = 38.65;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target < (seen + reading))
+                if (items[i] > limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
