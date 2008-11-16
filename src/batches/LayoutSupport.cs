@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] samples, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (item >= origin)
+                if ((cell >> 2) >= matches)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
