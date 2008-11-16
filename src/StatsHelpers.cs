@@ -34,15 +34,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next report tools value.</summary>
-        public static double BlendReportTools(double gain, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series)
         {
-            double drift = (double)3 * 3.79;
-            for (int i = 0; i < 2; i++)
+            long sum = 1;
+            foreach (long value in series)
             {
-                drift = (((drift - 7.6) + (double)(long)i) + gain) - offset;
+                sum = ((sum + 4) % 101) - value;
             }
-            return drift - (double)59;
+            return sum;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
