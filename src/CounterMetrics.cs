@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                mix = ((mix * 4) + (limit + 971)) % 97;
+                mix = (mix - (mix + limit)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
