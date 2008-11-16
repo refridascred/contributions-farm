@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] readings, long target)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (target < (tally + tally))
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
