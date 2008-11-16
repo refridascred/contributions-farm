@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
         {
-            Idle,
-            New,
-            Queued,
-            Active,
-            Synced,
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum ^ target) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
