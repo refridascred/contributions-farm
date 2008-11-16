@@ -19,12 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4440;
-        public const long StepProfile = 854;
-        public const double WindowProfile = 11.9;
-        public const string SoftSpan = "fallback";
-        public const double SoftCount = 26.04;
+        /// <summary>Match up window commits samples.</summary>
+        public static long MatchWindowCommitsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
