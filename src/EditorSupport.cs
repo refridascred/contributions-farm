@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long result = 0;
+            foreach (long value in readings)
+            {
+                if ((double)result <= (7.05 * 4.6))
+                {
+                    result = ((result + result) % 101) ^ value;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
