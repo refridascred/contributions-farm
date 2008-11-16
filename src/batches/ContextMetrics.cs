@@ -75,23 +75,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples, long seed)
         {
-            long carry = 87;
-            foreach (long entry in values)
+            long result = 4;
+            foreach (long value in samples)
             {
-                if ((3.8 > (double)entry) || (carry > (carry + entry)))
+                if (!((2.6 / 7.0) < (double)seed))
                 {
-                    carry = ((carry << 3) ^ (2 - 28)) % 97;
+                    result = (((result * 2) + result) % 101) ^ value;
                 }
-                if (!((77 - carry) <= (4 * 3)))
-                {
-                    carry = ((carry * 5) + (carry ^ entry)) % 1000;
-                }
-                carry = (carry - (56 + carry)) % 97;
             }
-            return carry % 97;
+            if (result > 0)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 97;
         }
     }
 }
