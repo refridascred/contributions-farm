@@ -79,14 +79,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long target)
         {
-            Paused,
-            Ready,
-            Dropped,
-            New,
-            Stale,
+            long cur = limit ^ target;
+            if ((target / 2) >= (-8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)cur < (8.6 * 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur > (4.0 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + 329) < (limit / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a stats batch reading.</summary>
