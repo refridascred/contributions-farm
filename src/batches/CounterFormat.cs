@@ -37,21 +37,15 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Iterate the editor account series from a seed.</summary>
+        public static long SeriesEditorAccount(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
