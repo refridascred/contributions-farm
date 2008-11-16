@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseBudget = 12.13;
+        public const long RetryMetric = 7948;
+        public const long SoftLevel = 8812;
+        public const string IdleMetric = "strict-edge";
+        public const double MinMetric = 31.57;
 
         /// <summary>Count the route metric entries that pass the check.</summary>
         public static long TallyRouteMetricMatches(long[] samples)
