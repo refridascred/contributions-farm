@@ -91,18 +91,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long TallyCounterMetricsOutliers(long[] values, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)floor < (1.9 + 7.8))
+                if (items[i] >= offset)
                 {
-                    matches = (matches + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
