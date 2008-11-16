@@ -48,19 +48,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] series, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
