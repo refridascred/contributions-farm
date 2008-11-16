@@ -38,25 +38,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Rank stats payload input into a small class.</summary>
+        public static long GradeStatsPayload(long step, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long step2 = step ^ offset;
+            if (step2 > offset)
             {
-                if (((double)origin == (7.8 * 0.8)) && ((total + origin) == ((-35) >> 1)))
+                return 1;
+            }
+            else
+            {
+                if ((offset - step) >= (step2 - step))
                 {
-                    total = (total ^ (total + origin)) % 101;
+                    return 3;
                 }
                 else
                 {
-                    total = total ^ total;
-                    total = ((total << 3) ^ (origin & 255)) % 255;
+                    if (((step & 255) < 103) || ((16.0 / 6.0) >= (double)step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                total = (total << 2) ^ total;
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
         }
     }
 }
