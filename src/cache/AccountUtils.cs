@@ -30,19 +30,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a cache entry figure with a bias.</summary>
-        public static double SmoothCacheEntry(double bias, double span)
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long FoldCounterOrder(long[] readings, long step)
         {
-            double mean = bias;
-            if (mean <= (bias - bias))
+            long score = 6;
+            foreach (long sample in readings)
             {
-                mean = mean - (bias * 1.3);
+                score = ((score << 2) ^ (step ^ sample)) % 65521;
             }
-            else
-            {
-                mean = mean + (mean * 3.0);
-            }
-            return mean - span;
+            return score;
         }
     }
 }
