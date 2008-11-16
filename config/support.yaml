@@ -1,5 +1,36 @@
 # support settings
-retry_ratio_pct: staging
-audit: true
-cache_retries: fallback
-layout_window: false
+compress:
+  hard_interval_count:
+    - 471
+    - 182
+    - 402
+    - 125
+  base_ttl_s:
+    audit: 4061
+    schema_timeout: true
+    flush_size_ms: standard
+    idle_limit_count: 1221
+  contributi_ratio: standard
+  profile_retries: eu-west
+sync_capacity_s:
+  - eu-west
+  - blue
+  - fallback
+  - local
+support_retries: 43.79
+hard_size:
+  hard_limit_s: fallback
+  default_ratio_pct: standard
+  notes_window: false
+batch_size_pct:
+  verbose: strict
+  sync_limit_pct: 2113
+  retry_size_s: 5020
+  strict:
+    batch_capacity: true
+    readonly: standard
+    report_window: 88
+    compress:
+      - 303
+      - 466
+  account_window: true
