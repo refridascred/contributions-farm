@@ -43,12 +43,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a record batch sample.</summary>
-        public static long SeekRecordBatchIndex(long[] items, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] <= seed)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
