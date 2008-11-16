@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next counter checks value from a seed.</summary>
+        public static long SeriesCounterChecks(long step)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Project the next contributi stream value.</summary>
