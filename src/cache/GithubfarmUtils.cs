@@ -34,21 +34,38 @@ namespace Common.Utilities
             return drift - (double)75;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset * 3) <= (offset / 8))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (1.0 * 7.5))
                 {
-                    if ((values[i] ^ values[j]) != 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset >= (7.74 / 5.0))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset < (2 << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
