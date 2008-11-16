@@ -20,21 +20,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Derive the next filter tools value from a seed.</summary>
+        public static long StepFilterTools(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc + (9 - acc);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
