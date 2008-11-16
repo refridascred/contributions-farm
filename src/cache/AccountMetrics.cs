@@ -48,16 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool CheckSchemaWindowRange(long[] series, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = carry - (carry % 24);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Measure how many entry already samples are out of range.</summary>
