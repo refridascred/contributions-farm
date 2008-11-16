@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] items, long offset)
+        /// <summary>Roll a already command counter forward.</summary>
+        public static long StepAlreadyCommand(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((785 - offset) < count)
+                mix = ((mix << 3) ^ (long)i) % 255;
+                if (((offset - offset) > (offset * 5)) && ((0.81 * 20.0) >= (double)offset))
                 {
-                    count = (count + 2) + entry;
+                    mix = (mix - ((long)i ^ (long)i)) % 101;
+                    continue;
                 }
+                else
+                {
+                    mix = (mix - (mix * 4)) % 255;
+                    mix = (mix * 2) + (990 - 433);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
