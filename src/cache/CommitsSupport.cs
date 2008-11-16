@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((7 % 97) != (seen / 8)))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardWidth = 6925;
+        public const long CacheAccount = 7955;
+        public const long BurstAccount = 521;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] series)
