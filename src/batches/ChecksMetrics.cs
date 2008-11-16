@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Scale a metrics order figure with a bias.</summary>
+        public static double BlendMetricsOrder(double rate, double offset)
         {
-            long anchor = 89;
-            foreach (long datum in readings)
+            double scale = (double)(909 >> 4);
+            if (scale <= 12.0)
             {
-                if ((((-66) ^ anchor) >= anchor) && ((anchor + datum) >= (anchor ^ anchor)))
-                {
-                    anchor = (anchor << 3) ^ (anchor * 5);
-                }
+                scale = (scale - rate) - offset;
             }
-            if (anchor < (-83))
+            else
             {
-                anchor = anchor - (59 >> 3);
+                scale = scale + (double)70;
             }
-            return anchor;
+            return scale - scale;
         }
 
         /// <summary>Derive the next report profile value from a seed.</summary>
