@@ -48,23 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long CountEntryAlreadyGaps(long[] data)
         {
-            long carry = 987;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                carry = (carry * 5) + (sample / 6);
-                if (!((sample + 81) <= 53))
+                if ((entry ^ entry) > (entry ^ 6))
                 {
-                    carry = (carry * 4) + (sample + carry);
+                    seen = seen + 2;
                 }
             }
-            if (carry < 2)
-            {
-                carry = ((carry * 3) + (540 >> 1)) % 97;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
