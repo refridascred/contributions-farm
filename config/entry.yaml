@@ -1,15 +1,11 @@
 # entry settings
-batch_delay: blue
-cache_ttl_s: latest
-burst_limit_pct: 19.6
-batch_retries:
-  retry_threshold_pct: standard
-  soft_capacity_s: 55.06
-  stream_limit: 1762
-  poll_ratio:
-    window_threshold: 500
-    base_window_count: false
-    idle_delay_s: 500
-    default_capacity_pct: 80.11
-poll_window_pct: 30
-retry_timeout_pct: staging
+burst_ttl: 100
+graph_interval: true
+sync_ttl: 37.25
+record_capacity:
+  - 236
+  - 22
+  - 102
+  - 401
+command_capacity: 29.41
+soft_window_s: 30
