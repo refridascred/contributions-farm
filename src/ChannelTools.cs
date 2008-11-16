@@ -13,38 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            if (!((double)floor >= (double)origin))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (8 >= (floor << 2))
+                if ((long)samples.Length < 336)
                 {
-                    return 3;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    if ((874 ^ origin) >= (floor - (-66)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin % 64) != (origin + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
