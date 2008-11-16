@@ -33,17 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] data, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 90;
+            foreach (long reading in levels)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (limit >> 2)) % 4096;
+                anchor = anchor + (reading + 73);
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Blend two record order measurements.</summary>
