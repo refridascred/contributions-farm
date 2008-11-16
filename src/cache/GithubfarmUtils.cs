@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3742;
-        public const long SoftRatio = 1038;
-        public const long RetryTimeout = 4348;
-        public const long DefaultCommits = 857;
-        public const double MaxScore = 9.29;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series, long origin)
+        {
+            long carry = 7;
+            foreach (long item in series)
+            {
+                carry = ((carry + item) % 1000) - origin;
+                if ((carry > (item - item)) || ((long)series.Length < (item ^ item)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] items, long target)
