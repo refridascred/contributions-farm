@@ -19,16 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long DigestSchemaProfile(long[] samples)
-        {
-            long sum = 73;
-            foreach (long cell in samples)
-            {
-                sum = (sum << 2) ^ (cell + cell);
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4440;
+        public const long StepProfile = 854;
+        public const double WindowProfile = 11.9;
+        public const string SoftSpan = "fallback";
+        public const double SoftCount = 26.04;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
