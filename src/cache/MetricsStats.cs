@@ -32,25 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long step, long offset)
+        /// <summary>Derive the next buffer graph value from a seed.</summary>
+        public static long SeriesBufferGraph(long origin)
         {
-            long edge = step - offset;
-            if ((9 / 2) < (step % 7))
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)edge <= (5.95 - 19.0))
+                long gap = origin;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 6;
+                    acc = (acc - gap) ^ (long)i2;
                 }
-                else
-                {
-                    return 0;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
