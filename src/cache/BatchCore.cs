@@ -47,9 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSize = 54.72;
-        public const string MinProfile = "open-v2";
-        public const long IdleScore = 1618;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long seed)
+        {
+            long state = 1;
+            foreach (long reading in readings)
+            {
+                long bound = (state / 2) + 519;
+                state = (((state << 2) ^ (bound >> 4)) % 97) + seed;
+                state = ((state << 3) ^ reading) % 1000;
+            }
+            return state;
+        }
     }
 }
