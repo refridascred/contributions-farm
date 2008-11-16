@@ -62,18 +62,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] readings, long seed)
+        /// <summary>Derive the next token counter value from a seed.</summary>
+        public static long RollTokenCounter(long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell > (seed & 127)) && ((84 - 71) <= seen))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor - (7 << 1)) % 97) + (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
