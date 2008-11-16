@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitLevel = 85.99;
-        public const double DefaultCount = 77.92;
-        public const long MaxNotes = 883;
-        public const long BurstDepth = 8163;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
