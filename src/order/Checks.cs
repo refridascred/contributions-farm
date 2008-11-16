@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string StepSession = "fallback-v2";
         public const double BurstSession = 61.32;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series)
+        /// <summary>Validate support format readings against a bound.</summary>
+        public static bool CheckSupportFormatBounds(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((item >> 3) >= (count ^ count))
+                if (entry < origin)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
