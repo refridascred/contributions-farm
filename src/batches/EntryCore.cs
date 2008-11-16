@@ -59,39 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long edge = bound - seed;
-            if ((double)seed != (0.73 + 17.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7 - seed) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((96 > (bound + bound)) || ((edge << 3) == (seed + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((((-96) + bound) > seed) || (792 <= (seed + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
