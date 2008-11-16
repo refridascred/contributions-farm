@@ -29,15 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long state = 759;
+            foreach (long entry in values)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (!((77 / 8) >= (entry - bound)))
+                {
+                    state = (state + bound) % 101;
+                }
             }
-            return total;
+            if (state < 75)
+            {
+                state = ((state << 2) ^ (bound + state)) % 255;
+            }
+            return state;
         }
     }
 }
