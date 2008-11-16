@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const long MinCount = 152;
         public const long MaxToken = 2410;
 
-        /// <summary>Combine githubfarm farm values into a single score.</summary>
-        public static long WeighGithubfarmFarm(long[] samples, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long result = 6;
-            foreach (long item in samples)
-            {
-                if (bound <= (result + result))
-                {
-                    result = (result + (result + item)) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ (bound + 56);
-                }
-            }
-            return result;
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the metric state values.</summary>
