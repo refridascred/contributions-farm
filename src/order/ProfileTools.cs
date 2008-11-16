@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a account counter value against two limits.</summary>
-        public static long SortAccountCounter(long step, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long cur = step + floor;
-            if ((double)floor >= (double)cur)
+            long acc = 1;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur > (18.0 * 7.0))
+                acc = acc + (54 - datum);
+                if ((double)acc <= (1.7 * 7.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor << 3) != (step / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur / 3) >= cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc - (datum ^ datum)) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the window state values.</summary>
