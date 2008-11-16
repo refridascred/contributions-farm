@@ -36,13 +36,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Active,
+            New,
+            Done,
         }
     }
 }
