@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mean - 5.6;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((value & 127) == ((long)data.Length * 2))
+                if (sample > (sample ^ sample))
                 {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
