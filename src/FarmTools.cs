@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = 18;
-            foreach (long sample in data)
-            {
-                if ((8.0 * 7.8) > (double)mix)
-                {
-                    mix = mix ^ (sample - mix);
-                }
-            }
-            return mix;
+            Synced,
+            Done,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
