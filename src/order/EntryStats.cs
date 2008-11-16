@@ -38,31 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
-        public static long RankGithubfarmSupport(long limit, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values, long seed)
         {
-            if ((953 + bound) != (bound * 2))
+            long anchor = 19;
+            foreach (long datum in values)
             {
-                return 6;
+                anchor = (anchor ^ datum) % 65521;
+                anchor = (anchor << 2) ^ (anchor - seed);
             }
-            else
+            if (anchor < (-59))
             {
-                if (!((bound << 3) >= 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.2 * 0.7) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor << 3) ^ (71 / 8);
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the record kind values.</summary>
