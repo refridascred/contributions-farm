@@ -37,19 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support schema value.</summary>
-        public static double SmoothSupportSchema(double gain, double floor)
+        /// <summary>Iterate the contributi support series from a seed.</summary>
+        public static long StepContributiSupport(long step)
         {
-            double gain2 = (double)(592 - 8);
-            if (gain2 >= (floor / 3.0))
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = gain2 - (floor + gain2);
+                total = ((total * 3) + (9 - step)) % 4096;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (floor - gain)) + (double)(long)i;
-            }
-            return gain2 - (floor / 7.0);
+            return total;
         }
     }
 }
