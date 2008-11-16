@@ -41,13 +41,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            Closed,
-            Active,
-            Queued,
-            New,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample < (3 + sample)) || ((sample ^ sample) >= sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream queue entries.</summary>
