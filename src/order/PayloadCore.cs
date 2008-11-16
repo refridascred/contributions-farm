@@ -23,38 +23,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long origin, long offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            if ((origin << 1) <= offset)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (4.0 + 4.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin ^ origin) <= (offset + 91)))
+                    if ((series[i] - series[j]) < 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset << 1) == (origin % 60)) && ((double)origin >= (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
