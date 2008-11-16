@@ -1,5 +1,8 @@
 # support settings
-batch_retries: 10.4
-poll_capacity_count: edge
-readonly: staging
-min_size_s: false
+burst_ratio_s:
+  - 16
+  - 332
+  - 154
+  - 110
+flush_size_pct: staging
+metric_interval: strict
