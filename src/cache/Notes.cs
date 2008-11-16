@@ -61,32 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long bound2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long lane = bound - bound2;
-            if (((939 ^ lane) <= (bound >> 3)) && ((double)bound2 <= 18.0))
+            long sum = 5;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound >> 2))
+                if ((sum * 2) <= sum)
                 {
-                    return 8;
+                    sum = ((sum - (sum % 97)) % 255) - sample;
                 }
                 else
                 {
-                    if ((double)lane <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (sum - (sum - sum)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
