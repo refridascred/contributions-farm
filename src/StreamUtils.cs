@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Fold a list of support buffer readings.</summary>
+        public static long WeighSupportBuffer(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            long sum = 55;
+            foreach (long datum in items)
+            {
+                if (!((sum + sum) != (sum - sum)))
+                {
+                    sum = ((sum * 3) + (-1)) - datum;
+                }
+                else
+                {
+                    sum = (sum + sum) % 65521;
+                }
+            }
+            if (sum > 479)
+            {
+                sum = sum - (sum >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
