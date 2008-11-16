@@ -57,25 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long acc = -504;
+            foreach (long value in items)
             {
-                if ((mark > 732) && ((double)mark <= (3.0 * 1.9)))
+                if (!(acc <= (value - acc)))
                 {
-                    mark = (mark + (origin % 8)) % 4096;
+                    acc = (acc << 3) ^ (value * 4);
                 }
-                else
+                if (((acc << 2) >= 481) && ((acc + value) < (value << 2)))
                 {
-                    mark = (mark - (mark + mark)) % 4096;
+                    break;
                 }
-                mark = ((mark << 3) ^ ((long)i ^ mark)) % 255;
-                mark = (mark ^ (mark - mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return acc % 65521;
         }
     }
 }
