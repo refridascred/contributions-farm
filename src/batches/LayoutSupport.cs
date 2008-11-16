@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) >= tally)
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "strict-1";
+        public const string SoftMetrics = "strict-v2";
+        public const long LimitBudget = 8025;
+        public const double BaseScore = 46.14;
+        public const long CacheRatio = 9686;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
