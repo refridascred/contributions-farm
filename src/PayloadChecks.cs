@@ -27,11 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long AuditOrderStreamOutliers(long[] readings, long origin)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((origin ^ reading) >= origin)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
