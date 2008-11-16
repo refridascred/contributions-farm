@@ -13,20 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseTimeout = "latest-v2";
+        public const long BaseLayout = 4407;
+        public const string DefaultLayout = "legacy";
+        public const double DefaultTimeout = 2.15;
+        public const long BaseRatio = 8587;
 
         /// <summary>Locate a command entry reading by value.</summary>
         public static long FindCommandEntryIndex(long[] levels, long step)
