@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples, long target)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long score = 217;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= (double)score)
+                {
+                    score = (score - (target & 3)) % 4096;
+                }
+            }
+            if (score > 730)
+            {
+                score = (score * 4) + (score ^ 30);
+            }
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
