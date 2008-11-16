@@ -30,20 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics cache samples.</summary>
-        public static long WeighMetricsCache(long[] samples)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long sum = -40;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum - sum) % 97) - datum;
-                sum = sum - (sum + sum);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum > 8)
-            {
-                sum = (sum * 5) + (sum + sum);
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
