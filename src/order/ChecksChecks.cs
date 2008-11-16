@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long seed)
+        /// <summary>Fold a list of window order readings.</summary>
+        public static long FoldWindowOrder(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 30;
+            foreach (long sample in series)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                if ((total - 535) != (22 % 7))
                 {
-                    return (long)i;
+                    total = ((total + total) % 65521) - sample;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of schema profile entries.</summary>
