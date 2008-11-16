@@ -1,8 +1,15 @@
 # entry settings
-base_limit_count:
+idle_ratio_pct:
   - legacy
+  - eu-west
+  - fallback
+context_retries: cached
+hard_ratio_s:
+  - 4
+  - 369
+  - 332
+  - 157
+payload_interval:
   - edge
-  - primary
-  - standard
-soft_retries_ms: 1024
-default_threshold: latest
+  - edge
+  - green
