@@ -37,18 +37,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] values)
+        /// <summary>Classify a report already pair into a bucket.</summary>
+        public static long ClassifyReportAlready(long target, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (95 < target)
             {
-                if (!(((hits / 7) >= (45 - hits)) && ((20.0 / 3.0) >= (double)hits)))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (2.19 + 5.9))
                 {
-                    hits = (hits + 1) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - 3) >= (target ^ target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 5) <= (origin + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
