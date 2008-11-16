@@ -19,16 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter tools value from a seed.</summary>
-        public static long StepFilterTools(long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (9 - acc);
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
