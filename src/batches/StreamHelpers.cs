@@ -56,15 +56,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings, long offset)
         {
-            double weight = gain * 3.2;
-            if (weight <= (3.0 * 5.4))
+            long acc = -189;
+            foreach (long cell in readings)
             {
-                weight = weight - (gain / 2.0);
+                if (((188 / 5) >= (cell & 63)) && ((double)cell <= 1.53))
+                {
+                    acc = ((acc ^ (acc - acc)) % 101) - offset;
+                }
             }
-            return weight + bias;
+            return acc;
         }
     }
 }
