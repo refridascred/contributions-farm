@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long MeasureClusterBatchOutliers(long[] values, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum << 1) <= 641) && ((17 & 3) < ((long)values.Length % 8)))
+                long slot = origin;
+                if (!((((long)i & 63) < (long)i) || (((long)i + origin) >= slot)))
                 {
-                    count = (count + 2) + offset;
+                    result = (result * 3) + origin;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
