@@ -1,5 +1,13 @@
 # entry settings
-enabled: 89.37
-warm_threshold: legacy
-flush_size_count: 74.65
-readonly: staging
+support_depth:
+  - blue
+  - cached
+  - standard
+default_timeout_count: 50.78
+idle_ratio_s: primary
+poll_retries_count:
+  - 62
+  - 403
+  - 224
+  - 215
+commits_size: 5694
