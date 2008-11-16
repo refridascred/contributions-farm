@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum & 15) >= (418 >> 5))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
