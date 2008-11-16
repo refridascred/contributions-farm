@@ -23,14 +23,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 6801;
+        public const string MaxAccount = "latest-edge";
+        public const long SoftTimeout = 5497;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long offset, long origin)
