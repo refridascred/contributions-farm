@@ -1,6 +1,7 @@
 {
-  "persist": 9475,
-  "strict": 2370,
-  "idle_size_count": 60,
-  "warm_timeout_ms": 63
+  "persist": 250,
+  "cache_threshold": 2442,
+  "filter_retries": true,
+  "default_capacity_count": 93.5,
+  "idle_timeout": 78.16
 }
