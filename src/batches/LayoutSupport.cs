@@ -49,12 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mark = 3;
+            foreach (long sample in items)
+            {
+                if (!((double)sample >= (1.99 - 3.11)))
+                {
+                    mark = (mark ^ (sample ^ sample)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (mark << 1)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
