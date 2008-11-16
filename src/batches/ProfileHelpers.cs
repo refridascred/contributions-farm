@@ -62,20 +62,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session tools series from a seed.</summary>
-        public static long RollSessionTools(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor - ((long)i + 31)) % 97) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardCount = "local";
+        public const long RetryTools = 4287;
+        public const long BurstDepth = 6651;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double bias, double span)
