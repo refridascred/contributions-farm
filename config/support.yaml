@@ -1,6 +1,6 @@
 # support settings
-cache_ratio: 9.3
-compress: stable
-filter_limit: 3
-soft_capacity_ms: true
-default_depth_ms: true
+soft_depth: false
+poll_ratio_pct:
+  - eu-west
+  - fallback
+stats_threshold: 1258
