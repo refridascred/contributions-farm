@@ -48,17 +48,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] readings, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (15.0 + ratio) * 9.3;
+            if (rate <= (7.38 * 7.52))
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (ratio + rate)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (ratio + 17.0)) + (double)(long)i;
+            }
+            return rate + (rate / 9.0);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
