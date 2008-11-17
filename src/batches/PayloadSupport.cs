@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 9551;
+        public const double BaseBatch = 97.92;
+        public const long StepSize = 6347;
 
         /// <summary>Rank payload token input into a small class.</summary>
         public static long GradePayloadToken(long target, long bound)
