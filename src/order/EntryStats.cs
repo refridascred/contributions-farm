@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long acc = 81;
+            foreach (long value in data)
             {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (value / 5)) % 1000;
             }
-            return flag;
+            if (acc < 55)
+            {
+                acc = (acc * 3) + 18;
+            }
+            return acc;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
