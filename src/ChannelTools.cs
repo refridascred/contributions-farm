@@ -23,13 +23,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long target, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            if ((offset + (-511)) <= (offset % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset > (target ^ offset)) && ((double)offset <= 4.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
