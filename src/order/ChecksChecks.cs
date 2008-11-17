@@ -52,17 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order session counter forward.</summary>
-        public static long SeriesOrderSession(long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            double drift = span;
+            for (int i = 0; i < 3; i++)
             {
-                long diff = floor & 127;
-                mix = (mix ^ (diff * 5)) % 1000;
-                mix = ((mix * 4) + (long)i) % 4093;
+                drift = (drift - rate) - (double)(long)i;
             }
-            return mix;
+            return drift + (5.23 + rate);
         }
     }
 }
