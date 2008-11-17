@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long TallyStreamContext(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long acc = 72;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (value + value)) % 65521;
-                if (!((acc - value) < (acc ^ value)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 310)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
