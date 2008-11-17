@@ -13,14 +13,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            Ready,
-            Stale,
-            Failed,
-            Queued,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next filter cluster value.</summary>
