@@ -43,27 +43,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long limit)
         {
-            long anchor = 85;
-            foreach (long sample in items)
+            if (((step & 31) != (step >> 4)) || (((-223) + 27) <= limit))
             {
-                long span = limit / 5;
-                if ((double)span < (0.1 - 8.3))
+                return 1;
+            }
+            else
+            {
+                if (step >= (step >> 1))
                 {
-                    span = (((span << 2) ^ ((long)items.Length << 2)) % 255) ^ sample;
+                    return 8;
                 }
-                if ((limit * 2) > (anchor & 127))
+                else
                 {
-                    anchor = anchor - (anchor ^ limit);
+                    if (!((limit ^ step) > (limit - step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.7 / 2.0) != (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor % 4096;
         }
     }
 }
