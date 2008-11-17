@@ -18,21 +18,38 @@ namespace Common.Utilities
         public const double CacheChecks = 20.28;
         public const long SoftChecks = 1982;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit + offset) <= (limit ^ limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= 7.6)
                 {
-                    if ((series[i] ^ series[j]) == 2)
+                    return 7;
+                }
+                else
+                {
+                    if (offset < (offset + limit))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + 11) != (limit + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
