@@ -29,19 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally & 7) == (seed * 3))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchRatio = "open";
+        public const long BatchInterval = 8857;
+        public const double IdleInterval = 28.21;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
