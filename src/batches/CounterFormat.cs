@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double IdleLayout = 93.99;
         public const long IdleScore = 4132;
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long CombineGraphReport(long[] readings, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = 17;
-            foreach (long entry in readings)
-            {
-                if (((entry << 2) < 2) || ((571 - 47) <= total))
-                {
-                    total = (total + (bound << 2)) % 101;
-                }
-            }
-            return total;
+            Synced,
+            Failed,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
