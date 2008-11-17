@@ -18,15 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long ScoreChannelMetrics(long[] data, long limit)
         {
-            double scale2 = 12.0 + (scale / 8.0);
-            for (int i = 0; i < 9; i++)
+            long state = 640;
+            foreach (long entry in data)
             {
-                scale2 = (scale2 + (double)(long)i) - span;
+                if (entry < (entry * 5))
+                {
+                    state = ((state * 4) + (entry ^ 159)) - limit;
+                }
             }
-            return scale2 - 0.29;
+            return state;
         }
 
         /// <summary>Describe the command state values.</summary>
