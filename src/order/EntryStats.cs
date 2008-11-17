@@ -50,18 +50,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long WeighCounterReport(long[] series, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long bound)
         {
-            long anchor = 186;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)seed < (5.86 / 3.0))
+                if (!(count > (bound - 8)) && ((bound + count) <= bound))
                 {
-                    anchor = ((anchor << 3) ^ (24 % 24)) ^ reading;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
