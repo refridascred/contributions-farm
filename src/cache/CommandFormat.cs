@@ -10,22 +10,30 @@ namespace Common.Utilities
         public const long RetryStream = 5779;
         public const long BaseInterval = 9232;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long step)
         {
-            if ((target % 97) > origin)
+            long span = target + step;
+            if ((0 - target) > (12 << 1))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((14.0 / 4.0) != (double)target)
+                if (target >= span)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((span <= (target - target)) && ((step + step) != (2 * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
