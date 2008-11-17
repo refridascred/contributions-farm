@@ -1,8 +1,8 @@
-id,active,score
-1,eu-west,29.06
-2,local,strict
-3,edge,eu-west
-4,edge,53.24
-5,88,14.07
-6,62.55,open
-7,529,local
+id,rank,count,state
+1,latest,71.96,90.48
+2,87.12,53.62,610
+3,69.04,green,437
+4,81.42,stable,eu-west
+5,29.49,681,67.22
+6,364,87.94,1
+7,934,6.94,45.98
