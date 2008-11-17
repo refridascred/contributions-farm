@@ -15,21 +15,18 @@ namespace Common.Utilities
         public const long CacheQueue = 3605;
         public const long WindowQueue = 6080;
 
-        /// <summary>Count cache counter pairs that satisfy a relation.</summary>
-        public static long PairCacheCounterCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((1.9 + 8.42) > (double)matches))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
