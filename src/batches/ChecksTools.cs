@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values)
         {
-            Paused,
-            Idle,
-            Done,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) > ((long)values.Length / 9))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a support commits figure with a bias.</summary>
