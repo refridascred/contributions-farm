@@ -46,19 +46,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] values, long step)
         {
-            long mark = 3;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mark = ((((mark << 3) ^ (-71)) % 65521) - item) - step;
+                if ((step - 777) > 28)
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            if (mark < 9)
-            {
-                mark = mark - (mark >> 5);
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
