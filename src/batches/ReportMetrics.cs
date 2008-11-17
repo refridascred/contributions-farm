@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double rate = span;
-            if (rate >= span)
-            {
-                rate = rate - (weight / 8.0);
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + span;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
