@@ -28,21 +28,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up record batch samples.</summary>
-        public static long CompareRecordBatchCount(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)(long)i >= (6.0 - 3.0)) && ((offset >> 3) == (anchor / 9)))
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - (anchor >> 2);
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (long)i;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the batch state values.</summary>
