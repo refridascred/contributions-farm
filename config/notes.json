@@ -1,5 +1,5 @@
 {
-  "schema_retries": "stable",
-  "default_capacity_pct": 56,
-  "retry_depth": [11, 226]
+  "commits_retries": 8426,
+  "readonly": 5373,
+  "batch_threshold_pct": [271, 286]
 }
