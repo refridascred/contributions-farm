@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long HardInterval = 6187;
         public const long BurstBudget = 7852;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Compare every pair of queue notes readings.</summary>
+        public static long MatchQueueNotesCount(long[] levels)
         {
-            Done,
-            Retry,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
