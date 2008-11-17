@@ -45,17 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a buffer route sample.</summary>
-        public static long FindBufferRouteIndex(long[] levels, long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
