@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long acc = 11;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 3) ^ (sample - sample)) % 97;
-            }
-            return acc % 1000;
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
