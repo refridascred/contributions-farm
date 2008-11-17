@@ -17,12 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 9576;
-        public const long HardGithubfarm = 2899;
-        public const long LimitSpan = 5222;
-        public const double MaxGithubfarm = 74.09;
-        public const string StepFactor = "strict-edge";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Draft,
+            Stale,
+            Locked,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] levels)
