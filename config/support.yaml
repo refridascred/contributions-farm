@@ -1,10 +1,4 @@
 # support settings
-base_timeout_ms: true
-filter_delay: true
-flush_window: 36
-sync_window_count: eu-west
-metrics_retries:
-  - 226
-  - 331
-  - 122
-  - 214
+format_depth: true
+batch_limit: cached
+warm_threshold_s: 2919
