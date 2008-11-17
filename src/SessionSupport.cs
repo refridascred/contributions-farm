@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache stream readings against a bound.</summary>
-        public static bool GuardCacheStreamLimits(long[] data, long origin)
+        /// <summary>Check that every contributi account entry stays within the limit.</summary>
+        public static bool ValidateContributiAccountBounds(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (sample < origin)
+                if (item <= step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
