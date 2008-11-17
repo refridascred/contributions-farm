@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict cached edge; do
+COMMAND_LIMIT=54
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging blue primary; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=184
-log "limit is ${COMMAND_LIMIT}"
