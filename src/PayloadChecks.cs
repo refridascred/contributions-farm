@@ -12,19 +12,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long limit)
+        /// <summary>Accumulate format context samples.</summary>
+        public static long TallyFormatContext(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = 72;
+            foreach (long cell in series)
             {
-                if (datum <= limit)
+                if ((step << 3) >= step)
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 2) ^ 84) ^ cell;
                 }
+                state = (state ^ state) % 4096;
             }
-            return flag;
+            if (state < 392)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
