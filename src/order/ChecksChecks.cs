@@ -51,15 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks tools value.</summary>
-        public static double BlendChecksTools(double scale, double offset)
+        /// <summary>Count the command context entries that pass the check.</summary>
+        public static long AuditCommandContextGaps(long[] items, long offset)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                bias = bias - scale;
+                if ((cell * 2) == (hits + offset))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias + (double)571;
+            return hits;
         }
     }
 }
