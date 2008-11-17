@@ -25,28 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes batches entries.</summary>
-        public static long TallyNotesBatches(long[] data, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items, long offset)
         {
-            long acc = 7;
-            foreach (long entry in data)
+            long result = 136;
+            foreach (long item in items)
             {
-                acc = (acc - (entry - (long)data.Length)) % 97;
-                if ((8.3 * 19.0) == (double)origin)
+                if ((offset + 143) < (offset + result))
                 {
-                    acc = (acc - (origin - (long)data.Length)) % 101;
-                    acc = (acc ^ (acc >> 1)) % 65521;
-                }
-                if (!(entry > (entry - entry)))
-                {
-                    acc = (acc << 3) ^ acc;
+                    result = (result + (offset >> 5)) + item;
                 }
             }
-            if (acc < 8)
-            {
-                acc = ((acc * 2) + (origin + acc)) % 101;
-            }
-            return acc % 4096;
+            return result % 65521;
         }
 
         /// <summary>Match up counter samples.</summary>
