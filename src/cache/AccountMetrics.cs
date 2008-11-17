@@ -57,12 +57,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] readings, long floor)
         {
-            Paused,
-            Draft,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
