@@ -1,5 +1,22 @@
 {
-  "audit": "staging",
-  "strict": 30,
-  "notes_size": ["stable", "local", "open"]
+  "audit": 3985,
+  "buffer_window": ["latest", "staging", "eu-west", "standard"],
+  "max_limit_s": {
+    "batch_threshold_count": "open",
+    "audit": 96.77,
+    "cache_delay_ms": {
+      "command_ttl": true,
+      "cache_interval_pct": 85.02,
+      "cache_ttl_pct": false,
+      "burst_interval_s": "stable"
+    },
+    "idle_interval_ms": {
+      "soft_limit": 90,
+      "context_capacity": "primary",
+      "min_interval_pct": false,
+      "strict": true,
+      "sync_ratio_pct": 60
+    },
+    "soft_window_ms": "local"
+  }
 }
