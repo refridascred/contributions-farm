@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (((bound % 24) != (bound % 12)) && ((double)(long)i < 13.0))
+                if (entry > seed)
                 {
-                    sum = (sum - (bound ^ bound)) % 4096;
-                    sum = ((sum << 2) ^ (bound * 3)) % 65521;
+                    ready = false;
                     break;
                 }
-                if (((bound - 43) >= (long)i) && (bound >= sum))
-                {
-                    sum = (sum + sum) % 101;
-                }
-                sum = (sum ^ bound) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
