@@ -37,31 +37,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long step, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            if (seed >= (731 ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) == (step % 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (3.3 + 1.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a account options.</summary>
