@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long seed)
-        {
-            long step2 = step + seed;
-            if ((seed / 9) > (step2 & 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= (7.9 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed > (9.9 * 6.28)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftSize = "cached-v2";
+        public const long BurstRatio = 8032;
+        public const double LimitSpan = 46.35;
+        public const long IdleRatio = 8004;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
