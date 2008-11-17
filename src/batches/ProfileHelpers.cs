@@ -51,12 +51,28 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 3691;
-        public const long BaseRatio = 7611;
-        public const long RetryCount = 7428;
-        public const long MinProfile = 8856;
-        public const long MinRatio = 6407;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long origin)
+        {
+            long sum = 533;
+            foreach (long entry in series)
+            {
+                if ((double)sum < (2.0 / 5.0))
+                {
+                    sum = ((sum + ((-710) & 3)) % 255) - origin;
+                }
+                sum = (sum * 3) + sum;
+                if (entry < (sum / 5))
+                {
+                    sum = ((sum * 4) + (entry & 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 5) + (entry - sum);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] series, long limit)
