@@ -1,5 +1,13 @@
 {
-  "warm_size_ms": 5096,
-  "soft_ttl_ms": 61.4,
-  "burst_delay_s": 30
+  "max_interval_ms": 500,
+  "batch_threshold": "green",
+  "notes_delay": {
+    "idle_interval": 98.57,
+    "flush_ttl_count": 7946,
+    "base_depth_count": true,
+    "idle_depth": ["eu-west", "blue"],
+    "warm_ratio_ms": "strict"
+  },
+  "hard_size_ms": 99,
+  "dry_run": 4711
 }
