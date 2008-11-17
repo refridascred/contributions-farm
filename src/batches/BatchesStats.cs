@@ -55,10 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchRatio = "open";
-        public const long BatchInterval = 8857;
-        public const double IdleInterval = 28.21;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long seed, long bound)
