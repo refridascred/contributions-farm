@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate window account samples.</summary>
-        public static long DigestWindowAccount(long[] items, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = 127;
-            foreach (long value in items)
-            {
-                acc = ((acc * 5) + (seed + seed)) % 1000;
-                if (value >= (value + value))
-                {
-                    acc = (acc * 3) + (acc - seed);
-                }
-                else
-                {
-                    acc = (acc ^ 6) % 97;
-                }
-            }
-            return acc;
+            Active,
+            Retry,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
