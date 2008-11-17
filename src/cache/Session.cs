@@ -20,23 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Find the first report contributi entry that matches the target.</summary>
+        public static long SeekReportContributiIndex(long[] values, long offset)
         {
-            double mean = (double)(604 << 3);
-            if (mean <= (double)46)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - rate) - floor;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (7.74 - mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (rate + rate)) + (double)(long)i;
-            }
-            return mean + rate;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
