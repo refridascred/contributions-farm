@@ -1,6 +1,5 @@
 {
-  "token_depth": "fallback",
-  "batch_retries_s": true,
-  "flush_size": 71.29,
-  "farm_limit": false
+  "retry_timeout_count": "standard",
+  "sync_limit": 76.5,
+  "max_size": 54.14
 }
