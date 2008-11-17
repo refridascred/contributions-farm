@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long limit)
+        /// <summary>Iterate the payload profile series from a seed.</summary>
+        public static long SeriesPayloadProfile(long target)
         {
-            long cur = seed ^ limit;
-            if ((seed + (-7)) < (seed >> 2))
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9 % 60) <= (cur >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed <= ((-1) << 2)) || ((seed - cur) >= 53))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((2.66 + 9.41) <= (double)cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate buffer queue samples.</summary>
