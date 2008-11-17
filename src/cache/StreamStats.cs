@@ -54,15 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 674;
-            foreach (long item in samples)
-            {
-                score = score + (item + score);
-            }
-            return score % 1000;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
