@@ -22,19 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long offset2)
         {
-            double scale = (double)39 / 9.0;
-            if (scale < (3.1 + weight))
+            long offset3 = offset - offset2;
+            if ((double)offset3 == (0.3 / 5.0))
             {
-                scale = (scale + (double)342) - bias;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale - (weight - scale)) + (double)(long)i;
+                if ((double)offset >= (7.2 - 6.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset2 >= (4 + 54))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return scale + (weight / 4.0);
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
