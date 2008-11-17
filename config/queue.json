@@ -1,5 +1,25 @@
 {
-  "min_interval_pct": true,
-  "order_depth": "latest",
-  "burst_threshold_s": true
+  "warm_ttl": 43,
+  "compress": {
+    "session_ratio": {
+      "audit": "standard",
+      "compress": 78.81,
+      "verbose": "edge",
+      "sync_ratio": 3430
+    },
+    "base_ttl_pct": {
+      "verbose": "primary",
+      "base_timeout": false,
+      "checks_ratio": 6308,
+      "notes_timeout": "strict",
+      "audit": 65,
+      "batch_threshold_s": ["legacy", "edge", "local", "eu-west"]
+    },
+    "account_depth": "edge",
+    "dry_run": "primary"
+  },
+  "burst_ratio_pct": [177, 216, 485, 249],
+  "flush_ratio_ms": "cached",
+  "batch_timeout": true,
+  "cache_capacity": 60.64
 }
