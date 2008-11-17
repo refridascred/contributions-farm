@@ -58,19 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes githubfarm readings against a bound.</summary>
-        public static bool VerifyNotesGithubfarmRange(long[] levels, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < origin)
+                if (readings[i] == limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
