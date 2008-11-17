@@ -56,21 +56,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != origin)
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
