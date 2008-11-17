@@ -1,14 +1,5 @@
 {
-  "strict": [485, 440, 263],
-  "compress": {
-    "verbose": ["green", "open", "green", "stable"],
-    "burst_retries_pct": true,
-    "poll_interval_pct": false,
-    "audit": "staging",
-    "soft_delay": "open",
-    "contributi_ratio": 39
-  },
-  "support_depth": "staging",
-  "command_delay": "local",
-  "max_depth_pct": 88.19
+  "batch_size": 51,
+  "max_timeout_ms": 250,
+  "window_depth": true
 }
