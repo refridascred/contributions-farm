@@ -1,6 +1,6 @@
-id,token,region
-1,21.51,edge
-2,open,primary
-3,428,green
-4,legacy,73.58
-5,822,327
+id,level,rank
+1,934,17.01
+2,985,372
+3,cached,392
+4,stable,51.12
+5,92.15,39.44
