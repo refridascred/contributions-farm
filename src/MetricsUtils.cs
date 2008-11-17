@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((63 % 24) == (cell / 5)) || !((cell + count) <= (count << 2)))
+                if (value != bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a account record.</summary>
