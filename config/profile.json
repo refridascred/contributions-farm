@@ -1,15 +1,10 @@
 {
-  "idle_threshold_s": {
-    "hard_delay": 1133,
-    "enabled": "stable",
-    "min_ttl": "stable",
-    "queue_ttl": "fallback",
-    "route_timeout": "primary",
-    "compress": 35.85
+  "warm_delay": {
+    "cache_delay": 1024,
+    "base_timeout_ms": "local",
+    "default_timeout_ms": [13, 286, 345, 77],
+    "readonly": 5.09
   },
-  "idle_capacity": "legacy",
-  "default_retries_ms": "staging",
-  "checks_depth": 9589,
-  "audit": "blue",
-  "default_capacity_count": true
+  "strict": ["eu-west", "cached", "green", "green"],
+  "readonly": true
 }
