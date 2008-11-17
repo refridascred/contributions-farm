@@ -34,24 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            if (((step ^ 730) >= (bound ^ bound)) && ((double)step != (19.0 - 3.5)))
+            long anchor = 81;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + step) >= (bound + 7))
+                if (((7.0 - 16.0) > (15.0 - 1.5)) || ((39 + (long)values.Length) < (anchor >> 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    anchor = ((anchor + 99) % 101) ^ cell;
                 }
             }
+            if (anchor > 29)
+            {
+                anchor = (anchor - (39 - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
