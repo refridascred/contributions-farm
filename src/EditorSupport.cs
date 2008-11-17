@@ -31,19 +31,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] levels, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample != floor)
+                if (((entry + seen) < (424 ^ seen)) && (20.0 < (double)entry))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
