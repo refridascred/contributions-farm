@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 2373;
         public const long BatchGithubfarm = 49;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "strict-1";
-        public const string BurstMetrics = "legacy-v2";
-        public const string DefaultFactor = "strict-edge";
-        public const string LimitFactor = "legacy-1";
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool ValidateSchemaRecordLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
