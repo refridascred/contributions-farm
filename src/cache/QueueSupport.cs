@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftWidth = "strict-1";
-        public const string IdleFormat = "primary";
-        public const long RetryDepth = 2597;
-        public const long DefaultSize = 386;
-        public const long WindowFormat = 3516;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 3596;
+        public const double RetryGraph = 84.73;
+        public const long LimitGraph = 4942;
+        public const long CacheCount = 2476;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheEntry = "local-edge";
