@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((count >> 4) > (count - (long)samples.Length)) || ((item ^ count) >= 763)) && ((double)count <= (double)818))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
