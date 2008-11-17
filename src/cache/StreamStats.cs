@@ -20,11 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 6827;
-        public const long BurstBudget = 6918;
-        public const long BatchCount = 4534;
-        public const string BaseFormat = "local-edge";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Closed,
+            Synced,
+            Locked,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
