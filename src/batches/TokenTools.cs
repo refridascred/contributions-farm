@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long GradeGithubfarmFarm(long origin, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin & 31) == (limit << 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((limit - limit) < (origin ^ limit)) && ((origin >> 2) > (origin * 5)))
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
