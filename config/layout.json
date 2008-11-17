@@ -1,5 +1,6 @@
 {
-  "layout_retries": 500,
-  "account_retries": ["staging", "strict", "local"],
-  "buffer_delay": [283, 52, 200, 332]
+  "burst_delay": false,
+  "command_timeout": 95.7,
+  "stats_retries": [327, 330, 36],
+  "default_timeout_pct": 1024
 }
