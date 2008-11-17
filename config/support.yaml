@@ -1,34 +1,10 @@
 # support settings
-idle_retries:
-  - 79
-  - 479
-  - 62
-  - 5
-report_ratio: open
-checks_ttl:
-  warm_delay_s:
-    readonly:
-      - standard
-      - edge
-      - eu-west
-      - eu-west
-    verbose:
-      - legacy
-      - fallback
-      - green
-      - eu-west
-    min_ttl_count: 250
-    poll_interval_pct: false
-    persist: 24.91
-    max_interval: cached
-  contributi_capacity:
-    - 459
-    - 391
-    - 51
-    - 41
-  idle_capacity:
-    - fallback
-    - cached
-  base_timeout: 41.68
-  soft_ratio_pct: 6325
-  hard_ratio: 97.26
+base_timeout_ms: true
+filter_delay: true
+flush_window: 36
+sync_window_count: eu-west
+metrics_retries:
+  - 226
+  - 331
+  - 122
+  - 214
