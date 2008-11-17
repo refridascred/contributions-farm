@@ -65,15 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Retry,
+            Idle,
+            Paused,
+            Dropped,
         }
     }
 }
