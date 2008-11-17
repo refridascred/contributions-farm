@@ -30,39 +30,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long bound)
+        /// <summary>Look up the position of a commits layout sample.</summary>
+        public static long LookupCommitsLayoutIndex(long[] data, long step)
         {
-            long offset = floor + bound;
-            if ((offset >> 3) == (bound << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > 2.0)
+                if (data[i] <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - offset) >= (807 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((40 & 1) > (floor + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
