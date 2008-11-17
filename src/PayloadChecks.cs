@@ -40,10 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 3818;
-        public const long SoftWidth = 5835;
-        public const long IdleFarm = 1366;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
         public static long FoldClusterCache(long[] values, long limit)
