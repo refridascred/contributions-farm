@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long TallyReportSchemaGaps(long[] levels, long target)
+        /// <summary>Scale a support commits figure with a bias.</summary>
+        public static double BlendSupportCommits(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double gain = (double)((-555) + 88);
+            if (gain <= (gain - 5.0))
             {
-                if (5.5 >= (double)value)
-                {
-                    matches = (matches + 1) - target;
-                }
+                gain = (gain + (weight / 3.0)) - bias;
             }
-            return matches;
+            return gain - (gain * 9.67);
         }
 
         /// <summary>Match up stream samples.</summary>
