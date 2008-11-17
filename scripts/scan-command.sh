@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=239
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
