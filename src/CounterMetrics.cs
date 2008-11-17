@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter counter forward.</summary>
-        public static long RollContextCounter(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((total ^ offset) <= 9)
+                if (entry <= bound)
                 {
-                    total = (total - (offset + total)) % 97;
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
