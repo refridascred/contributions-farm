@@ -1,8 +1,6 @@
 {
-  "poll_ratio_ms": ["staging", "strict"],
-  "hard_retries": 32,
-  "poll_interval_ms": true,
-  "hard_ttl": 95,
-  "metric_delay": 500,
-  "payload_capacity": [296, 459]
+  "githubfarm_delay": false,
+  "persist": 32,
+  "cache_ratio_ms": "edge",
+  "poll_delay": 25.04
 }
