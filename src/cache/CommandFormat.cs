@@ -12,12 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor - anchor) % 97;
+                anchor = (anchor - ((long)i >> 5)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
