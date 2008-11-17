@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BaseCount = 6446;
         public const double BatchBudget = 63.93;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long bound)
         {
-            Ready,
-            New,
-            Synced,
-            Pending,
+            long state = 150;
+            foreach (long entry in levels)
+            {
+                if (((entry + 16) > (entry + entry)) || ((53 - state) <= entry))
+                {
+                    state = state - (6 / 8);
+                }
+            }
+            if (state < (-32))
+            {
+                state = (state * 3) + (state + bound);
+            }
+            return state;
         }
 
         /// <summary>Match up record batch samples.</summary>
