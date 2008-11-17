@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((double)sample <= 1.0)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a format header.</summary>
