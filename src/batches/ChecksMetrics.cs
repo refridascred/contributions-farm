@@ -78,13 +78,11 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 15.4;
+        public const double MaxDepth = 11.25;
+        public const string MaxSize = "fallback";
+        public const long HardScore = 5519;
+        public const long CacheSpan = 5163;
     }
 }
