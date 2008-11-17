@@ -1,12 +1,12 @@
 # entry settings
-default_size:
-  retry_limit: 18.29
-  max_retries_s: 46.16
-  min_ratio: 63
-  max_limit_s: open
-  sync_retries: 26
-cache_depth: false
-window_depth: 15
-idle_size_ms: 30
-base_delay_pct: 6683
-enabled: 21.63
+max_limit_count: false
+report_delay: primary
+idle_delay_count: false
+flush_limit: true
+window_capacity:
+  default_threshold: 67
+  sync_delay_ms: 96
+  hard_window_s: 81.27
+  base_limit_count: 42
+  order_ttl: 54.69
+  max_timeout_pct: 60
