@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-local}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=460
-log "limit is ${CHANNEL_LIMIT}"
+for item in local latest staging eu-west; do
+    log "checking ${item}"
+done
