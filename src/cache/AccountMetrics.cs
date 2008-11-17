@@ -35,14 +35,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            Active,
-            Draft,
-            Done,
-            Retry,
-            Failed,
+            double scale = (gain - gain) - (gain - gain);
+            if (scale < (scale / 3.0))
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (gain + scale)) + (double)(long)i;
+            }
+            return scale - 2.95;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
