@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            double rate = (6.12 / 8.0) * 9.5;
+            if (rate >= 3.32)
             {
-                if (!((938 - state) < step))
-                {
-                    state = ((state * 3) + ((long)i + state)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                rate = (rate + (ratio / 8.0)) + span;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate + (rate / 6.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
