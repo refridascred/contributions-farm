@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((451 - sample) <= (81 - 0)) && ((7 + 5) <= (matches + 737))))
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the support phase values.</summary>
