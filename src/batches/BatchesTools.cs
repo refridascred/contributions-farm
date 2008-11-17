@@ -33,31 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items, long limit)
         {
-            if ((double)floor <= (1.9 - 5.6))
+            long sum = 2;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((922 << 1) != (floor - floor))
+                if ((limit >> 2) >= (47 - entry))
                 {
-                    return 3;
+                    sum = (sum - (861 - limit)) % 4096;
                 }
-                else
+                if (0.19 <= (double)limit)
                 {
-                    if (floor >= (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = sum - (limit + limit);
                 }
             }
+            return sum;
         }
     }
 }
