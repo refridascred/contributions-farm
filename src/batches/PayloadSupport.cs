@@ -33,14 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Queued,
-            Dropped,
-            Draft,
-            Locked,
-            Retry,
+            New,
+            Pending,
+            Paused,
+            Failed,
         }
     }
 }
