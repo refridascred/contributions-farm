@@ -10,32 +10,21 @@ namespace Common.Utilities
         public const long RetryStream = 5779;
         public const long BaseInterval = 9232;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long span = target + step;
-            if ((0 - target) > (12 << 1))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= span)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((span <= (target - target)) && ((step + step) != (2 * 4)))
+                    if ((values[i] - values[j]) == 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
