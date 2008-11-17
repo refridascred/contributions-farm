@@ -16,10 +16,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 1946;
-        public const long StepDepth = 7125;
-        public const long SoftRatio = 3159;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double scale, double floor)
+        {
+            double drift = floor;
+            if (drift >= (drift - 3.0))
+            {
+                drift = drift - (14.0 * 0.2);
+            }
+            else
+            {
+                drift = drift - (scale / 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (scale - floor)) + (double)(long)i;
+            }
+            return drift - (8.8 - scale);
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long limit)
