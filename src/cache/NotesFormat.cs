@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] data)
         {
-            Retry,
-            Queued,
-            Paused,
-            Ready,
-            Draft,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value - hits) > hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
