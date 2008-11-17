@@ -40,18 +40,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first channel metrics entry that matches the target.</summary>
-        public static long LookupChannelMetricsIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8476;
+        public const double DefaultFactor = 8.43;
+        public const double LimitCount = 56.6;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
