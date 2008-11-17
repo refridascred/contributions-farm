@@ -49,17 +49,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a stream context sample.</summary>
-        public static long LocateStreamContextIndex(long[] series, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
