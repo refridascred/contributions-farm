@@ -45,22 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long FoldRecordBatches(long[] data, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double bias)
         {
-            long mix = 460;
-            foreach (long reading in data)
+            double bias2 = (double)((-59) % 2);
+            for (int i = 0; i < 3; i++)
             {
-                if (!((mix + reading) > (reading + 192)))
-                {
-                    mix = ((mix * 3) + (mix - mix)) + seed;
-                }
+                bias2 = ((bias2 + (bias2 + bias)) + (double)(long)i) + weight;
             }
-            if (mix > (-88))
-            {
-                mix = (mix ^ (849 - mix)) % 101;
-            }
-            return mix;
+            return bias2 - (2.0 * 7.9);
         }
 
         /// <summary>Describe the context mode values.</summary>
