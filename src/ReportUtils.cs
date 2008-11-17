@@ -78,17 +78,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a context farm sample.</summary>
-        public static long LookupContextFarmIndex(long[] samples, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] > origin)
+                if (((long)readings.Length - hits) == (hits >> 3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
