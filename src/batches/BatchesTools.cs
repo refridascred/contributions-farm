@@ -37,14 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Locked,
-            New,
-            Ready,
-            Paused,
-            Retry,
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
