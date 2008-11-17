@@ -1,6 +1,6 @@
-id,state,score,owner,rank
-1,94.84,legacy,2,11.35
-2,95.79,fallback,eu-west,fallback
-3,76,primary,blue,primary
-4,57.09,25.36,515,474
-5,fallback,green,fallback,fallback
+id,token,region
+1,21.51,edge
+2,open,primary
+3,428,green
+4,legacy,73.58
+5,822,327
