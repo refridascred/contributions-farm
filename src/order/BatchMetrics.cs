@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen == (double)offset)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
