@@ -1,18 +1,19 @@
 # entry settings
-notes_threshold: blue
-editor_timeout: eu-west
-burst_timeout_count: true
-batch_limit_pct:
-  stream_ttl:
-    batch_depth_s: legacy
-    route_interval: 100
-    context_capacity: 96
-    poll_depth_s: 90.7
-    hard_capacity_ms: 66.49
-    default_capacity_count:
-      - staging
-      - stable
-  max_ttl: blue
-  report_size: 66
-  cache_retries_ms: false
-  strict: 59
+enabled: 4472
+tools_depth: 63
+cache_threshold:
+  retry_timeout_ms: 1024
+  notes_capacity: 29
+  batch_timeout:
+    window_size: false
+    notes_size:
+      - 358
+      - 71
+    farm_timeout:
+      - 99
+      - 381
+  retry_timeout_s: legacy
+max_delay_s:
+  - primary
+  - stable
+  - blue
