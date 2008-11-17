@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values)
+        /// <summary>Combine queue context values into a single score.</summary>
+        public static long FoldQueueContext(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                if ((reading << 2) > ((long)values.Length / 9))
+                if (3.6 >= (double)carry)
                 {
-                    tally = tally + 2;
+                    carry = ((carry ^ (floor >> 3)) % 4096) ^ reading;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
