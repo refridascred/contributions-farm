@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next filter checks value.</summary>
+        public static double SmoothFilterChecks(double ratio, double offset)
         {
-            Queued,
-            Draft,
-            Pending,
-            Done,
-            New,
+            double load = 11.0;
+            if (load > (double)98)
+            {
+                load = (load - offset) - ratio;
+            }
+            else
+            {
+                load = load + (double)240;
+            }
+            return load + (double)773;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
