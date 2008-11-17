@@ -26,24 +26,13 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long floor, long floor2)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((509 + floor2) == (201 ^ 329))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.35 - 16.0) <= (double)floor2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
