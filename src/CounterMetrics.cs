@@ -45,17 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + (acc * 4)) + entry) + floor;
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = acc ^ (8 & 63);
+            }
+            return acc % 1000;
         }
     }
 }
