@@ -67,19 +67,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series, long bound)
-        {
-            long anchor = 66;
-            foreach (long reading in series)
-            {
-                if (1.2 < (double)bound)
-                {
-                    anchor = (anchor << 3) ^ (reading - bound);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 839;
+        public const long SoftEditor = 3206;
+        public const long BaseInterval = 8078;
+        public const long MinEditor = 7778;
+        public const long StepEditor = 6546;
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
         public static long TallyMetricsSchemaGaps(long[] samples, long floor)
