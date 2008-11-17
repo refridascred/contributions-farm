@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "strict-1";
-        public const long BurstEntry = 2732;
-        public const long LimitSpan = 4515;
-        public const long BatchEntry = 7008;
-        public const double RetryScore = 25.63;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate context token readings against a bound.</summary>
         public static bool GuardContextTokenLimits(long[] levels, long bound)
