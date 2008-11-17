@@ -21,15 +21,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Match up record batch samples.</summary>
+        public static long CompareRecordBatchCount(long[] levels)
         {
-            double bias = ratio;
-            if (bias > (ratio - floor))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (double)32;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - (double)(-390);
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
