@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7055;
-        public const double MinCount = 58.9;
-        public const long BasePayload = 7796;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] series)
