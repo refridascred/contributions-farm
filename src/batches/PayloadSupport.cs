@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long CountCommandEntryHits(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count < (6.77 * 7.6))
-                {
-                    count = ((count + 3) ^ cell) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "primary-v2";
+        public const double HardLayout = 96.9;
+        public const long LimitWidth = 1684;
+        public const long CacheRatio = 1709;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
