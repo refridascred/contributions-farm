@@ -38,16 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics cache value from a seed.</summary>
-        public static long IterateMetricsCache(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleLevel = "fallback-edge";
+        public const string SoftEditor = "staging-edge";
+        public const string BurstScore = "open";
+        public const long BatchEditor = 4312;
+        public const string SoftLevel = "cached-v2";
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
