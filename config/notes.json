@@ -1,5 +1,16 @@
 {
-  "retry_timeout_count": "standard",
-  "sync_limit": 76.5,
-  "max_size": 54.14
+  "min_depth_count": {
+    "min_ratio_count": 1024,
+    "batches_ratio": 39.91,
+    "batch_threshold_count": 32,
+    "default_ratio_ms": 100,
+    "poll_timeout_ms": {
+      "max_threshold": false,
+      "contributi_depth": 55.31,
+      "batch_ttl_pct": true
+    }
+  },
+  "sync_limit_pct": "local",
+  "base_depth": "local",
+  "poll_threshold_pct": 21
 }
