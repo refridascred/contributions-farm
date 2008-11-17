@@ -1,5 +1,14 @@
 # githubfarm settings
-max_retries: 6
-warm_interval_count: green
-batch_ttl: 68.65
-poll_ttl: 3001
+record_delay: staging
+min_window:
+  - 182
+  - 290
+farm_size: 60
+sync_ttl_ms:
+  - 268
+  - 291
+  - 133
+audit: false
+poll_capacity_pct:
+  - 211
+  - 309
