@@ -1,6 +1,11 @@
-id,level,count,token,rank
-1,blue,staging,268,887
-2,12.03,652,open,998
-3,777,56,900,14.0
-4,90.7,69.57,278,812
-5,fallback,221,984,primary
+id,rank,score
+1,639,edge
+2,strict,468
+3,663,24
+4,64.92,508
+5,53.26,58.9
+6,184,46.63
+7,543,991
+8,90.49,fallback
+9,15.37,589
+10,cached,latest
