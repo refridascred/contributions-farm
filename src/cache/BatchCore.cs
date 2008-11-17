@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "open-edge";
-        public const string SoftAccount = "standard-1";
-        public const long MaxAccount = 6674;
-        public const long RetryWidth = 7077;
-        public const string CacheAccount = "standard-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 9948;
+        public const long CacheRatio = 4728;
+        public const string BaseRatio = "strict-1";
 
         /// <summary>Look up the position of a contributi account sample.</summary>
         public static long LocateContributiAccountIndex(long[] data, long target)
