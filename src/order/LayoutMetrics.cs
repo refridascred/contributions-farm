@@ -33,17 +33,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long cell in series)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (12 << 2)) % 65521) ^ cell;
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
