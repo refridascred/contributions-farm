@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long state = 96;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin == (double)state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state - sample;
-                }
-                else
-                {
-                    state = (state + (8 & 63)) % 4096;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 87)
-            {
-                state = state ^ origin;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
