@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (!((long)samples.Length > item))
+                if (datum < floor)
                 {
-                    count = (count + 1) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Fold a list of route readings.</summary>
