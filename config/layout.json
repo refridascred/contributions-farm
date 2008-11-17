@@ -1,19 +1,12 @@
 {
-  "cache_window_pct": {
-    "hard_ratio_ms": "local",
-    "batch_window_s": 71.57,
-    "readonly": 1024,
-    "metrics_ratio": {
-      "batch_ratio_pct": true,
-      "token_depth": ["open", "green", "edge", "local"],
-      "support_delay": ["cached", "staging", "open"],
-      "strict": 37.27,
-      "base_size": "legacy"
-    },
-    "base_window_count": 2522,
-    "idle_retries_pct": 87
+  "graph_size": {
+    "audit": [68, 320],
+    "counter_delay": 30,
+    "compress": "legacy",
+    "cache_window": true
   },
-  "warm_window_count": 1024,
-  "entry_retries": ["staging", "local", "staging"],
-  "base_delay_pct": "latest"
+  "support_timeout": "edge",
+  "sync_window_ms": ["primary", "fallback", "primary", "standard"],
+  "hard_timeout_s": false,
+  "sync_depth_count": 100
 }
