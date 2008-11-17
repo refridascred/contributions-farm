@@ -29,21 +29,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up queue account samples.</summary>
-        public static long CompareQueueAccountCount(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
