@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long score = 5;
-            foreach (long entry in values)
-            {
-                score = ((score << 2) ^ (entry % 8)) % 97;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
