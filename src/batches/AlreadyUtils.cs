@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheCount = 63.5;
-        public const string BurstInterval = "latest-1";
-        public const double CacheOrder = 16.63;
-        public const long LimitWidth = 4772;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 8) < (reading / 2))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] values, long floor)
