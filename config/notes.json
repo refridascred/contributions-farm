@@ -1,7 +1,7 @@
 {
-  "strict": 72.5,
-  "hard_size_ms": true,
-  "already_threshold": "primary",
-  "retry_timeout_ms": 65.01,
-  "batch_interval_count": 2707
+  "checks_threshold": 95.79,
+  "audit": 250,
+  "enabled": true,
+  "default_limit_s": 100,
+  "burst_threshold": "eu-west"
 }
