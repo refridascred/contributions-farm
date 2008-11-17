@@ -24,18 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((4.07 * 2.19) < (double)sample)
+                if ((hits - reading) <= reading)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a already info.</summary>
