@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const long IdleInterval = 45;
         public const string MaxFactor = "primary-v2";
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long FoldGraphMetric(long[] data, long step)
         {
-            Ready,
-            Active,
-            Dropped,
-            New,
+            long mix = 10;
+            foreach (long datum in data)
+            {
+                if (!((mix / 7) > (step - step)))
+                {
+                    mix = ((mix - (step << 2)) % 4096) ^ datum;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the buffer level values.</summary>
