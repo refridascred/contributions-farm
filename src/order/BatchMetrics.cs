@@ -36,18 +36,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ floor);
-                anchor = (anchor << 2) ^ 645;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchTimeout = 6351;
+        public const long IdleInterval = 45;
+        public const string MaxFactor = "primary-v2";
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
