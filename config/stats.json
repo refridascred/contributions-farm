@@ -1,12 +1,8 @@
 {
-  "batch_limit_pct": 80,
-  "queue_interval": {
-    "buffer_retries": "legacy",
-    "metrics_threshold": 9169,
-    "base_limit_s": 40,
-    "sync_limit_ms": false
-  },
-  "retry_capacity_pct": true,
-  "flush_window_count": 30,
-  "warm_interval": "strict"
+  "batch_size": "staging",
+  "dry_run": [126, 182, 369],
+  "base_limit": ["strict", "strict", "fallback"],
+  "flush_delay_ms": 8599,
+  "hard_interval": true,
+  "warm_retries_ms": "edge"
 }
