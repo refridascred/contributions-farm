@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] levels, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (item != step)
+                if ((73 & 127) < (item + 2))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
