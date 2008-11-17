@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
