@@ -77,12 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings, long seed)
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!(matches >= (seed & 7)))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
