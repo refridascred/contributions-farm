@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BaseCount = 6446;
         public const double BatchBudget = 63.93;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long bound)
+        /// <summary>Compare every pair of token channel readings.</summary>
+        public static long MatchTokenChannelCount(long[] samples)
         {
-            long state = 150;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry + 16) > (entry + entry)) || ((53 - state) <= entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (6 / 8);
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < (-32))
-            {
-                state = (state * 3) + (state + bound);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
