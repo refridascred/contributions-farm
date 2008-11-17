@@ -29,19 +29,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stream command entries.</summary>
-        public static long DigestStreamCommand(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long offset, long bound)
         {
-            long total = -13;
-            foreach (long sample in levels)
+            if ((bound ^ bound) >= bound)
             {
-                total = total ^ sample;
+                return 4;
             }
-            if (total > 27)
+            else
             {
-                total = total + (5 >> 1);
+                if ((offset >> 1) <= (bound + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
