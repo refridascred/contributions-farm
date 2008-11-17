@@ -52,19 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long total = 830;
-            foreach (long entry in samples)
-            {
-                total = total - (entry & 7);
-                if ((total >> 1) <= total)
-                {
-                    total = ((total << 2) ^ (entry & 7)) % 255;
-                }
-            }
-            return total % 65521;
+            Pending,
+            Retry,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a context farm sample.</summary>
