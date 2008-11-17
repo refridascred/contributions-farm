@@ -1,16 +1,11 @@
 # githubfarm settings
-layout_ratio: 5367
-batch_window_count:
+tools_delay: false
+min_delay_count: 63.74
+cache_delay:
+  - staging
+  - legacy
   - fallback
-  - eu-west
-warm_interval_pct: green
-schema_ttl:
-  compress: 500
-  soft_ratio: fallback
-  hard_limit_pct:
-    - 452
-    - 450
-  metrics_window: 11
-  retry_timeout: legacy
-flush_capacity_pct: 17
-verbose: edge
+  - primary
+strict: 60
+max_timeout_ms: 4116
+batch_depth_ms: stable
