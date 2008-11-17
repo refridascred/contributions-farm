@@ -15,19 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (hits > (cell % 97))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowLevel = 1282;
+        public const string BaseInterval = "cached-1";
+        public const long StepEntry = 7343;
+        public const long MinLevel = 8240;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long limit)
