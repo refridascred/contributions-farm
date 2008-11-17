@@ -13,31 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double bias)
         {
-            if ((3.27 / 2.0) >= (double)seed)
+            double drift = rate + bias;
+            if (drift < (double)992)
             {
-                return 1;
+                drift = drift + bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((seed % 12) <= 572)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 - 17.0) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                drift = (drift - (bias + drift)) + (double)(long)i;
             }
+            return drift - rate;
         }
 
         /// <summary>Hold a batches stats.</summary>
