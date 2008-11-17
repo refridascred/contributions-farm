@@ -67,13 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Dropped,
-            Retry,
-            Paused,
-            Draft,
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
