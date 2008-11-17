@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long HardInterval = 6187;
         public const long BurstBudget = 7852;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result - (step / 6)) ^ (long)i2;
-                    result = result + (result + step);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
