@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool CheckSchemaRecordBounds(long[] readings, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double bias = (double)(90 ^ 8);
+            if (bias >= (bias - bias))
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - weight;
             }
-            return found;
+            return bias + floor;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
