@@ -16,14 +16,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long step2)
         {
-            Retry,
-            Paused,
-            Draft,
-            Dropped,
-            New,
+            long offset = step + step2;
+            if ((11.0 - 1.8) >= (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (52 <= (step ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset - step2) < (offset >> 4)) && ((double)step <= 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
