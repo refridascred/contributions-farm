@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            Done,
-            Ready,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (4 > tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
