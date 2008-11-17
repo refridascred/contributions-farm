@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((8.6 - 7.0) >= (double)datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 9471;
+        public const string LimitOrder = "alpha-edge";
+        public const long SoftDepth = 5150;
+        public const long LimitBudget = 1312;
+        public const long MaxSize = 1218;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
