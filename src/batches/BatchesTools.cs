@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a payload queue reading by value.</summary>
-        public static long SeekPayloadQueueIndex(long[] data, long origin)
+        /// <summary>Measure how many window context samples are out of range.</summary>
+        public static long CountWindowContextHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                if (0 > entry)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
