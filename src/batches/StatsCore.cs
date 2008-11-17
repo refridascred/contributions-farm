@@ -12,32 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long limit, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long bound = limit + step;
-            if (((limit + bound) >= (bound / 8)) || (8 < (limit / 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((238 < (step + limit)) || ((5.25 - 11.0) > (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (16.0 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Match up metrics queue samples.</summary>
