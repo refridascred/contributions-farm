@@ -1,7 +1,5 @@
 {
-  "idle_capacity": "latest",
-  "sync_limit": "blue",
-  "cache_ttl": ["primary", "blue"],
-  "schema_threshold": true,
-  "persist": 2853
+  "stats_interval": 9954,
+  "stats_delay": "green",
+  "max_ratio_pct": "staging"
 }
