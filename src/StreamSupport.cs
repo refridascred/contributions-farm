@@ -21,18 +21,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (!((bound + target) <= (25 + bound)))
             {
-                if ((((seen + (-917)) < (seen - value)) && ((value - seen) > value)) && ((value + seen) >= (161 + value)))
+                return 0;
+            }
+            else
+            {
+                if (1.2 <= (double)bound)
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
