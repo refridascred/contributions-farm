@@ -35,18 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long ScoreStreamAccount(long[] data)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = 9;
-            foreach (long sample in data)
-            {
-                if (((score + 941) == (976 - sample)) || ((1.05 + 7.5) <= (double)score))
-                {
-                    score = (score - (score + 295)) % 4096;
-                }
-            }
-            return score % 1000;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
