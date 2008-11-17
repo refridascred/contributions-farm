@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string MinRecord = "strict-edge";
         public const long IdleRecord = 6535;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            Synced,
-            Pending,
-            New,
+            long carry = 6;
+            foreach (long cell in samples)
+            {
+                if (((-398) - (-5)) < (carry >> 3))
+                {
+                    carry = (carry + (cell >> 1)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (cell * 2)) % 255;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
