@@ -44,19 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            double mean = bias2 + (double)13;
+            if (mean < 7.8)
             {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean + mean) + bias;
             }
-            return ready;
+            return mean + (bias2 * 6.6);
         }
 
         /// <summary>Roll a session graph counter forward.</summary>
