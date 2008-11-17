@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryBudget = "stable";
+        public const long MaxTimeout = 8;
+        public const string BaseMetrics = "alpha-1";
+        public const long BurstMetrics = 9864;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsRange(long[] items, long seed)
