@@ -39,11 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Retry,
+            Queued,
+            Done,
         }
     }
 }
