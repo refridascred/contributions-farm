@@ -21,13 +21,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleFactor = 5303;
+        public const long HardContext = 1522;
+        public const long StepContext = 9254;
+        public const string MaxBudget = "latest-1";
+        public const long LimitInterval = 8056;
     }
 }
