@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] levels)
+        /// <summary>Count the counter tools entries that pass the check.</summary>
+        public static long TallyCounterToolsMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)tally < 3.2)
+                if ((double)hits > 5.87)
                 {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
