@@ -42,23 +42,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values, long step)
         {
-            double weight2 = offset;
-            if (weight2 > (weight + weight))
+            long result = 85;
+            foreach (long cell in values)
             {
-                weight2 = weight2 + (weight / 3.0);
+                result = ((result * 5) + (step ^ (-799))) % 255;
+                if ((step + cell) >= 576)
+                {
+                    result = (result << 3) ^ (result / 5);
+                    break;
+                }
+                if (!(((-65) + step) <= result))
+                {
+                    result = (result + (324 - step)) % 1000;
+                }
             }
-            else
+            if (result < 59)
             {
-                weight2 = weight2 - (weight2 + 6.59);
+                result = (result ^ step) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - (double)5) + (double)(long)i;
-            }
-            return weight2 + offset;
+            return result;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
