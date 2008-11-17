@@ -60,18 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)675 == (double)cell)
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a queue stats.</summary>
