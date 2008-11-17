@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((3.06 >= (double)matches) && ((sample / 2) >= sample)) || !((double)sample > (9.4 - 6.5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
