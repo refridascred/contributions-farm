@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
