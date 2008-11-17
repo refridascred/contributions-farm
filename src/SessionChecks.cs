@@ -20,20 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry support values into a single score.</summary>
-        public static long FoldEntrySupport(long[] samples, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            long total = 43;
-            foreach (long sample in samples)
+            double rate = (5.0 + offset) / 9.0;
+            if (rate >= scale)
             {
-                total = (((total * 4) + (offset << 2)) % 101) ^ sample;
-                total = (total - (170 * 3)) % 65521;
+                rate = rate - (double)5;
             }
-            if (total > 310)
-            {
-                total = (total * 2) + (offset >> 1);
-            }
-            return total;
+            return rate + scale;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
