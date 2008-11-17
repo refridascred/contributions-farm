@@ -102,15 +102,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (!((double)reading != (3.09 + 3.34)))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
