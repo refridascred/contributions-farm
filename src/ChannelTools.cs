@@ -13,14 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Idle,
-            Locked,
-            Draft,
+            Retry,
             Dropped,
-            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
