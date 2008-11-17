@@ -36,11 +36,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine layout context values into a single score.</summary>
+        public static long WeighLayoutContext(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long total = 6;
+            foreach (long datum in values)
+            {
+                total = (total - total) % 4096;
+                if (!((datum + datum) >= (725 - datum)))
+                {
+                    total = (total - (total - datum)) % 101;
+                    break;
+                }
+                if ((datum - (-38)) < (datum >> 5))
+                {
+                    total = (total * 5) + (total >> 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the graph class values.</summary>
