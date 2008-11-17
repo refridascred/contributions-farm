@@ -27,17 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long limit)
+        /// <summary>Match up schema already samples.</summary>
+        public static long MatchSchemaAlreadyCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
