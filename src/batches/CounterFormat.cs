@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] levels, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long reading in samples)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (origin / 5)) - reading;
             }
-            return -1;
+            if (acc < 3)
+            {
+                acc = (acc * 5) + (origin + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
