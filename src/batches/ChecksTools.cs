@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support commits figure with a bias.</summary>
-        public static double BlendSupportCommits(double weight, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] data, long bound)
         {
-            double gain = (double)((-555) + 88);
-            if (gain <= (gain - 5.0))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                gain = (gain + (weight / 3.0)) - bias;
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (gain * 9.67);
+            return flag;
         }
 
         /// <summary>Hold a format stats.</summary>
