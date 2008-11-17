@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long seed)
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long FindCacheClusterIndex(long[] items, long seed)
         {
-            if (((seed ^ seed) > (8 << 1)) && (seed >= (seed >> 4)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + step) >= (33 ^ seed))
+                if (items[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (12.0 + 0.92))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
