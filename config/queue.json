@@ -1,19 +1,6 @@
 {
-  "idle_timeout_ms": "fallback",
-  "support_capacity": "cached",
-  "record_ttl": 1024,
-  "cache_window_pct": {
-    "cluster_depth": 60,
-    "default_timeout_ms": true,
-    "warm_threshold": 1.03,
-    "max_ttl_pct": {
-      "retry_delay": "green",
-      "buffer_size": "standard",
-      "contributi_ratio": "local",
-      "soft_delay_pct": [15, 472]
-    },
-    "persist": 68
-  },
-  "warm_ttl_ms": [282, 130],
-  "compress": ["standard", "primary", "staging", "staging"]
+  "default_timeout_pct": "open",
+  "retry_delay_s": "standard",
+  "contributi_ttl": 48,
+  "stream_delay": [239, 219]
 }
