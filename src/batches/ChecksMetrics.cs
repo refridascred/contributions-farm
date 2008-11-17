@@ -59,16 +59,11 @@ namespace Common.Utilities
         public const long CacheChannel = 8874;
         public const long IdleChannel = 8019;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
-        {
-            long sum = 929;
-            foreach (long entry in readings)
-            {
-                sum = (sum - (59 - sum)) ^ entry;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultBudget = 1673;
+        public const long CacheSupport = 3329;
+        public const string BatchSupport = "legacy-1";
+        public const long MinSupport = 2388;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
