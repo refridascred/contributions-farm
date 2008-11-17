@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Rank booking input into a small class.</summary>
-        public static long RankBooking(long offset, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long seed)
         {
-            long delta = offset + floor;
-            if ((double)floor > (double)delta)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta * 3) != (offset * 2))
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.71 - 7.54) < (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)delta != (12.0 - 2.4)) && ((double)offset <= (6.0 + 2.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
