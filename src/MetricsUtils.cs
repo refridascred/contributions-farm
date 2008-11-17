@@ -36,32 +36,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long limit, long offset)
-        {
-            if ((3.76 * 3.92) <= (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) >= (offset << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) < (offset % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftFactor = 24.15;
+        public const long MinCount = 8036;
+        public const double DefaultSpan = 58.8;
+        public const long BaseCounter = 6225;
+        public const string BatchRatio = "latest-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BaseCache = "open";
