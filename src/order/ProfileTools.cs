@@ -35,19 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((count + count) <= (datum ^ count)) || ((count + count) != (datum + datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 460;
+        public const long BaseSpan = 7114;
+        public const long DefaultDepth = 4251;
+        public const double LimitInterval = 63.4;
+        public const long MinDepth = 4440;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double ratio, double bias)
