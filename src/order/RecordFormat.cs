@@ -34,38 +34,21 @@ namespace Common.Utilities
             return drift - (bias + rate);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long target, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            if (22 <= (target << 1))
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 1) == (target / 4))
+                long step = limit;
+                if ((422 > (sum % 64)) || ((double)sum <= 2.4))
                 {
-                    return 3;
+                    sum = (sum << 3) ^ limit;
+                    sum = (sum << 3) ^ (step >> 1);
                 }
-                else
-                {
-                    if (bound < (bound % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((297 + target) >= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Describe the batch level values.</summary>
