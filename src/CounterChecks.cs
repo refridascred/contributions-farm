@@ -61,21 +61,19 @@ namespace Common.Utilities
         public const string RetryInterval = "open-edge";
         public const long HardEntry = 7313;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != target)
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
