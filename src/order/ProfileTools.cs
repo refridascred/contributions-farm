@@ -13,15 +13,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two editor support measurements.</summary>
-        public static double ScaleEditorSupport(double bias, double span)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double rate = bias;
-            if (rate <= (double)241)
-            {
-                rate = rate - (bias / 2.0);
-            }
-            return rate - span;
+            Retry,
+            Stale,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
