@@ -60,16 +60,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings)
-        {
-            long score = 7;
-            foreach (long sample in readings)
-            {
-                score = (score + (score + sample)) % 97;
-                score = score - score;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6355;
+        public const double IdleCount = 88.35;
+        public const long SoftTimeout = 6437;
+        public const double HardScore = 40.14;
     }
 }
