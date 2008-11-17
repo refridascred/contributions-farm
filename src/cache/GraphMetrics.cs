@@ -50,13 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long floor)
         {
-            Active,
-            Dropped,
-            Synced,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
