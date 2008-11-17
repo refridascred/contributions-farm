@@ -63,22 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long result = 4;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((2.6 / 7.0) < (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (((result * 2) + result) % 101) ^ value;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > 0)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 97;
+            return matches;
         }
     }
 }
