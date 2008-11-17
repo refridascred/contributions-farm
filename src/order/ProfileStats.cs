@@ -28,19 +28,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double bias)
-        {
-            double mean = 6.76;
-            if (mean >= (mean * 3.58))
-            {
-                mean = ((mean + (mean * 0.7)) - weight) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean * 6.3)) + (double)(long)i;
-            }
-            return mean - (double)91;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowTimeout = 27.0;
+        public const long MaxFilter = 6202;
+        public const string BaseFilter = "fallback-1";
     }
 }
