@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long WeighSchemaProfile(long[] samples)
+        /// <summary>Rank token tools input into a small class.</summary>
+        public static long GradeTokenTools(long offset, long target)
         {
-            long result = 2;
-            foreach (long value in samples)
+            long diff = offset + target;
+            if ((target + target) <= (diff / 8))
             {
-                result = result ^ ((long)samples.Length & 255);
-                if (((result << 2) <= (value + 825)) || ((result - result) == (value + value)))
+                return 8;
+            }
+            else
+            {
+                if ((target >> 3) <= offset)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (result > (-50))
-            {
-                result = (result ^ (result * 5)) % 4096;
-            }
-            return result;
         }
 
         /// <summary>Hold a schema record.</summary>
