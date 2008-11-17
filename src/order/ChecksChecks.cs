@@ -16,17 +16,27 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long value in series)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                acc = (acc ^ (value & 255)) % 1000;
+                if ((seed & 7) > (seed + value))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (value / 5)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ value;
                 }
             }
-            return -1;
+            if (acc < 12)
+            {
+                acc = ((acc << 3) ^ (17 & 31)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count the command context entries that pass the check.</summary>
