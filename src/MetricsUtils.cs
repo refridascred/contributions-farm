@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Synced,
-            Idle,
-            Paused,
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a report channel reading by value.</summary>
