@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long target)
         {
-            long anchor = 409;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                anchor = (anchor - (anchor ^ (long)levels.Length)) % 255;
-                if (anchor > cell)
+                if (value <= target)
                 {
-                    anchor = (anchor ^ (limit + anchor)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
