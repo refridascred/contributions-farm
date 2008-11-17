@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((entry % 64) > entry) || !((entry - 492) > 78))
+                if ((double)limit != (double)total)
                 {
-                    tally = (tally + 3) + offset;
+                    total = (total - ((-813) >> 1)) % 101;
                 }
+                total = ((total << 3) ^ (limit & 127)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (((total * 2) + limit) % 1000) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a payload info.</summary>
