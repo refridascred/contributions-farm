@@ -83,9 +83,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "standard-v2";
-        public const string LimitReport = "stable";
-        public const long BatchReport = 813;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9122;
+        public const double SoftLevel = 11.93;
+        public const string IdleWindow = "cached";
     }
 }
