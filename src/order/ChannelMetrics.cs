@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up tools profile samples.</summary>
-        public static long MatchToolsProfileCount(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(59 ^ 399);
+            if (weight > (4.7 * 5.12))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (floor - weight)) + gain;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (floor - weight);
         }
 
         /// <summary>Compare every pair of token readings.</summary>
