@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const long CacheRatio = 4728;
         public const string BaseRatio = "strict-1";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long floor)
+        /// <summary>Rank support schema input into a small class.</summary>
+        public static long SortSupportSchema(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (offset >= (offset / 7))
             {
-                if (samples[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed & 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= 1.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) < (offset + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
