@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long WeighReportBatch(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long state = -74;
-            foreach (long item in readings)
-            {
-                state = state + (item * 4);
-            }
-            if (state > 4)
-            {
-                state = (state + state) % 97;
-            }
-            return state % 1000;
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
