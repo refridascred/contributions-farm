@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 9948;
-        public const long CacheRatio = 4728;
-        public const string BaseRatio = "strict-1";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples, long floor)
+        {
+            long state = 148;
+            foreach (long cell in samples)
+            {
+                if (6.3 >= (5.0 * 6.0))
+                {
+                    state = ((state ^ (state / 2)) - cell) + floor;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank support schema input into a small class.</summary>
         public static long SortSupportSchema(long seed, long offset)
