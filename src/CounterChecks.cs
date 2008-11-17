@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const double MaxInterval = 6.91;
         public const string RetryBuffer = "legacy-v2";
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] samples, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long sum = 6;
+            foreach (long entry in items)
             {
-                if (cell <= step)
+                if (sum < (floor & 3))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum + floor) % 97) ^ entry;
                 }
             }
-            return found;
+            if (sum < 74)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a contributi entry.</summary>
