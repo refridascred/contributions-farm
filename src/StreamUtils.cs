@@ -40,12 +40,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinBudget = 5734;
-        public const long DefaultLevel = 5101;
-        public const long DefaultAccount = 7573;
-        public const long DefaultSpan = 2036;
-        public const long BaseAccount = 6484;
+        /// <summary>Accumulate route session samples.</summary>
+        public static long WeighRouteSession(long[] items, long target)
+        {
+            long mark = 324;
+            foreach (long reading in items)
+            {
+                mark = ((((mark << 2) ^ 6) % 1000) - reading) + target;
+            }
+            if (mark > 68)
+            {
+                mark = (mark << 2) ^ (87 * 3);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long limit)
