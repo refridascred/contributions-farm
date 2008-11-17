@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultScore = 9692;
-        public const long BatchStream = 4465;
-        public const long HardStream = 1411;
-        public const double RetryStream = 37.66;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double scale, double floor)
