@@ -1,22 +1,16 @@
 # githubfarm settings
-persist: eu-west
-retry_delay_pct:
-  default_depth: 2392
-  max_interval_s:
-    - 76
-    - 311
-    - 181
-    - 50
-  retry_capacity_s: false
-  dry_run:
-    - 5
-    - 324
-    - 280
-    - 75
-  cache_window_count: 3646
-  sync_retries_ms:
-    - green
-    - open
-    - cached
-window_threshold: green
-base_retries_ms: open
+default_window: local
+strict: 63
+dry_run:
+  cache_delay: 68.47
+  channel_capacity:
+    sync_timeout: stable
+    strict: 77
+    channel_limit: blue
+  readonly: 30
+  dry_run: 8400
+entry_retries:
+  - standard
+  - cached
+commits_size: 9072
+farm_capacity: 46.4
