@@ -1,22 +1,5 @@
 # support settings
-readonly: staging
-max_delay_s:
-  contributi_window: 67
-  cache_timeout_s: 15.24
-  graph_capacity: standard
-  soft_retries_ms:
-    - strict
-    - standard
-    - edge
-  contributi_size:
-    support_window: 1024
-    context_delay:
-      - 373
-      - 290
-    poll_depth_count:
-      - blue
-      - strict
-    counter_threshold: legacy
-    strict: true
-  audit: 8258
-channel_retries: 38
+context_ratio: 100
+batch_ratio_count: true
+warm_capacity: true
+idle_ttl: 93.84
