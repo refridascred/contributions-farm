@@ -53,9 +53,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 50.35;
-        public const double CacheLevel = 52.31;
-        public const long BatchInterval = 5106;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length - (-8)) > (527 + seen))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
+        }
     }
 }
