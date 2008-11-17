@@ -62,19 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long offset)
         {
-            double gain = bias;
-            if (gain > (bias2 / 5.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (bias - bias2);
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias2) + (double)(long)i;
-            }
-            return gain - bias2;
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
