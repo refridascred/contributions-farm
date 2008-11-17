@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 79.61;
-        public const long WindowCounter = 899;
-        public const string RetryCounter = "cached";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (item >= (item + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of channel metrics readings.</summary>
         public static long TotalChannelMetrics(long[] data, long bound)
