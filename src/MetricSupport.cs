@@ -28,38 +28,13 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((limit + offset) <= (limit ^ limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= 7.6)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < (offset + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + 11) != (limit + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Stale,
+            Dropped,
         }
     }
 }
