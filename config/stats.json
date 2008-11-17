@@ -1,15 +1,10 @@
 {
-  "retry_delay_s": "stable",
-  "readonly": ["standard", "fallback", "legacy", "cached"],
-  "audit": {
-    "idle_delay_s": 2.35,
-    "min_window_count": true,
-    "notes_limit": {
-      "default_delay_s": 36.21,
-      "verbose": true,
-      "checks_ratio": "latest"
-    }
+  "metric_interval": ["green", "legacy"],
+  "soft_capacity_ms": "staging",
+  "cluster_delay": {
+    "filter_window": "fallback",
+    "readonly": false,
+    "max_limit": "fallback"
   },
-  "min_timeout": "latest",
-  "hard_size_s": "green"
+  "verbose": [16, 432, 442, 359]
 }
