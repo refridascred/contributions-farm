@@ -46,19 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 22.61;
+        public const double HardFactor = 72.61;
+        public const double LimitSize = 39.76;
     }
 }
