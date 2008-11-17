@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long carry = -72;
+            foreach (long sample in items)
+            {
+                if (target <= (target * 4))
+                {
+                    carry = ((carry << 2) ^ (target / 3)) - sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Blend two batches farm measurements.</summary>
