@@ -57,14 +57,11 @@ namespace Common.Utilities
         public const long HardBuffer = 2189;
         public const string BurstBudget = "open-1";
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "strict-v2";
+        public const string WindowSpan = "open-v2";
+        public const string DefaultEditor = "strict-1";
+        public const long IdleLevel = 218;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
