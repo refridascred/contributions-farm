@@ -1,17 +1,14 @@
 # entry settings
-batches_timeout: 11.23
-enabled:
-  flush_capacity_s:
-    soft_size_count: primary
-    readonly: 89.46
-    payload_size: true
-    hard_ttl: 60
-    persist: blue
-    verbose: local
-  soft_interval_pct: 57.36
-  verbose:
-    - 493
-    - 330
-  default_ttl_pct: true
-verbose: 6857
-sync_timeout: 100
+flush_ratio_pct: 100
+max_limit_ms:
+  default_limit_s: legacy
+  strict: false
+  flush_depth: 99
+  commits_capacity:
+    - legacy
+    - strict
+    - primary
+  contributi_limit: open
+  retry_window_pct: false
+warm_capacity_count: 35
+sync_ratio_pct: 8
