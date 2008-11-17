@@ -43,18 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter tools entries that pass the check.</summary>
-        public static long TallyCounterToolsMatches(long[] values)
+        /// <summary>Find the first metrics format entry that matches the target.</summary>
+        public static long SeekMetricsFormatIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits > 5.87)
+                if (data[i] >= offset)
                 {
-                    hits = (hits + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
