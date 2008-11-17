@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long result = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) < (result * 5))
+                {
+                    result = (result + (result - result)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
