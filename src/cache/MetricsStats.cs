@@ -45,12 +45,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] values, long step)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((2.1 * 19.0) == (double)count) || ((cell + cell) >= (494 + count)))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
