@@ -27,22 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen << 3) > sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Roll a support counter forward.</summary>
