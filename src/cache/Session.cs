@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)limit != (double)total)
+                if (sample > seed)
                 {
-                    total = (total - ((-813) >> 1)) % 101;
+                    stale = false;
+                    break;
                 }
-                total = ((total << 3) ^ (limit & 127)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (((total * 2) + limit) % 1000) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
