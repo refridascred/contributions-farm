@@ -40,15 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Rank payload token input into a small class.</summary>
+        public static long GradePayloadToken(long target, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long span = target - bound;
+            if ((130 - span) < target)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((target - bound) > (6 - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + span) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target > bound) && ((target % 16) < bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
