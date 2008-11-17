@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            double ratio = (floor - 3.04) * 13.0;
+            if (ratio < (floor + floor))
             {
-                if ((double)offset != (5.0 - 4.0))
-                {
-                    sum = (sum * 3) + (sum ^ sum);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                ratio = ratio + (gain / 6.0);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)89) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
