@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] items, long offset)
+        /// <summary>Digest a series of layout editor entries.</summary>
+        public static long WeighLayoutEditor(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long sum = 37;
+            foreach (long item in items)
             {
-                if (datum <= offset)
+                if ((45 < (sum % 64)) || ((sum >> 3) > item))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 5) + (6 / 2)) % 65521;
                 }
             }
-            return ready;
+            if (sum < 13)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate session samples.</summary>
