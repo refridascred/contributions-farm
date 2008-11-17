@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long floor)
         {
-            double weight = bias;
-            if (weight < (bias - 8.1))
+            long anchor = 88;
+            foreach (long cell in levels)
             {
-                weight = weight - (offset / 6.0);
+                if (cell < (cell - cell))
+                {
+                    anchor = (anchor + (cell * 2)) - floor;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor / 7)) % 97;
+                }
             }
-            else
-            {
-                weight = weight + (bias - offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - bias;
+            return anchor;
         }
 
         /// <summary>Describe the checks kind values.</summary>
