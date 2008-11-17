@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Paused,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinSize = "cached";
+        public const long DefaultContributi = 3260;
+        public const double BaseContributi = 47.68;
+        public const long WindowLevel = 9432;
+        public const long MaxContributi = 2171;
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double rate, double bias)
