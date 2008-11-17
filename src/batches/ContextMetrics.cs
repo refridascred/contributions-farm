@@ -74,13 +74,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Synced,
+            Done,
+            Failed,
+            Ready,
         }
     }
 }
