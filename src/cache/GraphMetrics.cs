@@ -54,21 +54,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = floor + seed;
+            if ((seed / 7) >= (step + 23))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (step > 136)
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
