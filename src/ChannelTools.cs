@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstTimeout = 30.88;
+        public const long StepFactor = 4548;
+        public const long SoftRecord = 9804;
+        public const long StepRecord = 8910;
+        public const long BurstRecord = 4208;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data)
