@@ -36,14 +36,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Done,
-            Failed,
-            Paused,
-            Closed,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up editor account samples.</summary>
