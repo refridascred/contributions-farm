@@ -37,35 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long sum = 0;
-            foreach (long value in levels)
+            long state = 4;
+            foreach (long item in levels)
             {
-                if ((833 % 100) < (value - value))
-                {
-                    long offset = (sum & 7) ^ (value - value);
-                    sum = sum - (offset & 1);
-                }
-                if ((double)sum != (1.0 - 10.0))
-                {
-                    sum = (sum ^ value) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (value << 2)) % 255;
-                }
-                if ((value - sum) >= sum)
-                {
-                    break;
-                }
+                state = (((state * 2) + ((-540) + state)) % 255) + item;
+                state = ((state * 4) + 59) % 65521;
             }
-            if (sum > 792)
-            {
-                sum = ((sum << 2) ^ ((-84) - sum)) % 101;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Match up layout samples.</summary>
