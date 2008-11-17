@@ -38,15 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double rate = offset * 4.0;
-            if (rate <= offset)
-            {
-                rate = rate - offset;
-            }
-            return rate + ratio;
+            Closed,
+            Retry,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
