@@ -65,13 +65,10 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Closed,
-            Synced,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 5682;
+        public const long BaseCount = 4216;
+        public const long MaxFactor = 5789;
+        public const long MaxRoute = 1838;
     }
 }
