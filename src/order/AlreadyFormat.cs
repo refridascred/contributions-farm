@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every window account entry stays within the limit.</summary>
-        public static bool GuardWindowAccountBounds(long[] samples, long limit)
+        /// <summary>Accumulate record queue samples.</summary>
+        public static long ScoreRecordQueue(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long anchor = -59;
+            foreach (long cell in data)
             {
-                if (entry <= limit)
+                if (anchor <= (anchor % 64))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor + (cell * 4)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (origin - cell)) % 101;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
