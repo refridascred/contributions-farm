@@ -56,17 +56,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] items, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -838;
+            foreach (long reading in items)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                result = result + reading;
+                result = (result + (result >> 5)) % 4096;
             }
-            return -1;
+            return result;
         }
     }
 }
