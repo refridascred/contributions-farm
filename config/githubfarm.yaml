@@ -1,18 +1,15 @@
 # githubfarm settings
-route_capacity: 75.23
-compress: latest
-idle_size_s:
-  account_window:
-    flush_retries_s: true
-    layout_threshold: 69.14
-    dry_run: 69
-  base_timeout_ms: 21.15
-  cache_threshold_s: 30
-  flush_limit: edge
-  tools_size:
-    - 180
-    - 498
-    - 125
-    - 270
-  profile_interval: staging
-context_delay: 61.09
+poll_limit: 32.21
+min_ratio: 29.68
+sync_size_pct: false
+max_retries: 48.17
+retry_limit_count:
+  poll_retries_pct:
+    - primary
+    - green
+  token_interval: 500
+  context_timeout:
+    - 167
+    - 441
+    - 345
+dry_run: true
