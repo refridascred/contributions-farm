@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] items, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (sample <= bound)
+                if ((double)entry != (2.7 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
