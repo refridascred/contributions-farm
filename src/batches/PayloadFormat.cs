@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values, long origin)
         {
-            long anchor = 15;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = (((anchor * 5) + 537) ^ reading) + target;
+                if ((matches ^ reading) > (reading * 3))
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
