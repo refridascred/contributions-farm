@@ -1,5 +1,5 @@
 {
-  "max_ttl": [5, 81, 348, 53],
-  "cluster_window": "primary",
-  "format_threshold": "cached"
+  "default_threshold_ms": 23.65,
+  "soft_ttl_pct": true,
+  "order_depth": [248, 187]
 }
