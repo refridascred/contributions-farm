@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const string DefaultWindow = "cached";
         public const string LimitWindow = "local-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftFactor = 24.15;
-        public const long MinCount = 8036;
-        public const double DefaultSpan = 58.8;
-        public const long BaseCounter = 6225;
-        public const string BatchRatio = "latest-1";
+        /// <summary>Count the cache editor entries that pass the check.</summary>
+        public static long TallyCacheEditorMatches(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((7.2 * 12.0) == (double)hits)
+                {
+                    hits = ((hits + 3) - item) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] data, long limit)
