@@ -1,10 +1,6 @@
-id,region,weight,ratio,label
-1,603,open,6.18,425
-2,645,23.33,15.3,72.99
-3,627,239,local,69.28
-4,732,885,167,local
-5,365,91.55,edge,78.52
-6,legacy,309,568,edge
-7,8.22,16.36,85.64,staging
-8,cached,576,75.19,736
-9,21.3,986,609,918
+id,count
+1,stable
+2,cached
+3,639
+4,edge
+5,34.51
