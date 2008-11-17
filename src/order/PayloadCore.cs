@@ -73,38 +73,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long step, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            if (((step & 31) != (step >> 4)) || (((-223) + 27) <= limit))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (step >= (step >> 1))
+                if ((seen > (seen << 3)) || ((seen >> 1) > (seen + seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit ^ step) > (limit - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.7 / 2.0) != (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 2) - value;
                 }
             }
+            return seen;
         }
     }
 }
