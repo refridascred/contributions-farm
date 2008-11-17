@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] items, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((2.64 + 18.0) == (double)seen)
-                {
-                    seen = ((seen + 1) + datum) + bound;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a layout entry.</summary>
