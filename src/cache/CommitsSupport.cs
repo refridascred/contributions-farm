@@ -37,21 +37,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up editor account samples.</summary>
-        public static long PairEditorAccountCount(long[] series)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
