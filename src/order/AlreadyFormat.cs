@@ -49,22 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue account entries that pass the check.</summary>
-        public static long TallyQueueAccountOutliers(long[] series, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((83 - seed) == (seed - seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
