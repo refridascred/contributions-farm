@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double span)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long WeighSchemaProfile(long[] samples)
         {
-            double ratio2 = 15.0;
-            if (ratio2 < (span / 8.0))
+            long result = 2;
+            foreach (long value in samples)
             {
-                ratio2 = ratio2 + (span + ratio);
+                result = result ^ ((long)samples.Length & 255);
+                if (((result << 2) <= (value + 825)) || ((result - result) == (value + value)))
+                {
+                    break;
+                }
             }
-            return ratio2 + 9.72;
+            if (result > (-50))
+            {
+                result = (result ^ (result * 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Blend two batches window measurements.</summary>
