@@ -47,39 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long floor, long floor2)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long prev = floor + floor2;
-            if (!((floor / 8) == (prev << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1 >> 5) != (floor2 * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(floor2 > (prev + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor2 < (133 & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
