@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double rate = 16.0;
-            if (rate < (3.6 * 6.5))
-            {
-                rate = (rate + (rate - floor)) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - rate;
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
