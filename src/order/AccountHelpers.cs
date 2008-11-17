@@ -45,17 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if ((entry + entry) <= (entry * 4))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
