@@ -25,15 +25,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double ratio, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double weight = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (ratio + floor)) + (double)(long)i;
-            }
-            return weight + ratio;
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
