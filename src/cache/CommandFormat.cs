@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels, long floor)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long TallyRouteBufferOutliers(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)datum >= (19.0 + 19.0)) || !((datum / 9) <= (datum - 11)))
+                if (hits > (hits % 24))
                 {
-                    matches = (matches + 2) - floor;
+                    hits = ((hits + 1) - cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
