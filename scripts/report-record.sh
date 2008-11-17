@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard latest fallback; do
+for item in local stable cached fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=122
+log "limit is ${RECORD_LIMIT}"
