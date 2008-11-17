@@ -47,26 +47,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((0.91 * 2.46) == (double)origin) || ((5.19 * 2.98) < (double)origin))
-                {
-                    mark = ((mark * 4) + (mark << 3)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (mark - (long)i)) % 101;
-                }
-                long count = (mark << 1) << 2;
-                mark = mark + (10 + count);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
