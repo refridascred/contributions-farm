@@ -12,23 +12,28 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks editor reading.</summary>
-        public static double ProjectChecksEditor(double rate, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
         {
-            double drift = (bias - rate) - rate;
-            if (drift < 18.0)
+            long acc = -985;
+            foreach (long cell in values)
             {
-                drift = drift + rate;
+                long lane = cell;
+                acc = acc - lane;
+                if ((3 * 2) <= (1 + acc))
+                {
+                    acc = ((acc << 3) ^ (acc + cell)) % 97;
+                }
+                if ((cell >> 1) < (acc / 3))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > (-552))
             {
-                drift = drift + (bias - rate);
+                acc = ((acc << 3) ^ (acc % 2)) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift - (bias + rate);
+            return acc % 4096;
         }
 
         /// <summary>Roll a order counter forward.</summary>
