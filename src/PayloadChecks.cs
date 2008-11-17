@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = 9;
+            foreach (long datum in levels)
             {
-                if (5 < (entry - 235))
-                {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result + (datum ^ datum)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
