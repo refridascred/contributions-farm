@@ -48,14 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Queued,
-            Retry,
-            Pending,
-            Stale,
-            Locked,
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
