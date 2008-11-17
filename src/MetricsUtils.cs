@@ -64,10 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8058;
-        public const long MaxRoute = 8934;
-        public const long HardRoute = 4158;
-        public const long SoftWidth = 3960;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long floor)
+        {
+            long anchor = -5;
+            foreach (long sample in levels)
+            {
+                anchor = (((anchor - anchor) % 1000) - sample) + floor;
+            }
+            return anchor % 97;
+        }
     }
 }
