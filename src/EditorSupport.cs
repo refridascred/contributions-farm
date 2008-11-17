@@ -51,30 +51,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long origin)
         {
-            long result = 472;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (bound >= ((long)samples.Length + bound))
+                if (cell <= origin)
                 {
-                    break;
-                }
-                else
-                {
-                    result = (result - (entry - bound)) % 4096;
-                }
-                if (result >= (3 + bound))
-                {
-                    result = (result << 3) ^ (entry % 5);
-                }
-                if ((entry << 3) < (bound + entry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
