@@ -64,22 +64,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] values, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((27 + seed) < (seed >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
