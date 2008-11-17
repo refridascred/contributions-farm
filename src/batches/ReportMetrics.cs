@@ -15,32 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long bound2 = origin + bound;
-            if ((5.0 >= (double)bound2) || ((9.1 + 8.8) >= (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((68 ^ 2) <= (bound2 + 27))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 % 7) > bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
