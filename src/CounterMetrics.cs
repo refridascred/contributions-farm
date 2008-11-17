@@ -15,21 +15,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of format order readings.</summary>
-        public static long CompareFormatOrderCount(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -654;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (18.0 <= (double)sum)
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (((sum * 3) + (sum << 2)) % 97) + seed;
+                    sum = (sum * 2) + (item + item);
+                }
+                if ((double)item == (7.2 / 2.0))
+                {
+                    sum = (sum - (sum ^ 92)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (sum >> 1)) % 97;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
