@@ -1,9 +1,10 @@
 # support settings
-hard_delay_pct:
-  - open
-  - latest
-context_ttl: 86.33
-window_window: standard
-persist: false
-enabled: 4908
-dry_run: strict
+channel_size: 81.86
+warm_retries_count:
+  audit:
+    - eu-west
+    - eu-west
+  burst_delay: edge
+  base_limit_count: 250
+batch_delay: green
+warm_ttl_count: 8206
