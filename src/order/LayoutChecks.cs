@@ -31,13 +31,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long bound)
         {
-            Active,
-            Draft,
-            Queued,
-            Failed,
+            long lane = offset - bound;
+            if (!((20.0 * 0.76) < (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 >> 4) == (offset - 0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane >> 2) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm info.</summary>
