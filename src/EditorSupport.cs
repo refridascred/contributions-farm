@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long DefaultWindow = 2717;
         public const string BatchWindow = "cached";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
