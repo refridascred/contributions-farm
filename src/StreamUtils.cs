@@ -31,11 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            long total = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total - bound;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream state values.</summary>
