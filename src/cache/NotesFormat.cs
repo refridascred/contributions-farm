@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] values)
+        /// <summary>Roll a order entry counter forward.</summary>
+        public static long DeriveOrderEntry(long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)count != (2.4 + 4.2))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
     }
 }
