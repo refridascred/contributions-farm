@@ -45,15 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double bias)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double bias2 = (double)((-59) % 2);
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 + (bias2 + bias)) + (double)(long)i) + weight;
-            }
-            return bias2 - (2.0 * 7.9);
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
