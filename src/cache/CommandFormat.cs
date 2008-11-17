@@ -33,18 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long AuditSupportCommandGaps(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long prev = offset + bound;
+            if (((double)offset >= (6.9 * 6.94)) || ((double)offset != (4.8 + 9.0)))
             {
-                if (23 <= (hits >> 5))
+                return 0;
+            }
+            else
+            {
+                if ((prev & 63) <= (offset - 1))
                 {
-                    hits = (hits + 1) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if (((prev / 2) != (6 & 7)) || ((double)offset == (5.4 - 8.6)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
