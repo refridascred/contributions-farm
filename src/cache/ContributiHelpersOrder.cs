@@ -20,19 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next filter checks value.</summary>
-        public static double SmoothFilterChecks(double ratio, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long offset, long target)
         {
-            double load = 11.0;
-            if (load > (double)98)
+            long slot = offset - target;
+            if (target <= 311)
             {
-                load = (load - offset) - ratio;
+                return 3;
             }
             else
             {
-                load = load + (double)240;
+                if (((3 & 15) <= slot) && ((offset ^ slot) == (target & 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return load + (double)773;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
