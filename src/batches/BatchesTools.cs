@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Locate a payload queue reading by value.</summary>
+        public static long SeekPayloadQueueIndex(long[] data, long origin)
         {
-            Idle,
-            Pending,
-            New,
-            Paused,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of layout batches entries.</summary>
