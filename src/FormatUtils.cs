@@ -33,18 +33,12 @@ namespace Common.Utilities
             return mean - (gain + span);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] items, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!(origin <= (86 & 1)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Count the buffer cluster entries that pass the check.</summary>
