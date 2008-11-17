@@ -94,21 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already contributi readings.</summary>
-        public static long PairAlreadyContributiCount(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= (48 + value))
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + origin;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
