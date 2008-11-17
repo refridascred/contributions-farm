@@ -23,18 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already graph samples are out of range.</summary>
-        public static long MeasureAlreadyGraphOutliers(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((4.71 + 0.93) == (double)tally)
+                if (datum < bound)
                 {
-                    tally = (tally + 2) + value;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
