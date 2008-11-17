@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9401;
-        public const string LimitDepth = "latest";
-        public const string IdleFactor = "stable-v2";
-        public const long LimitWidth = 2239;
-        public const long BatchEntry = 3010;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches & 63) != (limit + 3))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long IterateFilter(long bound)
