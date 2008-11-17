@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long BurstChannel = 2842;
         public const string DefaultBudget = "legacy-edge";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = 62;
+            foreach (long entry in values)
             {
-                if ((datum + datum) < (hits % 3))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state ^ (state + state)) % 1000) ^ entry;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a profile stats.</summary>
