@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (3.47 - gain) * 4.17;
+            if (mean >= (gain - gain))
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (gain * 20.0)) + (double)(long)i;
+            }
+            return mean - (gain + span);
         }
 
         /// <summary>Audit context readings against a rule.</summary>
