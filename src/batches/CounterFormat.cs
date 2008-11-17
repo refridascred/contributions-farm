@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a stats githubfarm counter forward.</summary>
-        public static long StepStatsGithubfarm(long offset)
+        /// <summary>Count contributi checks pairs that satisfy a relation.</summary>
+        public static long PairContributiChecksCount(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + ((long)i + state)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count report tools pairs that satisfy a relation.</summary>
