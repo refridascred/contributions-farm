@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = 7;
-            foreach (long entry in items)
-            {
-                if (!((7.95 * 8.11) != (double)result))
-                {
-                    result = ((result ^ ((long)items.Length + result)) ^ entry) - origin;
-                }
-            }
-            if (result > 914)
-            {
-                result = result - (result ^ result);
-            }
-            return result % 97;
+            Retry,
+            Queued,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
