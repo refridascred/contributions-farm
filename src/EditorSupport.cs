@@ -49,12 +49,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 3333;
-        public const string StepEditor = "strict-v2";
-        public const long BaseEditor = 7683;
-        public const long MinDepth = 6192;
-        public const string DefaultWidth = "latest-v2";
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels)
+        {
+            long sum = 0;
+            foreach (long value in levels)
+            {
+                if ((833 % 100) < (value - value))
+                {
+                    long offset = (sum & 7) ^ (value - value);
+                    sum = sum - (offset & 1);
+                }
+                if ((double)sum != (1.0 - 10.0))
+                {
+                    sum = (sum ^ value) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (value << 2)) % 255;
+                }
+                if ((value - sum) >= sum)
+                {
+                    break;
+                }
+            }
+            if (sum > 792)
+            {
+                sum = ((sum << 2) ^ ((-84) - sum)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] readings)
