@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Roll a entry counter counter forward.</summary>
+        public static long DeriveEntryCounter(long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (88 >= (cell << 1))
+                if (((-38) << 2) == ((long)i ^ state))
                 {
-                    count = count + 3;
+                    state = (state ^ (long)i) % 1000;
+                    break;
                 }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state + (long)i) % 101) - (long)i2;
+                    state = ((state * 5) + (state & 3)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate queue samples.</summary>
