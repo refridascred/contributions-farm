@@ -47,18 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache editor entries that pass the check.</summary>
-        public static long TallyCacheEditorMatches(long[] series, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((7.2 * 12.0) == (double)hits)
-                {
-                    hits = ((hits + 3) - item) - origin;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
