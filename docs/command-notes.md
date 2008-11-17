@@ -1,10 +1,13 @@
 # Command notes
 
-A support that stays idle for too long is moved to the command list.
-Keep session and session names short and lowercase.
+Keep commits and buffer names short and lowercase.
+Keep session and farm names short and lowercase.
+
+Each account is validated before it reaches the batch queue.
+Run the report check before changing any batch limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer contributi defaults
-- Keep account values small
+- Prefer session defaults
+- Document new stream fields
+- Log every counter change
