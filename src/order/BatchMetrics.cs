@@ -49,18 +49,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] items, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((-44) << 1) > (count << 2))
-                {
-                    count = ((count + 1) + value) - step;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the buffer level values.</summary>
