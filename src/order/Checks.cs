@@ -94,19 +94,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "stable-v2";
+        public const string BatchDepth = "alpha-v2";
+        public const long CacheWindow = 7417;
+        public const double BatchBudget = 73.07;
     }
 }
