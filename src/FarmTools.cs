@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many tools graph samples are out of range.</summary>
-        public static long TallyToolsGraphOutliers(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((7 ^ reading) >= matches)
+                if (value <= seed)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
