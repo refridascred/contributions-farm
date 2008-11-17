@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Done,
-            Synced,
-            Pending,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
