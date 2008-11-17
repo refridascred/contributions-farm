@@ -44,17 +44,21 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
