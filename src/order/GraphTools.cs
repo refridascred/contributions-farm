@@ -57,10 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8598;
-        public const long MinBudget = 6400;
-        public const long BaseLevel = 1724;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Synced,
+            Failed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] series)
