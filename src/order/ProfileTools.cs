@@ -13,18 +13,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] values, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if (!((bound2 ^ bound2) > 621))
             {
-                if ((19.0 + 0.7) <= (double)count)
+                return 0;
+            }
+            else
+            {
+                if ((bound % 16) != (bound >> 3))
                 {
-                    count = ((count + 3) + reading) - target;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
