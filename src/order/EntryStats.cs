@@ -22,19 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data, long origin)
         {
-            long acc = 81;
-            foreach (long value in data)
+            long result = 7;
+            foreach (long item in data)
             {
-                acc = (acc ^ (value / 5)) % 1000;
+                result = (result * 2) + item;
+                for (int i = 0; i < 2; i++)
+                {
+                    result = ((result << 3) ^ (origin - result)) + (long)i;
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                if ((96 * 5) == (88 ^ result))
+                {
+                    result = ((result * 3) + (result + 466)) % 1000;
+                }
             }
-            if (acc < 55)
+            if (result < 7)
             {
-                acc = (acc * 3) + 18;
+                result = ((result << 2) ^ (origin % 16)) % 4096;
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
