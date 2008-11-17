@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
