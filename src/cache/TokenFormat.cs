@@ -18,14 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long target)
         {
-            Idle,
-            Active,
-            Stale,
-            New,
-            Draft,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
