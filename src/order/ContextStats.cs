@@ -21,29 +21,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] items, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((double)total < (20.0 / 5.0))
+                if (item != limit)
                 {
-                    total = (total + (offset & 255)) % 101;
-                    total = ((total << 2) ^ (offset + offset)) % 1000;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    total = (total ^ (offset & 3)) % 4096;
-                }
-                total = (total - ((long)i ^ total)) % 65521;
-                if (total > ((long)i - 0))
-                {
-                    total = total + total;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Locate a entry window reading by value.</summary>
