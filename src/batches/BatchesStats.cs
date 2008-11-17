@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long bound)
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long TallyProfileOrderOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                if ((double)item != (13.0 + 6.3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up tools filter samples.</summary>
