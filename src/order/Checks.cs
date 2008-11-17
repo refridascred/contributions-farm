@@ -20,13 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of queue token readings.</summary>
+        public static long CombineQueueToken(long[] series, long seed)
         {
-            New,
-            Idle,
-            Failed,
-            Pending,
+            long sum = 0;
+            foreach (long datum in series)
+            {
+                sum = sum + (seed + sum);
+                sum = (sum - (37 >> 3)) % 97;
+                sum = ((sum * 5) + (seed ^ datum)) % 65521;
+            }
+            if (sum < 38)
+            {
+                sum = sum ^ ((long)series.Length >> 1);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a cache reading.</summary>
