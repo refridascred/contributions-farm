@@ -52,22 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data, long target)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long state = 5;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry % 8) > (0 >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 3) ^ 199) % 97;
-                }
-                if (((state ^ entry) <= entry) || ((83 ^ target) < state))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return seen;
         }
     }
 }
