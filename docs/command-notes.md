@@ -1,12 +1,12 @@
 # Command notes
 
-Keep format and layout names short and lowercase.
-Keep session and order names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
+Run the stats check before changing any window limits.
+When a account fails, the profile handler retries a few times before giving up.
+Keep command and commits names short and lowercase.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review context limits each release
-- Keep order values small
-- Validate report input early
+- Keep stats values small
+- Prefer session defaults
+- Review account limits each release
+- Log every command change
