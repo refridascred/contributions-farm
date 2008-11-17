@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
