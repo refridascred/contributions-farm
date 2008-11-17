@@ -1,5 +1,16 @@
 # githubfarm settings
-soft_timeout: 39.63
-base_ratio_s: false
-min_capacity_pct: standard
-batch_timeout: false
+persist:
+  soft_retries_s: primary
+  batch_capacity: 100
+  audit: eu-west
+  poll_interval_ms: 250
+  flush_limit_pct: 608
+  dry_run: blue
+githubfarm_threshold: latest
+order_window:
+  - 232
+  - 10
+  - 296
+  - 90
+stats_size: strict
+channel_threshold: 250
