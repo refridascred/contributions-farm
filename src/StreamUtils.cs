@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result + ((long)i - origin)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
