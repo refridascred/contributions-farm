@@ -24,18 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((hits - reading) <= reading)
+                if (!(8 <= (count + count)))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
