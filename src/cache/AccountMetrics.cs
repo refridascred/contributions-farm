@@ -28,19 +28,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            if (floor >= 99)
             {
-                if (entry > offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= (9.0 + 12.0))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(step < (step % 100)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((507 * 5) <= (floor / 8)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the channel mode values.</summary>
