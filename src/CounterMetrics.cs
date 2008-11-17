@@ -33,19 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                if (items[i] >= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
