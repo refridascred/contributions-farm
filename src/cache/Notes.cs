@@ -73,15 +73,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph report samples.</summary>
-        public static long FoldGraphReport(long[] samples, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long acc = 776;
-            foreach (long reading in samples)
+            long mix = 829;
+            foreach (long value in items)
             {
-                acc = (((acc + 7) % 4096) ^ reading) + offset;
+                if ((mix >> 2) != (mix - mix))
+                {
+                    mix = (mix ^ (value / 5)) % 255;
+                }
+                else
+                {
+                    mix = mix + value;
+                }
             }
-            return acc;
+            if (mix > 690)
+            {
+                mix = ((mix << 3) ^ (mix >> 1)) % 101;
+            }
+            return mix;
         }
     }
 }
