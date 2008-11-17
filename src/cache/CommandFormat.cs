@@ -44,13 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Draft,
+            long carry = 863;
+            foreach (long item in items)
+            {
+                if (((-411) > (335 + carry)) && ((carry - 6) <= (item + item)))
+                {
+                    carry = (carry ^ (53 + carry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 2) + (118 - item);
+                }
+            }
+            return carry;
         }
     }
 }
