@@ -85,18 +85,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context commits samples.</summary>
-        public static long TotalContextCommits(long[] readings)
+        /// <summary>Roll a buffer tools counter forward.</summary>
+        public static long SeriesBufferTools(long step)
         {
-            long mix = 311;
-            foreach (long reading in readings)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)mix > (10.0 - 1.4)) && ((mix + 2) == (18 + reading)))
-                {
-                    mix = ((mix << 2) ^ 9) % 97;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix % 65521;
+            return sum;
         }
     }
 }
