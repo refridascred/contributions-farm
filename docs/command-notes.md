@@ -1,14 +1,14 @@
 # Command notes
 
-When a farm fails, the editor handler retries a few times before giving up.
-Defaults for order live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often stats data is refreshed.
+Use filter settings to tune how often cache data is refreshed.
 
-Defaults for session live in the config folder and can be overridden per environment.
-Keep window and format names short and lowercase.
-The batches report groups every checks by account.
+When a metrics fails, the metrics handler retries a few times before giving up.
+When a queue fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep schema values small
-- Review notes limits each release
-- Document new context fields
+- Prefer notes defaults
+- Log every contributi change
+- Validate cache input early
