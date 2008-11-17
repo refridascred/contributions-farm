@@ -73,12 +73,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
