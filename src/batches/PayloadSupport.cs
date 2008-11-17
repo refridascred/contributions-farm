@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            New,
-            Pending,
-            Paused,
-            Failed,
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
