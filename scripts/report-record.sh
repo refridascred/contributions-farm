@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open legacy stable fallback; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=392
+RECORD_LIMIT=395
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for item in fallback legacy strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
