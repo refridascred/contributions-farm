@@ -28,13 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double bias)
         {
-            Active,
-            New,
-            Failed,
-            Done,
+            double mean = 6.76;
+            if (mean >= (mean * 3.58))
+            {
+                mean = ((mean + (mean * 0.7)) - weight) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean * 6.3)) + (double)(long)i;
+            }
+            return mean - (double)91;
         }
     }
 }
