@@ -47,27 +47,32 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long target)
         {
-            long carry = 960;
-            foreach (long reading in series)
+            long diff = offset - target;
+            if ((double)offset >= (double)target)
             {
-                if ((carry ^ reading) != (reading - 173))
+                return 4;
+            }
+            else
+            {
+                if (offset <= diff)
                 {
-                    carry = (carry - (carry - (-957))) % 1000;
-                    carry = (carry ^ (reading + carry)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry - (392 - 0)) % 255;
-                }
-                if ((13.0 / 6.0) >= (double)carry)
-                {
-                    carry = carry - (reading + carry);
+                    if (3.38 > (6.5 - 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
