@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record metrics samples are out of range.</summary>
-        public static long AuditRecordMetricsOutliers(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (((-745) << 1) <= (count * 5))
+                if (item > step)
                 {
-                    count = (count + 1) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Match up schema cluster samples.</summary>
