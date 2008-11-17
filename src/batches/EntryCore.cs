@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long limit, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] samples, long floor)
         {
-            long span = limit ^ step;
-            if (span < (span - 495))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit >= (3.17 / 5.0))
+                if ((((floor ^ datum) != (seen - floor)) && (0.1 >= (double)datum)) && ((double)floor != (9.0 * 9.3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 - 18.0) != (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
