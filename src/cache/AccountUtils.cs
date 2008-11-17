@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long limit, long target)
+        /// <summary>Check that every batch stats entry stays within the limit.</summary>
+        public static bool CheckBatchStatsBounds(long[] series, long origin)
         {
-            long offset = limit - target;
-            if ((target ^ offset) != (offset * 3))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 / 7.0) <= (double)limit)
+                if (item > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
