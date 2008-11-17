@@ -1,27 +1,18 @@
 # entry settings
-retry_size_ms:
-  verbose: stable
-  context_size:
-    - fallback
-    - green
+max_timeout_ms:
+  retry_size_count:
+    - stable
     - primary
-  strict: latest
-  max_size:
-    idle_limit: eu-west
-    hard_interval_s: false
-    warm_depth_ms: false
-    cache_delay_pct: false
-  payload_delay: edge
-  poll_threshold_pct:
-    - 242
-    - 232
-max_ttl_count:
-  base_retries_s: 100
-  stream_threshold: strict
-  layout_size: primary
-audit:
-  - local
-  - local
-  - open
-  - fallback
-min_window: green
+    - staging
+  editor_depth: edge
+  token_interval: 41.36
+  compress:
+    - primary
+    - eu-west
+    - strict
+    - green
+  burst_ttl_pct: latest
+  soft_threshold_count: staging
+poll_window: true
+order_depth: 72.54
+burst_size_s: false
