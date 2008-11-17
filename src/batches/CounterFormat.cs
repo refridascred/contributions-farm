@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples, long origin)
-        {
-            long acc = 6;
-            foreach (long reading in samples)
-            {
-                acc = (acc - (origin / 5)) - reading;
-            }
-            if (acc < 3)
-            {
-                acc = (acc * 5) + (origin + acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "standard";
+        public const long BurstBudget = 8905;
+        public const string RetryContext = "cached-1";
+        public const string BaseScore = "strict-edge";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] data)
