@@ -45,18 +45,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((target ^ datum) < datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double rate = 10.0;
+            return ((rate + (13.0 * 8.8)) + weight) + floor;
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
