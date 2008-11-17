@@ -35,12 +35,39 @@ namespace Common.Utilities
         public const long BatchInterval = 8857;
         public const double IdleInterval = 28.21;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long bound)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            long span = seed + bound;
+            if ((double)43 <= (double)span)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= 9.2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - bound) > (span & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) != (9 ^ span))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
