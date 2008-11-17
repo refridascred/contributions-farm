@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "alpha-edge";
-        public const double HardSize = 57.28;
-        public const long BatchLevel = 7256;
+        /// <summary>Check that every schema filter entry stays within the limit.</summary>
+        public static bool GuardSchemaFilterRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of format order readings.</summary>
         public static long CompareFormatOrderCount(long[] data)
