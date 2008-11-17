@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a context schema value against two limits.</summary>
-        public static long RankContextSchema(long step, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            if ((step <= offset) || (offset > (step ^ step)))
+            double rate = (bias / 4.0) / 8.0;
+            if (rate > rate)
             {
-                return 3;
+                rate = rate - bias;
             }
-            else
-            {
-                if ((step + offset) != (offset % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 2) != (offset + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return rate - (floor / 6.0);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
