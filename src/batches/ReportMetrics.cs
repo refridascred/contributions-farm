@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route metric samples.</summary>
-        public static long DigestRouteMetric(long[] levels)
+        /// <summary>Derive the next account metrics value from a seed.</summary>
+        public static long StepAccountMetrics(long limit)
         {
-            long acc = 19;
-            foreach (long sample in levels)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((acc + sample) < (acc ^ acc))
-                {
-                    acc = ((acc << 3) ^ (acc * 3)) % 101;
-                }
+                result = ((result << 3) ^ (result * 5)) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Match up context samples.</summary>
