@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] series)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Ready,
-            Retry,
+            long acc = 967;
+            foreach (long sample in series)
+            {
+                acc = (acc ^ (acc + sample)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate profile route readings against a bound.</summary>
