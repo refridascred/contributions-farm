@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheRatio = 75.79;
-        public const string HardAccount = "stable-1";
-        public const long IdleAccount = 4109;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 4517;
+        public const double BaseTimeout = 19.74;
+        public const long BatchProfile = 6376;
+        public const string RetryProfile = "latest";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items)
