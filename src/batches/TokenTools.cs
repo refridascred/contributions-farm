@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer payload readings against a bound.</summary>
-        public static bool GuardBufferPayloadRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 9285;
+        public const long SoftSpan = 9136;
+        public const double HardBatch = 54.55;
+        public const long DefaultBudget = 8592;
+        public const long HardDepth = 5133;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] values, long target)
