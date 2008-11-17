@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "alpha-edge";
-        public const long DefaultBudget = 6893;
-        public const long BurstContext = 2118;
-        public const double BaseContext = 94.61;
-        public const double HardContext = 20.36;
+        /// <summary>Count the editor token entries that pass the check.</summary>
+        public static long MeasureEditorTokenMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((8.52 - 19.0) <= (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] readings, long step)
