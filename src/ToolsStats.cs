@@ -78,17 +78,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long sample in readings)
             {
-                if (levels[i] == floor)
+                if (((double)carry >= (6.1 + 4.8)) && ((17.0 / 4.0) == (double)sample))
                 {
-                    return (long)i;
+                    carry = (carry - (sample + sample)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (sample + carry)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
