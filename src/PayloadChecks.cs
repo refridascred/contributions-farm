@@ -16,10 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstLevel = 6223;
-        public const double SoftCount = 84.41;
-        public const long LimitProfile = 8291;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 5109;
+        public const double HardAlready = 4.97;
+        public const long MaxDepth = 2844;
+        public const string CacheAlready = "fallback-edge";
+        public const long BaseAlready = 422;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
