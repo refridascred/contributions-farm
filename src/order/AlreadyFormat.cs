@@ -47,12 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the queue account entries that pass the check.</summary>
+        public static long TallyQueueAccountOutliers(long[] series, long seed)
         {
-            Dropped,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((83 - seed) == (seed - seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
