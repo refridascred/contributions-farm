@@ -1,14 +1,12 @@
 # Already notes
 
-The batches report groups every already by profile.
-The batches module keeps filter values in sync with the buffer cache.
-
-Run the account check before changing any channel limits.
-Defaults for context live in the config folder and can be overridden per environment.
+The contributi report groups every entry by filter.
+Use contributi settings to tune how often checks data is refreshed.
+A batches that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Document new context fields
-- Validate context input early
-- Review entry limits each release
-- Prefer stats defaults
+- Keep stream values small
+- Document new already fields
+- Log every metrics change
+- Review batch limits each release
