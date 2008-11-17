@@ -34,12 +34,14 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8079;
         public const double CacheGithubfarm = 55.77;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 839;
-        public const long SoftEditor = 3206;
-        public const long BaseInterval = 8078;
-        public const long MinEditor = 7778;
-        public const long StepEditor = 6546;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Dropped,
+            Retry,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 2343;
