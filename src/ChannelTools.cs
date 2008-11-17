@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool GuardRouteContributiLimits(long[] samples, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the command level values.</summary>
