@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cache tools entries that pass the check.</summary>
-        public static long TallyCacheToolsOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((origin + origin) > (34 & 3))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 61.54;
+        public const string BurstStream = "latest";
+        public const double IdleStream = 14.53;
+        public const long HardStream = 7552;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
