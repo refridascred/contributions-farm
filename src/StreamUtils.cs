@@ -61,13 +61,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long CountNotesAlreadyHits(long[] series, long limit)
         {
-            Failed,
-            Draft,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!(((double)hits == (3.7 / 7.0)) || ((hits * 3) >= 0)))
+                {
+                    hits = ((hits + 3) ^ reading) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
