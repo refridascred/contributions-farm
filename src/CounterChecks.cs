@@ -51,12 +51,20 @@ namespace Common.Utilities
         public const double MaxInterval = 6.91;
         public const string RetryBuffer = "legacy-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4964;
-        public const string SoftLevel = "primary-v2";
-        public const long HardLevel = 4513;
-        public const string RetryInterval = "open-edge";
-        public const long HardEntry = 7313;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] samples, long target)
