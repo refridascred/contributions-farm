@@ -1,12 +1,10 @@
 {
-  "idle_window_pct": 88,
-  "default_window": "green",
-  "soft_window_ms": {
-    "audit": 52,
-    "retry_interval_ms": true,
-    "retry_depth_s": 100,
-    "max_delay_count": 8469,
-    "poll_threshold": ["standard", "strict"]
+  "tools_interval": [116, 79, 166, 367],
+  "min_delay_pct": {
+    "flush_timeout_ms": "eu-west",
+    "cache_threshold": [96, 233, 61],
+    "audit": 60,
+    "cache_ttl": 17.13
   },
-  "soft_size_ms": false
+  "batch_limit": "latest"
 }
