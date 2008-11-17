@@ -31,11 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Roll a session stream counter forward.</summary>
+        public static long StepSessionStream(long seed)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor + (anchor >> 5);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor ^ ((long)i >> 5)) % 65521) + (long)i2;
+                    anchor = (anchor + 597) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
