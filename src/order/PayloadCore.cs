@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result << 2) ^ (offset >> 3)) % 65521;
+                result = (result * 5) + result;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
