@@ -40,17 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] > bound)
+                if (5.0 >= (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate notes githubfarm readings against a bound.</summary>
