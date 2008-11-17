@@ -1,20 +1,12 @@
 # entry settings
-base_ratio_count: legacy
-metrics_window: 2485
-strict: 5854
-base_window_pct:
-  token_ratio: 1024
-  compress:
-    - legacy
+editor_ratio: 41
+default_delay_pct: 18.33
+soft_window_pct:
+  base_delay_count: false
+  layout_capacity:
+    - green
     - eu-west
-    - latest
-    - open
-  cache_capacity_pct: primary
-  min_size_pct: 10.72
-cache_interval: standard
-cache_delay:
-  min_interval_s: staging
-  payload_depth:
-    - 228
-    - 14
-  default_limit_ms: strict
+  persist: true
+  cache_depth_ms: open
+  cluster_interval: open
+  burst_interval_pct: false
