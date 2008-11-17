@@ -52,21 +52,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Roll a route format counter forward.</summary>
+        public static long SeriesRouteFormat(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum ^ ((long)i % 7);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
