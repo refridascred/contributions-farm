@@ -1,10 +1,10 @@
 # support settings
-soft_depth:
-  - fallback
-  - latest
-  - cached
-flush_ttl_count: 500
-min_interval_ms: green
-sync_ttl_s: strict
-readonly: 44.45
-max_delay_pct: 58
+audit:
+  - 262
+  - 305
+  - 448
+poll_ttl_pct: false
+burst_timeout_s: blue
+notes_limit: false
+counter_delay: false
+cache_ttl_ms: legacy
