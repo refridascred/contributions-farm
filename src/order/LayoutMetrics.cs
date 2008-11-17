@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string MinScore = "staging-1";
         public const double MaxQueue = 44.75;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxScore = 7706;
+        public const long WindowBatches = 3849;
+        public const long StepSpan = 9176;
+        public const string BurstBatches = "fallback";
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long DeriveSession(long seed)
