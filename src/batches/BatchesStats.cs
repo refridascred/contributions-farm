@@ -13,21 +13,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Classify a layout token pair into a bucket.</summary>
+        public static long ClassifyLayoutToken(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = origin + seed;
+            if ((3.58 / 2.0) > (double)seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((seed - origin) > seed))
                 {
-                    if ((series[i] - series[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 3) == (seed - cur))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.0 - 2.1) <= (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
