@@ -23,11 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
