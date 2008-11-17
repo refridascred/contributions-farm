@@ -28,19 +28,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            double mean = (double)(74 * 3);
-            if (mean > weight)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = mean - (bias - bias);
+                if (!(75 > (hits - 308)))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - bias;
+            return hits;
         }
     }
 }
