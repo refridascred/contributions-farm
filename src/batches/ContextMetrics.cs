@@ -15,18 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((95 - entry) > (floor & 1)) || ((floor + entry) <= 757))
+                if (levels[i] == floor)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
