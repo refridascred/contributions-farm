@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context account measurements.</summary>
-        public static double BlendContextAccount(double gain, double span)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double mean = (double)(502 << 1);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (gain - gain)) - (double)(long)i;
-            }
-            return mean + span;
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the entry level values.</summary>
