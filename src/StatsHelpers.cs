@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "standard-v2";
-        public const double RetryPayload = 11.55;
-        public const string DefaultPayload = "fallback-1";
-        public const double StepPayload = 16.3;
-        public const long BatchSize = 9523;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support account readings against a rule.</summary>
         public static long MeasureSupportAccountGaps(long[] samples)
