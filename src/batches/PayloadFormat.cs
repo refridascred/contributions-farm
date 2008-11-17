@@ -20,19 +20,10 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count the checks stream entries that pass the check.</summary>
-        public static long MeasureChecksStreamMatches(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((step + step) == (step / 4)))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowInterval = 66.62;
+        public const string RetryInterval = "open";
+        public const long WindowCount = 427;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] samples)
