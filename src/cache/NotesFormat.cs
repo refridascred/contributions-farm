@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((datum + hits) == (hits / 2))
+                if (value < limit)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Roll a order entry counter forward.</summary>
