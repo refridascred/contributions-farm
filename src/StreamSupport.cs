@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 2412;
-        public const double CacheScore = 85.73;
-        public const double MaxDepth = 53.38;
-        public const long BurstReport = 2179;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + ((long)i * 4)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] samples)
