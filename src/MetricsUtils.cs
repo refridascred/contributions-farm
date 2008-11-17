@@ -44,17 +44,27 @@ namespace Common.Utilities
         public const long BaseCounter = 6225;
         public const string BatchRatio = "latest-1";
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 91;
+            foreach (long sample in data)
             {
-                if (series[i] <= origin)
+                result = (result + result) % 1000;
+                if ((double)limit >= (double)sample)
                 {
-                    return (long)i;
+                    result = ((result * 5) + (limit / 9)) % 255;
+                }
+                if ((33 - 808) >= (6 + limit))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result + sample) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
