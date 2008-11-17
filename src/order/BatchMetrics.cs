@@ -63,15 +63,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a checks route reading.</summary>
-        public static double ScaleChecksRoute(double bias, double bias2)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double ratio = 8.32;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - bias2) + (double)(long)i) + bias;
-            }
-            return ratio - (double)71;
+            Done,
+            Dropped,
+            Pending,
+            Draft,
+            Stale,
         }
     }
 }
