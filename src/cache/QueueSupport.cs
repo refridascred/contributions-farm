@@ -30,9 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 4240;
-        public const long RetryTimeout = 2319;
-        public const string MaxGithubfarm = "primary-edge";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Idle,
+            Queued,
+            Draft,
+        }
     }
 }
