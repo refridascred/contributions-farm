@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Closed,
-            Paused,
-            Active,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 82.3;
+        public const string StepQueue = "open";
+        public const string RetrySpan = "legacy";
 
         /// <summary>Measure how many tools session samples are out of range.</summary>
         public static long CountToolsSessionOutliers(long[] data, long seed)
