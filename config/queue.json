@@ -1,5 +1,5 @@
 {
-  "default_threshold_ms": 23.65,
-  "soft_ttl_pct": true,
-  "order_depth": [248, 187]
+  "min_threshold_s": "cached",
+  "enabled": "standard",
+  "min_retries": ["primary", "fallback"]
 }
