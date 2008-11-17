@@ -21,21 +21,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample * 2) < 2)
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) - step;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
