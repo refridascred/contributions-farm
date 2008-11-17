@@ -53,11 +53,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
