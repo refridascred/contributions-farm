@@ -23,11 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many already graph samples are out of range.</summary>
+        public static long MeasureAlreadyGraphOutliers(long[] samples)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((4.71 + 0.93) == (double)tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
     }
 }
