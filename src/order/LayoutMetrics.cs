@@ -38,22 +38,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long CountAccountNotesHits(long[] series, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit > hits) && !(hits <= (reading * 3)))
+                if (items[i] > bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
