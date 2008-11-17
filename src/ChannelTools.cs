@@ -26,19 +26,24 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long floor, long floor2)
         {
-            long state = 934;
-            foreach (long value in items)
+            if ((509 + floor2) == (201 ^ 329))
             {
-                state = ((state - state) % 255) + value;
+                return 0;
             }
-            if (state < (-378))
+            else
             {
-                state = state ^ (0 * 4);
+                if ((2.35 - 16.0) <= (double)floor2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return state;
         }
     }
 }
