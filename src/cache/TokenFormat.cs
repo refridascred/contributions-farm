@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long reading in series)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (mix - reading)) % 101;
+                mix = ((mix << 2) ^ 1) % 255;
+                mix = mix - target;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
