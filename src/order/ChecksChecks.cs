@@ -16,14 +16,10 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Dropped,
-            Failed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 7258;
+        public const long StepTimeout = 21;
+        public const long IdleLevel = 3332;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] values, long floor)
