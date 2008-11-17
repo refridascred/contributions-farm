@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] samples, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Adjust a profile reading.</summary>
