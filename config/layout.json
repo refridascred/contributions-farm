@@ -1,7 +1,7 @@
 {
-  "audit": ["latest", "standard"],
-  "batch_timeout_ms": 89.04,
-  "batch_window_s": 4,
-  "warm_depth_s": true,
-  "hard_retries_s": true
+  "idle_capacity": "latest",
+  "sync_limit": "blue",
+  "cache_ttl": ["primary", "blue"],
+  "schema_threshold": true,
+  "persist": 2853
 }
