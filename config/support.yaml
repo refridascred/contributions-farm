@@ -1,4 +1,7 @@
 # support settings
-already_threshold: false
-strict: 57
-payload_ttl: true
+retry_limit_pct: staging
+dry_run: 82.8
+idle_retries: standard
+compress: 71.1
+soft_retries_ms: true
+format_threshold: true
