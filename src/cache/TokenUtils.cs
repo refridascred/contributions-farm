@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a support report counter forward.</summary>
-        public static long RollSupportReport(long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long slot = floor - limit;
+            if ((double)slot >= (9.41 - 9.22))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((-98) - floor) != (3 - slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
