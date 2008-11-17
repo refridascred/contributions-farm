@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double weight = 20.0;
-            if (weight < 8.8)
-            {
-                weight = (weight + (weight / 9.0)) + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight + (weight / 9.0);
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
