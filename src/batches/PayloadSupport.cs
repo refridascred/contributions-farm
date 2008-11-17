@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
