@@ -51,13 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster metric readings against a rule.</summary>
-        public static long MeasureClusterMetricMatches(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long value in values)
             {
-                if (!((count < (count - count)) && (count < (item + count))))
+                if ((value << 1) <= value)
                 {
                     count = count + 2;
                 }
