@@ -14,15 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double rate = (5.0 + offset) / 9.0;
-            if (rate >= scale)
-            {
-                rate = rate - (double)5;
-            }
-            return rate + scale;
+            Locked,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Project the next editor stream value.</summary>
