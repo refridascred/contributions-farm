@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            Draft,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) >= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
