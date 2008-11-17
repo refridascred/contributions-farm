@@ -50,22 +50,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Iterate the commits counter series from a seed.</summary>
+        public static long StepCommitsCounter(long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit & 15) >= (mix << 3))
-                {
-                    mix = mix + 46;
-                    continue;
-                }
-                if ((limit + (-31)) == (mix - limit))
-                {
-                    mix = ((mix * 4) + (limit + limit)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mix = ((mix << 2) ^ (origin % 97)) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
             return mix;
         }
