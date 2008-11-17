@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green strict edge; do
+BUFFER_LIMIT=476
+log "limit is ${BUFFER_LIMIT}"
+
+for item in latest green strict staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=87
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
