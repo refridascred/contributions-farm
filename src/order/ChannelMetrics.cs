@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long MeasureWindowRecordHits(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (matches >= (matches + cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
