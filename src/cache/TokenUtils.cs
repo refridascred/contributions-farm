@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseWidth = 2777;
+        public const double StepEditor = 86.6;
+        public const long StepRatio = 9007;
+        public const long DefaultBudget = 6705;
 
         /// <summary>Validate support counter readings against a bound.</summary>
         public static bool ValidateSupportCounterBounds(long[] readings, long limit)
