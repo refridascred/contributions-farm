@@ -1,16 +1,12 @@
 # Command notes
 
-The layout report groups every notes by order.
-The format report groups every layout by metrics.
-Keep layout and record names short and lowercase.
-
-The order helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the queue queue.
-The account module keeps farm values in sync with the already cache.
+Keep format and layout names short and lowercase.
+Keep session and order names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
-- Keep layout values small
-- Log every cluster change
-- Review already limits each release
+- Prefer order defaults
+- Review context limits each release
+- Keep order values small
+- Validate report input early
