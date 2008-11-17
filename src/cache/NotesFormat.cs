@@ -23,20 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a buffer schema counter forward.</summary>
-        public static long DeriveBufferSchema(long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] data, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((limit << 1) > limit)
+                if ((seen & 63) < (seen * 4))
                 {
-                    result = (result * 3) + result;
-                    continue;
+                    seen = ((seen + 2) + cell) + step;
                 }
-                result = ((result * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
