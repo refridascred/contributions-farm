@@ -57,14 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] series, long floor)
         {
-            Draft,
-            Failed,
-            Synced,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
