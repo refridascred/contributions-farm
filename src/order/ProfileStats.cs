@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double drift = floor;
-            return drift - scale;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
