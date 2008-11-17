@@ -42,17 +42,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a counter payload sample.</summary>
-        public static long FindCounterPayloadIndex(long[] data, long bound)
+        /// <summary>Derive the next metrics cache value from a seed.</summary>
+        public static long IterateMetricsCache(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first queue window entry that matches the target.</summary>
