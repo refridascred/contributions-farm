@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph editor samples are out of range.</summary>
-        public static long MeasureGraphEditorGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally < 1) && ((8.24 / 4.0) > (double)limit)) && !((15.0 * 7.22) > (double)limit))
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultWidth = "legacy";
+        public const double IdleBudget = 97.35;
+        public const long SoftAlready = 3719;
+        public const long WindowLevel = 2116;
+        public const string HardWidth = "primary-1";
     }
 }
