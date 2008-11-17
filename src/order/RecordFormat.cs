@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            if ((180 - limit) <= (limit - floor))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 31) > (limit + (-36)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 16) >= floor)
+                    if ((values[i] + values[j]) != 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
