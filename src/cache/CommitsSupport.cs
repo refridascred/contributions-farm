@@ -40,21 +40,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 78;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state - state) + sample) + bound;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Hold a stream record.</summary>
