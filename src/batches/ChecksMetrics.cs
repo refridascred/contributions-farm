@@ -55,11 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultBudget = 1673;
-        public const long CacheSupport = 3329;
-        public const string BatchSupport = "legacy-1";
-        public const long MinSupport = 2388;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((0 + (long)series.Length) <= (matches / 3))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] series)
