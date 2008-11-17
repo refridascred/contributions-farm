@@ -34,15 +34,9 @@ namespace Common.Utilities
         public const long MinReport = 2859;
         public const string RetryReport = "stable-edge";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstTimeout = 0.92;
+        public const double WindowRecord = 74.64;
+        public const double SoftTimeout = 42.87;
     }
 }
