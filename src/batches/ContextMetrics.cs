@@ -74,14 +74,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Pending,
-            Synced,
-            Done,
             Failed,
-            Ready,
+            Closed,
+            Locked,
+            Synced,
+            Idle,
         }
     }
 }
