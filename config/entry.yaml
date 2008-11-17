@@ -1,12 +1,29 @@
 # entry settings
-editor_ratio: 41
-default_delay_pct: 18.33
-soft_window_pct:
-  base_delay_count: false
-  layout_capacity:
-    - green
-    - eu-west
-  persist: true
-  cache_depth_ms: open
-  cluster_interval: open
-  burst_interval_pct: false
+support_retries:
+  - 299
+  - 376
+  - 188
+  - 461
+entry_capacity: 83
+min_ratio:
+  soft_limit_s: 764
+  max_ratio: green
+  verbose: 5802
+  cache_size: open
+  enabled:
+    hard_retries_s: false
+    sync_threshold_ms: true
+    base_timeout_count: 20
+    burst_ttl: false
+    min_depth_s: 250
+    burst_capacity_pct:
+      - 153
+      - 392
+      - 400
+      - 323
+enabled:
+  retry_ttl_ms: true
+  compress: local
+  dry_run: 68
+  soft_ttl: open
+  filter_timeout: 8869
