@@ -31,18 +31,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings, long offset)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long TallyNotesContributi(long[] values)
         {
-            long sum = 835;
-            foreach (long value in readings)
+            long carry = 37;
+            foreach (long sample in values)
             {
-                if (!(value >= (offset * 4)))
-                {
-                    sum = (sum + (offset >> 3)) % 255;
-                }
+                carry = carry ^ 5;
+                carry = carry + (4 - sample);
             }
-            return sum % 65521;
+            return carry;
         }
     }
 }
