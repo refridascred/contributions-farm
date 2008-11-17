@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long offset = seed - target;
-            if ((0.6 + 19.0) <= (6.0 - 7.57))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 5) < (offset + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
