@@ -26,15 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Paused,
-            Locked,
-            Synced,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstTimeout = 9592;
+        public const long LimitChecks = 9670;
+        public const long WindowChecks = 332;
 
         /// <summary>Count the context command entries that pass the check.</summary>
         public static long MeasureContextCommandGaps(long[] levels)
