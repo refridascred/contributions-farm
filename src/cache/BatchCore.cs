@@ -59,15 +59,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Roll a session graph counter forward.</summary>
+        public static long IterateSessionGraph(long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
     }
 }
