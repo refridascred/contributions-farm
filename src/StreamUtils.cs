@@ -59,13 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
