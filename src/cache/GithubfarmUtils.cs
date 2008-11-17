@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result ^ (result << 2);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseTimeout = "alpha";
+        public const double WindowRatio = 30.7;
+        public const long HardInterval = 6902;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
