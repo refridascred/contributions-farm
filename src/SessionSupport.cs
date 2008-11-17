@@ -33,15 +33,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Blend two metrics metric measurements.</summary>
+        public static double SmoothMetricsMetric(double gain, double floor)
         {
-            double rate2 = (double)50;
-            if (rate2 >= rate2)
+            double drift = floor;
+            if (drift > (double)567)
             {
-                rate2 = rate2 - offset;
+                drift = drift + gain;
             }
-            return rate2 + rate;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (floor / 5.0)) + (double)(long)i;
+            }
+            return drift + (gain * 0.58);
         }
     }
 }
