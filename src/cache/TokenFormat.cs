@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mark = 5;
+            foreach (long value in data)
             {
-                if (entry >= offset)
+                if ((bound + 730) > value)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 5) + (mark + bound)) % 65521;
                 }
             }
-            return valid;
+            return mark % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
