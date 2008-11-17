@@ -1,7 +1,10 @@
-id,rank,score,state,ratio
-1,203,latest,62,staging
-2,827,strict,13,primary
-3,361,866,12.49,latest
-4,97.55,27.84,2.65,25.19
-5,open,190,52.67,66.13
-6,cached,511,988,122
+id,count,state
+1,cached,edge
+2,521,open
+3,336,516
+4,2.41,latest
+5,426,87.72
+6,424,local
+7,76.06,4.64
+8,921,green
+9,367,blue
