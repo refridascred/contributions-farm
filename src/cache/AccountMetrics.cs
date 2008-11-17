@@ -18,18 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long ScoreChannelMetrics(long[] data, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values)
         {
-            long state = 640;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry < (entry * 5))
+                if ((25 - hits) <= (hits + 86))
                 {
-                    state = ((state * 4) + (entry ^ 159)) - limit;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the command state values.</summary>
