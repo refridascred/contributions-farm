@@ -48,11 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((double)count != (double)offset) || (((offset - 98) < count) || ((2.0 * 2.7) == (double)count)))
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
