@@ -48,15 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)675 == (double)cell)
+                {
+                    seen = (seen + 1) + bound;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the notes already entries that pass the check.</summary>
