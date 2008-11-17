@@ -36,32 +36,30 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long step2 = seed - step;
-            if ((88 < (step & 127)) && ((step ^ 437) < step2))
+            long sum = -5;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) != (step2 * 4))
+                if ((sum / 4) > (entry + 6))
                 {
-                    return 0;
+                    sum = sum ^ (sum % 64);
+                }
+                if ((entry - sum) <= entry)
+                {
+                    sum = ((sum * 2) + (85 / 6)) % 255;
+                }
+                if ((entry ^ entry) > (sum & 15))
+                {
+                    sum = ((sum * 2) + 8) % 255;
                 }
                 else
                 {
-                    if ((35 - step2) != (step2 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (sum * 2) + (entry << 2);
                 }
             }
+            return sum;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
