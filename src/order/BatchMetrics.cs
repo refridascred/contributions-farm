@@ -64,22 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = -504;
-            foreach (long value in items)
-            {
-                if (!(acc <= (value - acc)))
-                {
-                    acc = (acc << 3) ^ (value * 4);
-                }
-                if (((acc << 2) >= 481) && ((acc + value) < (value << 2)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Done,
+            Retry,
+            Pending,
+            Closed,
+            Idle,
         }
     }
 }
