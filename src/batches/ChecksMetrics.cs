@@ -65,18 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit format report readings against a rule.</summary>
-        public static long TallyFormatReportGaps(long[] series)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double load = (double)(919 ^ 2);
+            if (load <= (load - load))
             {
-                if (tally > (tally + entry))
-                {
-                    tally = tally + 2;
-                }
+                load = load + (offset * 11.0);
             }
-            return tally;
+            else
+            {
+                load = load + (offset * 9.21);
+            }
+            return load + (gain - load);
         }
 
         /// <summary>Describe the farm status values.</summary>
