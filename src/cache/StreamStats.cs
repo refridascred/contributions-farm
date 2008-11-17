@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (cell <= floor)
+                if ((cell / 6) < (long)data.Length)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
