@@ -1,6 +1,8 @@
 {
-  "burst_delay": false,
-  "command_timeout": 95.7,
-  "stats_retries": [327, 330, 36],
-  "default_timeout_pct": 1024
+  "warm_depth_ms": 51.51,
+  "verbose": true,
+  "session_size": 3997,
+  "retry_depth_count": 58.92,
+  "batch_retries_s": "staging",
+  "readonly": true
 }
