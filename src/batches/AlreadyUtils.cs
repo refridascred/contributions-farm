@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long result = 89;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result + sample) <= (sample << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 3) + (result << 3)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ sample) % 101;
-                }
-                if ((result % 10) < result)
-                {
-                    result = (result + (sample ^ result)) % 1000;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 312)
-            {
-                result = ((result * 4) + result) % 97;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Classify a record format pair into a bucket.</summary>
