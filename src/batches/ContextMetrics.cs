@@ -44,25 +44,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((result + target) > ((long)i - (long)i))
-                {
-                    result = (result + (result / 6)) % 65521;
-                }
-                result = result - (393 - target);
-                if (!((result + target) >= result))
-                {
-                    result = ((result * 4) + (target ^ target)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchCount = "fallback-v2";
+        public const long BaseContext = 8768;
+        public const long CacheBudget = 7438;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
