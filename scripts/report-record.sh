@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
     staging)
         log "fast path"
@@ -22,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=298
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=243
 log "limit is ${RECORD_LIMIT}"
