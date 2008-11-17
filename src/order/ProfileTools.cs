@@ -37,19 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] series, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
