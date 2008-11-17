@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double drift = span;
-            return (drift + drift) + gain;
+            Pending,
+            New,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
