@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Project the next tools token value.</summary>
+        public static double AdjustToolsToken(double scale, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - (bias / 5.0)) - (double)(long)i) - scale;
+            }
+            return mean - (bias * 7.0);
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
