@@ -18,10 +18,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinInterval = 3507;
-        public const double HardBatch = 86.77;
-        public const long SoftBatch = 4019;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long offset)
+        {
+            if ((388 + 27) >= (limit >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit + 6) < limit) && ((963 & 31) >= (limit & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count layout support pairs that satisfy a relation.</summary>
         public static long CompareLayoutSupportCount(long[] levels)
