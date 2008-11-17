@@ -30,21 +30,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report record pairs that satisfy a relation.</summary>
-        public static long MatchReportRecordCount(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 8;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = acc ^ 974;
+                acc = (acc + acc) % 1000;
+                acc = (acc << 2) ^ (sample ^ (long)data.Length);
             }
-            return tally;
+            if (acc > (-9))
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
