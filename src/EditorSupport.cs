@@ -49,21 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
