@@ -20,40 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a layout token pair into a bucket.</summary>
-        public static long ClassifyLayoutToken(long origin, long seed)
-        {
-            long cur = origin + seed;
-            if ((3.58 / 2.0) > (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed - origin) > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 3) == (seed - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.0 - 2.1) <= (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheFactor = 4832;
+        public const string LimitGithubfarm = "standard-edge";
+        public const double RetryGithubfarm = 6.63;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
