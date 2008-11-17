@@ -35,12 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Done,
-            New,
-            Pending,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
