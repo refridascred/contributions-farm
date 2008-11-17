@@ -26,14 +26,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long offset)
         {
-            Ready,
-            Paused,
-            Done,
-            Pending,
-            Stale,
+            if ((double)offset <= (double)367)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor <= (offset + 36))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (4 & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + offset) <= (offset + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
