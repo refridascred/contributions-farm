@@ -15,39 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long step2)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data, long seed)
         {
-            long offset = step + step2;
-            if ((11.0 - 1.8) >= (double)offset)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (step > offset)
+                if (hits > (cell % 97))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (52 <= (step ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset - step2) < (offset >> 4)) && ((double)step <= 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 3) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
