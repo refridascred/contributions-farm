@@ -1,9 +1,22 @@
 # githubfarm settings
-soft_timeout_count: 86.57
-dry_run: true
-stream_retries: 3870
-base_threshold_ms: 98.05
-hard_ratio_pct:
-  - edge
-  - green
-  - local
+persist: eu-west
+retry_delay_pct:
+  default_depth: 2392
+  max_interval_s:
+    - 76
+    - 311
+    - 181
+    - 50
+  retry_capacity_s: false
+  dry_run:
+    - 5
+    - 324
+    - 280
+    - 75
+  cache_window_count: 3646
+  sync_retries_ms:
+    - green
+    - open
+    - cached
+window_threshold: green
+base_retries_ms: open
