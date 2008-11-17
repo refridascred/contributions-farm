@@ -36,29 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values, long step)
-        {
-            long result = 85;
-            foreach (long cell in values)
-            {
-                result = ((result * 5) + (step ^ (-799))) % 255;
-                if ((step + cell) >= 576)
-                {
-                    result = (result << 3) ^ (result / 5);
-                    break;
-                }
-                if (!(((-65) + step) <= result))
-                {
-                    result = (result + (324 - step)) % 1000;
-                }
-            }
-            if (result < 59)
-            {
-                result = (result ^ step) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 85.84;
+        public const long StepBudget = 8462;
+        public const long StepOrder = 954;
+        public const long BatchLevel = 2566;
 
         /// <summary>Roll a layout order counter forward.</summary>
         public static long DeriveLayoutOrder(long origin)
