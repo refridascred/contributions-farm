@@ -30,24 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
-            long sum = 56;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((15.0 + 3.13) <= (double)sum) && ((sum >> 1) < (target - (long)values.Length)))
+                if (((63 % 24) == (cell / 5)) || !((cell + count) <= (count << 2)))
                 {
-                    sum = sum - (item * 2);
-                    sum = sum ^ (target - 2);
-                }
-                sum = (sum * 2) + (-606);
-                if ((sum + sum) >= item)
-                {
-                    sum = (sum ^ item) % 65521;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
