@@ -1,8 +1,15 @@
 {
-  "profile_capacity": [9, 181],
-  "idle_ttl_pct": 250,
-  "compress": 23,
-  "graph_retries": "latest",
-  "record_interval": 100,
-  "already_interval": 52
+  "default_timeout": "stable",
+  "soft_window_s": {
+    "base_ttl": 1024,
+    "tools_interval": 63.58,
+    "sync_timeout_count": "latest",
+    "compress": 4839,
+    "max_interval_pct": "blue",
+    "dry_run": ["latest", "latest"]
+  },
+  "idle_interval": 58,
+  "sync_limit_count": "latest",
+  "flush_limit_count": 95.84,
+  "verbose": 98.43
 }
