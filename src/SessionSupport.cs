@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            Pending,
-            Ready,
-            New,
+            long acc = 48;
+            foreach (long reading in readings)
+            {
+                acc = ((acc ^ (acc & 15)) % 4096) ^ reading;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
