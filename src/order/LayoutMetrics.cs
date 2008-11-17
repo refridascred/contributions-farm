@@ -28,21 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = bias;
+            if (gain <= (bias - span))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - 9.59;
             }
-            return matches;
+            else
+            {
+                gain = gain - (12.0 * 16.0);
+            }
+            return gain + (double)55;
         }
     }
 }
