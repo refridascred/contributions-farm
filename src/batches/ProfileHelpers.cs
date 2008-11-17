@@ -30,15 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter cluster value.</summary>
-        public static double ProjectFilterCluster(double rate, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] items, long seed)
         {
-            double ratio = rate - (floor - rate);
-            if (ratio >= 1.89)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                ratio = ratio + (double)(-4);
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - (2.5 / 4.0);
+            return ready;
         }
 
         /// <summary>Accumulate window samples.</summary>
