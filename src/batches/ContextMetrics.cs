@@ -23,11 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long diff = step + bound;
+            if (!(14.0 < (double)bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step << 3) > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((step >> 3) <= (bound + diff)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.54 * 7.0) > (double)diff)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
