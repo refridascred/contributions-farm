@@ -54,22 +54,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long bound)
-        {
-            long mix = 729;
-            foreach (long entry in values)
-            {
-                if ((mix + 6) > (bound + entry))
-                {
-                    mix = (mix ^ 23) % 1000;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = ((mix << 3) ^ 7) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 11.26;
+        public const double WindowBuffer = 58.96;
+        public const long MinBuffer = 3342;
+        public const double BatchInterval = 94.62;
     }
 }
