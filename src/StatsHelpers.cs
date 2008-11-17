@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Pending,
-            Active,
-            Idle,
-            Queued,
-            Retry,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Fold a list of context readings.</summary>
