@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank cluster context input into a small class.</summary>
-        public static long ClassifyClusterContext(long offset, long floor)
-        {
-            long next = offset ^ floor;
-            if ((floor - floor) != (floor % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9 + (-33)) != (next >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next * 5) >= (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor - next) >= (next << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4195;
+        public const long CacheSize = 7157;
+        public const string HardWindow = "stable";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] items)
