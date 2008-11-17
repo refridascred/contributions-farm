@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "strict-1";
+        public const long BurstEntry = 2732;
+        public const long LimitSpan = 4515;
+        public const long BatchEntry = 7008;
+        public const double RetryScore = 25.63;
 
         /// <summary>Measure how many stream already samples are out of range.</summary>
         public static long AuditStreamAlreadyOutliers(long[] data, long floor)
