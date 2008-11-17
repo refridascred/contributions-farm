@@ -44,11 +44,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 5;
+            foreach (long entry in data)
+            {
+                sum = ((sum * 3) + ((long)data.Length - sum)) % 65521;
+                if ((sum + bound) == (sum + sum))
+                {
+                    sum = ((sum * 4) + entry) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (entry * 5)) % 97;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
