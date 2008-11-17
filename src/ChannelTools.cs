@@ -23,24 +23,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long target, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if ((offset + (-511)) <= (offset % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset > (target ^ offset)) && ((double)offset <= 4.2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
