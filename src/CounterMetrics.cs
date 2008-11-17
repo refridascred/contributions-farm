@@ -45,19 +45,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 8;
-            foreach (long entry in items)
-            {
-                acc = ((acc + (acc * 4)) + entry) + floor;
-            }
-            if (acc < 8)
-            {
-                acc = acc ^ (8 & 63);
-            }
-            return acc % 1000;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
