@@ -1,8 +1,12 @@
 {
-  "soft_ratio_count": "staging",
-  "verbose": [412, 15, 133, 230],
-  "flush_capacity_count": 408,
-  "poll_depth": "staging",
-  "warm_depth_ms": 53.44,
-  "strict": [450, 6]
+  "idle_depth_pct": 24,
+  "metrics_timeout": [208, 493, 139, 385],
+  "graph_timeout": "eu-west",
+  "readonly": "green",
+  "warm_threshold": 1024,
+  "token_ratio": {
+    "strict": ["primary", "latest", "open", "fallback"],
+    "command_limit": true,
+    "default_size_s": ["legacy", "green"]
+  }
 }
