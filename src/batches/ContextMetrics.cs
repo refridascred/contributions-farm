@@ -20,17 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = limit - floor;
+            if (bound < (3 % 16))
             {
-                if (readings[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound >= (floor << 3)) || ((floor ^ limit) == (limit & 63)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
