@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry + (limit ^ carry);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
