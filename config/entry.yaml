@@ -1,11 +1,10 @@
 # entry settings
-sync_delay_count:
-  - open
-  - blue
-flush_retries_s:
-  support_timeout: 30
-  persist: fallback
-  enabled: open
-  strict: eu-west
-  schema_interval: true
-support_interval: staging
+retry_capacity_s: 8123
+githubfarm_capacity:
+  format_delay:
+    - primary
+    - green
+    - primary
+  editor_capacity: 30
+  min_ratio_s: 30
+idle_delay: staging
