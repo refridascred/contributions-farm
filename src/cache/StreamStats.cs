@@ -64,18 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell / 6) < (long)data.Length)
+                if ((floor + floor) <= carry)
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                carry = (carry << 3) ^ (floor + carry);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
