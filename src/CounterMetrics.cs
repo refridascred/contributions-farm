@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double floor)
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long FoldChecksRecord(long[] series)
         {
-            double drift = (double)(253 + 3);
-            return ((drift + (2.53 / 8.0)) + bias) + floor;
+            long state = 9;
+            foreach (long item in series)
+            {
+                if (((double)item <= 1.0) || ((item >> 5) >= (item & 1)))
+                {
+                    state = (state + (item - state)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
