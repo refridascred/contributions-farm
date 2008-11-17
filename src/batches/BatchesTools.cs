@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Closed,
+            Queued,
+            Dropped,
         }
     }
 }
