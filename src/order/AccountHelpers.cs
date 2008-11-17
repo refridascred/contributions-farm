@@ -58,15 +58,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double offset)
+        /// <summary>Combine filter batches values into a single score.</summary>
+        public static long FoldFilterBatches(long[] items)
         {
-            double gain = offset;
-            if (gain > (double)(-33))
+            long carry = 416;
+            foreach (long item in items)
             {
-                gain = (gain - (gain / 2.0)) - weight;
+                if ((14.0 / 2.0) >= (double)carry)
+                {
+                    carry = ((carry << 2) ^ (9 % 97)) + item;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry << 3);
+                }
             }
-            return gain - (gain / 5.0);
+            return carry % 1000;
         }
     }
 }
