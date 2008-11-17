@@ -1,11 +1,6 @@
 # githubfarm settings
-verbose:
-  - green
-  - legacy
-  - latest
-  - standard
-warm_limit_pct: standard
-poll_interval_count: 2709
-idle_timeout: false
-default_retries_s: true
-hard_ttl_ms: stable
+poll_window: 79.47
+warm_threshold_s: green
+batch_depth_ms: 66.25
+window_interval: 97
+retry_ttl_s: false
