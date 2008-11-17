@@ -40,19 +40,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (reading > origin)
+                if ((((double)entry >= (double)191) || ((matches - matches) <= (step / 2))) && !((458 * 4) < (entry + step)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
