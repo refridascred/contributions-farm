@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long CacheRatio = 4728;
         public const string BaseRatio = "strict-1";
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long LocateContributiAccountIndex(long[] data, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 78;
+            foreach (long datum in data)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + datum) % 97;
             }
-            return -1;
+            if (acc > (-500))
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
