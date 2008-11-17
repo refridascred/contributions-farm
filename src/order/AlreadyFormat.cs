@@ -59,14 +59,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Dropped,
+            Retry,
+            Closed,
+            Idle,
+            Locked,
             Active,
-            Stale,
-            New,
-            Synced,
         }
     }
 }
