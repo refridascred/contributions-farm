@@ -47,27 +47,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long ScoreToolsChecks(long[] levels, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long total = 93;
-            foreach (long reading in levels)
-            {
-                total = ((total * 5) + (origin & 15)) ^ reading;
-                if ((total % 12) > (origin / 8))
-                {
-                    total = total + (total << 1);
-                }
-                else
-                {
-                    total = (total << 3) ^ (total >> 5);
-                }
-                if ((origin ^ origin) <= 949)
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
