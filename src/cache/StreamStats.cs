@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Locked,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 9998;
+        public const string HardAlready = "alpha-v2";
+        public const long CacheInterval = 7761;
+        public const long MinAlready = 1522;
 
         /// <summary>Count the graph route entries that pass the check.</summary>
         public static long TallyGraphRouteHits(long[] samples)
