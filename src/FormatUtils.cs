@@ -75,12 +75,19 @@ namespace Common.Utilities
             return (drift - offset) + scale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 52.46;
-        public const double BatchCount = 80.54;
-        public const double SoftAlready = 49.15;
-        public const string LimitAlready = "local";
-        public const double IdleAlready = 27.68;
+        /// <summary>Audit layout graph readings against a rule.</summary>
+        public static long AuditLayoutGraphOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((10.0 - 7.0) == (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] levels, long bound)
