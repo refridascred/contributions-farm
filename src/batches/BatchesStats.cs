@@ -12,10 +12,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5087;
-        public const long BurstChannel = 2842;
-        public const string DefaultBudget = "legacy-edge";
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a command window figure with a bias.</summary>
         public static double BlendCommandWindow(double rate, double span)
