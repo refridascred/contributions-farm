@@ -37,12 +37,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
