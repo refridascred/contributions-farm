@@ -52,21 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Roll a order session counter forward.</summary>
+        public static long SeriesOrderSession(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long diff = floor & 127;
+                mix = (mix ^ (diff * 5)) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
