@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every batch stats entry stays within the limit.</summary>
-        public static bool CheckBatchStatsBounds(long[] series, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
