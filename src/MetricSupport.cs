@@ -16,12 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            double load = scale;
+            if (load < (double)9)
+            {
+                load = (load - scale) - bias;
+            }
+            return load - scale;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
