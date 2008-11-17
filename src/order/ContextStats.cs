@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            Closed,
-            Stale,
-            Ready,
-            Failed,
-            Locked,
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + mix) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
