@@ -32,19 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long origin)
         {
-            double ratio = (double)5 * 8.09;
-            if (ratio <= (bias * 4.26))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (offset / 3.0);
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (offset + ratio)) - (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
