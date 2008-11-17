@@ -1,12 +1,5 @@
 # entry settings
-soft_limit: 87.85
-readonly: standard
-cache_interval:
-  route_timeout: 82
-  base_delay: 9
-  poll_depth: 23
-burst_delay:
-  - 360
-  - 375
-  - 59
-verbose: local
+flush_timeout: eu-west
+hard_timeout_s: false
+default_delay_count: primary
+hard_interval: 1024
