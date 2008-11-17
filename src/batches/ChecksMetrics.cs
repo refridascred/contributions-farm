@@ -28,38 +28,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((32 >> 1) >= (bound + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 << 1) > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset + offset) >= 56))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (19 / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
