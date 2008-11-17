@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout record.</summary>
