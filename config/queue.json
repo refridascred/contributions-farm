@@ -1,6 +1,10 @@
 {
-  "readonly": "primary",
-  "burst_timeout_pct": 56,
-  "notes_capacity": 2175,
-  "audit": 100
+  "max_depth_count": "eu-west",
+  "burst_window": {
+    "format_timeout": ["cached", "stable"],
+    "metrics_depth": "local",
+    "sync_interval": 5623
+  },
+  "soft_retries": "standard",
+  "default_depth": 5397
 }
