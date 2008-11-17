@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long offset)
         {
-            long anchor = 88;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (cell < (cell - cell))
+                if (((reading ^ seen) < seen) && !(reading >= (seen / 8)))
                 {
-                    anchor = (anchor + (cell * 2)) - floor;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor / 7)) % 97;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
