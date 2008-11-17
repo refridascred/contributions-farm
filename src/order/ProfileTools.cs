@@ -56,15 +56,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double gain, double span)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            double rate = gain / 3.0;
-            if (rate >= 5.1)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (gain / 6.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - span;
+            return matches;
         }
     }
 }
