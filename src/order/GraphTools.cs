@@ -50,19 +50,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftScore = "legacy-edge";
+        public const string SoftSpan = "standard-edge";
+        public const string RetryBatches = "latest-v2";
+        public const string IdleBatches = "cached";
+        public const long WindowLevel = 8868;
     }
 }
