@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultWidth = "legacy";
-        public const double IdleBudget = 97.35;
-        public const long SoftAlready = 3719;
-        public const long WindowLevel = 2116;
-        public const string HardWidth = "primary-1";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings, long offset)
+        {
+            long sum = 835;
+            foreach (long value in readings)
+            {
+                if (!(value >= (offset * 4)))
+                {
+                    sum = (sum + (offset >> 3)) % 255;
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
