@@ -1,12 +1,25 @@
 # githubfarm settings
-checks_limit: staging
-strict:
-  - open
-  - eu-west
-  - green
-  - strict
-default_threshold_count:
-  min_retries: 4908
-  account_ratio: 70
-  max_depth: eu-west
-default_timeout: false
+graph_capacity:
+  soft_ratio: 250
+  persist: 33
+  tools_window: 15.95
+account_ttl:
+  persist:
+    - 409
+    - 392
+  dry_run:
+    - staging
+    - local
+    - stable
+    - legacy
+  min_size_count: 6727
+  readonly:
+    - latest
+    - green
+    - latest
+    - local
+warm_timeout_pct: true
+readonly:
+  - 155
+  - 170
+  - 447
