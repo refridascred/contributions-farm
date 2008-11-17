@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 5566;
-        public const string RetryRecord = "local-edge";
-        public const double StepDepth = 70.18;
-        public const string MinRecord = "strict-edge";
-        public const long IdleRecord = 6535;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "local";
+        public const long MaxStats = 2689;
+        public const long IdleStats = 1608;
+        public const long LimitStats = 471;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] samples)
