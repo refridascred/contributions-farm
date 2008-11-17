@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] series, long bound)
+        /// <summary>Fold a list of batches format readings.</summary>
+        public static long TallyBatchesFormat(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long anchor = 2;
+            foreach (long reading in data)
             {
-                if (sample <= bound)
+                anchor = ((anchor + (anchor >> 5)) % 255) - reading;
+                if ((3.2 - 10.0) <= (double)anchor)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Rank report input into a small class.</summary>
