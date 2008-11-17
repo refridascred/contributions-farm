@@ -1,14 +1,20 @@
 # entry settings
-flush_ratio_pct: 100
-max_limit_ms:
-  default_limit_s: legacy
-  strict: false
-  flush_depth: 99
-  commits_capacity:
+base_ratio_count: legacy
+metrics_window: 2485
+strict: 5854
+base_window_pct:
+  token_ratio: 1024
+  compress:
     - legacy
-    - strict
-    - primary
-  contributi_limit: open
-  retry_window_pct: false
-warm_capacity_count: 35
-sync_ratio_pct: 8
+    - eu-west
+    - latest
+    - open
+  cache_capacity_pct: primary
+  min_size_pct: 10.72
+cache_interval: standard
+cache_delay:
+  min_interval_s: staging
+  payload_depth:
+    - 228
+    - 14
+  default_limit_ms: strict
