@@ -5,11 +5,36 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 9998;
-        public const string HardAlready = "alpha-v2";
-        public const long CacheInterval = 7761;
-        public const long MinAlready = 1522;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels)
+        {
+            long anchor = -1;
+            foreach (long datum in levels)
+            {
+                if (((double)anchor != (8.2 + 5.9)) || ((anchor / 6) <= (anchor ^ datum)))
+                {
+                    anchor = anchor ^ (anchor - anchor);
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor << 1);
+                }
+                if ((double)anchor > (double)datum)
+                {
+                    anchor = (anchor - (anchor >> 3)) % 4096;
+                }
+                if ((datum < (anchor >> 3)) && ((4 & 1) <= (datum >> 2)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 646)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long seed, long step)
