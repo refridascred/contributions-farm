@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values, long bound)
+        /// <summary>Check that every window account entry stays within the limit.</summary>
+        public static bool GuardWindowAccountBounds(long[] samples, long limit)
         {
-            long score = 18;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((bound % 3) <= bound)
+                if (entry <= limit)
                 {
-                    score = ((score + (bound - score)) % 1000) - cell;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score & 3);
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Project the next report value.</summary>
