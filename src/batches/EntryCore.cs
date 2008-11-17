@@ -53,12 +53,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Active,
-            New,
-            Ready,
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
