@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support cluster value against two limits.</summary>
-        public static long GradeSupportCluster(long target, long origin)
-        {
-            long edge = target + origin;
-            if (((target & 31) >= (448 * 2)) && (target > (edge / 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge << 1) == (243 + (-143)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 6017;
+        public const long BurstDepth = 7182;
+        public const long CacheReport = 8403;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
