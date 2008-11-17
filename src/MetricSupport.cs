@@ -13,32 +13,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long step)
         {
-            long edge = bound - step;
-            if (((bound - 73) >= (step + edge)) || (edge <= (bound + edge)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-5) < (step % 2))
+                if (values[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.88 - 5.7) > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
