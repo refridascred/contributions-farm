@@ -28,26 +28,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate already payload samples.</summary>
-        public static long CombineAlreadyPayload(long[] readings, long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long limit)
         {
-            long score = 88;
-            foreach (long datum in readings)
+            long cur = floor ^ limit;
+            if (limit >= (cur + 8))
             {
-                if ((bound * 5) != (bound - score))
+                return 2;
+            }
+            else
+            {
+                if ((limit / 8) < (floor / 8))
                 {
-                    score = ((score << 2) ^ datum) % 4096;
+                    return 3;
                 }
-                if ((score * 5) < (datum & 7))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (score < 84)
-            {
-                score = ((score << 2) ^ bound) % 255;
-            }
-            return score;
         }
     }
 }
