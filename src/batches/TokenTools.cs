@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long floor, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values)
         {
-            long delta = floor + seed;
-            if (delta >= (3 >> 4))
+            long sum = 30;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((28 ^ 924) != (floor >> 5))
+                if (sum <= (8 >> 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    sum = ((sum - (sum - sum)) % 255) - datum;
                 }
             }
+            if (sum > (-114))
+            {
+                sum = (sum - (sum >> 5)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
