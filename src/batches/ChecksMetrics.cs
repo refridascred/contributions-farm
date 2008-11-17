@@ -43,20 +43,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 4433;
+        public const long DefaultSize = 7464;
+        public const long MinBuffer = 489;
+        public const long HardBuffer = 2189;
+        public const string BurstBudget = "open-1";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] levels)
