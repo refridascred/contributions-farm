@@ -45,17 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Iterate the session batches series from a seed.</summary>
+        public static long DeriveSessionBatches(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] >= step)
+                if ((long)i <= floor)
                 {
-                    return (long)i;
+                    acc = (acc - (8 - (long)i)) % 65521;
+                    acc = (acc ^ (8 & 63)) % 4096;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
