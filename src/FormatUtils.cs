@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(origin <= (86 & 1)))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
