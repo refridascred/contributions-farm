@@ -1,22 +1,6 @@
 # support settings
-readonly:
-  min_threshold_count: primary
-  hard_window_ms:
-    schema_size: 48.15
-    buffer_ttl: 8649
-    base_depth_ms: 353
-    persist:
-      - cached
-      - legacy
-    verbose: 4595
-  tools_depth: true
-metric_limit: 250
-flush_window: false
-base_timeout:
-  token_timeout: 74.34
-  flush_ratio_count: 500
-  audit: 85.67
-  enabled: 500
-  hard_timeout_ms: 100
-  notes_threshold: 100
-base_ttl_ms: 20
+command_interval: 56.31
+poll_ratio_count: 70
+sync_ratio_pct: 48.79
+base_capacity_s: 45
+min_threshold: staging
