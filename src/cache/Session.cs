@@ -42,22 +42,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long FoldProfileFormat(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] levels, long seed)
         {
-            long score = 912;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (cell < (score + score))
+                if (!((189 + seen) > (seen - sample)) && ((sample / 8) < ((long)levels.Length % 60)))
                 {
-                    score = ((score << 3) ^ (42 - score)) % 255;
-                }
-                else
-                {
-                    score = (score - (cell + 180)) % 255;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
