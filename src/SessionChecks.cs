@@ -40,17 +40,22 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 745;
+            foreach (long reading in samples)
             {
-                if (series[i] < origin)
+                if ((reading + score) == (reading << 2))
                 {
-                    return (long)i;
+                    score = score + score;
+                }
+                else
+                {
+                    score = (score ^ 66) % 65521;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
