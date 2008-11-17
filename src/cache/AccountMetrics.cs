@@ -67,11 +67,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long result = -316;
+            foreach (long value in data)
+            {
+                if ((double)value <= (0.9 / 4.0))
+                {
+                    result = (result * 3) + (value - result);
+                }
+                if (value > result)
+                {
+                    break;
+                }
+            }
+            if (result < 336)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
