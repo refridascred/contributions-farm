@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardWidth = 6925;
-        public const long CacheAccount = 7955;
-        public const long BurstAccount = 521;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 8401;
+        public const long WindowFilter = 6010;
+        public const double StepFactor = 59.74;
+        public const long HardInterval = 6187;
+        public const long BurstBudget = 7852;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
