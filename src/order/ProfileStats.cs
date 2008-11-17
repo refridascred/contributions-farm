@@ -28,21 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the farm schema series from a seed.</summary>
-        public static long SeriesFarmSchema(long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                long cur = (long)i % 12;
-                long next = (score % 100) ^ (score - cur);
-                if ((next >= score) || (cur <= (bound + bound)))
-                {
-                    cur = cur + (next + score);
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            New,
+            Failed,
+            Done,
         }
     }
 }
