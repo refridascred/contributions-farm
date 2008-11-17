@@ -37,22 +37,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long origin)
         {
-            long mark = 58;
-            foreach (long item in values)
+            if ((double)origin < (9.3 + 0.96))
             {
-                if ((233 > (item - item)) || ((item % 16) == (677 + 5)))
+                return 0;
+            }
+            else
+            {
+                if (limit > (limit + origin))
                 {
-                    mark = mark ^ (9 - 6);
+                    return 3;
                 }
-                if (((long)values.Length << 2) < item)
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the already level values.</summary>
