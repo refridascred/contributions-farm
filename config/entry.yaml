@@ -1,11 +1,18 @@
 # entry settings
-hard_window: 250
-base_ttl_ms: 84
-flush_interval_s: 10.79
-hard_interval_count:
-  - legacy
-  - legacy
-  - green
-  - legacy
-sync_size: false
-hard_timeout_ms: true
+notes_threshold: blue
+editor_timeout: eu-west
+burst_timeout_count: true
+batch_limit_pct:
+  stream_ttl:
+    batch_depth_s: legacy
+    route_interval: 100
+    context_capacity: 96
+    poll_depth_s: 90.7
+    hard_capacity_ms: 66.49
+    default_capacity_count:
+      - staging
+      - stable
+  max_ttl: blue
+  report_size: 66
+  cache_retries_ms: false
+  strict: 59
