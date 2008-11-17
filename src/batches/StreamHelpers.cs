@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long WindowCounter = 899;
         public const string RetryCounter = "cached";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (double)(93 + 78);
+            if (scale2 > (span / 7.0))
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (3.0 + scale2);
             }
-            return -1;
+            return scale2 - (span - scale);
         }
 
         /// <summary>Project the next stats value.</summary>
