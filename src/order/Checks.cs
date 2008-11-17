@@ -20,38 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long origin, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            if (2.8 > (double)limit)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4 + origin) == (limit & 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - limit) > limit)
+                    if ((data[i] + data[j]) != 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
