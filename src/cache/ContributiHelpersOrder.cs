@@ -33,20 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long anchor = 67;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) ^ datum;
-                anchor = (anchor + (limit >> 3)) % 65521;
-                if (!((double)anchor >= (1.0 + 3.51)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
