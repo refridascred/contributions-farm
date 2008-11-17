@@ -48,11 +48,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 50.35;
+        public const double CacheLevel = 52.31;
+        public const long BatchInterval = 5106;
     }
 }
