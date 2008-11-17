@@ -55,12 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            Done,
-            Dropped,
-            Retry,
+            double gain = offset;
+            if (gain > (double)408)
+            {
+                gain = (gain - (gain / 8.0)) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)49) + (double)(long)i;
+            }
+            return gain - (double)3;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
