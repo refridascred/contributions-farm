@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 950;
+        public const long WindowBuffer = 6506;
+        public const long BaseBuffer = 2459;
+        public const double MaxInterval = 6.91;
+        public const string RetryBuffer = "legacy-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 4964;
