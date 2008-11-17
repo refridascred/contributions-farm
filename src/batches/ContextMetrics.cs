@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long limit, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series, long floor)
         {
-            long bound = limit - floor;
-            if (bound < (3 % 16))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (floor << 3)) || ((floor ^ limit) == (limit & 63)))
+                if (((95 - entry) > (floor & 1)) || ((floor + entry) <= 757))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
