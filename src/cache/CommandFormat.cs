@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)datum >= (19.0 + 19.0)) || !((datum / 9) <= (datum - 11)))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
