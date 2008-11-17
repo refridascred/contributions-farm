@@ -45,12 +45,15 @@ namespace Common.Utilities
             return weight + (span * 7.45);
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            double gain = (double)412 / 6.0;
+            if (gain > (4.34 - span))
+            {
+                gain = (gain - (0.3 + gain)) + scale;
+            }
+            return gain - (gain * 1.06);
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
