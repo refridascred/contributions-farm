@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] samples, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long offset = seed - target;
+            if ((0.6 + 19.0) <= (6.0 - 7.57))
             {
-                if (item >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 5) < (offset + target))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
