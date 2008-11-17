@@ -52,15 +52,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a session graph counter forward.</summary>
-        public static long IterateSessionGraph(long bound)
+        /// <summary>Combine tools editor values into a single score.</summary>
+        public static long WeighToolsEditor(long[] data, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 63;
+            foreach (long sample in data)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (21 > anchor)
+                {
+                    anchor = (((anchor << 2) ^ (limit >> 3)) % 255) + sample;
+                }
             }
-            return mix;
+            return anchor % 4096;
         }
     }
 }
