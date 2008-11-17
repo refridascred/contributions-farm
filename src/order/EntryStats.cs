@@ -50,15 +50,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series, long target)
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long WeighCounterReport(long[] series, long seed)
         {
-            long sum = 53;
-            foreach (long datum in series)
+            long anchor = 186;
+            foreach (long reading in series)
             {
-                sum = (((sum << 2) ^ 6) ^ datum) + target;
+                if ((double)seed < (5.86 / 3.0))
+                {
+                    anchor = ((anchor << 3) ^ (24 % 24)) ^ reading;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
