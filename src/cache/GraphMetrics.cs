@@ -23,13 +23,31 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long seed)
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
+            if (seed >= (731 ^ seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 3) == (step % 10))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (3.3 + 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats kind values.</summary>
