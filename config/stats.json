@@ -1,8 +1,8 @@
 {
-  "strict": ["primary", "edge", "strict"],
-  "route_limit": "blue",
-  "editor_delay": 100,
-  "default_delay": 4969,
-  "poll_timeout": "open",
-  "cache_ttl_pct": 3
+  "counter_window": "strict",
+  "compress": 1024,
+  "payload_window": 33,
+  "batch_delay": 26,
+  "default_threshold_count": 3.68,
+  "persist": false
 }
