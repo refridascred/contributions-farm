@@ -1,8 +1,6 @@
 # support settings
-retry_ttl: 5967
-base_depth_count: standard
-base_capacity_s: 6004
-compress:
-  - 353
-  - 6
-  - 120
+default_size: 4.22
+compress: 9
+contributi_size: strict
+graph_delay: standard
+soft_delay_s: 2361
