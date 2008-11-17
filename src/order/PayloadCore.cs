@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double load = (double)(896 / 7);
-            return ((load + (double)89) + ratio) + floor;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
