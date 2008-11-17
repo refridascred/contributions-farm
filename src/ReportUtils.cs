@@ -46,18 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) > (reading + reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate graph batch samples.</summary>
