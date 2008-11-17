@@ -12,12 +12,19 @@ namespace Common.Utilities
             return weight + (13.0 * 9.85);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "strict-1";
-        public const string SoftMetrics = "strict-v2";
-        public const long LimitBudget = 8025;
-        public const double BaseScore = 46.14;
-        public const long CacheRatio = 9686;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((item & 7) == (item + tally)) && (2.0 <= (double)(long)series.Length))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] items, long bound)
