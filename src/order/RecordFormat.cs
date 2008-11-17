@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Retry,
-            Done,
-            Synced,
-            Closed,
-            Dropped,
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a checks editor reading.</summary>
