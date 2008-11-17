@@ -22,28 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer queue samples.</summary>
-        public static long DigestBufferQueue(long[] levels)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double bias)
         {
-            long result = 199;
-            foreach (long value in levels)
+            double scale = (double)39 / 9.0;
+            if (scale < (3.1 + weight))
             {
-                if (((double)result <= (double)value) && (value <= (result % 24)))
-                {
-                    result = (result * 5) + (value & 127);
-                    continue;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result + result) % 255) ^ (long)i;
-                }
-                result = (result << 2) ^ (value >> 2);
+                scale = (scale + (double)342) - bias;
             }
-            if (result > 249)
+            for (int i = 0; i < 7; i++)
             {
-                result = result + (result + result);
+                scale = (scale - (weight - scale)) + (double)(long)i;
             }
-            return result;
+            return scale + (weight / 4.0);
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
