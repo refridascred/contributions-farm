@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine command support values into a single score.</summary>
-        public static long ScoreCommandSupport(long[] samples)
+        /// <summary>Find the first schema session entry that matches the target.</summary>
+        public static long LookupSchemaSessionIndex(long[] values, long offset)
         {
-            long total = 102;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((18.0 * 8.65) <= (double)total)
+                if (values[i] <= offset)
                 {
-                    total = ((total << 3) ^ (item * 5)) % 65521;
-                    total = (total ^ (9 >> 5)) % 4096;
-                }
-                total = (total << 2) ^ (long)samples.Length;
-                if (item < (30 + total))
-                {
-                    total = (total << 3) ^ total;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
