@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Validate cache stream readings against a bound.</summary>
+        public static bool GuardCacheStreamLimits(long[] data, long origin)
         {
-            long acc = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                acc = (acc + (acc % 100)) + item;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return ready;
         }
     }
 }
