@@ -26,18 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample > (sample + sample)) || (((2.0 + 12.0) >= (double)seen) && ((seen * 4) > sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
