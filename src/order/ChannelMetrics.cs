@@ -28,19 +28,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] readings, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long step)
         {
-            long result = -297;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ ((-9) + entry)) % 4096;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 487)
-            {
-                result = (result << 2) ^ (target + 5);
-            }
-            return result;
+            return -1;
         }
     }
 }
