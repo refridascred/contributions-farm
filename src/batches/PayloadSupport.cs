@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "primary-v2";
-        public const double HardLayout = 96.9;
-        public const long LimitWidth = 1684;
-        public const long CacheRatio = 1709;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryTimeout = 3002;
+        public const string DefaultSize = "latest-1";
+        public const string BaseLevel = "strict-edge";
+        public const long RetryEntry = 667;
+        public const double BurstWidth = 5.31;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
