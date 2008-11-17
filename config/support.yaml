@@ -1,5 +1,11 @@
 # support settings
-context_ratio: 100
-batch_ratio_count: true
-warm_capacity: true
-idle_ttl: 93.84
+audit: true
+base_ttl_count:
+  dry_run: local
+  base_window_pct: 30
+  batch_delay: 31
+  verbose: 1024
+soft_depth_count:
+  - 78
+  - 359
+  - 316
