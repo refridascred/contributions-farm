@@ -26,25 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long acc = 59;
-            foreach (long entry in levels)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((entry - acc) <= (entry ^ entry)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    acc = ((acc * 5) + (acc - acc)) % 4096;
+                    acc = (acc ^ (acc % 60)) ^ (long)i2;
                 }
-                if (entry >= (acc ^ entry))
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                    acc = (acc ^ entry) % 97;
-                }
-                if (((-6) + entry) <= (acc / 5))
-                {
-                    acc = ((acc << 2) ^ entry) % 4096;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
             return acc;
         }
