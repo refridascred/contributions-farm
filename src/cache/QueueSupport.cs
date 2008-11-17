@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitBudget = 2111;
-        public const long MinRecord = 6704;
-        public const string IdleTimeout = "standard";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((5.0 / 6.0) < (double)floor)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] items)
