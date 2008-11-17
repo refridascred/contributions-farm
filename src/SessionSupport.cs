@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of queue token readings.</summary>
-        public static long PairQueueTokenCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5953;
+        public const long MinInterval = 9179;
+        public const long BatchDepth = 5311;
+        public const long LimitRatio = 4391;
+        public const double HardBuffer = 79.64;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
