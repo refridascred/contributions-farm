@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = 964;
+            foreach (long value in samples)
             {
-                if ((73 - mark) < mark)
-                {
-                    mark = (mark - (mark + step)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (mark + step)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                anchor = (anchor ^ (106 ^ 821)) - limit;
+                anchor = (anchor << 2) ^ (value & 127);
+                anchor = anchor - (anchor / 5);
             }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
