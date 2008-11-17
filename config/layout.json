@@ -1,6 +1,7 @@
 {
-  "cache_timeout": 93.8,
-  "enabled": 94,
-  "context_depth": 9,
-  "layout_ttl": ["fallback", "standard", "legacy"]
+  "graph_delay": 64.9,
+  "flush_timeout_s": true,
+  "contributi_ttl": 12.0,
+  "batches_window": true,
+  "warm_delay": 7881
 }
