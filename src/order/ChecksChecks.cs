@@ -50,28 +50,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] readings, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long mark = 638;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((-1) > (offset - (-443)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (mark / 4);
-                    continue;
-                }
-                if ((double)mark != (2.07 - 18.0))
-                {
-                    mark = ((mark * 3) + (value + value)) % 101;
-                    break;
-                }
-                if ((value + mark) <= (value & 3))
-                {
-                    mark = ((mark * 2) + (value * 4)) % 65521;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
