@@ -53,18 +53,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) > datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
