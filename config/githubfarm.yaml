@@ -1,14 +1,20 @@
 # githubfarm settings
-strict: false
-commits_depth:
-  token_delay: legacy
-  soft_delay_count: 85.36
-  metric_retries: stable
-  profile_ttl: 250
-  batch_ratio_count: 92.16
-default_retries:
-  - blue
-  - eu-west
-  - edge
-readonly: standard
-poll_capacity_pct: legacy
+strict: 1.26
+compress: 500
+soft_capacity_ms: 49.18
+payload_depth: 8501
+persist:
+  burst_threshold_pct: 500
+  filter_delay: legacy
+  compress: primary
+  cache_delay_ms:
+    - 262
+    - 276
+  persist:
+    warm_limit_ms: 49.64
+    graph_window: open
+    metric_retries: true
+dry_run:
+  - local
+  - local
+  - legacy
