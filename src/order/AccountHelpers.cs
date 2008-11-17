@@ -15,12 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            Done,
-            Retry,
-            Stale,
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)target != (9.9 * 4.0)))
+                {
+                    score = ((score * 3) + (target / 6)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
