@@ -66,17 +66,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 6437;
+        public const string RetryBatch = "standard-1";
+        public const long HardBudget = 3474;
     }
 }
