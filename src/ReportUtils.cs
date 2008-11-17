@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total << 2) ^ step) % 65521;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstRatio = "latest";
+        public const long HardLevel = 6934;
+        public const long WindowTimeout = 7416;
+        public const long BaseBatch = 835;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
