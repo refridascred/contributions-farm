@@ -23,22 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data, long step)
+        /// <summary>Audit stream order readings against a rule.</summary>
+        public static long AuditStreamOrderHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((seen & 63) < (seen * 4))
+                if ((((datum << 2) == (tally << 1)) || (datum <= (tally - 854))) || (datum > tally))
                 {
-                    seen = ((seen + 2) + cell) + step;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
