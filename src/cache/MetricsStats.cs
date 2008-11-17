@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const long StepSupport = 3282;
         public const double MinSupport = 37.12;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Closed,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Grade a graph editor value against two limits.</summary>
