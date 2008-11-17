@@ -22,26 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record format pair into a bucket.</summary>
-        public static long SortRecordFormat(long floor, long offset)
-        {
-            long slot = floor - offset;
-            if (slot > 26)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot + floor) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 31.86;
+        public const double WindowWidth = 58.65;
+        public const long MinDepth = 963;
+        public const long LimitRatio = 9319;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] values, long floor)
