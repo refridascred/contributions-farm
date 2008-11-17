@@ -14,19 +14,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            double scale = (double)(0 - 63);
-            if (scale < span)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (1.0 - 6.05);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + (2.7 - ratio);
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
