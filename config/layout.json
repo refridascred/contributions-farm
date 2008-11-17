@@ -1,11 +1,6 @@
 {
-  "cache_capacity": 48.05,
-  "idle_retries": true,
-  "batch_retries_s": {
-    "layout_size": 98.56,
-    "burst_retries_count": ["local", "cached"],
-    "soft_delay_pct": "eu-west",
-    "base_ratio_ms": "edge",
-    "audit": "edge"
-  }
+  "batch_delay": 75.63,
+  "cluster_size": 1024,
+  "stream_timeout": false,
+  "idle_capacity": 25
 }
