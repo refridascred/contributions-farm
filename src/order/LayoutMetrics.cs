@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long IdleLayout = 6290;
         public const long IdleLevel = 349;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] values)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (value < (count % 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
