@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long PairStreamEditorCount(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (seed / 8);
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the already level values.</summary>
