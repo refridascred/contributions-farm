@@ -54,22 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings, long seed)
         {
-            long total = 84;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((1.88 + 7.63) <= (double)total)
+                if ((984 < (long)readings.Length) && !(19.0 < (double)hits))
                 {
-                    total = (((total << 2) ^ (total - total)) - value) - floor;
+                    hits = ((hits + 1) + sample) + seed;
                 }
             }
-            if (total > 90)
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
