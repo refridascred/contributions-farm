@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const double LimitTimeout = 61.29;
         public const long MaxSpan = 9217;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Closed,
-            Failed,
-            Pending,
-            Draft,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the record phase values.</summary>
