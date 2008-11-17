@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] samples, long seed)
+        /// <summary>Scale a format entry figure with a bias.</summary>
+        public static double AdjustFormatEntry(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 3) <= (seed & 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double rate = ratio / 6.0;
+            return (rate + ratio) + bias;
         }
 
         /// <summary>Validate context token readings against a bound.</summary>
