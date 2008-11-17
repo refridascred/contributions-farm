@@ -40,14 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long step)
         {
-            Retry,
-            Locked,
-            Failed,
-            Closed,
-            Active,
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
