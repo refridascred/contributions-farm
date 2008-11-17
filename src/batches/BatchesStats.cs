@@ -29,23 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a command window figure with a bias.</summary>
-        public static double BlendCommandWindow(double rate, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data, long seed)
         {
-            double drift = (double)4 - (double)79;
-            if (drift >= (drift + rate))
+            long tally = 0;
+            foreach (long value in data)
             {
-                drift = (drift + rate) + span;
+                if ((tally & 7) == (seed * 3))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            else
-            {
-                drift = drift + (double)519;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift - (double)(-60);
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
