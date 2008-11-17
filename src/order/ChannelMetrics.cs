@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            Closed,
-            Done,
-            Dropped,
-            New,
-            Ready,
+            double gain = (double)(41 + 745);
+            return (gain - rate) + span;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
