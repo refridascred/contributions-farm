@@ -77,10 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "stable-v2";
-        public const string BatchDepth = "alpha-v2";
-        public const long CacheWindow = 7417;
-        public const double BatchBudget = 73.07;
+        /// <summary>Grade a record cluster value against two limits.</summary>
+        public static long SortRecordCluster(long offset, long limit)
+        {
+            if ((double)limit == (3.0 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit + limit) > (limit * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
