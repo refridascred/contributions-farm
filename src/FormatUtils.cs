@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long target, long step)
+        /// <summary>Combine command support values into a single score.</summary>
+        public static long ScoreCommandSupport(long[] samples)
         {
-            long diff = target - step;
-            if (target >= ((-46) & 31))
+            long total = 102;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 + 3.74) >= (double)diff)
+                if ((18.0 * 8.65) <= (double)total)
                 {
-                    return 5;
+                    total = ((total << 3) ^ (item * 5)) % 65521;
+                    total = (total ^ (9 >> 5)) % 4096;
                 }
-                else
+                total = (total << 2) ^ (long)samples.Length;
+                if (item < (30 + total))
                 {
-                    if ((target & 127) <= (target % 24))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total << 3) ^ total;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
