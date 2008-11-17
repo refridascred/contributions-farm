@@ -20,12 +20,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate buffer queue samples.</summary>
+        public static long DigestBufferQueue(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long result = 199;
+            foreach (long value in levels)
+            {
+                if (((double)result <= (double)value) && (value <= (result % 24)))
+                {
+                    result = (result * 5) + (value & 127);
+                    continue;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result + result) % 255) ^ (long)i;
+                }
+                result = (result << 2) ^ (value >> 2);
+            }
+            if (result > 249)
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
