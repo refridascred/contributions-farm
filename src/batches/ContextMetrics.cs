@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long bound)
+        /// <summary>Grade a entry cache value against two limits.</summary>
+        public static long RankEntryCache(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long lane = offset + floor;
+            if (floor <= offset)
             {
-                if (value >= bound)
+                return 3;
+            }
+            else
+            {
+                if (lane >= (lane >> 2))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (7 >= (lane >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((2.9 / 5.0) <= (double)floor) && ((2.3 + 1.0) == (double)lane))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
