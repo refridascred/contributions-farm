@@ -33,17 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (series[i] > origin)
+                if (entry > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
