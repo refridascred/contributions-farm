@@ -67,19 +67,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((result - result) < ((long)i & 15)))
+                if ((28 / 6) <= (origin << 3))
                 {
-                    result = result + ((long)i + (long)i);
+                    state = state - origin;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
     }
 }
