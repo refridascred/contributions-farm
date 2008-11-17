@@ -1,5 +1,13 @@
 {
-  "contributi_ratio": "strict",
-  "warm_delay_pct": true,
-  "notes_depth": true
+  "base_interval_count": {
+    "retry_window_count": "primary",
+    "max_depth_count": "latest",
+    "checks_size": 91,
+    "cache_retries_ms": ["latest", "primary"],
+    "poll_size_s": ["staging", "open", "open", "open"],
+    "max_depth": "stable"
+  },
+  "payload_limit": "standard",
+  "burst_limit_s": "eu-west",
+  "order_timeout": "primary"
 }
