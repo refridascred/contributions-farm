@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 5109;
-        public const double HardAlready = 4.97;
-        public const long MaxDepth = 2844;
-        public const string CacheAlready = "fallback-edge";
-        public const long BaseAlready = 422;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
