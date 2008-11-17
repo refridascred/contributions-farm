@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double bias2 = (double)(21 ^ 9);
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (double)(long)i) - bias;
-            }
-            return bias2 - floor;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
