@@ -59,18 +59,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long CountChecksEntryMatches(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading - hits) >= reading) || (((hits + hits) < (reading + hits)) || ((7.2 / 6.0) == (double)reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Stale,
+            New,
+            Synced,
         }
     }
 }
