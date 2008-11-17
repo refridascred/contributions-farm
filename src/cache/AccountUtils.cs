@@ -19,13 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            Draft,
+            Queued,
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
