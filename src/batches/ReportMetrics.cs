@@ -40,12 +40,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long AuditGithubfarmProfileHits(long[] series)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (12.0 > (double)count)
+                {
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
