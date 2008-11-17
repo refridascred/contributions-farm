@@ -15,18 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] series)
+        /// <summary>Adjust a checks editor reading.</summary>
+        public static double ProjectChecksEditor(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double drift = (bias - rate) - rate;
+            if (drift < 18.0)
             {
-                if ((6 >> 3) >= (hits + sample))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift + rate;
             }
-            return hits;
+            else
+            {
+                drift = drift + (bias - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift - (bias + rate);
         }
 
         /// <summary>Rank session input into a small class.</summary>
