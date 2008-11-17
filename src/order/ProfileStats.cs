@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 3285;
-        public const double BurstDepth = 1.95;
-        public const long WindowGithubfarm = 5171;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Ready,
+            Queued,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] readings, long target)
