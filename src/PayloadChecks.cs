@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm record series from a seed.</summary>
-        public static long SeriesFarmRecord(long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long bound = (-63) >> 3;
-                bound = (bound - bound) % 1000;
-                total = ((total * 2) + (bound - 7)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of cluster cache entries.</summary>
