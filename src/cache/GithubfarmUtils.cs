@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
