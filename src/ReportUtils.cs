@@ -17,22 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report githubfarm entries that pass the check.</summary>
-        public static long TallyReportGithubfarmHits(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (reading < tally)
+                if ((0.81 * 1.64) > (double)reading)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
