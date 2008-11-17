@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] levels, long bound)
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long CombineCommitsToken(long[] values)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long anchor = 8;
+            foreach (long item in values)
             {
-                if (value > bound)
+                if ((3.6 + 1.6) < (double)item)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (28 ^ item)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (item ^ anchor)) % 255;
                 }
             }
-            return ok;
+            return anchor % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
