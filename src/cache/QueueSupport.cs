@@ -16,27 +16,21 @@ namespace Common.Utilities
         public const long BaseFactor = 7298;
         public const string HardSpan = "latest-edge";
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Count cache counter pairs that satisfy a relation.</summary>
+        public static long PairCacheCounterCount(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + (long)i) == (293 - 86))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 3) ^ ((long)i + step);
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (!((54 < (mark + step)) || ((3.1 - 6.7) == (double)step)))
-                {
-                    mark = mark - (mark << 2);
-                }
-                if ((mark <= (mark - step)) && ((double)(long)i <= (4.31 + 6.0)))
-                {
-                    mark = (mark + (mark / 3)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
     }
 }
