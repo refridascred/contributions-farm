@@ -7,14 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in standard eu-west; do
+for item in legacy stable cached standard; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=72
-log "limit is ${CHANNEL_LIMIT}"
