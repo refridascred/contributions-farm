@@ -1,4 +1,18 @@
 # entry settings
-entry_retries: 100
-poll_retries_pct: legacy
-audit: 30
+batch_threshold_count: standard
+hard_size_count:
+  compress: cached
+  batch_depth:
+    compress:
+      - legacy
+      - staging
+    payload_threshold: 17
+    burst_timeout_count: latest
+    cache_interval: true
+    sync_ratio_s: 91.72
+  channel_window: 500
+  batch_limit_pct: false
+idle_delay_pct: green
+batch_size: 58
+audit: primary
+githubfarm_capacity: local
