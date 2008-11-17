@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = 32;
+            foreach (long cell in samples)
             {
-                if ((hits << 3) <= reading)
-                {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (((score << 3) ^ 7) % 255) + cell;
             }
-            return hits;
+            if (score < 37)
+            {
+                score = (score + (score % 97)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
