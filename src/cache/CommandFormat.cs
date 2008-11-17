@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long MeasureOrderCounterOutliers(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits > 146)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
