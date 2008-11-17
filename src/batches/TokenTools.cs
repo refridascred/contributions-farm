@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long bound)
         {
-            long sum = 30;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (sum <= (8 >> 2))
+                if (reading != bound)
                 {
-                    sum = ((sum - (sum - sum)) % 255) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > (-114))
-            {
-                sum = (sum - (sum >> 5)) % 65521;
-            }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
