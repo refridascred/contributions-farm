@@ -77,9 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 4544;
-        public const double StepSize = 68.54;
-        public const double BurstContext = 95.14;
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long CountFormatPayloadHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally <= (value * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
