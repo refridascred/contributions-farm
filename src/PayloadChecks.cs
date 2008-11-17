@@ -35,12 +35,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Closed,
-            Draft,
-            New,
+            Ready,
+            Paused,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
