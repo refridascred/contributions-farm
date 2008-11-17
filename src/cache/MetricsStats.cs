@@ -62,18 +62,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stream buffer samples are out of range.</summary>
-        public static long TallyStreamBufferGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (0 >= item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSpan = 4281;
+        public const long WindowSession = 2290;
+        public const long BatchSession = 3827;
+        public const string MaxCount = "legacy-1";
     }
 }
