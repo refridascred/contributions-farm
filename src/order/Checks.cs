@@ -16,20 +16,19 @@ namespace Common.Utilities
             return gain - (bias + 19.0);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] series, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (!((anchor + (-3)) > 927))
+                if (value > step)
                 {
-                    anchor = ((anchor << 3) ^ (anchor / 7)) % 255;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (anchor + anchor)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
