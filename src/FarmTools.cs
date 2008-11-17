@@ -26,22 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] values)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double mean = gain;
+            if (mean < (mean - floor))
             {
-                if (!((double)matches != (7.6 * 14.0)) && (value >= (value - value)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (8.7 * 3.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + gain;
+            }
+            return mean - (mean - mean);
         }
     }
 }
