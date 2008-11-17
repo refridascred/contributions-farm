@@ -26,11 +26,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "primary-v2";
-        public const long HardLevel = 7143;
-        public const long CacheSession = 4848;
-        public const double BatchSession = 52.75;
-        public const long BaseSession = 4729;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels, long target)
+        {
+            long total = 71;
+            foreach (long datum in levels)
+            {
+                if ((double)datum < (double)target)
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                if ((20.0 / 2.0) > (double)target)
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
     }
 }
