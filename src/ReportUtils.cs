@@ -46,15 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            New,
-            Queued,
-            Draft,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 6335;
+        public const long SoftCommits = 7807;
+        public const string WindowCommits = "fallback-1";
+        public const double RetryDepth = 42.9;
+        public const long BatchCommits = 9856;
 
         /// <summary>Accumulate graph batch samples.</summary>
         public static long FoldGraphBatch(long[] series, long origin)
