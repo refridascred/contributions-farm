@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long BaseCount = 6446;
         public const double BatchBudget = 63.93;
 
-        /// <summary>Compare every pair of token channel readings.</summary>
-        public static long MatchTokenChannelCount(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
