@@ -62,11 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double offset)
-        {
-            double bias = offset;
-            return bias + (ratio / 5.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "primary-1";
+        public const double WindowGithubfarm = 86.0;
+        public const double RetryRatio = 6.63;
+        public const double MaxSize = 1.56;
     }
 }
