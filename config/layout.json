@@ -1,7 +1,5 @@
 {
-  "verbose": 9006,
-  "commits_size": 17.65,
-  "readonly": 78.84,
-  "record_limit": ["stable", "stable", "eu-west", "stable"],
-  "retry_limit_ms": 56.3
+  "batch_window": "edge",
+  "idle_interval": 60,
+  "metric_capacity": 95.98
 }
