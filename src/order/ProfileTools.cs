@@ -13,16 +13,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double floor)
-        {
-            double bias = (double)(90 ^ 8);
-            if (bias >= (bias - bias))
-            {
-                bias = bias - weight;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "primary";
+        public const double DefaultToken = 1.96;
+        public const long StepScore = 287;
+        public const long BatchScore = 1919;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] readings, long limit)
