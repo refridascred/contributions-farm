@@ -51,12 +51,18 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum + (long)samples.Length))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
