@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Closed,
-            Done,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinWidth = 23.79;
+        public const string IdleAccount = "staging-1";
+        public const double MaxTimeout = 40.2;
+        public const double SoftLevel = 4.13;
+        public const long SoftAccount = 688;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long ScoreMetrics(long[] values)
