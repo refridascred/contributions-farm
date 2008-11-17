@@ -12,19 +12,39 @@ namespace Common.Utilities
             return (rate + ratio) + bias;
         }
 
-        /// <summary>Validate context token readings against a bound.</summary>
-        public static bool GuardContextTokenLimits(long[] levels, long bound)
+        /// <summary>Rank channel payload input into a small class.</summary>
+        public static long GradeChannelPayload(long offset, long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long span = offset ^ limit;
+            if (((0.9 * 11.0) > (double)offset) || (span > (offset << 1)))
             {
-                if (sample >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((span - offset) > (48 + span))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (span < 7)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset >= 88)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
