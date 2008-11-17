@@ -1,13 +1,11 @@
 # Command notes
 
-Keep commits and buffer names short and lowercase.
-Keep session and farm names short and lowercase.
-
-Each account is validated before it reaches the batch queue.
-Run the report check before changing any batch limits.
+The channel module keeps support values in sync with the farm cache.
+Run the support check before changing any cache limits.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new stream fields
-- Log every counter change
+- Prefer editor defaults
+- Keep entry values small
+- Document new already fields
+- Validate filter input early
