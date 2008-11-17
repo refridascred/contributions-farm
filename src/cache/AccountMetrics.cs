@@ -34,20 +34,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double offset)
-        {
-            double scale = (gain - gain) - (gain - gain);
-            if (scale < (scale / 3.0))
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (gain + scale)) + (double)(long)i;
-            }
-            return scale - 2.95;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 1148;
+        public const double IdleTimeout = 94.35;
+        public const long IdleGithubfarm = 8079;
+        public const double CacheGithubfarm = 55.77;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultEditor = 839;
