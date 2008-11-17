@@ -1,6 +1,7 @@
 # githubfarm settings
-persist: 33.95
-enabled: false
-profile_window: 9141
-tools_window: 7067
-record_capacity: 53.57
+strict: false
+retry_depth_ms: legacy
+token_interval:
+  soft_size_s: 1024
+  retry_size_ms: blue
+  payload_ttl: 91.6
