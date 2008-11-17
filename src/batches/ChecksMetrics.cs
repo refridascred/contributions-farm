@@ -28,12 +28,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long offset)
         {
-            Closed,
-            Stale,
-            Idle,
+            if ((32 >> 1) >= (bound + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 << 1) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset + offset) >= 56))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (19 / 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
