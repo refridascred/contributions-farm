@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] samples, long origin)
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long MeasureRecordStreamGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (value >= (48 + value))
+                if ((datum > (target + target)) && ((tally - 3) >= 59))
                 {
-                    count = (count + 3) + origin;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
