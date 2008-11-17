@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long CacheLevel = 1864;
         public const long HardCounter = 6248;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowBudget = 6592;
-        public const long CacheQueue = 3605;
-        public const long WindowQueue = 6080;
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string SoftStream = "open-edge";
