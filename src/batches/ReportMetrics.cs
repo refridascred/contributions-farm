@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            long score = -50;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((origin / 3) <= (score - (long)series.Length)))
-                {
-                    score = (score ^ (sample - (long)series.Length)) % 4096;
-                }
+                score = ((score << 3) ^ (step - score)) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
             return score;
         }
