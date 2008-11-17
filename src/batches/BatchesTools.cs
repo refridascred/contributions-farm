@@ -57,9 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 22.61;
-        public const double HardFactor = 72.61;
-        public const double LimitSize = 39.76;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Locked,
+            New,
+            Paused,
+        }
     }
 }
