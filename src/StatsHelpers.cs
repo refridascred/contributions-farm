@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
