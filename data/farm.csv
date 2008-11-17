@@ -1,7 +1,10 @@
-id,token,rank,state
-1,edge,green,staging
-2,285,362,edge
-3,80.31,194,68.22
-4,190,edge,cached
-5,942,886,611
-6,strict,open,open
+id,label,ratio
+1,622,fallback
+2,3.86,62.24
+3,cached,strict
+4,865,824
+5,52.53,690
+6,23.55,634
+7,eu-west,eu-west
+8,primary,60.19
+9,strict,green
