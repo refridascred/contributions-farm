@@ -63,16 +63,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Combine support editor values into a single score.</summary>
+        public static long DigestSupportEditor(long[] series, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long total = 50;
+            foreach (long item in series)
             {
-                score = score + 62;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((item / 8) >= (total & 31))
+                {
+                    total = (((total << 3) ^ (item - total)) % 4096) + bound;
+                }
+                if ((((long)series.Length / 8) < total) || ((item - total) == (item + total)))
+                {
+                    total = ((total * 2) + total) % 255;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
