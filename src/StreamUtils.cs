@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 7447;
-        public const long BaseTimeout = 1539;
-        public const long BurstBudget = 1232;
-        public const long MinWindow = 6816;
-        public const double StepSize = 76.65;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double span)
+        {
+            double load = (double)(94 + 50);
+            return ((load - (double)718) + scale) + span;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long bound)
