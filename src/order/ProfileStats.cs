@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long target)
+        /// <summary>Validate cache buffer readings against a bound.</summary>
+        public static bool GuardCacheBufferLimits(long[] readings, long offset)
         {
-            if ((11.0 * 16.0) != (double)bound)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 2) == (bound + bound))
+                if (item >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 4) >= (bound / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up schema samples.</summary>
