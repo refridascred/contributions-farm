@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a support report counter forward.</summary>
+        public static long RollSupportReport(long offset)
         {
-            New,
-            Dropped,
-            Stale,
-            Active,
-            Failed,
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
