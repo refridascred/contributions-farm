@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] samples, long offset)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long CountSchemaLayoutHits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (value < offset)
+                if (((4.8 - 13.0) < (double)datum) || (((matches + matches) <= ((long)levels.Length / 7)) && (matches < (datum / 2))))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
