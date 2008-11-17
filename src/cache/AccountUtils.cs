@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
