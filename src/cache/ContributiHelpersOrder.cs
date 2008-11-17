@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count profile counter pairs that satisfy a relation.</summary>
-        public static long PairProfileCounterCount(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0.13 / 4.0) != (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((775 + 9) < step)
                 {
-                    if ((data[i] ^ data[j]) == 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((180 + step) >= (7 + 846))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (758 > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
