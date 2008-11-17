@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long MinFormat = 5234;
         public const string DefaultFormat = "open-1";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
         {
-            long carry = 53;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                carry = ((carry - sample) % 255) - bound;
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry > 63)
-            {
-                carry = carry ^ (carry - 1);
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Accumulate tools checks samples.</summary>
