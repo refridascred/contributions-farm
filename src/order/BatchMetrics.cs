@@ -30,18 +30,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell * 3) >= cell)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
