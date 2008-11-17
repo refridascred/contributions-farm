@@ -41,15 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Count the context command entries that pass the check.</summary>
+        public static long MeasureContextCommandGaps(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (!((item + item) >= (63 * 3)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
