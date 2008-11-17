@@ -1,19 +1,6 @@
 {
-  "account_threshold": [463, 349, 264, 55],
-  "enabled": ["standard", "primary", "blue", "stable"],
-  "poll_retries": "strict",
-  "max_limit": {
-    "batch_depth_s": 39.03,
-    "verbose": [121, 339, 63, 131],
-    "warm_depth": ["strict", "primary", "eu-west"],
-    "flush_interval_pct": {
-      "compress": "standard",
-      "strict": 7266,
-      "hard_delay": ["open", "fallback"],
-      "max_capacity_count": 1024,
-      "report_capacity": 3295
-    }
-  },
-  "warm_capacity_ms": "primary",
-  "cluster_delay": "edge"
+  "token_depth": "fallback",
+  "batch_retries_s": true,
+  "flush_size": 71.29,
+  "farm_limit": false
 }
