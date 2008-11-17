@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the graph record series from a seed.</summary>
-        public static long StepGraphRecord(long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (790 >= (offset * 4))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            double drift = (double)(253 + 3);
+            return ((drift + (2.53 / 8.0)) + bias) + floor;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
