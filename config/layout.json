@@ -1,14 +1,8 @@
 {
-  "max_timeout_count": {
-    "base_depth": 19,
-    "default_timeout": false,
-    "hard_depth": {
-      "retry_delay_pct": 3495,
-      "hard_depth_ms": 8310,
-      "idle_ttl_pct": "latest"
-    },
-    "report_depth": 32
-  },
-  "max_window_ms": "green",
-  "base_capacity": 100
+  "cache_ttl": true,
+  "retry_window": 1024,
+  "cache_depth_ms": 500,
+  "warm_interval_pct": true,
+  "burst_interval_pct": 250,
+  "queue_ratio": false
 }
