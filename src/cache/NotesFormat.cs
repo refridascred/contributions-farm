@@ -28,31 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long limit2)
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long AuditTokenContextOutliers(long[] values)
         {
-            if (limit2 < (limit2 + limit))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit2 > (7.86 * 1.68))
+                if (!(((-342) - 23) == (seen * 4)) && (5.89 >= (2.0 - 7.5)))
                 {
-                    return 3;
+                    seen = (seen + 3) + entry;
                 }
                 else
                 {
-                    if (((double)5 != (double)limit2) && ((8.0 + 9.0) < (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
