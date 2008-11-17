@@ -51,21 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ seed) % 97;
-                total = ((total << 3) ^ (seed + total)) % 101;
-                if ((total << 2) <= (0 - total))
+                if (readings[i] == offset)
                 {
-                    total = (total - seed) % 255;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a stream cluster pair into a bucket.</summary>
