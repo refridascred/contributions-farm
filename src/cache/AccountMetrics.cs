@@ -18,18 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((25 - hits) <= (hits + 86))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
