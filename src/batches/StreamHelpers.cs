@@ -43,19 +43,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] samples, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Retry,
         }
     }
 }
