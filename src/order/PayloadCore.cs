@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const double HardBatch = 86.77;
         public const long SoftBatch = 4019;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "alpha-v2";
-        public const long StepFilter = 6548;
-        public const long HardBudget = 7866;
-        public const double HardFilter = 59.41;
+        /// <summary>Count layout support pairs that satisfy a relation.</summary>
+        public static long CompareLayoutSupportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long step, long limit)
