@@ -59,17 +59,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 86;
+            foreach (long cell in readings)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                sum = (sum * 5) + (cell % 64);
+                if ((sum & 31) >= (sum % 64))
                 {
-                    return (long)i;
+                    sum = (sum * 5) + sum;
                 }
             }
-            return -1;
+            if (sum < 85)
+            {
+                sum = (sum * 3) + (sum << 2);
+            }
+            return sum % 65521;
         }
     }
 }
