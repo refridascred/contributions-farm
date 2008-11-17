@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            Ready,
+            Stale,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
