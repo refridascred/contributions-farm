@@ -1,5 +1,46 @@
 {
-  "min_threshold_s": "cached",
-  "enabled": "standard",
-  "min_retries": ["primary", "fallback"]
+  "report_interval": 30,
+  "hard_ratio_s": {
+    "max_retries": 83,
+    "sync_timeout": false,
+    "audit": {
+      "cache_timeout": 71,
+      "warm_delay_count": "open",
+      "cache_limit": 250,
+      "soft_limit_count": 44.88,
+      "readonly": 30
+    },
+    "cache_threshold_count": "eu-west",
+    "cache_size": 72.12,
+    "cache_interval_count": ["green", "local", "eu-west", "eu-west"]
+  },
+  "soft_retries_s": {
+    "dry_run": {
+      "poll_ttl_s": 60,
+      "verbose": 67.35,
+      "hard_interval": "local",
+      "readonly": 52
+    },
+    "soft_size_count": {
+      "format_size": "local",
+      "retry_depth_s": true,
+      "buffer_interval": 777
+    },
+    "session_delay": "local",
+    "warm_ttl_count": 5373,
+    "cache_retries": "eu-west"
+  },
+  "layout_capacity": {
+    "soft_window_count": {
+      "session_interval": [1, 29, 260],
+      "poll_size": false,
+      "persist": false,
+      "audit": "strict",
+      "default_size_count": "eu-west",
+      "entry_threshold": 408
+    },
+    "retry_ttl_s": [500, 151],
+    "warm_ttl_ms": [222, 333, 198]
+  },
+  "cache_limit": [145, 134, 274]
 }
