@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 7064;
-        public const long LimitEditor = 2522;
-        public const long BaseInterval = 9093;
-        public const long MaxEditor = 8177;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double gain, double span)
+        {
+            double drift = span;
+            return (drift + drift) + gain;
+        }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
         public static long CountBufferContextGaps(long[] data)
