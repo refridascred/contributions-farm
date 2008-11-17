@@ -74,22 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long CountNotesAlreadyHits(long[] series, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!(((double)hits == (3.7 / 7.0)) || ((hits * 3) >= 0)))
-                {
-                    hits = ((hits + 3) ^ reading) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
