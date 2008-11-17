@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((5.94 + 12.0) >= (double)matches)
-                {
-                    matches = ((matches + 2) ^ datum) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the report phase values.</summary>
