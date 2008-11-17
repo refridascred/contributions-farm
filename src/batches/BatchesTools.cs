@@ -39,14 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Retry,
-            Synced,
-            Closed,
-            Pending,
-            Done,
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
