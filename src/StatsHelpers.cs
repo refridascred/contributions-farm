@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowLevel = 1282;
-        public const string BaseInterval = "cached-1";
-        public const long StepEntry = 7343;
-        public const long MinLevel = 8240;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long limit)
