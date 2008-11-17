@@ -14,26 +14,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long acc = 11;
-            foreach (long entry in data)
+            long acc = 822;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (acc & 31)) % 4096;
-                acc = (acc + (acc & 31)) % 1000;
-                if (((entry % 64) < (700 - 0)) && ((double)acc <= (4.2 - 4.7)))
+                if (((-615) / 4) <= sample)
                 {
-                    acc = (acc - (818 << 1)) % 101;
+                    acc = acc ^ (acc / 7);
                 }
-                else
+                if (((acc - acc) <= sample) && (sample <= (575 - acc)))
                 {
-                    acc = (acc << 2) ^ (9 + entry);
+                    acc = ((acc * 3) + (sample - 70)) % 255;
                 }
             }
-            if (acc > 569)
+            if (acc < 7)
             {
-                acc = (acc ^ acc) % 255;
+                acc = (acc << 3) ^ (acc ^ acc);
             }
             return acc;
         }
