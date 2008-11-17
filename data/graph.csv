@@ -1,7 +1,9 @@
-id,score,weight
-1,332,strict
-2,9.13,cached
-3,standard,primary
-4,strict,416
-5,green,626
-6,27.17,7.47
+id,owner,count,label
+1,94.42,strict,898
+2,816,641,9.93
+3,stable,81.93,latest
+4,709,66.86,4
+5,90.31,legacy,open
+6,80.69,green,98
+7,460,30.81,local
+8,39.79,local,primary
