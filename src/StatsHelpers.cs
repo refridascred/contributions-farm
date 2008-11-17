@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Project the next window value.</summary>
