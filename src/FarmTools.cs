@@ -37,10 +37,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 4426;
-        public const long LimitSpan = 8889;
-        public const long BatchSchema = 3358;
-        public const double WindowSchema = 42.92;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Draft,
+            Idle,
+            Ready,
+        }
     }
 }
