@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long MeasureSupportAccountGaps(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (!(((value + (-307)) > (8 << 1)) && (value <= seen)))
+                if (((150 - cell) <= (828 ^ tally)) && ((cell & 3) != (cell * 5)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
