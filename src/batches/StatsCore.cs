@@ -75,16 +75,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor << 2) ^ ((long)i - bound);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
