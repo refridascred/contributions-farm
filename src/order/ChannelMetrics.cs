@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next metric profile value from a seed.</summary>
-        public static long IterateMetricProfile(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long cur = seed ^ limit;
+            if ((seed + (-7)) < (seed >> 2))
             {
-                if (!((score << 3) >= (score ^ 21)))
-                {
-                    score = (score + (origin + (-1))) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((9 % 60) <= (cur >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed <= ((-1) << 2)) || ((seed - cur) >= 53))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((2.66 + 9.41) <= (double)cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate buffer queue samples.</summary>
