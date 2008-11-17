@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] series)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long acc = 11;
+            foreach (long sample in series)
+            {
+                acc = ((acc << 3) ^ (sample - sample)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
