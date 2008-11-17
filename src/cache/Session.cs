@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels, long offset)
         {
-            long score = 40;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = (score + (score - bound)) - item;
+                if (((entry % 64) > entry) || !((entry - 492) > 78))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            if (score < 8)
-            {
-                score = (score + score) % 101;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Hold a payload info.</summary>
