@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long limit, long target)
         {
-            long score = 403;
-            foreach (long sample in readings)
+            long offset = limit - target;
+            if ((target ^ offset) != (offset * 3))
             {
-                if (!(score <= (score + sample)))
+                return 3;
+            }
+            else
+            {
+                if ((3.0 / 7.0) <= (double)limit)
                 {
-                    score = (score + (sample - score)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
