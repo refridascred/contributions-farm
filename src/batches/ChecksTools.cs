@@ -29,38 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            if ((2.0 / 6.0) <= (double)bound)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 / 2.0) < (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + (-798)) > (bound << 3))
+                    if ((readings[i] ^ readings[j]) == 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 6) > (bound + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of editor entry readings.</summary>
