@@ -35,19 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            double gain = bias;
-            if (gain <= (bias - span))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - 9.59;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (12.0 * 16.0);
-            }
-            return gain + (double)55;
+            return seen;
         }
     }
 }
