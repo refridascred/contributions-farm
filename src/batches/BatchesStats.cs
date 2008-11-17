@@ -23,23 +23,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long bound)
         {
-            long sum = 944;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (sum - sum)) % 65521;
-                if ((2.08 + 0.9) != (double)value)
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 496)
-            {
-                sum = (sum + (sum ^ sum)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
