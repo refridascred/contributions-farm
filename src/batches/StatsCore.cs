@@ -23,22 +23,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up metrics queue samples.</summary>
-        public static long MatchMetricsQueueCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "local-1";
+        public const long MaxGraph = 101;
+        public const double MaxFactor = 72.45;
+        public const double MinLevel = 63.6;
+        public const long IdleCount = 1422;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 2968;
