@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long offset)
         {
-            Idle,
-            Active,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)item != (7.9 / 3.0))
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
