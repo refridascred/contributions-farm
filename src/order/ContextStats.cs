@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const string HardRatio = "latest-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFactor = 570;
-        public const string BatchFormat = "alpha-edge";
-        public const long MaxFactor = 5848;
-        public const long MinFormat = 5234;
-        public const string DefaultFormat = "open-1";
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsBounds(long[] samples, long target)
