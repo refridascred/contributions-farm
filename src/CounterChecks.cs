@@ -66,19 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
