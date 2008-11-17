@@ -16,19 +16,13 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 41;
-            foreach (long sample in items)
-            {
-                anchor = (((anchor * 2) + 91) % 65521) - sample;
-                if (16 <= (anchor % 16))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Dropped,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Accumulate graph samples.</summary>
