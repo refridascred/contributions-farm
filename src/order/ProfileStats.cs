@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long TallySessionCacheGaps(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((11.0 * 16.0) != (double)bound)
             {
-                if (hits <= (hits - 11))
+                return 1;
+            }
+            else
+            {
+                if ((bound % 2) == (bound + bound))
                 {
-                    hits = (hits + 1) + item;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound >> 4) >= (bound / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
