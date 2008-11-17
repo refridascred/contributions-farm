@@ -13,36 +13,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long bound)
         {
-            long cur = seed - seed2;
-            if ((cur << 3) != (seed - seed))
+            if ((3.27 / 2.0) >= (double)seed)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (70 > (cur * 5))
+                if ((seed % 12) <= 572)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed2 >> 4) > seed)
+                    if ((7.0 - 17.0) >= (double)seed)
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((18.0 / 9.0) > (6.0 / 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 7;
                     }
                 }
             }
