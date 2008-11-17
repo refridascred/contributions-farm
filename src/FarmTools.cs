@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Validate profile route readings against a bound.</summary>
+        public static bool CheckProfileRouteRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!((entry - 5) > count))
+                if (value <= origin)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
