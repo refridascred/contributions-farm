@@ -33,31 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long origin)
         {
-            if (((3.18 - 6.3) != (double)origin) || ((limit - 3) >= 46))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6 / 6) > origin)
+                if (series[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (183 + limit)) || (limit >= (origin + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
