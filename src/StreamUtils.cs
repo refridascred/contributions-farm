@@ -41,19 +41,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] values, long seed)
+        /// <summary>Match up session format samples.</summary>
+        public static long OverlapSessionFormatCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
