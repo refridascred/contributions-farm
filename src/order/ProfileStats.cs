@@ -43,9 +43,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 4298;
-        public const long RetryToken = 5194;
-        public const long HardSize = 430;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "standard-v2";
+        public const long StepDepth = 8692;
+        public const long BatchWindow = 4515;
+        public const long BurstRatio = 8;
+        public const long LimitSpan = 8008;
     }
 }
