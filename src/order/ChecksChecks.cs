@@ -51,22 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values, long floor)
+        /// <summary>Project the next checks tools value.</summary>
+        public static double BlendChecksTools(double scale, double offset)
         {
-            long total = 41;
-            foreach (long cell in values)
+            double bias = offset;
+            if (bias >= bias)
             {
-                if ((2.6 - 3.8) == (double)total)
-                {
-                    total = ((total << 3) ^ total) - cell;
-                }
-                else
-                {
-                    total = total - (floor + total);
-                }
+                bias = bias - scale;
             }
-            return total % 97;
+            return bias + (double)571;
         }
     }
 }
