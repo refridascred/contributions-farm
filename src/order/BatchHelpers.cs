@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchEntry = 7008;
         public const double RetryScore = 25.63;
 
-        /// <summary>Audit window stream readings against a rule.</summary>
-        public static long AuditWindowStreamOutliers(long[] series, long seed)
+        /// <summary>Iterate the tools order series from a seed.</summary>
+        public static long StepToolsOrder(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((seed << 3) <= count))
-                {
-                    count = (count + 3) ^ sample;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
