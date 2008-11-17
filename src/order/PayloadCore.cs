@@ -23,25 +23,11 @@ namespace Common.Utilities
         public const double HardBatch = 86.77;
         public const long SoftBatch = 4019;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long floor)
-        {
-            if (4.19 > (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.3 * 4.7) > (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "alpha-v2";
+        public const long StepFilter = 6548;
+        public const long HardBudget = 7866;
+        public const double HardFilter = 59.41;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long step, long limit)
