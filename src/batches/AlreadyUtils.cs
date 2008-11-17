@@ -22,12 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long bound)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            if (((offset - 533) != (4 & 7)) || ((24 >> 4) >= (offset - bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset << 2) > offset) && ((double)809 > (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound >= (5.2 * 9.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
