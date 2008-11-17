@@ -40,25 +40,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long cur = floor ^ limit;
-            if (limit >= (cur + 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit / 8) < (floor / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
