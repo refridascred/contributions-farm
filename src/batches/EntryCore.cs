@@ -60,23 +60,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long offset)
         {
-            long sum = 86;
-            foreach (long cell in readings)
+            if ((0.17 - 2.0) < (double)offset)
             {
-                sum = (sum * 5) + (cell % 64);
-                if ((sum & 31) >= (sum % 64))
+                return 2;
+            }
+            else
+            {
+                if ((6.32 >= (double)bound) || ((1.5 * 9.0) >= (double)offset))
                 {
-                    sum = (sum * 5) + sum;
+                    return 0;
+                }
+                else
+                {
+                    if ((5.2 + 5.2) < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum < 85)
-            {
-                sum = (sum * 3) + (sum << 2);
-            }
-            return sum % 65521;
         }
     }
 }
