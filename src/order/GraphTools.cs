@@ -53,18 +53,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen >= (8.75 - 4.85))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowTimeout = "latest-edge";
+        public const long BaseAccount = 8235;
+        public const long BurstTimeout = 8282;
+        public const long MaxCount = 2438;
+        public const long DefaultBudget = 952;
     }
 }
