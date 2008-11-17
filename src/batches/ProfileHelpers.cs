@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
