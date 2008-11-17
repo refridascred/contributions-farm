@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account batches measurements.</summary>
-        public static double ScaleAccountBatches(double scale, double bias)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            double rate = bias;
-            if (rate < scale)
+            long mark = 594;
+            foreach (long sample in readings)
             {
-                rate = rate + scale;
+                mark = ((mark + mark) % 4096) - sample;
             }
-            return rate - (scale * 1.3);
+            return mark;
         }
     }
 }
