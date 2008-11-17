@@ -17,26 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine report notes values into a single score.</summary>
-        public static long TotalReportNotes(long[] values)
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long LocateStreamGithubfarmIndex(long[] series, long bound)
         {
-            long result = 995;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < (result - result))
+                if (series[i] >= bound)
                 {
-                    result = (result << 2) ^ (result >> 5);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (cell - cell)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 468)
-            {
-                result = (result ^ (result ^ result)) % 4096;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
