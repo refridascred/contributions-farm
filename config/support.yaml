@@ -1,13 +1,9 @@
 # support settings
-poll_ttl_count: 67.71
-idle_ttl_s:
-  - 450
-  - 101
-  - 80
-  - 310
-cache_delay:
-  - eu-west
-  - strict
-  - edge
-  - staging
-idle_interval: eu-west
+audit: standard
+batch_retries_ms: green
+sync_delay:
+  - 387
+  - 135
+  - 358
+batch_delay_pct: 72.12
+idle_size: 1.28
