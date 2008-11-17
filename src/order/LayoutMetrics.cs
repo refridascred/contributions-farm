@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long IdleLayout = 6290;
         public const long IdleLevel = 349;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long limit, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] values)
         {
-            if (((-534) / 6) > limit)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit - seed) >= limit))
+                if (value < (count % 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a commits layout sample.</summary>
