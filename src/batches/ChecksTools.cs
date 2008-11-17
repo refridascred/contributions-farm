@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long TotalChecksFilter(long[] data)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long origin)
         {
-            long mix = 284;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix * 2) + (158 >> 4)) % 101) - cell;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 4)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
