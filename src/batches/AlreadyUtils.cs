@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long CombineQueueMetrics(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values, long floor)
         {
-            long score = -545;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (4.3 >= (double)score)
+                if ((value < (value & 7)) && (((hits % 2) <= (606 << 3)) && (hits >= (hits + floor))))
                 {
-                    score = (score - value) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer cache entries.</summary>
