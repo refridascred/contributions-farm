@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] values, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result + ((long)i - origin)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Combine already values into a single score.</summary>
