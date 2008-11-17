@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
+            Closed,
+            Stale,
+            Ready,
             Failed,
-            Active,
-            Dropped,
-            Retry,
+            Locked,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
