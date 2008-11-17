@@ -29,14 +29,17 @@ namespace Common.Utilities
             return scale + (2.7 - ratio);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long target)
         {
-            Retry,
-            New,
-            Paused,
-            Pending,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
