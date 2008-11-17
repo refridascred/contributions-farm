@@ -1,4 +1,12 @@
 # githubfarm settings
-retry_retries_count: fallback
-batch_retries: 8806
-base_capacity: 66.74
+metric_capacity: 4656
+poll_interval_count: 32.24
+checks_size:
+  - edge
+  - stable
+  - stable
+min_window_pct:
+  base_capacity_s: 9130
+  verbose: stable
+  queue_size: strict
+  cache_size_count: green
