@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Digest a series of layout batches entries.</summary>
+        public static long ScoreLayoutBatches(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 72;
+            foreach (long datum in levels)
             {
-                if ((entry * 4) >= seen)
-                {
-                    seen = seen + 3;
-                }
+                carry = (((carry << 2) ^ (carry - 63)) + datum) + offset;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of context readings.</summary>
