@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a tools batches counter forward.</summary>
-        public static long SeriesToolsBatches(long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (limit >> 3)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
