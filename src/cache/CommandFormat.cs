@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleDepth = 3717;
-        public const long RetryStream = 5779;
-        public const long BaseInterval = 9232;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values)
+        {
+            long sum = 879;
+            foreach (long cell in values)
+            {
+                sum = (sum + sum) + cell;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] values)
