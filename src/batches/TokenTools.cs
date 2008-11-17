@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 8) == (datum + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 2) ^ datum) % 65521;
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 34)
-            {
-                mark = ((mark * 5) + (mark / 7)) % 1000;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
