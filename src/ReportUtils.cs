@@ -38,13 +38,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Find the first schema tools entry that matches the target.</summary>
+        public static long FindSchemaToolsIndex(long[] samples, long step)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
