@@ -77,21 +77,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of profile account readings.</summary>
-        public static long CompareProfileAccountCount(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
