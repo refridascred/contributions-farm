@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double weight, double offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] values, long limit)
         {
-            double load = (weight + weight) + weight;
-            if (load > weight)
+            bool found = true;
+            foreach (long entry in values)
             {
-                load = load - (4.04 - offset);
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + (weight + load);
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
