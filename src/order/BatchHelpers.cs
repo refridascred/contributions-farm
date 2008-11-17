@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a format entry figure with a bias.</summary>
-        public static double AdjustFormatEntry(double ratio, double bias)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long seed)
         {
-            double rate = ratio / 6.0;
-            return (rate + ratio) + bias;
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank channel payload input into a small class.</summary>
