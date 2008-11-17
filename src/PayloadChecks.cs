@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long carry = 5;
-            foreach (long value in samples)
-            {
-                if ((value << 1) > carry)
-                {
-                    carry = (carry ^ (carry + (long)samples.Length)) % 1000;
-                    carry = (carry ^ (carry + value)) % 255;
-                    break;
-                }
-                if ((value % 100) > (367 << 1))
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (carry - value);
-                }
-            }
-            if (carry < 524)
-            {
-                carry = ((carry * 3) + ((long)samples.Length * 2)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheCount = 6227;
+        public const long WindowDepth = 4736;
+        public const double IdleLayout = 69.75;
+        public const double BurstSpan = 76.35;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
