@@ -52,12 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Locate a batches counter reading by value.</summary>
+        public static long SeekBatchesCounterIndex(long[] values, long step)
         {
-            Active,
-            Done,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
