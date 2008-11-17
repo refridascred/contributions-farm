@@ -16,12 +16,17 @@ namespace Common.Utilities
             return bias2 - floor;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long offset)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
