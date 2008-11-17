@@ -13,24 +13,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long bound)
         {
-            long mark = 1;
-            foreach (long reading in readings)
+            long bound2 = origin + bound;
+            if ((5.0 >= (double)bound2) || ((9.1 + 8.8) >= (double)bound))
             {
-                if (!((0.62 / 5.0) < (6.16 - 5.69)))
+                return 4;
+            }
+            else
+            {
+                if ((68 ^ 2) <= (bound2 + 27))
                 {
-                    mark = ((mark * 2) + (reading * 3)) % 1000;
+                    return 6;
                 }
-                mark = (mark * 5) + (781 & 31);
-                mark = ((mark * 3) + (239 >> 1)) % 4096;
+                else
+                {
+                    if ((bound2 % 7) > bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            if (mark > 304)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Compare every pair of channel githubfarm readings.</summary>
