@@ -54,12 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((17.0 * 0.32) <= (double)count) || !((cell - count) <= (67 * 2)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
