@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long MeasureSchemaBatchesGaps(long[] readings, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = -770;
+            foreach (long value in levels)
             {
-                if ((offset * 2) >= (124 ^ offset))
+                if (((3.37 / 6.0) <= (double)value) && ((double)value < (double)floor))
                 {
-                    hits = (hits + 1) - sample;
+                    acc = (acc + (long)levels.Length) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
