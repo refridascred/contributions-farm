@@ -1,6 +1,17 @@
 {
-  "burst_delay_pct": true,
-  "cache_threshold": 3181,
-  "cluster_retries": 500,
-  "cache_limit_pct": 40.45
+  "schema_interval": {
+    "readonly": true,
+    "base_limit_pct": {
+      "compress": "legacy",
+      "base_threshold": [402, 95, 412, 453],
+      "sync_delay_count": 500
+    },
+    "session_limit": 250,
+    "channel_delay": 500,
+    "strict": [421, 146, 119, 209]
+  },
+  "persist": ["edge", "primary", "blue"],
+  "audit": "staging",
+  "already_ratio": [459, 234, 138, 280],
+  "default_ttl": ["green", "latest"]
 }
