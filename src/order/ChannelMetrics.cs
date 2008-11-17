@@ -40,19 +40,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long floor)
+        /// <summary>Roll a account token counter forward.</summary>
+        public static long RollAccountToken(long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry + bound;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
     }
 }
