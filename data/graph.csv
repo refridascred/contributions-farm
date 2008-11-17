@@ -1,10 +1,6 @@
-id,score,rank,ratio,state
-1,52.23,155,33.39,primary
-2,stable,eu-west,102,494
-3,48.97,467,946,strict
-4,fallback,61.91,35.41,108
-5,301,local,820,864
-6,864,53.15,876,edge
-7,local,492,5.43,393
-8,15.17,299,412,86.22
-9,972,381,open,76.43
+id,state,score,owner,rank
+1,94.84,legacy,2,11.35
+2,95.79,fallback,eu-west,fallback
+3,76,primary,blue,primary
+4,57.09,25.36,515,474
+5,fallback,green,fallback,fallback
