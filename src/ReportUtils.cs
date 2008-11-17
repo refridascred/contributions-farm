@@ -41,27 +41,39 @@ namespace Common.Utilities
         public const double RetryDepth = 42.9;
         public const long BatchCommits = 9856;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long target)
         {
-            long anchor = 348;
-            foreach (long cell in data)
+            long slot = step - target;
+            if (!((target >> 1) < (target * 3)))
             {
-                for (int i = 0; i < 10; i++)
+                return 7;
+            }
+            else
+            {
+                if ((double)slot < 13.0)
                 {
-                    anchor = (anchor ^ (488 + (long)i)) % 97;
-                    anchor = ((anchor * 2) + ((-9) + cell)) % 97;
-                }
-                if (((double)anchor < (1.7 + 3.2)) && ((double)origin <= (1.3 + 2.0)))
-                {
-                    anchor = ((anchor << 3) ^ origin) % 255;
+                    return 0;
                 }
                 else
                 {
-                    anchor = ((anchor * 5) + (anchor - 3)) % 101;
+                    if ((double)target <= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - slot) > (target / 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Blend two account batches measurements.</summary>
