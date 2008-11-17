@@ -1,7 +1,7 @@
 {
-  "default_depth": true,
-  "soft_depth_ms": 31.21,
-  "idle_window_ms": "latest",
-  "cluster_size": "edge",
-  "max_window_s": "legacy"
+  "verbose": "local",
+  "report_window": false,
+  "report_retries": false,
+  "burst_ttl_ms": "staging",
+  "batch_limit_s": "legacy"
 }
