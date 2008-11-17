@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the payload profile series from a seed.</summary>
-        public static long SeriesPayloadProfile(long target)
+        /// <summary>Match up tools profile samples.</summary>
+        public static long MatchToolsProfileCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate buffer queue samples.</summary>
