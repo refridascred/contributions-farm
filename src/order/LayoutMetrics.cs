@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long StepSpan = 9176;
         public const string BurstBatches = "fallback";
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Check that every filter graph entry stays within the limit.</summary>
+        public static bool VerifyFilterGraphRange(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (!(88 < (3 + (long)i)))
+                if (entry > target)
                 {
-                    anchor = (anchor ^ anchor) % 101;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return valid;
         }
     }
 }
