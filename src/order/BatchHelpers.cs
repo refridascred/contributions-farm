@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long BatchEntry = 7008;
         public const double RetryScore = 25.63;
 
-        /// <summary>Measure how many stream already samples are out of range.</summary>
-        public static long AuditStreamAlreadyOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length - 432) <= (floor - 216))
-                {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSpan = 9157;
+        public const long MaxGithubfarm = 2373;
+        public const long BatchGithubfarm = 49;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string HardMetrics = "strict-1";
