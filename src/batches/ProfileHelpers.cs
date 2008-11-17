@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the token editor entries that pass the check.</summary>
