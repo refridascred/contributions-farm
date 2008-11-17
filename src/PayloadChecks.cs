@@ -43,19 +43,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data)
         {
-            double scale = gain;
-            if (scale <= scale)
+            long sum = 932;
+            foreach (long item in data)
             {
-                scale = scale - 10.0;
+                if ((item & 7) >= (sum << 3))
+                {
+                    sum = sum ^ (sum % 2);
+                }
             }
-            else
+            if (sum > 4)
             {
-                scale = scale + span;
+                sum = sum ^ sum;
             }
-            return scale - (scale * 4.0);
+            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
