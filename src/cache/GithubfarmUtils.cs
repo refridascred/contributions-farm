@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result ^ (result << 2);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits mode values.</summary>
