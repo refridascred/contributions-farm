@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long CachePayload = 2284;
         public const double StepPayload = 72.8;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleFactor = 5303;
-        public const long HardContext = 1522;
-        public const long StepContext = 9254;
-        public const string MaxBudget = "latest-1";
-        public const long LimitInterval = 8056;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Dropped,
+            Stale,
+            Queued,
+            Locked,
+        }
     }
 }
