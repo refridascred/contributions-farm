@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] levels, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((item * 3) <= (count + item)) && ((double)item > (8.9 / 9.0)))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a farm info.</summary>
