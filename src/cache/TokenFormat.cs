@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long step)
         {
-            long mark = 5;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound + 730) > value)
+                if (series[i] >= step)
                 {
-                    mark = ((mark * 5) + (mark + bound)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
