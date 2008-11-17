@@ -37,19 +37,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a farm editor reading.</summary>
-        public static double SmoothFarmEditor(double rate, double span)
+        /// <summary>Match up editor account samples.</summary>
+        public static long PairEditorAccountCount(long[] series)
         {
-            double rate2 = span;
-            if (rate2 <= (double)46)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 - rate2) + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (span * 4.3);
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
