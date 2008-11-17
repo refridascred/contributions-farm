@@ -33,15 +33,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool VerifyChannelToolsBounds(long[] levels, long seed)
         {
-            double mean = (double)((-754) - 91);
-            if (mean > (mean * 17.0))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                mean = mean + scale;
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (floor + 5.79);
+            return ok;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
