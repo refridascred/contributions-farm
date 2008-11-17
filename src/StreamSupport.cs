@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of farm notes entries.</summary>
-        public static long FoldFarmNotes(long[] items, long limit)
-        {
-            long result = 8;
-            foreach (long datum in items)
-            {
-                result = ((((result * 4) + (result + result)) % 101) + datum) - limit;
-                result = result ^ (result << 3);
-                if ((9.0 / 7.0) == (double)result)
-                {
-                    result = (result + ((long)items.Length / 4)) % 4096;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 4845;
+        public const double DefaultLayout = 5.29;
+        public const long BaseLayout = 848;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long bound, long target)
