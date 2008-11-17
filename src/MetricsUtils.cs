@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                long slot = origin;
-                if (!((((long)i & 63) < (long)i) || (((long)i + origin) >= slot)))
-                {
-                    result = (result * 3) + origin;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Locate a report channel reading by value.</summary>
