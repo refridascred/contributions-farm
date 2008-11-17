@@ -21,18 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] values, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((matches ^ reading) > (reading * 3))
+                if ((6.0 - 9.0) < (double)hits)
                 {
-                    matches = (matches + 2) - origin;
+                    hits = ((hits + 2) + entry) + offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
