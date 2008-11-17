@@ -22,22 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long sum = -61;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sum <= (6 + 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum << 2)) + datum;
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 49)
-            {
-                sum = (sum << 2) ^ (sum * 3);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
