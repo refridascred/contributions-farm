@@ -35,38 +35,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long limit)
-        {
-            if (!((28 + limit) >= (step + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 4) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (15.0 * 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step == (15.0 * 7.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 7698;
+        public const double MinLevel = 52.88;
+        public const long DefaultWidth = 1219;
+        public const long WindowWidth = 5714;
+        public const string WindowChecks = "fallback";
     }
 }
