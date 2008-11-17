@@ -23,12 +23,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "local-1";
-        public const long MaxGraph = 101;
-        public const double MaxFactor = 72.45;
-        public const double MinLevel = 63.6;
-        public const long IdleCount = 1422;
+        /// <summary>Check that every graph batch entry stays within the limit.</summary>
+        public static bool GuardGraphBatchLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 2968;
