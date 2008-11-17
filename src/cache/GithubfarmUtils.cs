@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Locked,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryLevel = 9527;
+        public const long DefaultScore = 3709;
+        public const string LimitReport = "standard-1";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextHits(long[] samples, long floor)
