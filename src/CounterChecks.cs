@@ -75,21 +75,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches context samples.</summary>
-        public static long PairBatchesContextCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = limit + floor;
+            if ((limit * 4) <= (diff % 8))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 5) >= (floor + floor))
                 {
-                    if ((readings[i] - readings[j]) == 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) <= diff)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(1.58 <= (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
