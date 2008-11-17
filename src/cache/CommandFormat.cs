@@ -38,23 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double mean = rate;
-            if (mean > (0.2 / 9.0))
-            {
-                mean = mean + (double)57;
-            }
-            else
-            {
-                mean = mean + (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (floor / 7.0)) + (double)(long)i;
-            }
-            return mean - (11.0 / 7.0);
+            Dropped,
+            Closed,
+            Locked,
+            Draft,
         }
     }
 }
