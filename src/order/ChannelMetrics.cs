@@ -40,16 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account token counter forward.</summary>
-        public static long RollAccountToken(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + bound;
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
