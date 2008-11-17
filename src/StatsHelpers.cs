@@ -16,13 +16,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Paused,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Project the next window value.</summary>
