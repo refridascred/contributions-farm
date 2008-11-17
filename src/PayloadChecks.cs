@@ -33,14 +33,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3560;
+        public const double WindowBudget = 37.16;
+        public const string MaxRatio = "cached";
+        public const long MaxWidth = 531;
 
         /// <summary>Digest a series of cluster cache entries.</summary>
         public static long FoldClusterCache(long[] values, long limit)
