@@ -38,38 +38,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long floor, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long seed)
         {
-            if (((222 << 3) == (seed << 3)) && ((floor + 90) < (floor + seed)))
+            long total = 2;
+            foreach (long entry in samples)
             {
-                return 7;
+                total = (((total * 3) + (seed * 2)) % 255) - entry;
             }
-            else
-            {
-                if ((double)floor == (8.0 * 5.3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + seed) <= (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.2 / 3.0) > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
