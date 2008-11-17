@@ -1,4 +1,32 @@
 # entry settings
-flush_delay_pct: standard
-account_ttl: 1.14
-cache_interval: 1893
+checks_retries: 78.21
+schema_size:
+  hard_delay_pct: true
+  checks_capacity: cached
+  buffer_ratio: 81
+  metric_ratio:
+    verbose: 9.99
+    schema_capacity: false
+    sync_delay_s:
+      - legacy
+      - open
+      - blue
+      - latest
+    flush_interval_count: 2940
+    persist: fallback
+    hard_ttl_count: false
+  poll_interval_ms: true
+max_limit: 790
+dry_run:
+  counter_window: true
+  cache_interval_s: true
+  enabled:
+    cache_capacity_pct: false
+    strict: 500
+    default_timeout_count: 60
+    sync_timeout_s: 40
+    min_capacity: 34.53
+    default_retries_s: blue
+farm_threshold:
+  - 28
+  - 70
