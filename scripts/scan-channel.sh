@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict staging cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=254
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for item in local cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
