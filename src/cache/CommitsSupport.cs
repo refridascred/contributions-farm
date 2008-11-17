@@ -37,13 +37,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of account buffer readings.</summary>
+        public static long FoldAccountBuffer(long[] data, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long result = 0;
+            foreach (long value in data)
+            {
+                if ((result - value) == (floor << 3))
+                {
+                    result = result - (value % 60);
+                }
+            }
+            if (result > 973)
+            {
+                result = (result ^ (floor << 1)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a cluster header.</summary>
