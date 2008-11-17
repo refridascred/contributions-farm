@@ -1,7 +1,5 @@
 {
-  "checks_threshold": 95.79,
-  "audit": 250,
-  "enabled": true,
-  "default_limit_s": 100,
-  "burst_threshold": "eu-west"
+  "max_limit_s": "staging",
+  "retry_timeout_s": true,
+  "cache_ttl": false
 }
