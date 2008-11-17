@@ -1,15 +1,12 @@
 # githubfarm settings
-poll_limit: 32.21
-min_ratio: 29.68
-sync_size_pct: false
-max_retries: 48.17
-retry_limit_count:
-  poll_retries_pct:
-    - primary
-    - green
-  token_interval: 500
-  context_timeout:
-    - 167
-    - 441
-    - 345
-dry_run: true
+checks_limit: staging
+strict:
+  - open
+  - eu-west
+  - green
+  - strict
+default_threshold_count:
+  min_retries: 4908
+  account_ratio: 70
+  max_depth: eu-west
+default_timeout: false
