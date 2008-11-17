@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
-        public static long SeekGithubfarmSessionIndex(long[] levels, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long item in levels)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                anchor = (anchor + anchor) % 101;
+                anchor = anchor - (anchor + (-3));
+                if (((anchor << 3) < (item - item)) || (51 < (anchor % 3)))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 101;
                 }
             }
-            return -1;
+            if (anchor < (-869))
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
