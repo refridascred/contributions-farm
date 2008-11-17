@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleRatio = "legacy-1";
-        public const string HardFactor = "standard-1";
-        public const double CacheChecks = 20.28;
-        public const long SoftChecks = 1982;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long offset, long limit)
