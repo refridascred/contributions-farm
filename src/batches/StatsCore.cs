@@ -38,20 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2968;
+        public const long RetryEditor = 7976;
+        public const long BaseLevel = 3286;
+        public const long CacheDepth = 390;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleRatio = 9811;
