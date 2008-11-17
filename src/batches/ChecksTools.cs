@@ -19,19 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] data, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
