@@ -16,18 +16,17 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits > (0.92 * 8.0))
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
                 {
-                    hits = (hits + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the command context entries that pass the check.</summary>
