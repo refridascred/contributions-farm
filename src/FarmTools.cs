@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] levels, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (entry > offset)
+                if ((9.0 * 11.0) < (double)item)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
