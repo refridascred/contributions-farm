@@ -1,14 +1,6 @@
 {
-  "batch_limit_pct": ["local", "legacy", "edge"],
-  "account_timeout": {
-    "payload_window": 47.23,
-    "batch_window": ["fallback", "fallback", "eu-west", "strict"],
-    "base_delay": [19, 263],
-    "retry_size": 19.91,
-    "counter_window": false
-  },
-  "sync_ratio_s": "local",
-  "warm_retries": 13.46,
-  "idle_threshold_s": 1024,
-  "warm_window_pct": false
+  "poll_threshold": true,
+  "hard_interval_pct": 100,
+  "enabled": "green",
+  "sync_timeout_ms": 30
 }
