@@ -48,18 +48,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many tools notes samples are out of range.</summary>
-        public static long CountToolsNotesHits(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item + item) == (hits ^ hits))
+                if ((result + target) > ((long)i - (long)i))
                 {
-                    hits = hits + 2;
+                    result = (result + (result / 6)) % 65521;
                 }
+                result = result - (393 - target);
+                if (!((result + target) >= result))
+                {
+                    result = ((result * 4) + (target ^ target)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the order phase values.</summary>
