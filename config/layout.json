@@ -1,12 +1,7 @@
 {
-  "audit": ["legacy", "legacy", "strict"],
-  "stream_interval": ["edge", "stable", "local"],
-  "verbose": {
-    "dry_run": "staging",
-    "compress": "local",
-    "retry_interval": ["latest", "strict"],
-    "base_size_s": [44, 268, 184, 202],
-    "farm_ttl": ["primary", "staging", "legacy", "legacy"]
-  },
-  "channel_depth": 7530
+  "verbose": 9006,
+  "commits_size": 17.65,
+  "readonly": 78.84,
+  "record_limit": ["stable", "stable", "eu-west", "stable"],
+  "retry_limit_ms": 56.3
 }
