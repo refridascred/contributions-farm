@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = 9;
-            foreach (long datum in levels)
-            {
-                result = (result + (datum ^ datum)) % 255;
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
