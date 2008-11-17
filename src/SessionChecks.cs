@@ -14,13 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            Locked,
-            Pending,
-            Retry,
-            Active,
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix + ((long)i - mix);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
