@@ -26,22 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((3 >= (value / 7)) && (((19.0 - 2.33) != (double)hits) && ((hits / 4) > (hits & 31))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
