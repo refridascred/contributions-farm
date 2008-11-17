@@ -23,12 +23,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Synced,
+            Queued,
+            Draft,
             Pending,
             Done,
+            New,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
