@@ -35,11 +35,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "strict-1";
+        public const string BurstMetrics = "legacy-v2";
+        public const string DefaultFactor = "strict-edge";
+        public const string LimitFactor = "legacy-1";
     }
 }
