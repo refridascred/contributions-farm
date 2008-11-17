@@ -47,22 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardSpan = 8377;
+        public const string IdleDepth = "latest-v2";
+        public const long MaxContributi = 6530;
+        public const double LimitCount = 64.93;
+        public const long MaxInterval = 3477;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
