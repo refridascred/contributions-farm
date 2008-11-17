@@ -33,19 +33,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two metrics metric measurements.</summary>
-        public static double SmoothMetricsMetric(double gain, double floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            double drift = floor;
-            if (drift > (double)567)
+            double bias = offset;
+            if (bias < (ratio / 6.0))
             {
-                drift = drift + gain;
+                bias = bias + (offset - ratio);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (floor / 5.0)) + (double)(long)i;
-            }
-            return drift + (gain * 0.58);
+            return bias + (bias - 16.0);
         }
     }
 }
