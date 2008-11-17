@@ -13,22 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long carry = 34;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((7 >> 2) == (carry ^ carry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ reading) % 4096;
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 496)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
