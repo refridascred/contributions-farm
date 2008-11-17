@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((8.2 / 2.0) >= (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache state values.</summary>
