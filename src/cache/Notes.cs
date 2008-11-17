@@ -40,20 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum << 3) ^ (543 % 3)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchBudget = "primary";
+        public const string MinRatio = "alpha-1";
+        public const double IdleTools = 55.25;
+        public const long StepTools = 1258;
+        public const long BurstTools = 7216;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long OverlapBatchCount(long[] series)
