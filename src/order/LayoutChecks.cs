@@ -69,9 +69,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9122;
-        public const double SoftLevel = 11.93;
-        public const string IdleWindow = "cached";
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
