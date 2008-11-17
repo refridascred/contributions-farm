@@ -61,22 +61,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Digest a series of cluster cache entries.</summary>
+        public static long FoldClusterCache(long[] values, long limit)
         {
-            long sum = 932;
-            foreach (long item in data)
+            long anchor = 2;
+            foreach (long sample in values)
             {
-                if ((item & 7) >= (sum << 3))
+                if (limit < sample)
                 {
-                    sum = sum ^ (sum % 2);
+                    anchor = ((anchor << 3) ^ (sample ^ anchor)) % 101;
+                    break;
+                }
+                if ((sample << 1) != (anchor - limit))
+                {
+                    anchor = (anchor + (limit * 4)) % 101;
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
