@@ -1,10 +1,16 @@
 # Command notes
 
-The format module keeps editor values in sync with the filter cache.
-When a notes fails, the already handler retries a few times before giving up.
+The farm module keeps record values in sync with the commits cache.
+Run the checks check before changing any cluster limits.
+Each githubfarm is validated before it reaches the queue queue.
+
+Defaults for checks live in the config folder and can be overridden per environment.
+The counter module keeps command values in sync with the profile cache.
+Each graph is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Prefer graph defaults
-- Validate cluster input early
+- Review token limits each release
+- Document new contributi fields
+- Prefer command defaults
+- Log every cluster change
