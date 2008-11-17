@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const long WindowAlready = 5891;
         public const long IdleInterval = 7515;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "local-edge";
-        public const long IdleEntry = 311;
-        public const long BaseFactor = 7298;
-        public const string HardSpan = "latest-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowBudget = 6592;
+        public const long CacheQueue = 3605;
+        public const long WindowQueue = 6080;
 
         /// <summary>Count cache counter pairs that satisfy a relation.</summary>
         public static long PairCacheCounterCount(long[] data)
