@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long BatchEntry = 7008;
         public const double RetryScore = 25.63;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSpan = 9157;
-        public const long MaxGithubfarm = 2373;
-        public const long BatchGithubfarm = 49;
+        /// <summary>Audit window stream readings against a rule.</summary>
+        public static long AuditWindowStreamOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((seed << 3) <= count))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate schema record readings against a bound.</summary>
         public static bool ValidateSchemaRecordLimits(long[] readings, long offset)
