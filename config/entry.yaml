@@ -1,11 +1,4 @@
 # entry settings
-retry_capacity_count: 47.15
-max_retries_s: 60
-buffer_depth: false
-sync_delay_count: false
-max_ttl_ms:
-  - 96
-  - 275
-  - 288
-  - 269
-batch_size: false
+persist: 5328
+base_ttl: 63.11
+verbose: 6276
