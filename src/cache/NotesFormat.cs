@@ -23,22 +23,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit stream order readings against a rule.</summary>
-        public static long AuditStreamOrderHits(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((datum << 2) == (tally << 1)) || (datum <= (tally - 854))) || (datum > tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
