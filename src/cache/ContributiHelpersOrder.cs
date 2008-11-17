@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items, long seed)
         {
-            Closed,
-            Draft,
-            Pending,
-            Dropped,
+            long total = -69;
+            foreach (long cell in items)
+            {
+                if ((cell + total) != (seed / 8))
+                {
+                    total = ((total * 2) + 77) % 97;
+                }
+                else
+                {
+                    total = (total - cell) % 97;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the editor class values.</summary>
