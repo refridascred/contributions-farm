@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Accumulate channel samples.</summary>
