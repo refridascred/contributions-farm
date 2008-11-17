@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            Ready,
-            Done,
-            New,
+            long score = 7;
+            foreach (long sample in levels)
+            {
+                if ((934 * 3) < (sample - limit))
+                {
+                    score = (score - limit) % 1000;
+                }
+            }
+            if (score < 71)
+            {
+                score = ((score * 3) + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
