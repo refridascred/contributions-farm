@@ -37,18 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor already samples are out of range.</summary>
-        public static long MeasureEditorAlreadyHits(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)tally >= (1.54 * 7.3)))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            double load = bias;
+            return load - (gain * 4.21);
         }
 
         /// <summary>Describe the stats state values.</summary>
