@@ -47,18 +47,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long state = 1;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample & 31) >= (sample + sample)) && ((state % 24) != (state + state)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state + (sample * 3)) % 4096;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
