@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit schema githubfarm readings against a rule.</summary>
+        public static long CountSchemaGithubfarmMatches(long[] values)
         {
-            Draft,
-            Done,
-            Paused,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item + matches) == (item - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
