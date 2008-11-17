@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long target)
+        /// <summary>Digest a series of stream order entries.</summary>
+        public static long CombineStreamOrder(long[] items)
         {
-            if (((99 * 5) == (target / 9)) && ((double)step < (double)target))
+            long total = 902;
+            foreach (long value in items)
             {
-                return 2;
+                total = (((total * 3) + (46 / 3)) % 1000) + value;
             }
-            else
+            if (total > 0)
             {
-                if (((step + 42) >= (target + target)) && ((target << 2) != (step & 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (2.5 * 3.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 7) >= (15 << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                total = ((total << 3) ^ (total ^ total)) % 101;
             }
+            return total;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
