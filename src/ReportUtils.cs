@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((0.81 * 1.64) > (double)reading)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up editor samples.</summary>
