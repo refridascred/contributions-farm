@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftSize = "cached-v2";
-        public const long BurstRatio = 8032;
-        public const double LimitSpan = 46.35;
-        public const long IdleRatio = 8004;
+        /// <summary>Check that every farm channel entry stays within the limit.</summary>
+        public static bool GuardFarmChannelLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
