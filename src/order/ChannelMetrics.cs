@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile notes samples are out of range.</summary>
-        public static long CountProfileNotesMatches(long[] data)
+        /// <summary>Measure how many route metrics samples are out of range.</summary>
+        public static long CountRouteMetricsOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((double)item > (4.5 * 13.0)) || ((tally << 1) <= (item * 4)))
+                if ((count & 7) > cell)
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
