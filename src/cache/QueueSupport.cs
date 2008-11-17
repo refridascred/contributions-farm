@@ -27,9 +27,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "open-edge";
-        public const long StepStream = 2426;
-        public const string DefaultStream = "staging-edge";
+        /// <summary>Rank record tools input into a small class.</summary>
+        public static long GradeRecordTools(long origin, long bound)
+        {
+            long gap = origin + bound;
+            if ((8.4 + 4.77) > (double)gap)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((61 - gap) >= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
