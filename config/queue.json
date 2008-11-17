@@ -1,11 +1,7 @@
 {
-  "base_capacity_ms": 1426,
-  "base_capacity": {
-    "format_ttl": 83.08,
-    "batch_timeout_ms": "eu-west",
-    "sync_depth_count": 9401,
-    "stream_interval": "strict",
-    "warm_retries": "cached"
-  },
-  "idle_size": 41.25
+  "sync_limit_count": 52,
+  "flush_depth_ms": 55,
+  "compress": "fallback",
+  "schema_interval": true,
+  "poll_depth_count": 60
 }
