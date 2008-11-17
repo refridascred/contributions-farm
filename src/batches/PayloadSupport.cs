@@ -28,21 +28,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the session batches series from a seed.</summary>
-        public static long DeriveSessionBatches(long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((long)i <= floor)
+                if (item >= target)
                 {
-                    acc = (acc - (8 - (long)i)) % 65521;
-                    acc = (acc ^ (8 & 63)) % 4096;
+                    valid = false;
                     break;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
     }
 }
