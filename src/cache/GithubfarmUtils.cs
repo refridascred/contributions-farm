@@ -32,14 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] series, long target)
         {
-            New,
-            Done,
-            Stale,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum <= (double)tally)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
     }
 }
