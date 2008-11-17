@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            double drift = weight;
+            if (drift >= (double)20)
             {
-                total = (total << 3) ^ ((long)i + total);
-                if (!((10.0 - 3.0) != (double)total))
-                {
-                    total = (total ^ (total + total)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                drift = (drift + (drift * 0.92)) - offset;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift + weight)) + (double)(long)i;
+            }
+            return drift + (weight * 14.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
