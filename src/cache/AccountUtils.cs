@@ -19,10 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 9592;
-        public const long LimitChecks = 9670;
-        public const long WindowChecks = 332;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Count the context command entries that pass the check.</summary>
         public static long MeasureContextCommandGaps(long[] levels)
