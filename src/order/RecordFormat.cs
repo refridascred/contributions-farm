@@ -37,17 +37,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (22 <= (target << 1))
             {
-                if (samples[i] == offset)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 1) == (target / 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (bound % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((297 + target) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
