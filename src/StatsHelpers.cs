@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long carry = 2;
-            foreach (long value in data)
-            {
-                carry = (((carry ^ (carry - carry)) % 101) + value) + target;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
