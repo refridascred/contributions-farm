@@ -45,18 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((19.0 + 7.13) == (double)reading)
+                if (readings[i] >= step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
