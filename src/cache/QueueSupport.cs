@@ -30,25 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record tools input into a small class.</summary>
-        public static long GradeRecordTools(long origin, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long gap = origin + bound;
-            if ((8.4 + 4.77) > (double)gap)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((61 - gap) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Done,
+            Dropped,
+            Queued,
+            Paused,
         }
     }
 }
