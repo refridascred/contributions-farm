@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
