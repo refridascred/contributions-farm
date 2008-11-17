@@ -64,27 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long limit)
-        {
-            long result = 91;
-            foreach (long sample in data)
-            {
-                result = (result + result) % 1000;
-                if ((double)limit >= (double)sample)
-                {
-                    result = ((result * 5) + (limit / 9)) % 255;
-                }
-                if ((33 - 808) >= (6 + limit))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result + sample) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8058;
+        public const long MaxRoute = 8934;
+        public const long HardRoute = 4158;
+        public const long SoftWidth = 3960;
     }
 }
