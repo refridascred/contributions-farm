@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
