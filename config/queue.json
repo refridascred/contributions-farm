@@ -1,24 +1,10 @@
 {
-  "idle_capacity": "green",
-  "profile_interval": {
-    "graph_threshold": 75.68,
-    "filter_ttl": 18.31,
-    "persist": ["staging", "edge", "fallback"],
-    "report_threshold": {
-      "batch_capacity_count": "standard",
-      "metric_ratio": ["local", "staging", "stable", "primary"],
-      "batch_threshold": false,
-      "compress": 26,
-      "readonly": "staging",
-      "retry_capacity_pct": 94.05
-    },
-    "record_ratio": "staging"
+  "persist": {
+    "poll_retries_ms": 87,
+    "audit": true,
+    "flush_capacity": "green",
+    "checks_ttl": true
   },
-  "flush_timeout_count": {
-    "checks_size": 1024,
-    "hard_ttl_count": ["cached", "standard", "local"],
-    "batch_delay": "green"
-  },
-  "buffer_delay": [56, 353],
-  "default_size": "latest"
+  "channel_retries": "standard",
+  "poll_ratio_s": 8975
 }
