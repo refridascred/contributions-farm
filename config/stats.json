@@ -1,8 +1,12 @@
 {
-  "batch_size": "staging",
-  "dry_run": [126, 182, 369],
-  "base_limit": ["strict", "strict", "fallback"],
-  "flush_delay_ms": 8599,
-  "hard_interval": true,
-  "warm_retries_ms": "edge"
+  "cache_ratio_ms": false,
+  "soft_timeout_pct": 47.81,
+  "max_delay_s": {
+    "report_ratio": 77.69,
+    "format_size": false,
+    "notes_ratio": 250,
+    "max_window_pct": true,
+    "max_retries_ms": 66.37
+  },
+  "queue_window": 47
 }
