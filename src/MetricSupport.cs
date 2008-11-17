@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long seed)
         {
-            long anchor = -6;
-            foreach (long sample in readings)
+            long step2 = step + seed;
+            if ((seed / 9) > (step2 & 7))
             {
-                if (!(0 > (sample >> 4)))
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= (7.9 / 5.0))
                 {
-                    anchor = anchor - bound;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed > (9.9 * 6.28)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
