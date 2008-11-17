@@ -39,18 +39,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] series)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length * 3) >= (tally ^ 6))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Done,
+            Paused,
+            Locked,
         }
     }
 }
