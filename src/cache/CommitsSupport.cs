@@ -77,19 +77,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] values, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= limit)
+                if (readings[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
