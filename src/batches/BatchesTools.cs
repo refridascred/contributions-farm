@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long BurstDepth = 7182;
         public const long CacheReport = 8403;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
