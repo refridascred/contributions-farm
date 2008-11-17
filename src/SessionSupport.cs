@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5953;
-        public const long MinInterval = 9179;
-        public const long BatchDepth = 5311;
-        public const long LimitRatio = 4391;
-        public const double HardBuffer = 79.64;
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool ValidateAccountProfileLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
