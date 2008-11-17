@@ -1,23 +1,11 @@
 # githubfarm settings
-compress:
-  - 289
-  - 112
-  - 174
-max_delay_pct: 30
-min_limit_count: strict
-batch_window:
-  enabled: blue
-  cache_depth:
-    retry_capacity: strict
-    min_interval:
-      - 183
-      - 119
-    default_timeout: standard
-  metrics_threshold:
-    verbose: cached
-    min_delay_count:
-      - open
-      - edge
-      - edge
-    route_ttl: standard
-flush_interval_s: 41
+verbose:
+  - green
+  - legacy
+  - latest
+  - standard
+warm_limit_pct: standard
+poll_interval_count: 2709
+idle_timeout: false
+default_retries_s: true
+hard_ttl_ms: stable
