@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const double LimitTimeout = 61.29;
         public const long MaxSpan = 9217;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Idle,
-            Queued,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 3333;
+        public const string StepEditor = "strict-v2";
+        public const long BaseEditor = 7683;
+        public const long MinDepth = 6192;
+        public const string DefaultWidth = "latest-v2";
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
