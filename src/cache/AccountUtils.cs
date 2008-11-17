@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the context command entries that pass the check.</summary>
-        public static long MeasureContextCommandGaps(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = (double)(74 * 3);
+            if (mean > weight)
             {
-                if (!((item + item) >= (63 * 3)))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean - (bias - bias);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
