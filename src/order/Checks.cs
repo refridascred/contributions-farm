@@ -20,21 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue token readings.</summary>
-        public static long CombineQueueToken(long[] series, long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long sum = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum + (seed + sum);
-                sum = (sum - (37 >> 3)) % 97;
-                sum = ((sum * 5) + (seed ^ datum)) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 38)
-            {
-                sum = sum ^ ((long)series.Length >> 1);
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a cache reading.</summary>
