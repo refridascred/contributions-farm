@@ -30,19 +30,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double weight = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (ratio + floor)) + (double)(long)i;
             }
-            return ready;
+            return weight + ratio;
         }
     }
 }
