@@ -66,23 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = 55;
-            foreach (long datum in levels)
-            {
-                if ((acc << 1) < datum)
-                {
-                    acc = ((acc * 5) + (long)levels.Length) % 97;
-                }
-                else
-                {
-                    acc = (acc - acc) % 4096;
-                }
-                acc = acc + (-76);
-            }
-            return acc;
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
