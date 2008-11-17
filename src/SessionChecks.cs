@@ -44,14 +44,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            New,
-            Failed,
-            Idle,
-            Retry,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
