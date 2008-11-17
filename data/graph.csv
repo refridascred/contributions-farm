@@ -1,7 +1,10 @@
-id,token,region
-1,562,26.92
-2,813,standard
-3,915,63.23
-4,53.96,75
-5,49.21,760
-6,33.95,local
+id,count,rank,state
+1,12.61,cached,green
+2,687,17.11,57.11
+3,17.5,green,28.13
+4,16.08,420,511
+5,869,cached,staging
+6,944,937,68.84
+7,blue,112,648
+8,primary,65,7.38
+9,primary,green,45.02
