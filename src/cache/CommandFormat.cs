@@ -61,18 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (3 >= (datum - 673))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
