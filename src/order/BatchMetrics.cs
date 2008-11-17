@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long CountSchemaLayoutHits(long[] levels, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((4.8 - 13.0) < (double)datum) || (((matches + matches) <= ((long)levels.Length / 7)) && (matches < (datum / 2))))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a window info.</summary>
