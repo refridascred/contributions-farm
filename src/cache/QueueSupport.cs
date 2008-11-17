@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 8;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total + entry) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
