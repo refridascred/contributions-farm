@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((404 * 4) > tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
