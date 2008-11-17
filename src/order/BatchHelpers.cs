@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 678;
-        public const double MaxBudget = 29.0;
-        public const long BurstSpan = 7453;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double ProjectContext(double ratio, double span)
