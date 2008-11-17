@@ -92,19 +92,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 4544;
+        public const double StepSize = 68.54;
+        public const double BurstContext = 95.14;
     }
 }
