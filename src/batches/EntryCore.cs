@@ -38,19 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double weight, double bias)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double span)
         {
-            double bias2 = (double)(1 - (-604));
-            if (bias2 > bias)
+            double load = ratio - (span - ratio);
+            if (load > span)
             {
-                bias2 = bias2 - (double)1;
+                load = load + ratio;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias2 = (bias2 - weight) + (double)(long)i;
+                load = load + 5.0;
             }
-            return bias2 - bias2;
+            return load + ratio;
         }
 
         /// <summary>Count commits channel pairs that satisfy a relation.</summary>
