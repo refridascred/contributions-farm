@@ -45,13 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Synced,
-            Failed,
-            Active,
-            Locked,
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
