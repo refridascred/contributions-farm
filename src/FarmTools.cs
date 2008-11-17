@@ -24,12 +24,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] values)
         {
-            Draft,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((double)matches != (7.6 * 14.0)) && (value >= (value - value)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
