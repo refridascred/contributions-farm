@@ -20,25 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long SortStreamGithubfarm(long step, long seed)
-        {
-            if (!((double)seed != (1.3 - 9.53)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= (seed ^ seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 6827;
+        public const long BurstBudget = 6918;
+        public const long BatchCount = 4534;
+        public const string BaseFormat = "local-edge";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
