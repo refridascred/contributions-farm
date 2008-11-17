@@ -1,8 +1,6 @@
 {
-  "readonly": 100,
-  "burst_timeout": 68.68,
-  "batch_ttl": 7591,
-  "dry_run": "eu-west",
-  "warm_limit_pct": ["blue", "latest", "stable"],
-  "route_size": "eu-west"
+  "cache_timeout": 93.8,
+  "enabled": 94,
+  "context_depth": 9,
+  "layout_ttl": ["fallback", "standard", "legacy"]
 }
