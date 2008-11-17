@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string StepQueue = "open";
         public const string RetrySpan = "legacy";
 
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long CountToolsSessionOutliers(long[] data, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double rate = floor;
+            if (rate > rate)
             {
-                if ((double)seen < 1.6)
-                {
-                    seen = ((seen + 3) + reading) + seed;
-                }
+                rate = rate + (7.8 + scale);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
