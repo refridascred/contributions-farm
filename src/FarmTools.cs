@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            long anchor = 7;
+            foreach (long datum in items)
             {
-                if (((double)(long)items.Length == (9.57 * 2.0)) && (cell >= mix))
+                if ((anchor / 9) == (datum + anchor))
                 {
-                    mix = ((mix << 3) ^ (target >> 5)) % 65521;
+                    anchor = (anchor << 3) ^ (datum / 3);
                 }
             }
-            if (mix < 556)
-            {
-                mix = (mix - (target & 63)) % 65521;
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the window status values.</summary>
