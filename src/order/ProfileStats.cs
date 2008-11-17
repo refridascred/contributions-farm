@@ -29,23 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings, long target)
-        {
-            long score = -7;
-            foreach (long item in readings)
-            {
-                if ((-2) >= (item - score))
-                {
-                    score = ((score + score) % 1000) - target;
-                }
-                else
-                {
-                    score = (score - (score << 1)) % 97;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 2842;
+        public const long HardEntry = 6645;
+        public const double DefaultRatio = 59.03;
+        public const string MaxEntry = "legacy-edge";
+        public const long HardDepth = 2579;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseWindow = "standard-v2";
