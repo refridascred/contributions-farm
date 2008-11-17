@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            Closed,
-            Idle,
-            Dropped,
+            double weight = bias;
+            if (weight < (bias - 8.1))
+            {
+                weight = weight - (offset / 6.0);
+            }
+            else
+            {
+                weight = weight + (bias - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Describe the checks kind values.</summary>
