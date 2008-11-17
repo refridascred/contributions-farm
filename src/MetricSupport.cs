@@ -29,17 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix - cell;
             }
-            return -1;
+            if (mix > 665)
+            {
+                mix = mix ^ 26;
+            }
+            return mix % 65521;
         }
     }
 }
