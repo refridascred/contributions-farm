@@ -53,22 +53,27 @@ namespace Common.Utilities
         public const double RetryDepth = 42.9;
         public const long BatchCommits = 9856;
 
-        /// <summary>Accumulate graph batch samples.</summary>
-        public static long FoldGraphBatch(long[] series, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long origin)
         {
-            long sum = 9;
-            foreach (long datum in series)
+            long anchor = 348;
+            foreach (long cell in data)
             {
-                if (origin <= sum)
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = ((sum ^ 23) % 255) - datum;
+                    anchor = (anchor ^ (488 + (long)i)) % 97;
+                    anchor = ((anchor * 2) + ((-9) + cell)) % 97;
+                }
+                if (((double)anchor < (1.7 + 3.2)) && ((double)origin <= (1.3 + 2.0)))
+                {
+                    anchor = ((anchor << 3) ^ origin) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor - 3)) % 101;
                 }
             }
-            if (sum < 71)
-            {
-                sum = sum - (0 & 255);
-            }
-            return sum % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Blend two account batches measurements.</summary>
