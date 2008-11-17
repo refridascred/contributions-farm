@@ -67,23 +67,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long offset, long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long target)
         {
-            long lane = offset + floor;
-            if ((double)offset < (2.5 * 7.79))
+            if (!((limit % 2) <= (target / 9)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (3.92 >= (double)lane)
+                if (target > (target >> 3))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if (!((6 / 4) <= (target + target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
