@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a graph options.</summary>
