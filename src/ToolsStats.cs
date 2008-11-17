@@ -42,19 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = 66;
-            foreach (long datum in samples)
-            {
-                result = (((result ^ ((long)samples.Length * 3)) % 65521) - datum) - bound;
-            }
-            if (result < 939)
-            {
-                result = (result << 2) ^ (result >> 4);
-            }
-            return result % 65521;
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Roll a account counter forward.</summary>
