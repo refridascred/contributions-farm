@@ -1,19 +1,17 @@
 # entry settings
-enabled: 4472
-tools_depth: 63
-cache_threshold:
-  retry_timeout_ms: 1024
-  notes_capacity: 29
-  batch_timeout:
-    window_size: false
-    notes_size:
-      - 358
-      - 71
-    farm_timeout:
-      - 99
-      - 381
-  retry_timeout_s: legacy
-max_delay_s:
-  - primary
-  - stable
-  - blue
+batches_timeout: 11.23
+enabled:
+  flush_capacity_s:
+    soft_size_count: primary
+    readonly: 89.46
+    payload_size: true
+    hard_ttl: 60
+    persist: blue
+    verbose: local
+  soft_interval_pct: 57.36
+  verbose:
+    - 493
+    - 330
+  default_ttl_pct: true
+verbose: 6857
+sync_timeout: 100
