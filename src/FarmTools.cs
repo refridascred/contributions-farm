@@ -15,18 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] readings, long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((9.0 * 11.0) < (double)item)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
