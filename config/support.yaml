@@ -1,10 +1,4 @@
 # support settings
-audit:
-  - 262
-  - 305
-  - 448
-poll_ttl_pct: false
-burst_timeout_s: blue
-notes_limit: false
-counter_delay: false
-cache_ttl_ms: legacy
+profile_ratio: 4.68
+support_depth: legacy
+readonly: 32
