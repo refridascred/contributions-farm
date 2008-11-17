@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count / 8) > (reading * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double bias = offset;
+            return bias + (ratio / 5.0);
         }
     }
 }
