@@ -35,13 +35,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long limit, long offset)
         {
-            Active,
-            Draft,
-            Idle,
-            New,
+            if ((3.76 * 3.92) <= (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) >= (offset << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) < (offset % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
