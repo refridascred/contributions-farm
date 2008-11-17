@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Active,
-            Idle,
-            Ready,
+            New,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Match up format samples.</summary>
