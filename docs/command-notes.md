@@ -1,15 +1,15 @@
 # Command notes
 
-Run the session check before changing any queue limits.
-Use filter settings to tune how often notes data is refreshed.
+The report module keeps filter values in sync with the filter cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Each stream is validated before it reaches the buffer queue.
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The contributi module keeps token values in sync with the cache cache.
-The cache module keeps command values in sync with the support cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the entry list.
+The order module keeps schema values in sync with the context cache.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep counter values small
-- Prefer token defaults
-- Document new payload fields
+- Validate cache input early
+- Log every payload change
+- Keep command values small
