@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long offset2)
+        /// <summary>Measure how many profile notes samples are out of range.</summary>
+        public static long CountProfileNotesMatches(long[] data)
         {
-            long offset3 = offset - offset2;
-            if ((double)offset3 == (0.3 / 5.0))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (7.2 - 6.3))
+                if (((double)item > (4.5 * 13.0)) || ((tally << 1) <= (item * 4)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset2 >= (4 + 54))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
