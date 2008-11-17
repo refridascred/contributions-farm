@@ -31,25 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long offset, long bound)
-        {
-            if ((bound ^ bound) >= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 1) <= (bound + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7246;
+        public const string MaxStats = "alpha-1";
+        public const double SoftStats = 86.39;
+        public const double SoftBudget = 65.66;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double SoftFactor = 24.15;
