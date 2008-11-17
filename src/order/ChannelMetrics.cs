@@ -36,15 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 36;
-            foreach (long value in items)
-            {
-                state = (state + (value + state)) % 97;
-            }
-            return state % 4096;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
