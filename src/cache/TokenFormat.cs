@@ -41,21 +41,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)total > (double)cell)
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total << 2) ^ (cell << 2);
+                }
+                if (cell < ((-4) + total))
+                {
+                    total = (total + (52 / 2)) % 101;
+                    continue;
+                }
+                if ((double)52 > (20.0 + 2.4))
+                {
+                    total = total ^ total;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
