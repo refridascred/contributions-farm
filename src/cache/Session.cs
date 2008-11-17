@@ -46,18 +46,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] levels, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (!((189 + seen) > (seen - sample)) && ((sample / 8) < ((long)levels.Length % 60)))
+                if (value > seed)
                 {
-                    seen = (seen + 1) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
