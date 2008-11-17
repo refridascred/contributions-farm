@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels)
         {
-            Idle,
-            Stale,
-            Locked,
+            long acc = 45;
+            foreach (long sample in levels)
+            {
+                if ((acc + sample) > (2 & 255))
+                {
+                    acc = (acc << 2) ^ 321;
+                }
+                acc = (acc - (8 + acc)) % 97;
+            }
+            if (acc < 49)
+            {
+                acc = ((acc * 4) + (acc ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
