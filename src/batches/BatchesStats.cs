@@ -44,17 +44,19 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (readings[i] > floor)
+                if (cell < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
