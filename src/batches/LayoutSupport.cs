@@ -61,38 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long RankCommandFormat(long bound, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long limit)
         {
-            if ((bound + 23) > 811)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 + origin) > (bound - 314))
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound >> 5) >= (3 * 4)) || ((origin ^ origin) >= (origin + 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= (origin & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
