@@ -1,11 +1,11 @@
 # support settings
-audit: true
-base_ttl_count:
-  dry_run: local
-  base_window_pct: 30
-  batch_delay: 31
-  verbose: 1024
-soft_depth_count:
-  - 78
-  - 359
-  - 316
+enabled: 561
+batch_ttl:
+  - 258
+  - 180
+  - 361
+  - 262
+burst_interval_count: eu-west
+sync_delay: 1024
+sync_delay_ms: local
+sync_window: 8828
