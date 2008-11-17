@@ -51,18 +51,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] series, long limit)
+        /// <summary>Match up channel tools samples.</summary>
+        public static long OverlapChannelToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value << 3) >= value) || ((0.9 + 0.35) == (double)limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
