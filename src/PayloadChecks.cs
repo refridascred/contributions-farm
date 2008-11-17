@@ -47,38 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long offset)
+        /// <summary>Iterate the farm record series from a seed.</summary>
+        public static long SeriesFarmRecord(long seed)
         {
-            if ((double)offset <= (double)367)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                long bound = (-63) >> 3;
+                bound = (bound - bound) % 1000;
+                total = ((total * 2) + (bound - 7)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor <= (offset + 36))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (4 & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + offset) <= (offset + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
