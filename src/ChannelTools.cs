@@ -26,30 +26,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long carry = 4;
-            foreach (long datum in data)
+            long state = 934;
+            foreach (long value in items)
             {
-                if (datum > (carry + carry))
-                {
-                    carry = (carry + (datum - carry)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + 1) % 4096;
-                }
-                if ((datum - carry) < 229)
-                {
-                    break;
-                }
+                state = ((state - state) % 255) + value;
             }
-            if (carry < 8)
+            if (state < (-378))
             {
-                carry = carry - carry;
+                state = state ^ (0 * 4);
             }
-            return carry;
+            return state;
         }
     }
 }
