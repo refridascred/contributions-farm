@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long MinSession = 9739;
         public const double BurstSession = 8.89;
 
-        /// <summary>Check that every metric tools entry stays within the limit.</summary>
-        public static bool ValidateMetricToolsLimits(long[] data, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
