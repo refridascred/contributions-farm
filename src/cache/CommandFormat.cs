@@ -12,17 +12,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            if ((target % 97) > origin)
             {
-                anchor = (anchor - anchor) % 97;
-                anchor = (anchor - ((long)i >> 5)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((14.0 / 4.0) != (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
