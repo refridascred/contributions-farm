@@ -17,14 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count report tools pairs that satisfy a relation.</summary>
+        public static long CompareReportToolsCount(long[] items)
         {
-            Ready,
-            Synced,
-            Draft,
-            Pending,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
