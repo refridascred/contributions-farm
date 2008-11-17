@@ -18,19 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Blend two commits measurements.</summary>
