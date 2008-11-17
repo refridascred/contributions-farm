@@ -69,21 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score << 2) ^ ((long)i + score);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ 693) ^ (long)i2;
                 }
+                score = (score * 5) + (score * 4);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
