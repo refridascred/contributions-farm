@@ -30,11 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            Queued,
+            New,
+            Ready,
         }
     }
 }
