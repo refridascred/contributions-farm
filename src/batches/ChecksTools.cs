@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= origin)
+                if ((data[i] >= offset) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
