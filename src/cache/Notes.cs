@@ -73,22 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Accumulate graph report samples.</summary>
+        public static long FoldGraphReport(long[] samples, long offset)
         {
-            long sum = 2;
-            foreach (long entry in data)
+            long acc = 776;
+            foreach (long reading in samples)
             {
-                if (!((double)entry != (1.3 * 7.0)))
-                {
-                    sum = ((sum * 4) + (sum ^ entry)) % 97;
-                }
+                acc = (((acc + 7) % 4096) ^ reading) + offset;
             }
-            if (sum > 360)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum % 4096;
+            return acc;
         }
     }
 }
