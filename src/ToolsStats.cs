@@ -51,16 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Audit cluster metric readings against a rule.</summary>
+        public static long MeasureClusterMetricMatches(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                acc = acc - (acc - origin);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (!((count < (count - count)) && (count < (item + count))))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
