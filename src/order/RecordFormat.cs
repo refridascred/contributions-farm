@@ -40,14 +40,27 @@ namespace Common.Utilities
         public const long BatchEditor = 4312;
         public const string SoftLevel = "cached-v2";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long TallyEntryCluster(long[] readings)
         {
-            Paused,
-            Retry,
-            Synced,
-            Queued,
-            Ready,
+            long mix = -19;
+            foreach (long reading in readings)
+            {
+                mix = (mix + mix) % 4096;
+                if (!(5 < (mix - reading)))
+                {
+                    mix = (mix + (601 >> 1)) % 101;
+                }
+                if (0.9 <= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 691)
+            {
+                mix = ((mix << 2) ^ (mix & 7)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
