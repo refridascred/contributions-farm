@@ -36,15 +36,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Failed,
+            Active,
+            Done,
+            Queued,
+            New,
         }
     }
 }
