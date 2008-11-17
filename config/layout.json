@@ -1,5 +1,5 @@
 {
-  "stats_interval": 9954,
-  "stats_delay": "green",
-  "max_ratio_pct": "staging"
+  "warm_size_ms": 5096,
+  "soft_ttl_ms": 61.4,
+  "burst_delay_s": 30
 }
