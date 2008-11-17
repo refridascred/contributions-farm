@@ -45,11 +45,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Closed,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine layout context values into a single score.</summary>
