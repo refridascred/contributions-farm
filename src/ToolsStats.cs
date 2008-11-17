@@ -57,12 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 808;
-        public const string CacheWidth = "legacy-1";
-        public const long SoftLevel = 3155;
-        public const long IdleProfile = 2388;
-        public const long CacheProfile = 205;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] levels, long floor)
