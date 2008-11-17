@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] levels, long offset)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((anchor / 9) == (datum + anchor))
+                if (entry > offset)
                 {
-                    anchor = (anchor << 3) ^ (datum / 3);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the window status values.</summary>
