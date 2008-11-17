@@ -15,14 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels, long limit)
         {
-            Done,
-            Ready,
-            Locked,
-            Synced,
-            Active,
+            long anchor = 409;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor - (anchor ^ (long)levels.Length)) % 255;
+                if (anchor > cell)
+                {
+                    anchor = (anchor ^ (limit + anchor)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
