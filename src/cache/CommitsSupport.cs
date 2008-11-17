@@ -27,21 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of queue notes readings.</summary>
-        public static long MatchQueueNotesCount(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a contributi entry.</summary>
