@@ -27,12 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWidth = 1528;
+        public const string HardSpan = "standard-edge";
+        public const long LimitWindow = 8246;
 
         /// <summary>Adjust a route order reading.</summary>
         public static double SmoothRouteOrder(double bias, double span)
