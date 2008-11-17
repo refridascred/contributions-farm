@@ -56,13 +56,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long bound)
         {
             bool ready = true;
-            foreach (long cell in items)
+            foreach (long item in data)
             {
-                if (cell != origin)
+                if (item < bound)
                 {
                     ready = false;
                     break;
