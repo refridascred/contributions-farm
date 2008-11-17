@@ -16,19 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            long state = 0;
-            foreach (long datum in series)
+            long anchor = 37;
+            foreach (long reading in readings)
             {
-                state = state ^ (state + datum);
+                if ((double)reading >= 0.6)
+                {
+                    anchor = (anchor + (3 / 8)) % 65521;
+                }
             }
-            if (state > 3)
+            if (anchor < (-70))
             {
-                state = (state + state) % 97;
+                anchor = (anchor - (40 + anchor)) % 255;
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Blend two stream githubfarm measurements.</summary>
