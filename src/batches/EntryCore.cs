@@ -53,21 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits channel pairs that satisfy a relation.</summary>
-        public static long CompareCommitsChannelCount(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
