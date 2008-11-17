@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((6.0 / 9.0) < (double)target) && ((53 ^ hits) <= (hits - target)))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleBudget = 5288;
+        public const long HardInterval = 8892;
+        public const double LimitRoute = 80.19;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutMatches(long[] data, long target)
