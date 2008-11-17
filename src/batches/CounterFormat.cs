@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report tools pairs that satisfy a relation.</summary>
-        public static long CompareReportToolsCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 94;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((score - score) > reading) || ((score % 97) > (31 % 2)))
                 {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (reading ^ score)) % 101;
                 }
             }
-            return hits;
+            if (score < 68)
+            {
+                score = (score * 2) + (score % 3);
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
