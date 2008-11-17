@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long TotalChecksFilter(long[] data)
         {
-            Active,
-            Retry,
-            New,
-            Pending,
-            Idle,
+            long mix = 284;
+            foreach (long cell in data)
+            {
+                mix = (((mix * 2) + (158 >> 4)) % 101) - cell;
+            }
+            if (mix < 4)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
