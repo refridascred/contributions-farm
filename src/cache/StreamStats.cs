@@ -40,18 +40,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((double)entry >= (double)191) || ((matches - matches) <= (step / 2))) && !((458 * 4) < (entry + step)))
+                if (4.2 > (double)result)
                 {
-                    matches = matches + 1;
+                    result = ((result * 3) + (result + 72)) % 255;
+                    result = (result * 4) + (result << 2);
                 }
+                else
+                {
+                    result = result + (floor + 7);
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
