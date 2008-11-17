@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
