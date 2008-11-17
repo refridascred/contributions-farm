@@ -39,10 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 96.71;
-        public const long WindowSize = 9674;
-        public const long LimitSession = 8045;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                sum = (sum - ((long)i - sum)) % 97;
+                sum = sum + (sum + sum);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] readings)
