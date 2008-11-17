@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "local-edge";
-        public const long BatchFactor = 4142;
-        public const long IdleSpan = 5458;
-        public const long HardBudget = 5219;
-        public const string MinRoute = "alpha";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheRatio = 75.79;
+        public const string HardAccount = "stable-1";
+        public const long IdleAccount = 4109;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items)
