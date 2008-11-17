@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] levels, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
