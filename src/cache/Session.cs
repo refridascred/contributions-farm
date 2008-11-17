@@ -44,26 +44,17 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long seed)
         {
-            long state = 27;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value ^ origin) >= (state + state)) && ((double)origin == (double)value))
+                if (data[i] >= seed)
                 {
-                    state = state ^ value;
-                }
-                else
-                {
-                    state = (state << 3) ^ (6 >> 4);
+                    return (long)i;
                 }
             }
-            if (state > 550)
-            {
-                state = (state << 3) ^ (state ^ state);
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
