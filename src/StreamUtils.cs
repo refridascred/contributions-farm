@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((seen ^ seen) < (3 ^ datum)))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 7447;
+        public const long BaseTimeout = 1539;
+        public const long BurstBudget = 1232;
+        public const long MinWindow = 6816;
+        public const double StepSize = 76.65;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long bound)
