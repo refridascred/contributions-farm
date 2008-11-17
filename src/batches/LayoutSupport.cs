@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long step, long origin)
         {
-            if ((bound << 2) >= (91 / 3))
+            long delta = step + origin;
+            if ((-1) <= (step & 7))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((origin / 6) == (origin / 7))
+                if ((origin >> 3) <= (step >> 5))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin - 324) != (origin & 127))
+                    if ((double)origin > (3.3 / 8.0))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((7 % 64) <= (origin + origin))
+                        if (step < delta)
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 5;
                         }
                     }
                 }
