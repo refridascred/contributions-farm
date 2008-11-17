@@ -21,15 +21,21 @@ namespace Common.Utilities
             return scale2 - (span - scale);
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double span)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            double ratio = (double)(981 >> 3);
-            if (ratio >= (gain * 7.12))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + 9.4) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
