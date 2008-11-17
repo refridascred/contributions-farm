@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)count > (double)cell) && !((double)cell != (double)count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
