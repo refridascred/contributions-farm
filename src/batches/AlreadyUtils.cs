@@ -12,15 +12,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long total = 32;
-            foreach (long item in levels)
-            {
-                total = ((total * 4) + (total ^ item)) % 4096;
-            }
-            return total;
+            Pending,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
