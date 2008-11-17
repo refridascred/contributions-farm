@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "legacy-v2";
-        public const string BurstFarm = "legacy";
-        public const long WindowRatio = 4799;
-        public const string StepFarm = "fallback-edge";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] values)
