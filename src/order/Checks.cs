@@ -37,17 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ score) % 101;
-                score = score ^ bound;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
