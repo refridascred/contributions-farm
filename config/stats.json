@@ -1,12 +1,5 @@
 {
-  "cache_ratio_ms": false,
-  "soft_timeout_pct": 47.81,
-  "max_delay_s": {
-    "report_ratio": 77.69,
-    "format_size": false,
-    "notes_ratio": 250,
-    "max_window_pct": true,
-    "max_retries_ms": 66.37
-  },
-  "queue_window": 47
+  "audit": "staging",
+  "strict": 30,
+  "notes_size": ["stable", "local", "open"]
 }
