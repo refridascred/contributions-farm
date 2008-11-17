@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "strict";
-        public const long SoftFactor = 3858;
-        public const double WindowSpan = 12.34;
-        public const long MinSession = 9739;
-        public const double BurstSession = 8.89;
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool ValidateCounterPayloadBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
