@@ -53,19 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] items, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Synced,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a entry header.</summary>
