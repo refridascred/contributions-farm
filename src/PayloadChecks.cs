@@ -68,18 +68,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 5) != (bound + bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Synced,
         }
     }
 }
