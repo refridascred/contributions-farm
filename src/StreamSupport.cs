@@ -20,14 +20,18 @@ namespace Common.Utilities
             return scale + (bias * 16.0);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            Idle,
-            Draft,
-            Ready,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((((seen + (-917)) < (seen - value)) && ((value - seen) > value)) && ((value + seen) >= (161 + value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
