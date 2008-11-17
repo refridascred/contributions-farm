@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8 % 5) >= (tally & 127)) || ((5.2 - 2.0) >= (double)tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + sample;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
