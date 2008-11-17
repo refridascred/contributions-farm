@@ -28,17 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long limit)
+        /// <summary>Check that every cache stream entry stays within the limit.</summary>
+        public static bool CheckCacheStreamBounds(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (readings[i] == limit)
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
