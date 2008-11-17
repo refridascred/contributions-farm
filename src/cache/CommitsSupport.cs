@@ -52,22 +52,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of account buffer readings.</summary>
-        public static long FoldAccountBuffer(long[] data, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long result = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result - value) == (floor << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result - (value % 60);
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 973)
-            {
-                result = (result ^ (floor << 1)) % 65521;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
