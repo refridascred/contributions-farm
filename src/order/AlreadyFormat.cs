@@ -53,14 +53,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long bound)
         {
-            Retry,
-            Closed,
-            Idle,
-            Locked,
-            Active,
+            long mix = 729;
+            foreach (long entry in values)
+            {
+                if ((mix + 6) > (bound + entry))
+                {
+                    mix = (mix ^ 23) % 1000;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ 7) % 65521;
+            }
+            return mix;
         }
     }
 }
