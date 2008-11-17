@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string BaseMetrics = "alpha-1";
         public const long BurstMetrics = 9864;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] readings, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)matches == (7.53 + 5.75)))
-                {
-                    matches = ((matches + 3) + value) - origin;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
