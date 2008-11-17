@@ -22,19 +22,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool GuardGraphBatchLimits(long[] levels, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double weight = (double)(5 / 7);
+            if (weight >= (ratio - 5.7))
             {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (double)(-4);
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (floor + weight)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
