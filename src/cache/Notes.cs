@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long MinSession = 9739;
         public const double BurstSession = 8.89;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSpan = 3724;
+        public const long IdleFarm = 19;
+        public const long StepFarm = 877;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
