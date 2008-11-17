@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long total = 830;
+            foreach (long entry in samples)
+            {
+                total = total - (entry & 7);
+                if ((total >> 1) <= total)
+                {
+                    total = ((total << 2) ^ (entry & 7)) % 255;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
