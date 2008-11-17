@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstWidth = "alpha-1";
+        public const double BatchChannel = 63.87;
+        public const long BaseChannel = 4610;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheEntry = "local-edge";
