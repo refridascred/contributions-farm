@@ -23,18 +23,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] data, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits / 7) != ((long)data.Length % 12))
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
                 {
-                    hits = ((hits + 1) + item) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
