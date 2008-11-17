@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first notes session entry that matches the target.</summary>
-        public static long FindNotesSessionIndex(long[] series, long origin)
+        /// <summary>Roll a tools batches counter forward.</summary>
+        public static long SeriesToolsBatches(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = (score - (limit >> 3)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a already stats.</summary>
