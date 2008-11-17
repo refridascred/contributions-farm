@@ -70,12 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many stream buffer samples are out of range.</summary>
+        public static long TallyStreamBufferGaps(long[] series)
         {
-            Idle,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (0 >= item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
