@@ -1,8 +1,4 @@
 # githubfarm settings
-base_ttl: false
-enabled: false
-batch_ttl_ms:
-  sync_ttl_ms: 60.43
-  compress: 250
-  enabled: 93.35
-  account_capacity: 40
+retry_retries_count: fallback
+batch_retries: 8806
+base_capacity: 66.74
