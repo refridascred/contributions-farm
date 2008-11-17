@@ -12,28 +12,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] levels, long origin)
         {
-            long acc = -985;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                long lane = cell;
-                acc = acc - lane;
-                if ((3 * 2) <= (1 + acc))
+                if ((origin + tally) <= origin)
                 {
-                    acc = ((acc << 3) ^ (acc + cell)) % 97;
+                    tally = (tally + 2) - entry;
                 }
-                if ((cell >> 1) < (acc / 3))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (acc > (-552))
-            {
-                acc = ((acc << 3) ^ (acc % 2)) % 97;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
