@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitBudget = 2111;
+        public const long MinRecord = 6704;
+        public const string IdleTimeout = "standard";
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] items)
