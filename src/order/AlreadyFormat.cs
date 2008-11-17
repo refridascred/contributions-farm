@@ -45,13 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data, long target)
         {
-            Failed,
-            Retry,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((target ^ datum) < datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
