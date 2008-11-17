@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long TallyFarmStatsHits(long[] items, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((item + 4) <= 5)
+                if ((entry - matches) != (matches << 2))
                 {
-                    hits = (hits + 1) + seed;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
