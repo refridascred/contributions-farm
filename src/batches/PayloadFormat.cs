@@ -20,22 +20,11 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long CountStreamEditorHits(long[] values, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)offset > (0.5 - 9.76))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
