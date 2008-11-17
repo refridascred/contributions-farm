@@ -19,13 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long target, long floor)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long slot = target ^ floor;
+            if (floor <= (floor + slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 1) == (527 % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target >= (slot - floor)) && ((floor + 25) == (slot - 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((-8) < (slot + slot))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
