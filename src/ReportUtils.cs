@@ -19,31 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)10 < (double)sample)
+                total = (total << 3) ^ ((long)i + total);
+                if (!((10.0 - 3.0) != (double)total))
                 {
-                    sum = sum + step;
-                    sum = ((sum << 3) ^ (77 / 8)) % 255;
+                    total = (total ^ (total + total)) % 97;
                 }
-                if (((step / 8) == (sum * 3)) || ((sample / 4) >= (5 + sum)))
-                {
-                    sum = sum ^ (step % 12);
-                }
-                else
-                {
-                    sum = (sum ^ sample) % 4096;
-                }
-                if ((sample ^ sum) <= step)
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
