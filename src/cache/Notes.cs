@@ -45,25 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long origin, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long prev = origin + seed;
-            if (((prev << 3) <= seed) || ((origin >> 3) <= seed))
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) > (seed / 3))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 5;
+                    sum = ((sum << 3) ^ (543 % 3)) ^ (long)i2;
                 }
-                else
-                {
-                    return 8;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
