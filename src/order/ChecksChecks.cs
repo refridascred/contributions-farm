@@ -47,18 +47,28 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the command context entries that pass the check.</summary>
-        public static long AuditCommandContextGaps(long[] items, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 638;
+            foreach (long value in readings)
             {
-                if ((cell * 2) == (hits + offset))
+                if ((-1) > (offset - (-443)))
                 {
-                    hits = hits + 1;
+                    mark = mark + (mark / 4);
+                    continue;
+                }
+                if ((double)mark != (2.07 - 18.0))
+                {
+                    mark = ((mark * 3) + (value + value)) % 101;
+                    break;
+                }
+                if ((value + mark) <= (value & 3))
+                {
+                    mark = ((mark * 2) + (value * 4)) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
