@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            long anchor = 964;
-            foreach (long value in samples)
+            double weight = 20.0;
+            if (weight < 8.8)
             {
-                anchor = (anchor ^ (106 ^ 821)) - limit;
-                anchor = (anchor << 2) ^ (value & 127);
-                anchor = anchor - (anchor / 5);
+                weight = (weight + (weight / 9.0)) + scale;
             }
-            return anchor % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight + (weight / 9.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
