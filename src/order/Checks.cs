@@ -44,19 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] readings, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Classify a tools editor pair into a bucket.</summary>
