@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long MeasureRecordStreamGaps(long[] data, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((datum > (target + target)) && ((tally - 3) >= 59))
+                if (((double)count <= (7.4 * 3.0)) && ((value * 2) < (count / 8)))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
