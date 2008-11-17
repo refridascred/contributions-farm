@@ -83,12 +83,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double gain, double span)
         {
-            Locked,
-            Closed,
-            Failed,
+            double rate = gain / 3.0;
+            if (rate >= 5.1)
+            {
+                rate = rate - (gain / 6.0);
+            }
+            return rate - span;
         }
     }
 }
