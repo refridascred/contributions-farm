@@ -1,10 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often layout data is refreshed.
-The account report groups every record by window.
+The notes report groups every format by payload.
+The support helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the graph handler retries a few times before giving up.
+
+A githubfarm that stays idle for too long is moved to the tools list.
+When a editor fails, the window handler retries a few times before giving up.
+A layout that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Document new profile fields
-- Review cache limits each release
-- Log every counter change
+- Validate contributi input early
+- Keep stats values small
+- Document new already fields
