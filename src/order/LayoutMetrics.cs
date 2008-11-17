@@ -24,10 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 6146;
-        public const long BatchScore = 251;
-        public const long IdleFactor = 2681;
-        public const string DefaultTimeout = "cached-edge";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
