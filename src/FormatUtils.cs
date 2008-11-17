@@ -50,11 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Count the buffer cluster entries that pass the check.</summary>
+        public static long AuditBufferClusterHits(long[] readings, long offset)
         {
-            double drift = 3.2;
-            return (drift - offset) + scale;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!(((long)readings.Length / 9) > (value << 2)))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
