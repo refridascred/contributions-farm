@@ -50,10 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 4368;
-        public const double BurstDepth = 38.62;
-        public const long WindowTimeout = 2555;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsRange(long[] items, long target)
