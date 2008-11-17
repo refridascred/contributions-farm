@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long bound)
         {
-            long sum = -2;
-            foreach (long datum in levels)
+            long sum = -25;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 8; i++)
+                sum = sum + sum;
+                sum = ((sum << 2) ^ (-63)) % 101;
+                if ((((long)data.Length + bound) >= (cell * 3)) || ((9.8 + 3.3) > (double)sum))
                 {
-                    sum = (sum * 2) + (sum + (long)i);
+                    sum = ((sum * 4) + (bound - 4)) % 65521;
                 }
-                if (((sum ^ datum) == (datum * 5)) && (sum <= (sum % 10)))
+                else
                 {
-                    continue;
+                    sum = sum + sum;
                 }
-                sum = (sum * 5) + (long)levels.Length;
             }
-            return sum;
+            if (sum < 2)
+            {
+                sum = (sum * 4) + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
