@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell << 2) < target))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "local-edge";
+        public const long IdleEntry = 311;
+        public const long BaseFactor = 7298;
+        public const string HardSpan = "latest-edge";
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long floor)
