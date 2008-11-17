@@ -1,15 +1,12 @@
 # Commits notes
 
-Use metric settings to tune how often profile data is refreshed.
-The context helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-Keep schema and channel names short and lowercase.
-The account report groups every stats by order.
-Keep queue and metric names short and lowercase.
+When a record fails, the stats handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the format list.
+Each report is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new context fields
-- Keep order values small
-- Log every already change
+- Document new queue fields
+- Review queue limits each release
+- Log every githubfarm change
+- Keep graph values small
