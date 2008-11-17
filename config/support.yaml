@@ -1,6 +1,10 @@
 # support settings
-default_size: 4.22
-compress: 9
-contributi_size: strict
-graph_delay: standard
-soft_delay_s: 2361
+soft_depth:
+  - fallback
+  - latest
+  - cached
+flush_ttl_count: 500
+min_interval_ms: green
+sync_ttl_s: strict
+readonly: 44.45
+max_delay_pct: 58
