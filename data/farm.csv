@@ -1,9 +1,7 @@
-id,rank,ratio,region,score
-1,legacy,local,81.16,edge
-2,73.69,68.68,staging,edge
-3,757,49.28,346,81.18
-4,875,76.95,98.27,583
-5,33.93,strict,32.43,standard
-6,48,624,788,954
-7,97.08,open,948,945
-8,317,52.05,24.33,54.24
+id,label
+1,164
+2,eu-west
+3,edge
+4,standard
+5,25.24
+6,936
