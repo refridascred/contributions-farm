@@ -56,15 +56,21 @@ namespace Common.Utilities
         public const long MinDepth = 6192;
         public const string DefaultWidth = "latest-v2";
 
-        /// <summary>Combine tools queue values into a single score.</summary>
-        public static long WeighToolsQueue(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long mix = -527;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix * 5) + (983 * 3)) % 4096) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
