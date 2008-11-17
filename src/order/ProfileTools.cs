@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] values, long target)
         {
-            Dropped,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((19.0 + 0.7) <= (double)count)
+                {
+                    count = ((count + 3) + reading) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
