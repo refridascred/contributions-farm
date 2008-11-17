@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items, long bound)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long datum in items)
             {
-                if (((-433) - seen) >= entry)
+                if ((2.64 + 18.0) == (double)seen)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 1) + datum) + bound;
                 }
             }
             return seen;
