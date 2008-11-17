@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long IdleStats = 1608;
         public const long LimitStats = 471;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long floor)
         {
-            long carry = 6;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (((-398) - (-5)) < (carry >> 3))
+                if (datum >= floor)
                 {
-                    carry = (carry + (cell >> 1)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (cell * 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Hold a commits info.</summary>
