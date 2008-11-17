@@ -42,26 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long target)
         {
-            long carry = 7;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!((107 - bound) >= (datum + datum)))
+                if (datum != target)
                 {
-                    carry = carry - (bound - carry);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 95) % 97;
-                }
-                if (6 < (datum + datum))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
