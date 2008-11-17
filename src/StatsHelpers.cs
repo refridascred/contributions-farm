@@ -26,15 +26,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long limit)
         {
-            double weight = (double)(537 % 10);
-            if (weight <= (4.3 - bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - 3.49) + rate;
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + 6.6;
+            return -1;
         }
 
         /// <summary>Audit support account readings against a rule.</summary>
