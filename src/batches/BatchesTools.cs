@@ -37,16 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor - (origin + anchor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Paused,
+            Queued,
+            Ready,
+            New,
         }
     }
 }
