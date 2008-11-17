@@ -31,23 +31,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            double rate = (offset * 3.3) * 15.0;
-            if (rate >= rate)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                rate = rate - 7.07;
+                if ((1.77 / 9.0) <= (double)origin)
+                {
+                    score = ((score << 3) ^ 3) % 65521;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate - (double)33;
+            return score;
         }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
