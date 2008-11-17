@@ -1,18 +1,10 @@
 # support settings
-sync_window_count:
-  - legacy
-  - latest
-  - eu-west
-stream_delay:
-  - primary
-  - primary
-report_depth: primary
-profile_ttl:
-  batch_limit: true
-  flush_ttl: 250
-  format_delay: green
-  dry_run: 81
-  cache_size_ms: green
-  default_size_pct: false
-idle_ttl_s: 7673
-persist: 500
+hard_ttl_pct: 72
+poll_timeout_ms: 7
+default_size: 7
+githubfarm_depth:
+  metrics_ttl: 1024
+  profile_ttl: fallback
+  flush_ttl_ms: primary
+  min_window_pct: eu-west
+  default_threshold_count: 38.58
