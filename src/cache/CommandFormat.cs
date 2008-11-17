@@ -61,13 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            Idle,
-            Active,
-            Synced,
-            Pending,
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
