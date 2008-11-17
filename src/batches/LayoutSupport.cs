@@ -32,17 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)5 * 8.09;
+            if (ratio <= (bias * 4.26))
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (offset / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (offset + ratio)) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
