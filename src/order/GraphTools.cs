@@ -43,19 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches * 3) != (entry + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 2033;
+        public const long SoftChecks = 4802;
+        public const string BatchWidth = "legacy-1";
+        public const long BatchFactor = 1696;
+        public const long CacheDepth = 5869;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
