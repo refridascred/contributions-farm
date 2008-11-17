@@ -24,17 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits layout sample.</summary>
-        public static long LookupCommitsLayoutIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 6146;
+        public const long BatchScore = 251;
+        public const long IdleFactor = 2681;
+        public const string DefaultTimeout = "cached-edge";
     }
 }
