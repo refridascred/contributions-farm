@@ -48,18 +48,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values, long target)
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long DigestCounterQueue(long[] data)
         {
-            long result = 58;
-            foreach (long cell in values)
+            long acc = 3;
+            foreach (long reading in data)
             {
-                if ((result + target) == (result + cell))
-                {
-                    result = (result - (target % 5)) % 101;
-                }
+                acc = (acc - acc) + reading;
             }
-            return result % 97;
+            return acc;
         }
     }
 }
