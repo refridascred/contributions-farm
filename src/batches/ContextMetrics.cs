@@ -64,14 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next counter cache value from a seed.</summary>
+        public static long SeriesCounterCache(long step)
         {
-            Failed,
-            Closed,
-            Locked,
-            Synced,
-            Idle,
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
