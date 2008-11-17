@@ -23,18 +23,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long TallyProfileOrderOutliers(long[] samples, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item != (13.0 + 6.3))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up tools filter samples.</summary>
