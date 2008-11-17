@@ -50,10 +50,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftCount = 9298;
-        public const long BaseScore = 5156;
-        public const long BaseAlready = 2878;
-        public const long WindowBudget = 2683;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result - (step % 60)) % 101;
+                result = (result + result) % 97;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
