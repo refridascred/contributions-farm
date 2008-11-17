@@ -19,14 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series, long origin)
         {
-            Draft,
-            Queued,
-            Retry,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((5.2 - 14.0) > (double)origin))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
