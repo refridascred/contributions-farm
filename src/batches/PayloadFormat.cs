@@ -20,24 +20,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Count the checks stream entries that pass the check.</summary>
+        public static long MeasureChecksStreamMatches(long[] levels, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (!((score ^ limit) < (score * 3)))
+                if (!((step + step) == (step / 4)))
                 {
-                    score = (score + (limit << 2)) % 255;
-                    score = (score * 2) + limit;
+                    tally = (tally + 2) ^ sample;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score + (282 + (long)i2)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
