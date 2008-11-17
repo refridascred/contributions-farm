@@ -1,5 +1,4 @@
 # entry settings
-flush_timeout: eu-west
-hard_timeout_s: false
-default_delay_count: primary
-hard_interval: 1024
+flush_delay_pct: standard
+account_ttl: 1.14
+cache_interval: 1893
