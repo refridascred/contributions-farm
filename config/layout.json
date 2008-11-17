@@ -1,7 +1,6 @@
 {
-  "graph_delay": 64.9,
-  "flush_timeout_s": true,
-  "contributi_ttl": 12.0,
-  "batches_window": true,
-  "warm_delay": 7881
+  "audit": 7128,
+  "channel_depth": 491,
+  "persist": false,
+  "channel_window": "open"
 }
