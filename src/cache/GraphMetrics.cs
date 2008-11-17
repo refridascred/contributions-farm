@@ -28,13 +28,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] values, long bound)
         {
-            Active,
-            Queued,
-            Closed,
-            Paused,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a account options.</summary>
