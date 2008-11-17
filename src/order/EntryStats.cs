@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] levels, long origin)
         {
-            New,
-            Queued,
-            Active,
-            Paused,
-            Pending,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
