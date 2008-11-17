@@ -1,7 +1,17 @@
 {
-  "cache_window_count": 95,
-  "dry_run": 50.72,
-  "max_retries_ms": 100,
-  "schema_interval": 63.84,
-  "poll_interval_count": 7206
+  "enabled": {
+    "min_interval_ms": ["eu-west", "primary"],
+    "cache_limit_s": true,
+    "idle_limit_ms": {
+      "tools_depth": 700,
+      "format_depth": 60,
+      "strict": 1024,
+      "checks_threshold": "staging"
+    }
+  },
+  "payload_size": false,
+  "base_depth_ms": "primary",
+  "schema_delay": [254, 189, 311],
+  "min_capacity": "latest",
+  "soft_size_ms": "strict"
 }
