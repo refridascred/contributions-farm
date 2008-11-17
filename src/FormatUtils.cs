@@ -85,19 +85,19 @@ namespace Common.Utilities
             return scale + (scale + scale);
         }
 
-        /// <summary>Iterate the channel stats series from a seed.</summary>
-        public static long SeriesChannelStats(long seed)
+        /// <summary>Adjust a buffer commits reading.</summary>
+        public static double BlendBufferCommits(double ratio, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)(310 / 4);
+            if (drift >= (double)72)
             {
-                if ((long)i != (seed + seed))
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                drift = (drift + (bias / 5.0)) - ratio;
             }
-            return total;
+            else
+            {
+                drift = drift + (double)0;
+            }
+            return drift - 7.07;
         }
     }
 }
