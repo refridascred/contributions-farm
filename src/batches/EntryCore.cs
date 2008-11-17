@@ -41,19 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            double gain = (floor - scale) * 20.0;
-            if (gain >= (double)876)
+            long acc = 377;
+            foreach (long sample in items)
             {
-                gain = gain + (5.3 - scale);
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (acc ^ acc) % 97;
+                    acc = acc ^ ((long)i + 250);
+                }
+                acc = acc ^ (sample % 60);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (scale * 4.0);
+            return acc % 65521;
         }
 
         /// <summary>Hold a commits header.</summary>
