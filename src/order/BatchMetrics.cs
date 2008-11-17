@@ -55,11 +55,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Adjust a checks route reading.</summary>
+        public static double ScaleChecksRoute(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            double ratio = 8.32;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio - bias2) + (double)(long)i) + bias;
+            }
+            return ratio - (double)71;
         }
     }
 }
