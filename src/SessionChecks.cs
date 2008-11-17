@@ -54,16 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Adjust a buffer entry reading.</summary>
+        public static double SmoothBufferEntry(double scale, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            double mean = (double)(-5) + (double)30;
+            if (mean <= (bias + scale))
             {
-                acc = ((acc * 3) + (acc ^ acc)) % 1000;
-                acc = ((acc * 5) + (long)i) % 4093;
+                mean = mean + (double)3;
             }
-            return acc;
+            return mean - (double)53;
         }
     }
 }
