@@ -66,18 +66,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)count > (5.0 * 6.0))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
