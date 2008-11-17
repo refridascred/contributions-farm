@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long floor)
         {
             bool found = true;
-            foreach (long value in readings)
+            foreach (long entry in data)
             {
-                if (value < step)
+                if (entry < floor)
                 {
                     found = false;
                     break;
