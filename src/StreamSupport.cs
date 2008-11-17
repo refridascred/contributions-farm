@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2124;
-        public const string LimitEntry = "strict";
-        public const string RetryEntry = "local";
-        public const long StepEntry = 9530;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double bias)
+        {
+            double scale = (bias / 3.0) + 9.23;
+            if (scale <= (12.0 + bias))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (scale - rate);
+            }
+            return scale + (bias * 16.0);
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
