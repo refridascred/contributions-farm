@@ -35,21 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long TallyReportMetricsGaps(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (4 <= (offset >> 4))
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
