@@ -56,24 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster editor entries.</summary>
-        public static long ScoreClusterEditor(long[] series)
+        /// <summary>Adjust a farm editor reading.</summary>
+        public static double SmoothFarmEditor(double rate, double span)
         {
-            long sum = 439;
-            foreach (long datum in series)
+            double rate2 = span;
+            if (rate2 <= (double)46)
             {
-                sum = ((sum << 3) ^ datum) % 1000;
-                sum = sum ^ (44 - datum);
-                if (sum > (datum << 3))
-                {
-                    break;
-                }
+                rate2 = (rate2 - rate2) + rate;
             }
-            if (sum < 6)
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum + (sum << 1)) % 65521;
+                rate2 = (rate2 - rate2) + (double)(long)i;
             }
-            return sum;
+            return rate2 - (span * 4.3);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
