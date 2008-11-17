@@ -65,19 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] items, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > limit)
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
