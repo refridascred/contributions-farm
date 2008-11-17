@@ -21,10 +21,13 @@ namespace Common.Utilities
             return scale2 - (span - scale);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 2464;
-        public const long BaseTimeout = 6255;
-        public const long LimitChecks = 9914;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
