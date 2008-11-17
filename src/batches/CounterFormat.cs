@@ -39,12 +39,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long target)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
+            if (((double)target < (7.56 * 6.0)) && ((target - limit) < limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + target) >= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((8 >> 1) == (target % 7)) && (118 < (limit - target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
