@@ -72,12 +72,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] series, long offset)
         {
-            Ready,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
