@@ -57,15 +57,13 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 481;
-            foreach (long value in items)
-            {
-                carry = ((carry * 5) + value) % 97;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
