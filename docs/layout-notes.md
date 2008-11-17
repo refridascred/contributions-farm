@@ -1,15 +1,10 @@
 # Layout notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The format module keeps filter values in sync with the entry cache.
-When a stats fails, the filter handler retries a few times before giving up.
-
-Keep buffer and commits names short and lowercase.
-Run the schema check before changing any tools limits.
+Run the graph check before changing any contributi limits.
+The metric module keeps command values in sync with the metric cache.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new metrics fields
-- Keep account values small
 - Review support limits each release
+- Document new tools fields
+- Keep entry values small
