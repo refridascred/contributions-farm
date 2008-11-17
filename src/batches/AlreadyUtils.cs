@@ -44,18 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 2) ^ sum;
-                sum = (sum - ((long)i - sum)) % 97;
-                sum = sum + (sum + sum);
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
