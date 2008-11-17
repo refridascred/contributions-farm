@@ -100,19 +100,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] items, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long result = 755;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                result = (((result + (7 * 5)) % 255) + reading) + target;
-                if (19.0 < (double)result)
-                {
-                    break;
-                }
+                anchor = (anchor << 2) ^ ((long)i - bound);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result % 97;
+            return anchor;
         }
     }
 }
