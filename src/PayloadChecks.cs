@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = 5;
+            foreach (long value in samples)
             {
-                carry = carry + (limit ^ carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((value << 1) > carry)
+                {
+                    carry = (carry ^ (carry + (long)samples.Length)) % 1000;
+                    carry = (carry ^ (carry + value)) % 255;
+                    break;
+                }
+                if ((value % 100) > (367 << 1))
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (carry - value);
+                }
+            }
+            if (carry < 524)
+            {
+                carry = ((carry * 3) + ((long)samples.Length * 2)) % 1000;
             }
             return carry;
         }
