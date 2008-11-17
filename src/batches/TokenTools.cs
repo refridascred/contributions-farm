@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long floor, long seed)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            long delta = floor + seed;
+            if (delta >= (3 >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((28 ^ 924) != (floor >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate buffer payload readings against a bound.</summary>
