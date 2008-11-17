@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((item + tally) < tally) && ((tally % 16) < (tally / 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a farm info.</summary>
