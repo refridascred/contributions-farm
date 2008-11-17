@@ -1,17 +1,11 @@
 # entry settings
-enabled: 1024
-retry_threshold_pct: true
-route_retries:
-  burst_ttl_pct: 7072
-  dry_run:
-    - primary
-    - stable
-    - green
-  poll_delay_s: staging
-  verbose: false
-base_interval_pct:
-  strict: 98
-  sync_threshold: true
-  default_ratio_pct: standard
-  batch_timeout_s: local
-base_interval: 67.09
+sync_delay_count:
+  - open
+  - blue
+flush_retries_s:
+  support_timeout: 30
+  persist: fallback
+  enabled: open
+  strict: eu-west
+  schema_interval: true
+support_interval: staging
