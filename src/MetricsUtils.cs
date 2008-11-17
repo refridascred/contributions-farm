@@ -31,11 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7246;
-        public const string MaxStats = "alpha-1";
-        public const double SoftStats = 86.39;
-        public const double SoftBudget = 65.66;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleDepth = "cached";
+        public const long RetryScore = 2258;
+        public const string DefaultWindow = "cached";
+        public const string LimitWindow = "local-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double SoftFactor = 24.15;
