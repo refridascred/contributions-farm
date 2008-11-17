@@ -39,17 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 5;
+            foreach (long value in data)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                score = ((score << 3) ^ (score - value)) % 101;
+                if (((double)value > 15.0) && (2 >= (score & 7)))
                 {
-                    return (long)i;
+                    score = (score + (score << 2)) % 97;
+                }
+                else
+                {
+                    score = score ^ (value % 7);
+                }
+                if ((double)score < (3.86 + 1.96))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
