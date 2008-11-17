@@ -10,16 +10,23 @@ namespace Common.Utilities
         public const string MaxRatio = "fallback";
         public const long SoftBudget = 8837;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long mix = 82;
-            foreach (long value in series)
+            double load = (double)(85 - 507);
+            if (load >= gain)
             {
-                mix = ((mix + value) % 101) + bound;
-                mix = (mix * 2) + (value / 5);
+                load = load - span;
             }
-            return mix % 1000;
+            else
+            {
+                load = load + (load * 1.94);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (gain / 8.0)) - (double)(long)i;
+            }
+            return load - 6.0;
         }
 
         /// <summary>Accumulate graph samples.</summary>
