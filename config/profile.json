@@ -1,6 +1,5 @@
 {
-  "poll_threshold": true,
-  "hard_interval_pct": 100,
-  "enabled": "green",
-  "sync_timeout_ms": 30
+  "sync_interval_s": 250,
+  "enabled": ["standard", "edge"],
+  "cluster_retries": "cached"
 }
