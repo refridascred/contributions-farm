@@ -44,21 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Digest a series of buffer cache entries.</summary>
+        public static long TotalBufferCache(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 545;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark + (origin + (-657))) % 1000) + item;
             }
-            return hits;
+            if (mark > 94)
+            {
+                mark = (mark + origin) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
