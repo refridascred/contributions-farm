@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            New,
         }
     }
 }
