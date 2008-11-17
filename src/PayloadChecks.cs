@@ -38,11 +38,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3560;
-        public const double WindowBudget = 37.16;
-        public const string MaxRatio = "cached";
-        public const long MaxWidth = 531;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] data, long target)
