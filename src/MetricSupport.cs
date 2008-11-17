@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardCount = "staging-v2";
-        public const long BatchLevel = 1892;
-        public const long SoftSession = 3796;
-        public const double HardRatio = 26.68;
-        public const long IdleWidth = 5727;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleRatio = "legacy-1";
+        public const string HardFactor = "standard-1";
+        public const double CacheChecks = 20.28;
+        public const long SoftChecks = 1982;
 
         /// <summary>Compare every pair of notes support readings.</summary>
         public static long CompareNotesSupportCount(long[] items)
