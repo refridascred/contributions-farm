@@ -43,27 +43,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items, long limit)
         {
-            long score = 5;
-            foreach (long value in data)
+            long anchor = 85;
+            foreach (long sample in items)
             {
-                score = ((score << 3) ^ (score - value)) % 101;
-                if (((double)value > 15.0) && (2 >= (score & 7)))
+                long span = limit / 5;
+                if ((double)span < (0.1 - 8.3))
                 {
-                    score = (score + (score << 2)) % 97;
+                    span = (((span << 2) ^ ((long)items.Length << 2)) % 255) ^ sample;
                 }
-                else
+                if ((limit * 2) > (anchor & 127))
                 {
-                    score = score ^ (value % 7);
-                }
-                if ((double)score < (3.86 + 1.96))
-                {
-                    break;
+                    anchor = anchor - (anchor ^ limit);
                 }
             }
-            return score % 4096;
+            if (anchor < 0)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor % 4096;
         }
     }
 }
