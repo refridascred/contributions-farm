@@ -29,19 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long carry = 380;
+            foreach (long sample in series)
             {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry ^ (57 / 5)) % 101) - sample) - bound;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Accumulate stream account samples.</summary>
