@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2019;
+        public const string RetryFactor = "legacy-v2";
+        public const string BurstCount = "staging";
+        public const double StepDepth = 39.85;
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double scale, double offset)
