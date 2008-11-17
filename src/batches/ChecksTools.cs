@@ -28,11 +28,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a queue contributi reading by value.</summary>
+        public static long SeekQueueContributiIndex(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
