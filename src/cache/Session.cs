@@ -25,12 +25,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepLevel = 9898;
-        public const long MinFactor = 7322;
-        public const long RetryCache = 3266;
-        public const string CacheInterval = "standard-v2";
-        public const long BatchLevel = 1359;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items, long target)
+        {
+            long anchor = 440;
+            foreach (long sample in items)
+            {
+                anchor = (anchor ^ (sample + sample)) - target;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
