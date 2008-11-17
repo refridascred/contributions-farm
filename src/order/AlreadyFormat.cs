@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
