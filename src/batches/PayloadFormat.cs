@@ -47,13 +47,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((0.91 * 2.46) == (double)origin) || ((5.19 * 2.98) < (double)origin))
+                {
+                    mark = ((mark * 4) + (mark << 3)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (mark - (long)i)) % 101;
+                }
+                long count = (mark << 1) << 2;
+                mark = mark + (10 + count);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
