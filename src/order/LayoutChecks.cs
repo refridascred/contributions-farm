@@ -56,11 +56,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Failed,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Roll a route format counter forward.</summary>
