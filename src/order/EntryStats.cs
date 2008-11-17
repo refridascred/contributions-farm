@@ -37,11 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double bias)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series, long step)
         {
-            double load = bias;
-            return load - (gain * 4.21);
+            long mark = 3;
+            foreach (long item in series)
+            {
+                mark = ((((mark << 3) ^ (-71)) % 65521) - item) - step;
+            }
+            if (mark < 9)
+            {
+                mark = mark - (mark >> 5);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the stats state values.</summary>
