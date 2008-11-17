@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double bias = floor;
+            if (bias >= floor)
             {
-                if ((double)item < (9.0 + 13.0))
-                {
-                    tally = (tally + 3) + floor;
-                }
+                bias = (bias + (double)373) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (floor - floor);
         }
 
         /// <summary>Describe the graph class values.</summary>
