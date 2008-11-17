@@ -13,13 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long seed)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Done,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
