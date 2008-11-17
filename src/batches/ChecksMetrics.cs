@@ -66,31 +66,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data)
         {
-            if ((bound + 64) < (70 + bound))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1 + origin) >= bound)
+                if ((double)count > (5.0 * 6.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + 1) == (bound << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
+            return count;
         }
     }
 }
