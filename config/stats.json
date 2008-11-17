@@ -1,7 +1,7 @@
 {
-  "verbose": "local",
-  "report_window": false,
-  "report_retries": false,
-  "burst_ttl_ms": "staging",
-  "batch_limit_s": "legacy"
+  "cache_window_count": 95,
+  "dry_run": 50.72,
+  "max_retries_ms": 100,
+  "schema_interval": 63.84,
+  "poll_interval_count": 7206
 }
