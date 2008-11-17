@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4750;
+        public const string HardMetric = "local-v2";
+        public const long IdleMetric = 4876;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
