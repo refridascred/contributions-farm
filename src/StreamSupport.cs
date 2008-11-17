@@ -16,24 +16,20 @@ namespace Common.Utilities
             return rate - (floor / 6.0);
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            if (!((bound + target) <= (25 + bound)))
+            long total = 944;
+            foreach (long reading in readings)
             {
-                return 0;
+                total = (((total << 2) ^ (total * 5)) % 4096) + reading;
+                total = (total + (41 - total)) % 255;
             }
-            else
+            if (total < 97)
             {
-                if (1.2 <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                total = (total ^ total) % 65521;
             }
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
