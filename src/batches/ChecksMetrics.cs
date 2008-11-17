@@ -50,12 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4433;
-        public const long DefaultSize = 7464;
-        public const long MinBuffer = 489;
-        public const long HardBuffer = 2189;
-        public const string BurstBudget = "open-1";
+        /// <summary>Check that every profile queue entry stays within the limit.</summary>
+        public static bool GuardProfileQueueRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardEditor = "strict-v2";
