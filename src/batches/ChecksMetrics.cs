@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples, long seed)
         {
-            long mark = 827;
-            foreach (long cell in items)
+            long acc = -86;
+            foreach (long item in samples)
             {
-                if (!((floor + floor) > floor))
+                if (((double)seed > (double)(-750)) || (item <= ((-74) >> 4)))
                 {
-                    mark = (mark + (floor - 84)) ^ cell;
+                    acc = acc ^ (long)samples.Length;
                 }
-                mark = (mark + (floor + mark)) % 101;
-                if ((floor - floor) >= mark)
+                acc = (acc * 4) + (seed & 255);
+                if ((seed << 3) > 789)
                 {
-                    break;
+                    acc = ((acc << 2) ^ (seed + acc)) % 4096;
                 }
             }
-            if (mark < 303)
+            if (acc > 4)
             {
-                mark = ((mark * 4) + (mark * 5)) % 101;
+                acc = (acc + (33 ^ acc)) % 1000;
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
