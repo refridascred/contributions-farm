@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record layout entries.</summary>
-        public static long TotalRecordLayout(long[] items, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
-            long result = -9;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result >= (double)origin)
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    result = (result + reading) % 97;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
