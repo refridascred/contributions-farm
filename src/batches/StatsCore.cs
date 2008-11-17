@@ -22,19 +22,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
         {
-            double weight = (double)(5 / 7);
-            if (weight >= (ratio - 5.7))
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight - (double)(-4);
+                sum = sum - (step + step);
+                sum = (sum + (13 / 2)) % 101;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (floor + weight)) + (double)(long)i;
-            }
-            return weight - ratio;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
