@@ -44,17 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] series, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (series[i] == step)
+                if ((double)hits >= (2.0 + 16.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
