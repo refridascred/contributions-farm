@@ -75,18 +75,21 @@ namespace Common.Utilities
             return (drift - offset) + scale;
         }
 
-        /// <summary>Audit layout graph readings against a rule.</summary>
-        public static long AuditLayoutGraphOutliers(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10.0 - 7.0) == (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
