@@ -51,11 +51,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] series, long limit)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((value << 3) >= value) || ((0.9 + 0.35) == (double)limit))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
