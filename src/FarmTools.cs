@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Measure how many tools graph samples are out of range.</summary>
+        public static long TallyToolsGraphOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7 ^ reading) >= matches)
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
