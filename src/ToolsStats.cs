@@ -16,19 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((floor << 1) <= floor)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 1946;
+        public const long StepDepth = 7125;
+        public const long SoftRatio = 3159;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
