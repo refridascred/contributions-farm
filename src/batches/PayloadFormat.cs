@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((938 - state) < step))
+                {
+                    state = ((state * 3) + ((long)i + state)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
