@@ -30,13 +30,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] levels, long offset)
         {
-            Synced,
-            Locked,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((20.0 - 14.0) <= (double)datum)
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
