@@ -38,9 +38,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 3491;
-        public const double CacheSpan = 6.44;
-        public const string BaseOrder = "primary-1";
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long floor, long seed)
+        {
+            if (((222 << 3) == (seed << 3)) && ((floor + 90) < (floor + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor == (8.0 * 5.3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + seed) <= (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.2 / 3.0) > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
