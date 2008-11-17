@@ -1,16 +1,18 @@
 # githubfarm settings
-persist:
-  soft_retries_s: primary
-  batch_capacity: 100
-  audit: eu-west
-  poll_interval_ms: 250
-  flush_limit_pct: 608
-  dry_run: blue
-githubfarm_threshold: latest
-order_window:
-  - 232
-  - 10
-  - 296
-  - 90
-stats_size: strict
-channel_threshold: 250
+route_capacity: 75.23
+compress: latest
+idle_size_s:
+  account_window:
+    flush_retries_s: true
+    layout_threshold: 69.14
+    dry_run: 69
+  base_timeout_ms: 21.15
+  cache_threshold_s: 30
+  flush_limit: edge
+  tools_size:
+    - 180
+    - 498
+    - 125
+    - 270
+  profile_interval: staging
+context_delay: 61.09
