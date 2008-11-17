@@ -27,11 +27,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            if ((offset / 2) > (origin - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset > (3.0 * 4.38))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
