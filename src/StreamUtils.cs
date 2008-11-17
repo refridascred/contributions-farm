@@ -38,12 +38,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
+            Stale,
+            Draft,
             New,
-            Dropped,
-            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
