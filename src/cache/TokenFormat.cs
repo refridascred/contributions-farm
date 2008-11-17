@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
