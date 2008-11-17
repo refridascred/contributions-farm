@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BasePayload = 8022;
         public const string BatchPayload = "alpha";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] items, long limit)
+        /// <summary>Look up the position of a queue editor sample.</summary>
+        public static long LookupQueueEditorIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= limit)
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
