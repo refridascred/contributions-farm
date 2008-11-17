@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale <= scale)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (floor - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale + rate;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxInterval = 1610;
+        public const string CacheSession = "stable";
+        public const long DefaultSession = 5039;
+        public const string MinSession = "fallback-1";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
