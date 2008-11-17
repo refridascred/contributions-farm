@@ -13,15 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Draft,
-            Stale,
-            Locked,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 7644;
+        public const long WindowTimeout = 4593;
+        public const string IdleScore = "latest";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] levels)
