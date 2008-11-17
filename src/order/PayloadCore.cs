@@ -34,26 +34,15 @@ namespace Common.Utilities
         public const long MinReport = 2859;
         public const string RetryReport = "stable-edge";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long acc = 22;
-            foreach (long value in levels)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)acc >= 9.7)
-                {
-                    acc = acc ^ ((long)levels.Length + origin);
-                }
-                else
-                {
-                    acc = acc - (acc ^ value);
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (acc < 515)
-            {
-                acc = acc ^ origin;
-            }
-            return acc;
+            return mix;
         }
     }
 }
