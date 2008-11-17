@@ -66,22 +66,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] data, long step)
+        /// <summary>Look up the position of a context farm sample.</summary>
+        public static long LookupContextFarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading >= 1.4)
+                if (samples[i] > origin)
                 {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
