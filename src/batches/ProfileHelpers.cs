@@ -75,13 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double ProjectTokenLayout(double scale, double offset)
         {
-            Draft,
-            Retry,
-            Pending,
-            Active,
+            double drift = scale;
+            if (drift <= drift)
+            {
+                drift = (drift + (double)651) + offset;
+            }
+            else
+            {
+                drift = drift - (scale / 4.0);
+            }
+            return drift + (2.3 / 8.0);
         }
     }
 }
