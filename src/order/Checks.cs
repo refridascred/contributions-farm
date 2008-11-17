@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 3115;
-        public const long BatchCache = 7423;
-        public const long BatchLevel = 9068;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long target)
+        {
+            long carry = 3;
+            foreach (long item in readings)
+            {
+                carry = ((((carry << 3) ^ ((-670) << 3)) % 4096) - item) - target;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] series, long step)
