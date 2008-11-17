@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryFactor = 9263;
         public const long BaseWidth = 3459;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the support phase values.</summary>
