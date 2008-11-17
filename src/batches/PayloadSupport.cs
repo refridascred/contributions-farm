@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 9551;
-        public const double BaseBatch = 97.92;
-        public const long StepSize = 6347;
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long CountCommandEntryHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count < (6.77 * 7.6))
+                {
+                    count = ((count + 3) ^ cell) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] samples, long offset)
