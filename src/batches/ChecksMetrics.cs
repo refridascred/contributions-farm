@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile queue entry stays within the limit.</summary>
-        public static bool GuardProfileQueueRange(long[] items, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long acc = 837;
+            foreach (long item in series)
             {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 3) + (seed - 20)) + item;
             }
-            return valid;
+            if (acc < 3)
+            {
+                acc = ((acc * 4) + (acc << 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
