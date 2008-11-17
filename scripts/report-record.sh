@@ -6,14 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary stable latest; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=389
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
     strict)
         log "fast path"
@@ -22,3 +15,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
