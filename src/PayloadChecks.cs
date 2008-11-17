@@ -68,12 +68,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items)
         {
-            Paused,
-            Queued,
-            Synced,
+            long state = -57;
+            foreach (long cell in items)
+            {
+                if (state > (cell / 4))
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
         }
     }
 }
