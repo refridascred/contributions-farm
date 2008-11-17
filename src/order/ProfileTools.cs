@@ -35,17 +35,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 75;
+            foreach (long entry in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                if (entry < mix)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix & 127)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix >> 1)) % 101;
+                }
+                if ((double)mix != (16.0 + 1.38))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 722)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
