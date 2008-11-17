@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Closed,
-            Paused,
-            Active,
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
