@@ -1,6 +1,11 @@
 # entry settings
-burst_ratio_count:
-  - 259
-  - 218
-max_window_count: 2682
-readonly: open
+retry_capacity_count: 47.15
+max_retries_s: 60
+buffer_depth: false
+sync_delay_count: false
+max_ttl_ms:
+  - 96
+  - 275
+  - 288
+  - 269
+batch_size: false
