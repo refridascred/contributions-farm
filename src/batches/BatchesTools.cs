@@ -12,21 +12,38 @@ namespace Common.Utilities
         public const long StepFactor = 8367;
         public const long BatchCount = 4741;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit > (origin + origin)) || ((limit + origin) >= (origin - limit)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin + 791) != (origin & 15))
                 {
-                    if ((data[i] - data[j]) == 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin > 1.0)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.03 - 2.0) <= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
