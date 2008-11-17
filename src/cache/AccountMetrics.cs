@@ -62,21 +62,20 @@ namespace Common.Utilities
         public const long MinEditor = 7778;
         public const long StepEditor = 6546;
 
-        /// <summary>Match up route queue samples.</summary>
-        public static long MatchRouteQueueCount(long[] levels)
+        /// <summary>Roll a route record counter forward.</summary>
+        public static long SeriesRouteRecord(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark * 3) + (bound + bound);
+                if (!((19 ^ bound) <= (bound * 2)))
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (bound + mark);
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
