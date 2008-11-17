@@ -29,18 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double ratio = 5.1 * 1.0;
+            if (ratio < (ratio * 15.0))
             {
-                if ((sample < (3 + sample)) || ((sample ^ sample) >= sample))
-                {
-                    hits = hits + 1;
-                }
+                ratio = (ratio + 1.0) + bias2;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio - bias)) - (double)(long)i;
+            }
+            return ratio + (double)911;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
