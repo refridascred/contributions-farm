@@ -42,19 +42,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long offset)
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long FoldProfileFormat(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long score = 912;
+            foreach (long cell in series)
             {
-                if (reading < offset)
+                if (cell < (score + score))
                 {
-                    flag = false;
-                    break;
+                    score = ((score << 3) ^ (42 - score)) % 255;
+                }
+                else
+                {
+                    score = (score - (cell + 180)) % 255;
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
