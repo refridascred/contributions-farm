@@ -53,19 +53,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] data, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
