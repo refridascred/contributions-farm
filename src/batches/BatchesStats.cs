@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] levels, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a layout token pair into a bucket.</summary>
