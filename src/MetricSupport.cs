@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long floor2)
         {
-            long mix = 85;
-            foreach (long cell in samples)
+            if ((floor ^ floor2) > (25 % 3))
             {
-                mix = ((mix * 4) + cell) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((floor2 - floor2) > floor2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor >> 2) <= (floor2 + floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two context measurements.</summary>
