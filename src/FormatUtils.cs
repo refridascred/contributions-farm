@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
