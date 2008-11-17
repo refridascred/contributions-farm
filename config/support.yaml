@@ -1,14 +1,4 @@
 # support settings
-channel_limit:
-  soft_capacity: false
-  enabled: staging
-  hard_timeout_ms: 24.89
-  schema_capacity: true
-  max_size_count: 40.07
-  poll_ratio:
-    - 478
-    - 281
-githubfarm_delay: 250
-cache_size_s: latest
-batch_timeout: true
-max_threshold_pct: 5.54
+already_threshold: false
+strict: 57
+payload_ttl: true
