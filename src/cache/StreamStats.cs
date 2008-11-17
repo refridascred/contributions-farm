@@ -33,14 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] samples, long floor)
         {
-            Draft,
-            Pending,
-            Closed,
-            Queued,
-            Active,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a format counter forward.</summary>
