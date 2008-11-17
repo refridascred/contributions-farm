@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long bound)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in data)
             {
-                anchor = (anchor + anchor) % 101;
-                anchor = anchor - (anchor + (-3));
-                if (((anchor << 3) < (item - item)) || (51 < (anchor % 3)))
+                if (value >= bound)
                 {
-                    anchor = (anchor - anchor) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < (-869))
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
