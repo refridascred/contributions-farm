@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Retry,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
