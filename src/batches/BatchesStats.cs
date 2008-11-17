@@ -31,11 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record context measurements.</summary>
-        public static double SmoothRecordContext(double ratio, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double ratio2 = 9.81;
-            return (ratio2 - ratio) + floor;
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
