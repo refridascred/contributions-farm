@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 9285;
-        public const long SoftSpan = 9136;
-        public const double HardBatch = 54.55;
-        public const long DefaultBudget = 8592;
-        public const long HardDepth = 5133;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Done,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] values, long target)
