@@ -25,12 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
