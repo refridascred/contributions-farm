@@ -31,24 +31,11 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long seed2)
+        /// <summary>Project the next editor stream value.</summary>
+        public static double AdjustEditorStream(double rate, double floor)
         {
-            if ((seed2 + 257) >= (seed2 >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 8) < (seed >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double bias = rate;
+            return (bias + (double)769) + floor;
         }
 
         /// <summary>Combine route values into a single score.</summary>
