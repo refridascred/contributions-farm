@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of queue graph entries.</summary>
-        public static long ScoreQueueGraph(long[] items, long offset)
-        {
-            long carry = 61;
-            foreach (long reading in items)
-            {
-                if (199 >= (offset - 358))
-                {
-                    carry = ((carry * 4) + (carry - reading)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstInterval = 90.15;
+        public const string MaxWidth = "stable-edge";
+        public const long SoftScore = 9831;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long offset)
