@@ -31,11 +31,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5454;
-        public const string MinStream = "open";
-        public const double LimitTimeout = 61.29;
-        public const long MaxSpan = 9217;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstRatio = 3333;
