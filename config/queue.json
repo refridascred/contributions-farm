@@ -1,15 +1,5 @@
 {
-  "default_timeout": "stable",
-  "soft_window_s": {
-    "base_ttl": 1024,
-    "tools_interval": 63.58,
-    "sync_timeout_count": "latest",
-    "compress": 4839,
-    "max_interval_pct": "blue",
-    "dry_run": ["latest", "latest"]
-  },
-  "idle_interval": 58,
-  "sync_limit_count": "latest",
-  "flush_limit_count": 95.84,
-  "verbose": 98.43
+  "max_ttl": [5, 81, 348, 53],
+  "cluster_window": "primary",
+  "format_threshold": "cached"
 }
