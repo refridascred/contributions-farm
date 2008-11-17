@@ -44,11 +44,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next metrics graph value.</summary>
-        public static double AdjustMetricsGraph(double rate, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            double bias2 = (bias / 5.0) / 5.0;
-            return (bias2 - bias) + rate;
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) > datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next notes context value.</summary>
