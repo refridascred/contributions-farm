@@ -15,13 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry - 5) > count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
