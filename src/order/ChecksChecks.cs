@@ -16,27 +16,21 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long seed)
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long PairRecordToolsCount(long[] values)
         {
-            long acc = 3;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ (value & 255)) % 1000;
-                if ((seed & 7) > (seed + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 3) + (value / 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ value;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 12)
-            {
-                acc = ((acc << 3) ^ (17 & 31)) % 97;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Count the command context entries that pass the check.</summary>
