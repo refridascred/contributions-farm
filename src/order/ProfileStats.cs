@@ -20,11 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstInterval = 57.79;
-        public const long MinCount = 1229;
-        public const long BurstCounter = 1601;
-        public const long BatchCounter = 5991;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 3285;
+        public const double BurstDepth = 1.95;
+        public const long WindowGithubfarm = 5171;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double bias, double bias2)
