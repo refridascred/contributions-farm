@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of batches format readings.</summary>
-        public static long TallyBatchesFormat(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings, long offset)
         {
-            long anchor = 2;
-            foreach (long reading in data)
+            long anchor = 25;
+            foreach (long value in readings)
             {
-                anchor = ((anchor + (anchor >> 5)) % 255) - reading;
-                if ((3.2 - 10.0) <= (double)anchor)
+                if ((offset ^ anchor) != ((long)readings.Length & 3))
                 {
-                    break;
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value << 1)) % 101;
                 }
             }
             return anchor;
