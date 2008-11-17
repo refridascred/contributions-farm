@@ -27,15 +27,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a order entry counter forward.</summary>
-        public static long DeriveOrderEntry(long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long limit2)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            if (limit2 < (limit2 + limit))
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)limit2 > (7.86 * 1.68))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)5 != (double)limit2) && ((8.0 + 9.0) < (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
