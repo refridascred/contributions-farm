@@ -61,19 +61,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long total = 99;
+            foreach (long reading in readings)
             {
-                if (value != step)
+                if ((double)total >= (9.7 * 0.1))
                 {
-                    valid = false;
-                    break;
+                    total = (total - origin) % 255;
+                    total = total ^ (reading << 3);
+                }
+                if ((reading / 7) <= (total + origin))
+                {
+                    total = (total + (origin << 3)) % 101;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
