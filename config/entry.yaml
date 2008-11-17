@@ -1,18 +1,7 @@
 # entry settings
-max_timeout_ms:
-  retry_size_count:
-    - stable
-    - primary
-    - staging
-  editor_depth: edge
-  token_interval: 41.36
-  compress:
-    - primary
-    - eu-west
-    - strict
-    - green
-  burst_ttl_pct: latest
-  soft_threshold_count: staging
-poll_window: true
-order_depth: 72.54
-burst_size_s: false
+max_timeout: true
+profile_ttl: primary
+dry_run: 250
+cache_interval: true
+cache_ttl: 40.66
+base_depth: 17.98
