@@ -1,6 +1,7 @@
 {
-  "sync_timeout_s": "strict",
-  "base_delay": true,
-  "min_timeout_pct": true,
-  "persist": ["stable", "eu-west", "staging"]
+  "already_delay": false,
+  "githubfarm_ratio": false,
+  "sync_depth": "eu-west",
+  "cluster_capacity": "blue",
+  "max_interval_count": "cached"
 }
