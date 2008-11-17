@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
