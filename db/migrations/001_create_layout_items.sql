@@ -2,9 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    created_at TIMESTAMP,
-    ratio REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    owner TEXT NOT NULL,
     count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
