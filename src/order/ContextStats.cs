@@ -44,13 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long LocateEntryWindowIndex(long[] readings, long floor)
         {
-            Synced,
-            Queued,
-            Locked,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
