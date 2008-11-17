@@ -21,18 +21,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] data, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double bias = ratio;
+            if (bias > (ratio - floor))
             {
-                if ((6.0 - 9.0) < (double)hits)
-                {
-                    hits = ((hits + 2) + entry) + offset;
-                }
+                bias = bias - (double)32;
             }
-            return hits;
+            return bias - (double)(-390);
         }
 
         /// <summary>Describe the batch state values.</summary>
