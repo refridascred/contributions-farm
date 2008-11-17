@@ -1,5 +1,7 @@
 {
-  "commits_retries": 8426,
-  "readonly": 5373,
-  "batch_threshold_pct": [271, 286]
+  "commits_timeout": 250,
+  "compress": "primary",
+  "poll_capacity": 500,
+  "retry_limit": ["latest", "green", "eu-west", "latest"],
+  "readonly": 29
 }
