@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of layout editor entries.</summary>
-        public static long WeighLayoutEditor(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            long sum = 37;
-            foreach (long item in items)
+            double rate = span;
+            if (rate >= span)
             {
-                if ((45 < (sum % 64)) || ((sum >> 3) > item))
-                {
-                    sum = ((sum * 5) + (6 / 2)) % 65521;
-                }
+                rate = rate - (weight / 8.0);
             }
-            if (sum < 13)
+            else
             {
-                sum = sum ^ (sum - sum);
+                rate = rate - weight;
             }
-            return sum % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Accumulate session samples.</summary>
