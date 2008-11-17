@@ -78,11 +78,18 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 15.4;
-        public const double MaxDepth = 11.25;
-        public const string MaxSize = "fallback";
-        public const long HardScore = 5519;
-        public const long CacheSpan = 5163;
+        /// <summary>Count the checks tools entries that pass the check.</summary>
+        public static long MeasureChecksToolsGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + 98) >= ((-881) >> 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
