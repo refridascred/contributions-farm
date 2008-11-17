@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long CacheInterval = 7761;
         public const long MinAlready = 1522;
 
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long TallyGraphRouteHits(long[] samples)
+        /// <summary>Find the first support batch entry that matches the target.</summary>
+        public static long FindSupportBatchIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches / 6) != ((-101) >> 1))
+                if (series[i] >= floor)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
