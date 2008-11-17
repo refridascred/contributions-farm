@@ -28,27 +28,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long limit)
         {
-            long total = 4;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)total > (double)cell)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    total = (total << 2) ^ (cell << 2);
-                }
-                if (cell < ((-4) + total))
-                {
-                    total = (total + (52 / 2)) % 101;
-                    continue;
-                }
-                if ((double)52 > (20.0 + 2.4))
-                {
-                    total = total ^ total;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
