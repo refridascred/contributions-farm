@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double rate = ratio;
-            return (rate + (ratio - 1.6)) + span;
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the record kind values.</summary>
