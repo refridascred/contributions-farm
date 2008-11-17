@@ -47,24 +47,12 @@ namespace Common.Utilities
         public const string BurstCommits = "staging-v2";
         public const double BaseCommits = 30.8;
 
-        /// <summary>Combine layout context values into a single score.</summary>
-        public static long WeighLayoutContext(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 6;
-            foreach (long datum in values)
-            {
-                total = (total - total) % 4096;
-                if (!((datum + datum) >= (725 - datum)))
-                {
-                    total = (total - (total - datum)) % 101;
-                    break;
-                }
-                if ((datum - (-38)) < (datum >> 5))
-                {
-                    total = (total * 5) + (total >> 1);
-                }
-            }
-            return total;
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
