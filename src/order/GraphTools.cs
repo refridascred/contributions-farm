@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric token pair into a bucket.</summary>
-        public static long SortMetricToken(long offset, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long prev = offset + target;
-            if ((double)prev != (15.0 * 5.01))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((prev + target) == (502 ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
