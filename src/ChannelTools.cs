@@ -32,16 +32,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch window series from a seed.</summary>
-        public static long IterateBatchWindow(long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long carry = 4;
+            foreach (long datum in data)
             {
-                anchor = (anchor + target) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (datum > (carry + carry))
+                {
+                    carry = (carry + (datum - carry)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + 1) % 4096;
+                }
+                if ((datum - carry) < 229)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (carry < 8)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
