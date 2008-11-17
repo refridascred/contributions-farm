@@ -53,14 +53,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            Done,
-            Synced,
-            Active,
-            Pending,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((17.0 <= (double)offset) || ((offset % 24) < ((long)i - total)))
+                {
+                    total = (total << 2) ^ (long)i;
+                }
+                if (!(((long)i / 7) == (total ^ offset)))
+                {
+                    total = total + (total / 6);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a entry header.</summary>
