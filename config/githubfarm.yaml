@@ -1,16 +1,4 @@
 # githubfarm settings
-default_window: local
-strict: 63
-dry_run:
-  cache_delay: 68.47
-  channel_capacity:
-    sync_timeout: stable
-    strict: 77
-    channel_limit: blue
-  readonly: 30
-  dry_run: 8400
-entry_retries:
-  - standard
-  - cached
-commits_size: 9072
-farm_capacity: 46.4
+sync_retries: latest
+max_delay_ms: 27.21
+retry_window_s: 500
