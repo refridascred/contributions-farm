@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
