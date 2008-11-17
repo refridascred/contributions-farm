@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Compare every pair of notes support readings.</summary>
+        public static long CompareNotesSupportCount(long[] items)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 665)
-            {
-                mix = mix ^ 26;
-            }
-            return mix % 65521;
+            return hits;
         }
     }
 }
