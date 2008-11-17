@@ -38,26 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = 55;
-            foreach (long sample in samples)
-            {
-                if (step > (score / 7))
-                {
-                    score = ((score ^ (step * 2)) % 4096) ^ sample;
-                }
-                else
-                {
-                    score = (score - step) % 65521;
-                }
-            }
-            if (score > 8)
-            {
-                score = ((score << 2) ^ score) % 101;
-            }
-            return score % 65521;
+            Draft,
+            Pending,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
