@@ -12,17 +12,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a report channel reading by value.</summary>
-        public static long LookupReportChannelIndex(long[] values, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 56;
+            foreach (long item in values)
             {
-                if (values[i] >= floor)
+                if (((15.0 + 3.13) <= (double)sum) && ((sum >> 1) < (target - (long)values.Length)))
                 {
-                    return (long)i;
+                    sum = sum - (item * 2);
+                    sum = sum ^ (target - 2);
+                }
+                sum = (sum * 2) + (-606);
+                if ((sum + sum) >= item)
+                {
+                    sum = (sum ^ item) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a account record.</summary>
