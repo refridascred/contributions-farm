@@ -49,18 +49,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] values, long step)
+        /// <summary>Grade a graph editor value against two limits.</summary>
+        public static long RankGraphEditor(long target, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if (((limit ^ limit) > limit) && ((8 - target) != (target + limit)))
             {
-                if (((2.1 * 19.0) == (double)count) || ((cell + cell) >= (494 + count)))
+                return 8;
+            }
+            else
+            {
+                if (target <= limit)
                 {
-                    count = (count + 2) - step;
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
