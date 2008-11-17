@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleBudget = 5288;
-        public const long HardInterval = 8892;
-        public const double LimitRoute = 80.19;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutMatches(long[] data, long target)
