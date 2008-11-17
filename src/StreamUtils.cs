@@ -16,11 +16,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long TallyNotesCommandGaps(long[] values)
         {
-            double load = (double)(94 + 50);
-            return ((load - (double)718) + scale) + span;
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((6.3 / 9.0) != (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
