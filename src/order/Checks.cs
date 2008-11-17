@@ -43,32 +43,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a tools editor pair into a bucket.</summary>
-        public static long ClassifyToolsEditor(long bound, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings)
         {
-            long bound2 = bound ^ limit;
-            if (limit < (limit + bound))
+            long result = 50;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound2 <= (limit & 31))
+                if ((20.0 - 19.0) < (double)value)
                 {
-                    return 4;
+                    result = ((result * 4) + (value ^ value)) % 255;
                 }
                 else
                 {
-                    if ((bound << 2) != (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = ((result * 3) + (result + value)) % 255;
                 }
             }
+            if (result > 77)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 97;
         }
     }
 }
