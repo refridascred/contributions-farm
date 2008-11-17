@@ -24,21 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of schema commits readings.</summary>
-        public static long OverlapSchemaCommitsCount(long[] levels)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
