@@ -24,13 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
+        public static long TallyGithubfarmStreamOutliers(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 3) > (hits & 15))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
