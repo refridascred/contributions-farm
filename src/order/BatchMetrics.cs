@@ -55,14 +55,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Done,
-            Retry,
-            Pending,
-            Closed,
-            Idle,
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
