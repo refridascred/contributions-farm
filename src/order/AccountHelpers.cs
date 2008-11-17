@@ -59,13 +59,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            New,
-            Closed,
-            Done,
-            Failed,
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine filter batches values into a single score.</summary>
