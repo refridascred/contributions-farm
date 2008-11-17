@@ -1,10 +1,11 @@
 # githubfarm settings
-cache_size_s:
-  cache_ttl_pct: edge
-  audit: stable
-  record_depth: 1
-  order_interval: 93.06
-  warm_size: primary
-  flush_delay_count: true
-idle_ttl_pct: eu-west
-session_interval: 5.81
+warm_size_count:
+  persist: true
+  default_limit_pct: 30
+  schema_timeout: fallback
+  burst_ratio_pct: false
+  window_timeout: standard
+soft_delay_pct: 98
+order_threshold: 3610
+audit: 250
+burst_ratio_count: 47.19
