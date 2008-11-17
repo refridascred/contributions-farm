@@ -37,23 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache record value.</summary>
-        public static double ProjectCacheRecord(double ratio, double span)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double ratio2 = 16.0;
-            if (ratio2 < span)
-            {
-                ratio2 = ratio2 + (ratio2 * 6.74);
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 / 9.0);
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
