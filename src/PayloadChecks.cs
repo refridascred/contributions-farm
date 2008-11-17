@@ -33,18 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long carry = 1;
-            foreach (long cell in values)
-            {
-                if ((cell - carry) != (cell - 391))
-                {
-                    carry = ((carry << 3) ^ (cell % 10)) - target;
-                }
-            }
-            return carry;
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a session stream counter forward.</summary>
