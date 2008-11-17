@@ -80,24 +80,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order layout pair into a bucket.</summary>
-        public static long ClassifyOrderLayout(long limit, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if ((limit + limit) > (51 * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target * 5) < 4)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Done,
+            Stale,
         }
     }
 }
