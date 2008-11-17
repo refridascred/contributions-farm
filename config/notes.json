@@ -1,16 +1,7 @@
 {
-  "default_depth_ms": {
-    "retry_ratio": "open",
-    "poll_ratio_pct": 92,
-    "warm_retries_pct": true,
-    "session_ratio": 60,
-    "retry_threshold": {
-      "poll_retries": 4.96,
-      "min_retries_s": false,
-      "notes_ttl": 1401,
-      "idle_retries_s": 100
-    }
-  },
-  "warm_retries": 59.83,
-  "audit": true
+  "strict": 72.5,
+  "hard_size_ms": true,
+  "already_threshold": "primary",
+  "retry_timeout_ms": 65.01,
+  "batch_interval_count": 2707
 }
