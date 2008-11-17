@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long TallyCounterQueue(long[] values)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long floor)
         {
-            long score = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score * 4) + score) % 101) + cell;
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Check that every graph batch entry stays within the limit.</summary>
