@@ -73,18 +73,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = 22;
+            foreach (long value in levels)
             {
-                if ((seen > (seen << 3)) || ((seen >> 1) > (seen + seen)))
+                if ((double)acc >= 9.7)
                 {
-                    seen = (seen + 2) - value;
+                    acc = acc ^ ((long)levels.Length + origin);
+                }
+                else
+                {
+                    acc = acc - (acc ^ value);
                 }
             }
-            return seen;
+            if (acc < 515)
+            {
+                acc = acc ^ origin;
+            }
+            return acc;
         }
     }
 }
