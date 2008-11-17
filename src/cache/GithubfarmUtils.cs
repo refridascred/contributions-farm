@@ -34,14 +34,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Closed,
-            Synced,
-            Failed,
-            Pending,
             New,
+            Done,
+            Stale,
+            Ready,
+            Closed,
         }
     }
 }
