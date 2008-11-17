@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (mix << 3)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
