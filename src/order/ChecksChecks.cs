@@ -16,10 +16,40 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 7258;
-        public const long StepTimeout = 21;
-        public const long IdleLevel = 3332;
+        /// <summary>Grade a cluster profile value against two limits.</summary>
+        public static long BucketClusterProfile(long seed, long origin)
+        {
+            long cur = seed ^ origin;
+            if ((double)seed <= (9.12 / 3.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.6 * 14.0) >= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-35) >> 4) <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur > (origin & 15)) || (origin < cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] values, long floor)
