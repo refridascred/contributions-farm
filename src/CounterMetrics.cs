@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series)
         {
-            Pending,
-            Dropped,
-            New,
-            Done,
-            Stale,
+            long score = 4;
+            foreach (long reading in series)
+            {
+                score = ((score * 2) + score) + reading;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the filter kind values.</summary>
