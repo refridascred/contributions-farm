@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long FoldStatsSession(long[] samples)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long anchor = 3;
-            foreach (long sample in samples)
+            double weight = 0.62 / 7.0;
+            if (weight >= (double)283)
             {
-                anchor = (((anchor * 3) + (anchor - anchor)) % 97) - sample;
+                weight = weight - (8.5 + floor);
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)506) + (double)(long)i;
+            }
+            return weight - (rate / 6.0);
         }
 
         /// <summary>Blend two schema measurements.</summary>
