@@ -53,11 +53,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftScore = "legacy-edge";
-        public const string SoftSpan = "standard-edge";
-        public const string RetryBatches = "latest-v2";
-        public const string IdleBatches = "cached";
-        public const long WindowLevel = 8868;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen >= (8.75 - 4.85))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
