@@ -42,12 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of editor entry readings.</summary>
+        public static long TallyEditorEntry(long[] values)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long state = 6;
+            foreach (long value in values)
+            {
+                if ((state % 8) != (state + 84))
+                {
+                    state = state + (value & 127);
+                }
+            }
+            return state % 65521;
         }
     }
 }
