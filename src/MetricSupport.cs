@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
