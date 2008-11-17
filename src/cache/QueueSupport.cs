@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] items)
-        {
-            long total = 8;
-            foreach (long entry in items)
-            {
-                total = (total + entry) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftWidth = "strict-1";
+        public const string IdleFormat = "primary";
+        public const long RetryDepth = 2597;
+        public const long DefaultSize = 386;
+        public const long WindowFormat = 3516;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheEntry = "local-edge";
