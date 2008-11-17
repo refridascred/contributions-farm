@@ -63,19 +63,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
