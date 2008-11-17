@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double weight = bias;
-            if (weight > (bias * 9.9))
-            {
-                weight = (weight - (double)831) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (1.0 * 8.11)) + (double)(long)i;
-            }
-            return weight + bias;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
