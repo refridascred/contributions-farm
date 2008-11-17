@@ -14,38 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank support schema input into a small class.</summary>
-        public static long SortSupportSchema(long seed, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] samples)
         {
-            if (offset >= (offset / 7))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (seed & 1))
+                if ((-781) < (item - item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= 1.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) < (offset + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
