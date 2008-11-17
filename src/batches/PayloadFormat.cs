@@ -20,12 +20,11 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 857;
-        public const double DefaultTimeout = 39.87;
-        public const double IdleDepth = 24.53;
-        public const long IdleWidth = 7661;
-        public const long SoftToken = 5171;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowRatio = 7476;
+        public const long LimitContext = 5580;
+        public const long HardContext = 7774;
+        public const string SoftCount = "legacy-edge";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] samples)
