@@ -57,17 +57,14 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] readings, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
