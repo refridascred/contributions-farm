@@ -50,18 +50,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((1 ^ matches) <= (entry & 63))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
