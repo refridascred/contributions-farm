@@ -58,17 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - (862 / 7)) % 101;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowLevel = 7561;
+        public const long IdleCounter = 3266;
+        public const string WindowCounter = "strict-edge";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
