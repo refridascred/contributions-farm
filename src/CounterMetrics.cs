@@ -24,22 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (!(8 <= (count + count)))
-                {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a already info.</summary>
