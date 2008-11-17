@@ -57,18 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8598;
+        public const long MinBudget = 6400;
+        public const long BaseLevel = 1724;
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] series)
