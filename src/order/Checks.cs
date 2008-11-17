@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            double gain = (double)88 - 17.0;
-            if (gain <= bias)
+            long sum = 8;
+            foreach (long datum in readings)
             {
-                gain = (gain + 6.11) - offset;
+                sum = (((sum << 3) ^ 592) % 101) ^ datum;
             }
-            return gain - (bias + 19.0);
+            return sum % 65521;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
