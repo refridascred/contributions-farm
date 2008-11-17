@@ -1,7 +1,15 @@
 {
-  "burst_retries": [183, 241],
-  "min_ttl_s": 8817,
-  "burst_ratio_s": "staging",
-  "sync_capacity": 100,
-  "enabled": 83.44
+  "retry_delay_s": "stable",
+  "readonly": ["standard", "fallback", "legacy", "cached"],
+  "audit": {
+    "idle_delay_s": 2.35,
+    "min_window_count": true,
+    "notes_limit": {
+      "default_delay_s": 36.21,
+      "verbose": true,
+      "checks_ratio": "latest"
+    }
+  },
+  "min_timeout": "latest",
+  "hard_size_s": "green"
 }
