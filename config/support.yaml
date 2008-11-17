@@ -1,11 +1,4 @@
 # support settings
-order_delay:
-  - strict
-  - edge
-  - latest
-  - green
-cache_interval_pct: 1024
-batch_window_count: true
-burst_ttl_pct: 79
-base_size_pct: 1102
-context_threshold: true
+checks_size: true
+sync_size_pct: true
+payload_depth: 5335
