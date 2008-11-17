@@ -33,13 +33,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long ScoreToolsChecks(long[] levels, long origin)
         {
-            Ready,
-            Done,
-            Closed,
-            New,
+            long total = 93;
+            foreach (long reading in levels)
+            {
+                total = ((total * 5) + (origin & 15)) ^ reading;
+                if ((total % 12) > (origin / 8))
+                {
+                    total = total + (total << 1);
+                }
+                else
+                {
+                    total = (total << 3) ^ (total >> 5);
+                }
+                if ((origin ^ origin) <= 949)
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
