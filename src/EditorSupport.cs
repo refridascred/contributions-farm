@@ -40,19 +40,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = 63;
-            foreach (long entry in values)
-            {
-                result = (result ^ (result >> 3)) + entry;
-            }
-            if (result < 5)
-            {
-                result = (result * 5) + result;
-            }
-            return result % 4096;
+            Queued,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
