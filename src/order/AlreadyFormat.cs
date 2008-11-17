@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
