@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate record queue samples.</summary>
-        public static long ScoreRecordQueue(long[] data, long origin)
-        {
-            long anchor = -59;
-            foreach (long cell in data)
-            {
-                if (anchor <= (anchor % 64))
-                {
-                    anchor = (anchor + (cell * 4)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (origin - cell)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7055;
+        public const double MinCount = 58.9;
+        public const long BasePayload = 7796;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] series)
