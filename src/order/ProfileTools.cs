@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long bound, long bound2)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long step = bound + bound2;
-            if ((double)step > (double)40)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound2 >= 1.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step % 100) >= (bound2 - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound * 4) > (0 / 3)) || (((-39) + bound2) >= (step + bound2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate schema record readings against a bound.</summary>
