@@ -1,44 +1,17 @@
 # entry settings
-route_depth: false
-hard_window_s: 21.76
-retry_ratio_ms: true
-persist:
-  persist:
-    persist: 44.44
-    idle_limit_pct: latest
-    batch_window_pct: 96.64
-    verbose: green
-  warm_ratio: true
-  metrics_ttl:
-    - 242
-    - 487
-    - 217
-  cache_threshold_count:
-    hard_timeout_count:
-      - latest
-      - primary
-      - fallback
-      - cached
-    max_retries_s: 99
-    audit: 19.54
-    command_retries:
-      - blue
-      - latest
-      - legacy
-    sync_timeout_count: 64.49
-    idle_timeout_count: 60.98
-  hard_interval_ms:
-    - legacy
-    - open
-  cache_depth:
-    - standard
-    - eu-west
-    - cached
-    - blue
-min_interval:
-  soft_capacity_s: stable
-  already_interval:
-    - legacy
-    - open
-    - strict
-  hard_capacity_s: blue
+enabled: 1024
+retry_threshold_pct: true
+route_retries:
+  burst_ttl_pct: 7072
+  dry_run:
+    - primary
+    - stable
+    - green
+  poll_delay_s: staging
+  verbose: false
+base_interval_pct:
+  strict: 98
+  sync_threshold: true
+  default_ratio_pct: standard
+  batch_timeout_s: local
+base_interval: 67.09
