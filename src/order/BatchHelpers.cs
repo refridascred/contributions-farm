@@ -31,39 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            long offset2 = step + offset;
-            if ((offset >> 4) < step)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) >= (step + offset2))
+                if ((7.0 > (double)datum) || ((double)datum == (2.6 * 8.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.6 - 4.43) == (double)offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - step) >= (offset * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
