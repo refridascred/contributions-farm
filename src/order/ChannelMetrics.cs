@@ -39,15 +39,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double span)
         {
-            long total = 2;
-            foreach (long entry in samples)
+            double drift = (double)(48 * 3);
+            if (drift <= (double)15)
             {
-                total = (((total * 3) + (seed * 2)) % 255) - entry;
+                drift = (drift - (0.6 - drift)) + span;
             }
-            return total;
+            return drift + (rate - 5.0);
         }
     }
 }
