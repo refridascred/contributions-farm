@@ -36,17 +36,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long LocateEntryWindowIndex(long[] readings, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 53;
+            foreach (long sample in samples)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - sample) % 255) - bound;
             }
-            return -1;
+            if (carry > 63)
+            {
+                carry = carry ^ (carry - 1);
+            }
+            return carry;
         }
 
         /// <summary>Count checks editor pairs that satisfy a relation.</summary>
