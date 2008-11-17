@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 7706;
-        public const long WindowBatches = 3849;
-        public const long StepSpan = 9176;
-        public const string BurstBatches = "fallback";
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 3) ^ (carry - target)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool VerifyFilterGraphRange(long[] readings, long target)
