@@ -50,14 +50,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long limit)
         {
-            Synced,
-            Queued,
-            Ready,
-            Locked,
-            Done,
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((limit & 15) >= (mix << 3))
+                {
+                    mix = mix + 46;
+                    continue;
+                }
+                if ((limit + (-31)) == (mix - limit))
+                {
+                    mix = ((mix * 4) + (limit + limit)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
