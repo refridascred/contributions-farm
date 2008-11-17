@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            long state = 650;
+            foreach (long item in items)
+            {
+                if (!((state - 9) > (state / 4)))
+                {
+                    state = ((state << 2) ^ (538 ^ state)) + item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
