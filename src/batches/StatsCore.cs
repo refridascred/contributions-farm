@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long limit, long step)
         {
-            long result = 136;
-            foreach (long item in items)
+            long bound = limit + step;
+            if (((limit + bound) >= (bound / 8)) || (8 < (limit / 3)))
             {
-                if ((offset + 143) < (offset + result))
+                return 7;
+            }
+            else
+            {
+                if ((238 < (step + limit)) || ((5.25 - 11.0) > (double)step))
                 {
-                    result = (result + (offset >> 5)) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (16.0 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Match up counter samples.</summary>
