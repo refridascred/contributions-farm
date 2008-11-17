@@ -1,19 +1,7 @@
 {
-  "session_retries": "primary",
-  "report_interval": [91, 212],
-  "hard_size_ms": {
-    "readonly": "eu-west",
-    "persist": 4824,
-    "window_depth": false,
-    "sync_size_s": 1001,
-    "sync_timeout": [77, 381],
-    "strict": "edge"
-  },
-  "default_threshold_pct": {
-    "githubfarm_retries": 7561,
-    "batch_interval": 15.4,
-    "base_interval_pct": true,
-    "audit": 4.01
-  },
-  "flush_window_count": 500
+  "burst_retries": [183, 241],
+  "min_ttl_s": 8817,
+  "burst_ratio_s": "staging",
+  "sync_capacity": 100,
+  "enabled": 83.44
 }
