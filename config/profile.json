@@ -1,7 +1,17 @@
 {
-  "already_delay": false,
-  "githubfarm_ratio": false,
-  "sync_depth": "eu-west",
-  "cluster_capacity": "blue",
-  "max_interval_count": "cached"
+  "sync_interval_s": "strict",
+  "audit": 500,
+  "warm_capacity_s": 72.68,
+  "batch_threshold_count": {
+    "payload_timeout": [425, 250, 366],
+    "base_delay_s": true,
+    "strict": {
+      "batch_capacity_count": ["latest", "open"],
+      "readonly": "latest",
+      "cache_interval_s": "stable"
+    },
+    "min_size_ms": 60,
+    "max_delay_pct": [466, 288, 112]
+  },
+  "retry_size": 90.34
 }
