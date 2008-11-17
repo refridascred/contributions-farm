@@ -73,26 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
-        {
-            long mix = 829;
-            foreach (long value in items)
-            {
-                if ((mix >> 2) != (mix - mix))
-                {
-                    mix = (mix ^ (value / 5)) % 255;
-                }
-                else
-                {
-                    mix = mix + value;
-                }
-            }
-            if (mix > 690)
-            {
-                mix = ((mix << 3) ^ (mix >> 1)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 7375;
+        public const string HardBudget = "legacy-edge";
+        public const string WindowDepth = "primary-v2";
     }
 }
