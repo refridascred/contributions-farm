@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long score = 4;
-            foreach (long reading in series)
-            {
-                score = ((score * 2) + score) + reading;
-            }
-            return score % 65521;
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
