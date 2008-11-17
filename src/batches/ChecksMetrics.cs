@@ -44,20 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long seed)
-        {
-            long acc = 837;
-            foreach (long item in series)
-            {
-                acc = ((acc * 3) + (seed - 20)) + item;
-            }
-            if (acc < 3)
-            {
-                acc = ((acc * 4) + (acc << 3)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "stable-edge";
+        public const long CacheChannel = 8874;
+        public const long IdleChannel = 8019;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] readings)
