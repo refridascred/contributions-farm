@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long result = 50;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((limit % 3) >= (datum << 3))
+                if ((datum % 5) == (datum + 619))
                 {
-                    result = (result ^ (datum >> 1)) % 65521;
+                    tally = tally + 2;
                 }
-                result = result ^ (result >> 5);
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Locate a batches counter reading by value.</summary>
