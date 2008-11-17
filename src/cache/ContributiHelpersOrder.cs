@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long offset)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long CountToolsSessionOutliers(long[] data, long seed)
         {
-            long span = target ^ offset;
-            if (target < (offset & 1))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset * 2) != (span + offset)))
+                if ((double)seen < 1.6)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset == (9.4 - 20.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target % 5) <= span) && (72 > span))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = ((seen + 3) + reading) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph summary.</summary>
