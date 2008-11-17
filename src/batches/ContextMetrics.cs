@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
-        {
-            long score = 32;
-            foreach (long cell in samples)
-            {
-                score = (((score << 3) ^ 7) % 255) + cell;
-            }
-            if (score < 37)
-            {
-                score = (score + (score % 97)) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheTimeout = 2877;
+        public const long MinTimeout = 6803;
+        public const double RetryCache = 48.38;
+        public const string IdleCache = "primary-v2";
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long BucketOrder(long step, long bound)
