@@ -1,12 +1,8 @@
 {
-  "graph_size": {
-    "audit": [68, 320],
-    "counter_delay": 30,
-    "compress": "legacy",
-    "cache_window": true
-  },
-  "support_timeout": "edge",
-  "sync_window_ms": ["primary", "fallback", "primary", "standard"],
-  "hard_timeout_s": false,
-  "sync_depth_count": 100
+  "readonly": 100,
+  "burst_timeout": 68.68,
+  "batch_ttl": 7591,
+  "dry_run": "eu-west",
+  "warm_limit_pct": ["blue", "latest", "stable"],
+  "route_size": "eu-west"
 }
