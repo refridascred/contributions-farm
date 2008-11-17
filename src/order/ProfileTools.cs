@@ -35,23 +35,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long seed)
         {
-            long anchor = 2;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (anchor - 118)) % 255;
-                if (((-8) + item) > (item - item))
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
                 {
-                    anchor = (anchor - (anchor >> 2)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
