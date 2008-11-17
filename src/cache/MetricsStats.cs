@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((8.6 - 7.0) >= (double)datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
