@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first report contributi entry that matches the target.</summary>
-        public static long SeekReportContributiIndex(long[] values, long offset)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long TallyFarmStatsHits(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (values[i] > offset)
+                if ((item + 4) <= 5)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
