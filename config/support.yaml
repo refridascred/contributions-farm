@@ -1,4 +1,13 @@
 # support settings
-profile_ratio: 4.68
-support_depth: legacy
-readonly: 32
+poll_ttl_count: 67.71
+idle_ttl_s:
+  - 450
+  - 101
+  - 80
+  - 310
+cache_delay:
+  - eu-west
+  - strict
+  - edge
+  - staging
+idle_interval: eu-west
