@@ -33,24 +33,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            if ((double)origin < (9.3 + 0.96))
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                acc = acc - (acc - origin);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit > (limit + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
