@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
