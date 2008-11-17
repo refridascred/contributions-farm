@@ -15,18 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = 4;
+            foreach (long cell in items)
             {
-                if ((count + 12) != (count + count))
+                if (((double)(long)items.Length == (9.57 * 2.0)) && (cell >= mix))
                 {
-                    count = (count + 3) - sample;
+                    mix = ((mix << 3) ^ (target >> 5)) % 65521;
                 }
             }
-            return count;
+            if (mix < 556)
+            {
+                mix = (mix - (target & 63)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a counter tools figure with a bias.</summary>
