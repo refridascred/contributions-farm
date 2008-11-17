@@ -1,11 +1,9 @@
 # support settings
-enabled: 561
-batch_ttl:
-  - 258
-  - 180
-  - 361
-  - 262
-burst_interval_count: eu-west
-sync_delay: 1024
-sync_delay_ms: local
-sync_window: 8828
+hard_delay_pct:
+  - open
+  - latest
+context_ttl: 86.33
+window_window: standard
+persist: false
+enabled: 4908
+dry_run: strict
