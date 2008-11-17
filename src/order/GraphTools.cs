@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] samples, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (samples[i] < offset)
+                if ((item - item) >= (item * 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
