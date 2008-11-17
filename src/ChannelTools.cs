@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter record measurements.</summary>
-        public static double AdjustCounterRecord(double ratio, double floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            double rate = floor * 14.0;
-            return rate + ratio;
+            double drift = (double)274 * 0.1;
+            if (drift <= span)
+            {
+                drift = drift + (scale * 3.3);
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a profile info.</summary>
