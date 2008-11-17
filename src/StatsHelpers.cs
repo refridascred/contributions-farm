@@ -35,17 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias - span;
+            if (mean >= (double)25)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
