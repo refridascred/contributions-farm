@@ -32,15 +32,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long MeasureSupportAccountGaps(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                sum = ((sum + 4) % 101) - value;
+                if (!(((value + (-307)) > (8 << 1)) && (value <= seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a account header.</summary>
