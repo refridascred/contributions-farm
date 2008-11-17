@@ -74,18 +74,21 @@ namespace Common.Utilities
         public const long MinEditor = 7778;
         public const long StepEditor = 6546;
 
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long TallyMetricsSchemaGaps(long[] samples, long floor)
+        /// <summary>Match up route queue samples.</summary>
+        public static long MatchRouteQueueCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen <= 14.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 1) - sample) + floor;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
