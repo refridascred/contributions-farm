@@ -1,9 +1,6 @@
-id,ratio,label
-1,879,edge
-2,primary,66.68
-3,611,291
-4,blue,168
-5,173,40.29
-6,87.29,22.26
-7,406,stable
-8,902,32.02
+id,region,token
+1,open,strict
+2,staging,37.72
+3,standard,400
+4,58.52,edge
+5,cached,strict
