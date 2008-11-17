@@ -33,24 +33,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a support entry value against two limits.</summary>
-        public static long ClassifySupportEntry(long target, long floor)
+        /// <summary>Compare every pair of channel githubfarm readings.</summary>
+        public static long MatchChannelGithubfarmCount(long[] levels)
         {
-            if ((14.0 * 17.0) > (9.5 + 9.9))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((11.0 - 3.0) < (double)target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
