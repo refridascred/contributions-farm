@@ -31,16 +31,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long TallyNotesContributi(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long seed)
         {
-            long carry = 37;
-            foreach (long sample in values)
+            long acc = 93;
+            foreach (long value in data)
             {
-                carry = carry ^ 5;
-                carry = carry + (4 - sample);
+                if ((acc - (long)data.Length) < (value >> 5))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc + (seed & 7);
+                }
+                if ((5.63 / 9.0) == (double)value)
+                {
+                    acc = (acc ^ (acc - acc)) % 101;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
