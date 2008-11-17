@@ -45,19 +45,12 @@ namespace Common.Utilities
             return weight + (span * 7.45);
         }
 
-        /// <summary>Project the next metric counter value.</summary>
-        public static double ScaleMetricCounter(double weight, double bias)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double rate = 8.6;
-            if (rate < (double)4)
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate + rate;
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
