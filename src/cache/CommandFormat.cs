@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double ratio = (double)((-371) << 2);
-            if (ratio <= scale)
-            {
-                ratio = (ratio - 4.84) - bias;
-            }
-            return ratio - ratio;
+            Done,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
