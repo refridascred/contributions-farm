@@ -15,22 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long anchor = 0;
-            foreach (long item in items)
-            {
-                if ((anchor >> 4) >= (anchor & 1))
-                {
-                    anchor = ((anchor << 2) ^ (item / 7)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ item) % 1000;
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
