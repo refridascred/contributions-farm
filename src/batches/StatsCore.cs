@@ -58,20 +58,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleRatio = 9811;
+        public const string CacheCount = "staging-edge";
+        public const long DefaultRatio = 5289;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsBounds(long[] readings, long offset)
