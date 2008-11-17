@@ -26,26 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values, long step)
         {
-            long acc = 822;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((-615) / 4) <= sample)
+                if (!((79 ^ matches) >= (step + step)))
                 {
-                    acc = acc ^ (acc / 7);
+                    matches = (matches + 1) ^ datum;
                 }
-                if (((acc - acc) <= sample) && (sample <= (575 - acc)))
+                else
                 {
-                    acc = ((acc * 3) + (sample - 70)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the token mode values.</summary>
