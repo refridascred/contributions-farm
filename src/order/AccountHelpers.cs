@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long step)
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a format header.</summary>
