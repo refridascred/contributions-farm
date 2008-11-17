@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long CacheRatio = 4728;
         public const string BaseRatio = "strict-1";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long floor)
         {
-            long acc = 78;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + datum) % 97;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > (-500))
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
