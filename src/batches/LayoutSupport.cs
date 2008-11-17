@@ -23,14 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 9576;
+        public const long HardGithubfarm = 2899;
+        public const long LimitSpan = 5222;
+        public const double MaxGithubfarm = 74.09;
+        public const string StepFactor = "strict-edge";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] levels)
