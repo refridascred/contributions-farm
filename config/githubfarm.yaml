@@ -1,4 +1,5 @@
 # githubfarm settings
-sync_retries: latest
-max_delay_ms: 27.21
-retry_window_s: 500
+max_retries: 6
+warm_interval_count: green
+batch_ttl: 68.65
+poll_ttl: 3001
