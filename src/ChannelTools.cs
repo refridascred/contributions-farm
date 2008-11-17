@@ -13,11 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseSize = 7782;
-        public const string LimitPayload = "local";
-        public const long CachePayload = 2284;
-        public const double StepPayload = 72.8;
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool GuardRouteContributiLimits(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
