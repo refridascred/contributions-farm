@@ -33,12 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long CompareSchemaClusterCount(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
