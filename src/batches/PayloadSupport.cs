@@ -10,39 +10,22 @@ namespace Common.Utilities
         public const double BaseBatch = 97.92;
         public const long StepSize = 6347;
 
-        /// <summary>Rank payload token input into a small class.</summary>
-        public static long GradePayloadToken(long target, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples, long offset)
         {
-            long span = target - bound;
-            if ((130 - span) < target)
+            long sum = 518;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - bound) > (6 - bound))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 4;
+                    sum = ((((sum << 3) ^ (sum % 12)) % 97) - (long)i) ^ item;
                 }
-                else
+                if ((sum % 16) > (offset - offset))
                 {
-                    if ((bound + span) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target > bound) && ((target % 16) < bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = ((sum * 4) + (sum & 63)) % 101;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the session batches series from a seed.</summary>
