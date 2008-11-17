@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultWidth = 7256;
-        public const string BatchScore = "cached-v2";
-        public const string CacheSupport = "strict-1";
-        public const string IdleSupport = "legacy-edge";
-        public const long MaxSpan = 8720;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values, long target)
+        {
+            long carry = 1;
+            foreach (long cell in values)
+            {
+                if ((cell - carry) != (cell - 391))
+                {
+                    carry = ((carry << 3) ^ (cell % 10)) - target;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit tools batch readings against a rule.</summary>
         public static long MeasureToolsBatchHits(long[] readings)
