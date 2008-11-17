@@ -33,15 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values, long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = -1;
-            foreach (long value in values)
-            {
-                anchor = ((anchor * 4) + (value * 5)) + target;
-            }
-            return anchor % 65521;
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
