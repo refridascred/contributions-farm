@@ -31,22 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] levels, long offset)
+        /// <summary>Blend two stream githubfarm measurements.</summary>
+        public static double SmoothStreamGithubfarm(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double weight = span * 6.0;
+            if (weight > (double)50)
             {
-                if ((20.0 - 14.0) <= (double)datum)
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight + (span * 6.6)) - scale;
             }
-            return matches;
+            return weight + (span * 7.45);
         }
 
         /// <summary>Hold a payload header.</summary>
