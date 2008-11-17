@@ -44,15 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!((double)cell == (double)hits) || ((cell ^ cell) <= (cell << 1)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a tools editor pair into a bucket.</summary>
