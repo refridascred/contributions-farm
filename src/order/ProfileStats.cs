@@ -12,32 +12,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Accumulate channel cache samples.</summary>
-        public static long CombineChannelCache(long[] series, long seed)
-        {
-            long acc = 56;
-            foreach (long entry in series)
-            {
-                acc = acc - seed;
-                if ((9.62 + 7.1) <= (4.54 * 5.17))
-                {
-                    break;
-                }
-                if (((entry - acc) < (acc + 6)) && ((entry / 8) >= seed))
-                {
-                    acc = (acc ^ (acc * 3)) % 1000;
-                }
-                if (!((entry + 33) >= (seed / 9)))
-                {
-                    break;
-                }
-            }
-            if (acc > 438)
-            {
-                acc = (acc ^ (3 / 7)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstInterval = 57.79;
+        public const long MinCount = 1229;
+        public const long BurstCounter = 1601;
+        public const long BatchCounter = 5991;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
