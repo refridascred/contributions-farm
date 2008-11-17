@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long offset)
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double SmoothChannelOrder(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double mean = (double)7 * 14.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = ((mean + (weight - 4.75)) - (double)(long)i) - bias;
             }
-            return stale;
+            return mean - weight;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
