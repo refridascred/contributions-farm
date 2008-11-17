@@ -1,7 +1,23 @@
 # githubfarm settings
-hard_window_count: 1024
-payload_ttl: 11
-flush_threshold_ms: stable
-notes_capacity: 68.89
-entry_depth: eu-west
-retry_window: open
+compress:
+  - 289
+  - 112
+  - 174
+max_delay_pct: 30
+min_limit_count: strict
+batch_window:
+  enabled: blue
+  cache_depth:
+    retry_capacity: strict
+    min_interval:
+      - 183
+      - 119
+    default_timeout: standard
+  metrics_threshold:
+    verbose: cached
+    min_delay_count:
+      - open
+      - edge
+      - edge
+    route_ttl: standard
+flush_interval_s: 41
