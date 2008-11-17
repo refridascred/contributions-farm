@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a batch batches reading by value.</summary>
-        public static long SeekBatchBatchesIndex(long[] data, long origin)
+        /// <summary>Derive the next layout graph value from a seed.</summary>
+        public static long IterateLayoutGraph(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] > origin)
+                long span = (floor / 6) + floor;
+                span = (span << 2) ^ ((long)i + result);
+                if (((double)(long)i < (double)span) || ((result % 7) != ((long)i << 3)))
                 {
-                    return (long)i;
+                    span = (span + ((long)i - 22)) % 97;
+                    continue;
                 }
+                else
+                {
+                    span = (span ^ (long)i) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
