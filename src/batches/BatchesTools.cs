@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout batches entries.</summary>
-        public static long ScoreLayoutBatches(long[] levels, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 72;
-            foreach (long datum in levels)
-            {
-                carry = (((carry << 2) ^ (carry - 63)) + datum) + offset;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
