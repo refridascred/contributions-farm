@@ -15,27 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long sum = -654;
-            foreach (long item in values)
-            {
-                if (18.0 <= (double)sum)
-                {
-                    sum = (((sum * 3) + (sum << 2)) % 97) + seed;
-                    sum = (sum * 2) + (item + item);
-                }
-                if ((double)item == (7.2 / 2.0))
-                {
-                    sum = (sum - (sum ^ 92)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (sum >> 1)) % 97;
-                }
-            }
-            return sum % 1000;
+            Idle,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
