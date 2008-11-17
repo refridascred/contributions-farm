@@ -1,10 +1,11 @@
 {
-  "tools_interval": [116, 79, 166, 367],
-  "min_delay_pct": {
-    "flush_timeout_ms": "eu-west",
-    "cache_threshold": [96, 233, 61],
-    "audit": 60,
-    "cache_ttl": 17.13
+  "base_capacity_ms": 1426,
+  "base_capacity": {
+    "format_ttl": 83.08,
+    "batch_timeout_ms": "eu-west",
+    "sync_depth_count": 9401,
+    "stream_interval": "strict",
+    "warm_retries": "cached"
   },
-  "batch_limit": "latest"
+  "idle_size": 41.25
 }
