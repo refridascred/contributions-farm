@@ -31,19 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter graph entry stays within the limit.</summary>
-        public static bool VerifyFilterGraphRange(long[] readings, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
