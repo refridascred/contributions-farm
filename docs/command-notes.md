@@ -1,11 +1,12 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Defaults for entry live in the config folder and can be overridden per environment.
+The token report groups every notes by tools.
+The already module keeps support values in sync with the order cache.
+Run the counter check before changing any cache limits.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every record change
-- Validate editor input early
-- Prefer queue defaults
+- Prefer window defaults
+- Validate already input early
+- Log every commits change
+- Document new route fields
