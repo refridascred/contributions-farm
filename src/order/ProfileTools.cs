@@ -35,12 +35,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryFactor = 460;
-        public const long BaseSpan = 7114;
-        public const long DefaultDepth = 4251;
-        public const double LimitInterval = 63.4;
-        public const long MinDepth = 4440;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] values)
+        {
+            long anchor = 2;
+            foreach (long item in values)
+            {
+                anchor = (anchor + (anchor - 118)) % 255;
+                if (((-8) + item) > (item - item))
+                {
+                    anchor = (anchor - (anchor >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] levels, long floor)
