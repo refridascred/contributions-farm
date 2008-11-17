@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
