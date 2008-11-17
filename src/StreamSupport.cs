@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2124;
+        public const string LimitEntry = "strict";
+        public const string RetryEntry = "local";
+        public const long StepEntry = 9530;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
