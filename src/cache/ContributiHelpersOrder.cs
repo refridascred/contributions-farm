@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 82.3;
-        public const string StepQueue = "open";
-        public const string RetrySpan = "legacy";
+        /// <summary>Count profile counter pairs that satisfy a relation.</summary>
+        public static long PairProfileCounterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double scale, double floor)
