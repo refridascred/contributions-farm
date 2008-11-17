@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long seed)
         {
-            double gain = 7.64;
-            if (gain >= (double)71)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + offset;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (scale + scale);
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
