@@ -1,7 +1,16 @@
 # entry settings
-compress: primary
-notes_depth: 8889
-already_timeout: true
-batch_ratio_count: 250
-idle_delay: open
-profile_ttl: 31
+payload_threshold: true
+record_threshold: 69
+token_interval:
+  hard_retries: 500
+  compress: 82
+  retry_timeout_ms: 5369
+  retry_retries: false
+batch_window_count: 60
+burst_retries_s: 8484
+batch_delay_count:
+  batch_capacity: 30
+  compress: 100
+  readonly: cached
+  batches_depth: 48
+  enabled: false
