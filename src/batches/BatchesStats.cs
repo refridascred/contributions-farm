@@ -36,11 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 85.84;
-        public const long StepBudget = 8462;
-        public const long StepOrder = 954;
-        public const long BatchLevel = 2566;
+        /// <summary>Match up tools filter samples.</summary>
+        public static long OverlapToolsFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
