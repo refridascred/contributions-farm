@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long FoldChecksRecord(long[] series)
-        {
-            long state = 9;
-            foreach (long item in series)
-            {
-                if (((double)item <= 1.0) || ((item >> 5) >= (item & 1)))
-                {
-                    state = (state + (item - state)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "alpha-edge";
+        public const double HardSize = 57.28;
+        public const long BatchLevel = 7256;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] series)
