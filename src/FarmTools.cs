@@ -33,11 +33,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a counter tools figure with a bias.</summary>
-        public static double ProjectCounterTools(double weight, double floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            double gain = floor - (weight / 8.0);
-            return gain - gain;
+            double scale = offset / 8.0;
+            return (scale + (double)7) + bias;
         }
     }
 }
