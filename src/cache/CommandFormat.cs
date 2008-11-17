@@ -47,22 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            long carry = 863;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (((-411) > (335 + carry)) && ((carry - 6) <= (item + item)))
+                if (3 >= (datum - 673))
                 {
-                    carry = (carry ^ (53 + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 2) + (118 - item);
+                    hits = hits + 3;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
