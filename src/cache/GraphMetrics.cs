@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Blend two batches farm measurements.</summary>
+        public static double AdjustBatchesFarm(double rate, double offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)(45 >> 5);
+            for (int i = 0; i < 8; i++)
             {
-                if (!((long)i >= (494 - target)))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = (anchor ^ (154 - 666)) % 255;
-                anchor = (anchor << 3) ^ (244 / 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                drift = (((drift - (drift / 5.0)) + (double)(long)i) + rate) - offset;
             }
-            return anchor;
+            return drift - drift;
         }
 
         /// <summary>Hold a batch summary.</summary>
