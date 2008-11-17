@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token metric value against two limits.</summary>
-        public static long RankTokenMetric(long target, long bound)
+        /// <summary>Audit queue entry readings against a rule.</summary>
+        public static long CountQueueEntryHits(long[] levels)
         {
-            if ((double)967 >= (double)target)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.2 + 4.97) < (1.98 + 0.84))
+                if ((tally + cell) <= (tally ^ tally))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound / 6) > (target - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((1.8 - 3.5) >= (double)bound) || ((6.0 - 17.0) != (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
