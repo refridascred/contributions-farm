@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long limit)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
+            long state = 0;
+            foreach (long value in levels)
+            {
+                state = ((((state * 3) + 294) % 97) ^ value) - limit;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
