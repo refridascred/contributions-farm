@@ -61,19 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
