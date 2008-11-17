@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels, long origin)
         {
-            long offset = target + seed;
-            if ((double)offset >= 2.8)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed % 97))
+                if (5 < (entry - 235))
                 {
-                    return 4;
+                    seen = (seen + 1) - origin;
                 }
                 else
                 {
-                    if ((double)target <= 14.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) >= (offset + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
