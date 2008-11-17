@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Classify a batch metric pair into a bucket.</summary>
+        public static long SortBatchMetric(long offset, long limit)
         {
-            long result = 0;
-            foreach (long sample in items)
+            long delta = offset ^ limit;
+            if ((2.17 - 9.0) < (double)offset)
             {
-                if ((sample - sample) < (result * 5))
+                return 1;
+            }
+            else
+            {
+                if ((delta - limit) >= limit)
                 {
-                    result = (result + (result - result)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((delta % 16) < (offset - delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
