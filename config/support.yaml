@@ -1,4 +1,30 @@
 # support settings
-persist: false
-payload_size: 500
-enabled: 69.41
+layout_delay:
+  - 16
+  - 254
+  - 174
+commits_window: cached
+support_ratio:
+  payload_limit: false
+  poll_limit: true
+  readonly: primary
+  max_size_pct: strict
+  token_limit: 2.1
+min_delay_s:
+  poll_capacity_s: true
+  batches_limit: 7
+  strict:
+    dry_run: green
+    checks_timeout:
+      - 21
+      - 2
+    audit: false
+  base_retries:
+    - 134
+    - 215
+    - 435
+  burst_capacity_s:
+    - 109
+    - 205
+  flush_timeout: 76.44
+layout_depth: eu-west
