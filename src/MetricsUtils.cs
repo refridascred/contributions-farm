@@ -47,13 +47,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long floor2)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            long prev = floor + floor2;
+            if (!((floor / 8) == (prev << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1 >> 5) != (floor2 * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(floor2 > (prev + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor2 < (133 & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
