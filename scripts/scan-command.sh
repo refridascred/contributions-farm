@@ -6,18 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging open; do
+    log "checking ${item}"
+done
