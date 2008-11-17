@@ -44,14 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Queued,
-            Paused,
-            Retry,
-            New,
-            Ready,
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
