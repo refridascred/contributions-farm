@@ -57,12 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
