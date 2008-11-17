@@ -50,12 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            New,
-            Done,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
