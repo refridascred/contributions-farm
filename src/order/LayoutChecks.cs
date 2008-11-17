@@ -66,14 +66,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Dropped,
-            Draft,
-            Closed,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "standard-v2";
+        public const string LimitReport = "stable";
+        public const long BatchReport = 813;
     }
 }
