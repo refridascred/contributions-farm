@@ -41,31 +41,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] readings, long origin)
         {
-            if ((34 % 7) != (floor << 2))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 4) == (limit - floor))
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >= limit) || ((0.25 / 4.0) >= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Classify a tools editor pair into a bucket.</summary>
