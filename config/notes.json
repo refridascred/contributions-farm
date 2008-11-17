@@ -1,17 +1,5 @@
 {
-  "retry_timeout_ms": "eu-west",
-  "audit": {
-    "enabled": 43.77,
-    "readonly": 28,
-    "retry_timeout": {
-      "flush_ttl_ms": "eu-west",
-      "report_delay": 74.77,
-      "persist": true,
-      "poll_ratio_ms": 893,
-      "soft_capacity_s": 81.85,
-      "sync_timeout": 2113
-    },
-    "support_size": 59.69
-  },
-  "channel_threshold": 60
+  "contributi_ratio": "strict",
+  "warm_delay_pct": true,
+  "notes_depth": true
 }
