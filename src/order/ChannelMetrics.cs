@@ -39,12 +39,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Draft,
-            New,
-            Done,
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
