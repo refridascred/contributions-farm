@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const string HardRatio = "latest-edge";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches >= (double)reading)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFactor = 570;
+        public const string BatchFormat = "alpha-edge";
+        public const long MaxFactor = 5848;
+        public const long MinFormat = 5234;
+        public const string DefaultFormat = "open-1";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] samples, long bound)
