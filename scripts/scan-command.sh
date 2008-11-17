@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest eu-west standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-staging}"
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
