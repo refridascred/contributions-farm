@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 2412;
+        public const double CacheScore = 85.73;
+        public const double MaxDepth = 53.38;
+        public const long BurstReport = 2179;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] samples)
