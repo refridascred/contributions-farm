@@ -52,11 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double rate = 10.0;
-            return ((rate + (13.0 * 8.8)) + weight) + floor;
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
