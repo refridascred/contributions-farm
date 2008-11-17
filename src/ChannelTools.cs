@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long target)
         {
-            Pending,
-            Stale,
-            Failed,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count > (double)target)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
