@@ -1,8 +1,7 @@
-id,label,owner
-1,541,420
-2,993,43.39
-3,fallback,139
-4,773,654
-5,203,blue
-6,548,47.37
-7,48.91,76.37
+id,owner,region
+1,43.2,751
+2,strict,15
+3,primary,61.42
+4,477,542
+5,eu-west,85.47
+6,993,standard
