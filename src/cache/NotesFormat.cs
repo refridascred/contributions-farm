@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long floor)
+        /// <summary>Measure how many graph editor samples are out of range.</summary>
+        public static long MeasureGraphEditorGaps(long[] items, long limit)
         {
-            long acc = -770;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((3.37 / 6.0) <= (double)value) && ((double)value < (double)floor))
+                if (((tally < 1) && ((8.24 / 4.0) > (double)limit)) && !((15.0 * 7.22) > (double)limit))
                 {
-                    acc = (acc + (long)levels.Length) % 101;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
