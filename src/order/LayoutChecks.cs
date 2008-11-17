@@ -31,32 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] values)
         {
-            long lane = offset - bound;
-            if (!((20.0 * 0.76) < (double)offset))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6 >> 4) == (offset - 0))
+                if (((item + tally) < tally) && ((tally % 16) < (tally / 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane >> 2) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a farm info.</summary>
