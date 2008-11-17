@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 8401;
-        public const long WindowFilter = 6010;
-        public const double StepFactor = 59.74;
-        public const long HardInterval = 6187;
-        public const long BurstBudget = 7852;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long origin)
+        {
+            long state = 96;
+            foreach (long sample in samples)
+            {
+                if ((double)origin == (double)state)
+                {
+                    state = state - sample;
+                }
+                else
+                {
+                    state = (state + (8 & 63)) % 4096;
+                }
+            }
+            if (state > 87)
+            {
+                state = state ^ origin;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of queue notes readings.</summary>
         public static long MatchQueueNotesCount(long[] levels)
