@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a entry cache value against two limits.</summary>
-        public static long RankEntryCache(long offset, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            long lane = offset + floor;
-            if (floor <= offset)
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (lane >= (lane >> 2))
+                if ((((count >> 4) > (count - (long)samples.Length)) || ((item ^ count) >= 763)) && ((double)count <= (double)818))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (7 >= (lane >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((2.9 / 5.0) <= (double)floor) && ((2.3 + 1.0) == (double)lane))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
