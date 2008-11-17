@@ -19,15 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            double scale = floor;
+            if (scale <= scale)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                scale = scale + scale;
             }
-            return anchor;
+            else
+            {
+                scale = scale + (floor - floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Hold a profile info.</summary>
