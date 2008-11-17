@@ -17,20 +17,11 @@ namespace Common.Utilities
         public const string HardBuffer = "latest-v2";
         public const double CacheBuffer = 73.75;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double floor)
-        {
-            double bias = gain;
-            if (bias <= floor)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (double)9;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryLevel = 73.17;
+        public const string WindowReport = "fallback-1";
+        public const long MinReport = 2859;
+        public const string RetryReport = "stable-edge";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] levels, long origin)
