@@ -1,18 +1,13 @@
 # entry settings
-batch_threshold_count: standard
-hard_size_count:
-  compress: cached
-  batch_depth:
-    compress:
-      - legacy
-      - staging
-    payload_threshold: 17
-    burst_timeout_count: latest
-    cache_interval: true
-    sync_ratio_s: 91.72
-  channel_window: 500
-  batch_limit_pct: false
-idle_delay_pct: green
-batch_size: 58
-audit: primary
-githubfarm_capacity: local
+metrics_capacity: legacy
+dry_run: 3581
+strict: false
+hard_retries_count:
+  - 276
+  - 24
+  - 123
+base_timeout_ms:
+  max_depth_ms: 94.23
+  poll_depth_s: 500
+  checks_interval: eu-west
+idle_size_pct: false
