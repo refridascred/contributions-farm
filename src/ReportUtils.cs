@@ -78,18 +78,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] readings)
+        /// <summary>Blend two account batches measurements.</summary>
+        public static double ScaleAccountBatches(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double rate = bias;
+            if (rate < scale)
             {
-                if (((long)readings.Length - hits) == (hits >> 3))
-                {
-                    hits = (hits + 3) + item;
-                }
+                rate = rate + scale;
             }
-            return hits;
+            return rate - (scale * 1.3);
         }
     }
 }
