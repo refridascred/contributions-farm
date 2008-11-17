@@ -1,8 +1,7 @@
 {
-  "order_limit": [497, 197, 366, 250],
-  "default_interval": 500,
-  "editor_interval": 63,
-  "schema_ratio": false,
-  "soft_retries_ms": 250,
-  "filter_ttl": false
+  "warm_ttl_pct": 49,
+  "max_ratio": 97.21,
+  "min_ratio_s": 1122,
+  "enabled": 24.21,
+  "verbose": true
 }
