@@ -1,5 +1,14 @@
 {
-  "idle_threshold": ["local", "staging", "latest", "local"],
-  "commits_ttl": 100,
-  "poll_depth": "staging"
+  "sync_limit": {
+    "strict": "latest",
+    "hard_capacity_ms": 500,
+    "cache_timeout_s": "strict"
+  },
+  "poll_limit": 86.17,
+  "readonly": {
+    "enabled": 16.73,
+    "soft_timeout": true,
+    "max_size_count": 10.25
+  },
+  "sync_delay_count": 500
 }
