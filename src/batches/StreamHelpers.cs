@@ -45,15 +45,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Pending,
-            Closed,
-            Locked,
-            Synced,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 9338;
+        public const long MaxCommits = 5177;
+        public const string BurstCommits = "staging-v2";
+        public const double BaseCommits = 30.8;
 
         /// <summary>Combine layout context values into a single score.</summary>
         public static long WeighLayoutContext(long[] values)
