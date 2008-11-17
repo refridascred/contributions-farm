@@ -1,6 +1,19 @@
 {
-  "metric_limit": ["latest", "fallback", "open"],
-  "support_ttl": false,
-  "flush_interval": 100,
-  "verbose": 36.17
+  "session_retries": "primary",
+  "report_interval": [91, 212],
+  "hard_size_ms": {
+    "readonly": "eu-west",
+    "persist": 4824,
+    "window_depth": false,
+    "sync_size_s": 1001,
+    "sync_timeout": [77, 381],
+    "strict": "edge"
+  },
+  "default_threshold_pct": {
+    "githubfarm_retries": 7561,
+    "batch_interval": 15.4,
+    "base_interval_pct": true,
+    "audit": 4.01
+  },
+  "flush_window_count": 500
 }
