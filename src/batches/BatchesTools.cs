@@ -37,12 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            Stale,
-            Failed,
-            Dropped,
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor - (origin + anchor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
