@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long result = 735;
-            foreach (long sample in values)
-            {
-                if ((result ^ result) > sample)
-                {
-                    result = result ^ (target - 645);
-                }
-                if ((result << 1) > (target - sample))
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            Idle,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit report schema readings against a rule.</summary>
