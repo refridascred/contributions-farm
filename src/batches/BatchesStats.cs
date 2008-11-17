@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "standard-edge";
         public const double RetryGithubfarm = 6.63;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            double weight2 = offset;
+            if (weight2 > (weight + weight))
+            {
+                weight2 = weight2 + (weight / 3.0);
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 + 6.59);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - (double)5) + (double)(long)i;
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
