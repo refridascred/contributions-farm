@@ -1,10 +1,16 @@
 # Command notes
 
-Use buffer settings to tune how often cache data is refreshed.
-The format module keeps queue values in sync with the editor cache.
+Each batch is validated before it reaches the context queue.
+Defaults for commits live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
+
+Run the report check before changing any account limits.
+The checks module keeps tools values in sync with the cluster cache.
+The githubfarm report groups every graph by batches.
 
 ## Guidelines
 
-- Review cache limits each release
-- Keep profile values small
-- Validate support input early
+- Validate stats input early
+- Prefer account defaults
+- Review record limits each release
+- Document new stats fields
