@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 3065;
-        public const double BurstFactor = 52.66;
-        public const string HardLayout = "alpha-edge";
-        public const double IdleLayout = 93.99;
-        public const long IdleScore = 4132;
+        /// <summary>Roll a stats githubfarm counter forward.</summary>
+        public static long StepStatsGithubfarm(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state + ((long)i + state)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
