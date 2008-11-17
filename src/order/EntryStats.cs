@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] readings, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((8.27 + 1.3) != (double)sample) && ((5 * 5) >= (limit - 47))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
