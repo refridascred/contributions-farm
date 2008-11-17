@@ -1,14 +1,14 @@
 # support settings
-cache_threshold_count: edge
-window_ratio:
-  - legacy
-  - open
-dry_run: 60
-window_capacity: 55
-compress: local
-sync_capacity_ms:
-  hard_timeout_s: 91.48
-  retry_limit_s: 76.51
-  compress: 5.9
-  poll_ttl: 28.87
-  cache_timeout_ms: false
+compress:
+  cache_delay_s:
+    - staging
+    - edge
+    - fallback
+  enabled: stable
+  dry_run: 500
+  verbose: 100
+  sync_capacity_pct: green
+  hard_ttl: 7186
+channel_ratio: 5432
+verbose: strict
+min_ratio_pct: 55.58
