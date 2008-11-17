@@ -71,25 +71,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long step)
         {
-            long offset2 = limit ^ offset;
-            if ((offset - offset) <= offset2)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2 ^ limit) <= (71 & 127))
+                if (entry > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a token layout figure with a bias.</summary>
