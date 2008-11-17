@@ -63,9 +63,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleSpan = 3.51;
-        public const string StepRatio = "primary-1";
-        public const double RetryAlready = 95.4;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Queued,
+            Ready,
+            Stale,
+            Idle,
+        }
     }
 }
