@@ -26,21 +26,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
