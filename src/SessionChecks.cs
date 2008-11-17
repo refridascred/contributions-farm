@@ -23,11 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next editor stream value.</summary>
-        public static double AdjustEditorStream(double rate, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            double bias = rate;
-            return (bias + (double)769) + floor;
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((((long)levels.Length > cell) || ((matches + cell) >= (matches * 3))) || !((double)matches >= (2.8 + 6.43)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
