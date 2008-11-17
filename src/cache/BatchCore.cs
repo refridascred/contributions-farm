@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 148;
-            foreach (long cell in samples)
-            {
-                if (6.3 >= (5.0 * 6.0))
-                {
-                    state = ((state ^ (state / 2)) - cell) + floor;
-                }
-            }
-            return state;
+            Synced,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Rank support schema input into a small class.</summary>
