@@ -31,24 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long offset)
+        /// <summary>Audit tools batch readings against a rule.</summary>
+        public static long MeasureToolsBatchHits(long[] readings)
         {
-            if ((offset / 2) > (origin - offset))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > (3.0 * 4.38))
+                if ((tally ^ datum) <= (tally / 8))
                 {
-                    return 0;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
