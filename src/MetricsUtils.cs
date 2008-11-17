@@ -63,22 +63,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
-        {
-            long state = 42;
-            foreach (long entry in series)
-            {
-                if ((state + entry) > entry)
-                {
-                    state = (state + (entry % 10)) % 4096;
-                }
-                else
-                {
-                    state = (state - 49) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "open";
+        public const long BatchCache = 3338;
+        public const double StepTimeout = 81.46;
     }
 }
