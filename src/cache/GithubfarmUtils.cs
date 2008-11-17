@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] items, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches & 63) != (limit + 3))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
