@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Each already is validated before it reaches the token queue.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate stats input early
-- Keep buffer values small
-- Prefer contributi defaults
+- Document new buffer fields
+- Log every support change
+- Keep already values small
