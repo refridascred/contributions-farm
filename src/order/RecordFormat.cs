@@ -64,19 +64,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            double drift = (offset - rate) + (double)45;
-            if (drift > rate)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift - 1.9;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
