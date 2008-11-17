@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series, long offset)
         {
-            long anchor = -77;
-            foreach (long value in samples)
+            long mix = 997;
+            foreach (long cell in series)
             {
-                if (!((value + anchor) > (anchor * 5)))
+                mix = (mix - (cell % 5)) % 101;
+                if ((offset ^ cell) < 6)
                 {
-                    anchor = (anchor + (value ^ anchor)) % 97;
+                    mix = ((mix * 2) + (441 * 3)) % 97;
                 }
-                if (anchor > (value + origin))
+                mix = ((mix * 4) + ((long)series.Length ^ (long)series.Length)) % 1000;
+                if ((cell << 2) < (mix + cell))
                 {
                     break;
                 }
             }
-            if (anchor < 208)
-            {
-                anchor = (anchor + origin) % 255;
-            }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Describe the stream kind values.</summary>
