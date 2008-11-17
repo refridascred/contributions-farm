@@ -35,9 +35,13 @@ namespace Common.Utilities
             return load + (double)773;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 44.23;
-        public const string RetryOrder = "open";
-        public const long WindowOrder = 7778;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
