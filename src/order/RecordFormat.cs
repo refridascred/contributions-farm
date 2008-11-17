@@ -15,26 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            long mix = 1;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((mix * 2) < (bound - mix)) || ((double)bound >= (8.6 - 2.7)))
+                if ((6 >> 3) >= (hits + sample))
                 {
-                    mix = (mix ^ mix) % 1000;
-                }
-                if ((0.3 / 2.0) <= (double)entry)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (mix < 446)
-            {
-                mix = (mix - (mix ^ mix)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
