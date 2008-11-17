@@ -16,23 +16,19 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items)
         {
-            double load = (double)(85 - 507);
-            if (load >= gain)
+            long anchor = 41;
+            foreach (long sample in items)
             {
-                load = load - span;
+                anchor = (((anchor * 2) + 91) % 65521) - sample;
+                if (16 <= (anchor % 16))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (load * 1.94);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (gain / 8.0)) - (double)(long)i;
-            }
-            return load - 6.0;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
