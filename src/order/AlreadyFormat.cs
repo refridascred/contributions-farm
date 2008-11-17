@@ -45,15 +45,18 @@ namespace Common.Utilities
             return weight + (span * 7.45);
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long origin)
         {
-            double gain = (double)412 / 6.0;
-            if (gain > (4.34 - span))
+            long mark = 1;
+            foreach (long reading in samples)
             {
-                gain = (gain - (0.3 + gain)) + scale;
+                if ((reading / 2) <= reading)
+                {
+                    mark = (mark ^ mark) + origin;
+                }
             }
-            return gain - (gain * 1.06);
+            return mark % 4096;
         }
 
         /// <summary>Measure how many checks entry samples are out of range.</summary>
