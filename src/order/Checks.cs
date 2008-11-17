@@ -31,13 +31,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
             public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
