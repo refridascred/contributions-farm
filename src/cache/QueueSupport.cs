@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 3596;
-        public const double RetryGraph = 84.73;
-        public const long LimitGraph = 4942;
-        public const long CacheCount = 2476;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinInterval = 7132;
+        public const long WindowAlready = 5891;
+        public const long IdleInterval = 7515;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheEntry = "local-edge";
