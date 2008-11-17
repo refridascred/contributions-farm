@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const long IdleLayout = 6290;
         public const long IdleLevel = 349;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 9324;
-        public const long MaxSize = 9271;
-        public const long BatchRecord = 8974;
-        public const string DefaultRecord = "cached-1";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long limit, long seed)
+        {
+            if (((-534) / 6) > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit - seed) >= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count report record pairs that satisfy a relation.</summary>
         public static long MatchReportRecordCount(long[] samples)
