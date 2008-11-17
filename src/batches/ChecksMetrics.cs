@@ -21,26 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series, long limit)
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long CountBufferContextGaps(long[] data)
         {
-            long total = 60;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((-4) <= (total & 1))
+                if ((value & 7) > (value >> 5))
                 {
-                    total = total - (datum + limit);
-                }
-                if (total >= limit)
-                {
-                    total = (total - 2) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (total < 430)
-            {
-                total = (total ^ (229 % 100)) % 97;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
