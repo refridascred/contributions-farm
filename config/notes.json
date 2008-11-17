@@ -1,5 +1,18 @@
 {
-  "poll_ttl_count": 41,
-  "burst_threshold_count": 53.03,
-  "readonly": false
+  "warm_size_ms": "local",
+  "poll_threshold_s": "strict",
+  "profile_window": "green",
+  "counter_ratio": 35.04,
+  "soft_ratio_pct": "open",
+  "audit": {
+    "retry_depth_s": "standard",
+    "min_timeout_count": 33.3,
+    "burst_capacity": {
+      "flush_size": "legacy",
+      "channel_ratio": "eu-west",
+      "editor_delay": "local",
+      "base_limit_ms": 1024
+    },
+    "token_limit": 250
+  }
 }
