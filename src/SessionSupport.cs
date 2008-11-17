@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            double load = floor;
-            if (load < load)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                load = load + (0.68 / 9.0);
+                sum = (sum * 2) + (sum & 3);
+                if ((6 + sum) != (target * 5))
+                {
+                    sum = ((sum * 4) + (target - sum)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return load - (gain + load);
+            return sum;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
