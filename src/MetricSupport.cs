@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardCount = "staging-v2";
+        public const long BatchLevel = 1892;
+        public const long SoftSession = 3796;
+        public const double HardRatio = 26.68;
+        public const long IdleWidth = 5727;
 
         /// <summary>Compare every pair of notes support readings.</summary>
         public static long CompareNotesSupportCount(long[] items)
