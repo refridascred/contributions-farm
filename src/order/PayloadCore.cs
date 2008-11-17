@@ -60,19 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] data, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long score = 297;
+            foreach (long cell in items)
             {
-                if (item != origin)
+                if ((score + cell) < (score / 8))
                 {
-                    flag = false;
-                    break;
+                    score = ((score << 2) ^ (score / 5)) % 1000;
                 }
             }
-            return flag;
+            if (score < 96)
+            {
+                score = (score ^ (831 + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
