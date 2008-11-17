@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Ready,
-            Queued,
-            Retry,
+            Synced,
+            Dropped,
             Draft,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
