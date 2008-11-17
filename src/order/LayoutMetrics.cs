@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next layout graph value from a seed.</summary>
-        public static long IterateLayoutGraph(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                long span = (floor / 6) + floor;
-                span = (span << 2) ^ ((long)i + result);
-                if (((double)(long)i < (double)span) || ((result % 7) != ((long)i << 3)))
-                {
-                    span = (span + ((long)i - 22)) % 97;
-                    continue;
-                }
-                else
-                {
-                    span = (span ^ (long)i) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardDepth = 5.85;
+        public const long IdleLayout = 6290;
+        public const long IdleLevel = 349;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowRecord = 9324;
