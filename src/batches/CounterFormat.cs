@@ -23,21 +23,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up support farm samples.</summary>
-        public static long CompareSupportFarmCount(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)2 < (double)offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((4.52 * 0.7) == (double)offset)
                 {
-                    if ((items[i] - items[j]) == 8)
+                    return 4;
+                }
+                else
+                {
+                    if (!((7 + limit) > (limit * 4)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two stats measurements.</summary>
