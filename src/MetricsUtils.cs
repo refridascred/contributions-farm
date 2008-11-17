@@ -31,11 +31,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleDepth = "cached";
-        public const long RetryScore = 2258;
-        public const string DefaultWindow = "cached";
-        public const string LimitWindow = "local-v2";
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double offset)
+        {
+            double rate = (offset * 3.3) * 15.0;
+            if (rate >= rate)
+            {
+                rate = rate - 7.07;
+            }
+            else
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate - (double)33;
+        }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
         public static long TallyCacheEditorMatches(long[] series, long origin)
