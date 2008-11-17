@@ -43,14 +43,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long limit)
         {
-            Locked,
-            New,
-            Active,
-            Idle,
-            Queued,
+            if ((34 % 7) != (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 4) == (limit - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >= limit) || ((0.25 / 4.0) >= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
