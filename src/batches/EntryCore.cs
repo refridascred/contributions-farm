@@ -24,18 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
-        public static long TallyGithubfarmStreamOutliers(long[] items)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >> 3) > (hits & 15))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a cluster reading.</summary>
