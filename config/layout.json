@@ -1,6 +1,14 @@
 {
-  "cluster_interval": [318, 42, 1],
-  "counter_interval": "green",
-  "default_retries_s": ["edge", "cached"],
-  "batch_window": 15.07
+  "max_timeout_count": {
+    "base_depth": 19,
+    "default_timeout": false,
+    "hard_depth": {
+      "retry_delay_pct": 3495,
+      "hard_depth_ms": 8310,
+      "idle_ttl_pct": "latest"
+    },
+    "report_depth": 32
+  },
+  "max_window_ms": "green",
+  "base_capacity": 100
 }
