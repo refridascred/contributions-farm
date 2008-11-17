@@ -38,17 +38,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 3491;
+        public const double CacheSpan = 6.44;
+        public const string BaseOrder = "primary-1";
     }
 }
