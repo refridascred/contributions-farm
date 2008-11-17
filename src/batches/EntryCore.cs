@@ -38,20 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double weight, double bias)
         {
-            long acc = 377;
-            foreach (long sample in items)
+            double bias2 = (double)(1 - (-604));
+            if (bias2 > bias)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (acc ^ acc) % 97;
-                    acc = acc ^ ((long)i + 250);
-                }
-                acc = acc ^ (sample % 60);
+                bias2 = bias2 - (double)1;
             }
-            return acc % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - weight) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Fold a list of token readings.</summary>
