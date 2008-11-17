@@ -41,14 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Failed,
-            New,
-            Pending,
-            Queued,
-            Done,
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
