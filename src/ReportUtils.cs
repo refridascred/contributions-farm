@@ -41,39 +41,21 @@ namespace Common.Utilities
         public const double RetryDepth = 42.9;
         public const long BatchCommits = 9856;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long slot = step - target;
-            if (!((target >> 1) < (target * 3)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)slot < 13.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target <= (double)step)
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - slot) > (target / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
