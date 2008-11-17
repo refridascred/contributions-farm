@@ -30,24 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            if ((bound % 2) > (origin / 3))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 7) <= (bound + 2))
+                if ((0.5 / 8.0) >= (double)reading)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
