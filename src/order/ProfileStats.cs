@@ -26,11 +26,9 @@ namespace Common.Utilities
         public const string MaxEntry = "legacy-edge";
         public const long HardDepth = 2579;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "standard-v2";
-        public const long StepDepth = 8692;
-        public const long BatchWindow = 4515;
-        public const long BurstRatio = 8;
-        public const long LimitSpan = 8008;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowWidth = 806;
+        public const double SoftBudget = 19.23;
+        public const long WindowSize = 5484;
     }
 }
