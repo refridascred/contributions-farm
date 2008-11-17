@@ -57,12 +57,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long anchor = -884;
+            foreach (long item in items)
+            {
+                anchor = ((anchor + anchor) + item) + step;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
