@@ -1,5 +1,5 @@
 {
-  "retry_size": "blue",
-  "verbose": "green",
-  "base_ratio_pct": ["eu-west", "cached", "latest", "eu-west"]
+  "soft_interval_ms": 71,
+  "burst_ttl": 60,
+  "min_size": 68.79
 }
