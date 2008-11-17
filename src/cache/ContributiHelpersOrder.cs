@@ -29,13 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            long state = 1;
+            foreach (long sample in values)
+            {
+                if (((sample & 31) >= (sample + sample)) && ((state % 24) != (state + state)))
+                {
+                    state = (state + (sample * 3)) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
