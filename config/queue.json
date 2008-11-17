@@ -1,8 +1,17 @@
 {
-  "soft_depth_ms": 36,
-  "sync_depth": false,
-  "poll_capacity": 500,
-  "verbose": "eu-west",
-  "strict": [35, 495, 379],
-  "hard_delay_pct": "latest"
+  "window_size": 52,
+  "sync_ttl_ms": 3572,
+  "default_capacity_s": {
+    "batch_ttl_count": {
+      "already_depth": [151, 394],
+      "farm_size": "latest",
+      "audit": true
+    },
+    "verbose": 79.21,
+    "max_window_pct": ["blue", "local", "fallback"],
+    "stats_capacity": 92.13
+  },
+  "sync_ttl": ["staging", "edge", "standard"],
+  "tools_delay": "local",
+  "profile_ttl": true
 }
