@@ -33,22 +33,22 @@ namespace Common.Utilities
         public const double SoftLevel = 4.13;
         public const long SoftAccount = 688;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Audit metrics commits readings against a rule.</summary>
+        public static long MeasureMetricsCommitsMatches(long[] items)
         {
-            long anchor = 81;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((7.0 - 16.0) > (15.0 - 1.5)) || ((39 + (long)values.Length) < (anchor >> 3)))
+                if ((double)item >= 16.0)
                 {
-                    anchor = ((anchor + 99) % 101) ^ cell;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 29)
-            {
-                anchor = (anchor - (39 - anchor)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
