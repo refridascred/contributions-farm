@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 4845;
-        public const double DefaultLayout = 5.29;
-        public const long BaseLayout = 848;
+        /// <summary>Grade a context schema value against two limits.</summary>
+        public static long RankContextSchema(long step, long offset)
+        {
+            if ((step <= offset) || (offset > (step ^ step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + offset) != (offset % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 2) != (offset + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long bound, long target)
