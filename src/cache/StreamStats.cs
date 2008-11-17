@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((double)step != (5.9 + 9.62)) || ((datum ^ 573) >= (hits - step)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
