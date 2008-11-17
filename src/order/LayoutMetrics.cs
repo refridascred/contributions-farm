@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry << 3) ^ (carry - target)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (!(6.0 < (double)item))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
