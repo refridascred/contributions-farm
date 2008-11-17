@@ -23,22 +23,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] data, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long result = 20;
+            foreach (long sample in samples)
             {
-                if ((count + 119) <= (31 << 3))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = ((count + 2) + cell) - bound;
+                    result = (result ^ (sample + sample)) + (long)i;
+                }
+                result = (result - (result & 127)) % 1000;
+                if ((seed - seed) <= (result * 3))
+                {
+                    result = (result + seed) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = ((result << 2) ^ (result + seed)) % 65521;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
