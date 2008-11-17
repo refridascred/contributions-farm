@@ -51,19 +51,12 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
