@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstInterval = 90.15;
-        public const string MaxWidth = "stable-edge";
-        public const long SoftScore = 9831;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings)
+        {
+            long carry = 0;
+            foreach (long cell in readings)
+            {
+                carry = carry + (cell & 127);
+                carry = carry - (carry % 5);
+                if (((carry ^ carry) <= (cell + cell)) && ((double)carry == (2.11 * 11.0)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long offset)
