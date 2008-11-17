@@ -29,17 +29,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((2.0 / 6.0) <= (double)bound)
             {
-                if (items[i] <= target)
+                return 4;
+            }
+            else
+            {
+                if ((11.0 / 2.0) < (double)floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + (-798)) > (bound << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 6) > (bound + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of editor entry readings.</summary>
