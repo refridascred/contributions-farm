@@ -17,14 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
+            Ready,
             Synced,
-            Failed,
-            Active,
-            Retry,
-            Dropped,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
