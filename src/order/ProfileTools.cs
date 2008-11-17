@@ -63,13 +63,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
-            Ready,
-            Stale,
-            Idle,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
