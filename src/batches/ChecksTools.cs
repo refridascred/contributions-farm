@@ -41,13 +41,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long limit)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            if (!((28 + limit) >= (step + step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 4) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (15.0 * 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step == (15.0 * 7.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
