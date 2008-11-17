@@ -1,4 +1,7 @@
 # githubfarm settings
-verbose: false
-cache_window: 8.43
-retry_ttl_pct: 95
+verbose: 6725
+readonly: stable
+retry_retries: strict
+retry_capacity_ms: 4638
+layout_depth: 50
+min_depth_ms: 12.06
