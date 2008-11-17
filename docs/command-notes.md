@@ -1,11 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the graph list.
-Run the format check before changing any batches limits.
-The channel report groups every payload by cache.
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the queue check before changing any layout limits.
+A channel that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer command defaults
-- Log every contributi change
+- Document new format fields
+- Validate counter input early
+- Review profile limits each release
