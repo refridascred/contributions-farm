@@ -18,12 +18,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Dropped,
-            Closed,
-            Locked,
+            Idle,
+            Active,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
