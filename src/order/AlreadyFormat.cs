@@ -45,18 +45,19 @@ namespace Common.Utilities
             return weight + (span * 7.45);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long origin)
+        /// <summary>Project the next metric counter value.</summary>
+        public static double ScaleMetricCounter(double weight, double bias)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            double rate = 8.6;
+            if (rate < (double)4)
             {
-                if ((reading / 2) <= reading)
-                {
-                    mark = (mark ^ mark) + origin;
-                }
+                rate = rate - bias;
             }
-            return mark % 4096;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the command mode values.</summary>
