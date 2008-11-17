@@ -52,9 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitTimeout = 4437;
-        public const double BurstScore = 2.86;
-        public const long MinNotes = 1597;
+        /// <summary>Count command window pairs that satisfy a relation.</summary>
+        public static long MatchCommandWindowCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
