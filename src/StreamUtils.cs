@@ -38,23 +38,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long state = 2;
-            foreach (long entry in data)
-            {
-                if (((double)seed <= (double)7) && (seed > (8 + entry)))
-                {
-                    state = (state - (entry / 6)) % 65521;
-                    state = ((state * 4) + entry) % 65521;
-                }
-                if ((6.26 - 14.0) <= (17.0 + 9.0))
-                {
-                    state = ((state * 5) + seed) % 255;
-                }
-            }
-            return state % 1000;
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
