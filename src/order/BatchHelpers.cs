@@ -34,14 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] levels)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (10.0 + 7.5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
