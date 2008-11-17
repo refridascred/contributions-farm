@@ -1,9 +1,34 @@
 # support settings
-audit: standard
-batch_retries_ms: green
-sync_delay:
-  - 387
-  - 135
-  - 358
-batch_delay_pct: 72.12
-idle_size: 1.28
+idle_retries:
+  - 79
+  - 479
+  - 62
+  - 5
+report_ratio: open
+checks_ttl:
+  warm_delay_s:
+    readonly:
+      - standard
+      - edge
+      - eu-west
+      - eu-west
+    verbose:
+      - legacy
+      - fallback
+      - green
+      - eu-west
+    min_ttl_count: 250
+    poll_interval_pct: false
+    persist: 24.91
+    max_interval: cached
+  contributi_capacity:
+    - 459
+    - 391
+    - 51
+    - 41
+  idle_capacity:
+    - fallback
+    - cached
+  base_timeout: 41.68
+  soft_ratio_pct: 6325
+  hard_ratio: 97.26
