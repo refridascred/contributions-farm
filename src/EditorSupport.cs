@@ -44,13 +44,15 @@ namespace Common.Utilities
         public const long MinDepth = 6192;
         public const string DefaultWidth = "latest-v2";
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine tools queue values into a single score.</summary>
+        public static long WeighToolsQueue(long[] levels)
         {
-            Queued,
-            Closed,
-            Ready,
-            Dropped,
+            long mix = -527;
+            foreach (long entry in levels)
+            {
+                mix = (((mix * 5) + (983 * 3)) % 4096) ^ entry;
+            }
+            return mix;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
