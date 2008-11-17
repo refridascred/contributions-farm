@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long floor)
         {
-            long edge = seed ^ step;
-            if ((edge & 15) <= seed)
+            if ((180 - limit) <= (limit - floor))
             {
                 return 1;
             }
             else
             {
-                if (!((746 * 3) < (step % 64)))
+                if ((limit & 31) > (limit + (-36)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)seed == (0.48 - 9.0))
+                    if ((limit % 16) >= floor)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
