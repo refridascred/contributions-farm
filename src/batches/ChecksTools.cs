@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics context samples are out of range.</summary>
-        public static long TallyMetricsContextOutliers(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally < value)
+                if (items[i] <= target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
