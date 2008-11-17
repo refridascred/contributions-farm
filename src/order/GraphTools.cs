@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long limit)
         {
-            if (!(target >= (target & 7)))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 7) <= (target >> 3))
+                if (value < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((11.0 + 3.09) > (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) < bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the tools mode values.</summary>
