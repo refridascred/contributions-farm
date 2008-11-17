@@ -67,19 +67,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] series, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long lane = offset + floor;
+            if ((double)offset < (2.5 * 7.79))
             {
-                if (value != offset)
+                return 3;
+            }
+            else
+            {
+                if (3.92 >= (double)lane)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
