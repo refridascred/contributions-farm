@@ -1,8 +1,17 @@
 {
-  "cache_ttl": true,
-  "retry_window": 1024,
-  "cache_depth_ms": 500,
-  "warm_interval_pct": true,
-  "burst_interval_pct": 250,
-  "queue_ratio": false
+  "audit": 639,
+  "flush_window": {
+    "audit": {
+      "strict": 30,
+      "sync_size_count": ["latest", "edge", "staging"],
+      "idle_timeout": false,
+      "min_delay_s": 500
+    },
+    "compress": 59,
+    "max_ratio": 550,
+    "order_size": "legacy",
+    "account_timeout": 3794,
+    "flush_limit": false
+  },
+  "githubfarm_size": "fallback"
 }
