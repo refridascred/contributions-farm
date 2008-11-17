@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank filter tools input into a small class.</summary>
-        public static long GradeFilterTools(long limit, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            if ((seed - limit) > seed)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                acc = ((acc * 5) + (acc + acc)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((seed ^ seed) == (seed >> 2)) || ((double)limit < (5.0 / 9.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Digest a series of route entries.</summary>
