@@ -41,10 +41,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRatio = 7415;
-        public const long SoftRecord = 2139;
-        public const string IdleRecord = "local-v2";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] series, long target)
