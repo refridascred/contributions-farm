@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples, long step)
         {
-            long score = 953;
-            foreach (long entry in items)
+            long mix = 939;
+            foreach (long item in samples)
             {
-                if ((6.0 / 7.0) <= (double)score)
+                for (int i = 0; i < 3; i++)
                 {
-                    score = ((score - score) % 1000) - entry;
+                    mix = ((((mix * 2) + (item & 7)) % 101) - (long)i) - step;
                 }
+                mix = (mix + ((long)samples.Length + mix)) % 255;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
