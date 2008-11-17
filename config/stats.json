@@ -1,8 +1,8 @@
 {
-  "sync_delay": 6818,
-  "strict": 21.49,
-  "retry_size": "strict",
-  "soft_timeout_count": ["edge", "latest"],
-  "readonly": "stable",
-  "base_window_s": "local"
+  "strict": ["primary", "edge", "strict"],
+  "route_limit": "blue",
+  "editor_delay": 100,
+  "default_delay": 4969,
+  "poll_timeout": "open",
+  "cache_ttl_pct": 3
 }
