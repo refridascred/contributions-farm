@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a batch record value against two limits.</summary>
-        public static long ClassifyBatchRecord(long target, long target2)
-        {
-            if ((double)25 <= (double)target2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - 29) > (-8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 7064;
+        public const long LimitEditor = 2522;
+        public const long BaseInterval = 9093;
+        public const long MaxEditor = 8177;
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
         public static long CountBufferContextGaps(long[] data)
