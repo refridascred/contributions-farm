@@ -68,22 +68,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record cluster value against two limits.</summary>
-        public static long SortRecordCluster(long offset, long limit)
+        /// <summary>Classify a tools editor pair into a bucket.</summary>
+        public static long ClassifyToolsEditor(long bound, long limit)
         {
-            if ((double)limit == (3.0 / 4.0))
+            long bound2 = bound ^ limit;
+            if (limit < (limit + bound))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((limit + limit) > (limit * 4)))
+                if (bound2 <= (limit & 31))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound << 2) != (bound - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
