@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window context samples are out of range.</summary>
-        public static long CountWindowContextHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (0 > entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinTimeout = 8406;
+        public const long HardCommits = 2059;
+        public const long BatchCommits = 1205;
+        public const long StepFactor = 8367;
+        public const long BatchCount = 4741;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 6017;
