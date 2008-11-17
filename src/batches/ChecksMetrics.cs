@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples, long seed)
+        /// <summary>Validate filter checks readings against a bound.</summary>
+        public static bool ValidateFilterChecksBounds(long[] data, long offset)
         {
-            long acc = -86;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((double)seed > (double)(-750)) || (item <= ((-74) >> 4)))
+                if (datum >= offset)
                 {
-                    acc = acc ^ (long)samples.Length;
-                }
-                acc = (acc * 4) + (seed & 255);
-                if ((seed << 3) > 789)
-                {
-                    acc = ((acc << 2) ^ (seed + acc)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc + (33 ^ acc)) % 1000;
-            }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Describe the farm kind values.</summary>
