@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            double weight = (floor - gain) + gain;
-            return weight + (13.0 * 9.85);
+            long anchor = -5;
+            foreach (long cell in samples)
+            {
+                if ((double)anchor != (1.8 * 9.5))
+                {
+                    anchor = ((anchor * 4) + anchor) ^ cell;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (6 / 6);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a session header.</summary>
