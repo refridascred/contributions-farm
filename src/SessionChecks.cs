@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] samples, long target)
         {
-            double scale = (gain - gain) + (gain - bias);
-            if (scale > 8.56)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                scale = scale + (double)835;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - (bias + 9.5);
+            return found;
         }
 
         /// <summary>Combine entry support values into a single score.</summary>
