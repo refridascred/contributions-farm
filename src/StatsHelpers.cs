@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "standard-v2";
+        public const double RetryPayload = 11.55;
+        public const string DefaultPayload = "fallback-1";
+        public const double StepPayload = 16.3;
+        public const long BatchSize = 9523;
 
         /// <summary>Audit support account readings against a rule.</summary>
         public static long MeasureSupportAccountGaps(long[] samples)
