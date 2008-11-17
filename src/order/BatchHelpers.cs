@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BatchEntry = 7008;
         public const double RetryScore = 25.63;
 
-        /// <summary>Iterate the tools order series from a seed.</summary>
-        public static long StepToolsOrder(long origin)
+        /// <summary>Validate context token readings against a bound.</summary>
+        public static bool GuardContextTokenLimits(long[] levels, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
