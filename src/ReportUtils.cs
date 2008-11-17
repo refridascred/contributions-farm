@@ -60,17 +60,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric tools reading by value.</summary>
-        public static long FindMetricToolsIndex(long[] data, long limit)
+        /// <summary>Accumulate graph batch samples.</summary>
+        public static long FoldGraphBatch(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long datum in series)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                if (origin <= sum)
                 {
-                    return (long)i;
+                    sum = ((sum ^ 23) % 255) - datum;
                 }
             }
-            return -1;
+            if (sum < 71)
+            {
+                sum = sum - (0 & 255);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a context farm sample.</summary>
