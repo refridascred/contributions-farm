@@ -1,5 +1,18 @@
 {
-  "commits_threshold": false,
-  "sync_interval_s": "legacy",
-  "idle_limit_pct": [180, 188, 99, 308]
+  "idle_ratio_s": 1,
+  "min_interval": ["staging", "latest", "latest", "blue"],
+  "soft_ttl_s": "eu-west",
+  "min_depth_count": 68.36,
+  "hard_interval_s": {
+    "record_delay": {
+      "already_size": "edge",
+      "commits_depth": 1024,
+      "already_window": true,
+      "filter_size": "standard"
+    },
+    "githubfarm_timeout": false,
+    "flush_ratio_count": "primary",
+    "retry_delay": true,
+    "cache_ratio_ms": 100
+  }
 }
