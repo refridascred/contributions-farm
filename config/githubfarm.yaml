@@ -1,12 +1,19 @@
 # githubfarm settings
-editor_threshold:
-  - fallback
-  - strict
-  - green
-  - staging
-base_ratio_ms:
-  - 225
-  - 109
-  - 244
-  - 71
-persist: 100
+sync_ratio_count: false
+sync_timeout_s:
+  - local
+  - stable
+  - legacy
+  - latest
+warm_ratio_ms: 32
+commits_window: 5108
+graph_timeout:
+  cache_capacity_count: true
+  soft_ratio_count: 100
+  batch_retries:
+    soft_window_s: 5.27
+    compress: 5221
+    support_threshold:
+      - 435
+      - 376
+burst_capacity: open
