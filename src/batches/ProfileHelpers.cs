@@ -13,31 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long offset)
+        /// <summary>Count the token editor entries that pass the check.</summary>
+        public static long CountTokenEditorOutliers(long[] data, long step)
         {
-            if (5.6 < (double)origin)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 3) < offset)
+                if ((double)datum >= 7.4)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin != (7.1 * 7.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
