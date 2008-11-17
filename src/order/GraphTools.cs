@@ -30,23 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((17.0 <= (double)offset) || ((offset % 24) < ((long)i - total)))
+                if (4 < (hits - hits))
                 {
-                    total = (total << 2) ^ (long)i;
+                    hits = ((hits + 2) + entry) + bound;
                 }
-                if (!(((long)i / 7) == (total ^ offset)))
+                else
                 {
-                    total = total + (total / 6);
+                    hits = hits - 1;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
