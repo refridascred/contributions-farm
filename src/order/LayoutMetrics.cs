@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardDepth = 5.85;
-        public const long IdleLayout = 6290;
-        public const long IdleLevel = 349;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 2921;
+        public const long LimitQueue = 1009;
+        public const string MinScore = "staging-1";
+        public const double MaxQueue = 44.75;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
