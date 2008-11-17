@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long FoldStatsSession(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor * 3) + (anchor - anchor)) % 97) - sample;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
