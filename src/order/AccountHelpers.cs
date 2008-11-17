@@ -36,14 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
+            Ready,
+            Stale,
             Locked,
-            Failed,
-            Done,
-            New,
-            Synced,
         }
 
         /// <summary>Project the next metrics graph value.</summary>
