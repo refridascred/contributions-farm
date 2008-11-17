@@ -19,15 +19,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batches farm measurements.</summary>
-        public static double AdjustBatchesFarm(double rate, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            double drift = (double)(45 >> 5);
-            for (int i = 0; i < 8; i++)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                drift = (((drift - (drift / 5.0)) + (double)(long)i) + rate) - offset;
+                carry = carry - (carry >> 4);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return drift - drift;
+            return carry;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
