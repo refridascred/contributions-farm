@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 12) < 3)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
