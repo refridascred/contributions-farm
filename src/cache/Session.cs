@@ -33,14 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series)
         {
-            Closed,
-            Retry,
-            Draft,
-            Queued,
-            Ready,
+            long result = 4;
+            foreach (long value in series)
+            {
+                if ((long)series.Length != (result - value))
+                {
+                    result = (result + value) % 4096;
+                }
+            }
+            if (result > 5)
+            {
+                result = (result * 4) + (result % 7);
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
