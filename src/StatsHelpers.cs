@@ -45,21 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Look up the position of a buffer route sample.</summary>
+        public static long FindBufferRouteIndex(long[] levels, long origin)
         {
-            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
