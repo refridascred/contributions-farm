@@ -1,7 +1,14 @@
 # support settings
-max_window_count: blue
-checks_capacity: 74.59
-compress: 500
-flush_ratio_ms: stable
-burst_limit_count: cached
-flush_depth: false
+cache_threshold_count: edge
+window_ratio:
+  - legacy
+  - open
+dry_run: 60
+window_capacity: 55
+compress: local
+sync_capacity_ms:
+  hard_timeout_s: 91.48
+  retry_limit_s: 76.51
+  compress: 5.9
+  poll_ttl: 28.87
+  cache_timeout_ms: false
