@@ -1,21 +1,7 @@
 {
-  "compress": "strict",
-  "dry_run": [382, 291],
-  "strict": "latest",
-  "enabled": 4390,
-  "batch_capacity_pct": ["local", "blue", "primary", "primary"],
-  "base_timeout": {
-    "cache_limit": 8.81,
-    "soft_ttl_s": {
-      "token_timeout": ["legacy", "eu-west", "eu-west", "latest"],
-      "commits_limit": 76,
-      "sync_interval_ms": "edge",
-      "persist": 7511,
-      "base_size": 100,
-      "entry_window": true
-    },
-    "min_size_pct": "cached",
-    "compress": 100,
-    "poll_interval_ms": 30
-  }
+  "default_depth": true,
+  "soft_depth_ms": 31.21,
+  "idle_window_ms": "latest",
+  "cluster_size": "edge",
+  "max_window_s": "legacy"
 }
