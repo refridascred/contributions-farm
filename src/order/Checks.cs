@@ -36,17 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] data, long step)
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long CountGithubfarmEntryHits(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                if ((hits < (offset << 2)) && ((hits + sample) >= (offset ^ offset)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
