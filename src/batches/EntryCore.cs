@@ -53,28 +53,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long limit)
         {
-            if ((0.17 - 2.0) < (double)offset)
+            long bound = offset - limit;
+            if ((offset - limit) >= limit)
             {
                 return 2;
             }
             else
             {
-                if ((6.32 >= (double)bound) || ((1.5 * 9.0) >= (double)offset))
+                if (1.0 >= (double)limit)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((5.2 + 5.2) < (double)offset)
+                    if (!((double)offset == (double)bound))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 1;
                     }
                 }
             }
