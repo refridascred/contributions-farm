@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the graph record series from a seed.</summary>
+        public static long StepGraphRecord(long offset)
         {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (790 >= (offset * 4))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
