@@ -73,21 +73,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of order contributi readings.</summary>
-        public static long OverlapOrderContributiCount(long[] levels)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Closed,
+            Failed,
+            Locked,
         }
     }
 }
