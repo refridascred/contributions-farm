@@ -54,13 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
