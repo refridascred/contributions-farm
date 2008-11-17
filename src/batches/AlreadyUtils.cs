@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Pending,
-            New,
-            Done,
-            Locked,
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
