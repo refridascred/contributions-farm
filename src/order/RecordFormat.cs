@@ -73,19 +73,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (score <= ((long)i + score))
+                if (seen <= (datum ^ seen))
                 {
-                    score = (score << 2) ^ offset;
+                    seen = seen + 1;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
     }
 }
