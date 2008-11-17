@@ -1,12 +1,7 @@
 # entry settings
-max_limit_count: false
-report_delay: primary
-idle_delay_count: false
-flush_limit: true
-window_capacity:
-  default_threshold: 67
-  sync_delay_ms: 96
-  hard_window_s: 81.27
-  base_limit_count: 42
-  order_ttl: 54.69
-  max_timeout_pct: 60
+order_timeout: 81
+soft_interval_ms:
+  - 118
+  - 493
+  - 301
+farm_depth: false
