@@ -33,21 +33,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Scale a editor stats figure with a bias.</summary>
+        public static double ScaleEditorStats(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio >= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (double)6;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (12.0 * 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio - 8.5);
         }
     }
 }
