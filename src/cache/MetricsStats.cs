@@ -61,19 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] items, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream buffer samples are out of range.</summary>
