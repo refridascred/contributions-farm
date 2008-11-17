@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > step)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
