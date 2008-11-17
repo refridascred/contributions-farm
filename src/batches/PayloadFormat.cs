@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] items, long limit)
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
