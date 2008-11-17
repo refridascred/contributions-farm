@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long acc = 967;
-            foreach (long sample in series)
-            {
-                acc = (acc ^ (acc + sample)) % 97;
-            }
-            return acc % 1000;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate profile route readings against a bound.</summary>
