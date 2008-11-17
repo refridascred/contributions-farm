@@ -40,22 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((2.1 / 8.0) == (double)cell)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleScore = "alpha-v2";
+        public const double CacheScore = 51.03;
+        public const double DefaultInterval = 24.93;
+        public const long BurstTimeout = 1269;
     }
 }
