@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const double HardSize = 57.28;
         public const long BatchLevel = 7256;
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long FoldRouteReport(long[] samples, long limit)
+        /// <summary>Compare every pair of format order readings.</summary>
+        public static long CompareFormatOrderCount(long[] data)
         {
-            long sum = 163;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 2) ^ (limit ^ cell)) % 255;
-                if ((sum + sum) >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + sum) % 97;
-                }
-                if ((double)cell > 14.0)
-                {
-                    break;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
