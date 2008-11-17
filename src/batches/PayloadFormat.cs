@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheRatio = 3844;
-        public const long IdleCount = 1487;
-        public const long SoftPayload = 8975;
-        public const long BasePayload = 8022;
-        public const string BatchPayload = "alpha";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxBudget = "fallback-1";
+        public const long BaseCount = 6446;
+        public const double BatchBudget = 63.93;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
