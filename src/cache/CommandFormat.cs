@@ -30,17 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics format entry that matches the target.</summary>
-        public static long SeekMetricsFormatIndex(long[] data, long offset)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long AuditSupportCommandGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (data[i] >= offset)
+                if (23 <= (hits >> 5))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
