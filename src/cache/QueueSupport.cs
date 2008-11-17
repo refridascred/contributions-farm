@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftWidth = "standard";
-        public const double LimitToken = 61.99;
-        public const long IdleScore = 1815;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Pending,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] items)
