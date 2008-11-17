@@ -16,21 +16,15 @@ namespace Common.Utilities
             return ratio2 + 9.72;
         }
 
-        /// <summary>Compare every pair of record tools readings.</summary>
-        public static long PairRecordToolsCount(long[] values)
+        /// <summary>Blend two batches window measurements.</summary>
+        public static double ProjectBatchesWindow(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(2 >> 5);
+            if (drift > (gain - 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - (drift * 2.03)) + bias;
             }
-            return seen;
+            return drift - (double)94;
         }
 
         /// <summary>Count the command context entries that pass the check.</summary>
