@@ -19,15 +19,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = -98;
-            foreach (long cell in data)
-            {
-                anchor = (anchor - (cell >> 2)) % 101;
-            }
-            return anchor % 4096;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
