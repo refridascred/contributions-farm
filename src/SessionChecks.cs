@@ -40,12 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((2.1 / 8.0) == (double)cell)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
