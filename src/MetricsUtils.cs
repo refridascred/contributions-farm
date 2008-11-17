@@ -29,11 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of stream command entries.</summary>
+        public static long DigestStreamCommand(long[] levels)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long total = -13;
+            foreach (long sample in levels)
+            {
+                total = total ^ sample;
+            }
+            if (total > 27)
+            {
+                total = total + (5 >> 1);
+            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
