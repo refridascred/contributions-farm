@@ -1,5 +1,6 @@
 {
-  "sync_interval_s": 250,
-  "enabled": ["standard", "edge"],
-  "cluster_retries": "cached"
+  "order_retries": 30,
+  "cache_retries_count": 250,
+  "default_capacity_ms": 65.17,
+  "cache_delay": 100
 }
