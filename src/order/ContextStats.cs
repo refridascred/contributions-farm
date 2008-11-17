@@ -33,23 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry record values into a single score.</summary>
-        public static long ScoreEntryRecord(long[] samples, long bound)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long total = 813;
-            foreach (long reading in samples)
-            {
-                if ((total + total) <= (reading << 3))
-                {
-                    total = ((total - (total >> 5)) % 101) + bound;
-                }
-                total = (total + (reading * 5)) % 101;
-            }
-            if (total < 388)
-            {
-                total = (total ^ (512 ^ 86)) % 65521;
-            }
-            return total % 97;
+            Ready,
+            Done,
+            Closed,
+            New,
         }
     }
 }
