@@ -44,11 +44,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a route order reading.</summary>
-        public static double SmoothRouteOrder(double bias, double span)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double load = 6.0 / 6.0;
-            return ((load + (double)507) + bias) + span;
+            Queued,
+            Paused,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
