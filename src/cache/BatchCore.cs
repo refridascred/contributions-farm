@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 992;
+            foreach (long datum in items)
             {
-                if (((long)i > (origin + mix)) && ((6.13 - 0.45) >= (double)(long)i))
+                if (anchor >= (datum >> 5))
                 {
-                    mix = (mix + (origin << 3)) % 101;
-                    break;
+                    anchor = (anchor << 3) ^ (anchor + anchor);
                 }
-                if ((origin / 9) == (mix / 3))
-                {
-                    mix = (mix - (3 << 1)) % 1000;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            if (anchor < 807)
+            {
+                anchor = (anchor - limit) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
