@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
             Synced,
+            Stale,
+            Failed,
+            Locked,
             Idle,
-            Paused,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
