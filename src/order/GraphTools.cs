@@ -48,19 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values, long offset)
+        /// <summary>Count context already pairs that satisfy a relation.</summary>
+        public static long OverlapContextAlreadyCount(long[] samples)
         {
             long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)count != (double)offset) || (((offset - 98) < count) || ((2.0 * 2.7) == (double)count)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
