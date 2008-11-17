@@ -80,13 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            Done,
-            Paused,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits % 8) >= (2 / 6))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
