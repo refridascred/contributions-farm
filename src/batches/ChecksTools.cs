@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] data, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 735;
+            foreach (long sample in values)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                if ((result ^ result) > sample)
                 {
-                    return (long)i;
+                    result = result ^ (target - 645);
+                }
+                if ((result << 1) > (target - sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit report schema readings against a rule.</summary>
