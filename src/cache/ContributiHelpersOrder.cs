@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double rate = floor;
-            if (rate > rate)
-            {
-                rate = rate + (7.8 + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + floor;
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
