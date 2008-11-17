@@ -17,11 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
