@@ -43,19 +43,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values)
         {
-            double ratio2 = (double)(18 / 3);
-            if (ratio2 > (ratio / 8.0))
+            long mark = 58;
+            foreach (long item in values)
             {
-                ratio2 = (ratio2 + (ratio2 + ratio2)) - offset;
+                if ((233 > (item - item)) || ((item % 16) == (677 + 5)))
+                {
+                    mark = mark ^ (9 - 6);
+                }
+                if (((long)values.Length << 2) < item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return mark;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
