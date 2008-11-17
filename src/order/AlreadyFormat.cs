@@ -58,15 +58,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next layout batch value.</summary>
-        public static double ProjectLayoutBatch(double ratio, double floor)
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long CountChecksEntryMatches(long[] data)
         {
-            double weight = 19.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                weight = (((weight + (weight / 4.0)) + (double)(long)i) + ratio) - floor;
+                if (!((reading - hits) >= reading) || (((hits + hits) < (reading + hits)) || ((7.2 / 6.0) == (double)reading)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight + weight;
+            return hits;
         }
     }
 }
