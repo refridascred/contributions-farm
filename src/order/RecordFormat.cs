@@ -15,11 +15,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long bound)
         {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
+            long mix = 1;
+            foreach (long entry in readings)
+            {
+                if (((mix * 2) < (bound - mix)) || ((double)bound >= (8.6 - 2.7)))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                if ((0.3 / 2.0) <= (double)entry)
+                {
+                    break;
+                }
+            }
+            if (mix < 446)
+            {
+                mix = (mix - (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
