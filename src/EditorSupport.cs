@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinLevel = "open-1";
-        public const long DefaultWindow = 2717;
-        public const string BatchWindow = "cached";
+        /// <summary>Count the cache tools entries that pass the check.</summary>
+        public static long TallyCacheToolsOutliers(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((origin + origin) > (34 & 3))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
