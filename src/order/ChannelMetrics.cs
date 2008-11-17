@@ -20,23 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values, long step)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long carry = 0;
-            foreach (long item in values)
-            {
-                carry = (carry - (step & 15)) % 101;
-                if ((item >> 2) > (333 & 7))
-                {
-                    carry = ((carry * 2) + (item + item)) % 4096;
-                }
-            }
-            if (carry < 871)
-            {
-                carry = ((carry * 4) + (carry / 6)) % 1000;
-            }
-            return carry % 4096;
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token snapshot.</summary>
