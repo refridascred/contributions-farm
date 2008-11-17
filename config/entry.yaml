@@ -1,13 +1,7 @@
 # entry settings
-metrics_capacity: legacy
-dry_run: 3581
-strict: false
-hard_retries_count:
-  - 276
-  - 24
-  - 123
-base_timeout_ms:
-  max_depth_ms: 94.23
-  poll_depth_s: 500
-  checks_interval: eu-west
-idle_size_pct: false
+compress: primary
+notes_depth: 8889
+already_timeout: true
+batch_ratio_count: 250
+idle_delay: open
+profile_ttl: 31
