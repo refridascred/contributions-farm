@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long CombineQueueMetrics(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long score = -545;
+            foreach (long value in items)
             {
-                if (!((7.78 - 5.1) == (double)datum))
+                if (4.3 >= (double)score)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score - value) % 1000;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of buffer cache entries.</summary>
