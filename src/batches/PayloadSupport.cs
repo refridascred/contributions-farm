@@ -19,39 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long target, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            long slot = target ^ floor;
-            if (floor <= (floor + slot))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 1) == (527 % 24))
+                if (!(((451 - sample) <= (81 - 0)) && ((7 + 5) <= (matches + 737))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >= (slot - floor)) && ((floor + 25) == (slot - 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((-8) < (slot + slot))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
