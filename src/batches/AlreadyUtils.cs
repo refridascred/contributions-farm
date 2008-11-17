@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] data, long floor)
+        /// <summary>Find the first notes session entry that matches the target.</summary>
+        public static long FindNotesSessionIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < floor)
+                if (series[i] <= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
