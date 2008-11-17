@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items)
-        {
-            long state = 5;
-            foreach (long sample in items)
-            {
-                if ((sample << 3) < sample)
-                {
-                    state = (state + (sample - sample)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryTimeout = 3648;
+        public const string MinTimeout = "primary-v2";
+        public const long BurstFactor = 9584;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
