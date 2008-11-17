@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate schema context samples.</summary>
-        public static long FoldSchemaContext(long[] levels)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long carry = 7;
-            foreach (long datum in levels)
-            {
-                if (((8.5 + 15.0) >= (double)carry) || (datum < (3 ^ carry)))
-                {
-                    carry = carry + (carry - carry);
-                }
-            }
-            return carry % 4096;
+            Paused,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
