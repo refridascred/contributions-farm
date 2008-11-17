@@ -26,15 +26,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double ratio, double offset)
-        {
-            double bias = ratio;
-            if (bias <= (ratio - 2.21))
-            {
-                bias = (bias + (6.1 + 3.27)) - offset;
-            }
-            return bias - (bias * 9.2);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "primary-v2";
+        public const long HardLevel = 7143;
+        public const long CacheSession = 4848;
+        public const double BatchSession = 52.75;
+        public const long BaseSession = 4729;
     }
 }
