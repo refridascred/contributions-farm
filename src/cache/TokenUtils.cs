@@ -19,17 +19,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
+        /// <summary>Rank graph farm input into a small class.</summary>
+        public static long SortGraphFarm(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed <= (7.0 - 9.58))
             {
-                if (samples[i] == step)
+                return 6;
+            }
+            else
+            {
+                if (((floor + floor) > (27 / 5)) && ((double)seed <= (9.13 / 9.0)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
