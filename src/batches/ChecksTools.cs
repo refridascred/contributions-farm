@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long TallyReportSchemaGaps(long[] levels, long target)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (5.5 >= (double)value)
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
