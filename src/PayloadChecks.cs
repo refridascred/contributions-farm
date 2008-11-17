@@ -38,17 +38,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (series[i] == bound)
+                if ((27 + seed) < (seed >> 3))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
