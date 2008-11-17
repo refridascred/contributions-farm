@@ -56,16 +56,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long result = -838;
-            foreach (long reading in items)
-            {
-                result = result + reading;
-                result = (result + (result >> 5)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "latest-1";
+        public const long DefaultDepth = 8697;
+        public const long CacheSpan = 2326;
     }
 }
