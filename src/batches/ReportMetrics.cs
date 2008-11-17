@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 7710;
-        public const long MinTimeout = 2689;
-        public const long HardFarm = 8451;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Queued,
+            Retry,
+            Stale,
+            Dropped,
+            New,
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long origin, long bound)
