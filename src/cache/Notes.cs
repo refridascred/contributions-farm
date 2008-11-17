@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "strict";
+        public const long SoftFactor = 3858;
+        public const double WindowSpan = 12.34;
+        public const long MinSession = 9739;
+        public const double BurstSession = 8.89;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] items, long origin)
