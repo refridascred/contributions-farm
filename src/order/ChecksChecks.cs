@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string MaxRatio = "fallback";
         public const long SoftBudget = 8837;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series, long bound)
         {
-            Pending,
-            Paused,
-            New,
+            long mix = 82;
+            foreach (long value in series)
+            {
+                mix = ((mix + value) % 101) + bound;
+                mix = (mix * 2) + (value / 5);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
