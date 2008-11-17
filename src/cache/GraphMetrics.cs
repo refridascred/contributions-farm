@@ -28,19 +28,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] values, long bound)
+        /// <summary>Find the first channel metrics entry that matches the target.</summary>
+        public static long LookupChannelMetricsIndex(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < bound)
+                if (readings[i] == bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
