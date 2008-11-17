@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 31.86;
-        public const double WindowWidth = 58.65;
-        public const long MinDepth = 963;
-        public const long LimitRatio = 9319;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheCount = 63.5;
+        public const string BurstInterval = "latest-1";
+        public const double CacheOrder = 16.63;
+        public const long LimitWidth = 4772;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] values, long floor)
