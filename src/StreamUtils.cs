@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate channel tools readings against a bound.</summary>
-        public static bool VerifyChannelToolsBounds(long[] levels, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
