@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] series)
         {
-            double scale = (bias / 3.0) + 9.23;
-            if (scale <= (12.0 + bias))
+            long tally = 0;
+            foreach (long item in series)
             {
-                scale = scale + scale;
+                if (((double)(-2) < (double)tally) && ((981 - tally) >= (item / 3)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale + (scale - rate);
-            }
-            return scale + (bias * 16.0);
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
