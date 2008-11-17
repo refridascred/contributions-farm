@@ -46,20 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 3749;
+        public const long BaseInterval = 1602;
+        public const string BurstAccount = "cached-1";
+        public const long BaseAccount = 4960;
+        public const double MinAccount = 56.25;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BatchCount = "fallback-v2";
