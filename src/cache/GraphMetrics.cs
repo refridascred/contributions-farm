@@ -56,25 +56,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values)
         {
-            long step = floor + seed;
-            if ((seed / 7) >= (step + 23))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (step > 136)
+                if (((-648) >> 1) > (item ^ item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
