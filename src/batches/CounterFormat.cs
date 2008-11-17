@@ -47,26 +47,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 8;
-            foreach (long reading in items)
-            {
-                if ((reading - total) >= (reading >> 5))
-                {
-                    total = (total - reading) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ reading;
-                }
-            }
-            if (total < 1)
-            {
-                total = total + (total * 4);
-            }
-            return total;
+            Retry,
+            Synced,
+            Failed,
+            Active,
         }
     }
 }
