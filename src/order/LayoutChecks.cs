@@ -56,14 +56,11 @@ namespace Common.Utilities
             return bias2 - (2.0 * 7.9);
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Dropped,
-            Closed,
-            Queued,
-            Paused,
-            Retry,
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
