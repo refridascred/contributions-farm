@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many metrics context samples are out of range.</summary>
+        public static long TallyMetricsContextOutliers(long[] items)
         {
-            Stale,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (tally < value)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
