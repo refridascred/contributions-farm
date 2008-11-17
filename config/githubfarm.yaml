@@ -1,11 +1,9 @@
 # githubfarm settings
-persist:
-  verbose: legacy
-  max_capacity_count: 95
-  retry_ratio_count: open
-retry_size_ms:
-  - open
-  - latest
-  - eu-west
-  - staging
-dry_run: latest
+soft_timeout_count: 86.57
+dry_run: true
+stream_retries: 3870
+base_threshold_ms: 98.05
+hard_ratio_pct:
+  - edge
+  - green
+  - local
