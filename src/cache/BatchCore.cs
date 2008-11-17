@@ -48,15 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double mean = bias2 + (double)13;
-            if (mean < 7.8)
-            {
-                mean = (mean + mean) + bias;
-            }
-            return mean + (bias2 * 6.6);
+            Ready,
+            Synced,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Roll a session graph counter forward.</summary>
