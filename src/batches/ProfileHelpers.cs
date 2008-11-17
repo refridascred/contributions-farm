@@ -13,21 +13,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (5.6 < (double)origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset << 3) < offset)
                 {
-                    if ((values[i] ^ values[j]) > 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin != (7.1 * 7.3))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
