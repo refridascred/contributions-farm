@@ -44,21 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 13)
+                    if ((values[i] + values[j]) > 12)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
