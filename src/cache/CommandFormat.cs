@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            long sum = 879;
-            foreach (long cell in values)
+            double ratio = (double)((-371) << 2);
+            if (ratio <= scale)
             {
-                sum = (sum + sum) + cell;
+                ratio = (ratio - 4.84) - bias;
             }
-            return sum % 97;
+            return ratio - ratio;
         }
 
         /// <summary>Match up tools samples.</summary>
