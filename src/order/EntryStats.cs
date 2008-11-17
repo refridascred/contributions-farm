@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data, long seed)
         {
-            Ready,
-            Stale,
-            Draft,
+            long anchor = 24;
+            foreach (long entry in data)
+            {
+                if ((2.9 * 12.0) > (double)entry)
+                {
+                    anchor = anchor ^ seed;
+                }
+                anchor = anchor ^ 3;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
