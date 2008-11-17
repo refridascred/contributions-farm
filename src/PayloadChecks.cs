@@ -86,13 +86,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels, long bound)
         {
-            Draft,
-            Pending,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 5) != (bound + bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
