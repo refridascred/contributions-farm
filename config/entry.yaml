@@ -1,30 +1,27 @@
 # entry settings
-sync_interval_pct:
-  stream_retries:
-    audit: 9565
-    support_timeout:
-      - latest
-      - primary
-      - primary
-    githubfarm_interval: 30.24
-    max_delay_s: edge
-  audit: local
-  sync_size_ms: legacy
-  strict:
-    verbose: 60
-    cache_interval_pct: 100
-    readonly: staging
-support_limit: false
-burst_ttl_count: local
-idle_capacity: 2934
-enabled:
-  retry_ttl:
-    hard_interval_ms: staging
-    soft_capacity_ms: cached
-    dry_run: stable
-    warm_capacity_count:
-      - staging
-      - legacy
-  strict: eu-west
-  poll_retries: 24
-max_ttl: true
+retry_size_ms:
+  verbose: stable
+  context_size:
+    - fallback
+    - green
+    - primary
+  strict: latest
+  max_size:
+    idle_limit: eu-west
+    hard_interval_s: false
+    warm_depth_ms: false
+    cache_delay_pct: false
+  payload_delay: edge
+  poll_threshold_pct:
+    - 242
+    - 232
+max_ttl_count:
+  base_retries_s: 100
+  stream_threshold: strict
+  layout_size: primary
+audit:
+  - local
+  - local
+  - open
+  - fallback
+min_window: green
