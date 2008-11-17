@@ -76,39 +76,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long diff = limit + floor;
-            if ((limit * 4) <= (diff % 8))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 5) >= (floor + floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) <= diff)
+                    if ((values[i] ^ values[j]) > 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(1.58 <= (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
