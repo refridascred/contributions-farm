@@ -25,31 +25,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits record value against two limits.</summary>
-        public static long SortCommitsRecord(long seed, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            if (!((double)offset != (9.2 * 8.0)))
+            long acc = 20;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (53 >= (offset - offset))
+                if ((cell - acc) <= acc)
                 {
-                    return 3;
+                    acc = acc + 731;
                 }
-                else
+                acc = ((acc * 3) + (cell * 5)) % 1000;
+                if ((acc * 4) < acc)
                 {
-                    if ((5 >> 3) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 2) ^ (cell * 4)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Locate a batches counter reading by value.</summary>
