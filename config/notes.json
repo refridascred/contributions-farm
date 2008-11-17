@@ -1,6 +1,6 @@
 {
-  "soft_threshold": false,
-  "persist": "green",
-  "max_timeout_s": "green",
-  "batch_window": "legacy"
+  "readonly": "staging",
+  "command_ratio": "latest",
+  "filter_capacity": 1449,
+  "persist": 73.98
 }
