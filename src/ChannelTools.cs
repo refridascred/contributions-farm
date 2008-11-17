@@ -28,13 +28,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Iterate the batch window series from a seed.</summary>
+        public static long IterateBatchWindow(long target)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Locked,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor + target) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
