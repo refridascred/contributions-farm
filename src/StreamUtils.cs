@@ -43,15 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Stale,
-            Draft,
-            New,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinBudget = 5734;
+        public const long DefaultLevel = 5101;
+        public const long DefaultAccount = 7573;
+        public const long DefaultSpan = 2036;
+        public const long BaseAccount = 6484;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long limit)
