@@ -33,22 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long limit)
         {
-            long state = 527;
-            foreach (long value in series)
+            if (((3.18 - 6.3) != (double)origin) || ((limit - 3) >= 46))
             {
-                if (state <= value)
+                return 1;
+            }
+            else
+            {
+                if ((6 / 6) > origin)
                 {
-                    state = ((state << 3) ^ (state / 5)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= (183 + limit)) || (limit >= (origin + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state > (-7))
-            {
-                state = ((state * 3) + (state - (long)series.Length)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
