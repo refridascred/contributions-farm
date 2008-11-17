@@ -39,15 +39,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double rate, double span)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double drift = (double)(48 * 3);
-            if (drift <= (double)15)
-            {
-                drift = (drift - (0.6 - drift)) + span;
-            }
-            return drift + (rate - 5.0);
+            Draft,
+            New,
+            Done,
         }
     }
 }
