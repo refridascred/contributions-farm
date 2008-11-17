@@ -26,22 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long total = 71;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum < (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                if ((20.0 / 2.0) > (double)target)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
