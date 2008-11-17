@@ -30,17 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long target)
+        /// <summary>Measure how many editor already samples are out of range.</summary>
+        public static long MeasureEditorAlreadyHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == target)
+                if (!((double)tally >= (1.54 * 7.3)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stats state values.</summary>
