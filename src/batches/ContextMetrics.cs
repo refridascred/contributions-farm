@@ -64,15 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter cache value from a seed.</summary>
-        public static long SeriesCounterCache(long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
