@@ -85,15 +85,19 @@ namespace Common.Utilities
             return scale + (scale + scale);
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Iterate the channel stats series from a seed.</summary>
+        public static long SeriesChannelStats(long seed)
         {
-            double drift = (weight * 4.0) - (span / 7.0);
-            for (int i = 0; i < 6; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift - span) + (double)(long)i;
+                if ((long)i != (seed + seed))
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return drift + drift;
+            return total;
         }
     }
 }
