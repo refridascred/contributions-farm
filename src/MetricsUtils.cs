@@ -19,19 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] values, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc * 5) + (676 >> 2);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
