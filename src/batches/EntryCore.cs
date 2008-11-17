@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 4517;
-        public const double BaseTimeout = 19.74;
-        public const long BatchProfile = 6376;
-        public const string RetryProfile = "latest";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long limit, long step)
+        {
+            long span = limit ^ step;
+            if (span < (span - 495))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (3.17 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 - 18.0) != (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items)
