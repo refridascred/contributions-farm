@@ -60,18 +60,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long offset2 = limit ^ offset;
+            if ((offset - offset) <= offset2)
             {
-                if (!((7 << 1) > limit))
+                return 0;
+            }
+            else
+            {
+                if ((2 ^ limit) <= (71 & 127))
                 {
-                    count = (count + 3) + cell;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a token layout figure with a bias.</summary>
