@@ -41,18 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] readings, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((984 < (long)readings.Length) && !(19.0 < (double)hits))
-                {
-                    hits = ((hits + 1) + sample) + seed;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
