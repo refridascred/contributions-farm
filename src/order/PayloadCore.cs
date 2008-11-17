@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long CacheSize = 7157;
         public const string HardWindow = "stable";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (5.0 >= (double)reading)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryFactor = 78.41;
+        public const long BurstBuffer = 242;
+        public const double IdleBuffer = 30.71;
+        public const string HardBuffer = "latest-v2";
+        public const double CacheBuffer = 73.75;
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double gain, double floor)
