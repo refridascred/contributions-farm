@@ -1,14 +1,7 @@
 {
-  "compress": true,
-  "default_timeout_pct": {
-    "cache_retries_count": "eu-west",
-    "default_timeout_ms": "standard",
-    "audit": true,
-    "idle_threshold_ms": "staging",
-    "default_threshold_count": ["eu-west", "edge"],
-    "max_limit": [152, 13, 364]
-  },
-  "max_ratio_count": true,
-  "format_threshold": "latest",
-  "batch_interval": 100
+  "burst_timeout_count": 1709,
+  "commits_timeout": "legacy",
+  "default_size": true,
+  "cache_window_s": 43.23,
+  "burst_depth_s": "blue"
 }
