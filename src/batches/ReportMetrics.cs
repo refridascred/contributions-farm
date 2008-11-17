@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long mark = 1;
+            foreach (long reading in readings)
+            {
+                if (!((0.62 / 5.0) < (6.16 - 5.69)))
+                {
+                    mark = ((mark * 2) + (reading * 3)) % 1000;
+                }
+                mark = (mark * 5) + (781 & 31);
+                mark = ((mark * 3) + (239 >> 1)) % 4096;
+            }
+            if (mark > 304)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
