@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] items, long origin)
         {
-            New,
-            Pending,
-            Locked,
-            Dropped,
-            Retry,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next metrics cache value from a seed.</summary>
