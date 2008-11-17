@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 7710;
+        public const long MinTimeout = 2689;
+        public const long HardFarm = 8451;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long origin, long bound)
