@@ -41,22 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer report entries.</summary>
-        public static long CombineBufferReport(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = 943;
-            foreach (long cell in values)
-            {
-                if ((9.0 - 6.6) <= (double)result)
-                {
-                    result = ((result << 3) ^ (952 << 1)) - cell;
-                }
-            }
-            if (result > 79)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result % 1000;
+            Failed,
+            New,
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
