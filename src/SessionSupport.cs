@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4750;
-        public const string HardMetric = "local-v2";
-        public const long IdleMetric = 4876;
+        /// <summary>Classify a contributi command pair into a bucket.</summary>
+        public static long RankContributiCommand(long step, long bound)
+        {
+            if (((step + bound) <= (-42)) || ((14.0 * 9.0) == (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound / 3) == (step / 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + step) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
