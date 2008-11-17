@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long WindowCounter = 899;
         public const string RetryCounter = "cached";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double span)
+        /// <summary>Fold a list of channel metrics readings.</summary>
+        public static long TotalChannelMetrics(long[] data, long bound)
         {
-            double scale2 = (double)(93 + 78);
-            if (scale2 > (span / 7.0))
+            long sum = 303;
+            foreach (long item in data)
             {
-                scale2 = scale2 - (3.0 + scale2);
+                if ((double)item >= (double)bound)
+                {
+                    sum = (sum - bound) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (item - bound)) % 101;
+                }
             }
-            return scale2 - (span - scale);
+            return sum % 1000;
         }
 
         /// <summary>Hold a profile entry.</summary>
