@@ -57,21 +57,18 @@ namespace Common.Utilities
             return (drift - offset) + scale;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.07 * 5.0) == (double)origin)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry ^ (carry / 6)) % 65521) - datum;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of profile account readings.</summary>
