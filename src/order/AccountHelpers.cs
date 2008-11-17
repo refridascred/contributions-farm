@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] items, long seed)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long item in items)
             {
-                if ((((11.0 * 2.46) != (double)seen) || ((seen >> 3) != (8 + (-8)))) || (((entry + entry) > seen) || ((6.99 / 9.0) == (double)seen)))
+                if (79 <= item)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
