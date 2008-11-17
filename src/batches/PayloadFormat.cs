@@ -38,18 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count & 15) <= ((-45) * 3))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a graph entry.</summary>
