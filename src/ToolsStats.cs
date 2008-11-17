@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const long StepDepth = 7125;
         public const long SoftRatio = 3159;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result << 3) ^ (limit % 60);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
