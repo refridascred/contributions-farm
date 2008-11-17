@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            double rate = (bias / 4.0) / 8.0;
-            if (rate > rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - bias;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (floor / 6.0);
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
