@@ -18,24 +18,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank graph farm input into a small class.</summary>
-        public static long SortGraphFarm(long floor, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] data, long bound)
         {
-            if ((double)seed <= (7.0 - 9.58))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + floor) > (27 / 5)) && ((double)seed <= (9.13 / 9.0)))
+                if ((count + 119) <= (31 << 3))
                 {
-                    return 7;
+                    count = ((count + 2) + cell) - bound;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
