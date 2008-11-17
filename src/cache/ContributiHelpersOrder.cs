@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] readings, long floor)
         {
-            long total = -69;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((cell + total) != (seed / 8))
+                if (datum > floor)
                 {
-                    total = ((total * 2) + 77) % 97;
-                }
-                else
-                {
-                    total = (total - cell) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Describe the token class values.</summary>
