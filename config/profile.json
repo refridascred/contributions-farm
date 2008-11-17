@@ -1,7 +1,5 @@
 {
-  "warm_interval_s": 12.3,
-  "max_capacity": "edge",
-  "max_retries": true,
-  "filter_retries": 60,
-  "base_retries_count": "eu-west"
+  "enabled": "cached",
+  "readonly": "standard",
+  "base_threshold_ms": true
 }
