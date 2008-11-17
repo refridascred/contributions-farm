@@ -34,9 +34,19 @@ namespace Common.Utilities
         public const long MinReport = 2859;
         public const string RetryReport = "stable-edge";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstTimeout = 0.92;
-        public const double WindowRecord = 74.64;
-        public const double SoftTimeout = 42.87;
+        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmSchemaRange(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
