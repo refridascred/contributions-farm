@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell >= floor)
+                if (((double)step != (5.9 + 9.62)) || ((datum ^ 573) >= (hits - step)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the cache state values.</summary>
