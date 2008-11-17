@@ -30,14 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            Done,
-            Dropped,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 4240;
+        public const long RetryTimeout = 2319;
+        public const string MaxGithubfarm = "primary-edge";
     }
 }
