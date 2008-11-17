@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the route payload series from a seed.</summary>
-        public static long StepRoutePayload(long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            if (((99 * 5) == (target / 9)) && ((double)step < (double)target))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((step + 42) >= (target + target)) && ((target << 2) != (step & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (2.5 * 3.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 7) >= (15 << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema record.</summary>
