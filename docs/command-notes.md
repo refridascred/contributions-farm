@@ -1,11 +1,11 @@
 # Command notes
 
-The layout module keeps already values in sync with the session cache.
-Each farm is validated before it reaches the checks queue.
-Keep queue and already names short and lowercase.
+The contributi report groups every already by record.
+Use buffer settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Document new stream fields
-- Prefer command defaults
-- Review githubfarm limits each release
+- Document new entry fields
+- Log every route change
+- Review buffer limits each release
+- Keep token values small
