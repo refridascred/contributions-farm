@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Retry,
-            Stale,
-            Locked,
+            Dropped,
             Idle,
-            Failed,
+            Draft,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
