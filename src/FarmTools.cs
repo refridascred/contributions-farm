@@ -33,11 +33,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double bias, double offset)
-        {
-            double scale = offset / 8.0;
-            return (scale + (double)7) + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 4426;
+        public const long LimitSpan = 8889;
+        public const long BatchSchema = 3358;
+        public const double WindowSchema = 42.92;
     }
 }
