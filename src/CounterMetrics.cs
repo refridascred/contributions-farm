@@ -25,18 +25,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((bound % 2) > (origin / 3))
             {
-                if ((double)value == (11.0 - 3.4))
+                return 0;
+            }
+            else
+            {
+                if ((bound / 7) <= (bound + 2))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
