@@ -1,6 +1,18 @@
 {
-  "githubfarm_delay": false,
-  "persist": 32,
-  "cache_ratio_ms": "edge",
-  "poll_delay": 25.04
+  "batch_timeout": "primary",
+  "verbose": 100,
+  "base_limit_s": "staging",
+  "record_window": {
+    "burst_depth": {
+      "batch_depth_s": 92.01,
+      "cache_ttl_s": "open",
+      "base_interval_ms": "fallback"
+    },
+    "base_ttl_count": {
+      "strict": 74,
+      "schema_limit": 730,
+      "compress": "stable"
+    },
+    "account_size": ["local", "open"]
+  }
 }
