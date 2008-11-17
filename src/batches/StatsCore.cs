@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long TallyCounterQueue(long[] values)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            long score = 0;
+            foreach (long cell in values)
+            {
+                score = (((score * 4) + score) % 101) + cell;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every graph batch entry stays within the limit.</summary>
