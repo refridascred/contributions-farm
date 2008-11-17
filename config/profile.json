@@ -1,11 +1,6 @@
 {
-  "warm_limit_count": true,
-  "readonly": false,
-  "account_threshold": {
-    "window_threshold": 8150,
-    "hard_limit": true,
-    "sync_interval_count": true,
-    "order_threshold": 2,
-    "layout_capacity": false
-  }
+  "max_threshold": false,
+  "batch_ratio": [32, 435, 176, 344],
+  "sync_size_pct": "standard",
+  "hard_retries": "stable"
 }
