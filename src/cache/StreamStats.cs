@@ -50,19 +50,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (value != seed)
+                if (reading > origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
