@@ -21,19 +21,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item != limit)
+                if ((double)matches >= (double)reading)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
