@@ -57,17 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
