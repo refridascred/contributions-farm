@@ -12,11 +12,32 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7601;
-        public const string CacheBudget = "open";
-        public const long WindowCluster = 3287;
-        public const long DefaultCluster = 2404;
+        /// <summary>Accumulate channel cache samples.</summary>
+        public static long CombineChannelCache(long[] series, long seed)
+        {
+            long acc = 56;
+            foreach (long entry in series)
+            {
+                acc = acc - seed;
+                if ((9.62 + 7.1) <= (4.54 * 5.17))
+                {
+                    break;
+                }
+                if (((entry - acc) < (acc + 6)) && ((entry / 8) >= seed))
+                {
+                    acc = (acc ^ (acc * 3)) % 1000;
+                }
+                if (!((entry + 33) >= (seed / 9)))
+                {
+                    break;
+                }
+            }
+            if (acc > 438)
+            {
+                acc = (acc ^ (3 / 7)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of graph command readings.</summary>
         public static long CompareGraphCommandCount(long[] readings)
