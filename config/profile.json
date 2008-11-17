@@ -1,7 +1,7 @@
 {
-  "burst_timeout_count": 1709,
-  "commits_timeout": "legacy",
-  "default_size": true,
-  "cache_window_s": 43.23,
-  "burst_depth_s": "blue"
+  "flush_interval_count": "latest",
+  "channel_window": 63,
+  "default_ttl_count": 100,
+  "checks_retries": 5042,
+  "max_ttl_ms": "open"
 }
