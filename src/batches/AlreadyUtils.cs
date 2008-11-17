@@ -66,19 +66,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer cache entries.</summary>
-        public static long TotalBufferCache(long[] items, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long step)
         {
-            long mark = 545;
-            foreach (long item in items)
+            long score = 55;
+            foreach (long sample in samples)
             {
-                mark = ((mark + (origin + (-657))) % 1000) + item;
+                if (step > (score / 7))
+                {
+                    score = ((score ^ (step * 2)) % 4096) ^ sample;
+                }
+                else
+                {
+                    score = (score - step) % 65521;
+                }
             }
-            if (mark > 94)
+            if (score > 8)
             {
-                mark = (mark + origin) % 101;
+                score = ((score << 2) ^ score) % 101;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
