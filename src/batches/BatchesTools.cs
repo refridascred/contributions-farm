@@ -37,13 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Paused,
-            Queued,
-            Ready,
+            Locked,
             New,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
