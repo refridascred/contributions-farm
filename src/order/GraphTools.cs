@@ -68,11 +68,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
