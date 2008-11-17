@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long target)
+        /// <summary>Check that every context payload entry stays within the limit.</summary>
+        public static bool CheckContextPayloadRange(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (readings[i] < target)
+                if (entry > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
