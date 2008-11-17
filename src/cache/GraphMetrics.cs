@@ -45,12 +45,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 8.43;
         public const double LimitCount = 56.6;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long score = 198;
+            foreach (long sample in samples)
+            {
+                score = score + (7 + sample);
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
