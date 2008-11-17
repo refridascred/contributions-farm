@@ -74,18 +74,21 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Count the checks tools entries that pass the check.</summary>
-        public static long MeasureChecksToolsGaps(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + 98) >= ((-881) >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
