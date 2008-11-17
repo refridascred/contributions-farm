@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheCount = 6227;
-        public const long WindowDepth = 4736;
-        public const double IdleLayout = 69.75;
-        public const double BurstSpan = 76.35;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data)
+        {
+            long state = 4;
+            foreach (long reading in data)
+            {
+                if ((state - (long)data.Length) == (state * 5))
+                {
+                    state = ((state + (state ^ state)) % 97) + reading;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
