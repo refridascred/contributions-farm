@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxLevel = "cached-edge";
+        public const string LimitWidth = "local-v2";
+        public const long IdleBuffer = 214;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long ScoreRoute(long[] data, long origin)
