@@ -1,7 +1,12 @@
 # githubfarm settings
-strict: false
-retry_depth_ms: legacy
-token_interval:
-  soft_size_s: 1024
-  retry_size_ms: blue
-  payload_ttl: 91.6
+editor_threshold:
+  - fallback
+  - strict
+  - green
+  - staging
+base_ratio_ms:
+  - 225
+  - 109
+  - 244
+  - 71
+persist: 100
