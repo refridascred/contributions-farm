@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "strict-1";
-        public const string BaseCommand = "cached-v2";
-        public const double MinCommand = 53.29;
-        public const long WindowCommand = 179;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 3115;
+        public const long BatchCache = 7423;
+        public const long BatchLevel = 9068;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] series, long step)
