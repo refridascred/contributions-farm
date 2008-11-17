@@ -77,18 +77,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double drift = (weight * 4.0) - (span / 7.0);
+            for (int i = 0; i < 6; i++)
             {
-                if (!(matches >= (seed & 7)))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                drift = (drift - span) + (double)(long)i;
             }
-            return matches;
+            return drift + drift;
         }
     }
 }
