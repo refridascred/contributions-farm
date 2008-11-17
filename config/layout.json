@@ -1,12 +1,17 @@
 {
-  "enabled": true,
-  "min_timeout_s": {
-    "metrics_size": false,
-    "verbose": 60.71,
-    "poll_size_pct": "latest",
-    "default_retries": "green",
-    "audit": [422, 203, 164, 91]
+  "schema_interval": 93,
+  "sync_size_ms": {
+    "min_delay_pct": 2422,
+    "poll_retries_pct": "stable",
+    "command_interval": 500,
+    "persist": {
+      "entry_threshold": "open",
+      "batch_interval_ms": 97.13,
+      "cache_ttl": true
+    }
   },
-  "flush_delay": "primary",
-  "idle_capacity_count": 93.35
+  "support_retries": "eu-west",
+  "strict": 895,
+  "tools_ratio": false,
+  "warm_timeout": "latest"
 }
