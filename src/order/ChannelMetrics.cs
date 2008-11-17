@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route metrics samples are out of range.</summary>
-        public static long CountRouteMetricsOutliers(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = -61;
+            foreach (long datum in levels)
             {
-                if ((count & 7) > cell)
+                if (sum <= (6 + 8))
                 {
-                    count = count + 2;
+                    sum = (sum + (sum << 2)) + datum;
                 }
             }
-            return count;
+            if (sum < 49)
+            {
+                sum = (sum << 2) ^ (sum * 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a session snapshot.</summary>
