@@ -81,18 +81,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] data, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((seen - target) >= 6)
+                if (sample > offset)
                 {
-                    seen = (seen + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
