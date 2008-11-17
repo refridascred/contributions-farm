@@ -1,7 +1,5 @@
 {
-  "hard_capacity_ms": ["primary", "open"],
-  "retry_capacity": 335,
-  "retry_ratio": 88.2,
-  "default_interval_count": "cached",
-  "batch_interval": 17.38
+  "compress": 64.39,
+  "token_depth": 59.84,
+  "cache_threshold": 79.55
 }
