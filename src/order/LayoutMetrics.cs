@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double weight, double span)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double bias = weight;
-            if (bias < (double)64)
-            {
-                bias = (bias + bias) - span;
-            }
-            else
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias + bias;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count report record pairs that satisfy a relation.</summary>
