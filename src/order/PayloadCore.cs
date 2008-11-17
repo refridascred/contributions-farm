@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate notes githubfarm readings against a bound.</summary>
+        public static bool VerifyNotesGithubfarmRange(long[] levels, long origin)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
