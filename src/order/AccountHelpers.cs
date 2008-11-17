@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            Retry,
-            Active,
-            Locked,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((((11.0 * 2.46) != (double)seen) || ((seen >> 3) != (8 + (-8)))) || (((entry + entry) > seen) || ((6.99 / 9.0) == (double)seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
