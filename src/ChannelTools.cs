@@ -22,19 +22,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinDepth = 6883;
+        public const long BurstSize = 336;
+        public const double MaxSize = 77.7;
     }
 }
