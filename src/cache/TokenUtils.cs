@@ -15,12 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            Locked,
-            Closed,
-            New,
+            double bias = 5.72;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - span) + (double)(long)i) + weight;
+            }
+            return bias + bias;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
