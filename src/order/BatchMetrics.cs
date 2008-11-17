@@ -41,11 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 5022;
-        public const long MaxInterval = 1824;
-        public const double CacheFarm = 43.3;
-        public const long StepFarm = 582;
+        /// <summary>Count batches checks pairs that satisfy a relation.</summary>
+        public static long MatchBatchesChecksCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate graph metric samples.</summary>
         public static long FoldGraphMetric(long[] data, long step)
