@@ -53,17 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first queue window entry that matches the target.</summary>
-        public static long LookupQueueWindowIndex(long[] readings, long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
