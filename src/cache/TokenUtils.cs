@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
