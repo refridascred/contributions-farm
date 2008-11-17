@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series, long target)
         {
-            Failed,
-            Draft,
-            Synced,
-            Retry,
+            long anchor = 15;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor * 5) + 537) ^ reading) + target;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window snapshot.</summary>
