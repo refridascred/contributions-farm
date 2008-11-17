@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel metrics readings.</summary>
-        public static long TotalChannelMetrics(long[] data, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long sum = 303;
-            foreach (long item in data)
+            long state = 5;
+            foreach (long sample in items)
             {
-                if ((double)item >= (double)bound)
+                if ((sample << 3) < sample)
                 {
-                    sum = (sum - bound) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (item - bound)) % 101;
+                    state = (state + (sample - sample)) % 4096;
                 }
             }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Describe the route state values.</summary>
