@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series, long floor)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long item in series)
             {
-                if ((1.0 + 9.7) > (double)sample)
+                if ((double)item < (9.0 + 13.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) + floor;
                 }
             }
             return tally;
