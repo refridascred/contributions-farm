@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next tools token value.</summary>
-        public static double AdjustToolsToken(double scale, double bias)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double mean = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (bias / 5.0)) - (double)(long)i) - scale;
-            }
-            return mean - (bias * 7.0);
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
