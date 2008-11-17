@@ -1,7 +1,14 @@
 # githubfarm settings
-verbose: 6725
-readonly: stable
-retry_retries: strict
-retry_capacity_ms: 4638
-layout_depth: 50
-min_depth_ms: 12.06
+strict: false
+commits_depth:
+  token_delay: legacy
+  soft_delay_count: 85.36
+  metric_retries: stable
+  profile_ttl: 250
+  batch_ratio_count: 92.16
+default_retries:
+  - blue
+  - eu-west
+  - edge
+readonly: standard
+poll_capacity_pct: legacy
