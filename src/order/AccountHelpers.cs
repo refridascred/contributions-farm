@@ -59,15 +59,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine filter batches values into a single score.</summary>
