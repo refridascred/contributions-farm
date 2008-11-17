@@ -1,8 +1,10 @@
 # githubfarm settings
-flush_ratio_pct:
-  enabled: 76.44
-  compress: true
-  flush_interval_s: open
-  default_size: stable
-audit: 2716
-burst_timeout_pct: 33.43
+cache_size_s:
+  cache_ttl_pct: edge
+  audit: stable
+  record_depth: 1
+  order_interval: 93.06
+  warm_size: primary
+  flush_delay_count: true
+idle_ttl_pct: eu-west
+session_interval: 5.81
