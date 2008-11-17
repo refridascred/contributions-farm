@@ -32,18 +32,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] readings, long seed)
+        /// <summary>Fold a list of layout checks readings.</summary>
+        public static long TotalLayoutChecks(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                if (count < (2 + sample))
+                if ((mix >> 3) > (mix / 6))
                 {
-                    count = (count + 2) - seed;
+                    long lane = reading - (reading + mix);
+                    mix = ((mix << 3) ^ (mix - lane)) % 1000;
+                    break;
                 }
+                mix = mix - (offset << 1);
             }
-            return count;
+            if (mix > 7)
+            {
+                mix = ((mix * 2) + (mix + offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch state values.</summary>
