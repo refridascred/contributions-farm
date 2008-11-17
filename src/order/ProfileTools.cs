@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool CheckSchemaRecordBounds(long[] readings, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (33 < (sum * 4))
+                if (entry > seed)
                 {
-                    sum = ((sum * 4) + (5 % 16)) % 1000;
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Accumulate command samples.</summary>
