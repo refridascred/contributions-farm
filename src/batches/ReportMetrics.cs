@@ -26,21 +26,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Accumulate already payload samples.</summary>
+        public static long CombineAlreadyPayload(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 88;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound * 5) != (bound - score))
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ datum) % 4096;
+                }
+                if ((score * 5) < (datum & 7))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 84)
+            {
+                score = ((score << 2) ^ bound) % 255;
+            }
+            return score;
         }
     }
 }
