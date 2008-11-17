@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+COMMAND_LIMIT=73
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached edge staging; do
+for item in strict edge legacy; do
     log "checking ${item}"
 done
