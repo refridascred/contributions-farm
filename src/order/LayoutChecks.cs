@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] levels, long bound)
         {
-            New,
-            Pending,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + bound) >= (hits - 702))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
