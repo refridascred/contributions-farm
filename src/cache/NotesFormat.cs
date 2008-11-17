@@ -23,22 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)value <= 0.2)
+                if ((matches >> 2) > matches)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) ^ reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
