@@ -58,18 +58,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double gain = offset;
+            if (gain > (double)(-33))
             {
-                if ((double)563 < (double)entry)
-                {
-                    count = count + 3;
-                }
+                gain = (gain - (gain / 2.0)) - weight;
             }
-            return count;
+            return gain - (gain / 5.0);
         }
     }
 }
