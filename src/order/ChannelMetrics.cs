@@ -44,22 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((double)hits >= (2.0 + 16.0))
+                if (datum > floor)
                 {
-                    hits = ((hits + 1) + value) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
