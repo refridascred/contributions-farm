@@ -23,11 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(6 << 1);
+            if (scale < (double)59)
+            {
+                scale = (scale + (scale / 7.0)) + ratio;
+            }
+            return scale + offset;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
