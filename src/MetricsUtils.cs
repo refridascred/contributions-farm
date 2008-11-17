@@ -62,9 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 6437;
-        public const string RetryBatch = "standard-1";
-        public const long HardBudget = 3474;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count / 8) > (reading * 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
