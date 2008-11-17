@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Audit entry filter readings against a rule.</summary>
+        public static long TallyEntryFilterOutliers(long[] levels, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry - entry) <= entry)
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + origin;
                 }
             }
             return seen;
