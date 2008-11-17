@@ -28,18 +28,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = -297;
+            foreach (long entry in readings)
             {
-                if (!!(matches > value))
-                {
-                    matches = matches + 1;
-                }
+                result = ((result << 3) ^ ((-9) + entry)) % 4096;
             }
-            return matches;
+            if (result < 487)
+            {
+                result = (result << 2) ^ (target + 5);
+            }
+            return result;
         }
     }
 }
