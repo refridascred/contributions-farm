@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseWidth = 2777;
-        public const double StepEditor = 86.6;
-        public const long StepRatio = 9007;
-        public const long DefaultBudget = 6705;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstRatio = 6608;
+        public const string BurstLayout = "standard-1";
+        public const long MinLayout = 1276;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
