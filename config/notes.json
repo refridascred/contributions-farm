@@ -1,6 +1,16 @@
 {
-  "flush_window_s": "fallback",
-  "strict": "eu-west",
-  "batch_threshold": 500,
-  "flush_interval_s": "edge"
+  "dry_run": 53,
+  "soft_delay_s": 58.68,
+  "audit": {
+    "dry_run": {
+      "min_retries_s": 9.0,
+      "idle_window_s": 250,
+      "soft_capacity_ms": true
+    },
+    "cache_capacity_ms": ["green", "fallback", "staging", "primary"],
+    "sync_delay": "standard",
+    "sync_ttl": true,
+    "verbose": "staging",
+    "burst_retries": false
+  }
 }
