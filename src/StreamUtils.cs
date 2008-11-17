@@ -57,26 +57,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long anchor = 48;
-            foreach (long value in levels)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((19.0 - 5.3) < (double)value)
-                {
-                    anchor = anchor - value;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor - 1);
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor * 4) + anchor) % 65521;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the cache status values.</summary>
