@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool ValidateCounterPayloadBounds(long[] levels, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
