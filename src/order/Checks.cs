@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings)
-        {
-            long sum = 8;
-            foreach (long datum in readings)
-            {
-                sum = (((sum << 3) ^ 592) % 101) ^ datum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "strict-1";
+        public const string BaseCommand = "cached-v2";
+        public const double MinCommand = 53.29;
+        public const long WindowCommand = 179;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] series, long step)
