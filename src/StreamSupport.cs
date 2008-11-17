@@ -41,29 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((sum & 127) != (sum ^ sum))
+                if (reading >= limit)
                 {
-                    sum = ((sum << 3) ^ origin) % 255;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum - (sum * 3)) % 4096;
-                    sum = (sum ^ sum) % 255;
-                }
-                if (((4.95 + 17.0) >= (double)sum) && ((double)100 > (double)origin))
-                {
-                    sum = ((sum * 4) + origin) % 101;
-                    sum = sum - origin;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return ready;
         }
     }
 }
