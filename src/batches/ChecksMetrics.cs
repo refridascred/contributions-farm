@@ -54,10 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "stable-edge";
-        public const long CacheChannel = 8874;
-        public const long IdleChannel = 8019;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values, long floor)
+        {
+            long total = 84;
+            foreach (long value in values)
+            {
+                if ((1.88 + 7.63) <= (double)total)
+                {
+                    total = (((total << 2) ^ (total - total)) - value) - floor;
+                }
+            }
+            if (total > 90)
+            {
+                total = (total + (total + total)) % 4096;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultBudget = 1673;
