@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] data, long limit)
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
