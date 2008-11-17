@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-standard}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in strict standard; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=179
+BUFFER_LIMIT=367
 log "limit is ${BUFFER_LIMIT}"
