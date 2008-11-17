@@ -14,18 +14,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 11;
+            foreach (long entry in data)
             {
-                if ((-781) < (item - item))
+                acc = (acc ^ (acc & 31)) % 4096;
+                acc = (acc + (acc & 31)) % 1000;
+                if (((entry % 64) < (700 - 0)) && ((double)acc <= (4.2 - 4.7)))
                 {
-                    matches = matches + 2;
+                    acc = (acc - (818 << 1)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (9 + entry);
                 }
             }
-            return matches;
+            if (acc > 569)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
