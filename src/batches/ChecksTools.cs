@@ -27,15 +27,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = 380;
-            foreach (long sample in series)
-            {
-                carry = (((carry ^ (57 / 5)) % 101) - sample) - bound;
-            }
-            return carry;
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate stream account samples.</summary>
