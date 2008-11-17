@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] samples)
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long ScoreQueueCluster(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 9;
+            foreach (long reading in values)
             {
-                if ((entry + entry) <= (entry * 4))
+                if ((carry ^ carry) >= (444 / 5))
                 {
-                    seen = seen + 1;
+                    carry = (carry + (reading - origin)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (reading * 5);
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Describe the already phase values.</summary>
