@@ -20,13 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            public double Flag { get; set; }
             public long Region { get; set; }
-            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
