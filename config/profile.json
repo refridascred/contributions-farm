@@ -1,6 +1,7 @@
 {
-  "order_retries": 30,
-  "cache_retries_count": 250,
-  "default_capacity_ms": 65.17,
-  "cache_delay": 100
+  "warm_interval_s": 12.3,
+  "max_capacity": "edge",
+  "max_retries": true,
+  "filter_retries": 60,
+  "base_retries_count": "eu-west"
 }
