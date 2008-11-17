@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != target)
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the route mode values.</summary>
