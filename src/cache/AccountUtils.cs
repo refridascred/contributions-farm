@@ -34,22 +34,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if (((step ^ 730) >= (bound ^ bound)) && ((double)step != (19.0 - 3.5)))
             {
-                if (!(75 > (hits - 308)))
+                return 7;
+            }
+            else
+            {
+                if ((bound + step) >= (bound + 7))
                 {
-                    hits = (hits + 1) + item;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
