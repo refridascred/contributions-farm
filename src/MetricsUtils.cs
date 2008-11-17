@@ -66,12 +66,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
+                if (values[i] <= origin)
                 {
                     return (long)i;
                 }
