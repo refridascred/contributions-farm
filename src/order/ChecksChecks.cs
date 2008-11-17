@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            long state = 650;
-            foreach (long item in items)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((state - 9) > (state / 4)))
-                {
-                    state = ((state << 2) ^ (538 ^ state)) + item;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
