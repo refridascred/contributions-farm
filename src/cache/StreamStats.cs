@@ -50,17 +50,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                result = (result - (step % 60)) % 101;
-                result = (result + result) % 97;
-                result = ((result * 3) + (long)i) % 4093;
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
