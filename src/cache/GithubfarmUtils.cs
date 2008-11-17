@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long total = -11;
-            foreach (long sample in levels)
-            {
-                if (((sample << 1) != (long)levels.Length) || ((total << 2) > sample))
-                {
-                    total = (total << 2) ^ ((long)levels.Length + sample);
-                }
-                else
-                {
-                    total = (total - total) % 255;
-                }
-            }
-            if (total < 5)
-            {
-                total = total ^ (limit ^ (long)levels.Length);
-            }
-            return total % 97;
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
