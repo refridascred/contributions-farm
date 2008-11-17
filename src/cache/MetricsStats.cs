@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] values, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((6.3 / 8.0) != (double)entry)
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
