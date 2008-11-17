@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double floor)
-        {
-            double bias = floor;
-            if (bias >= floor)
-            {
-                bias = (bias + (double)373) - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (floor - floor);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 5566;
+        public const string RetryRecord = "local-edge";
+        public const double StepDepth = 70.18;
+        public const string MinRecord = "strict-edge";
+        public const long IdleRecord = 6535;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
