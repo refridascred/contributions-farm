@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((anchor + (-3)) > 927))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (anchor / 7)) % 255;
                 }
+                anchor = ((anchor * 4) + (anchor + anchor)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
