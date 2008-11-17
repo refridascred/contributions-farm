@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double bias, double offset)
         {
-            double ratio = (floor - 3.04) * 13.0;
-            if (ratio < (floor + floor))
+            double gain = (double)88 - 17.0;
+            if (gain <= bias)
             {
-                ratio = ratio + (gain / 6.0);
+                gain = (gain + 6.11) - offset;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)89) + (double)(long)i;
-            }
-            return ratio + gain;
+            return gain - (bias + 19.0);
         }
 
         /// <summary>Roll a support counter forward.</summary>
