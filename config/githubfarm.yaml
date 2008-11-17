@@ -1,14 +1,7 @@
 # githubfarm settings
-record_delay: staging
-min_window:
-  - 182
-  - 290
-farm_size: 60
-sync_ttl_ms:
-  - 268
-  - 291
-  - 133
-audit: false
-poll_capacity_pct:
-  - 211
-  - 309
+editor_capacity: fallback
+counter_threshold: true
+strict:
+  - 458
+  - 493
+  - 326
