@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const long BaseContext = 8768;
         public const long CacheBudget = 7438;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every graph tools entry stays within the limit.</summary>
+        public static bool CheckGraphToolsLimits(long[] levels, long bound)
         {
-            Done,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
