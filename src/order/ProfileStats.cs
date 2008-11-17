@@ -19,12 +19,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 2842;
-        public const long HardEntry = 6645;
-        public const double DefaultRatio = 59.03;
-        public const string MaxEntry = "legacy-edge";
-        public const long HardDepth = 2579;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepWidth = 342;
+        public const double BurstCommand = 19.63;
+        public const string BaseRatio = "legacy-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowWidth = 806;
