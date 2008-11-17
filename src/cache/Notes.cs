@@ -31,15 +31,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((double)matches > (9.0 + 1.52))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
