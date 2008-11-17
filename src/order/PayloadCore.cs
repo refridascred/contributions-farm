@@ -60,22 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = 297;
-            foreach (long cell in items)
-            {
-                if ((score + cell) < (score / 8))
-                {
-                    score = ((score << 2) ^ (score / 5)) % 1000;
-                }
-            }
-            if (score < 96)
-            {
-                score = (score ^ (831 + score)) % 1000;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
