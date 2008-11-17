@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] data, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double mean = (double)(74 + 4);
+            if (mean > (2.7 / 4.0))
             {
-                if ((525 + bound) == (matches + matches))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                mean = (mean - (bias / 9.0)) - bias2;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean + 9.4);
+            }
+            return mean + (bias / 2.0);
         }
 
         /// <summary>Hold a batches entry.</summary>
