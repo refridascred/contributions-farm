@@ -24,12 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            double weight = (double)(537 % 10);
+            if (weight <= (4.3 - bias))
+            {
+                weight = (weight - 3.49) + rate;
+            }
+            return weight + 6.6;
         }
 
         /// <summary>Audit support account readings against a rule.</summary>
