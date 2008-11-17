@@ -1,6 +1,19 @@
 {
-  "batch_retries_count": 93.07,
-  "idle_depth": "fallback",
-  "flush_timeout_count": "edge",
-  "payload_ratio": 8804
+  "account_threshold": [463, 349, 264, 55],
+  "enabled": ["standard", "primary", "blue", "stable"],
+  "poll_retries": "strict",
+  "max_limit": {
+    "batch_depth_s": 39.03,
+    "verbose": [121, 339, 63, 131],
+    "warm_depth": ["strict", "primary", "eu-west"],
+    "flush_interval_pct": {
+      "compress": "standard",
+      "strict": 7266,
+      "hard_delay": ["open", "fallback"],
+      "max_capacity_count": 1024,
+      "report_capacity": 3295
+    }
+  },
+  "warm_capacity_ms": "primary",
+  "cluster_delay": "edge"
 }
