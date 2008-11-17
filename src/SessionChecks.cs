@@ -32,22 +32,12 @@ namespace Common.Utilities
             return (bias + (double)769) + floor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = 745;
-            foreach (long reading in samples)
-            {
-                if ((reading + score) == (reading << 2))
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = (score ^ 66) % 65521;
-                }
-            }
-            return score % 97;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
