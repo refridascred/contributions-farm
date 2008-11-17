@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            long span = step ^ bound;
-            if ((2 + span) < span)
+            long score = 403;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + step) <= span)
+                if (!(score <= (score + sample)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    score = (score + (sample - score)) % 255;
                 }
             }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
