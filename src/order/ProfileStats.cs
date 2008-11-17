@@ -36,9 +36,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowTimeout = 27.0;
-        public const long MaxFilter = 6202;
-        public const string BaseFilter = "fallback-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 4298;
+        public const long RetryToken = 5194;
+        public const long HardSize = 430;
     }
 }
