@@ -1,7 +1,4 @@
 # entry settings
-max_timeout: true
-profile_ttl: primary
-dry_run: 250
-cache_interval: true
-cache_ttl: 40.66
-base_depth: 17.98
+hard_ttl_s: 30
+enabled: 95
+verbose: true
