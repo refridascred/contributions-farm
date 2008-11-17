@@ -25,18 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepLevel = 9898;
+        public const long MinFactor = 7322;
+        public const long RetryCache = 3266;
+        public const string CacheInterval = "standard-v2";
+        public const long BatchLevel = 1359;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
