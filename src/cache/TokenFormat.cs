@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a batch metric pair into a bucket.</summary>
