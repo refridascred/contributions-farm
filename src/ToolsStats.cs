@@ -42,18 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value << 1) <= value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the counter kind values.</summary>
