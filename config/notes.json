@@ -1,5 +1,6 @@
 {
-  "max_limit_s": "staging",
-  "retry_timeout_s": true,
-  "cache_ttl": false
+  "batch_retries_count": 93.07,
+  "idle_depth": "fallback",
+  "flush_timeout_count": "edge",
+  "payload_ratio": 8804
 }
