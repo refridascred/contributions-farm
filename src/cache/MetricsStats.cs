@@ -67,17 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] readings, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if ((hits - hits) < hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the batches mode values.</summary>
