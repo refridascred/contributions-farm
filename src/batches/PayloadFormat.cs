@@ -52,11 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
             public long Rank { get; set; }
-            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
