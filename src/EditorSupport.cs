@@ -52,19 +52,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((28 / 6) <= (origin << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - origin;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
     }
 }
