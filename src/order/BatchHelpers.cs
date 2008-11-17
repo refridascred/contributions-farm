@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            long anchor = 27;
-            foreach (long item in values)
+            double scale = (double)(0 - 63);
+            if (scale < span)
             {
-                if (((long)values.Length - offset) >= (904 >> 1))
-                {
-                    anchor = (anchor - (anchor << 1)) + item;
-                }
+                scale = scale + (1.0 - 6.05);
             }
-            if (anchor > 4)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor + (long)values.Length;
+                scale = (scale - ratio) + (double)(long)i;
             }
-            return anchor;
+            return scale + (2.7 - ratio);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
