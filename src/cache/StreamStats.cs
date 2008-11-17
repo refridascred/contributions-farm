@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long CacheInterval = 7761;
         public const long MinAlready = 1522;
 
-        /// <summary>Find the first support batch entry that matches the target.</summary>
-        public static long FindSupportBatchIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6198;
+        public const double MaxWidth = 98.71;
+        public const long MaxDepth = 3229;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] samples, long floor)
