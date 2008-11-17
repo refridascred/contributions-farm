@@ -13,32 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a batch metric pair into a bucket.</summary>
-        public static long SortBatchMetric(long offset, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long limit)
         {
-            long delta = offset ^ limit;
-            if ((2.17 - 9.0) < (double)offset)
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta - limit) >= limit)
+                if (!((long)samples.Length > item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta % 16) < (offset - delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 1) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
