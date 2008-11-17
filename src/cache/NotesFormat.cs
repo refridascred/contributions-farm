@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
