@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = -6;
+            foreach (long sample in readings)
+            {
+                if (!(0 > (sample >> 4)))
+                {
+                    anchor = anchor - bound;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
