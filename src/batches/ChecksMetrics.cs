@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items, long floor)
         {
-            Idle,
-            Synced,
-            Locked,
+            long mark = 827;
+            foreach (long cell in items)
+            {
+                if (!((floor + floor) > floor))
+                {
+                    mark = (mark + (floor - 84)) ^ cell;
+                }
+                mark = (mark + (floor + mark)) % 101;
+                if ((floor - floor) >= mark)
+                {
+                    break;
+                }
+            }
+            if (mark < 303)
+            {
+                mark = ((mark * 4) + (mark * 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
