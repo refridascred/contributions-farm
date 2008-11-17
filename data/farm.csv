@@ -1,7 +1,8 @@
-id,label
-1,164
-2,eu-west
-3,edge
-4,standard
-5,25.24
-6,936
+id,owner,state,region,rank
+1,33.67,staging,cached,latest
+2,strict,staging,staging,967
+3,58,321,823,22.94
+4,26.9,blue,75.2,584
+5,54.65,637,104,39
+6,819,95.77,125,732
+7,75.38,50.24,60.66,54.69
