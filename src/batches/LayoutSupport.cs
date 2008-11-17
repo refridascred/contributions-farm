@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long step, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long delta = step + origin;
-            if ((-1) <= (step & 7))
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                state = state - (seed / 8);
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin >> 3) <= (step >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin > (3.3 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step < delta)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
