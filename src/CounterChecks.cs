@@ -37,12 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 950;
-        public const long WindowBuffer = 6506;
-        public const long BaseBuffer = 2459;
-        public const double MaxInterval = 6.91;
-        public const string RetryBuffer = "legacy-v2";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Idle,
+            Draft,
+            Done,
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] items, long floor)
