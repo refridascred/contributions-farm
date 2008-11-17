@@ -39,17 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] == bound)
+                if (((long)series.Length * 3) >= (tally ^ 6))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
