@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheRatio = 3844;
+        public const long IdleCount = 1487;
+        public const long SoftPayload = 8975;
+        public const long BasePayload = 8022;
+        public const string BatchPayload = "alpha";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] items, long limit)
