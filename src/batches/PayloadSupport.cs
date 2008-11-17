@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "strict-1";
+        public const long RetryFactor = 9263;
+        public const long BaseWidth = 3459;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
