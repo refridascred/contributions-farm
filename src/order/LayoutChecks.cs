@@ -73,19 +73,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Compare every pair of order contributi readings.</summary>
+        public static long OverlapOrderContributiCount(long[] levels)
         {
-            long total = 8;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ (-67)) % 101;
-                if ((double)sample == (9.0 * 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
