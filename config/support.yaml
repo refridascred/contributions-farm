@@ -1,6 +1,18 @@
 # support settings
-command_interval: 56.31
-poll_ratio_count: 70
-sync_ratio_pct: 48.79
-base_capacity_s: 45
-min_threshold: staging
+sync_window_count:
+  - legacy
+  - latest
+  - eu-west
+stream_delay:
+  - primary
+  - primary
+report_depth: primary
+profile_ttl:
+  batch_limit: true
+  flush_ttl: 250
+  format_delay: green
+  dry_run: 81
+  cache_size_ms: green
+  default_size_pct: false
+idle_ttl_s: 7673
+persist: 500
