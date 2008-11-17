@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstTimeout = 30.88;
-        public const long StepFactor = 4548;
-        public const long SoftRecord = 9804;
-        public const long StepRecord = 8910;
-        public const long BurstRecord = 4208;
+        /// <summary>Blend two counter record measurements.</summary>
+        public static double AdjustCounterRecord(double ratio, double floor)
+        {
+            double rate = floor * 14.0;
+            return rate + ratio;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data)
