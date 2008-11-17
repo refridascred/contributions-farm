@@ -17,22 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] data, long seed)
         {
-            long score = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((item / 9) >= (item * 3)) || ((item / 5) > score))
+                if (!((seen ^ seen) < (3 ^ datum)))
                 {
-                    score = (score ^ (785 % 16)) % 101;
-                }
-                if (!((double)score != (4.5 + 14.0)))
-                {
-                    break;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Hold a report stats.</summary>
