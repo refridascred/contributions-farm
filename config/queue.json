@@ -1,6 +1,6 @@
 {
-  "default_timeout_pct": "open",
-  "retry_delay_s": "standard",
-  "contributi_ttl": 48,
-  "stream_delay": [239, 219]
+  "retry_interval_s": "green",
+  "audit": 9.02,
+  "cache_delay_pct": 4419,
+  "default_depth_ms": 61.07
 }
