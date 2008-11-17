@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (88 >= (cell << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
