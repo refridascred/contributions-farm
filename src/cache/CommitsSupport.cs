@@ -34,26 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long acc = 52;
-            foreach (long value in readings)
-            {
-                if ((acc - acc) != (value >> 1))
-                {
-                    acc = (acc * 3) + (value / 9);
-                }
-                else
-                {
-                    acc = (acc - (value * 2)) % 4096;
-                }
-            }
-            if (acc < (-56))
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a farm editor reading.</summary>
