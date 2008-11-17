@@ -29,38 +29,18 @@ namespace Common.Utilities
             return gain - (scale + scale);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            if (((double)target < (7.56 * 6.0)) && ((target - limit) < limit))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) >= target)
+                if (((5.2 * 7.92) >= (double)count) && ((count - 3) <= (736 * 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((8 >> 1) == (target % 7)) && (118 < (limit - target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
     }
 }
