@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the context editor series from a seed.</summary>
-        public static long StepContextEditor(long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                state = (state - state) % 255;
-                state = ((state << 2) ^ (origin ^ origin)) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                if (((-433) - seen) >= entry)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a layout entry.</summary>
