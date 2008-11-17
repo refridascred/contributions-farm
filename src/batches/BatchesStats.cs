@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const long StepOrder = 954;
         public const long BatchLevel = 2566;
 
-        /// <summary>Roll a layout order counter forward.</summary>
-        public static long DeriveLayoutOrder(long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
