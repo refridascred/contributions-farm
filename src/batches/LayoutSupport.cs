@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long origin)
         {
-            long anchor = -5;
-            foreach (long cell in samples)
+            if ((bound << 2) >= (91 / 3))
             {
-                if ((double)anchor != (1.8 * 9.5))
+                return 4;
+            }
+            else
+            {
+                if ((origin / 6) == (origin / 7))
                 {
-                    anchor = ((anchor * 4) + anchor) ^ cell;
+                    return 5;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (6 / 6);
+                    if ((origin - 324) != (origin & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 % 64) <= (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
