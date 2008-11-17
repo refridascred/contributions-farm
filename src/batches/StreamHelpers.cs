@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long WindowCounter = 899;
         public const string RetryCounter = "cached";
 
-        /// <summary>Scale a notes queue figure with a bias.</summary>
-        public static double BlendNotesQueue(double scale, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long bound)
         {
-            double mean = (double)(272 + 3);
-            if (mean <= (mean * 12.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (2.0 / 5.0)) - scale;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)13;
-            }
-            return mean - floor;
+            return -1;
         }
 
         /// <summary>Project the next stats value.</summary>
