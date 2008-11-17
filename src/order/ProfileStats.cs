@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 21.62;
-        public const string BaseOrder = "cached-v2";
-        public const long BatchRatio = 346;
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long TallySessionCacheGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits <= (hits - 11))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
