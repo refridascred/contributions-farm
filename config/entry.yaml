@@ -1,4 +1,6 @@
 # entry settings
-hard_ttl_s: 30
-enabled: 95
-verbose: true
+idle_retries: local
+retry_interval_count: stable
+min_retries_count: blue
+profile_timeout: true
+flush_ratio_s: 9969
