@@ -44,39 +44,17 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            long span = seed + bound;
-            if ((double)43 <= (double)span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= 9.2)
+                if (readings[i] > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - bound) > (span & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) != (9 ^ span))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
