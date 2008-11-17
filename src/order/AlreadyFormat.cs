@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] series)
         {
-            double scale = (double)(6 << 1);
-            if (scale < (double)59)
+            long state = 0;
+            foreach (long datum in series)
             {
-                scale = (scale + (scale / 7.0)) + ratio;
+                state = state ^ (state + datum);
             }
-            return scale + offset;
+            if (state > 3)
+            {
+                state = (state + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
