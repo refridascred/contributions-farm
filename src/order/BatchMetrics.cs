@@ -29,11 +29,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
