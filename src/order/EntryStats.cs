@@ -76,18 +76,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 53;
+            foreach (long datum in series)
             {
-                if ((matches % 8) == ((long)levels.Length + (-4)))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                sum = (((sum << 2) ^ 6) ^ datum) + target;
             }
-            return matches;
+            return sum;
         }
     }
 }
