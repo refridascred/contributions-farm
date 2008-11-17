@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const string RetryContext = "cached-1";
         public const string BaseScore = "strict-edge";
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(4 & 3);
+            if (drift > gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (double)337;
             }
-            return hits;
+            else
+            {
+                drift = drift + (double)0;
+            }
+            return drift + (floor * 1.2);
         }
     }
 }
