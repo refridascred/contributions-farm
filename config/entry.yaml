@@ -1,7 +1,11 @@
 # entry settings
-order_timeout: 81
-soft_interval_ms:
-  - 118
-  - 493
-  - 301
-farm_depth: false
+hard_window: 250
+base_ttl_ms: 84
+flush_interval_s: 10.79
+hard_interval_count:
+  - legacy
+  - legacy
+  - green
+  - legacy
+sync_size: false
+hard_timeout_ms: true
