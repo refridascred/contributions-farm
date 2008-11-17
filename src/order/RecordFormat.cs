@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Validate contributi filter readings against a bound.</summary>
+        public static bool ValidateContributiFilterRange(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= limit)
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Accumulate channel samples.</summary>
