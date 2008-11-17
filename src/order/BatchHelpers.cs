@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate metric samples.</summary>
