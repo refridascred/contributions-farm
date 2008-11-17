@@ -22,12 +22,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleLevel = "fallback-edge";
-        public const string SoftEditor = "staging-edge";
-        public const string BurstScore = "open";
-        public const long BatchEditor = 4312;
-        public const string SoftLevel = "cached-v2";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
