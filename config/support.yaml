@@ -1,10 +1,8 @@
 # support settings
-hard_ttl_pct: 72
-poll_timeout_ms: 7
-default_size: 7
-githubfarm_depth:
-  metrics_ttl: 1024
-  profile_ttl: fallback
-  flush_ttl_ms: primary
-  min_window_pct: eu-west
-  default_threshold_count: 38.58
+retry_ttl: 5967
+base_depth_count: standard
+base_capacity_s: 6004
+compress:
+  - 353
+  - 6
+  - 120
