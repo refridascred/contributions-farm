@@ -1,7 +1,7 @@
 {
-  "tools_ttl": [435, 60, 446, 299],
-  "commits_size": 43.71,
-  "base_timeout_ms": true,
-  "audit": 30,
-  "persist": 72.13
+  "compress": false,
+  "support_threshold": ["staging", "green", "fallback", "strict"],
+  "context_interval": 1024,
+  "metrics_limit": "eu-west",
+  "enabled": [165, 109, 38, 438]
 }
