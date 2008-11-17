@@ -51,14 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Locked,
-            Synced,
+            double drift = (offset - rate) + (double)45;
+            if (drift > rate)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift - 1.9;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
