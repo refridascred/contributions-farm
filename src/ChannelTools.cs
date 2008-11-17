@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxInterval = 1610;
-        public const string CacheSession = "stable";
-        public const long DefaultSession = 5039;
-        public const string MinSession = "fallback-1";
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long AuditFarmClusterOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((7.7 * 0.5) > (double)seen)
+                {
+                    seen = ((seen + 2) - reading) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
