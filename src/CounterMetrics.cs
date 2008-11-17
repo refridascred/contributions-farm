@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const double HardSize = 57.28;
         public const long BatchLevel = 7256;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Accumulate route report samples.</summary>
+        public static long FoldRouteReport(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 163;
+            foreach (long cell in samples)
             {
-                if ((73 & 127) < (item + 2))
+                sum = ((sum << 2) ^ (limit ^ cell)) % 255;
+                if ((sum + sum) >= limit)
                 {
-                    count = count + 2;
+                    sum = (sum + sum) % 97;
+                }
+                if ((double)cell > 14.0)
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Describe the layout status values.</summary>
