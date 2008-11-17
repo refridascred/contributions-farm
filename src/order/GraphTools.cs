@@ -79,11 +79,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowTimeout = "latest-edge";
-        public const long BaseAccount = 8235;
-        public const long BurstTimeout = 8282;
-        public const long MaxCount = 2438;
-        public const long DefaultBudget = 952;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
