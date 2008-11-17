@@ -24,19 +24,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Paused,
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
