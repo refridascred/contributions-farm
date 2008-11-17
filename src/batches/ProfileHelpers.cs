@@ -79,18 +79,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many profile queue samples are out of range.</summary>
-        public static long TallyProfileQueueOutliers(long[] items, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7 - floor) > floor)
+                if (series[i] > limit)
                 {
-                    hits = (hits + 1) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
