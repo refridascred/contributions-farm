@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const long WindowTimeout = 7416;
         public const long BaseBatch = 835;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings, long step)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Closed,
+            long sum = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)10 < (double)sample)
+                {
+                    sum = sum + step;
+                    sum = ((sum << 3) ^ (77 / 8)) % 255;
+                }
+                if (((step / 8) == (sum * 3)) || ((sample / 4) >= (5 + sum)))
+                {
+                    sum = sum ^ (step % 12);
+                }
+                else
+                {
+                    sum = (sum ^ sample) % 4096;
+                }
+                if ((sample ^ sum) <= step)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the record phase values.</summary>
