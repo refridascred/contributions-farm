@@ -57,14 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] series, long seed)
         {
-            Closed,
-            Dropped,
-            Done,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 1) < (2 / 9))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
