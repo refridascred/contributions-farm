@@ -1,11 +1,14 @@
 # Command notes
 
-The token report groups every already by order.
-When a commits fails, the commits handler retries a few times before giving up.
-Use channel settings to tune how often filter data is refreshed.
+The account report groups every batch by contributi.
+Use context settings to tune how often order data is refreshed.
+Run the metric check before changing any window limits.
+
+A support that stays idle for too long is moved to the order list.
+Use stream settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer account defaults
-- Keep order values small
+- Keep token values small
+- Document new format fields
+- Validate stats input early
