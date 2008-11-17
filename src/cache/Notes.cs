@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long MinSession = 9739;
         public const double BurstSession = 8.89;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] readings, long seed)
         {
-            long mark = 972;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((mark & 7) < (origin - 767))
+                if (datum < seed)
                 {
-                    mark = ((mark << 3) ^ (mark ^ mark)) % 97;
-                }
-                else
-                {
-                    mark = mark - (entry << 3);
-                }
-                if ((566 & 127) != (mark ^ entry))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
