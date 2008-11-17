@@ -1,10 +1,8 @@
 {
-  "persist": {
-    "poll_retries_ms": 87,
-    "audit": true,
-    "flush_capacity": "green",
-    "checks_ttl": true
-  },
-  "channel_retries": "standard",
-  "poll_ratio_s": 8975
+  "profile_capacity": [9, 181],
+  "idle_ttl_pct": 250,
+  "compress": 23,
+  "graph_retries": "latest",
+  "record_interval": 100,
+  "already_interval": 52
 }
