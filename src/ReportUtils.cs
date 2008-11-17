@@ -26,21 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
