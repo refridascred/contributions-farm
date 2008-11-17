@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank token tools input into a small class.</summary>
-        public static long GradeTokenTools(long offset, long target)
+        /// <summary>Iterate the route payload series from a seed.</summary>
+        public static long StepRoutePayload(long offset)
         {
-            long diff = offset + target;
-            if ((target + target) <= (diff / 8))
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target >> 3) <= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a schema record.</summary>
