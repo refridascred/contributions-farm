@@ -48,10 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6355;
-        public const double IdleCount = 88.35;
-        public const long SoftTimeout = 6437;
-        public const double HardScore = 40.14;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long limit)
+        {
+            long sum = 92;
+            foreach (long value in values)
+            {
+                sum = (((sum - 0) % 1000) ^ value) - limit;
+            }
+            return sum;
+        }
     }
 }
