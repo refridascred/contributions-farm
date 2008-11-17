@@ -24,38 +24,18 @@ namespace Common.Utilities
         public const double BurstCommand = 19.63;
         public const string BaseRatio = "legacy-1";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] series, long offset)
         {
-            if (((-1) + 25) >= (floor << 1))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 5) <= (offset >> 1))
+                if (!(((hits / 5) >= (hits << 2)) || ((8.9 * 8.78) < (double)offset)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ offset) != (floor - 246))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (4.42 * 0.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
     }
 }
