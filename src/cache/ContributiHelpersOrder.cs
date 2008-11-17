@@ -30,13 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double floor)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            double mean = ratio;
+            if (mean > ratio)
+            {
+                mean = mean + (mean - mean);
+            }
+            else
+            {
+                mean = mean + (double)888;
+            }
+            return mean + (floor * 20.0);
         }
     }
 }
