@@ -36,21 +36,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long anchor = 9;
+            foreach (long sample in values)
             {
-                long step = limit;
-                if ((422 > (sum % 64)) || ((double)sum <= 2.4))
+                if ((anchor << 3) > sample)
                 {
-                    sum = (sum << 3) ^ limit;
-                    sum = (sum << 3) ^ (step >> 1);
+                    anchor = (anchor + (anchor - (long)values.Length)) % 4096;
+                    continue;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                else
+                {
+                    anchor = anchor - sample;
+                }
+                anchor = anchor ^ (sample + anchor);
+                if (!((double)anchor != (double)sample))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor < 70)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a batch reading.</summary>
