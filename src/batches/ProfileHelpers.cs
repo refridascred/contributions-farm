@@ -23,19 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long floor)
+        /// <summary>Project the next filter cluster value.</summary>
+        public static double ProjectFilterCluster(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double ratio = rate - (floor - rate);
+            if (ratio >= 1.89)
             {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (double)(-4);
             }
-            return stale;
+            return ratio - (2.5 / 4.0);
         }
 
         /// <summary>Accumulate window samples.</summary>
