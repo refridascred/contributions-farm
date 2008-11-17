@@ -41,22 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long AuditTokenContextOutliers(long[] values)
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long MeasureSchemaBatchesGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!(((-342) - 23) == (seen * 4)) && (5.89 >= (2.0 - 7.5)))
+                if ((offset * 2) >= (124 ^ offset))
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
