@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Grade a support cluster value against two limits.</summary>
+        public static long GradeSupportCluster(long target, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            long edge = target + origin;
+            if (((target & 31) >= (448 * 2)) && (target > (edge / 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge << 1) == (243 + (-143)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of context readings.</summary>
