@@ -37,21 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up schema cluster samples.</summary>
-        public static long CompareSchemaClusterCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = (gain2 + (bias / 7.0)) + (double)(long)i;
             }
-            return matches;
+            return gain2 - gain;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
