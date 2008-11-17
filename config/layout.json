@@ -1,6 +1,15 @@
 {
-  "batch_delay": 75.63,
-  "cluster_size": 1024,
-  "stream_timeout": false,
-  "idle_capacity": 25
+  "githubfarm_limit": "primary",
+  "cache_ratio_pct": [352, 348, 464, 190],
+  "batch_window_pct": "stable",
+  "readonly": "staging",
+  "min_depth": {
+    "retry_depth_count": 44,
+    "dry_run": "strict",
+    "verbose": 250,
+    "tools_window": 15.78,
+    "enabled": 250,
+    "base_timeout": 75.49
+  },
+  "notes_threshold": false
 }
