@@ -13,22 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit queue entry readings against a rule.</summary>
-        public static long CountQueueEntryHits(long[] levels)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally + cell) <= (tally ^ tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
