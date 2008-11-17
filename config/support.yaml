@@ -1,14 +1,10 @@
 # support settings
-compress:
-  cache_delay_s:
-    - staging
-    - edge
-    - fallback
-  enabled: stable
-  dry_run: 500
-  verbose: 100
-  sync_capacity_pct: green
-  hard_ttl: 7186
-channel_ratio: 5432
-verbose: strict
-min_ratio_pct: 55.58
+warm_window_pct: 138
+default_size_pct: primary
+contributi_retries: 729
+retry_interval_count: fallback
+enabled:
+  - open
+  - eu-west
+  - staging
+  - edge
