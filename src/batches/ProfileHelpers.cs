@@ -13,18 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the token editor entries that pass the check.</summary>
-        public static long CountTokenEditorOutliers(long[] data, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long cur = seed - seed2;
+            if ((cur << 3) != (seed - seed))
             {
-                if ((double)datum >= 7.4)
+                return 8;
+            }
+            else
+            {
+                if (70 > (cur * 5))
                 {
-                    count = (count + 1) + step;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed2 >> 4) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((18.0 / 9.0) > (6.0 / 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
