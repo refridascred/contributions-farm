@@ -69,13 +69,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Fold a list of stats queue readings.</summary>
+        public static long DigestStatsQueue(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 4;
+            foreach (long value in levels)
+            {
+                result = result - ((-61) * 5);
+                if ((double)result != (15.0 * 14.0))
+                {
+                    result = ((result << 3) ^ (value % 64)) % 4096;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result - (77 + result)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
