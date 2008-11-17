@@ -1,7 +1,5 @@
 # githubfarm settings
-persist:
-  - 331
-  - 237
-  - 107
-githubfarm_ratio: true
-poll_ratio_ms: stable
+soft_timeout: 39.63
+base_ratio_s: false
+min_capacity_pct: standard
+batch_timeout: false
