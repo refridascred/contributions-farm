@@ -66,28 +66,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (((-8) <= (carry - floor)) && ((floor ^ 588) >= (-386)))
+                if (item < bound)
                 {
-                    carry = (carry + (carry - floor)) % 65521;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry + (floor & 7)) % 255;
-                }
-                if (carry >= (473 ^ carry))
-                {
-                    carry = ((carry << 2) ^ (floor ^ 85)) % 1000;
-                    carry = carry + (carry + carry);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
