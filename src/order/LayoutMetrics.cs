@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] >= origin)
+                if (hits >= (long)samples.Length)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ datum) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
