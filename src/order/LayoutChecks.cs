@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] levels, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((long)i - (long)i) >= (origin - (long)i))
+                if (((item * 3) <= (count + item)) && ((double)item > (8.9 / 9.0)))
                 {
-                    mix = (mix << 2) ^ (mix ^ origin);
+                    count = (count + 2) - limit;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
