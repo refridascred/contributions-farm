@@ -81,13 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            Paused,
-            Pending,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((0.5 + 3.0) >= (double)count)
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
     }
 }
