@@ -35,18 +35,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] data, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((3.39 / 9.0) != (double)reading) || ((count - reading) <= (long)data.Length))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a tools editor pair into a bucket.</summary>
