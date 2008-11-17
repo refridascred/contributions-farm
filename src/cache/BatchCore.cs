@@ -38,12 +38,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long step)
         {
-            Pending,
-            Paused,
-            Idle,
+            long cur = floor - step;
+            if ((floor + floor) >= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step ^ floor) != (cur >> 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step % 8) >= (2 * 3)) && ((4 + step) < (cur >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
