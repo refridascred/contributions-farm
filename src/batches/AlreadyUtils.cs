@@ -13,29 +13,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long bound)
+        /// <summary>Classify a record format pair into a bucket.</summary>
+        public static long SortRecordFormat(long floor, long offset)
         {
-            if (((offset - 533) != (4 & 7)) || ((24 >> 4) >= (offset - bound)))
+            long slot = floor - offset;
+            if (slot > 26)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((offset << 2) > offset) && ((double)809 > (double)bound))
+                if ((slot + floor) <= floor)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)bound >= (5.2 * 9.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
