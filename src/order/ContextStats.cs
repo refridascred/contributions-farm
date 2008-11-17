@@ -17,19 +17,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every context payload entry stays within the limit.</summary>
-        public static bool CheckContextPayloadRange(long[] data, long floor)
+        /// <summary>Combine report notes values into a single score.</summary>
+        public static long TotalReportNotes(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long result = 995;
+            foreach (long cell in values)
             {
-                if (entry > floor)
+                if (cell < (result - result))
                 {
-                    ok = false;
-                    break;
+                    result = (result << 2) ^ (result >> 5);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (cell - cell)) % 4096;
                 }
             }
-            return ok;
+            if (result < 468)
+            {
+                result = (result ^ (result ^ result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
