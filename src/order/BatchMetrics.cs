@@ -27,13 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell * 3) >= cell)
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
