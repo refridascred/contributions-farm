@@ -21,22 +21,10 @@ namespace Common.Utilities
             return scale2 - (span - scale);
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 2464;
+        public const long BaseTimeout = 6255;
+        public const long LimitChecks = 9914;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
