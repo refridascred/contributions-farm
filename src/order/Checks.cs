@@ -20,21 +20,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (2.8 > (double)limit)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((4 + origin) == (limit & 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit) > limit)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
