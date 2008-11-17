@@ -1,29 +1,30 @@
 # entry settings
-support_retries:
-  - 299
-  - 376
-  - 188
-  - 461
-entry_capacity: 83
-min_ratio:
-  soft_limit_s: 764
-  max_ratio: green
-  verbose: 5802
-  cache_size: open
-  enabled:
-    hard_retries_s: false
-    sync_threshold_ms: true
-    base_timeout_count: 20
-    burst_ttl: false
-    min_depth_s: 250
-    burst_capacity_pct:
-      - 153
-      - 392
-      - 400
-      - 323
+sync_interval_pct:
+  stream_retries:
+    audit: 9565
+    support_timeout:
+      - latest
+      - primary
+      - primary
+    githubfarm_interval: 30.24
+    max_delay_s: edge
+  audit: local
+  sync_size_ms: legacy
+  strict:
+    verbose: 60
+    cache_interval_pct: 100
+    readonly: staging
+support_limit: false
+burst_ttl_count: local
+idle_capacity: 2934
 enabled:
-  retry_ttl_ms: true
-  compress: local
-  dry_run: 68
-  soft_ttl: open
-  filter_timeout: 8869
+  retry_ttl:
+    hard_interval_ms: staging
+    soft_capacity_ms: cached
+    dry_run: stable
+    warm_capacity_count:
+      - staging
+      - legacy
+  strict: eu-west
+  poll_retries: 24
+max_ttl: true
