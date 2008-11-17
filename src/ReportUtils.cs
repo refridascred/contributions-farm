@@ -66,13 +66,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] data, long step)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= 1.4)
+                {
+                    matches = (matches + 3) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
