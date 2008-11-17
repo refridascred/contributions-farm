@@ -20,31 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long target, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            if (((16.0 * 18.0) == (double)target) || ((target % 3) <= (target + origin)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin >> 3) <= 49) || ((origin * 5) >= origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((10.0 + 5.1) > (double)target)
+                    if ((series[i] - series[j]) < 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a token snapshot.</summary>
