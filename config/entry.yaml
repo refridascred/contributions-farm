@@ -1,45 +1,12 @@
 # entry settings
-batches_ttl: false
-profile_ttl:
-  min_limit_pct:
-    poll_depth_count: 43
-    enabled: 2.86
-    route_limit: false
-  enabled:
-    - 20
-    - 460
-    - 300
-    - 441
-  verbose: false
-  burst_interval_count: 2695
-  graph_window:
-    batch_window_pct: 62
-    cache_limit:
-      - staging
-      - green
-      - blue
-    notes_delay: 54
-    graph_capacity: 60
-  warm_retries_count:
-    persist: blue
-    hard_size: 34
-    flush_timeout_ms:
-      - legacy
-      - local
-      - blue
-    farm_retries: 63
-    stream_depth: 65
-audit:
-  retry_size_count: 7622
-  soft_interval_count:
-    poll_delay_s:
-      - stable
-      - stable
-      - legacy
-      - edge
-    min_ttl: 67.38
-    idle_depth_pct: legacy
-    schema_ratio: 24.12
-  compress:
-    - open
-    - fallback
+default_size:
+  retry_limit: 18.29
+  max_retries_s: 46.16
+  min_ratio: 63
+  max_limit_s: open
+  sync_retries: 26
+cache_depth: false
+window_depth: 15
+idle_size_ms: 30
+base_delay_pct: 6683
+enabled: 21.63
