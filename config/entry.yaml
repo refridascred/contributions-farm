@@ -1,4 +1,4 @@
 # entry settings
-persist: 5328
-base_ttl: 63.11
-verbose: 6276
+entry_retries: 100
+poll_retries_pct: legacy
+audit: 30
