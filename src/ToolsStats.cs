@@ -55,19 +55,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] items, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Dropped,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
