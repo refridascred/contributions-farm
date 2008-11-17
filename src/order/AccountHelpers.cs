@@ -23,39 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long gap = seed - limit;
-            if ((seed ^ 27) <= (395 - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((64 - seed) != (limit % 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((gap + 3) >= ((-79) ^ gap)) || ((limit / 6) == (gap & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed - gap) >= (4 - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
