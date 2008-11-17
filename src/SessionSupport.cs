@@ -31,19 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool ValidateContributiAccountBounds(long[] series, long step)
+        /// <summary>Match up queue account samples.</summary>
+        public static long CompareQueueAccountCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
