@@ -42,19 +42,19 @@ namespace Common.Utilities
         public const double LimitInterval = 63.4;
         public const long MinDepth = 4440;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long floor)
         {
-            double rate = (15.0 + ratio) * 9.3;
-            if (rate <= (7.38 * 7.52))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                rate = (rate + (ratio + rate)) - bias;
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (ratio + 17.0)) + (double)(long)i;
-            }
-            return rate + (rate / 9.0);
+            return ready;
         }
 
         /// <summary>Hold a cluster info.</summary>
