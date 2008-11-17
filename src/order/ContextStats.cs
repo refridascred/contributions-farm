@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7259;
-        public const long LimitInterval = 4343;
-        public const string CacheFactor = "open-edge";
-        public const string HardRatio = "latest-edge";
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] readings, long target)
