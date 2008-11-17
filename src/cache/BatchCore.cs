@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long RetryWidth = 7077;
         public const string CacheAccount = "standard-edge";
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long LocateContributiAccountIndex(long[] data, long target)
         {
-            Stale,
-            Closed,
-            Active,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
