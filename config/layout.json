@@ -1,13 +1,5 @@
 {
-  "max_interval_ms": 500,
-  "batch_threshold": "green",
-  "notes_delay": {
-    "idle_interval": 98.57,
-    "flush_ttl_count": 7946,
-    "base_depth_count": true,
-    "idle_depth": ["eu-west", "blue"],
-    "warm_ratio_ms": "strict"
-  },
-  "hard_size_ms": 99,
-  "dry_run": 4711
+  "layout_retries": 500,
+  "account_retries": ["staging", "strict", "local"],
+  "buffer_delay": [283, 52, 200, 332]
 }
