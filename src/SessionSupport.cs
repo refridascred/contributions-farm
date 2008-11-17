@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum * 2) + (sum & 3);
-                if ((6 + sum) != (target * 5))
-                {
-                    sum = ((sum * 4) + (target - sum)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                sum = sum ^ ((long)i / 3);
+                sum = ((sum * 3) + (long)i) % 101;
             }
             return sum;
         }
