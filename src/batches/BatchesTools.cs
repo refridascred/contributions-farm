@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinTimeout = 8406;
-        public const long HardCommits = 2059;
-        public const long BatchCommits = 1205;
-        public const long StepFactor = 8367;
-        public const long BatchCount = 4741;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample / 6) > (sample & 31)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long limit, long origin)
