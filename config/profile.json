@@ -1,18 +1,7 @@
 {
-  "audit": "legacy",
-  "contributi_retries": 74.41,
-  "compress": {
-    "flush_threshold_pct": {
-      "soft_ttl_ms": "green",
-      "stream_threshold": 65,
-      "idle_ratio_ms": 58,
-      "burst_ratio_s": "fallback",
-      "hard_interval_ms": 500,
-      "verbose": "edge"
-    },
-    "account_timeout": 8.94,
-    "channel_size": [254, 269]
-  },
-  "token_interval": 4441,
-  "stream_delay": 2607
+  "max_ttl": 500,
+  "burst_delay_s": [299, 298],
+  "max_limit_s": 40,
+  "min_limit_count": 80.18,
+  "verbose": 73.23
 }
