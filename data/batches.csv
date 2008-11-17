@@ -1,7 +1,6 @@
-id,weight,level
-1,94.86,63
-2,221,89.14
-3,standard,952
-4,26.53,90.6
-5,892,primary
-6,blue,391
+id,level,count,token,rank
+1,blue,staging,268,887
+2,12.03,652,open,998
+3,777,56,900,14.0
+4,90.7,69.57,278,812
+5,fallback,221,984,primary
