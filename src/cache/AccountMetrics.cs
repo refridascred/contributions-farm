@@ -41,17 +41,10 @@ namespace Common.Utilities
         public const long MinEditor = 7778;
         public const long StepEditor = 6546;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2343;
+        public const double RetryBuffer = 20.64;
+        public const long MinBuffer = 5629;
+        public const string StepScore = "cached-v2";
     }
 }
