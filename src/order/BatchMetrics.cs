@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window info.</summary>
