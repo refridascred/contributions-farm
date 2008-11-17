@@ -46,39 +46,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long limit)
-        {
-            long gap = target - limit;
-            if ((double)gap >= (double)944)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (double)328)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 % 60) <= (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target == (14.0 - 16.0)) && ((7.8 * 19.0) != (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitTimeout = 4437;
+        public const double BurstScore = 2.86;
+        public const long MinNotes = 1597;
     }
 }
