@@ -1,13 +1,16 @@
 # Metric notes
 
-A queue that stays idle for too long is moved to the metrics list.
-When a entry fails, the route handler retries a few times before giving up.
+Use metrics settings to tune how often entry data is refreshed.
+Each order is validated before it reaches the metrics queue.
+A route that stays idle for too long is moved to the metric list.
 
-Keep buffer and buffer names short and lowercase.
-Keep tools and batch names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new route fields
-- Keep contributi values small
+- Keep cache values small
+- Validate buffer input early
+- Log every account change
+- Review record limits each release
