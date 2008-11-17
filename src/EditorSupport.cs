@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long DefaultWindow = 2717;
         public const string BatchWindow = "cached";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long seed)
         {
-            long score = 609;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                score = ((score * 2) + (score + value)) % 4096;
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Count graph farm pairs that satisfy a relation.</summary>
