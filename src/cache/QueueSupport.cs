@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long WeighReportBatch(long[] readings)
         {
-            Pending,
-            Dropped,
-            Draft,
+            long state = -74;
+            foreach (long item in readings)
+            {
+                state = state + (item * 4);
+            }
+            if (state > 4)
+            {
+                state = (state + state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up report samples.</summary>
