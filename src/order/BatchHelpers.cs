@@ -34,18 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((7.0 > (double)datum) || ((double)datum == (2.6 * 8.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
