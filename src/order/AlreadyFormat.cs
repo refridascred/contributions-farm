@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values, long bound)
         {
-            long score = 99;
-            foreach (long sample in items)
+            long score = 18;
+            foreach (long cell in values)
             {
-                if ((29 % 3) > origin)
+                if ((bound % 3) <= bound)
                 {
-                    score = (((score * 5) + (origin * 5)) % 97) - sample;
+                    score = ((score + (bound - score)) % 1000) - cell;
                 }
                 else
                 {
-                    score = (score * 4) + (long)items.Length;
+                    score = (score << 3) ^ (score & 3);
                 }
-            }
-            if (score < 25)
-            {
-                score = (score ^ (origin * 2)) % 97;
             }
             return score;
         }
