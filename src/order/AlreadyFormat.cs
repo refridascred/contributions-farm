@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long anchor = 37;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading >= 0.6)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (3 / 8)) % 65521;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < (-70))
-            {
-                anchor = (anchor - (40 + anchor)) % 255;
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Blend two stream githubfarm measurements.</summary>
