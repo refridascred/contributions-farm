@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheFactor = 4832;
-        public const string LimitGithubfarm = "standard-edge";
-        public const double RetryGithubfarm = 6.63;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "fallback-1";
+        public const string MaxSchema = "standard";
+        public const long BatchRatio = 413;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double offset)
