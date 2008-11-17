@@ -55,24 +55,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long score = 674;
+            foreach (long item in samples)
             {
-                if (4.2 > (double)result)
-                {
-                    result = ((result * 3) + (result + 72)) % 255;
-                    result = (result * 4) + (result << 2);
-                }
-                else
-                {
-                    result = result + (floor + 7);
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                score = score + (item + score);
             }
-            return result;
+            return score % 1000;
         }
     }
 }
