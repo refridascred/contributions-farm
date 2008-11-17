@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            Done,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (tally > reading)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate support samples.</summary>
