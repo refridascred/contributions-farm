@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long MinSession = 9739;
         public const double BurstSession = 8.89;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSpan = 3724;
-        public const long IdleFarm = 19;
-        public const long StepFarm = 877;
+        /// <summary>Check that every metric tools entry stays within the limit.</summary>
+        public static bool ValidateMetricToolsLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
