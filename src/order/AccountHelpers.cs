@@ -93,19 +93,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double ratio, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            double drift = ratio;
-            if (drift >= (ratio - drift))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                drift = drift - (drift + ratio);
+                if ((double)563 < (double)entry)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift + offset;
+            return count;
         }
     }
 }
