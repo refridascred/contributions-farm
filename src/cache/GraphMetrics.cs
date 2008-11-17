@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = -72;
-            foreach (long sample in items)
-            {
-                if (target <= (target * 4))
-                {
-                    carry = ((carry << 2) ^ (target / 3)) - sample;
-                }
-            }
-            return carry;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Digest a series of route entries.</summary>
