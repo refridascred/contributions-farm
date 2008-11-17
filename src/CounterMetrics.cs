@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item != (7.9 / 3.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - offset;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
