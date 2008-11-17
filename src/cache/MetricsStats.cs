@@ -47,21 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter commits value from a seed.</summary>
-        public static long RollFilterCommits(long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(origin > ((long)i - 2)))
-                {
-                    anchor = (anchor - (origin + origin)) % 4096;
-                    anchor = anchor ^ (long)i;
-                }
-                anchor = (anchor + (origin >> 4)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
