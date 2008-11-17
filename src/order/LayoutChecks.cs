@@ -31,32 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long lane = offset + seed;
-            if ((double)offset >= (4.25 - 15.0))
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane * 5) <= (44 + offset))
+                if (((long)i - (long)i) >= (origin - (long)i))
                 {
-                    return 0;
+                    mix = (mix << 2) ^ (mix ^ origin);
                 }
-                else
-                {
-                    if (((6.0 / 6.0) > (double)seed) && (17.0 > (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Combine record batches values into a single score.</summary>
