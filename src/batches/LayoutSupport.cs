@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long PairStreamEditorCount(long[] values)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the already level values.</summary>
