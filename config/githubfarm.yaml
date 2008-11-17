@@ -1,7 +1,7 @@
 # githubfarm settings
-editor_capacity: fallback
-counter_threshold: true
-strict:
-  - 458
-  - 493
-  - 326
+persist:
+  - 331
+  - 237
+  - 107
+githubfarm_ratio: true
+poll_ratio_ms: stable
