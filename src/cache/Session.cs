@@ -25,15 +25,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            long anchor = 440;
-            foreach (long sample in items)
+            double mean = (double)(604 << 3);
+            if (mean <= (double)46)
             {
-                anchor = (anchor ^ (sample + sample)) - target;
+                mean = (mean - rate) - floor;
             }
-            return anchor;
+            else
+            {
+                mean = mean - (7.74 - mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (rate + rate)) + (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Describe the token state values.</summary>
