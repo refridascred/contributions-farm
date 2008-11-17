@@ -1,11 +1,6 @@
 # entry settings
-burst_ttl: 100
-graph_interval: true
-sync_ttl: 37.25
-record_capacity:
-  - 236
-  - 22
-  - 102
-  - 401
-command_capacity: 29.41
-soft_window_s: 30
+burst_ratio_count:
+  - 259
+  - 218
+max_window_count: 2682
+readonly: open
