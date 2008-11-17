@@ -81,18 +81,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Accumulate context commits samples.</summary>
+        public static long TotalContextCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 311;
+            foreach (long reading in readings)
             {
-                if (seen <= (datum ^ seen))
+                if (((double)mix > (10.0 - 1.4)) && ((mix + 2) == (18 + reading)))
                 {
-                    seen = seen + 1;
+                    mix = ((mix << 2) ^ 9) % 97;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
