@@ -22,15 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long acc = 48;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc ^ (acc & 15)) % 4096) ^ reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a schema reading.</summary>
