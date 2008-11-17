@@ -1,14 +1,11 @@
 # Command notes
 
-The account report groups every batch by contributi.
-Use context settings to tune how often order data is refreshed.
-Run the metric check before changing any window limits.
-
-A support that stays idle for too long is moved to the order list.
-Use stream settings to tune how often buffer data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep token values small
-- Document new format fields
-- Validate stats input early
+- Document new githubfarm fields
+- Log every record change
+- Validate editor input early
+- Prefer queue defaults
