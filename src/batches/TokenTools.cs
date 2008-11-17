@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long target)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long mark = 5;
+            foreach (long datum in values)
+            {
+                if ((datum / 8) == (datum + target))
+                {
+                    mark = ((mark << 2) ^ datum) % 65521;
+                }
+            }
+            if (mark < 34)
+            {
+                mark = ((mark * 5) + (mark / 7)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
