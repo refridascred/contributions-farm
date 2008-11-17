@@ -37,12 +37,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long ClassifyFarmEntry(long bound, long seed)
         {
-            Idle,
-            Draft,
-            Done,
+            long offset = bound ^ seed;
+            if ((offset >> 4) < (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset == (double)305) || ((offset + 4) >= (offset << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
