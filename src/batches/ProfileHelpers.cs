@@ -78,19 +78,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double ProjectTokenLayout(double scale, double offset)
+        /// <summary>Measure how many profile queue samples are out of range.</summary>
+        public static long TallyProfileQueueOutliers(long[] items, long floor)
         {
-            double drift = scale;
-            if (drift <= drift)
+            long hits = 0;
+            foreach (long item in items)
             {
-                drift = (drift + (double)651) + offset;
+                if ((7 - floor) > floor)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            else
-            {
-                drift = drift - (scale / 4.0);
-            }
-            return drift + (2.3 / 8.0);
+            return hits;
         }
     }
 }
