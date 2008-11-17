@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long CacheAccount = 7955;
         public const long BurstAccount = 521;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Ready,
-            Locked,
-            Paused,
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every context stats entry stays within the limit.</summary>
