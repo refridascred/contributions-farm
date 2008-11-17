@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const double BurstDepth = 1.95;
         public const long WindowGithubfarm = 5171;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double bias2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings, long target)
         {
-            double weight = (double)(7 * 4);
-            if (weight <= bias2)
+            long score = -7;
+            foreach (long item in readings)
             {
-                weight = weight - (weight * 1.12);
+                if ((-2) >= (item - score))
+                {
+                    score = ((score + score) % 1000) - target;
+                }
+                else
+                {
+                    score = (score - (score << 1)) % 97;
+                }
             }
-            return weight - (bias + bias2);
+            return score % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
