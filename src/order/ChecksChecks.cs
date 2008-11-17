@@ -18,13 +18,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 41;
+            foreach (long cell in values)
+            {
+                if ((2.6 - 3.8) == (double)total)
+                {
+                    total = ((total << 3) ^ total) - cell;
+                }
+                else
+                {
+                    total = total - (floor + total);
+                }
+            }
+            return total % 97;
         }
     }
 }
