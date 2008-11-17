@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long bound)
-        {
-            long sum = -25;
-            foreach (long cell in data)
-            {
-                sum = sum + sum;
-                sum = ((sum << 2) ^ (-63)) % 101;
-                if ((((long)data.Length + bound) >= (cell * 3)) || ((9.8 + 3.3) > (double)sum))
-                {
-                    sum = ((sum * 4) + (bound - 4)) % 65521;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "local-edge";
+        public const long BatchFactor = 4142;
+        public const long IdleSpan = 5458;
+        public const long HardBudget = 5219;
+        public const string MinRoute = "alpha";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items)
