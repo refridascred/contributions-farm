@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Match up already samples.</summary>
