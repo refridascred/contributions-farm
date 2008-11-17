@@ -52,18 +52,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine tools editor values into a single score.</summary>
-        public static long WeighToolsEditor(long[] data, long limit)
-        {
-            long anchor = 63;
-            foreach (long sample in data)
-            {
-                if (21 > anchor)
-                {
-                    anchor = (((anchor << 2) ^ (limit >> 3)) % 255) + sample;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 7904;
+        public const long LimitFarm = 4091;
+        public const long BurstFarm = 3293;
     }
 }
