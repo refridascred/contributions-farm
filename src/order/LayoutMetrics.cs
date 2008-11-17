@@ -33,15 +33,21 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Count report record pairs that satisfy a relation.</summary>
+        public static long MatchReportRecordCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum - (12 << 2)) % 65521) ^ cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
