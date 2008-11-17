@@ -76,13 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 6782;
+        public const string MaxCommits = "local-v2";
+        public const long RetryDepth = 8401;
+        public const string HardTimeout = "stable-edge";
+        public const long BatchCommits = 4072;
     }
 }
