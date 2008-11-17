@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items, long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long sum = 2;
-            foreach (long entry in items)
-            {
-                if ((limit >> 2) >= (47 - entry))
-                {
-                    sum = (sum - (861 - limit)) % 4096;
-                }
-                if (0.19 <= (double)limit)
-                {
-                    sum = sum - (limit + limit);
-                }
-            }
-            return sum;
+            Retry,
+            Synced,
+            Closed,
+            Pending,
+            Done,
         }
     }
 }
