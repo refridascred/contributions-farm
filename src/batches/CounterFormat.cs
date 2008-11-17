@@ -37,13 +37,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Retry,
-            Synced,
-            Failed,
             Active,
+            Queued,
+            Locked,
         }
     }
 }
