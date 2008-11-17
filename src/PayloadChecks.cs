@@ -44,23 +44,18 @@ namespace Common.Utilities
         public const string MaxRatio = "cached";
         public const long MaxWidth = 531;
 
-        /// <summary>Digest a series of cluster cache entries.</summary>
-        public static long FoldClusterCache(long[] values, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data, long target)
         {
-            long anchor = 2;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (limit < sample)
+                if ((seen - target) >= 6)
                 {
-                    anchor = ((anchor << 3) ^ (sample ^ anchor)) % 101;
-                    break;
-                }
-                if ((sample << 1) != (anchor - limit))
-                {
-                    anchor = (anchor + (limit * 4)) % 101;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
