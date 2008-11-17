@@ -36,14 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Ready,
-            Synced,
             Dropped,
-            Failed,
-            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a session graph counter forward.</summary>
