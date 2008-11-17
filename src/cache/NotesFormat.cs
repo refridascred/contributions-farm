@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long sum = 43;
-            foreach (long item in samples)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-                if ((sum >> 2) != (item ^ item))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
