@@ -51,19 +51,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long result = 63;
+            foreach (long entry in values)
             {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result ^ (result >> 3)) + entry;
             }
-            return ready;
+            if (result < 5)
+            {
+                result = (result * 5) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
