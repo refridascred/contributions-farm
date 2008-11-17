@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache stream entry stays within the limit.</summary>
-        public static bool CheckCacheStreamBounds(long[] items, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double bias = gain;
+            if (bias <= floor)
             {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (double)9;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
