@@ -1,7 +1,22 @@
 # support settings
-retry_limit_pct: staging
-dry_run: 82.8
-idle_retries: standard
-compress: 71.1
-soft_retries_ms: true
-format_threshold: true
+readonly:
+  min_threshold_count: primary
+  hard_window_ms:
+    schema_size: 48.15
+    buffer_ttl: 8649
+    base_depth_ms: 353
+    persist:
+      - cached
+      - legacy
+    verbose: 4595
+  tools_depth: true
+metric_limit: 250
+flush_window: false
+base_timeout:
+  token_timeout: 74.34
+  flush_ratio_count: 500
+  audit: 85.67
+  enabled: 500
+  hard_timeout_ms: 100
+  notes_threshold: 100
+base_ttl_ms: 20
