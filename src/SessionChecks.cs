@@ -51,17 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (acc ^ acc)) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
