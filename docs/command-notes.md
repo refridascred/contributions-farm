@@ -1,11 +1,11 @@
 # Command notes
 
-The channel module keeps support values in sync with the farm cache.
-Run the support check before changing any cache limits.
+The layout module keeps already values in sync with the session cache.
+Each farm is validated before it reaches the checks queue.
+Keep queue and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Keep entry values small
-- Document new already fields
-- Validate filter input early
+- Document new stream fields
+- Prefer command defaults
+- Review githubfarm limits each release
