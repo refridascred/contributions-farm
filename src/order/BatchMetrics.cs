@@ -36,10 +36,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchTimeout = 6351;
-        public const long IdleInterval = 45;
-        public const string MaxFactor = "primary-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 5022;
+        public const long MaxInterval = 1824;
+        public const double CacheFarm = 43.3;
+        public const long StepFarm = 582;
 
         /// <summary>Accumulate graph metric samples.</summary>
         public static long FoldGraphMetric(long[] data, long step)
