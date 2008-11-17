@@ -51,21 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count checks editor pairs that satisfy a relation.</summary>
-        public static long PairChecksEditorCount(long[] levels)
+        /// <summary>Combine entry record values into a single score.</summary>
+        public static long ScoreEntryRecord(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 813;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total + total) <= (reading << 3))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total - (total >> 5)) % 101) + bound;
                 }
+                total = (total + (reading * 5)) % 101;
             }
-            return matches;
+            if (total < 388)
+            {
+                total = (total ^ (512 ^ 86)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
