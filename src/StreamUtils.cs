@@ -40,19 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route session samples.</summary>
-        public static long WeighRouteSession(long[] items, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long seed)
         {
-            long mark = 324;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                mark = ((((mark << 2) ^ 6) % 1000) - reading) + target;
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 68)
-            {
-                mark = (mark << 2) ^ (87 * 3);
-            }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
