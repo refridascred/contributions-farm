@@ -23,15 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)value <= 0.2)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
