@@ -65,19 +65,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] items, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Queued,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
