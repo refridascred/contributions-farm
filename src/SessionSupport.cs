@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] samples, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            long mix = 939;
-            foreach (long item in samples)
+            double load = floor;
+            if (load < load)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((((mix * 2) + (item & 7)) % 101) - (long)i) - step;
-                }
-                mix = (mix + ((long)samples.Length + mix)) % 255;
+                load = load + (0.68 / 9.0);
             }
-            return mix;
+            return load - (gain + load);
         }
 
         /// <summary>Compare every pair of order readings.</summary>
