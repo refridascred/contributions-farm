@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long StepRatio = 9007;
         public const long DefaultBudget = 6705;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Locked,
-            Done,
-            Idle,
-            Ready,
-            Pending,
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
