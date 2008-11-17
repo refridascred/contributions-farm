@@ -81,18 +81,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((0.5 + 3.0) >= (double)count)
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Dropped,
+            Pending,
         }
     }
 }
