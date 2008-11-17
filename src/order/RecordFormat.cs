@@ -51,22 +51,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((2.3 - 9.0) <= (double)sample))
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
