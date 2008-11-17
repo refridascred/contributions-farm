@@ -25,23 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items, long limit)
         {
-            long acc = 20;
-            foreach (long cell in readings)
+            long result = 50;
+            foreach (long datum in items)
             {
-                if ((cell - acc) <= acc)
+                if ((limit % 3) >= (datum << 3))
                 {
-                    acc = acc + 731;
+                    result = (result ^ (datum >> 1)) % 65521;
                 }
-                acc = ((acc * 3) + (cell * 5)) % 1000;
-                if ((acc * 4) < acc)
-                {
-                    acc = ((acc << 2) ^ (cell * 4)) % 97;
-                }
+                result = result ^ (result >> 5);
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Locate a batches counter reading by value.</summary>
