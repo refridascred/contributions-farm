@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
