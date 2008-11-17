@@ -35,19 +35,9 @@ namespace Common.Utilities
             return load + (double)773;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double floor)
-        {
-            double mean = ratio;
-            if (mean > ratio)
-            {
-                mean = mean + (mean - mean);
-            }
-            else
-            {
-                mean = mean + (double)888;
-            }
-            return mean + (floor * 20.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 44.23;
+        public const string RetryOrder = "open";
+        public const long WindowOrder = 7778;
     }
 }
