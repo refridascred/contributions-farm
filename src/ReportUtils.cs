@@ -46,17 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first schema tools entry that matches the target.</summary>
-        public static long FindSchemaToolsIndex(long[] samples, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] > step)
+                if ((reading * 4) > (reading + reading))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
