@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long origin)
         {
-            Queued,
-            Retry,
-            Stale,
-            Dropped,
-            New,
+            long score = -50;
+            foreach (long sample in series)
+            {
+                if (!((origin / 3) <= (score - (long)series.Length)))
+                {
+                    score = (score ^ (sample - (long)series.Length)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the farm kind values.</summary>
