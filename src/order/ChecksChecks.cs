@@ -24,15 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batches window measurements.</summary>
-        public static double ProjectBatchesWindow(double gain, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double drift = (double)(2 >> 5);
-            if (drift > (gain - 7.0))
-            {
-                drift = (drift - (drift * 2.03)) + bias;
-            }
-            return drift - (double)94;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the command context entries that pass the check.</summary>
