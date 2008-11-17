@@ -21,15 +21,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next token editor value from a seed.</summary>
-        public static long SeriesTokenEditor(long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
