@@ -79,12 +79,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Synced,
+            Paused,
+            Failed,
         }
     }
 }
