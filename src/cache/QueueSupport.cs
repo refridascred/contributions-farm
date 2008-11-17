@@ -22,20 +22,27 @@ namespace Common.Utilities
         public const long BaseFactor = 7298;
         public const string HardSpan = "latest-edge";
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)i + floor) > (floor ^ floor))
+                if ((step + (long)i) == (293 - 86))
                 {
-                    carry = (carry + (long)i) % 1000;
-                    carry = ((carry << 2) ^ (floor - floor)) % 97;
+                    mark = (mark << 3) ^ ((long)i + step);
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((54 < (mark + step)) || ((3.1 - 6.7) == (double)step)))
+                {
+                    mark = mark - (mark << 2);
+                }
+                if ((mark <= (mark - step)) && ((double)(long)i <= (4.31 + 6.0)))
+                {
+                    mark = (mark + (mark / 3)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
     }
 }
