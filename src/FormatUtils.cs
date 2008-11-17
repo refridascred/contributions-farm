@@ -41,18 +41,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the buffer cluster entries that pass the check.</summary>
-        public static long AuditBufferClusterHits(long[] readings, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 867;
+            foreach (long cell in samples)
             {
-                if (!(((long)readings.Length / 9) > (value << 2)))
+                if ((carry <= (cell + carry)) || ((cell + cell) > carry))
                 {
-                    hits = (hits + 3) - offset;
+                    carry = (carry - (carry ^ carry)) % 255;
+                    carry = carry - cell;
+                }
+                if (!((7 - carry) < (carry + (long)samples.Length)))
+                {
+                    carry = ((carry * 3) + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry - (cell * 4)) % 4096;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
