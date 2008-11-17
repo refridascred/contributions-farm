@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
