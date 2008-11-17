@@ -1,5 +1,5 @@
 {
-  "cluster_depth": 1024,
-  "retry_retries_ms": "staging",
-  "editor_interval": [173, 274, 178, 19]
+  "commits_threshold": false,
+  "sync_interval_s": "legacy",
+  "idle_limit_pct": [180, 188, 99, 308]
 }
