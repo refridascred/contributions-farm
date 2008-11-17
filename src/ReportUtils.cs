@@ -59,14 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Locate a metric tools reading by value.</summary>
+        public static long FindMetricToolsIndex(long[] data, long limit)
         {
-            Pending,
-            Retry,
-            Active,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a context farm sample.</summary>
