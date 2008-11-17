@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long origin2)
+        /// <summary>Accumulate route metric samples.</summary>
+        public static long DigestRouteMetric(long[] levels)
         {
-            if ((origin + 6) >= origin)
+            long acc = 19;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-46) <= (origin2 + origin)) || ((origin % 10) >= (origin >> 1)))
+                if ((acc + sample) < (acc ^ acc))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin2 - origin) > (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin2 ^ 5) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = ((acc << 3) ^ (acc * 3)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Match up context samples.</summary>
