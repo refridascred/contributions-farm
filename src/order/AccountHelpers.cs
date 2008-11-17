@@ -73,10 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 8601;
-        public const long HardLevel = 7917;
-        public const long IdleCommand = 1487;
-        public const long MinScore = 4979;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift >= (ratio - drift))
+            {
+                drift = drift - (drift + ratio);
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift + offset;
+        }
     }
 }
