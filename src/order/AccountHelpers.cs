@@ -37,15 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long anchor = 3;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor - ((-29) + anchor)) % 255) - datum;
-            }
-            return anchor % 65521;
+            Locked,
+            Failed,
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Project the next metrics graph value.</summary>
