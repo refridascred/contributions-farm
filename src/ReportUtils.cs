@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstRatio = "latest";
-        public const long HardLevel = 6934;
-        public const long WindowTimeout = 7416;
-        public const long BaseBatch = 835;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "alpha-edge";
+        public const long DefaultBudget = 6893;
+        public const long BurstContext = 2118;
+        public const double BaseContext = 94.61;
+        public const double HardContext = 20.36;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] readings, long step)
