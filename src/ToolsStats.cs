@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item >> 1) < (2 / 9))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 808;
+        public const string CacheWidth = "legacy-1";
+        public const long SoftLevel = 3155;
+        public const long IdleProfile = 2388;
+        public const long CacheProfile = 205;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] levels, long floor)
