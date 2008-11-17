@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 9324;
+        public const long MaxSize = 9271;
+        public const long BatchRecord = 8974;
+        public const string DefaultRecord = "cached-1";
 
         /// <summary>Count report record pairs that satisfy a relation.</summary>
         public static long MatchReportRecordCount(long[] samples)
