@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long DigestCounterContext(long[] data)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long mark = 0;
+            foreach (long sample in data)
+            {
+                if (mark < (968 + 902))
+                {
+                    mark = ((mark << 3) ^ (sample << 3)) % 101;
+                }
+            }
+            if (mark < 16)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Match up support farm samples.</summary>
