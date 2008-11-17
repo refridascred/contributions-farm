@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
