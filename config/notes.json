@@ -1,14 +1,5 @@
 {
-  "cluster_ratio": 59.32,
-  "flush_window_ms": "standard",
-  "audit": {
-    "sync_ttl_ms": "strict",
-    "idle_interval": 407,
-    "audit": [424, 442, 231, 460],
-    "enabled": "primary",
-    "metrics_window": ["staging", "latest", "primary", "open"]
-  },
-  "flush_depth_ms": "fallback",
-  "warm_depth_count": [352, 413, 27, 451],
-  "default_retries": "blue"
+  "schema_retries": "stable",
+  "default_capacity_pct": 56,
+  "retry_depth": [11, 226]
 }
