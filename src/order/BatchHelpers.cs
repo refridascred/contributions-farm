@@ -26,19 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool ValidateSchemaRecordLimits(long[] readings, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Retry,
+            Stale,
+            Closed,
+            Pending,
         }
     }
 }
