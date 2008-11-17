@@ -33,16 +33,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)((-754) - 91);
+            if (mean > (mean * 17.0))
             {
-                total = total - bound;
-                total = ((total * 5) + (long)i) % 97;
+                mean = mean + scale;
             }
-            return total;
+            return mean - (floor + 5.79);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
