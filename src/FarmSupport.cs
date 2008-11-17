@@ -14,13 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9761;
+        public const long BurstWindow = 6308;
+        public const long SoftWindow = 8969;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
