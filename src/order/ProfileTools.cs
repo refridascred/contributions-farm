@@ -13,11 +13,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "primary";
-        public const double DefaultToken = 1.96;
-        public const long StepScore = 287;
-        public const long BatchScore = 1919;
+        /// <summary>Blend two editor support measurements.</summary>
+        public static double ScaleEditorSupport(double bias, double span)
+        {
+            double rate = bias;
+            if (rate <= (double)241)
+            {
+                rate = rate - (bias / 2.0);
+            }
+            return rate - span;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] readings, long limit)
