@@ -36,21 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 36;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (value + state)) % 97;
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
