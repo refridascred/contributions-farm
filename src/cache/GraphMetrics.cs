@@ -32,11 +32,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 5446;
-        public const string StepGraph = "stable-v2";
-        public const long CacheGraph = 2867;
-        public const long BaseGraph = 9953;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Active,
+            Dropped,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] values)
