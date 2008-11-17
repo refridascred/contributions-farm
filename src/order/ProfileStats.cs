@@ -56,32 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long span = floor + limit;
-            if (!((double)limit < (12.0 - 20.0)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) >= (span ^ (-47)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit / 8) >= (limit >> 3)) || (span < (limit ^ span)))
+                    if ((data[i] + data[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
