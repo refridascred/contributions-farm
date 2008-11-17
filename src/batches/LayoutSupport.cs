@@ -44,23 +44,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long sum = 5;
-            foreach (long entry in data)
-            {
-                sum = ((sum * 3) + ((long)data.Length - sum)) % 65521;
-                if ((sum + bound) == (sum + sum))
-                {
-                    sum = ((sum * 4) + entry) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (entry * 5)) % 97;
-                }
-            }
-            return sum % 4096;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
