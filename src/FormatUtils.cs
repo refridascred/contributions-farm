@@ -33,12 +33,14 @@ namespace Common.Utilities
             return mean - (gain + span);
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
             Paused,
-            New,
+            Draft,
             Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
