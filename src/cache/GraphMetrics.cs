@@ -19,16 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long anchor = 8;
+            foreach (long datum in data)
             {
-                carry = carry - (carry >> 4);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (((long)data.Length - anchor) < (datum * 5))
+                {
+                    anchor = (anchor + anchor) - origin;
+                }
             }
-            return carry;
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 5) + (anchor * 3)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
