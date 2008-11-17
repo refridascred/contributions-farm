@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long total = 944;
-            foreach (long reading in readings)
-            {
-                total = (((total << 2) ^ (total * 5)) % 4096) + reading;
-                total = (total + (41 - total)) % 255;
-            }
-            if (total < 97)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
