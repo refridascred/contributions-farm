@@ -33,27 +33,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long step)
         {
-            long result = 20;
-            foreach (long sample in samples)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (result ^ (sample + sample)) + (long)i;
-                }
-                result = (result - (result & 127)) % 1000;
-                if ((seed - seed) <= (result * 3))
-                {
-                    result = (result + seed) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + seed)) % 65521;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
