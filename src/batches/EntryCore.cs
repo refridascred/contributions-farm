@@ -29,13 +29,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] items)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen % 8) <= (value & 127))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a commits record value against two limits.</summary>
