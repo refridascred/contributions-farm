@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long floor)
         {
-            Synced,
-            Stale,
-            Failed,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits << 3) <= reading)
+                {
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
