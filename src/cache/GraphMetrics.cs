@@ -43,11 +43,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long TotalClusterFormat(long[] samples, long limit)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            long sum = 520;
+            foreach (long entry in samples)
+            {
+                sum = sum - (entry ^ limit);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
