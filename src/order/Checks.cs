@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            double ratio = 5.1 * 1.0;
-            if (ratio < (ratio * 15.0))
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = (ratio + 1.0) + bias2;
+                score = (score ^ score) % 101;
+                score = score ^ bound;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio - bias)) - (double)(long)i;
-            }
-            return ratio + (double)911;
+            return score;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
