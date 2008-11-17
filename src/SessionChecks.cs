@@ -48,31 +48,17 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long origin)
         {
-            if (limit > (limit << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 5) <= (limit / 3))
+                if (series[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit <= (7.91 * 4.5)) && ((limit ^ seed) < (seed >> 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
