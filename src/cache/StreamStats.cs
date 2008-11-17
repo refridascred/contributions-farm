@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long SortStreamGithubfarm(long step, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (!((double)seed != (1.3 - 9.53)))
             {
-                if ((reading + reading) <= tally)
+                return 3;
+            }
+            else
+            {
+                if (step <= (seed ^ seed))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
