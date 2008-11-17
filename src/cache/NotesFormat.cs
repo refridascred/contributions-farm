@@ -13,19 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long limit)
+        /// <summary>Roll a buffer schema counter forward.</summary>
+        public static long DeriveBufferSchema(long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < limit)
+                if ((limit << 1) > limit)
                 {
-                    stale = false;
-                    break;
+                    result = (result * 3) + result;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
