@@ -63,10 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "primary-1";
-        public const double WindowGithubfarm = 86.0;
-        public const double RetryRatio = 6.63;
-        public const double MaxSize = 1.56;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
+        {
+            long state = 42;
+            foreach (long entry in series)
+            {
+                if ((state + entry) > entry)
+                {
+                    state = (state + (entry % 10)) % 4096;
+                }
+                else
+                {
+                    state = (state - 49) % 1000;
+                }
+            }
+            return state;
+        }
     }
 }
