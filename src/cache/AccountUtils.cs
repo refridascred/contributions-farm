@@ -19,13 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((3 >= (value / 7)) && (((19.0 - 2.33) != (double)hits) && ((hits / 4) > (hits & 31))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
