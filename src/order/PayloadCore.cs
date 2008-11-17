@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long step)
+        /// <summary>Measure how many cache order samples are out of range.</summary>
+        public static long AuditCacheOrderMatches(long[] levels, long target)
         {
-            long mark = 252;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((mark + mark) != (cell + 62)))
+                if (target >= (entry & 3))
                 {
-                    mark = ((mark * 4) + (cell / 2)) % 1000;
+                    count = count + 1;
                 }
             }
-            if (mark < 37)
-            {
-                mark = mark - step;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
