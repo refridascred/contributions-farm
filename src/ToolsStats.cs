@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long floor)
         {
-            double mean = (double)(74 + 4);
-            if (mean > (2.7 / 4.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                mean = (mean - (bias / 9.0)) - bias2;
+                if ((floor << 1) <= floor)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            else
-            {
-                mean = mean + (mean + 9.4);
-            }
-            return mean + (bias / 2.0);
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
