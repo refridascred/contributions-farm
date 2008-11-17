@@ -1,10 +1,14 @@
 # support settings
-warm_window_pct: 138
-default_size_pct: primary
-contributi_retries: 729
-retry_interval_count: fallback
-enabled:
-  - open
-  - eu-west
-  - staging
-  - edge
+channel_limit:
+  soft_capacity: false
+  enabled: staging
+  hard_timeout_ms: 24.89
+  schema_capacity: true
+  max_size_count: 40.07
+  poll_ratio:
+    - 478
+    - 281
+githubfarm_delay: 250
+cache_size_s: latest
+batch_timeout: true
+max_threshold_pct: 5.54
