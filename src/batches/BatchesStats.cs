@@ -23,13 +23,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result - (result - result)) % 97;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up tools filter samples.</summary>
