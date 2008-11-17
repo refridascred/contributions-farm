@@ -51,11 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((2.3 - 9.0) <= (double)sample))
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
