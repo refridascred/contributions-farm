@@ -1,5 +1,12 @@
 {
-  "soft_interval_ms": 71,
-  "burst_ttl": 60,
-  "min_size": 68.79
+  "retry_ttl": {
+    "readonly": 61.2,
+    "batch_timeout": 20,
+    "compress": "latest",
+    "cache_window_s": 56,
+    "graph_ratio": 250,
+    "batch_window_pct": "local"
+  },
+  "stats_delay": 6112,
+  "soft_timeout": 79.14
 }
