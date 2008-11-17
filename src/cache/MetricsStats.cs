@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long MeasureCacheCommitsMatches(long[] readings, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((origin / 5) > 84)
+                if (sample <= bound)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Rank report input into a small class.</summary>
