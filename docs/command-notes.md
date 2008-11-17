@@ -1,12 +1,10 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every payload by checks.
+The format module keeps editor values in sync with the filter cache.
+When a notes fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review context limits each release
-- Document new commits fields
-- Log every editor change
-- Prefer route defaults
+- Log every githubfarm change
+- Prefer graph defaults
+- Validate cluster input early
