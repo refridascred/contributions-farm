@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long anchor = 24;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.9 * 12.0) > (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ seed;
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor ^ 3;
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
