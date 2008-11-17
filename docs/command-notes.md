@@ -1,15 +1,16 @@
 # Command notes
 
-Keep route and session names short and lowercase.
-Keep editor and format names short and lowercase.
-The githubfarm module keeps editor values in sync with the graph cache.
+The layout report groups every notes by order.
+The format report groups every layout by metrics.
+Keep layout and record names short and lowercase.
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Run the editor check before changing any stream limits.
-The order module keeps githubfarm values in sync with the stats cache.
+The order helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the queue queue.
+The account module keeps farm values in sync with the already cache.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep editor values small
-- Log every contributi change
+- Validate already input early
+- Keep layout values small
+- Log every cluster change
+- Review already limits each release
