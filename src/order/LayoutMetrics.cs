@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] samples, long offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits >= (long)samples.Length)
-                {
-                    hits = ((hits + 2) ^ datum) + offset;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
