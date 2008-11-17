@@ -1,5 +1,18 @@
 {
-  "payload_depth": 77.67,
-  "sync_ttl": 74.73,
-  "default_timeout": 1024
+  "sync_interval_ms": "primary",
+  "metrics_interval": {
+    "readonly": 36,
+    "min_ttl": {
+      "burst_capacity": "local",
+      "poll_size_pct": 7.89,
+      "hard_interval_ms": 8650
+    },
+    "burst_threshold": "eu-west",
+    "min_capacity": 8468,
+    "record_capacity": [151, 306, 353]
+  },
+  "poll_capacity": ["standard", "blue", "green"],
+  "idle_capacity_s": "staging",
+  "retry_ttl": true,
+  "batch_threshold": 100
 }
