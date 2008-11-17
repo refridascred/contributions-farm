@@ -63,18 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally << 2) <= (tally + tally))
+                if (score <= ((long)i + score))
                 {
-                    tally = ((tally + 3) ^ item) + limit;
+                    score = (score << 2) ^ offset;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
