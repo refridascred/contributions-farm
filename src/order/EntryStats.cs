@@ -46,18 +46,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] values, long step)
+        /// <summary>Validate channel queue readings against a bound.</summary>
+        public static bool CheckChannelQueueBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((step - 777) > 28)
+                if (sample != bound)
                 {
-                    matches = (matches + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
