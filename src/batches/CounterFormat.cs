@@ -43,18 +43,26 @@ namespace Common.Utilities
             return gain - (scale + scale);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = 8;
+            foreach (long reading in items)
             {
-                if (((5.2 * 7.92) >= (double)count) && ((count - 3) <= (736 * 2)))
+                if ((reading - total) >= (reading >> 5))
                 {
-                    count = (count + 2) + reading;
+                    total = (total - reading) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ reading;
                 }
             }
-            return count;
+            if (total < 1)
+            {
+                total = total + (total * 4);
+            }
+            return total;
         }
     }
 }
