@@ -49,12 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryTimeout = 3818;
+        public const long SoftWidth = 5835;
+        public const long IdleFarm = 1366;
 
         /// <summary>Digest a series of cluster cache entries.</summary>
         public static long FoldClusterCache(long[] values, long limit)
