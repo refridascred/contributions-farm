@@ -49,12 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
