@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 3648;
-        public const string MinTimeout = "primary-v2";
-        public const long BurstFactor = 9584;
+        /// <summary>Find the first metric contributi entry that matches the target.</summary>
+        public static long SeekMetricContributiIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
