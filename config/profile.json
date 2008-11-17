@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "readonly": "standard",
-  "base_threshold_ms": true
+  "batch_size_pct": "fallback",
+  "soft_size": 6125,
+  "retry_ratio_count": 32.35
 }
