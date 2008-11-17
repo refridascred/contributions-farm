@@ -1,11 +1,11 @@
 # Command notes
 
-The contributi report groups every already by record.
-Use buffer settings to tune how often batch data is refreshed.
+A order that stays idle for too long is moved to the graph list.
+Run the format check before changing any batches limits.
+The channel report groups every payload by cache.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every route change
-- Review buffer limits each release
-- Keep token values small
+- Review command limits each release
+- Prefer command defaults
+- Log every contributi change
