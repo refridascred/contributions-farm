@@ -36,15 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double drift = span;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - rate) - (double)(long)i;
-            }
-            return drift + (5.23 + rate);
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
