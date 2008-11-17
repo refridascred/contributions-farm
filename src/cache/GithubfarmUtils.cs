@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9401;
+        public const string LimitDepth = "latest";
+        public const string IdleFactor = "stable-v2";
+        public const long LimitWidth = 2239;
+        public const long BatchEntry = 3010;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
