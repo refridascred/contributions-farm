@@ -53,18 +53,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] series, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (double)tally)
+                if (samples[i] == bound)
                 {
-                    tally = (tally + 1) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
