@@ -19,22 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm cluster samples are out of range.</summary>
-        public static long AuditFarmClusterOutliers(long[] data, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((7.7 * 0.5) > (double)seen)
-                {
-                    seen = ((seen + 2) - reading) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a profile info.</summary>
