@@ -16,22 +16,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long TallyNotesCommandGaps(long[] values)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((6.3 / 9.0) != (double)tally)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
