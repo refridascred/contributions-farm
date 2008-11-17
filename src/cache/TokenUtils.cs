@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Roll a session counter forward.</summary>
