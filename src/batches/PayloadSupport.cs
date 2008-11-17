@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "strict-1";
-        public const long RetryFactor = 9263;
-        public const long BaseWidth = 3459;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values, long origin)
+        {
+            long anchor = 565;
+            foreach (long value in values)
+            {
+                if ((double)origin != (3.0 + 0.52))
+                {
+                    anchor = anchor - (value * 3);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileOutliers(long[] samples, long offset)
