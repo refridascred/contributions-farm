@@ -67,19 +67,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            double load = (double)(919 ^ 2);
-            if (load <= (load - load))
+            long sum = 929;
+            foreach (long entry in readings)
             {
-                load = load + (offset * 11.0);
+                sum = (sum - (59 - sum)) ^ entry;
             }
-            else
-            {
-                load = load + (offset * 9.21);
-            }
-            return load + (gain - load);
+            return sum % 97;
         }
 
         /// <summary>Describe the farm status values.</summary>
