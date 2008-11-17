@@ -1,18 +1,17 @@
 {
-  "batch_timeout": "primary",
-  "verbose": 100,
-  "base_limit_s": "staging",
-  "record_window": {
-    "burst_depth": {
-      "batch_depth_s": 92.01,
-      "cache_ttl_s": "open",
-      "base_interval_ms": "fallback"
+  "batch_retries_s": false,
+  "counter_interval": "eu-west",
+  "warm_limit": false,
+  "contributi_delay": {
+    "hard_threshold_count": {
+      "cache_threshold": false,
+      "base_timeout": "stable",
+      "stats_size": 86.39
     },
-    "base_ttl_count": {
-      "strict": 74,
-      "schema_limit": 730,
-      "compress": "stable"
-    },
-    "account_size": ["local", "open"]
+    "hard_ratio_count": "eu-west",
+    "strict": 4393,
+    "burst_timeout_s": "latest",
+    "persist": 5970,
+    "layout_limit": false
   }
 }
