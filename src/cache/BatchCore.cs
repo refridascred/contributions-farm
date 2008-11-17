@@ -38,32 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long cur = floor - step;
-            if ((floor + floor) >= step)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((step ^ floor) != (cur >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step % 8) >= (2 * 3)) && ((4 + step) < (cur >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
