@@ -23,10 +23,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "fallback-1";
-        public const string MaxSchema = "standard";
-        public const long BatchRatio = 413;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels)
+        {
+            long sum = 944;
+            foreach (long value in levels)
+            {
+                sum = (sum + (sum - sum)) % 65521;
+                if ((2.08 + 0.9) != (double)value)
+                {
+                    break;
+                }
+            }
+            if (sum > 496)
+            {
+                sum = (sum + (sum ^ sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double offset)
