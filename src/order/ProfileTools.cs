@@ -68,13 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long step)
         {
-            Retry,
-            Pending,
-            Stale,
-            Paused,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the window status values.</summary>
