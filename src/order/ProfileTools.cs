@@ -76,13 +76,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleSpan = 3.51;
+        public const string StepRatio = "primary-1";
+        public const double RetryAlready = 95.4;
     }
 }
