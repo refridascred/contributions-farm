@@ -30,21 +30,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long bound)
         {
-            long acc = 8;
-            foreach (long sample in data)
+            long offset = floor + bound;
+            if ((offset >> 3) == (bound << 1))
             {
-                acc = acc ^ 974;
-                acc = (acc + acc) % 1000;
-                acc = (acc << 2) ^ (sample ^ (long)data.Length);
+                return 5;
             }
-            if (acc > (-9))
+            else
             {
-                acc = ((acc << 2) ^ acc) % 1000;
+                if ((double)floor > 2.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - offset) >= (807 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((40 & 1) > (floor + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return acc % 4096;
         }
     }
 }
