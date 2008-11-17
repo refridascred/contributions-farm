@@ -16,21 +16,17 @@ namespace Common.Utilities
             return load - (gain + load);
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate cache stream readings against a bound.</summary>
