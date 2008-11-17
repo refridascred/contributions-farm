@@ -17,15 +17,23 @@ namespace Common.Utilities
         public const long BurstChannel = 2842;
         public const string DefaultBudget = "legacy-edge";
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Scale a command window figure with a bias.</summary>
+        public static double BlendCommandWindow(double rate, double span)
         {
-            long state = 62;
-            foreach (long entry in values)
+            double drift = (double)4 - (double)79;
+            if (drift >= (drift + rate))
             {
-                state = ((state ^ (state + state)) % 1000) ^ entry;
+                drift = (drift + rate) + span;
             }
-            return state;
+            else
+            {
+                drift = drift + (double)519;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - (double)(-60);
         }
 
         /// <summary>Hold a profile stats.</summary>
