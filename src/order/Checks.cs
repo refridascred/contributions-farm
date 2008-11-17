@@ -32,18 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long CountGithubfarmEntryHits(long[] series, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits < (offset << 2)) && ((hits + sample) >= (offset ^ offset)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
