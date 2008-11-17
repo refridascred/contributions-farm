@@ -63,11 +63,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 6782;
-        public const string MaxCommits = "local-v2";
-        public const long RetryDepth = 8401;
-        public const string HardTimeout = "stable-edge";
-        public const long BatchCommits = 4072;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 13.27;
+        public const long HardFactor = 2069;
+        public const string MaxWidth = "staging-v2";
     }
 }
