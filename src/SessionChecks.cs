@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit metrics graph readings against a rule.</summary>
-        public static long TallyMetricsGraphMatches(long[] items, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((entry % 8) < 1)
+                if (!((8 % 5) >= (tally & 127)) || ((5.2 - 2.0) >= (double)tally))
                 {
-                    count = (count + 1) - limit;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many record metrics samples are out of range.</summary>
