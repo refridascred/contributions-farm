@@ -18,13 +18,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            Synced,
-            Locked,
-            Retry,
-            Draft,
+            double scale2 = 12.0 + (scale / 8.0);
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (double)(long)i) - span;
+            }
+            return scale2 - 0.29;
         }
 
         /// <summary>Describe the command state values.</summary>
