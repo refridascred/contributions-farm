@@ -13,13 +13,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long step)
         {
-            Failed,
-            Draft,
-            Pending,
-            Closed,
+            long edge = bound - step;
+            if (((bound - 73) >= (step + edge)) || (edge <= (bound + edge)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-5) < (step % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.88 - 5.7) > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
