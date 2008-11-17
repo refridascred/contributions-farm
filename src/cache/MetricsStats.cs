@@ -23,23 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((6.3 / 8.0) != (double)entry)
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "latest-1";
+        public const long BaseSize = 4940;
+        public const long StepSupport = 3282;
+        public const double MinSupport = 37.12;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
