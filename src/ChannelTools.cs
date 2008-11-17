@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            Failed,
-            Synced,
-            Active,
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((73 - mark) < mark)
+                {
+                    mark = (mark - (mark + step)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (mark + step)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
