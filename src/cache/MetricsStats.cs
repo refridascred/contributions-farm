@@ -72,10 +72,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSpan = 4281;
-        public const long WindowSession = 2290;
-        public const long BatchSession = 3827;
-        public const string MaxCount = "legacy-1";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels)
+        {
+            long acc = 55;
+            foreach (long datum in levels)
+            {
+                if ((acc << 1) < datum)
+                {
+                    acc = ((acc * 5) + (long)levels.Length) % 97;
+                }
+                else
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                acc = acc + (-76);
+            }
+            return acc;
+        }
     }
 }
