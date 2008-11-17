@@ -38,19 +38,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double span)
+        /// <summary>Grade a commits record value against two limits.</summary>
+        public static long SortCommitsRecord(long seed, long offset)
         {
-            double load = ratio - (span - ratio);
-            if (load > span)
+            if (!((double)offset != (9.2 * 8.0)))
             {
-                load = load + ratio;
+                return 4;
             }
             else
             {
-                load = load + 5.0;
+                if (53 >= (offset - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5 >> 3) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load + ratio;
         }
 
         /// <summary>Count commits channel pairs that satisfy a relation.</summary>
