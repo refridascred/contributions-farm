@@ -1,8 +1,6 @@
 {
-  "counter_window": "strict",
-  "compress": 1024,
-  "payload_window": 33,
-  "batch_delay": 26,
-  "default_threshold_count": 3.68,
-  "persist": false
+  "metric_limit": ["latest", "fallback", "open"],
+  "support_ttl": false,
+  "flush_interval": 100,
+  "verbose": 36.17
 }
