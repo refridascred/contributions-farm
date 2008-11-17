@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long limit)
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long TallyGithubfarmNotesGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                if ((double)item == (double)4)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
