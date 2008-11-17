@@ -51,19 +51,12 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum + (long)samples.Length))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 3691;
+        public const long BaseRatio = 7611;
+        public const long RetryCount = 7428;
+        public const long MinProfile = 8856;
+        public const long MinRatio = 6407;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] series, long limit)
