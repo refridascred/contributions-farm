@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinInterval = 7132;
-        public const long WindowAlready = 5891;
-        public const long IdleInterval = 7515;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleBudget = 7307;
+        public const long CacheLevel = 1864;
+        public const long HardCounter = 6248;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowBudget = 6592;
