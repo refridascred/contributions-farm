@@ -59,18 +59,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] items, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            long carry = 0;
-            foreach (long datum in items)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((6.07 * 5.0) == (double)origin)
-                {
-                    carry = ((carry ^ (carry / 6)) % 65521) - datum;
-                }
+                sum = (sum + (988 % 2)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Blend two entry measurements.</summary>
