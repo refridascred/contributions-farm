@@ -32,10 +32,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8476;
-        public const double DefaultFactor = 8.43;
-        public const double LimitCount = 56.6;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Total { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] samples)
