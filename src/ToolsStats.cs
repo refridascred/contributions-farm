@@ -43,19 +43,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double ratio2 = (double)(18 / 3);
+            if (ratio2 > (ratio / 8.0))
             {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (ratio2 + ratio2)) - offset;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
