@@ -23,19 +23,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((10.0 / 8.0) <= (double)floor))
+                if (samples[i] == limit)
                 {
-                    carry = ((carry * 3) + (carry - (long)i)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
