@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] items, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long anchor = 0;
+            foreach (long item in items)
             {
-                if (reading <= origin)
+                if ((anchor >> 4) >= (anchor & 1))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (item / 7)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ item) % 1000;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Derive the next metrics cache value from a seed.</summary>
