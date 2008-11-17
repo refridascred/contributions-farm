@@ -32,15 +32,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long seed2)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
+            if ((seed2 + 257) >= (seed2 >> 1))
             {
-                gain2 = (gain2 + (bias / 7.0)) + (double)(long)i;
+                return 3;
             }
-            return gain2 - gain;
+            else
+            {
+                if ((seed % 8) < (seed >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
