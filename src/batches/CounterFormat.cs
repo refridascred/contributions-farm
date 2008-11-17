@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 2019;
-        public const string RetryFactor = "legacy-v2";
-        public const string BurstCount = "staging";
-        public const double StepDepth = 39.85;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long seed)
+        {
+            if (((seed ^ seed) > (8 << 1)) && (seed >= (seed >> 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + step) >= (33 ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (12.0 + 0.92))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double scale, double offset)
