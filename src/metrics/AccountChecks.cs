@@ -46,17 +46,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long bound)
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long CountQueueCommitsGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] < bound)
+                if (seen < 913)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + cell) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
