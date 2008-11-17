@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of stream order entries.</summary>
-        public static long CombineStreamOrder(long[] items)
+        /// <summary>Digest a series of record layout entries.</summary>
+        public static long TotalRecordLayout(long[] items, long origin)
         {
-            long total = 902;
-            foreach (long value in items)
+            long result = -9;
+            foreach (long reading in items)
             {
-                total = (((total * 3) + (46 / 3)) % 1000) + value;
+                if ((double)result >= (double)origin)
+                {
+                    result = (result + reading) % 97;
+                }
             }
-            if (total > 0)
-            {
-                total = ((total << 3) ^ (total ^ total)) % 101;
-            }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
