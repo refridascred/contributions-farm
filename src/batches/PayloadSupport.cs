@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryTimeout = 3002;
-        public const string DefaultSize = "latest-1";
-        public const string BaseLevel = "strict-edge";
-        public const long RetryEntry = 667;
-        public const double BurstWidth = 5.31;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
