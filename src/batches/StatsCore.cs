@@ -47,12 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardSpan = 8377;
-        public const string IdleDepth = "latest-v2";
-        public const long MaxContributi = 6530;
-        public const double LimitCount = 64.93;
-        public const long MaxInterval = 3477;
+        /// <summary>Count entry command pairs that satisfy a relation.</summary>
+        public static long MatchEntryCommandCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
