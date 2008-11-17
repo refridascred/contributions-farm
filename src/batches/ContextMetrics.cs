@@ -66,19 +66,16 @@ namespace Common.Utilities
         public const long BaseContext = 8768;
         public const long CacheBudget = 7438;
 
-        /// <summary>Check that every graph tools entry stays within the limit.</summary>
-        public static bool CheckGraphToolsLimits(long[] levels, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mix = 966;
+            foreach (long sample in items)
             {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix - sample;
+                mix = mix + (mix + 345);
             }
-            return found;
+            return mix % 65521;
         }
     }
 }
