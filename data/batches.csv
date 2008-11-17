@@ -1,7 +1,10 @@
-id,owner,region
-1,43.2,751
-2,strict,15
-3,primary,61.42
-4,477,542
-5,eu-west,85.47
-6,993,standard
+id,ratio,level,label,token
+1,102,83.96,818,228
+2,stable,46.28,strict,strict
+3,legacy,standard,62,361
+4,315,strict,72.42,edge
+5,707,626,661,blue
+6,68.48,635,local,704
+7,strict,legacy,stable,611
+8,standard,local,99,483
+9,608,362,553,480
