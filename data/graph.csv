@@ -1,6 +1,7 @@
-id,level,rank
-1,934,17.01
-2,985,372
-3,cached,392
-4,stable,51.12
-5,92.15,39.44
+id,ratio,score
+1,881,fallback
+2,cached,25.05
+3,cached,507
+4,751,4.85
+5,79.55,667
+6,410,552
