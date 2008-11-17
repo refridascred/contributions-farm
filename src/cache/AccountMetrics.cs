@@ -41,20 +41,17 @@ namespace Common.Utilities
         public const long MinEditor = 7778;
         public const long StepEditor = 6546;
 
-        /// <summary>Roll a route record counter forward.</summary>
-        public static long SeriesRouteRecord(long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark * 3) + (bound + bound);
-                if (!((19 ^ bound) <= (bound * 2)))
+                if (samples[i] == step)
                 {
-                    mark = mark ^ (bound + mark);
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
