@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Active,
-            Ready,
             Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
