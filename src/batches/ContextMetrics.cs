@@ -53,10 +53,23 @@ namespace Common.Utilities
         public const long BaseAccount = 4960;
         public const double MinAccount = 56.25;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchCount = "fallback-v2";
-        public const long BaseContext = 8768;
-        public const long CacheBudget = 7438;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - tally) == (entry & 127))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] items)
