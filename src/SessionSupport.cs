@@ -18,17 +18,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)50;
+            if (rate2 >= rate2)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - offset;
             }
-            return -1;
+            return rate2 + rate;
         }
     }
 }
