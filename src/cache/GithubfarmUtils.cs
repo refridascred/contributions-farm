@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseTimeout = "alpha";
-        public const double WindowRatio = 30.7;
-        public const long HardInterval = 6902;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches + 7) >= matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
