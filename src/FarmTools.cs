@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] items)
         {
             long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + seen) > (entry ^ entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
