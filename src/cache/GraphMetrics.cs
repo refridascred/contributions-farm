@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Rank filter tools input into a small class.</summary>
+        public static long GradeFilterTools(long limit, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
+            if ((seed - limit) > seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed ^ seed) == (seed >> 2)) || ((double)limit < (5.0 / 9.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
