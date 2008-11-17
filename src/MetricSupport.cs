@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every farm channel entry stays within the limit.</summary>
-        public static bool GuardFarmChannelLimits(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long mix = 85;
+            foreach (long cell in samples)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 4) + cell) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a window record.</summary>
