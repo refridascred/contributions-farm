@@ -15,15 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values)
         {
-            double bias = 5.72;
-            for (int i = 0; i < 4; i++)
+            long score = 5;
+            foreach (long entry in values)
             {
-                bias = ((bias - span) + (double)(long)i) + weight;
+                score = ((score << 2) ^ (entry % 8)) % 97;
             }
-            return bias + bias;
+            return score;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
