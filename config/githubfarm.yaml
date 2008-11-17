@@ -1,25 +1,4 @@
 # githubfarm settings
-graph_capacity:
-  soft_ratio: 250
-  persist: 33
-  tools_window: 15.95
-account_ttl:
-  persist:
-    - 409
-    - 392
-  dry_run:
-    - staging
-    - local
-    - stable
-    - legacy
-  min_size_count: 6727
-  readonly:
-    - latest
-    - green
-    - latest
-    - local
-warm_timeout_pct: true
-readonly:
-  - 155
-  - 170
-  - 447
+verbose: false
+cache_window: 8.43
+retry_ttl_pct: 95
