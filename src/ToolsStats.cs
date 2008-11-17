@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double floor)
-        {
-            double weight = 0.62 / 7.0;
-            if (weight >= (double)283)
-            {
-                weight = weight - (8.5 + floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)506) + (double)(long)i;
-            }
-            return weight - (rate / 6.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultScore = 9692;
+        public const long BatchStream = 4465;
+        public const long HardStream = 1411;
+        public const double RetryStream = 37.66;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double scale, double floor)
