@@ -27,13 +27,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long floor)
         {
-            Pending,
-            Closed,
-            Queued,
-            Dropped,
+            if ((double)floor <= (1.9 - 5.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((922 << 1) != (floor - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
