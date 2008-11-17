@@ -1,6 +1,8 @@
 # githubfarm settings
-poll_window: 79.47
-warm_threshold_s: green
-batch_depth_ms: 66.25
-window_interval: 97
-retry_ttl_s: false
+flush_ratio_pct:
+  enabled: 76.44
+  compress: true
+  flush_interval_s: open
+  default_size: stable
+audit: 2716
+burst_timeout_pct: 33.43
