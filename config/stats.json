@@ -1,14 +1,14 @@
 {
-  "cache_ttl_s": "edge",
-  "warm_capacity_count": {
-    "flush_capacity_pct": "cached",
-    "retry_ratio_count": 3,
-    "contributi_delay": {
-      "strict": 23.37,
-      "already_ttl": [235, 132, 122, 484],
-      "format_interval": "cached"
-    }
+  "strict": [485, 440, 263],
+  "compress": {
+    "verbose": ["green", "open", "green", "stable"],
+    "burst_retries_pct": true,
+    "poll_interval_pct": false,
+    "audit": "staging",
+    "soft_delay": "open",
+    "contributi_ratio": 39
   },
-  "enabled": 3,
-  "strict": 60
+  "support_depth": "staging",
+  "command_delay": "local",
+  "max_depth_pct": 88.19
 }
