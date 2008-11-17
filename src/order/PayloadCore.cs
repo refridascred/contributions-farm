@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 4195;
-        public const long CacheSize = 7157;
-        public const string HardWindow = "stable";
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Ready,
+            Failed,
+            Closed,
+            New,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionMatches(long[] series, long floor)
