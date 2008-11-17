@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate format context samples.</summary>
-        public static long TallyFormatContext(long[] series, long step)
-        {
-            long state = 72;
-            foreach (long cell in series)
-            {
-                if ((step << 3) >= step)
-                {
-                    state = ((state << 2) ^ 84) ^ cell;
-                }
-                state = (state ^ state) % 4096;
-            }
-            if (state < 392)
-            {
-                state = state - (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultWidth = 7256;
+        public const string BatchScore = "cached-v2";
+        public const string CacheSupport = "strict-1";
+        public const string IdleSupport = "legacy-edge";
+        public const long MaxSpan = 8720;
 
         /// <summary>Audit tools batch readings against a rule.</summary>
         public static long MeasureToolsBatchHits(long[] readings)
