@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            long score = 94;
-            foreach (long reading in readings)
+            double gain = 7.64;
+            if (gain >= (double)71)
             {
-                if (((score - score) > reading) || ((score % 97) > (31 % 2)))
-                {
-                    score = (score + (reading ^ score)) % 101;
-                }
+                gain = gain + offset;
             }
-            if (score < 68)
-            {
-                score = (score * 2) + (score % 3);
-            }
-            return score % 65521;
+            return gain - (scale + scale);
         }
 
         /// <summary>Rank editor input into a small class.</summary>
