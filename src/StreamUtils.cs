@@ -56,12 +56,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total - (862 / 7)) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a queue stats.</summary>
