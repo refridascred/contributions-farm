@@ -26,13 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Digest a series of order entries.</summary>
