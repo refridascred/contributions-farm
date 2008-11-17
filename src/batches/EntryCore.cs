@@ -53,15 +53,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = -884;
-            foreach (long item in items)
-            {
-                anchor = ((anchor + anchor) + item) + step;
-            }
-            return anchor % 97;
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
