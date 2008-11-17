@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Measure how many stream already samples are out of range.</summary>
+        public static long AuditStreamAlreadyOutliers(long[] data, long floor)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = score ^ (cell + cell);
-                if (score > (score & 3))
+                if (((long)data.Length - 432) <= (floor - 216))
                 {
-                    break;
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
