@@ -35,15 +35,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 295;
-            foreach (long entry in series)
-            {
-                state = (((state * 2) + (state << 1)) % 97) ^ entry;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
