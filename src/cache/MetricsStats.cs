@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const double BurstDepth = 38.62;
         public const long WindowTimeout = 2555;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (samples[i] >= limit)
+                if (cell < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the context state values.</summary>
