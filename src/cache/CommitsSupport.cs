@@ -36,12 +36,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Retry,
-            Pending,
-            Active,
+            Done,
+            Failed,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Match up editor account samples.</summary>
