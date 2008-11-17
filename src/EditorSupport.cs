@@ -19,22 +19,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((entry + seen) < (424 ^ seen)) && (20.0 < (double)entry))
+                if ((count + count) >= (seed + sample))
                 {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
