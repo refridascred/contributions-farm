@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long floor)
         {
-            Dropped,
-            Synced,
-            Stale,
+            long cur = bound + floor;
+            if (cur > ((-1) + cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.35 - 6.21) < (double)cur)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate metric samples.</summary>
