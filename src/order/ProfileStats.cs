@@ -49,21 +49,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Iterate the farm schema series from a seed.</summary>
+        public static long SeriesFarmSchema(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long cur = (long)i % 12;
+                long next = (score % 100) ^ (score - cur);
+                if ((next >= score) || (cur <= (bound + bound)))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    cur = cur + (next + score);
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
