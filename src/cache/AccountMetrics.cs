@@ -18,32 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits batch value against two limits.</summary>
-        public static long SortCommitsBatch(long floor, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long gap = floor - bound;
-            if ((bound ^ gap) >= gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((49 + bound) == (6 << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)gap < (6.22 / 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the command state values.</summary>
