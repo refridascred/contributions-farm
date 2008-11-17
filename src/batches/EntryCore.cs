@@ -53,12 +53,21 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count commits channel pairs that satisfy a relation.</summary>
+        public static long CompareCommitsChannelCount(long[] values)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
