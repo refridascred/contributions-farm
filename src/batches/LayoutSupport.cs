@@ -12,18 +12,13 @@ namespace Common.Utilities
             return weight + (13.0 * 9.85);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item & 7) == (item + tally)) && (2.0 <= (double)(long)series.Length))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
