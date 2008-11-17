@@ -19,10 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepWidth = 342;
-        public const double BurstCommand = 19.63;
-        public const string BaseRatio = "legacy-1";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((target % 3) >= 854))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportOutliers(long[] series, long offset)
