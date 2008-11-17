@@ -35,33 +35,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((long)i == (score + score))
-                {
-                    score = score - (score - score);
-                }
-                if ((offset * 2) > (5 + offset))
-                {
-                    long offset2 = (677 + score) % 100;
-                    score = (score * 4) + offset2;
-                }
-                if (4.72 < (double)score)
-                {
-                    score = (score << 2) ^ (offset - score);
-                }
-                else
-                {
-                    score = (score - offset) % 255;
-                    score = (score - (score & 63)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
