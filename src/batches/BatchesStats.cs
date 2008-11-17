@@ -47,19 +47,27 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long carry = 960;
+            foreach (long reading in series)
             {
-                if (cell < target)
+                if ((carry ^ reading) != (reading - 173))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - (carry - (-957))) % 1000;
+                    carry = (carry ^ (reading + carry)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (392 - 0)) % 255;
+                }
+                if ((13.0 / 6.0) >= (double)carry)
+                {
+                    carry = carry - (reading + carry);
                 }
             }
-            return ok;
+            return carry;
         }
     }
 }
