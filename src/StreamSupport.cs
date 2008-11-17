@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] series)
+        /// <summary>Digest a series of farm notes entries.</summary>
+        public static long FoldFarmNotes(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if (((double)(-2) < (double)tally) && ((981 - tally) >= (item / 3)))
+                result = ((((result * 4) + (result + result)) % 101) + datum) - limit;
+                result = result ^ (result << 3);
+                if ((9.0 / 7.0) == (double)result)
                 {
-                    tally = tally + 1;
+                    result = (result + ((long)items.Length / 4)) % 4096;
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
