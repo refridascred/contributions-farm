@@ -75,11 +75,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches % 8) == ((long)levels.Length + (-4)))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
