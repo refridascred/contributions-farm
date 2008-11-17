@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinWidth = 23.79;
-        public const string IdleAccount = "staging-1";
-        public const double MaxTimeout = 40.2;
-        public const double SoftLevel = 4.13;
-        public const long SoftAccount = 688;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "stable-v2";
+        public const string MinRoute = "legacy-1";
+        public const double BatchDepth = 9.85;
+        public const long StepRoute = 7799;
+        public const long MaxFactor = 9324;
 
         /// <summary>Audit metrics commits readings against a rule.</summary>
         public static long MeasureMetricsCommitsMatches(long[] items)
