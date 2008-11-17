@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
