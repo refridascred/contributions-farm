@@ -1,34 +1,7 @@
 # githubfarm settings
-hard_threshold_ms:
-  dry_run:
-    base_depth_pct: 1024
-    cache_delay_count: strict
-    sync_delay_pct: 2291
-    burst_ttl_pct: 84
-    enabled: 250
-    verbose: 47.52
-  layout_timeout:
-    - blue
-    - green
-    - primary
-  layout_depth: legacy
-  burst_timeout_pct: 97.24
-  base_threshold:
-    min_window_ms:
-      - 211
-      - 476
-      - 271
-      - 95
-    soft_capacity_pct: stable
-    flush_limit:
-      - strict
-      - primary
-      - blue
-    batch_retries_s: 100
-  base_window_s:
-    - legacy
-    - legacy
-    - stable
-    - staging
-min_depth: false
-retry_ttl: 57
+hard_window_count: 1024
+payload_ttl: 11
+flush_threshold_ms: stable
+notes_capacity: 68.89
+entry_depth: eu-west
+retry_window: open
