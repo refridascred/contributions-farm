@@ -1,7 +1,5 @@
 {
-  "min_ttl_count": false,
-  "filter_interval": 11,
-  "retry_threshold_count": 17,
-  "report_window": 30,
-  "verbose": 50
+  "poll_ttl_count": 41,
+  "burst_threshold_count": 53.03,
+  "readonly": false
 }
