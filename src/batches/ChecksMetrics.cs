@@ -65,10 +65,18 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 5682;
-        public const long BaseCount = 4216;
-        public const long MaxFactor = 5789;
-        public const long MaxRoute = 1838;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((8.0 * 7.41) <= (double)value)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
