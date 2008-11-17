@@ -36,15 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            double bias = offset;
-            if (bias < (ratio / 6.0))
+            long acc = 0;
+            foreach (long item in readings)
             {
-                bias = bias + (offset - ratio);
+                acc = (acc + (acc % 100)) + item;
             }
-            return bias + (bias - 16.0);
+            return acc % 65521;
         }
     }
 }
