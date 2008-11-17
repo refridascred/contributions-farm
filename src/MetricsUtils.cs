@@ -56,9 +56,17 @@ namespace Common.Utilities
         public const long BaseCounter = 6225;
         public const string BatchRatio = "latest-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "open";
-        public const long BatchCache = 3338;
-        public const double StepTimeout = 81.46;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
