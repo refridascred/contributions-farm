@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every graph batch entry stays within the limit.</summary>
