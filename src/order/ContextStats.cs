@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings)
-        {
-            long carry = 0;
-            foreach (long cell in readings)
-            {
-                carry = carry + (cell & 127);
-                carry = carry - (carry % 5);
-                if (((carry ^ carry) <= (cell + cell)) && ((double)carry == (2.11 * 11.0)))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7259;
+        public const long LimitInterval = 4343;
+        public const string CacheFactor = "open-edge";
+        public const string HardRatio = "latest-edge";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterGaps(long[] levels, long origin)
