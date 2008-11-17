@@ -26,22 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools batch readings against a rule.</summary>
-        public static long MeasureToolsBatchHits(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((tally ^ datum) <= (tally / 8))
+                if (!(sample > (sample + sample)) || (((2.0 + 12.0) >= (double)seen) && ((seen * 4) > sample)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
