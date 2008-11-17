@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)(21 ^ 9);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)(long)i) - bias;
             }
-            return count;
+            return bias2 - floor;
         }
 
         /// <summary>Hold a profile header.</summary>
