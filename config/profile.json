@@ -1,5 +1,5 @@
 {
-  "batch_size_pct": "fallback",
-  "soft_size": 6125,
-  "retry_ratio_count": 32.35
+  "payload_depth": 77.67,
+  "sync_ttl": 74.73,
+  "default_timeout": 1024
 }
