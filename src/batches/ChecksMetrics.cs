@@ -65,18 +65,13 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const long MinSupport = 2388;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] levels, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((8.0 * 7.41) <= (double)value)
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
