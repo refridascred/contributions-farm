@@ -41,21 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel githubfarm readings.</summary>
-        public static long MatchChannelGithubfarmCount(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((10.0 / 8.0) <= (double)floor))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 3) + (carry - (long)i)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
