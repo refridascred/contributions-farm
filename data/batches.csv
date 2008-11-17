@@ -1,11 +1,6 @@
-id,score,ratio,state
-1,5.64,60,25.84
-2,14.02,638,215
-3,957,32.13,fallback
-4,edge,50.39,433
-5,49.62,342,blue
-6,217,green,staging
-7,866,202,10.44
-8,blue,41.96,local
-9,4,staging,open
-10,edge,50.19,96.36
+id,owner,token
+1,72.07,433
+2,legacy,open
+3,staging,54.05
+4,local,77.48
+5,blue,538
