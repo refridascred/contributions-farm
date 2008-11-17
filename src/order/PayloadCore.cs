@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cache order samples are out of range.</summary>
-        public static long AuditCacheOrderMatches(long[] levels, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (target >= (entry & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double load = (double)(896 / 7);
+            return ((load + (double)89) + ratio) + floor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
