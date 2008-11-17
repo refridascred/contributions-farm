@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((double)cell == (double)hits) || ((cell ^ cell) <= (cell << 1)))
+                if (((3.39 / 9.0) != (double)reading) || ((count - reading) <= (long)data.Length))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a tools editor pair into a bucket.</summary>
