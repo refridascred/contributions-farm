@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            double drift = (double)274 * 0.1;
-            if (drift <= span)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                drift = drift + (scale * 3.3);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Hold a profile info.</summary>
