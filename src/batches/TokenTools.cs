@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
