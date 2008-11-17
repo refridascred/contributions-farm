@@ -31,38 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long bound2)
+        /// <summary>Blend two record context measurements.</summary>
+        public static double SmoothRecordContext(double ratio, double floor)
         {
-            if ((6.0 / 9.0) > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 + 90) != (bound2 % 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound << 3) >= bound2) || (bound2 >= (bound2 ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound2 + 149) < (bound2 + bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double ratio2 = 9.81;
+            return (ratio2 - ratio) + floor;
         }
     }
 }
