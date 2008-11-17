@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long bound)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ ((long)i >> 4);
+                mix = ((mix * 2) + ((long)i + mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
