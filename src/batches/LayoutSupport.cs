@@ -32,17 +32,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((9 + seed) > (bound / 8))
             {
-                if (data[i] < origin)
+                return 3;
+            }
+            else
+            {
+                if (bound < (seed ^ seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(405 > bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((18.0 / 2.0) <= (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
