@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
