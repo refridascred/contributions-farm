@@ -26,14 +26,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            New,
-            Retry,
-            Stale,
-            Closed,
-            Pending,
+            long acc = 59;
+            foreach (long entry in levels)
+            {
+                if (!!((entry - acc) <= (entry ^ entry)))
+                {
+                    acc = ((acc * 5) + (acc - acc)) % 4096;
+                }
+                if (entry >= (acc ^ entry))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                    acc = (acc ^ entry) % 97;
+                }
+                if (((-6) + entry) <= (acc / 5))
+                {
+                    acc = ((acc << 2) ^ entry) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
