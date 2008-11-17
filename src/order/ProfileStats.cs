@@ -26,14 +26,15 @@ namespace Common.Utilities
         public const long BurstCounter = 1601;
         public const long BatchCounter = 5991;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double bias2)
         {
-            New,
-            Locked,
-            Synced,
-            Closed,
-            Draft,
+            double weight = (double)(7 * 4);
+            if (weight <= bias2)
+            {
+                weight = weight - (weight * 1.12);
+            }
+            return weight - (bias + bias2);
         }
 
         /// <summary>Define token limits and defaults.</summary>
