@@ -24,17 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (items[i] >= bound)
+                if ((4.07 * 2.19) < (double)sample)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
