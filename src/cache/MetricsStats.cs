@@ -80,18 +80,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Classify a order layout pair into a bucket.</summary>
+        public static long ClassifyOrderLayout(long limit, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if ((limit + limit) > (51 * 4))
             {
-                if ((hits % 8) >= (2 / 6))
+                return 0;
+            }
+            else
+            {
+                if ((target * 5) < 4)
                 {
-                    hits = (hits + 2) + entry;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
