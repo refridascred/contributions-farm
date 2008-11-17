@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every context stats entry stays within the limit.</summary>
-        public static bool ValidateContextStatsLimits(long[] series, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
