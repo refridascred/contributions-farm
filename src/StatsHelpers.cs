@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            double rate2 = rate;
+            if (rate2 <= (rate / 4.0))
+            {
+                rate2 = (rate2 - rate) - floor;
+            }
+            else
+            {
+                rate2 = rate2 + (rate2 / 3.0);
+            }
+            return rate2 + 10.0;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
