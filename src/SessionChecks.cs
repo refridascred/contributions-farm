@@ -54,15 +54,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer entry reading.</summary>
-        public static double SmoothBufferEntry(double scale, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long limit)
         {
-            double mean = (double)(-5) + (double)30;
-            if (mean <= (bias + scale))
+            if (limit > (limit << 2))
             {
-                mean = mean + (double)3;
+                return 2;
             }
-            return mean - (double)53;
+            else
+            {
+                if ((limit * 5) <= (limit / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit <= (7.91 * 4.5)) && ((limit ^ seed) < (seed >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
