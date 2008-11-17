@@ -28,11 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstLevel = 1148;
-        public const double IdleTimeout = 94.35;
-        public const long IdleGithubfarm = 8079;
-        public const double CacheGithubfarm = 55.77;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
