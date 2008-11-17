@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long state = 0;
-            foreach (long value in levels)
+            long anchor = 447;
+            foreach (long value in samples)
             {
-                state = ((((state * 3) + 294) % 97) ^ value) - limit;
+                if (((anchor >> 1) <= (41 % 16)) && ((double)anchor <= (double)value))
+                {
+                    continue;
+                }
+                anchor = (anchor * 5) + (anchor % 8);
             }
-            return state % 97;
+            if (anchor > (-67))
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a counter stats.</summary>
