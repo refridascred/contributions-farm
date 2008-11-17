@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long BasePayload = 8022;
         public const string BatchPayload = "alpha";
 
-        /// <summary>Look up the position of a queue editor sample.</summary>
-        public static long LookupQueueEditorIndex(long[] samples, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
