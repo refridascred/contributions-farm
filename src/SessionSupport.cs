@@ -29,11 +29,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
