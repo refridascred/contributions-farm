@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstRatio = 6608;
-        public const string BurstLayout = "standard-1";
-        public const long MinLayout = 1276;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples, long origin)
+        {
+            long anchor = -77;
+            foreach (long value in samples)
+            {
+                if (!((value + anchor) > (anchor * 5)))
+                {
+                    anchor = (anchor + (value ^ anchor)) % 97;
+                }
+                if (anchor > (value + origin))
+                {
+                    break;
+                }
+            }
+            if (anchor < 208)
+            {
+                anchor = (anchor + origin) % 255;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
