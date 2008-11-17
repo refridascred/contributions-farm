@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long floor2)
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long TotalTokenQueue(long[] samples, long limit)
         {
-            if ((floor ^ floor2) > (25 % 3))
+            long anchor = 77;
+            foreach (long value in samples)
             {
-                return 6;
+                anchor = ((anchor - value) % 255) - limit;
+                anchor = (anchor ^ (value - anchor)) % 65521;
             }
-            else
-            {
-                if ((floor2 - floor2) > floor2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor >> 2) <= (floor2 + floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two context measurements.</summary>
