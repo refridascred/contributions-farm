@@ -40,24 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
         {
-            if ((388 + 27) >= (limit >> 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit + 6) < limit) && ((963 & 31) >= (limit & 63)))
+                if (readings[i] > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
