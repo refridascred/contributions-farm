@@ -33,22 +33,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long AuditGithubfarmProfileHits(long[] series)
+        /// <summary>Grade a support entry value against two limits.</summary>
+        public static long ClassifySupportEntry(long target, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((14.0 * 17.0) > (9.5 + 9.9))
             {
-                if (12.0 > (double)count)
+                return 8;
+            }
+            else
+            {
+                if ((11.0 - 3.0) < (double)target)
                 {
-                    count = (count + 2) ^ reading;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
