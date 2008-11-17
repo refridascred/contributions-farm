@@ -41,19 +41,14 @@ namespace Common.Utilities
             return scale + (2.7 - ratio);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (acc ^ (acc % 60)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            New,
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
