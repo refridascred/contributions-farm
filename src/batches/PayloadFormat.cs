@@ -32,23 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((double)(long)i >= (6.0 - 3.0)) && ((offset >> 3) == (anchor / 9)))
+                if (count < (2 + sample))
                 {
-                    anchor = anchor - (anchor >> 2);
+                    count = (count + 2) - seed;
                 }
-                else
-                {
-                    anchor = (anchor * 3) + (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
