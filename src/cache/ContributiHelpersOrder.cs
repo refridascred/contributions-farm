@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches commits entry stays within the limit.</summary>
-        public static bool CheckBatchesCommitsLimits(long[] samples, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long span = target ^ offset;
+            if (target < (offset & 1))
             {
-                if (entry < target)
+                return 5;
+            }
+            else
+            {
+                if (!((offset * 2) != (span + offset)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (9.4 - 20.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target % 5) <= span) && (72 > span))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a graph summary.</summary>
