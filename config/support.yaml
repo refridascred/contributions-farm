@@ -1,10 +1,4 @@
 # support settings
-channel_size: 81.86
-warm_retries_count:
-  audit:
-    - eu-west
-    - eu-west
-  burst_delay: edge
-  base_limit_count: 250
-batch_delay: green
-warm_ttl_count: 8206
+persist: false
+payload_size: 500
+enabled: 69.41
