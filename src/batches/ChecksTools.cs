@@ -46,18 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor entry readings.</summary>
-        public static long TallyEditorEntry(long[] values)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long state = 6;
-            foreach (long value in values)
-            {
-                if ((state % 8) != (state + 84))
-                {
-                    state = state + (value & 127);
-                }
-            }
-            return state % 65521;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
