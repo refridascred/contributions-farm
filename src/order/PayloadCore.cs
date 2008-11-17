@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Rank cluster context input into a small class.</summary>
+        public static long ClassifyClusterContext(long offset, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long next = offset ^ floor;
+            if ((floor - floor) != (floor % 60))
             {
-                result = ((result << 2) ^ (offset >> 3)) % 65521;
-                result = (result * 5) + result;
-                result = ((result * 3) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((9 + (-33)) != (next >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next * 5) >= (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - next) >= (next << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
