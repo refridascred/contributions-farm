@@ -53,22 +53,19 @@ namespace Common.Utilities
         public const long BaseAccount = 4960;
         public const double MinAccount = 56.25;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight = (4.67 / 2.0) - 20.0;
+            if (weight > 6.62)
             {
-                if ((entry - tally) == (entry & 127))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - span) + rate;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 7.8) + (double)(long)i;
+            }
+            return weight - (double)790;
         }
 
         /// <summary>Accumulate cache samples.</summary>
