@@ -54,24 +54,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long origin)
-        {
-            long total = 99;
-            foreach (long reading in readings)
-            {
-                if ((double)total >= (9.7 * 0.1))
-                {
-                    total = (total - origin) % 255;
-                    total = total ^ (reading << 3);
-                }
-                if ((reading / 7) <= (total + origin))
-                {
-                    total = (total + (origin << 3)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRatio = 7415;
+        public const long SoftRecord = 2139;
+        public const string IdleRecord = "local-v2";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] series, long target)
