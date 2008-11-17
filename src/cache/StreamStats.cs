@@ -44,17 +44,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first entry order entry that matches the target.</summary>
-        public static long SeekEntryOrderIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftCount = 9298;
+        public const long BaseScore = 5156;
+        public const long BaseAlready = 2878;
+        public const long WindowBudget = 2683;
     }
 }
