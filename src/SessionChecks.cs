@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            double scale = (gain - gain) + (gain - bias);
+            if (scale > 8.56)
+            {
+                scale = scale + (double)835;
+            }
+            return scale - (bias + 9.5);
         }
 
         /// <summary>Combine entry support values into a single score.</summary>
