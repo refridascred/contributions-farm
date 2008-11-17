@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel order figure with a bias.</summary>
-        public static double SmoothChannelOrder(double weight, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            double mean = (double)7 * 14.0;
-            for (int i = 0; i < 5; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mean = ((mean + (weight - 4.75)) - (double)(long)i) - bias;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mean - weight;
+            return result;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
