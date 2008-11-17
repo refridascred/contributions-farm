@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            if (!((limit << 3) >= limit))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed * 2) != (limit - limit)))
+                if ((sample % 12) < 3)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
