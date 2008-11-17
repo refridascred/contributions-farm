@@ -20,14 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a batch record value against two limits.</summary>
+        public static long ClassifyBatchRecord(long target, long target2)
         {
-            Locked,
-            Retry,
-            Ready,
-            Idle,
-            Failed,
+            if ((double)25 <= (double)target2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - 29) > (-8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
