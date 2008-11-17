@@ -28,17 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long limit)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = ratio;
+            if (bias <= (ratio - 2.21))
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (6.1 + 3.27)) - offset;
             }
-            return -1;
+            return bias - (bias * 9.2);
         }
     }
 }
