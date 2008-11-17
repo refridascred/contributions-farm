@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a contributi command pair into a bucket.</summary>
-        public static long RankContributiCommand(long step, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            if (((step + bound) <= (-42)) || ((14.0 * 9.0) == (double)bound))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 3) == (step / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + step) > step)
+                    if ((values[i] - values[j]) < 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
