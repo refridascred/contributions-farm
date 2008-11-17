@@ -65,11 +65,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double SmoothNotesContext(double bias, double span)
-        {
-            double load = span;
-            return (load + (span + load)) + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 8601;
+        public const long HardLevel = 7917;
+        public const long IdleCommand = 1487;
+        public const long MinScore = 4979;
     }
 }
