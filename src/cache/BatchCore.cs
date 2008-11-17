@@ -40,17 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings, long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = 1;
-            foreach (long reading in readings)
-            {
-                long bound = (state / 2) + 519;
-                state = (((state << 2) ^ (bound >> 4)) % 97) + seed;
-                state = ((state << 3) ^ reading) % 1000;
-            }
-            return state;
+            Pending,
+            Paused,
+            Idle,
         }
     }
 }
