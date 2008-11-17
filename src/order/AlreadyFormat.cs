@@ -58,15 +58,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double offset)
+        /// <summary>Project the next layout batch value.</summary>
+        public static double ProjectLayoutBatch(double ratio, double floor)
         {
-            double weight = 9.0;
-            if (weight > weight)
+            double weight = 19.0;
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight - offset;
+                weight = (((weight + (weight / 4.0)) + (double)(long)i) + ratio) - floor;
             }
-            return weight - scale;
+            return weight + weight;
         }
     }
 }
