@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account metrics value from a seed.</summary>
-        public static long StepAccountMetrics(long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result << 3) ^ (result * 5)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
