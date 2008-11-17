@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double weight, double offset)
         {
-            New,
-            Ready,
-            Queued,
-            Stale,
+            double load = (weight + weight) + weight;
+            if (load > weight)
+            {
+                load = load - (4.04 - offset);
+            }
+            return load + (weight + load);
         }
 
         /// <summary>Combine already values into a single score.</summary>
