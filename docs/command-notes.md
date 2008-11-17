@@ -1,11 +1,11 @@
 # Command notes
 
-Each metrics is validated before it reaches the format queue.
-The account module keeps cache values in sync with the report cache.
-Keep support and cache names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Review record limits each release
-- Keep already values small
+- Review metric limits each release
+- Validate stats input early
+- Keep buffer values small
+- Prefer contributi defaults
