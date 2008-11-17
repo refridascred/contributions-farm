@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every route metric entry stays within the limit.</summary>
-        public static bool VerifyRouteMetricBounds(long[] levels, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double weight = bias;
+            if (weight > (bias * 9.9))
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - (double)831) + offset;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (1.0 * 8.11)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
