@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstLevel = 1723;
-        public const long RetryScore = 6527;
-        public const long MinBatch = 9277;
-        public const string BatchScore = "primary";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Failed,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] items, long floor)
