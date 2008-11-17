@@ -64,16 +64,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            double scale = bias2;
+            if (scale > scale)
             {
-                sum = (sum + (988 % 2)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                scale = (scale - (scale * 7.27)) - bias;
             }
-            return sum;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale + (scale + scale);
         }
 
         /// <summary>Blend two entry measurements.</summary>
