@@ -50,18 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] data)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading > matches) && (776 > (matches - reading)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
