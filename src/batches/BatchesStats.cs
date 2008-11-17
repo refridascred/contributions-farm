@@ -66,32 +66,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long target)
+        /// <summary>Roll a layout order counter forward.</summary>
+        public static long DeriveLayoutOrder(long origin)
         {
-            long diff = offset - target;
-            if ((double)offset >= (double)target)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (offset <= diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (3.38 > (6.5 - 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
