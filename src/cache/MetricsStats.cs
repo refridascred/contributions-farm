@@ -47,12 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 9471;
-        public const string LimitOrder = "alpha-edge";
-        public const long SoftDepth = 5150;
-        public const long LimitBudget = 1312;
-        public const long MaxSize = 1218;
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long RollFilterCommits(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(origin > ((long)i - 2)))
+                {
+                    anchor = (anchor - (origin + origin)) % 4096;
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = (anchor + (origin >> 4)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
