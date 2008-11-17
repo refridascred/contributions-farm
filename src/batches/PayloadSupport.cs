@@ -18,14 +18,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Idle,
-            Paused,
-            Active,
-            Pending,
+            Queued,
             Dropped,
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
