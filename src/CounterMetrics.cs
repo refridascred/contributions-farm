@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every schema filter entry stays within the limit.</summary>
-        public static bool GuardSchemaFilterRange(long[] data, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Dropped,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Compare every pair of format order readings.</summary>
