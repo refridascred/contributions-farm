@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Locate a batch batches reading by value.</summary>
+        public static long SeekBatchBatchesIndex(long[] data, long origin)
         {
-            Paused,
-            Pending,
-            Done,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
