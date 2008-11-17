@@ -20,10 +20,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowInterval = 66.62;
-        public const string RetryInterval = "open";
-        public const long WindowCount = 427;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 857;
+        public const double DefaultTimeout = 39.87;
+        public const double IdleDepth = 24.53;
+        public const long IdleWidth = 7661;
+        public const long SoftToken = 5171;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] samples)
