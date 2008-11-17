@@ -28,30 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long limit)
         {
-            long mix = 75;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < mix)
+                if (readings[i] <= limit)
                 {
-                    mix = (mix ^ (mix & 127)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix >> 1)) % 101;
-                }
-                if ((double)mix != (16.0 + 1.38))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 722)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
