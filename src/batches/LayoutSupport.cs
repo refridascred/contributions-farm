@@ -44,17 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] values, long origin)
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long RankCommandFormat(long bound, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + 23) > 811)
             {
-                if (values[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((6 + origin) > (bound - 314))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound >> 5) >= (3 * 4)) || ((origin ^ origin) >= (origin + 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= (origin & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
