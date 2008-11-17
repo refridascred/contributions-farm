@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 953;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.0 / 7.0) <= (double)score)
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score - score) % 1000) - entry;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
