@@ -60,13 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long step)
         {
-            Draft,
-            Locked,
-            Done,
-            Stale,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a counter summary.</summary>
