@@ -22,21 +22,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -27;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (sample ^ bound)) + (long)i;
+                }
+                if (!((bound + 8) > (82 ^ sample)))
+                {
+                    total = (total << 3) ^ (sample ^ 749);
+                }
+                else
+                {
+                    total = (total + (total >> 1)) % 4096;
                 }
             }
-            return count;
+            if (total > 446)
+            {
+                total = total - ((long)samples.Length - bound);
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate support samples.</summary>
