@@ -1,12 +1,5 @@
 {
-  "dry_run": 500,
-  "flush_threshold_s": {
-    "buffer_capacity": 1024,
-    "cache_ratio_count": true,
-    "command_ratio": ["strict", "blue", "strict", "open"]
-  },
-  "cache_threshold_s": "strict",
-  "hard_interval_ms": 1833,
-  "default_interval_s": 85,
-  "sync_retries_ms": false
+  "retry_size": "blue",
+  "verbose": "green",
+  "base_ratio_pct": ["eu-west", "cached", "latest", "eu-west"]
 }
