@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + mix) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-v2";
+        public const long StepLevel = 2120;
+        public const string IdleInterval = "open-edge";
+        public const double HardLevel = 78.98;
 
         /// <summary>Locate a stream githubfarm reading by value.</summary>
         public static long LocateStreamGithubfarmIndex(long[] series, long bound)
