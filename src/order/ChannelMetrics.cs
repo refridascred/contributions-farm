@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Derive the next metric profile value from a seed.</summary>
+        public static long IterateMetricProfile(long origin)
         {
-            double gain = (double)(41 + 745);
-            return (gain - rate) + span;
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((score << 3) >= (score ^ 21)))
+                {
+                    score = (score + (origin + (-1))) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
