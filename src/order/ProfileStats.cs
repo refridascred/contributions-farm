@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 21.62;
+        public const string BaseOrder = "cached-v2";
+        public const long BatchRatio = 346;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
