@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (item > step)
+                if ((5.7 - 2.17) <= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
