@@ -1,26 +1,11 @@
 {
-  "burst_size": 97.06,
-  "poll_threshold_count": {
-    "base_ratio": {
-      "min_interval_ms": 250,
-      "batch_interval": ["green", "cached", "eu-west"],
-      "flush_depth_ms": "local",
-      "warm_window": [285, 101, 251]
-    },
-    "hard_timeout_s": 3747,
-    "readonly": "blue",
-    "hard_timeout_ms": "green",
-    "stats_size": false
+  "hard_ttl_ms": true,
+  "poll_interval": {
+    "audit": 2365,
+    "base_ttl_s": ["edge", "local", "latest", "local"],
+    "readonly": 100,
+    "soft_interval_count": 3446
   },
-  "graph_delay": false,
-  "audit": 500,
-  "report_limit": {
-    "channel_timeout": true,
-    "enabled": "edge",
-    "sync_delay": false,
-    "max_timeout_ms": [344, 66, 344, 469],
-    "poll_retries_s": 100,
-    "payload_limit": 250
-  },
-  "base_size_pct": 90
+  "warm_ratio": ["stable", "edge"],
+  "record_retries": true
 }
