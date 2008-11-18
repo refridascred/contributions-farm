@@ -31,21 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 565;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor + (anchor - anchor)) ^ entry) - limit;
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
