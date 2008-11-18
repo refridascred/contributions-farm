@@ -43,39 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster already pair into a bucket.</summary>
-        public static long RankClusterAlready(long floor, long offset)
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long MeasureAlreadySessionGaps(long[] values, long seed)
         {
-            long cur = floor - offset;
-            if (!(8.0 < (double)cur))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 * 3.41) < (double)cur)
+                if ((seed - value) <= (seed + 1))
                 {
-                    return 5;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((offset / 8) < (floor + cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (cur & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
