@@ -48,10 +48,9 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseLevel = 40.45;
-        public const double StepContributi = 31.84;
-        public const long WindowRatio = 5252;
-        public const long DefaultContributi = 9194;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6456;
+        public const long RetryCommand = 7416;
+        public const long BaseCommand = 3483;
     }
 }
