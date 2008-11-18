@@ -43,19 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long lane = limit ^ origin;
+            if ((31 + lane) <= (origin + 9))
             {
-                if (datum < step)
+                return 8;
+            }
+            else
+            {
+                if ((limit + lane) >= (lane / 2))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next token value.</summary>
