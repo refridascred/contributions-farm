@@ -72,20 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels, long step)
-        {
-            long state = 28;
-            foreach (long item in levels)
-            {
-                state = ((((state * 3) + (-202)) % 255) + item) + step;
-            }
-            if (state > 116)
-            {
-                state = (state + state) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 9925;
+        public const long LimitWidth = 8558;
+        public const long CacheLevel = 8910;
+        public const double WindowInterval = 12.57;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
