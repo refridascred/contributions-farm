@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Classify a command batch pair into a bucket.</summary>
+        public static long RankCommandBatch(long floor, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            if ((limit % 10) <= (limit << 3))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (total * 2) + ((long)i2 + origin);
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((limit - limit) < 692) && (604 <= (floor - limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a cluster already pair into a bucket.</summary>
