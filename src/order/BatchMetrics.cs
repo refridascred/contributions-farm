@@ -52,19 +52,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long result = 2;
-            foreach (long value in levels)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                result = result + (442 - result);
-                if (!((result >> 5) > value))
+                carry = carry ^ 8;
+                if ((3.68 / 5.0) <= (double)limit)
                 {
-                    result = (result * 2) + (value + result);
+                    carry = (carry * 5) + carry;
+                    carry = ((carry * 4) + limit) % 1000;
                 }
+                else
+                {
+                    carry = (carry ^ carry) % 65521;
+                    carry = (carry << 3) ^ (carry + 62);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the report state values.</summary>
