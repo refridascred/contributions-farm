@@ -83,10 +83,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "strict-v2";
-        public const double LimitContributi = 32.93;
-        public const double BaseContributi = 45.87;
-        public const long BurstRatio = 7601;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchTimeout = "latest";
+        public const long MaxLayout = 1468;
+        public const string CacheLayout = "legacy-1";
+        public const string HardSpan = "primary-edge";
+        public const string BurstLayout = "local";
     }
 }
