@@ -17,15 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Draft,
-            Queued,
-            Dropped,
-            Done,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 6913;
+        public const string HardCount = "staging";
+        public const long IdleSupport = 5888;
+        public const long HardSupport = 4559;
+        public const long LimitWidth = 6888;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long origin, long origin2)
