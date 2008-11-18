@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
