@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long sum = 467;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum << 3) ^ (origin - reading)) % 97;
-                if ((sum & 127) < reading)
+                if (seen < (seen * 5))
                 {
-                    sum = (sum << 2) ^ (7 >> 4);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ origin) % 1000;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
