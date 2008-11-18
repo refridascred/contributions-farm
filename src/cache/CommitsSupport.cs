@@ -50,12 +50,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Match up metrics cache samples.</summary>
+        public static long OverlapMetricsCacheCount(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
