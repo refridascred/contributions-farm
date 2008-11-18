@@ -75,12 +75,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Active,
-            Dropped,
-            Closed,
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
