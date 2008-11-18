@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long HardMetrics = 4002;
         public const string BaseCount = "standard-1";
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            Draft,
-            Stale,
-            Synced,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command info.</summary>
