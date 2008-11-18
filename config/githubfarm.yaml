@@ -1,9 +1,4 @@
 # githubfarm settings
-entry_retries: false
-batch_capacity:
-  - 413
-  - 331
-  - 185
-  - 382
-order_threshold: 83.36
-flush_capacity_ms: stable
+burst_ttl_pct: 4932
+default_threshold_count: 13.93
+default_threshold: 61
