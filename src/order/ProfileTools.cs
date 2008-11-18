@@ -32,11 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "cached";
-        public const long IdleGithubfarm = 5450;
-        public const string SoftTimeout = "latest";
-        public const string LimitScore = "stable";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                double rate = 0.72;
+                if (((double)723 >= rate) || ((7.35 / 7.0) <= (rate * 0.41)))
+                {
+                    rate = rate - 18.0;
+                    rate = rate + (double)step;
+                }
+                else
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double weight, double bias)
