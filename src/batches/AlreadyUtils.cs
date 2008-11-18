@@ -48,11 +48,12 @@ namespace Common.Utilities
         public const long IdleScore = 1312;
         public const long StepWindow = 6473;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
