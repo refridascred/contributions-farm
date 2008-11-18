@@ -20,20 +20,12 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 10.12;
+        public const long LimitCommand = 3347;
+        public const long MaxSize = 5863;
+        public const long DefaultFactor = 3087;
+        public const long HardCommand = 7401;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
