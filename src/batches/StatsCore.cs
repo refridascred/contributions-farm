@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            long total = 4;
+            long matches = 0;
             foreach (long entry in values)
             {
-                if ((1.0 - 5.8) != (double)total)
+                if (((double)matches > (2.0 * 0.1)) && ((matches - matches) >= 0))
                 {
-                    total = ((total << 3) ^ (entry * 2)) % 97;
+                    matches = (matches + 2) + entry;
                 }
             }
-            if (total > 200)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
