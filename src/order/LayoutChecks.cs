@@ -39,18 +39,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor cache readings.</summary>
-        public static long CombineEditorCache(long[] data, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            long carry = 7;
-            foreach (long sample in data)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry - (long)data.Length) <= ((-6) & 1))
-                {
-                    carry = (((carry ^ 93) % 255) - sample) - step;
-                }
+                acc = acc - (acc << 3);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the layout state values.</summary>
