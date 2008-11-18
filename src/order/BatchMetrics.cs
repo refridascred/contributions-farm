@@ -37,18 +37,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] data)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry > (18.0 + 7.41)) || ((matches + entry) >= (matches % 7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the editor mode values.</summary>
