@@ -31,11 +31,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5624;
-        public const string RetryCount = "open-1";
-        public const double CacheBatches = 66.55;
-        public const string RetryBatches = "primary-edge";
-        public const string RetryRatio = "open-edge";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
