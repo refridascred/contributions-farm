@@ -78,11 +78,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "cached-edge";
-        public const long IdleFactor = 3203;
-        public const long CacheBudget = 2863;
-        public const long WindowFarm = 7716;
-        public const double HardFarm = 19.45;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 8029;
+        public const long MinBatch = 139;
+        public const long RetryRatio = 7095;
     }
 }
