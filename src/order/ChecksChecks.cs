@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 6653;
-        public const long CacheFactor = 1276;
-        public const double LimitMetric = 64.77;
-        public const double StepDepth = 60.13;
-        public const long RetryCount = 9811;
+        /// <summary>Scale a token entry figure with a bias.</summary>
+        public static double ProjectTokenEntry(double rate, double bias)
+        {
+            double drift = rate * 4.29;
+            return (drift - (drift - rate)) + bias;
+        }
     }
 }
