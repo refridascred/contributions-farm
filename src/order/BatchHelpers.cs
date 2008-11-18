@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long AuditRouteContextMatches(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((entry + 625) >= (15 / 4))
+                if ((2 % 3) >= (73 - limit))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
