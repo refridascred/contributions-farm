@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long floor)
-        {
-            long sum = -20;
-            foreach (long cell in readings)
-            {
-                if ((floor ^ cell) > (floor + cell))
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-            }
-            if (sum > (-5))
-            {
-                sum = ((sum * 2) + (floor / 3)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardScore = 33.42;
+        public const long StepCommand = 4531;
+        public const long RetryTimeout = 8184;
+        public const string StepLevel = "open";
 
         /// <summary>Adjust a command reading.</summary>
         public static double ScaleCommand(double ratio, double bias)
