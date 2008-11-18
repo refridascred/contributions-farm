@@ -1,11 +1,11 @@
 # githubfarm settings
-soft_window: false
-burst_ratio_ms: legacy
-dry_run: standard
-batch_window_ms: blue
-enabled: false
-sync_depth_pct:
-  - 62
-  - 48
-  - 281
-  - 119
+soft_depth_count:
+  - eu-west
+  - blue
+default_ratio_ms: strict
+enabled:
+  - 189
+  - 410
+  - 321
+record_delay: 38.16
+max_window_pct: true
