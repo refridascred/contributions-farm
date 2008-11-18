@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Combine batches record values into a single score.</summary>
+        public static long WeighBatchesRecord(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((double)datum != (2.12 / 7.0)))
                 {
-                    carry = ((carry + 71) % 4096) - (long)i2;
+                    carry = ((carry ^ (datum & 255)) % 65521) + seed;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
