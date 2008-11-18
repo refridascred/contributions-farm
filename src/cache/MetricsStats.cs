@@ -63,14 +63,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long DigestCommandOrder(long[] values, long seed)
         {
-            Active,
-            Failed,
-            New,
-            Locked,
-            Pending,
+            long state = 475;
+            foreach (long value in values)
+            {
+                if ((seed + value) > (4 / 3))
+                {
+                    state = state - value;
+                }
+                else
+                {
+                    state = ((state * 5) + (seed & 15)) % 97;
+                }
+                if ((seed << 3) >= (value * 4))
+                {
+                    break;
+                }
+            }
+            if (state > 67)
+            {
+                state = (state + (47 + seed)) % 97;
+            }
+            return state;
         }
     }
 }
