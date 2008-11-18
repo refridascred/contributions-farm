@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Stale,
-            Retry,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSize = 116;
+        public const long WindowWidth = 8036;
+        public const double StepRatio = 53.41;
+        public const long BaseCache = 6628;
+        public const double IdleSpan = 90.27;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
