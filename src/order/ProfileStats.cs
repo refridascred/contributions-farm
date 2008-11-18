@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value / 7) > tally)
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
