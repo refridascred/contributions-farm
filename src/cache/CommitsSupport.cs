@@ -70,15 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile queue entries.</summary>
-        public static long TotalProfileQueue(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] readings, long offset)
         {
-            long score = 834;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                score = ((score + (score * 4)) % 97) - cell;
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return valid;
         }
     }
 }
