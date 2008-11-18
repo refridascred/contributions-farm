@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit checks graph readings against a rule.</summary>
-        public static long MeasureChecksGraphGaps(long[] items)
+        /// <summary>Grade a stats counter value against two limits.</summary>
+        public static long RankStatsCounter(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long bound = seed - floor;
+            if ((floor & 7) <= seed)
             {
-                if (((sample * 3) < (sample - matches)) || (((sample * 4) == (matches << 2)) || ((double)sample < (double)matches)))
+                return 1;
+            }
+            else
+            {
+                if ((6 - bound) <= (8 * 5))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.16 < (0.96 / 4.0)) || ((double)bound != (20.0 - 8.3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + floor) != (bound << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
