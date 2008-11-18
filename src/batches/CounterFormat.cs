@@ -29,39 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context githubfarm value against two limits.</summary>
-        public static long BucketContextGithubfarm(long bound, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long bound2 = bound + limit;
-            if ((bound + limit) >= (limit ^ limit))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.7 + 11.0) != (double)limit) || ((bound * 3) <= (bound2 & 127)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + bound) == (bound * 2))
+                    if ((data[i] + data[j]) < 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= (bound + limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
