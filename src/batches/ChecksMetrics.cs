@@ -54,20 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            long anchor = offset;
+            long result = step;
             for (int i = 0; i < 20; i++)
             {
-                if ((offset ^ 6) > (offset - offset))
+                result = (result - (long)i) % 1000;
+                if (((long)i << 1) < ((-7) + 161))
                 {
-                    anchor = ((anchor << 3) ^ (36 - offset)) % 4096;
-                    anchor = ((anchor << 2) ^ 36) % 101;
+                    result = result ^ (result + result);
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = (result ^ ((long)i + step)) % 4096;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
