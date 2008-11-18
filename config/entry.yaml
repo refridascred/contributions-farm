@@ -1,4 +1,17 @@
 # entry settings
-schema_ttl: 61.16
-burst_depth_count: green
-audit: standard
+readonly: true
+soft_threshold_count:
+  warm_retries: 6784
+  retry_delay_ms: 21
+  poll_ratio: legacy
+  default_retries: 56.1
+max_interval_s: edge
+hard_limit_count:
+  - cached
+  - latest
+counter_delay: false
+verbose:
+  - cached
+  - legacy
+  - blue
+  - legacy
