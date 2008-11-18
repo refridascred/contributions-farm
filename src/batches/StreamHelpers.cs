@@ -55,12 +55,12 @@ namespace Common.Utilities
         public const string BurstCommits = "staging-v2";
         public const double BaseCommits = 30.8;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Idle,
-            Pending,
-            New,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
