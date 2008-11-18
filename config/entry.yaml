@@ -1,4 +1,7 @@
 # entry settings
-record_ttl: 79
-burst_timeout_s: stable
-readonly: 89.08
+warm_size_count: 250
+soft_size_s: 90
+flush_retries_ms:
+  - stable
+  - standard
+  - edge
