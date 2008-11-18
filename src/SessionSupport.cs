@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] levels, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (!((entry ^ hits) > hits))
+                if (datum < bound)
                 {
-                    hits = (hits + 2) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
