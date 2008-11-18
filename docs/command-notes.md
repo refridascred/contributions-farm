@@ -1,13 +1,11 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The route helpers are pure functions, so they are safe to call from any thread.
-
-Run the queue check before changing any profile limits.
-Run the batches check before changing any stats limits.
+Keep layout and queue names short and lowercase.
+A commits that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new record fields
-- Validate farm input early
+- Document new editor fields
+- Review tools limits each release
+- Validate channel input early
+- Prefer format defaults
