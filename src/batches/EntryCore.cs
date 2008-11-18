@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Blend two route batch measurements.</summary>
+        public static double AdjustRouteBatch(double rate, double span)
         {
-            Closed,
-            Stale,
-            Pending,
-            Paused,
+            double scale = 2.86;
+            if (scale < 5.84)
+            {
+                scale = (scale + scale) - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale / 2.0)) - (double)(long)i;
+            }
+            return scale + (12.0 - span);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
