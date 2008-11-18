@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            double rate2 = rate;
-            if (rate2 <= (rate / 4.0))
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = (rate2 - rate) - floor;
+                if (236 > mark)
+                {
+                    mark = ((mark << 3) ^ (8 % 5)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate2 = rate2 + (rate2 / 3.0);
-            }
-            return rate2 + 10.0;
+            return mark;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
