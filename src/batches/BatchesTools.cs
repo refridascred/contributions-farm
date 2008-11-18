@@ -20,13 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
