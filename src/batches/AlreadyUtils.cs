@@ -57,18 +57,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = 8;
+            foreach (long entry in levels)
             {
-                if ((datum <= (7 & 127)) || ((0 * 2) > (datum % 2)))
+                if ((entry * 2) <= ((long)levels.Length >> 5))
                 {
-                    matches = matches + 2;
+                    carry = (carry + (carry - carry)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ entry;
                 }
             }
-            return matches;
+            if (carry < 568)
+            {
+                carry = (carry ^ (carry / 6)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
