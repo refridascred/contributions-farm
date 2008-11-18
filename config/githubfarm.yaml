@@ -1,9 +1,7 @@
 # githubfarm settings
-burst_timeout_ms: 2
-sync_capacity_pct: 4057
-cache_delay_s:
-  - 207
-  - 392
-  - 356
-  - 223
-audit: 100
+poll_window_count: true
+base_interval_ms: 1905
+burst_ratio_ms: open
+soft_capacity_s: open
+flush_size: 60
+sync_delay_count: 77
