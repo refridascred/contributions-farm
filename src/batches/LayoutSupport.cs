@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 4593;
         public const string IdleScore = "latest";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry != (2.7 / 7.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
