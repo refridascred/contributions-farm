@@ -59,22 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((2 * 2) <= (sample % 8)) || ((double)sample != (1.19 + 3.6)))
+                if (((seen + 12) <= (item + item)) && ((seen % 12) < (seen + item)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next schema value.</summary>
