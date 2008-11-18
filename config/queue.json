@@ -1,8 +1,5 @@
 {
-  "audit": "strict",
-  "retry_window": 30,
-  "batch_timeout": 500,
-  "flush_threshold_pct": "primary",
-  "poll_threshold_count": true,
-  "poll_interval_s": true
+  "hard_depth_s": "fallback",
+  "poll_timeout_count": "open",
+  "dry_run": false
 }
