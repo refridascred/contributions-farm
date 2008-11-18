@@ -43,21 +43,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long MeasureWindowTokenMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((seen % 97) < (53 - cell)))
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up notes window samples.</summary>
