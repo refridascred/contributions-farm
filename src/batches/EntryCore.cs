@@ -64,15 +64,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long seed, long limit)
         {
-            long mark = 2;
-            foreach (long value in readings)
+            if ((3.4 - 7.5) <= (double)seed)
             {
-                mark = ((mark * 2) + (-5)) - value;
+                return 3;
             }
-            return mark % 4096;
+            else
+            {
+                if ((double)seed <= (15.0 + 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 255) <= 18)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)seed >= 10.0) && ((seed & 63) > 0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
