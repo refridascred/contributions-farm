@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] items, long floor)
         {
-            Queued,
-            Stale,
-            Retry,
+            long carry = 59;
+            foreach (long cell in items)
+            {
+                if ((cell + floor) < (cell ^ carry))
+                {
+                    carry = carry - (carry / 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi status values.</summary>
