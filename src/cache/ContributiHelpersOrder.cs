@@ -20,13 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long offset)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            if (offset <= (offset + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-5) <= (origin << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= (origin % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
