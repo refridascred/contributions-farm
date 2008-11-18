@@ -29,12 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstTimeout = 39.89;
-        public const long MinDepth = 4587;
-        public const long HardReport = 6170;
-        public const long RetryScore = 8803;
-        public const long MinReport = 5796;
+        /// <summary>Measure how many cluster graph samples are out of range.</summary>
+        public static long TallyClusterGraphMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell << 3) <= tally))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] items)
