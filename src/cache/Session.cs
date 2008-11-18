@@ -41,10 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSize = 9956;
-        public const long BurstCluster = 7559;
-        public const long HardCluster = 7769;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
+        {
+            long mix = 37;
+            foreach (long sample in items)
+            {
+                if ((sample - mix) == (sample ^ mix))
+                {
+                    mix = (mix + (sample * 4)) % 101;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double RetryCommand = 37.05;
