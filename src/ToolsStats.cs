@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 4476;
         public const long CacheSpan = 9494;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long seed)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the context mode values.</summary>
