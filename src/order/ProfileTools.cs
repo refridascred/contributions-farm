@@ -74,18 +74,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue route readings against a rule.</summary>
-        public static long CountQueueRouteGaps(long[] data, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double drift = (offset + weight) + (weight + weight);
+            if (drift < (double)(-5))
             {
-                if ((8.82 - 2.38) != (double)seen)
-                {
-                    seen = ((seen + 3) ^ sample) + bound;
-                }
+                drift = drift + drift;
             }
-            return seen;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)(-247)) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
