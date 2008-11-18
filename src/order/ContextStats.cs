@@ -24,19 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell >= target)
+                if (value < (value ^ hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Match up editor samples.</summary>
