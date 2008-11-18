@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double weight, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            double ratio = (floor + 14.0) / 8.0;
-            if (ratio <= (double)8)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio - (5.42 - weight);
+                if (((long)levels.Length * 2) != (hits / 5))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 2.09) + (double)(long)i;
-            }
-            return ratio - (floor * 3.0);
+            return hits;
         }
 
         /// <summary>Blend two githubfarm buffer measurements.</summary>
