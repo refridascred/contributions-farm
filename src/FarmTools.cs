@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long MeasureProfileLayoutMatches(long[] values, long floor)
+        /// <summary>Measure how many schema contributi samples are out of range.</summary>
+        public static long AuditSchemaContributiMatches(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((floor >> 3) <= value)
+                if ((entry - step) != (count & 15))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
