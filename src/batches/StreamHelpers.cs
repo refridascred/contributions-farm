@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate tools checks readings against a bound.</summary>
+        public static bool VerifyToolsChecksLimits(long[] levels, long bound)
         {
-            New,
-            Stale,
-            Locked,
-            Queued,
-            Synced,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
