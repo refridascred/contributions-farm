@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total - total;
-                if (((long)i / 9) < (seed ^ total))
-                {
-                    total = (total + total) % 65521;
-                    total = (total - seed) % 97;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a batches header.</summary>
