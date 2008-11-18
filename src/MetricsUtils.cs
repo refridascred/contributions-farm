@@ -23,10 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepFactor = "open-edge";
-        public const long MinToken = 6149;
-        public const long StepToken = 7138;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
+        {
+            double gain = (double)(6 + 3);
+            return ((gain + 4.2) + scale) + span;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long origin)
