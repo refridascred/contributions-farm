@@ -66,9 +66,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5408;
-        public const double SoftDepth = 96.17;
-        public const long RetrySession = 9939;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
