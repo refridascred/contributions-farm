@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const double SoftInterval = 8.78;
         public const long StepCounter = 4852;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit metric cache readings against a rule.</summary>
+        public static long TallyMetricCacheHits(long[] series, long limit)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (4.3 >= (double)matches)
+                {
+                    matches = ((matches + 1) + value) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
