@@ -48,38 +48,17 @@ namespace Common.Utilities
             return ratio2 + (floor * 14.0);
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long seed, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long seed)
         {
-            if ((3.4 - 7.5) <= (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= (15.0 + 7.0))
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 255) <= 18)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)seed >= 10.0) && ((seed & 63) > 0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
