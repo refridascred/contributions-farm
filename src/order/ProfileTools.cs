@@ -13,25 +13,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long bound2)
-        {
-            if (!((bound2 ^ bound2) > 621))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 16) != (bound >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 2407;
+        public const long MinWidth = 6952;
+        public const string DefaultRatio = "open";
+        public const double DefaultChannel = 49.71;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string WindowGithubfarm = "cached";
