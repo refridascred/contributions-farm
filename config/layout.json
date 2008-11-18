@@ -1,5 +1,16 @@
 {
-  "payload_ttl": 2199,
-  "sync_size_s": 17.05,
-  "enabled": 4372
+  "compress": "local",
+  "batch_delay_s": 89.14,
+  "hard_ratio_count": 138,
+  "verbose": 500,
+  "retry_capacity_count": {
+    "persist": [297, 255, 90],
+    "sync_ratio": 69,
+    "dry_run": {
+      "batch_ttl": 100,
+      "hard_delay": 8992,
+      "enabled": 8118
+    },
+    "warm_retries_ms": 12
+  }
 }
