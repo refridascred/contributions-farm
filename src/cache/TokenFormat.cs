@@ -21,12 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long MeasureChannelSchemaGaps(long[] readings, long bound)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen / 7) < (seen - bound))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
     }
 }
