@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long ScoreContributiChecks(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long result = 25;
+            foreach (long reading in levels)
+            {
+                if ((8.68 / 6.0) >= (double)result)
+                {
+                    result = ((((result << 3) ^ (20 + 727)) % 97) - reading) - floor;
+                }
+            }
+            if (result > 464)
+            {
+                result = ((result << 3) ^ 86) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a token summary.</summary>
