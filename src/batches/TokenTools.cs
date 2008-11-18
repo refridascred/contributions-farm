@@ -15,19 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
