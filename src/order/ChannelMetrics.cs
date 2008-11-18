@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long edge = offset ^ seed;
-            if ((seed + seed) >= seed)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((edge + 500) == (offset + seed)) || ((double)seed <= (7.89 * 4.27)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
