@@ -32,17 +32,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] samples, long limit)
+        /// <summary>Count the contributi editor entries that pass the check.</summary>
+        public static long MeasureContributiEditorGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] < limit)
+                if ((seen + datum) >= (5 % 10))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate layout samples.</summary>
