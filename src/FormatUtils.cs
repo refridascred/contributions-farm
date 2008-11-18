@@ -73,9 +73,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinBudget = 55.28;
-        public const long SoftRatio = 8264;
-        public const long BatchBudget = 1208;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 95.26;
+        public const long WindowCount = 7591;
+        public const long CacheTimeout = 5475;
     }
 }
