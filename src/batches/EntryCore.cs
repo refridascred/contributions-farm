@@ -41,21 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio2 = (ratio + ratio) / 2.0;
+            return ratio2 + (floor * 14.0);
         }
 
         /// <summary>Rank profile input into a small class.</summary>
