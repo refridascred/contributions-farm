@@ -35,11 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 85.18;
-        public const double SoftBatch = 11.22;
-        public const double StepBatch = 32.93;
-        public const long IdleTimeout = 4646;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((724 + hits) >= reading) && (reading <= (hits & 31)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
