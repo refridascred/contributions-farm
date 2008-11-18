@@ -15,23 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Iterate the already schema series from a seed.</summary>
+        public static long StepAlreadySchema(long limit)
         {
-            double drift = (bias - bias) - (double)30;
-            if (drift >= (double)62)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                drift = drift - 8.9;
+                state = ((state * 5) + (state - state)) % 65521;
+                if (!((state + 52) != ((long)i << 3)))
+                {
+                    state = (state ^ (limit * 5)) % 97;
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (weight - drift)) - (double)(long)i;
-            }
-            return drift + bias;
+            return state;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
