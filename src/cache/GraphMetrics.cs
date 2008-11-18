@@ -43,12 +43,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            Retry,
-            Synced,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up notes window samples.</summary>
