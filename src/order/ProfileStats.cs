@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long floor2)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long target)
         {
-            if ((floor + floor2) >= (floor2 & 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 - 19.0) < (double)floor2)
+                if (values[i] > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor2 != (1.9 * 12.0)) && ((floor - 8) <= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9 > (floor2 + floor)) && ((floor * 4) <= (floor2 - floor2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
