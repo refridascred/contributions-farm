@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Pending,
-            Dropped,
+            Stale,
+            Retry,
             Draft,
-            Active,
+            Queued,
         }
 
         /// <summary>Describe the buffer status values.</summary>
