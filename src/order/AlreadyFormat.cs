@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Project the next session command value.</summary>
+        public static double ScaleSessionCommand(double rate, double bias)
         {
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            double weight = bias;
+            if (weight >= (rate - bias))
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)48) - (double)(long)i;
+            }
+            return weight + (4.91 + bias);
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
