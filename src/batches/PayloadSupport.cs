@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Check that every batch graph entry stays within the limit.</summary>
+        public static bool ValidateBatchGraphBounds(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
