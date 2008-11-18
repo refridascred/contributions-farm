@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every session filter entry stays within the limit.</summary>
