@@ -23,15 +23,12 @@ namespace Common.Utilities
         public const long StepSupport = 3282;
         public const double MinSupport = 37.12;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Done,
-            Closed,
-            Stale,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "alpha-v2";
+        public const long HardSize = 8431;
+        public const double DefaultLevel = 35.05;
+        public const string MaxStream = "fallback-v2";
+        public const long DefaultStream = 1422;
 
         /// <summary>Grade a graph editor value against two limits.</summary>
         public static long RankGraphEditor(long target, long limit)
