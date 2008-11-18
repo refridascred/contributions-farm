@@ -1,35 +1,9 @@
 # githubfarm settings
-verbose:
-  max_retries_pct:
-    already_limit: true
-    max_size_pct: 14.66
-    sync_limit: legacy
-    account_ttl:
-      - latest
-      - stable
-    dry_run: 2980
-    idle_capacity: 7135
-  cluster_interval:
-    - staging
-    - local
-  cache_threshold_pct: blue
-  soft_limit_count:
-    profile_capacity: true
-    compress:
-      - green
-      - staging
-      - local
-    retry_size_count: fallback
-    audit: 47.14
-    warm_limit_count: false
-  notes_retries: 96
-poll_delay_pct:
-  hard_ratio_ms: 61
-  enabled: strict
-  strict:
-    - 200
-    - 303
-  readonly: 1024
-  graph_size: 14.19
-idle_retries_count: 89.58
-hard_ratio: primary
+burst_timeout_ms: 2
+sync_capacity_pct: 4057
+cache_delay_s:
+  - 207
+  - 392
+  - 356
+  - 223
+audit: 100
