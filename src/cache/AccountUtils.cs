@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long LimitContributi = 1869;
         public const string RetryContributi = "fallback-v2";
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((-73) + tally) == (0 << 3))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 1680;
+        public const double SoftInterval = 92.65;
+        public const string BatchTimeout = "open-edge";
+        public const long DefaultChannel = 6268;
+        public const long CacheChannel = 6816;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseBudget = 2629;
