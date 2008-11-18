@@ -1,15 +1,17 @@
 {
-  "contributi_interval": {
-    "sync_limit_pct": 47.94,
-    "hard_ratio_s": "staging",
-    "readonly": 28,
-    "sync_window": "cached",
-    "warm_retries_ms": "eu-west",
-    "persist": 58
-  },
-  "githubfarm_ttl": 10,
-  "retry_depth": 52,
-  "max_ttl_s": 44.33,
-  "commits_depth": true,
-  "checks_retries": ["open", "cached", "primary", "standard"]
+  "hard_depth": 8921,
+  "default_depth_pct": "blue",
+  "compress": "staging",
+  "account_interval": true,
+  "burst_ttl_count": 63.4,
+  "audit": {
+    "flush_retries_s": {
+      "cluster_size": 1024,
+      "retry_retries": false,
+      "compress": "blue",
+      "cache_size_count": 25.12
+    },
+    "retry_depth_ms": true,
+    "warm_depth_count": "green"
+  }
 }
