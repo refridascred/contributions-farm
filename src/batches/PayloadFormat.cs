@@ -42,9 +42,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 89.25;
-        public const string SoftCount = "cached-v2";
-        public const string DefaultFactor = "open-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] data, long bound)
+        {
+            long anchor = 1;
+            foreach (long reading in data)
+            {
+                anchor = (anchor + (anchor % 12)) % 4096;
+                if ((anchor * 3) == (anchor << 3))
+                {
+                    anchor = (anchor ^ (reading + reading)) % 97;
+                }
+                if ((anchor ^ bound) < anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 492)
+            {
+                anchor = anchor - ((-472) & 7);
+            }
+            return anchor;
+        }
     }
 }
