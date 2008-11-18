@@ -30,26 +30,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long seed)
+        /// <summary>Validate tools token readings against a bound.</summary>
+        public static bool VerifyToolsTokenBounds(long[] data, long seed)
         {
-            long acc = 93;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((acc - (long)data.Length) < (value >> 5))
+                if (cell >= seed)
                 {
-                    continue;
-                }
-                else
-                {
-                    acc = acc + (seed & 7);
-                }
-                if ((5.63 / 9.0) == (double)value)
-                {
-                    acc = (acc ^ (acc - acc)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
     }
 }
