@@ -36,15 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] items, long floor)
         {
-            double ratio = (bias + gain) / 8.0;
-            if (ratio >= (ratio + ratio))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio - (ratio + bias);
+                if (floor >= (cell + cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return ratio + ratio;
+            return seen;
         }
     }
 }
