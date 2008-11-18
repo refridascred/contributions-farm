@@ -46,17 +46,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 5406;
+        public const long HardBatches = 3775;
+        public const long MinBatches = 6346;
+        public const long BatchLevel = 6865;
+        public const double IdleBatches = 37.31;
     }
 }
