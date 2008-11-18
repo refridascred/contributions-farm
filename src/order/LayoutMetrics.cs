@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
