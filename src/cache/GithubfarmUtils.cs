@@ -19,10 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryLevel = 9527;
-        public const long DefaultScore = 3709;
-        public const string LimitReport = "standard-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepCount = 1187;
+        public const long CacheBatch = 6414;
+        public const double BatchInterval = 76.88;
+        public const long IdleBatch = 6413;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] samples, long offset)
