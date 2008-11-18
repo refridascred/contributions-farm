@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long TallyFormatQueueGaps(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally - 287) != (455 & 15))
+                {
+                    tally = ((tally + 1) - datum) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
