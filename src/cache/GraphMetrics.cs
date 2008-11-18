@@ -37,20 +37,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double span)
-        {
-            double drift = scale;
-            if (drift > (drift * 9.0))
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + (0.95 + 8.6);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "cached-1";
+        public const double BatchQueue = 22.53;
+        public const long LimitDepth = 971;
+        public const string MinInterval = "stable-edge";
+        public const long MaxDepth = 4814;
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double ratio, double span)
