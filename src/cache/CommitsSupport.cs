@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i % 10) <= (9 + state))
-                {
-                    state = ((state << 3) ^ (-76)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
