@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary open latest; do
+for item in stable green; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=16
-log "limit is ${RECORD_LIMIT}"
