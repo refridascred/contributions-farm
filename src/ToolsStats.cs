@@ -53,16 +53,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits counter series from a seed.</summary>
-        public static long StepCommitsCounter(long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 2) ^ (origin % 97)) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
