@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((((3.1 - 3.6) > (double)floor) && ((seen ^ reading) < floor)) || ((double)seen == (5.54 + 15.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
