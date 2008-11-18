@@ -55,11 +55,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 37.05;
-        public const double CacheCommand = 32.53;
-        public const long BatchCommand = 8246;
-        public const double DefaultScore = 82.68;
-        public const double SoftCommand = 58.14;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long step, long origin)
+        {
+            long lane = step - origin;
+            if (origin > (origin % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin < (lane - 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + origin) >= (step >> 2)) && ((77 - step) > origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((13.0 > (double)origin) && (0.05 > (9.1 - 12.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
