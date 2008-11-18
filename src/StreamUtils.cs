@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 583;
-            foreach (long sample in values)
-            {
-                mark = ((((mark << 3) ^ (3 % 97)) % 255) ^ sample) + step;
-            }
-            return mark;
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the route status values.</summary>
