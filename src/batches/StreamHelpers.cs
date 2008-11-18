@@ -72,11 +72,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 9925;
-        public const long LimitWidth = 8558;
-        public const long CacheLevel = 8910;
-        public const double WindowInterval = 12.57;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
