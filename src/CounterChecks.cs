@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long CountWindowRouteOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (count > (count + count))
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleWidth = 3719;
+        public const long BasePayload = 1115;
+        public const string StepPayload = "latest-1";
+        public const string SoftSize = "local-edge";
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] values)
