@@ -1,24 +1,10 @@
 # support settings
-session_size: fallback
-queue_threshold: cached
-base_threshold:
-  persist:
-    commits_ratio: open
-    audit: 500
-    enabled: true
-    soft_depth: 10
-    burst_timeout_s: 1.57
-  editor_window: false
-  warm_window: 9546
-  enabled: true
-  contributi_interval: 250
-  cache_limit_pct:
-    - fallback
-    - stable
-    - fallback
-hard_capacity:
-  - 496
-  - 287
-  - 440
-batch_timeout: primary
-compress: fallback
+batch_interval_ms: true
+retry_delay_count: 1
+batch_limit_s:
+  - 123
+  - 41
+flush_window_count: strict
+record_limit:
+  - local
+  - primary
