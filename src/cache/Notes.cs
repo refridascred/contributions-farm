@@ -52,15 +52,15 @@ namespace Common.Utilities
         public const long StepTools = 1258;
         public const long BurstTools = 7216;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Match up contributi farm samples.</summary>
+        public static long PairContributiFarmCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 11)
+                    if ((samples[i] + samples[j]) < 14)
                     {
                         seen = seen + 1;
                     }
