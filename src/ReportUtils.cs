@@ -48,23 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long limit2)
+        /// <summary>Rank cluster filter input into a small class.</summary>
+        public static long SortClusterFilter(long bound, long step)
         {
-            long prev = limit - limit2;
-            if ((limit2 % 2) < limit2)
+            if ((bound + 1) <= (67 - bound))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((prev << 1) > (122 + limit2)))
+                if ((step - step) >= bound)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    return 5;
                 }
             }
         }
