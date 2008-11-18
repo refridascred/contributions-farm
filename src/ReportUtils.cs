@@ -14,25 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Count the support context entries that pass the check.</summary>
+        public static long MeasureSupportContextHits(long[] data)
         {
-            long delta = limit + origin;
-            if ((delta - 517) < (origin << 3))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((delta & 7) <= (origin - limit)))
+                if ((double)cell <= 19.0)
                 {
-                    return 7;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a command report sample.</summary>
