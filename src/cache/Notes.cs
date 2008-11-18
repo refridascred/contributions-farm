@@ -45,24 +45,12 @@ namespace Common.Utilities
         public const long StepTools = 1258;
         public const long BurstTools = 7216;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if ((floor ^ floor) <= (73 >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + floor) < target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
