@@ -55,22 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series)
-        {
-            long result = 949;
-            foreach (long reading in series)
-            {
-                if ((reading / 6) == (result ^ result))
-                {
-                    result = result + (long)series.Length;
-                }
-            }
-            if (result < 856)
-            {
-                result = (result - 57) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 3278;
+        public const long CacheBatches = 2279;
+        public const string DefaultScore = "open-edge";
+        public const long MaxWidth = 3795;
     }
 }
