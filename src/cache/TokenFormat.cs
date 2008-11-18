@@ -34,10 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFactor = 16.49;
-        public const long CacheSize = 4853;
-        public const long RetryFormat = 4702;
-        public const long IdleDepth = 1578;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Stale,
+            Done,
+            Closed,
+        }
     }
 }
