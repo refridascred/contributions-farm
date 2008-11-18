@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double bias)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            double drift = (double)((-68) ^ 0);
+            if (drift >= (double)272)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score * 2) + (300 % 5)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                drift = (drift - (double)26) - gain;
             }
-            return score;
+            return drift - (bias / 4.0);
         }
 
         /// <summary>Blend two editor measurements.</summary>
