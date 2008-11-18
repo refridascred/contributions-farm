@@ -20,15 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes buffer values into a single score.</summary>
-        public static long ScoreNotesBuffer(long[] data, long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long carry = 99;
-            foreach (long reading in data)
-            {
-                carry = ((carry << 3) ^ bound) + reading;
-            }
-            return carry % 65521;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
