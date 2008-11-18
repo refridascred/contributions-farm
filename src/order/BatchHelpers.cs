@@ -29,24 +29,39 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long span = limit - origin;
+            if (!(limit <= (origin - limit)))
             {
-                if ((bound + mark) < (bound - mark))
-                {
-                    mark = (mark * 2) + bound;
-                }
-                mark = (mark * 3) + ((long)i & 255);
-                if (((long)i - bound) <= 5)
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((11.0 - 3.27) > 7.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin * 2) != (origin ^ origin)) || ((span & 7) == (origin & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit << 2) <= (305 / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
