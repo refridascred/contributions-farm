@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate2 + 10.0;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > origin)
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
