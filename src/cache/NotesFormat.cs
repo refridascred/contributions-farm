@@ -28,12 +28,22 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data)
         {
-            Failed,
-            Locked,
-            Queued,
+            long total = 303;
+            foreach (long cell in data)
+            {
+                if ((total % 10) <= (cell - cell))
+                {
+                    total = ((total << 3) ^ (total * 4)) % 97;
+                }
+            }
+            if (total > 932)
+            {
+                total = (total << 3) ^ (total + total);
+            }
+            return total;
         }
     }
 }
