@@ -28,19 +28,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long mark = 66;
-            foreach (long cell in readings)
+            double gain = floor;
+            if (gain <= (double)(-266))
             {
-                mark = (((mark + 84) % 65521) + cell) + floor;
+                gain = gain + floor;
             }
-            if (mark > 16)
+            else
             {
-                mark = (mark - (279 & 3)) % 1000;
+                gain = gain + (floor + gain);
             }
-            return mark % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + weight;
         }
     }
 }
