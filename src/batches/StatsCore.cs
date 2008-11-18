@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowLevel = 3361;
+        public const string BatchFilter = "open-edge";
+        public const double DefaultInterval = 98.49;
+        public const long SoftFilter = 1758;
+        public const double SoftCount = 86.38;
 
         /// <summary>Count the notes profile entries that pass the check.</summary>
         public static long AuditNotesProfileHits(long[] series)
