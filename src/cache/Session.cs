@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the already schema series from a seed.</summary>
-        public static long StepAlreadySchema(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] series, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                state = ((state * 5) + (state - state)) % 65521;
-                if (!((state + 52) != ((long)i << 3)))
+                if ((floor & 3) >= cell)
                 {
-                    state = (state ^ (limit * 5)) % 97;
-                    break;
+                    count = count + 3;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
