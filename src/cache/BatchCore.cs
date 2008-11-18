@@ -41,18 +41,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            long mark = 39;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell < (288 / 9))
+                if (((double)acc < (4.6 - 16.0)) && ((step & 63) > (-91)))
                 {
-                    mark = mark + (step + step);
+                    acc = ((acc * 5) + ((long)i % 97)) % 255;
+                    acc = acc - (step % 16);
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
