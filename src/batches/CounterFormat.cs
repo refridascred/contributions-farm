@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const long CacheTimeout = 108;
         public const long LimitQueue = 6491;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target * 5) <= hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
