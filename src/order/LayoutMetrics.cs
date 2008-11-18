@@ -27,23 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double bias2)
-        {
-            double weight = bias2;
-            if (weight >= weight)
-            {
-                weight = weight + (bias2 + bias);
-            }
-            else
-            {
-                weight = weight - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (bias / 5.0)) + (double)(long)i;
-            }
-            return weight - bias2;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "local";
+        public const long BatchLayout = 2229;
+        public const long MaxLayout = 9117;
+        public const string IdleInterval = "standard-1";
     }
 }
