@@ -48,15 +48,11 @@ namespace Common.Utilities
         public const long IdleScore = 1312;
         public const long StepWindow = 6473;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long sum = 92;
-            foreach (long value in values)
-            {
-                sum = (((sum - 0) % 1000) ^ value) - limit;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
