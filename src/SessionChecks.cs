@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream stats readings against a rule.</summary>
-        public static long MeasureStreamStatsMatches(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((tally / 5) <= tally) && (((tally - sample) > (446 ^ sample)) || ((double)sample >= (7.49 * 8.5))))
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
