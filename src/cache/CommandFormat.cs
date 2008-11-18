@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Iterate the buffer layout series from a seed.</summary>
+        public static long RollBufferLayout(long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen >> 5) == (sample & 15))
-                {
-                    seen = seen + 3;
-                }
+                long span = (anchor + (long)i) & 1;
+                anchor = ((anchor * 3) + (span + limit)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two batches token measurements.</summary>
