@@ -47,13 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of batch queue entries.</summary>
