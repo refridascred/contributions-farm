@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of graph support readings.</summary>
