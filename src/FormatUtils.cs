@@ -51,17 +51,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first commits batches entry that matches the target.</summary>
-        public static long LookupCommitsBatchesIndex(long[] series, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the metric schema entries that pass the check.</summary>
