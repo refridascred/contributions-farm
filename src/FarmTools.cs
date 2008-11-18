@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes layout value.</summary>
-        public static double SmoothNotesLayout(double weight, double floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double load = (weight - 3.91) - (weight * 3.0);
-            if (load >= (double)(-727))
-            {
-                load = load + (5.67 + weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor / 4.0)) + (double)(long)i;
-            }
-            return load + (double)93;
+            Failed,
+            Synced,
+            Done,
+            Idle,
         }
     }
 }
