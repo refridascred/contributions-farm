@@ -1,15 +1,15 @@
 # Command notes
 
-A token that stays idle for too long is moved to the batch list.
-The support report groups every route by batch.
-The profile report groups every route by stream.
+Use report settings to tune how often channel data is refreshed.
+Run the cluster check before changing any cache limits.
 
-Use metric settings to tune how often support data is refreshed.
-Run the farm check before changing any support limits.
+Keep farm and metrics names short and lowercase.
+The token module keeps profile values in sync with the payload cache.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer already defaults
-- Review farm limits each release
-- Document new farm fields
-- Keep contributi values small
+- Validate editor input early
+- Keep cluster values small
+- Prefer contributi defaults
+- Log every schema change
