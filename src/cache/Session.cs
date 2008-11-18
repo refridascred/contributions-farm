@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Closed,
-            Paused,
-            Draft,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardTimeout = 70.62;
+        public const long StepToken = 732;
+        public const long HardRatio = 2217;
+        public const double CacheToken = 48.22;
+        public const double MaxToken = 57.63;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutMatches(long[] series, long floor)
