@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate metrics batches readings against a bound.</summary>
+        public static bool VerifyMetricsBatchesLimits(long[] readings, long seed)
         {
-            Stale,
-            Retry,
-            Done,
-            Active,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
