@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Draft,
+            Stale,
+            Retry,
+            Done,
             Active,
-            Closed,
-            Queued,
-            Dropped,
         }
 
         /// <summary>Describe the contributi status values.</summary>
