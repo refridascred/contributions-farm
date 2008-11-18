@@ -74,11 +74,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Find the first commits batches entry that matches the target.</summary>
+        public static long LookupCommitsBatchesIndex(long[] series, long offset)
         {
-            double mean = (double)5 / 2.0;
-            return ((mean - (mean / 5.0)) + weight) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a buffer commits reading.</summary>
