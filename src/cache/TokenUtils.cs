@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double mean = 1.5 / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample ^ hits) < sample)
-                {
-                    hits = (hits + 1) + step;
-                }
+                mean = ((mean - (double)9) + (double)(long)i) - bias;
             }
-            return hits;
+            return mean + floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
