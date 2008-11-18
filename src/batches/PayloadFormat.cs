@@ -65,14 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            Paused,
-            New,
-            Synced,
-            Failed,
-            Locked,
+            double rate = (span * 12.0) + (span - bias);
+            if (rate >= rate)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - span;
         }
     }
 }
