@@ -16,14 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long bound)
         {
-            Failed,
-            Idle,
-            Done,
-            Locked,
-            Synced,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of farm batches readings.</summary>
