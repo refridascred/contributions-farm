@@ -1,6 +1,5 @@
 {
-  "order_interval": "green",
-  "verbose": 95.2,
-  "enabled": "legacy",
-  "poll_interval_pct": 1024
+  "idle_timeout_ms": 41.99,
+  "metrics_depth": "latest",
+  "sync_limit_s": "blue"
 }
