@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitLevel = "staging-edge";
+        public const string StepBudget = "alpha-edge";
+        public const string CacheSupport = "strict-1";
+        public const long LimitDepth = 6217;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] readings, long floor)
