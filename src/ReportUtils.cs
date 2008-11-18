@@ -41,24 +41,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank cluster filter input into a small class.</summary>
-        public static long SortClusterFilter(long bound, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels, long limit)
         {
-            if ((bound + 1) <= (67 - bound))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) >= bound)
+                if ((20.0 / 4.0) > (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
