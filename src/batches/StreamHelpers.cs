@@ -64,19 +64,19 @@ namespace Common.Utilities
         public const long RetryRatio = 9073;
         public const long BatchTimeout = 57;
 
-        /// <summary>Accumulate command metric samples.</summary>
-        public static long FoldCommandMetric(long[] items, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels, long step)
         {
-            long score = 80;
-            foreach (long datum in items)
+            long state = 28;
+            foreach (long item in levels)
             {
-                score = ((score + (offset << 3)) % 97) ^ datum;
+                state = ((((state * 3) + (-202)) % 255) + item) + step;
             }
-            if (score > 878)
+            if (state > 116)
             {
-                score = (score - (score & 127)) % 4096;
+                state = (state + state) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the commits kind values.</summary>
