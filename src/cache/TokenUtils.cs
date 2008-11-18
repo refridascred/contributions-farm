@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            Failed,
-            Closed,
-            Stale,
-            Dropped,
-            Done,
+            double load = 20.0;
+            if (load <= (double)63)
+            {
+                load = (load - ratio) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (double)936;
         }
 
         /// <summary>Describe the account kind values.</summary>
