@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items)
         {
-            Paused,
-            Active,
-            Synced,
-            Closed,
+            long mark = 646;
+            foreach (long datum in items)
+            {
+                if (datum >= (mark << 3))
+                {
+                    mark = mark + (747 + 268);
+                    break;
+                }
+                if (!((datum << 2) <= (datum ^ mark)))
+                {
+                    mark = ((mark << 3) ^ datum) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
