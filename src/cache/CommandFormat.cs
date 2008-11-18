@@ -36,17 +36,15 @@ namespace Common.Utilities
         public const long RetryScore = 8803;
         public const long MinReport = 5796;
 
-        /// <summary>Look up the position of a session schema sample.</summary>
-        public static long LookupSessionSchemaIndex(long[] series, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 23;
+            foreach (long cell in items)
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + (cell >> 5);
             }
-            return -1;
+            return acc;
         }
     }
 }
