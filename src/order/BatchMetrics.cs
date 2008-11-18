@@ -50,15 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double scale, double offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double mean = 11.0 - (scale + 7.41);
-            if (mean > 6.0)
-            {
-                mean = (mean + scale) + offset;
-            }
-            return mean - (7.0 - scale);
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate context report readings against a bound.</summary>
