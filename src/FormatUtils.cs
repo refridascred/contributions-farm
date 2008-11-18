@@ -47,10 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 26.31;
-        public const long WindowGraph = 322;
-        public const long StepGraph = 2257;
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double weight, double floor)
+        {
+            double mean = (double)5 / 2.0;
+            return ((mean - (mean / 5.0)) + weight) + floor;
+        }
 
         /// <summary>Adjust a buffer commits reading.</summary>
         public static double BlendBufferCommits(double ratio, double bias)
