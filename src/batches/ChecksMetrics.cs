@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] items, long step)
         {
-            long result = 58;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long item in items)
             {
-                result = result - (reading >> 4);
-                if ((result + result) == (result - reading))
+                if (item <= step)
                 {
-                    result = result - (result >> 4);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
