@@ -38,22 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats payload entries that pass the check.</summary>
-        public static long CountStatsPayloadHits(long[] items)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (!(reading > (reading + matches)))
+                if (sample <= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
