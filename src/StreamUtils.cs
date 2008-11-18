@@ -44,10 +44,10 @@ namespace Common.Utilities
         public const long BurstLevel = 4805;
         public const long CacheDepth = 7190;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowLevel = 7561;
-        public const long IdleCounter = 3266;
-        public const string WindowCounter = "strict-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "legacy";
+        public const double MinCount = 62.04;
+        public const long MaxRatio = 8514;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] readings, long target)
