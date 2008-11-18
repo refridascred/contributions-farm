@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (entry << 2))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next token value.</summary>
