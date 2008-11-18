@@ -1,14 +1,11 @@
 # Command notes
 
-Keep batch and checks names short and lowercase.
-Each command is validated before it reaches the schema queue.
-Keep farm and counter names short and lowercase.
-
-Keep counter and schema names short and lowercase.
-The record module keeps payload values in sync with the githubfarm cache.
+Each batch is validated before it reaches the token queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
-- Prefer stats defaults
-- Validate notes input early
+- Log every checks change
+- Prefer commits defaults
+- Review tools limits each release
+- Document new schema fields
