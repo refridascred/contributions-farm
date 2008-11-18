@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardTimeout = 70.62;
-        public const long StepToken = 732;
-        public const long HardRatio = 2217;
-        public const double CacheToken = 48.22;
-        public const double MaxToken = 57.63;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long step)
+        {
+            if (!((limit << 1) <= 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 4) < (845 + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 2) > 4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((6.72 * 20.0) != (double)step) && ((7.0 * 11.0) >= (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
