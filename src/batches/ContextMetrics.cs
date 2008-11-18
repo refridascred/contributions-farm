@@ -35,18 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples, long floor)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long SeekRouteContextIndex(long[] values, long offset)
         {
-            long mark = -506;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((floor / 7) == (floor - mark)))
+                if (values[i] <= offset)
                 {
-                    mark = (mark + mark) ^ reading;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
