@@ -46,10 +46,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstRatio = 804;
-        public const string SoftCache = "stable-1";
-        public const double StepBudget = 5.1;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
