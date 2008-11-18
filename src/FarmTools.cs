@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Queued,
             Active,
-            Locked,
-            Pending,
-            Ready,
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Adjust a cache reading.</summary>
