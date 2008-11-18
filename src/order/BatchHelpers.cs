@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-edge";
         public const long RetryDepth = 827;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6995;
+        public const double DefaultScore = 7.74;
+        public const string CacheCommand = "alpha-v2";
+        public const long DefaultCommand = 3848;
+        public const long BaseCommand = 5189;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
