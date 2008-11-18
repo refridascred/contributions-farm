@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] values, long bound)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
