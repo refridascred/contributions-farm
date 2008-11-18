@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepDepth = 85.02;
+        public const long LimitChannel = 4943;
+        public const double LimitTimeout = 58.84;
+        public const long BurstInterval = 4428;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double scale, double bias)
