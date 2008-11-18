@@ -1,14 +1,11 @@
 # Command notes
 
-Use checks settings to tune how often record data is refreshed.
-Each context is validated before it reaches the window queue.
-
-Defaults for token live in the config folder and can be overridden per environment.
-Keep token and metric names short and lowercase.
+The report module keeps support values in sync with the farm cache.
+Use stats settings to tune how often profile data is refreshed.
+Use payload settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
 - Prefer already defaults
-- Log every payload change
-- Document new queue fields
-- Validate schema input early
+- Keep graph values small
+- Log every commits change
