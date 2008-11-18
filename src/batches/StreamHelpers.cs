@@ -56,16 +56,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Validate support order readings against a bound.</summary>
+        public static bool ValidateSupportOrderRange(long[] values, long offset)
         {
-            long state = -40;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long item in values)
             {
-                state = ((state + state) % 101) - cell;
-                state = state - (state >> 4);
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return valid;
         }
     }
 }
