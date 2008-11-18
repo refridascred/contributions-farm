@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Paused,
-            Idle,
-            Queued,
-            Active,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5624;
+        public const string RetryCount = "open-1";
+        public const double CacheBatches = 66.55;
+        public const string RetryBatches = "primary-edge";
+        public const string RetryRatio = "open-edge";
     }
 }
