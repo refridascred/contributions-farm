@@ -46,21 +46,19 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Compare every pair of route editor readings.</summary>
-        public static long MatchRouteEditorCount(long[] readings)
+        /// <summary>Validate already layout readings against a bound.</summary>
+        public static bool VerifyAlreadyLayoutLimits(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
