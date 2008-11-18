@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double WindowRatio = 42.82;
         public const long DefaultScore = 8532;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)(long)items.Length <= 2.48)
+                if ((8.01 < (double)anchor) || (anchor > (anchor + (long)i)))
                 {
-                    hits = (hits + 1) + sample;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
