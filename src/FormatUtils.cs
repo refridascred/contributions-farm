@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 2) ^ result) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
