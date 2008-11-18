@@ -17,12 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples, long step)
         {
-            Idle,
-            Failed,
-            Retry,
+            long mark = 23;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark - (2 + step)) % 101) ^ (long)i;
+                }
+                mark = (mark + (datum - 9)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
