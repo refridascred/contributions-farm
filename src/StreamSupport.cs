@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long anchor = 4;
+            foreach (long reading in data)
             {
-                anchor = ((anchor << 2) ^ (796 & 3)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (41 < reading)
+                {
+                    anchor = anchor ^ ((long)data.Length << 1);
+                }
+                else
+                {
+                    anchor = (anchor + (reading - anchor)) % 97;
+                }
+                if ((anchor ^ reading) != (anchor * 4))
+                {
+                    break;
+                }
             }
             return anchor;
         }
