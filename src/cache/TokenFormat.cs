@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
             public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
