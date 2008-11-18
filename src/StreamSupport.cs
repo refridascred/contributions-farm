@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long MaxCount = 6474;
         public const string HardRecord = "legacy-v2";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
