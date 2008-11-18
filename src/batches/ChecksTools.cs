@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = -67;
-            foreach (long item in values)
-            {
-                if ((double)1 != (double)item)
-                {
-                    carry = carry - (carry / 2);
-                    carry = ((carry * 5) + item) % 97;
-                }
-                if (item >= carry)
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + (696 + item);
-                }
-            }
-            if (carry < 684)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Measure how many graph format samples are out of range.</summary>
