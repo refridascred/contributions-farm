@@ -68,11 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit account entry readings against a rule.</summary>
+        public static long MeasureAccountEntryGaps(long[] data)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((-4) + cell) != (cell << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
