@@ -18,13 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data)
         {
-            Closed,
-            Active,
-            Retry,
-            Locked,
+            long carry = 0;
+            foreach (long entry in data)
+            {
+                carry = (carry ^ (entry % 97)) % 4096;
+            }
+            if (carry < 746)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a stats reading.</summary>
