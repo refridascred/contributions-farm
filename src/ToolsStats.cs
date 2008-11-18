@@ -14,31 +14,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long step)
         {
-            if (((double)532 >= (double)floor) && ((3.1 + 2.7) >= (double)floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit ^ floor) < (floor & 31)) && (2.69 < (double)floor))
+                if ((samples[i] > step) && ((samples[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit ^ 802) > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
