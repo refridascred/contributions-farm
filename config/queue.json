@@ -1,5 +1,13 @@
 {
-  "contributi_retries": [478, 154, 244, 143],
-  "sync_capacity_ms": 18.91,
-  "max_window_pct": 70.34
+  "dry_run": 1024,
+  "poll_threshold": 44.15,
+  "default_ratio": "cached",
+  "poll_window_pct": {
+    "batch_window_count": [85, 2],
+    "flush_window_s": "standard",
+    "retry_size_ms": ["edge", "green", "green"],
+    "session_threshold": false,
+    "schema_ttl": "stable",
+    "persist": 19
+  }
 }
