@@ -1,19 +1,10 @@
 {
-  "burst_window": 100,
-  "idle_capacity": 500,
-  "persist": {
-    "layout_threshold": {
-      "tools_delay": [111, 311],
-      "flush_delay_ms": true,
-      "poll_window_count": "eu-west",
-      "hard_ratio_count": 41.37,
-      "max_size": 97.91
-    },
-    "sync_size_count": 85.68,
-    "default_size": "legacy",
-    "default_retries": "eu-west",
-    "layout_ratio": 1803
+  "channel_limit": {
+    "default_limit_s": [483, 365, 320],
+    "cluster_size": 6614,
+    "token_ttl": [31, 57, 412, 92]
   },
-  "warm_ttl_count": 45,
-  "soft_delay": "strict"
+  "flush_interval": [307, 317],
+  "min_interval_s": "local",
+  "verbose": [342, 37]
 }
