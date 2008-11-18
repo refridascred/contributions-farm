@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultCount = 9154;
-        public const long StepAccount = 6981;
-        public const long DefaultSpan = 2864;
-        public const double SoftSpan = 22.58;
-        public const long BaseAccount = 697;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] data, long bound)
