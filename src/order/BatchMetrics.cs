@@ -28,13 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            New,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
