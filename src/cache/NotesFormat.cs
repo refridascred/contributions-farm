@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate tools token readings against a bound.</summary>
-        public static bool VerifyToolsTokenBounds(long[] data, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
