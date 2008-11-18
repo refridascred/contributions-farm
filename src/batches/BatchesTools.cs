@@ -24,22 +24,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long total = -3;
+            foreach (long datum in readings)
             {
-                if ((double)717 <= (double)item)
+                if (((datum - total) > (total * 3)) && ((6.0 + 7.5) <= (double)total))
                 {
-                    hits = hits + 1;
+                    total = total + (datum / 3);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = ((total << 2) ^ (total / 5)) % 1000;
                 }
             }
-            return hits;
+            if (total < 854)
+            {
+                total = ((total << 2) ^ ((-563) * 3)) % 97;
+            }
+            return total % 97;
         }
     }
 }
