@@ -29,18 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long target)
+        /// <summary>Audit filter metrics readings against a rule.</summary>
+        public static long MeasureFilterMetricsHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value < (value & 3))
+                if (count < (entry << 3))
                 {
-                    hits = (hits + 1) + target;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
