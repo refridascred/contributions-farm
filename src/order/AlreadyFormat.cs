@@ -31,18 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double mean = bias2;
+            if (mean < 4.03)
             {
-                if ((double)item != (double)limit)
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + (3.45 + bias2)) + bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + bias2) + (double)(long)i;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
