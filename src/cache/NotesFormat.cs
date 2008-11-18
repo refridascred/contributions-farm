@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((tally + entry) >= (tally - bound)) && (((entry >> 4) < tally) || ((double)bound < (0.7 * 7.8))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 7094;
+        public const double CachePayload = 68.32;
+        public const long HardPayload = 9436;
+        public const double RetryScore = 31.13;
+        public const string DefaultPayload = "standard";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long origin, long bound)
