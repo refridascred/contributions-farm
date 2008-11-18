@@ -14,22 +14,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long MeasureSupportContextHits(long[] data)
+        /// <summary>Grade a support account value against two limits.</summary>
+        public static long BucketSupportAccount(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((6 / 7) >= seed)
             {
-                if ((double)cell <= 19.0)
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) != (offset - offset))
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
