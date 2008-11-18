@@ -30,13 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Closed,
-            Draft,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5183;
+        public const string BaseSize = "fallback-edge";
+        public const long MinOrder = 1918;
+        public const long BatchOrder = 1036;
     }
 }
