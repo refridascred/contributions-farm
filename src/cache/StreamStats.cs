@@ -26,19 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
