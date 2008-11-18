@@ -1,17 +1,29 @@
 # entry settings
-idle_ratio: local
-sync_delay_pct: 40.1
-flush_capacity:
-  cache_ratio: false
-  retry_depth_ms:
-    - strict
-    - blue
-  flush_size:
-    - eu-west
-    - edge
-    - staging
-    - green
-  strict: 73.28
-record_depth: 60
-checks_timeout: 100
-max_ttl_count: fallback
+stream_delay: 49
+flush_retries_ms: 51.24
+cluster_limit:
+  default_limit_s:
+    sync_delay_pct: primary
+    flush_retries_pct: true
+    tools_depth: open
+    idle_retries_s: eu-west
+    format_retries: 20.1
+    max_size:
+      - 114
+      - 254
+      - 403
+  flush_window_s: 60
+  compress: local
+  default_delay:
+    - 261
+    - 348
+    - 363
+    - 484
+  max_threshold: 8987
+  max_delay_count: legacy
+command_timeout: strict
+audit:
+  - primary
+  - standard
+  - standard
+soft_retries_s: 50.49
