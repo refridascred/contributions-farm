@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const double BatchReport = 20.38;
         public const double HardBudget = 12.54;
 
-        /// <summary>Measure how many already token samples are out of range.</summary>
-        public static long AuditAlreadyTokenMatches(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((floor % 2) > (cell << 1)) && ((hits & 15) == (floor + 462))) || (((hits ^ hits) <= (cell + hits)) || (floor >= (cell + floor))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinScore = 19.21;
+        public const long WindowContributi = 1176;
+        public const long CacheContributi = 4793;
+        public const long LimitTimeout = 1677;
+        public const long BaseContributi = 2563;
     }
 }
