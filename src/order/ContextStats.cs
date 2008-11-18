@@ -33,17 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (origin ^ (long)i)) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
