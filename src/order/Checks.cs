@@ -25,10 +25,25 @@ namespace Common.Utilities
         public const long HardMetrics = 4002;
         public const string BaseCount = "standard-1";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 8170;
-        public const double StepBudget = 90.76;
-        public const double BaseCounter = 37.77;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long floor, long bound)
+        {
+            if (8.0 < (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.0 + 7.44) > (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterOutliers(long[] items)
