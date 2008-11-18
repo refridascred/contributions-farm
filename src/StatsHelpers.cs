@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            Retry,
-            Stale,
-            Idle,
-            Done,
-            Ready,
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((91 - step) <= acc)
+                {
+                    acc = acc + (step - acc);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
