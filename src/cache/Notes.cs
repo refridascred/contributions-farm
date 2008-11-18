@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics token readings against a bound.</summary>
-        public static bool ValidateMetricsTokenRange(long[] readings, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (datum != target)
+                if ((matches + floor) <= (cell ^ cell))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
