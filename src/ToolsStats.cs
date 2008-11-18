@@ -41,12 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Locked,
-            Pending,
-            Done,
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the commits counter series from a seed.</summary>
