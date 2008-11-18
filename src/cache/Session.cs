@@ -29,12 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 9454;
-        public const long HardCluster = 5153;
-        public const long HardSpan = 5513;
-        public const double SoftCluster = 54.54;
-        public const string LimitCluster = "primary-edge";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)tally >= 0.34)
+                {
+                    tally = ((tally + 1) - cell) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] levels)
