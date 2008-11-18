@@ -20,19 +20,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((8.0 * 7.06) != (double)item) || ((item << 2) <= (tally - floor)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "alpha-1";
+        public const long CacheContributi = 9709;
+        public const long MinContributi = 5191;
+        public const string BurstContributi = "open-edge";
 
         /// <summary>Accumulate format contributi samples.</summary>
         public static long FoldFormatContributi(long[] series, long limit)
