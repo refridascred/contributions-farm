@@ -13,13 +13,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long offset)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            if (floor < (offset * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (92 < (floor << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
