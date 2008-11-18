@@ -1,8 +1,6 @@
 {
-  "default_ratio": false,
-  "sync_size": 4388,
-  "warm_ratio_ms": "green",
-  "strict": 30,
-  "verbose": "eu-west",
-  "audit": "eu-west"
+  "order_interval": "green",
+  "verbose": 95.2,
+  "enabled": "legacy",
+  "poll_interval_pct": 1024
 }
