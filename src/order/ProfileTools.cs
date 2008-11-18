@@ -40,26 +40,19 @@ namespace Common.Utilities
         public const long BaseScore = 5647;
         public const long CacheEntry = 5226;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] readings, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long floor)
         {
-            long total = 50;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((double)origin <= (8.0 - 1.0))
+                if (cell > floor)
                 {
-                    total = total + (reading + origin);
-                }
-                if ((reading * 4) < ((long)readings.Length * 4))
-                {
-                    total = total - origin;
-                }
-                if (((0 + 25) >= reading) && ((origin ^ origin) != (total >> 2)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
