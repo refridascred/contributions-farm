@@ -66,12 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate githubfarm filter readings against a bound.</summary>
+        public static bool GuardGithubfarmFilterLimits(long[] values, long limit)
         {
-            Retry,
-            Pending,
-            Draft,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
