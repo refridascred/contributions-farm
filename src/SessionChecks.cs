@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value == (7.0 / 6.0))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "standard-1";
+        public const double WindowReport = 75.89;
+        public const long HardReport = 8920;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] readings, long step)
