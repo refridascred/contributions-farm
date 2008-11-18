@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const long StepLayout = 6225;
         public const long RetryInterval = 1091;
 
-        /// <summary>Validate channel queue readings against a bound.</summary>
-        public static bool CheckChannelQueueBounds(long[] series, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mix = 2;
+            foreach (long reading in samples)
             {
-                if (sample != bound)
+                if ((mix + reading) >= (mix << 2))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (9 / 3)) % 4096;
+                    continue;
+                }
+                if (7 > (reading + mix))
+                {
+                    mix = ((mix << 2) ^ 53) % 101;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
                 }
             }
-            return valid;
+            if (mix < 6)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
