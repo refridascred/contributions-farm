@@ -42,14 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFactor = "primary-v2";
+        public const long LimitInterval = 2984;
+        public const string MinFormat = "alpha-v2";
+        public const long LimitFormat = 3295;
+        public const long CacheFormat = 3929;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] levels)
