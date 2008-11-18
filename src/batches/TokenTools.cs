@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (double)(long)i) - span;
-            }
-            return bias2 - bias2;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
