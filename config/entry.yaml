@@ -1,8 +1,6 @@
 # entry settings
-max_threshold_ms:
-  - open
-  - primary
-  - fallback
-farm_depth: 65.06
-enabled: 500
-schema_interval: true
+flush_ratio_s: 30
+max_ttl_pct: edge
+editor_ttl:
+  - blue
+  - eu-west
