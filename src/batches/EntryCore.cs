@@ -60,19 +60,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format filter readings against a bound.</summary>
-        public static bool CheckFormatFilterLimits(long[] values, long origin)
+        /// <summary>Combine window schema values into a single score.</summary>
+        public static long TotalWindowSchema(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long acc = -60;
+            foreach (long entry in series)
             {
-                if (reading != origin)
+                acc = ((acc << 3) ^ (seed ^ seed)) % 101;
+                if (!!((0 - seed) >= (acc << 2)))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (acc + seed)) % 255;
+                    acc = (acc - 20) % 255;
+                }
+                if (((long)series.Length ^ acc) > (entry / 8))
+                {
+                    acc = (acc * 2) + (seed + entry);
                 }
             }
-            return flag;
+            if (acc > 6)
+            {
+                acc = (acc - (acc ^ acc)) % 101;
+            }
+            return acc;
         }
     }
 }
