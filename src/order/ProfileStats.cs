@@ -53,21 +53,21 @@ namespace Common.Utilities
             return (gain + (double)1) + span;
         }
 
-        /// <summary>Match up cache already samples.</summary>
-        public static long PairCacheAlreadyCount(long[] series)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 15)
+                    if ((series[i] - series[j]) == 7)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
