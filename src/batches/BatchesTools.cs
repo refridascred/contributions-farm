@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long bound)
         {
-            long state = 37;
-            foreach (long item in values)
+            long diff = floor ^ bound;
+            if (!(floor > (bound ^ diff)))
             {
-                state = ((state + state) % 4096) - item;
+                return 1;
             }
-            if (state > (-81))
+            else
             {
-                state = (state + (state + state)) % 4096;
+                if (849 > (diff >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
