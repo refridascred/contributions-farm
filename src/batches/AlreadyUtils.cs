@@ -32,12 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitSpan = 157;
-        public const long MaxRatio = 9207;
-        public const double BaseFactor = 29.76;
-        public const double CacheTools = 89.01;
-        public const long BatchTools = 3055;
+        /// <summary>Check that every contributi context entry stays within the limit.</summary>
+        public static bool ValidateContributiContextRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
