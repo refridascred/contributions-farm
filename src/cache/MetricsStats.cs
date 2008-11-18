@@ -17,11 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "latest-1";
-        public const long BaseSize = 4940;
-        public const long StepSupport = 3282;
-        public const double MinSupport = 37.12;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Closed,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "alpha-v2";
