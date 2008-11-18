@@ -34,22 +34,13 @@ namespace Common.Utilities
         public const long MinContributi = 5191;
         public const string BurstContributi = "open-edge";
 
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long FoldFormatContributi(long[] series, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long anchor = 5;
-            foreach (long item in series)
-            {
-                if (15 >= (item + 98))
-                {
-                    anchor = (((anchor * 4) + (item << 3)) % 65521) - limit;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ item;
-                }
-            }
-            return anchor % 97;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
