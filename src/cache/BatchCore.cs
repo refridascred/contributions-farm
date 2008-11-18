@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] values, long origin)
         {
-            Dropped,
-            Idle,
-            Retry,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
