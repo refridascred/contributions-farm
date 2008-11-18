@@ -21,17 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the buffer layout series from a seed.</summary>
-        public static long RollBufferLayout(long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                long span = (anchor + (long)i) & 1;
-                anchor = ((anchor * 3) + (span + limit)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the order phase values.</summary>
