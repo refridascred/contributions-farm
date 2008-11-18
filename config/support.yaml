@@ -1,22 +1,7 @@
 # support settings
-verbose:
-  profile_threshold:
-    verbose: latest
-    hard_size: edge
-    hard_capacity: 1024
-    record_limit: 124
-    editor_ratio: 83.68
-  cache_interval: latest
-  min_retries:
-    payload_interval: 1024
-    dry_run: 35
-    poll_limit: 5622
-  compress:
-    - 31
-    - 168
-    - 426
-    - 243
-persist: cached
-batches_capacity: standard
-warm_size: 500
-session_retries: 35.27
+strict: staging
+warm_retries_s: 4139
+warm_window_s:
+  - primary
+  - blue
+session_interval: false
