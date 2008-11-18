@@ -34,10 +34,19 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9787;
-        public const long MaxWidth = 8264;
-        public const double StepWindow = 2.87;
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long CountSupportCacheGaps(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits & 255) > 604)
+                {
+                    hits = ((hits + 2) ^ cell) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double weight, double floor)
