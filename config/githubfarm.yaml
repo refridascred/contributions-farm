@@ -1,8 +1,7 @@
 # githubfarm settings
-sync_retries_pct: 2.03
-metric_window: 3728
-commits_limit: true
-flush_interval:
-  idle_ratio: 60
-  retry_depth_ms: 26.62
-  githubfarm_limit: 72
+persist: true
+audit: 62
+session_capacity: standard
+batch_ratio: 91.99
+poll_depth_count: standard
+idle_ttl: fallback
