@@ -57,10 +57,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultCount = 2691;
-        public const long BatchContext = 5071;
-        public const double SoftContext = 36.77;
-        public const long BaseContext = 4835;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
