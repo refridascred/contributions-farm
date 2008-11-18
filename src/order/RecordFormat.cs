@@ -44,15 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double rate = (double)(5 >> 2);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - (rate * 20.0)) + (double)(long)i) + offset;
-            }
-            return rate - (gain * 5.66);
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
