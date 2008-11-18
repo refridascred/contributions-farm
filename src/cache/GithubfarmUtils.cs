@@ -29,18 +29,23 @@ namespace Common.Utilities
         public const string RetryWidth = "primary-v2";
         public const long MinCounter = 9179;
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long AuditRouteCommitsOutliers(long[] items)
+        /// <summary>Iterate the cache notes series from a seed.</summary>
+        public static long IterateCacheNotes(long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((3.6 + 6.6) != (double)tally)
+                if (mark > (mark + 5))
                 {
-                    tally = (tally + 1) + item;
+                    mark = mark + (offset + 3);
                 }
+                if ((double)offset > (3.1 / 6.0))
+                {
+                    mark = mark - ((-33) + offset);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
