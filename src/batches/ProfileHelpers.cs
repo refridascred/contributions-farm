@@ -27,13 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the route window entries that pass the check.</summary>
+        public static long TallyRouteWindowMatches(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((((origin * 3) == (36 / 6)) || (cell < (cell >> 4))) && ((1.6 + 1.0) <= (double)cell))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two order measurements.</summary>
