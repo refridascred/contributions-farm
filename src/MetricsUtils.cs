@@ -24,38 +24,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank farm report input into a small class.</summary>
-        public static long SortFarmReport(long limit, long bound)
+        /// <summary>Compare every pair of order githubfarm readings.</summary>
+        public static long MatchOrderGithubfarmCount(long[] levels)
         {
-            if (((bound ^ 517) >= (bound - 0)) || ((limit % 64) < (limit - bound)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 2) != (692 % 100))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 31) <= (bound >> 2))
+                    if ((levels[i] ^ levels[j]) != 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound < 16.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
