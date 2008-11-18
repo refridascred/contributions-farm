@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long bound2)
         {
-            double drift = offset;
-            for (int i = 0; i < 8; i++)
+            if ((75 ^ bound2) <= (bound2 >> 3))
             {
-                drift = (drift + (bias - offset)) + (double)(long)i;
+                return 4;
             }
-            return drift + (0.1 + bias);
+            else
+            {
+                if ((bound2 - bound2) > bound2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 63) <= (bound2 & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
