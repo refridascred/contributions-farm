@@ -34,11 +34,12 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
