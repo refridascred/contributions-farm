@@ -31,13 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] samples, long limit)
         {
-            Stale,
-            Active,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item != (double)limit)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of record layout entries.</summary>
