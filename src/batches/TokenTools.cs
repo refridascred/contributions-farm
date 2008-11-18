@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] samples, long origin)
         {
-            Done,
-            Idle,
-            Failed,
-            Stale,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
