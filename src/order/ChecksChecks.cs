@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((long)levels.Length >= (999 - 8))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
