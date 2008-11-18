@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long limit, long origin)
+        /// <summary>Count the checks notes entries that pass the check.</summary>
+        public static long CountChecksNotesHits(long[] items, long origin)
         {
-            if ((5 * 3) < (limit + limit))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.8 * 0.76) <= (double)origin)
+                if ((origin - matches) != (value + matches))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
