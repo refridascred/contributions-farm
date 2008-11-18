@@ -90,12 +90,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            Draft,
-            Synced,
-            Ready,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
