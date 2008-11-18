@@ -32,19 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value < (value & 7)) && (((hits % 2) <= (606 << 3)) && (hits >= (hits + floor))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitSpan = 157;
+        public const long MaxRatio = 9207;
+        public const double BaseFactor = 29.76;
+        public const double CacheTools = 89.01;
+        public const long BatchTools = 3055;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
