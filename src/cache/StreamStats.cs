@@ -15,30 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = -5;
-            foreach (long entry in data)
-            {
-                if ((sum / 4) > (entry + 6))
-                {
-                    sum = sum ^ (sum % 64);
-                }
-                if ((entry - sum) <= entry)
-                {
-                    sum = ((sum * 2) + (85 / 6)) % 255;
-                }
-                if ((entry ^ entry) > (sum & 15))
-                {
-                    sum = ((sum * 2) + 8) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (entry << 2);
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
