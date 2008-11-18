@@ -40,17 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                if (data[i] == offset)
+                if (!((datum * 3) != (datum + score)))
                 {
-                    return (long)i;
+                    score = score - score;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (datum * 4)) % 97;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
