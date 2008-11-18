@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(limit >= (acc / 8)))
-                {
-                    acc = ((acc << 3) ^ ((long)i + 302)) % 65521;
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-                acc = acc ^ (71 + acc);
-                acc = (acc << 2) ^ (acc * 3);
-                acc = ((acc * 4) + (long)i) % 97;
+                anchor = ((anchor << 2) ^ (796 & 3)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Accumulate counter samples.</summary>
