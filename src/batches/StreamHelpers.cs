@@ -76,22 +76,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] items, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = -40;
+            foreach (long cell in series)
             {
-                if ((seen < ((-23) * 2)) || ((item < (191 ^ seen)) || ((6.15 + 7.1) != (double)item)))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state + state) % 101) - cell;
+                state = state - (state >> 4);
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
