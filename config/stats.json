@@ -1,5 +1,12 @@
 {
-  "warm_window_count": "standard",
-  "strict": 1024,
-  "min_threshold": 6565
+  "sync_timeout_ms": {
+    "cache_window_ms": "eu-west",
+    "cache_window": 6357,
+    "min_ratio": [458, 291, 414],
+    "burst_threshold": 500
+  },
+  "cache_delay_pct": "cached",
+  "warm_interval_pct": true,
+  "command_window": 500,
+  "sync_window": 4
 }
