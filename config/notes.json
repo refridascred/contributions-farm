@@ -1,6 +1,13 @@
 {
-  "entry_capacity": "blue",
-  "strict": 7129,
-  "compress": false,
-  "layout_size": ["local", "edge", "green"]
+  "enabled": 89,
+  "flush_size_pct": 60,
+  "strict": [305, 404, 226],
+  "channel_retries": {
+    "payload_threshold": 9556,
+    "readonly": 97.9,
+    "soft_limit_count": 60,
+    "soft_timeout_s": 35,
+    "min_ttl_ms": "stable"
+  },
+  "record_size": ["staging", "primary", "primary"]
 }
