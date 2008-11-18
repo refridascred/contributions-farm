@@ -1,5 +1,21 @@
 {
-  "flush_interval_s": "stable",
-  "max_delay": [421, 66, 16, 311],
-  "default_interval_count": ["edge", "primary", "legacy", "stable"]
+  "buffer_delay": 30,
+  "poll_size_ms": 9457,
+  "batch_timeout": ["open", "primary", "standard"],
+  "poll_window": 72.98,
+  "window_retries": {
+    "sync_interval": ["local", "legacy", "latest"],
+    "cache_limit_pct": {
+      "default_delay_s": "open",
+      "compress": 64,
+      "route_window": false,
+      "flush_depth_pct": 30,
+      "buffer_size": [234, 314, 145],
+      "flush_interval_s": 24.59
+    },
+    "warm_size_s": 1048,
+    "enabled": 80,
+    "burst_interval": "open",
+    "poll_threshold_ms": "fallback"
+  }
 }
