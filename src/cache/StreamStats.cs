@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 442;
-        public const string MinTimeout = "local-1";
-        public const double BatchFormat = 67.69;
-        public const string BatchSize = "legacy-edge";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Queued,
+            Retry,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] items)
