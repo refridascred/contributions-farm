@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    label TEXT,
-    weight REAL,
-    score REAL NOT NULL DEFAULT 0,
-    level INTEGER
+    level INTEGER,
+    ratio REAL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+
+INSERT INTO commits_records (owner, level, ratio, rank) VALUES ('open', 78, 77.61, 30);
