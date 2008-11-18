@@ -77,23 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] samples, long limit)
         {
-            long total = 8;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                total = (((total * 4) + total) - entry) - origin;
-                if ((7.9 + 17.0) > (double)total)
+                if (((15.0 / 8.0) == (double)tally) && ((cell % 3) < (cell % 60)))
                 {
-                    total = (total - (total + total)) % 101;
+                    tally = (tally + 2) - limit;
                 }
             }
-            if (total > 69)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total % 1000;
+            return tally;
         }
     }
 }
