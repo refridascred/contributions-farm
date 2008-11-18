@@ -32,14 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Paused,
-            Draft,
-            Locked,
-            Closed,
-            New,
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
