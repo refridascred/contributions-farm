@@ -1,15 +1,24 @@
 # support settings
-compress: latest
-max_ratio_count: standard
-audit: 1
-dry_run:
-  strict: primary
-  hard_capacity_count:
+session_size: fallback
+queue_threshold: cached
+base_threshold:
+  persist:
+    commits_ratio: open
+    audit: 500
+    enabled: true
+    soft_depth: 10
+    burst_timeout_s: 1.57
+  editor_window: false
+  warm_window: 9546
+  enabled: true
+  contributi_interval: 250
+  cache_limit_pct:
     - fallback
-    - staging
-  sync_capacity: true
-enabled: 58
-soft_capacity_s:
-  - 451
-  - 478
-  - 293
+    - stable
+    - fallback
+hard_capacity:
+  - 496
+  - 287
+  - 440
+batch_timeout: primary
+compress: fallback
