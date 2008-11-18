@@ -59,14 +59,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Derive the next report entry value from a seed.</summary>
+        public static long SeriesReportEntry(long limit)
         {
-            Done,
-            Dropped,
-            Pending,
-            Draft,
-            Stale,
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i + result) >= result)
+                {
+                    result = (result ^ result) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
