@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitCount = 268;
-        public const long BaseRecord = 9076;
-        public const long MaxCount = 9614;
-        public const string CacheRecord = "fallback-edge";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Locked,
+            New,
+            Queued,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
