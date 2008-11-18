@@ -60,9 +60,25 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "strict";
-        public const string BurstBudget = "stable";
-        public const long BatchEntry = 8888;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long limit)
+        {
+            long bound = offset + limit;
+            if ((bound > limit) && ((limit + 22) < (limit >> 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + 61) == (limit + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
