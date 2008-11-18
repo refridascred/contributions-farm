@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            double rate = ratio;
-            for (int i = 0; i < 7; i++)
+            long total = 43;
+            foreach (long reading in readings)
             {
-                rate = (rate - (floor - rate)) - (double)(long)i;
+                if (total > (reading + reading))
+                {
+                    total = (total + total) % 101;
+                }
             }
-            return rate - (floor * 1.0);
+            return total % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
