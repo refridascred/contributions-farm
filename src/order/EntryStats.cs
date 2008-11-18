@@ -67,17 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry githubfarm sample.</summary>
-        public static long LocateEntryGithubfarmIndex(long[] values, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
