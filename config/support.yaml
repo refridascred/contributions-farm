@@ -1,9 +1,5 @@
 # support settings
-checks_window:
-  max_interval_ms: true
-  batch_limit: 68.16
-  max_interval_pct: 75
-  tools_window: cached
-  persist: primary
-queue_limit: primary
-poll_interval_s: 30.53
+token_interval: primary
+strict: 8325
+warm_size_count: stable
+min_interval_count: green
