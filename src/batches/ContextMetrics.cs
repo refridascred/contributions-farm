@@ -53,17 +53,18 @@ namespace Common.Utilities
         public const string MaxSize = "staging";
         public const double CacheLevel = 24.52;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -506;
+            foreach (long reading in samples)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                if (!((floor / 7) == (floor - mark)))
                 {
-                    return (long)i;
+                    mark = (mark + mark) ^ reading;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every batches stream entry stays within the limit.</summary>
