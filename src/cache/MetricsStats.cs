@@ -44,14 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Idle,
-            Done,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowWidth = 9161;
+        public const string MinSchema = "stable-v2";
+        public const double StepInterval = 38.63;
+        public const string BatchSchema = "primary-1";
 
         /// <summary>Combine command order values into a single score.</summary>
         public static long DigestCommandOrder(long[] values, long seed)
