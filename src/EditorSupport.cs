@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long lane = limit + origin;
-            if (limit >= lane)
-            {
-                return 8;
-            }
-            else
-            {
-                if (lane > (limit ^ 748))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
