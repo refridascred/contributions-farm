@@ -20,13 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Fold a list of editor counter readings.</summary>
+        public static long TotalEditorCounter(long[] samples, long offset)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long mark = -776;
+            foreach (long datum in samples)
+            {
+                mark = (mark - offset) % 255;
+                if ((18.0 + 0.4) > (double)datum)
+                {
+                    mark = mark + (offset >> 3);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload state values.</summary>
