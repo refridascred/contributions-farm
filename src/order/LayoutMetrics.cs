@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values, long target)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                ratio = ((ratio + bias) + (double)(long)i) + offset;
+                if (!!(hits < cell))
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return ratio + (ratio - bias);
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
