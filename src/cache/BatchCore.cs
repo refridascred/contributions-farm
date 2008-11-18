@@ -50,20 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            double rate = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)acc < (4.6 - 16.0)) && ((step & 63) > (-91)))
-                {
-                    acc = ((acc * 5) + ((long)i % 97)) % 255;
-                    acc = acc - (step % 16);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                rate = (rate - (floor - rate)) - (double)(long)i;
             }
-            return acc;
+            return rate - (floor * 1.0);
         }
 
         /// <summary>Grade a route value against two limits.</summary>
