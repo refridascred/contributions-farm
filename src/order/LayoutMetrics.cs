@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            double weight2 = 3.6;
-            if (weight2 >= (weight2 / 6.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                weight2 = weight2 - (offset / 4.0);
+                if (((seen << 2) != (seen ^ seen)) && ((5 + 65) > ((long)samples.Length % 8)))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + weight2) - (double)(long)i;
-            }
-            return weight2 - (6.1 - weight);
+            return seen;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
