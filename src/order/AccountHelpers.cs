@@ -45,12 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double floor)
         {
-            Queued,
-            Stale,
-            Done,
+            double drift = (0.1 * 3.51) * 4.0;
+            if (drift < floor)
+            {
+                drift = drift - (floor / 9.0);
+            }
+            return drift + ratio;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
