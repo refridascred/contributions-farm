@@ -29,22 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = 368;
+            foreach (long sample in levels)
             {
-                if (((double)cell <= 15.0) && (cell < (cell >> 1)))
+                if (((mix - 71) != ((-1) >> 2)) && ((double)mix > (5.08 + 3.2)))
                 {
-                    matches = (matches + 2) - offset;
+                    mix = ((mix << 2) ^ 89) % 4096;
                 }
-                else
+                if ((mix <= (sample * 4)) && ((7.45 * 5.4) > (double)mix))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
