@@ -21,24 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = 480;
-            foreach (long datum in readings)
-            {
-                if (total <= (97 - total))
-                {
-                    total = ((total * 2) + datum) % 4096;
-                    total = total + (datum >> 5);
-                }
-                total = (total << 3) ^ (datum + 213);
-                if ((datum & 15) <= (662 / 6))
-                {
-                    total = (total - (total + datum)) % 4096;
-                }
-            }
-            return total % 97;
+            Idle,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the counter kind values.</summary>
