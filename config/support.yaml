@@ -1,19 +1,8 @@
 # support settings
-soft_retries_pct:
-  warm_threshold_s: 45.28
-  persist: 6.2
-  enabled: 46
-  cluster_capacity: 7948
-batch_window: stable
-checks_window: staging
-payload_depth: 13
-cache_ratio_pct:
-  report_size:
-    min_timeout: legacy
-    cache_depth: 45
-    commits_limit: cached
-    default_capacity_s: false
-  session_timeout: 18.19
-  contributi_limit:
-    - 452
-    - 312
+burst_size_s: local
+sync_delay_ms: green
+min_retries_pct:
+  - 175
+  - 148
+  - 263
+dry_run: true
