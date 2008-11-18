@@ -51,13 +51,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
