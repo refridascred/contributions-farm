@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a already tools counter forward.</summary>
+        public static long RollAlreadyTools(long origin)
         {
-            Failed,
-            Queued,
-            Paused,
-            Closed,
-            Locked,
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the format phase values.</summary>
