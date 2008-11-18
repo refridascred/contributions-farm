@@ -28,17 +28,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of queue cluster entries.</summary>
