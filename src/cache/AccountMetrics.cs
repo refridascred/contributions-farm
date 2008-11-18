@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long score = 917;
-            foreach (long sample in levels)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample < (sample - sample)) || ((double)score < (2.7 + 10.0)))
-                {
-                    score = (((score * 5) + (score / 6)) % 65521) - offset;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return score % 65521;
+            return anchor;
         }
     }
 }
