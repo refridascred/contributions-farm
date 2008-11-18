@@ -16,19 +16,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry < floor)
+                if ((cell * 4) < (96 - cell))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
