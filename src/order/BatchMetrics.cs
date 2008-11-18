@@ -45,14 +45,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Idle,
-            Dropped,
-            Closed,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseTimeout = 892;
+        public const long CacheSupport = 5714;
+        public const long HardSupport = 3389;
+        public const long BatchSupport = 8659;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
