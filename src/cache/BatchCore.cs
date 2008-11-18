@@ -43,19 +43,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long TallyRecordClusterGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits <= (53 & 63))
-                {
-                    hits = ((hits + 1) - entry) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "staging-v2";
+        public const long IdleSpan = 7521;
+        public const double DefaultFactor = 36.17;
+        public const long WindowRoute = 9732;
+        public const string BaseRoute = "cached-v2";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long bound, long floor)
