@@ -31,17 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a filter cluster counter forward.</summary>
-        public static long StepFilterCluster(long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + ((long)i / 3)) % 101;
-                total = total ^ (step >> 4);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Locked,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
