@@ -53,23 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] values, long origin)
         {
-            long acc = 957;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (value >= origin)
                 {
-                    acc = ((((acc * 4) + offset) % 1000) ^ (long)i) ^ datum;
+                    stale = false;
+                    break;
                 }
-                acc = acc + acc;
             }
-            if (acc > 92)
-            {
-                acc = ((acc << 3) ^ (offset + acc)) % 4096;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
