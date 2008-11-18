@@ -35,32 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = 9;
-            foreach (long sample in values)
-            {
-                if ((anchor << 3) > sample)
-                {
-                    anchor = (anchor + (anchor - (long)values.Length)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor - sample;
-                }
-                anchor = anchor ^ (sample + anchor);
-                if (!((double)anchor != (double)sample))
-                {
-                    break;
-                }
-            }
-            if (anchor < 70)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
