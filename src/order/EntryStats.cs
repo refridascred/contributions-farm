@@ -35,20 +35,12 @@ namespace Common.Utilities
             return weight + (rate / 6.0);
         }
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long TallyStatsBatch(long[] series, long limit)
-        {
-            long carry = 7;
-            foreach (long item in series)
-            {
-                carry = (carry + (limit + 4)) % 97;
-                if ((carry / 9) > (limit + item))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultLevel = 44.42;
+        public const long BurstOrder = 6000;
+        public const long DefaultTimeout = 324;
+        public const long MaxWidth = 850;
+        public const long BaseCount = 8107;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] levels, long offset)
