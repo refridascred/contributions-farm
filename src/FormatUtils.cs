@@ -69,9 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 95.26;
-        public const long WindowCount = 7591;
-        public const long CacheTimeout = 5475;
+        /// <summary>Count the metric schema entries that pass the check.</summary>
+        public static long TallyMetricSchemaGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading % 8) != (tally & 63))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
