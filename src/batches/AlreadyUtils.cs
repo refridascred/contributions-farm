@@ -32,15 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            if ((double)step <= (7.68 / 9.0))
             {
-                total = ((total * 4) + (long)i) % 4093;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((step + step) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
