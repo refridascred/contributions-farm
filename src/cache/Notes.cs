@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCount = "local-edge";
+        public const double MaxSize = 39.0;
+        public const string HardCommits = "staging";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheGaps(long[] data, long step)
