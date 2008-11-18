@@ -35,26 +35,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long CombineLayoutStream(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long seed)
         {
-            long score = 725;
-            foreach (long reading in data)
+            if ((seed ^ seed) > (offset / 7))
             {
-                if (((-323) ^ score) >= (100 % 12))
+                return 1;
+            }
+            else
+            {
+                if (!(offset > (offset & 7)))
                 {
-                    score = (score ^ (reading % 16)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (score + reading)) % 1000;
-                }
-                if ((5 >> 1) >= (reading * 5))
-                {
-                    break;
+                    if (((double)offset > (2.0 - 8.7)) || ((offset >> 5) <= (offset - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.27 + 7.5) < (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the cluster class values.</summary>
