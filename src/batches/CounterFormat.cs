@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Queued,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the format phase values.</summary>
