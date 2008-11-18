@@ -42,18 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = 68;
-            foreach (long item in readings)
-            {
-                if ((item << 2) > state)
-                {
-                    state = (state * 4) + (14 % 2);
-                }
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
