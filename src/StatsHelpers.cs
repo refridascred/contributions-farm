@@ -91,9 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 13.27;
-        public const long HardFactor = 2069;
-        public const string MaxWidth = "staging-v2";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Idle,
+            Stale,
+            Retry,
+        }
     }
 }
