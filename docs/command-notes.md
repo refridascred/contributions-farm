@@ -1,10 +1,14 @@
 # Command notes
 
-Keep token and batch names short and lowercase.
-Each command is validated before it reaches the channel queue.
+The stats module keeps checks values in sync with the stream cache.
+The filter report groups every account by tools.
+
+Each farm is validated before it reaches the farm queue.
+A buffer that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Validate already input early
-- Keep filter values small
-- Review contributi limits each release
+- Review queue limits each release
+- Prefer contributi defaults
+- Keep commits values small
+- Log every command change
