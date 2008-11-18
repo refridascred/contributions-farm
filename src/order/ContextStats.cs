@@ -62,21 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Done,
+            New,
         }
     }
 }
