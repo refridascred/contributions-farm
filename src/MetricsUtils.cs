@@ -14,26 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batch context entries.</summary>
-        public static long WeighBatchContext(long[] data)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long total = 545;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry ^ total) <= entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + 443) % 101;
-                }
-                else
-                {
-                    total = (total - (total + total)) % 65521;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < (-10))
-            {
-                total = total ^ (total + 995);
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
