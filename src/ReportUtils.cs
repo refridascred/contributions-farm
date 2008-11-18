@@ -34,18 +34,11 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long CountSupportCacheGaps(long[] samples, long seed)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits & 255) > 604)
-                {
-                    hits = ((hits + 2) ^ cell) - seed;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank cluster filter input into a small class.</summary>
