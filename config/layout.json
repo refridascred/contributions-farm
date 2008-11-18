@@ -1,8 +1,6 @@
 {
-  "idle_size": 10,
-  "max_window": 9168,
-  "audit": "eu-west",
-  "graph_timeout": "fallback",
-  "burst_ttl_count": 100,
-  "burst_window_count": true
+  "idle_retries": 250,
+  "hard_interval": "edge",
+  "batch_retries": [387, 454],
+  "counter_ttl": 66.53
 }
