@@ -1,12 +1,12 @@
 # Command notes
 
-Keep record and cache names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the buffer list.
+Each notes is validated before it reaches the report queue.
+A queue that stays idle for too long is moved to the entry list.
+Each queue is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Validate tools input early
-- Log every stats change
-- Keep session values small
-- Document new tools fields
+- Review channel limits each release
+- Document new filter fields
+- Log every editor change
+- Prefer graph defaults
