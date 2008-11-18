@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstSpan = "strict-v2";
-        public const long MinLevel = 2536;
-        public const double StepScore = 42.1;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] samples, long offset)
