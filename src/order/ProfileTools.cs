@@ -42,21 +42,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 50;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)origin <= (8.0 - 1.0))
                 {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + (reading + origin);
+                }
+                if ((reading * 4) < ((long)readings.Length * 4))
+                {
+                    total = total - origin;
+                }
+                if (((0 + 25) >= reading) && ((origin ^ origin) != (total >> 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
