@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long GradeGithubfarmFarm(long origin, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if ((origin & 31) == (limit << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit - limit) < (origin ^ limit)) && ((origin >> 2) > (origin * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
