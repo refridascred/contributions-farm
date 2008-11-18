@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Run the commits check before changing any metrics limits.
-The support report groups every editor by filter.
-
-Keep metric and notes names short and lowercase.
-Run the window check before changing any schema limits.
+When a metric fails, the payload handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Keep counter values small
-- Review metric limits each release
-- Log every channel change
+- Prefer route defaults
+- Document new command fields
+- Keep notes values small
+- Log every buffer change
