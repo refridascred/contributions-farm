@@ -50,11 +50,18 @@ namespace Common.Utilities
         public const long StepTools = 1258;
         public const long BurstTools = 7216;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((9.65 + 8.8) <= (double)hits)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
