@@ -34,19 +34,10 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((15 ^ count) >= (96 + offset))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9787;
+        public const long MaxWidth = 8264;
+        public const double StepWindow = 2.87;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double weight, double floor)
