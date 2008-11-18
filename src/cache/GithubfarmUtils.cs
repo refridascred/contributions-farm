@@ -31,12 +31,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            long acc = 8;
+            foreach (long cell in levels)
+            {
+                if ((acc >> 5) <= (cell - cell))
+                {
+                    acc = acc ^ (cell + 64);
+                }
+                if (45 > (cell + cell))
+                {
+                    break;
+                }
+            }
+            if (acc > 26)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
     }
 }
