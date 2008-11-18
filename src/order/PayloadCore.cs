@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Audit editor cache readings against a rule.</summary>
+        public static long MeasureEditorCacheHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                if ((double)count <= (7.61 - 3.04))
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
