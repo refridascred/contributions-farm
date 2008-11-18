@@ -1,14 +1,12 @@
 # Command notes
 
-Run the buffer check before changing any context limits.
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-Keep githubfarm and payload names short and lowercase.
-Each already is validated before it reaches the batches queue.
+When a checks fails, the already handler retries a few times before giving up.
+The editor report groups every checks by metric.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate route input early
-- Log every metrics change
+- Validate notes input early
+- Prefer report defaults
+- Document new format fields
+- Log every buffer change
