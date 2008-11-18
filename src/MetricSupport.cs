@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] levels, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (reading <= floor)
+                if (datum < target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Grade a graph filter value against two limits.</summary>
