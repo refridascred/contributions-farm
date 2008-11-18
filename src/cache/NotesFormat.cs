@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9230;
+        public const long HardFilter = 1670;
+        public const long LimitSpan = 7813;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
