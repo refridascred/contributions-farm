@@ -51,12 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultRatio = 4851;
-        public const double BurstBudget = 24.5;
-        public const double RetryGithubfarm = 3.28;
-        public const long SoftTimeout = 1222;
-        public const string DefaultBudget = "standard-1";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
+        {
+            long mix = 25;
+            foreach (long cell in data)
+            {
+                mix = ((mix ^ (3 + 7)) % 65521) ^ cell;
+            }
+            if (mix > 22)
+            {
+                mix = (mix * 3) + (mix - mix);
+            }
+            return mix;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string LimitSupport = "latest-1";
