@@ -37,33 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long bound)
-        {
-            long prev = offset + bound;
-            if (((double)offset >= (6.9 * 6.94)) || ((double)offset != (4.8 + 9.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev & 63) <= (offset - 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((prev / 2) != (6 & 7)) || ((double)offset == (5.4 - 8.6)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseFactor = 6551;
+        public const long DefaultStats = 9377;
+        public const long DefaultSize = 1326;
+        public const long HardStats = 7471;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
