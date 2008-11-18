@@ -41,14 +41,12 @@ namespace Common.Utilities
             return load - (double)936;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Failed,
-            Active,
-            Done,
-            Queued,
-            New,
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
