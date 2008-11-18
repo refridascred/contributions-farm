@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double load = (double)0 - (double)0;
+            if (load >= load)
             {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (double)8;
             }
-            return ready;
+            else
+            {
+                load = load - (double)93;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias2) - (double)(long)i;
+            }
+            return load + (load + bias);
         }
 
         /// <summary>Measure how many contributi order samples are out of range.</summary>
