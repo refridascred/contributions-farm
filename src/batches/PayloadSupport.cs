@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings, long step)
         {
-            Active,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - (long)readings.Length) < (step / 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
