@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] values, long step)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count + count) >= (step / 8))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
