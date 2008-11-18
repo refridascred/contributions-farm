@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long state = 9;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (((state << 2) ^ (state ^ 338)) + (long)i) + target;
+                }
+                if ((long)items.Length <= sample)
+                {
+                    state = state - (sample & 3);
+                }
+                else
+                {
+                    state = (state + (sample + sample)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
