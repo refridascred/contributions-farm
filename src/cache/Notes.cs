@@ -24,11 +24,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
