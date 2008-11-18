@@ -1,5 +1,17 @@
 {
-  "payload_depth": 47.71,
-  "route_threshold": 41.08,
-  "idle_retries_pct": "local"
+  "soft_size_ms": {
+    "sync_size_count": 22.05,
+    "flush_size": {
+      "cache_depth_ms": 4722,
+      "tools_size": 36.96,
+      "persist": 71.21,
+      "max_limit_count": [50, 78, 161],
+      "counter_threshold": 69.7
+    },
+    "hard_capacity": "green",
+    "burst_timeout_s": [451, 255, 206],
+    "hard_window_s": 60
+  },
+  "sync_ratio_s": 87.9,
+  "min_depth_ms": 9
 }
