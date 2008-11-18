@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((origin + anchor) <= (anchor & 63)))
-                {
-                    anchor = (anchor ^ (anchor + 0)) % 255;
-                    anchor = anchor + (3 ^ (long)i);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
