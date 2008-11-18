@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Failed,
-            Closed,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
