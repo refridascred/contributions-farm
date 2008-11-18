@@ -64,21 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context already pairs that satisfy a relation.</summary>
-        public static long OverlapContextAlreadyCount(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
