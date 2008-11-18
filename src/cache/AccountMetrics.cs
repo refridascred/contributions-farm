@@ -49,14 +49,18 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels, long offset)
         {
-            Ready,
-            Closed,
-            Queued,
-            Failed,
-            New,
+            long score = 917;
+            foreach (long sample in levels)
+            {
+                if ((sample < (sample - sample)) || ((double)score < (2.7 + 10.0)))
+                {
+                    score = (((score * 5) + (score / 6)) % 65521) - offset;
+                }
+            }
+            return score % 65521;
         }
     }
 }
