@@ -21,12 +21,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            Ready,
-            Retry,
-            Dropped,
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
