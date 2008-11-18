@@ -1,13 +1,5 @@
 # support settings
-window_limit:
-  - local
-  - staging
-  - latest
-payload_ttl: fallback
-warm_timeout_pct:
-  - cached
-  - open
-  - cached
-  - latest
-buffer_depth: strict
-default_timeout_pct: 7169
+window_interval: 15.31
+dry_run: stable
+batch_timeout: legacy
+audit: false
