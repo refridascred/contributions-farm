@@ -55,12 +55,13 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Done,
-            Stale,
-            Paused,
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
