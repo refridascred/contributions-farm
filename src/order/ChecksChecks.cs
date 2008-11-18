@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long SeriesCounterLayout(long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
