@@ -62,10 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 3278;
-        public const long CacheBatches = 2279;
-        public const string DefaultScore = "open-edge";
-        public const long MaxWidth = 3795;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long origin)
+        {
+            long mix = 2;
+            foreach (long datum in values)
+            {
+                mix = ((mix << 2) ^ (datum & 3)) % 97;
+                if (6.64 < (double)mix)
+                {
+                    mix = (mix * 3) + origin;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 5) + (origin >> 3)) % 255;
+            }
+            return mix;
+        }
     }
 }
