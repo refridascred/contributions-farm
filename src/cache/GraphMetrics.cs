@@ -35,20 +35,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSize = 39.06;
+        public const string MaxSession = "staging-1";
+        public const long StepSession = 9311;
 
         /// <summary>Classify a profile graph pair into a bucket.</summary>
         public static long GradeProfileGraph(long offset, long offset2)
