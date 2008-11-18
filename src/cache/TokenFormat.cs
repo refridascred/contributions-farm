@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry filter readings.</summary>
-        public static long FoldEntryFilter(long[] series, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long acc = 4;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc - (229 / 4)) - item) - bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > (-3))
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
