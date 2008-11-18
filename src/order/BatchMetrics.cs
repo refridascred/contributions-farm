@@ -35,13 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
