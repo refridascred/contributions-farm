@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items, long step)
         {
-            long carry = 3;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                carry = ((((carry << 3) ^ ((-670) << 3)) % 4096) - item) - target;
+                if (5 <= step)
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
