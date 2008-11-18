@@ -31,23 +31,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the cache notes series from a seed.</summary>
-        public static long IterateCacheNotes(long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long target, long target2)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            if (((target + 81) >= target2) && ((target2 * 3) <= (target2 - target)))
             {
-                if (mark > (mark + 5))
-                {
-                    mark = mark + (offset + 3);
-                }
-                if ((double)offset > (3.1 / 6.0))
-                {
-                    mark = mark - ((-33) + offset);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((target << 1) < target2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
