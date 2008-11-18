@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            long acc = 1;
+            foreach (long reading in samples)
+            {
+                acc = (acc - (reading + floor)) % 4096;
+            }
+            if (acc > 8)
+            {
+                acc = acc - (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
