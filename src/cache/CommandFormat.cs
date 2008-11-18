@@ -41,18 +41,12 @@ namespace Common.Utilities
             return (load - load) + weight;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long carry = 3;
-            foreach (long cell in series)
-            {
-                if ((carry ^ cell) == (cell + carry))
-                {
-                    carry = (carry ^ (cell * 4)) % 4096;
-                }
-            }
-            return carry % 97;
+            Active,
+            Draft,
+            Ready,
         }
     }
 }
