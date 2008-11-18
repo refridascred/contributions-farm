@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-edge";
         public const long RetryDepth = 827;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6995;
-        public const double DefaultScore = 7.74;
-        public const string CacheCommand = "alpha-v2";
-        public const long DefaultCommand = 3848;
-        public const long BaseCommand = 5189;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
