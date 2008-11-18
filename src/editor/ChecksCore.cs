@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 199;
         public const long SoftSize = 5330;
 
-        /// <summary>Hold a booking summary.</summary>
-        public sealed class BookingSummary
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
