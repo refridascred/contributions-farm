@@ -26,13 +26,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Match up filter buffer samples.</summary>
+        public static long PairFilterBufferCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
