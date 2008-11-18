@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up record layout samples.</summary>
-        public static long OverlapRecordLayoutCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 1.52;
+        public const long CacheInterval = 4465;
+        public const double CacheFactor = 19.92;
+        public const string CacheDepth = "cached-v2";
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
