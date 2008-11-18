@@ -19,19 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] readings, long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
