@@ -16,38 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a graph batches pair into a bucket.</summary>
-        public static long GradeGraphBatches(long target, long target2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] data, long step)
         {
-            if (target2 > (target2 & 3))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (6.9 > (double)target)
+                if (((seen - datum) >= (datum / 8)) && ((datum >> 4) < (datum >> 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target2 + target2) >= (target >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target / 5) == (target2 / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
