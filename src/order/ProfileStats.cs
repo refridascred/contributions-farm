@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up notes tools samples.</summary>
-        public static long OverlapNotesToolsCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor + floor2) >= (floor2 & 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5.0 - 19.0) < (double)floor2)
                 {
-                    if ((readings[i] - readings[j]) < 13)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor2 != (1.9 * 12.0)) && ((floor - 8) <= floor))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9 > (floor2 + floor)) && ((floor * 4) <= (floor2 - floor2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every commits layout entry stays within the limit.</summary>
