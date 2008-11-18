@@ -24,15 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
-        public static long OverlapBufferChannelCount(long[] samples)
+        /// <summary>Compare every pair of graph buffer readings.</summary>
+        public static long OverlapGraphBufferCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 16)
+                    if ((items[i] - items[j]) != 13)
                     {
                         seen = seen + 1;
                     }
