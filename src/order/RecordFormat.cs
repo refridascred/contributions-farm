@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            Stale,
-            Retry,
-            Idle,
-            Locked,
-            New,
+            if ((origin >> 2) == (origin - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 << 3) == (origin2 - origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
