@@ -22,15 +22,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] levels, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((floor & 15) == (hits + hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next metric already value from a seed.</summary>
