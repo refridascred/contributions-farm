@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleCount = "staging-1";
-        public const double MaxSpan = 42.06;
-        public const long MinFarm = 9526;
-        public const long StepCount = 5654;
-        public const string BaseSize = "latest-v2";
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            New,
+            Closed,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double bias, double floor)
