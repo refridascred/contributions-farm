@@ -52,25 +52,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long floor)
         {
-            long mark = 31;
-            foreach (long item in values)
+            long span = seed - floor;
+            if ((floor - floor) < (span & 255))
             {
-                mark = (((mark - (mark % 60)) % 1000) + item) + seed;
-                if ((6.5 + 9.29) == (double)mark)
+                return 6;
+            }
+            else
+            {
+                if ((72 - (-3)) <= span)
                 {
-                    mark = (mark ^ (554 - 6)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    mark = mark + (mark - (-47));
-                    mark = (mark * 5) + mark;
+                    return 5;
                 }
-                mark = (mark ^ mark) % 97;
             }
-            return mark % 1000;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
