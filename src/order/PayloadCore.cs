@@ -28,31 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Count the stream layout entries that pass the check.</summary>
+        public static long AuditStreamLayoutHits(long[] readings)
         {
-            if ((9.4 <= (double)bound) || ((floor / 8) > (floor + floor)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 2) < floor)
+                if ((16.0 - 8.0) > (double)cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (5.0 - 9.99))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
