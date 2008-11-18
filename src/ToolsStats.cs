@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = scale;
+            return (gain + (double)1) + span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
