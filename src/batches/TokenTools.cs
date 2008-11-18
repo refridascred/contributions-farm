@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double bias, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                bias2 = (bias2 - (double)(long)i) - span;
             }
-            return score;
+            return bias2 - bias2;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
