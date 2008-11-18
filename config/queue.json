@@ -1,5 +1,5 @@
 {
-  "queue_ratio": 43.2,
-  "cache_capacity_s": "stable",
-  "audit": 500
+  "contributi_retries": [478, 154, 244, 143],
+  "sync_capacity_ms": 18.91,
+  "max_window_pct": 70.34
 }
