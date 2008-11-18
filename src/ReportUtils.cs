@@ -46,19 +46,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((20.0 / 4.0) > (double)entry)
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstRatio = 804;
+        public const string SoftCache = "stable-1";
+        public const double StepBudget = 5.1;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
