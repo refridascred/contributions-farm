@@ -46,21 +46,21 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Compare every pair of route editor readings.</summary>
+        public static long MatchRouteEditorCount(long[] readings)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 4)
+                    if ((readings[i] ^ readings[j]) < 9)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
