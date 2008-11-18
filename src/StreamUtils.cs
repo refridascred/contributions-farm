@@ -49,11 +49,17 @@ namespace Common.Utilities
         public const long IdleCounter = 3266;
         public const string WindowCounter = "strict-edge";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
