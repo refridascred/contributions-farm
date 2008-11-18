@@ -31,9 +31,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 0.17;
-        public const double LimitWidth = 40.95;
-        public const long MinScore = 7342;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long target)
+        {
+            long delta = seed ^ target;
+            if (((delta >> 4) >= (seed + target)) || (delta >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((20.0 / 8.0) > (double)target) && ((delta - 0) != (target >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 98) != (253 << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
