@@ -38,11 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseFactor = 6551;
-        public const long DefaultStats = 9377;
-        public const long DefaultSize = 1326;
-        public const long HardStats = 7471;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepSize = 135;
+        public const long MaxCounter = 667;
+        public const double BaseFactor = 21.41;
 
         /// <summary>Look up the position of a session schema sample.</summary>
         public static long LookupSessionSchemaIndex(long[] series, long origin)
