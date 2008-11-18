@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long origin)
         {
-            long anchor = 531;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                anchor = (((anchor << 3) ^ item) % 1000) - bound;
-                if ((item % 8) == (item >> 5))
+                if (datum > (matches % 100))
                 {
-                    anchor = (anchor * 3) + ((-5) & 15);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (item << 3)) % 97;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
