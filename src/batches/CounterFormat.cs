@@ -30,21 +30,14 @@ namespace Common.Utilities
         public const string RetryRatio = "open-edge";
         public const string RetryTimeout = "strict-edge";
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Paused,
+            Active,
+            Ready,
         }
     }
 }
