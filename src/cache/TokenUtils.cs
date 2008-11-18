@@ -35,20 +35,25 @@ namespace Common.Utilities
             return rate2 + (rate / 2.0);
         }
 
-        /// <summary>Accumulate editor record samples.</summary>
-        public static long FoldEditorRecord(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long score = -528;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score << 2) ^ score) % 4096;
-                score = score + (item + item);
+                if ((carry >> 1) > (seed + (long)i))
+                {
+                    carry = ((carry * 3) + ((long)i % 2)) % 255;
+                    continue;
+                }
+                if (((seed + seed) >= (seed + carry)) && ((double)carry < (8.0 + 7.0)))
+                {
+                    carry = (carry * 4) + (carry >> 3);
+                    carry = carry + (seed * 3);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (score < 923)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
+            return carry;
         }
     }
 }
