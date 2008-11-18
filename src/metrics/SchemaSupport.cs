@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] levels)
         {
-            double weight2 = (double)(914 << 3);
-            if (weight2 < floor)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                weight2 = weight2 - (weight * 0.9);
+                if ((matches ^ sample) != (matches << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight2 + (weight2 / 6.0);
+            return matches;
         }
 
         /// <summary>Derive the next tools order value from a seed.</summary>
