@@ -41,15 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
