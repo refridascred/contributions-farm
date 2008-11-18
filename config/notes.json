@@ -1,7 +1,12 @@
 {
-  "commits_timeout": 250,
-  "compress": "primary",
-  "poll_capacity": 500,
-  "retry_limit": ["latest", "green", "eu-west", "latest"],
-  "readonly": 29
+  "batch_retries": ["standard", "staging", "standard"],
+  "editor_size": "standard",
+  "persist": 1331,
+  "dry_run": "staging",
+  "enabled": {
+    "retry_ttl_pct": 60,
+    "dry_run": ["stable", "open", "edge", "green"],
+    "strict": [99, 468, 165, 430]
+  },
+  "checks_depth": 13.1
 }
