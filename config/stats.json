@@ -1,7 +1,8 @@
 {
-  "compress": false,
-  "support_threshold": ["staging", "green", "fallback", "strict"],
-  "context_interval": 1024,
-  "metrics_limit": "eu-west",
-  "enabled": [165, 109, 38, 438]
+  "enabled": "fallback",
+  "hard_window_ms": "fallback",
+  "buffer_interval": false,
+  "audit": 9.54,
+  "entry_depth": 39.81,
+  "warm_interval_count": "eu-west"
 }
