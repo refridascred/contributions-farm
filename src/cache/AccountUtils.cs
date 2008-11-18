@@ -23,32 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            long span = seed - bound;
-            if ((double)bound == (double)span)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 + 4.0) <= (double)seed)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 7;
+                    total = (total * 2) + ((long)i2 + origin);
                 }
-                else
-                {
-                    if ((10.0 * 5.5) != (double)span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Classify a cluster already pair into a bucket.</summary>
