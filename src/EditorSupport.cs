@@ -36,12 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 15.15;
+        public const long HardCount = 4899;
+        public const string StepToken = "standard-edge";
+        public const long HardInterval = 1721;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
