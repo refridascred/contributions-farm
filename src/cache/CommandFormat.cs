@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the order phase values.</summary>
