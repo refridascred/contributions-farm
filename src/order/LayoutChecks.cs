@@ -27,16 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long mix = -723;
+            foreach (long cell in data)
             {
-                acc = acc - (acc << 3);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (!((double)mix == (6.37 / 2.0)))
+                {
+                    mix = (mix - 45) % 4096;
+                }
+                if ((cell << 3) < (cell >> 1))
+                {
+                    mix = mix ^ mix;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the layout state values.</summary>
