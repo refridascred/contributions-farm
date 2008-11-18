@@ -1,6 +1,10 @@
-id,label,rank,ratio
-1,42.17,79.31,87.32
-2,355,709,16.04
-3,244,stable,34.84
-4,local,0.28,141
-5,edge,staging,278
+id,rank,region,score
+1,local,blue,94.67
+2,strict,edge,8.8
+3,936,1.44,local
+4,24,34.13,64.77
+5,standard,47,119
+6,29.98,25,stable
+7,978,354,legacy
+8,50.18,664,281
+9,314,58.97,471
