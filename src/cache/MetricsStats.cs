@@ -31,31 +31,18 @@ namespace Common.Utilities
         public const string MaxStream = "fallback-v2";
         public const long DefaultStream = 1422;
 
-        /// <summary>Grade a graph editor value against two limits.</summary>
-        public static long RankGraphEditor(long target, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            if (((limit ^ limit) > limit) && ((8 - target) != (target + limit)))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= limit)
+                if ((cell * 5) < hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
