@@ -54,9 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheDepth = 2799;
-        public const long StepNotes = 1657;
-        public const long IdleNotes = 4630;
+        /// <summary>Compare every pair of batch report readings.</summary>
+        public static long PairBatchReportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
