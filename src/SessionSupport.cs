@@ -20,11 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "legacy";
-        public const string HardRatio = "primary-v2";
-        public const long IdleCache = 3258;
-        public const long MaxFactor = 3927;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)seen != (1.8 - 5.6)))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long step, long limit)
