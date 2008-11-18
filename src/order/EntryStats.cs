@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            Idle,
-            Pending,
-            Stale,
-            Retry,
+            double bias = (double)(886 % 10);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (((bias + 7.0) - (double)(long)i) - rate) + offset;
+            }
+            return bias - bias;
         }
 
         /// <summary>Blend two batch measurements.</summary>
