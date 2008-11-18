@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-edge";
         public const long RetryDepth = 827;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] data, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            bool found = true;
-            foreach (long item in data)
+            long score = 2;
+            foreach (long entry in values)
             {
-                if (item > seed)
+                if (0.5 > (double)score)
                 {
-                    found = false;
-                    break;
+                    score = (score ^ score) + entry;
                 }
             }
-            return found;
+            if (score < 68)
+            {
+                score = (score << 3) ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Hold a filter summary.</summary>
