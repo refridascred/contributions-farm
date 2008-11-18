@@ -34,39 +34,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long target, long floor)
-        {
-            if ((1.8 / 5.0) > (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((754 + 940) > (target + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor % 12) != (target + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) <= (floor + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchFactor = 7050;
+        public const string LimitWidth = "standard-v2";
+        public const long DefaultBatches = 8822;
+        public const long MinBudget = 4761;
+        public const double IdleBatches = 42.66;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double scale, double bias)
