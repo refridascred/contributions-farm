@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Each support is validated before it reaches the tools queue.
+Keep record and cache names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Keep order values small
-- Log every token change
-- Review order limits each release
-- Validate account input early
+- Validate tools input early
+- Log every stats change
+- Keep session values small
+- Document new tools fields
