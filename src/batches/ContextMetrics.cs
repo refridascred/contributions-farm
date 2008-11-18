@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count editor order pairs that satisfy a relation.</summary>
-        public static long PairEditorOrderCount(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
