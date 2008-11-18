@@ -24,12 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            Active,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)717 <= (double)item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
