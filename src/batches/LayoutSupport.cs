@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 7644;
-        public const long WindowTimeout = 4593;
-        public const string IdleScore = "latest";
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
