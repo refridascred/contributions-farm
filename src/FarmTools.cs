@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 6913;
-        public const string HardCount = "staging";
-        public const long IdleSupport = 5888;
-        public const long HardSupport = 4559;
-        public const long LimitWidth = 6888;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Active,
+            Locked,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double BlendCache(double ratio, double span)
