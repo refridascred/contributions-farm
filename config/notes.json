@@ -1,16 +1,8 @@
 {
-  "retry_interval_count": {
-    "notes_interval": false,
-    "stream_ratio": {
-      "default_limit_s": "stable",
-      "readonly": 6832,
-      "verbose": "strict"
-    },
-    "idle_capacity": false,
-    "max_size": false,
-    "default_timeout_count": "legacy",
-    "graph_capacity": "strict"
-  },
-  "hard_threshold_ms": ["cached", "local"],
-  "warm_threshold_ms": 4485
+  "strict": "legacy",
+  "entry_depth": true,
+  "channel_window": 46,
+  "entry_ratio": 5241,
+  "enabled": 73.63,
+  "session_ttl": 70
 }
