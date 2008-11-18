@@ -36,19 +36,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples, long seed)
         {
-            double gain = offset;
-            if (gain > (double)408)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                gain = (gain - (gain / 8.0)) + scale;
+                if (((604 % 24) < value) || !((seed << 1) == (874 / 7)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)49) + (double)(long)i;
-            }
-            return gain - (double)3;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
