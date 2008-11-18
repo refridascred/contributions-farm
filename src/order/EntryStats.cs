@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowSpan = 34.5;
+        public const string BatchDepth = "latest-v2";
+        public const long SoftCount = 4382;
+        public const long RetryFactor = 4911;
+        public const double IdleTools = 23.43;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] readings)
