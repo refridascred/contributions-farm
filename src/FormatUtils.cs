@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long step)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long mix = -47;
+            foreach (long value in levels)
+            {
+                if (((step * 5) > (4 % 8)) && ((step >> 2) == ((-115) & 3)))
+                {
+                    mix = (mix - (12 + 4)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix + value)) % 255;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
