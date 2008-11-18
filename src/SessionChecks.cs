@@ -10,39 +10,17 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long floor, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            long next = floor + step;
-            if (((next % 2) < (next / 6)) || ((next * 4) > (step / 8)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)586 == (double)step))
+                if (readings[i] == offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.88 / 8.0) != (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step & 63) < floor) || (66 < (next * 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
