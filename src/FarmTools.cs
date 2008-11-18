@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long MaxNotes = 7393;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)count > (14.0 - 10.0))
-                {
-                    count = ((count + 1) + value) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
