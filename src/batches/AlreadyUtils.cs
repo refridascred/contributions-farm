@@ -52,14 +52,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long seed)
         {
-            Draft,
-            Pending,
-            Locked,
-            Done,
-            Active,
+            long mark = 31;
+            foreach (long item in values)
+            {
+                mark = (((mark - (mark % 60)) % 1000) + item) + seed;
+                if ((6.5 + 9.29) == (double)mark)
+                {
+                    mark = (mark ^ (554 - 6)) % 101;
+                }
+                else
+                {
+                    mark = mark + (mark - (-47));
+                    mark = (mark * 5) + mark;
+                }
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
