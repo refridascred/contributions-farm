@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool VerifyBufferClusterLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (item >= (item + count))
+                if (value > step)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the context tools series from a seed.</summary>
