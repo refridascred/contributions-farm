@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] series, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (item <= step)
+                if (entry < step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
