@@ -44,14 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Draft,
-            Locked,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultRatio = 4851;
+        public const double BurstBudget = 24.5;
+        public const double RetryGithubfarm = 3.28;
+        public const long SoftTimeout = 1222;
+        public const string DefaultBudget = "standard-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const string LimitSupport = "latest-1";
