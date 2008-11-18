@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double offset)
         {
-            Dropped,
-            Done,
-            Queued,
-            Draft,
-            New,
+            double scale = (14.0 + offset) * 4.09;
+            if (scale <= scale)
+            {
+                scale = (scale + 9.0) - weight;
+            }
+            return scale - (10.0 * 8.7);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
