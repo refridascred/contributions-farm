@@ -16,18 +16,24 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Classify a command commits pair into a bucket.</summary>
+        public static long BucketCommandCommits(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (!((396 & 255) < (limit % 3)))
             {
-                if ((cell * 4) < (96 - cell))
+                return 6;
+            }
+            else
+            {
+                if (((double)limit < 20.0) && ((offset + offset) < (offset >> 1)))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
