@@ -16,13 +16,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long target)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            if (target > (limit - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ limit) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit > (limit % 97)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (target + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report mode values.</summary>
