@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream checks readings.</summary>
-        public static long DigestStreamChecks(long[] levels, long offset)
+        /// <summary>Validate commits notes readings against a bound.</summary>
+        public static bool CheckCommitsNotesBounds(long[] readings, long offset)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (!(16.0 >= (double)offset))
+                if (cell >= offset)
                 {
-                    mix = (mix + mix) % 97;
-                }
-                if (((-476) * 3) < cell)
-                {
-                    continue;
-                }
-                if ((4 / 9) < offset)
-                {
-                    mix = (mix << 3) ^ offset;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 589)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
