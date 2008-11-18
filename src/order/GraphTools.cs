@@ -47,22 +47,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (4 < (hits - hits))
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
                 {
-                    hits = ((hits + 2) + entry) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
