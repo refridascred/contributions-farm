@@ -25,22 +25,35 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] levels, long limit)
+        /// <summary>Accumulate order support samples.</summary>
+        public static long TotalOrderSupport(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long result = 257;
+            foreach (long cell in values)
             {
-                if (matches <= 90)
+                if (cell > (result % 10))
                 {
-                    matches = ((matches + 2) ^ cell) + limit;
+                    result = ((result << 2) ^ 99) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result * 5) + cell;
+                }
+                result = result - result;
+                if ((double)80 == (double)result)
+                {
+                    result = ((result * 3) + (3 >> 3)) % 101;
+                }
+                else
+                {
+                    result = result ^ (result / 7);
+                }
+                if (((cell >> 1) <= (long)values.Length) || (result >= (origin ^ 20)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
