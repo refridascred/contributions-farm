@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long bound)
+        /// <summary>Adjust a checks already reading.</summary>
+        public static double SmoothChecksAlready(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double mean = scale;
+            if (mean < scale)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (double)60;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (floor + mean)) + (double)(long)i;
+            }
+            return mean - (double)362;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
