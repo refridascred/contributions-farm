@@ -43,24 +43,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the stream command series from a seed.</summary>
-        public static long RollStreamCommand(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((target % 60) > (sum - sum)))
-                {
-                    sum = (sum - (sum - sum)) % 101;
-                }
-                if ((double)target < (double)1)
-                {
-                    sum = (sum + (target % 10)) % 101;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Synced,
+            Retry,
         }
     }
 }
