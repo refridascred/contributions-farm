@@ -1,29 +1,8 @@
 # githubfarm settings
-max_capacity_s:
-  - legacy
-  - blue
+enabled: 6399
+window_depth: 1153
+idle_limit:
   - staging
+  - stable
+  - edge
   - fallback
-idle_window_pct:
-  warm_ratio_s: 58.69
-  persist: false
-  idle_size_pct:
-    session_threshold:
-      - legacy
-      - legacy
-    graph_threshold: 5426
-    commits_limit: 7
-    idle_delay_ms: 100
-    flush_delay_s: false
-    burst_timeout:
-      - eu-west
-      - strict
-      - open
-      - open
-  idle_depth_count: staging
-  min_ttl_count:
-    min_ratio: eu-west
-    retry_retries: edge
-    flush_threshold_ms: 2974
-    readonly: 8775
-soft_delay_s: strict
