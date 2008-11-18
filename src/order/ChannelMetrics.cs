@@ -26,16 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout graph counter forward.</summary>
-        public static long DeriveLayoutGraph(long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long limit, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            if ((limit + limit) != (804 & 31))
             {
-                state = (state + seed) % 65521;
-                state = ((state * 2) + (long)i) % 97;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((step & 255) > (step - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step >= 3.9)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a support counter forward.</summary>
