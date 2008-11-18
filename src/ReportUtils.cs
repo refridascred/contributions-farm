@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8364;
-        public const string IdleTimeout = "local-edge";
-        public const long LimitBatches = 8663;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long limit, long origin)
