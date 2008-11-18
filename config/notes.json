@@ -1,7 +1,12 @@
 {
-  "soft_retries_ms": true,
-  "order_size": 47.33,
-  "batch_depth_pct": 30.98,
-  "commits_retries": [347, 443, 123],
-  "sync_limit_ms": 1024
+  "cache_depth_count": 32.34,
+  "report_interval": 16.11,
+  "hard_timeout": 9067,
+  "burst_capacity_ms": {
+    "base_ttl_count": 82.7,
+    "hard_interval_s": 5.21,
+    "poll_ratio": false,
+    "burst_depth_ms": ["staging", "primary", "standard"]
+  },
+  "compress": [96, 222, 310]
 }
