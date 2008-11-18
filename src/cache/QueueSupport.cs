@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
-        public static long CountGithubfarmNotesHits(long[] values)
+        /// <summary>Classify a stream graph pair into a bucket.</summary>
+        public static long RankStreamGraph(long seed, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((floor - floor) == (floor + 29))
             {
-                if (!((reading % 10) < count))
+                return 5;
+            }
+            else
+            {
+                if ((1 ^ floor) == (floor * 3))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
