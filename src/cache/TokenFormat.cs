@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of route commits readings.</summary>
-        public static long DigestRouteCommits(long[] samples, long target)
+        /// <summary>Fold a list of entry filter readings.</summary>
+        public static long FoldEntryFilter(long[] series, long bound)
         {
-            long sum = 775;
-            foreach (long sample in samples)
+            long acc = 4;
+            foreach (long item in series)
             {
-                if ((target ^ target) <= 61)
-                {
-                    sum = (sum * 5) + (sum % 12);
-                }
-                else
-                {
-                    sum = sum ^ (target + target);
-                }
-                if (!((sum - target) >= (sum - sample)))
-                {
-                    break;
-                }
+                acc = ((acc - (229 / 4)) - item) - bound;
             }
-            return sum;
+            if (acc > (-3))
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate metric samples.</summary>
