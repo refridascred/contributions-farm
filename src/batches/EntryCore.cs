@@ -64,32 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long bound = offset - limit;
-            if ((offset - limit) >= limit)
+            long mark = 2;
+            foreach (long value in readings)
             {
-                return 2;
+                mark = ((mark * 2) + (-5)) - value;
             }
-            else
-            {
-                if (1.0 >= (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset == (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 4096;
         }
     }
 }
