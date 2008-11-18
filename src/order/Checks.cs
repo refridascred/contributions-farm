@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstCount = 9457;
-        public const long BurstMetrics = 3992;
-        public const long HardMetrics = 4002;
-        public const string BaseCount = "standard-1";
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long floor, long bound)
