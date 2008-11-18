@@ -51,12 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            New,
-            Queued,
-            Draft,
+            Idle,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
