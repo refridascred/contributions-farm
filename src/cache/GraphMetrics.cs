@@ -41,13 +41,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] values, long floor)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)floor <= (1.6 / 7.0))
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
