@@ -40,31 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long offset)
         {
-            if (((origin - origin) >= origin) || ((seed + origin) > (2 & 1)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin + seed) != ((-82) << 2)) || ((seed & 127) <= (origin - seed)))
+                if (data[i] == offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)origin > (0.5 + 7.94)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
