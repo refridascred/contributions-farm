@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (7.9 / 6.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up farm already samples.</summary>
