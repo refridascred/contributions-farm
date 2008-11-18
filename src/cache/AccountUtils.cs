@@ -24,17 +24,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((7.0 * 8.11) >= (double)offset))
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (offset <= floor)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
