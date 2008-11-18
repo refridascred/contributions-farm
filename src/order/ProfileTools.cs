@@ -56,22 +56,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long CountSessionOrderHits(long[] data, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)reading <= (9.4 + 1.0))
+                if ((((hits + datum) != (offset & 31)) || (datum < 34)) && ((((long)items.Length & 127) >= offset) && (datum <= 3)))
                 {
-                    matches = (matches + 1) + step;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit queue route readings against a rule.</summary>
