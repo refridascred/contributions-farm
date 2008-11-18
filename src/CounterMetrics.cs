@@ -14,22 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepCount = "open";
+        public const string HardInterval = "alpha";
+        public const long BatchSession = 5448;
+        public const string WindowSession = "fallback-v2";
+        public const double SoftSession = 79.65;
 
         /// <summary>Find the first editor entry entry that matches the target.</summary>
         public static long LookupEditorEntryIndex(long[] data, long target)
