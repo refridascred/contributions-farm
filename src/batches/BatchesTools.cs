@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double IdleCount = 48.89;
         public const string BurstSize = "standard-v2";
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values, long bound)
         {
-            Draft,
-            Closed,
-            Synced,
+            long state = 85;
+            foreach (long cell in values)
+            {
+                if ((3.9 > (double)cell) && ((state + bound) == (62 % 3)))
+                {
+                    state = (state - (bound + cell)) % 255;
+                    state = state - (bound - cell);
+                }
+                if (((cell & 255) >= (92 ^ state)) && ((cell >> 1) <= (cell ^ 27)))
+                {
+                    state = state + (state - cell);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
