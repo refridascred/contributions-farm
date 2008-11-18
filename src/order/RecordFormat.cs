@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowLevel = 39.82;
+        public const long MinBudget = 5922;
+        public const long SoftSession = 3125;
+        public const long BurstFactor = 4329;
+        public const long WindowInterval = 9409;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] data, long bound)
