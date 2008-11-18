@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double scale = span - (11.0 + span);
+            if (scale > (double)590)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (scale / 7.0);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - (ratio + ratio);
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
