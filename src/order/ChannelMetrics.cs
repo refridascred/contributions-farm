@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Grade a notes stream value against two limits.</summary>
+        public static long ClassifyNotesStream(long step, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long prev = step + limit;
+            if ((6 >> 3) > (prev ^ prev))
+            {
+                return 7;
+            }
+            else
+            {
+                if (prev < (-571))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >= (limit >> 4)) && ((prev + prev) > limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
