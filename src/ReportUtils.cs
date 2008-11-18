@@ -41,13 +41,15 @@ namespace Common.Utilities
         public const double RetryDepth = 42.9;
         public const long BatchCommits = 9856;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            double scale = floor;
+            if (scale <= (4.0 + 9.1))
+            {
+                scale = scale - weight;
+            }
+            return scale - scale;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
