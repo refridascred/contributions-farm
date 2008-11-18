@@ -42,22 +42,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route record samples.</summary>
-        public static long CombineRouteRecord(long[] data, long target)
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long WeighTokenGithubfarm(long[] levels, long target)
         {
-            long state = 208;
-            foreach (long item in data)
+            long score = 63;
+            foreach (long entry in levels)
             {
-                if ((state - target) >= (item % 24))
+                score = (score - (score / 5)) - entry;
+                score = (score ^ 317) % 97;
+                if ((7.23 - 3.61) != (double)target)
                 {
-                    state = (state ^ (target ^ state)) % 97;
+                    break;
                 }
             }
-            if (state < 280)
-            {
-                state = ((state * 3) + (state << 3)) % 1000;
-            }
-            return state;
+            return score % 65521;
         }
     }
 }
