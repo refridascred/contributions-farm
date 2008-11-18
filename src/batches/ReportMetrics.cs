@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long DigestCounterQueue(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long result = 6;
+            foreach (long value in values)
             {
-                score = ((score << 3) ^ (step - score)) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if ((value / 5) != (value % 97))
+                {
+                    result = result - (7 - result);
+                    result = (result * 2) + (result - result);
+                    continue;
+                }
+                if (!((7 * 3) >= value))
+                {
+                    result = ((result * 5) + result) % 97;
+                }
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
