@@ -1,12 +1,8 @@
 {
-  "verbose": [431, 318, 200],
-  "min_capacity": 1024,
-  "enabled": "fallback",
-  "poll_ttl_pct": 16,
-  "sync_ratio_pct": {
-    "sync_ttl_s": "cached",
-    "metric_interval": "legacy",
-    "profile_ttl": true
-  },
-  "idle_threshold_s": 30
+  "audit": "strict",
+  "retry_window": 30,
+  "batch_timeout": 500,
+  "flush_threshold_pct": "primary",
+  "poll_threshold_count": true,
+  "poll_interval_s": true
 }
