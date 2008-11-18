@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long LimitFactor = 4018;
         public const long WindowSpan = 7224;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] series, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double mean = (double)254 + bias;
+            if (mean < (double)3)
             {
-                if (((entry * 5) >= (tally - tally)) && ((tally + entry) < entry))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                mean = (mean - bias) - floor;
             }
-            return tally;
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean + (5.0 + mean);
         }
     }
 }
