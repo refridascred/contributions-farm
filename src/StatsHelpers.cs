@@ -52,19 +52,39 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long step = floor + origin;
+            if (((floor + origin) < (floor % 8)) || (14.0 >= (double)floor))
             {
-                if (sample > floor)
+                return 7;
+            }
+            else
+            {
+                if (((310 + floor) > (floor - step)) && ((step % 16) > (step << 1)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin % 16) > ((-651) << 3)) && ((origin + floor) < 25))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step > 1.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
