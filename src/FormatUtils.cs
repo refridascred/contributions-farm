@@ -24,17 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile session sample.</summary>
-        public static long LocateProfileSessionIndex(long[] readings, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the report kind values.</summary>
