@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (entry >= target)
+                if ((datum / 5) > (datum + matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
