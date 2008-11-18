@@ -29,13 +29,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values, long origin)
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            long anchor = 877;
+            foreach (long sample in values)
+            {
+                anchor = (anchor - ((long)values.Length * 2)) % 101;
+                if ((origin - anchor) == (anchor + sample))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine command metric values into a single score.</summary>
