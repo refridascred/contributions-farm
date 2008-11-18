@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "open-1";
-        public const long MinBatch = 2850;
-        public const string MinBudget = "cached-v2";
-        public const long DefaultBatch = 7586;
-        public const long BurstBatch = 1939;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally <= item)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
