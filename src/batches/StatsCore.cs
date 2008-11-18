@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2968;
-        public const long RetryEditor = 7976;
-        public const long BaseLevel = 3286;
-        public const long CacheDepth = 390;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleRatio = 9811;
