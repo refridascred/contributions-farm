@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] readings, long origin)
         {
-            double scale = (floor * 19.0) + (1.6 - 3.3);
-            if (scale < 8.04)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale - (scale / 6.0)) + bias;
+                if ((tally + origin) <= (origin * 4))
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            return scale + floor;
+            return tally;
         }
 
         /// <summary>Combine counter stream values into a single score.</summary>
