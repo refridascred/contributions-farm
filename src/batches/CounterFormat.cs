@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = 64;
-            foreach (long value in series)
-            {
-                state = (state ^ (limit << 2)) % 4096;
-                if ((limit & 1) == (value & 31))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Draft,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
