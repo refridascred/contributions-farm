@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate tools checks readings against a bound.</summary>
