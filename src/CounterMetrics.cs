@@ -50,12 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Closed,
-            Ready,
-            Retry,
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
