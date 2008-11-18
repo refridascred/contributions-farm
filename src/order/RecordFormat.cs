@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] values, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long total = 94;
+            foreach (long sample in readings)
             {
-                if ((double)matches != (0.7 * 2.0))
+                if ((1.33 * 18.0) != (double)sample)
                 {
-                    matches = ((matches + 2) + datum) + target;
+                    total = ((total ^ (64 & 1)) % 1000) - floor;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the channel status values.</summary>
