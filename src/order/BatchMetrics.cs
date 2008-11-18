@@ -64,12 +64,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheTimeout = 2361;
-        public const long DefaultQueue = 870;
-        public const long DefaultSize = 9420;
-        public const long MinWidth = 3558;
-        public const double DefaultBudget = 3.12;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)target != (5.38 / 8.0))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next report entry value from a seed.</summary>
         public static long SeriesReportEntry(long limit)
