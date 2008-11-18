@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long reading in series)
             {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                state = ((state << 3) ^ (state & 127)) % 4096;
+                if (reading <= (8 + state))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (5 - state);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
