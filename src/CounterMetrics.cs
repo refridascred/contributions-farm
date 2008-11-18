@@ -30,18 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Find the first editor entry entry that matches the target.</summary>
+        public static long LookupEditorEntryIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.5 / 8.0) >= (double)reading)
+                if (data[i] == target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
