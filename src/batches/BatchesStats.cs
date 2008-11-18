@@ -45,14 +45,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Synced,
-            Idle,
-            New,
-            Draft,
             Paused,
+            Dropped,
+            Retry,
+            Draft,
+            Ready,
         }
     }
 }
