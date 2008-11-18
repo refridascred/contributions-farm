@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepRatio = 7200;
-        public const double LimitSpan = 54.74;
-        public const long CacheSupport = 7898;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double scale, double floor)
