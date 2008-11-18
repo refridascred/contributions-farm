@@ -58,15 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double drift = (double)(69 & 1);
-            for (int i = 0; i < 4; i++)
+            long state = 0;
+            foreach (long entry in samples)
             {
-                drift = ((drift - (drift / 6.0)) + (double)(long)i) - floor;
+                if ((entry * 2) <= (entry + entry))
+                {
+                    state = ((state * 3) + 29) % 101;
+                }
             }
-            return drift - (8.9 + bias);
+            if (state > 480)
+            {
+                state = ((state << 2) ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
