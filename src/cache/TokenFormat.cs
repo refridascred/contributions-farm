@@ -39,12 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Stale,
-            Done,
-            Closed,
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
