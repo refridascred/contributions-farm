@@ -1,22 +1,10 @@
 # support settings
-readonly: stable
-hard_depth_ms: 2040
-channel_size: 2622
-max_threshold_pct: 64.32
-dry_run: 30
-poll_ratio_count:
-  base_depth: false
-  batch_size_pct:
-    order_capacity:
-      - edge
-      - standard
-      - primary
-      - local
-    sync_interval: local
-    idle_delay_ms: 9119
-    sync_timeout_pct:
-      - 46
-      - 451
-      - 351
-    route_limit: 387
-  batches_delay: 100
+burst_interval_pct: local
+batch_threshold_count:
+  - standard
+  - blue
+  - blue
+  - green
+soft_size_ms: edge
+cache_capacity: open
+farm_interval: true
