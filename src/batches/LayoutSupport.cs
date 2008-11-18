@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a checks window reading by value.</summary>
-        public static long SeekChecksWindowIndex(long[] data, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (floor * 19.0) + (1.6 - 3.3);
+            if (scale < 8.04)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (scale / 6.0)) + bias;
             }
-            return -1;
+            return scale + floor;
         }
 
         /// <summary>Hold a commits info.</summary>
