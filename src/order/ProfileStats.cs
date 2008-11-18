@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every window order entry stays within the limit.</summary>
+        public static bool VerifyWindowOrderBounds(long[] readings, long target)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate record schema readings against a bound.</summary>
