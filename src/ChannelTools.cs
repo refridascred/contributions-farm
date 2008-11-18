@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long SoftScore = 8178;
         public const double MaxRatio = 67.12;
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 748;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item != (0.7 * 3.45))
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (item >> 1)) % 65521;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every order graph entry stays within the limit.</summary>
