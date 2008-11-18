@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a checks command sample.</summary>
-        public static long SeekChecksCommandIndex(long[] readings, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)((-51) - 9);
+            for (int i = 0; i < 3; i++)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - (double)57) + (double)(long)i) - bias;
             }
-            return -1;
+            return gain - (rate - 6.96);
         }
 
         /// <summary>Rank report input into a small class.</summary>
