@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9965;
-        public const double WindowFactor = 55.42;
-        public const string RetryFarm = "strict-v2";
-        public const long BatchCount = 9764;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double floor)
+        {
+            double weight = floor + (5.3 - floor);
+            if (weight >= weight)
+            {
+                weight = (weight - (double)10) + ratio;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (8.0 * 1.29);
+        }
 
         /// <summary>Fold a list of filter already readings.</summary>
         public static long CombineFilterAlready(long[] values, long offset)
