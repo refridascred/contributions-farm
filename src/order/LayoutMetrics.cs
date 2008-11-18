@@ -27,10 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "local";
-        public const long BatchLayout = 2229;
-        public const long MaxLayout = 9117;
-        public const string IdleInterval = "standard-1";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Ready,
+            Active,
+            Retry,
+            Locked,
+            New,
+        }
     }
 }
