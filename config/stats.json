@@ -1,18 +1,5 @@
 {
-  "readonly": {
-    "compress": [370, 210, 146, 427],
-    "persist": {
-      "min_limit_ms": "legacy",
-      "layout_depth": "staging",
-      "idle_timeout": 100,
-      "min_delay": 100,
-      "poll_size_ms": [205, 276, 341, 13]
-    },
-    "commits_window": "legacy",
-    "enabled": ["strict", "stable", "fallback", "standard"],
-    "retry_depth_pct": "fallback",
-    "queue_timeout": "local"
-  },
-  "audit": "local",
-  "warm_capacity_ms": 95
+  "sync_timeout_s": 94.46,
+  "min_window": "fallback",
+  "readonly": 56.35
 }
