@@ -34,18 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!(((-917) + origin) <= (matches >> 4)))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
