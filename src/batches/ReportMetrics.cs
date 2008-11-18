@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long DigestCounterQueue(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data, long origin)
         {
-            long result = 6;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((value / 5) != (value % 97))
+                if ((((double)7 >= (double)item) && ((5.32 - 2.4) < (double)origin)) || (((origin / 3) < (hits + hits)) && ((double)(long)data.Length < (double)origin)))
                 {
-                    result = result - (7 - result);
-                    result = (result * 2) + (result - result);
-                    continue;
-                }
-                if (!((7 * 3) >= value))
-                {
-                    result = ((result * 5) + result) % 97;
+                    hits = hits + 3;
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
