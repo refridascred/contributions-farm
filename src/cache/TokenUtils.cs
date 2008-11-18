@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long slot = floor - limit;
-            if ((double)slot >= (9.41 - 9.22))
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((-98) - floor) != (3 - slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Adjust a support reading.</summary>
