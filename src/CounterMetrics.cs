@@ -34,12 +34,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (step + 510)) - (long)i2;
+                    anchor = anchor - (step & 31);
+                }
+                if (((step / 6) == (long)i) || ((step ^ step) == (step / 3)))
+                {
+                    anchor = (anchor ^ (anchor ^ step)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
+                    anchor = anchor ^ (step * 5);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
