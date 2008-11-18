@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(412 ^ 190);
+            if (gain > floor)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias + bias);
             }
-            return -1;
+            return gain + (double)7;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
