@@ -61,17 +61,19 @@ namespace Common.Utilities
             return mean - (7.0 - scale);
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long bound)
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool GuardContextReportLimits(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
