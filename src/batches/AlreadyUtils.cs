@@ -56,31 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long offset)
         {
-            if ((target << 3) <= offset)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= 2.0)
+                if (cell != offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset != (15.0 / 9.0)) || ((double)target < (2.7 / 5.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
