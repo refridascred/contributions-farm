@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine queue context values into a single score.</summary>
-        public static long FoldQueueContext(long[] series, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] data, long step)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (3.6 >= (double)carry)
+                if (item < step)
                 {
-                    carry = ((carry ^ (floor >> 3)) % 4096) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a context info.</summary>
