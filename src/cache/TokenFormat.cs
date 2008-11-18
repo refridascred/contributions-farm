@@ -31,11 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
