@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit editor window readings against a rule.</summary>
+        public static long AuditEditorWindowHits(long[] series, long origin)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (origin > (origin - item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
