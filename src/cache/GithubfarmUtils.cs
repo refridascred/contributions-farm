@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 1187;
-        public const long CacheBatch = 6414;
-        public const double BatchInterval = 76.88;
-        public const long IdleBatch = 6413;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsMatches(long[] data)
