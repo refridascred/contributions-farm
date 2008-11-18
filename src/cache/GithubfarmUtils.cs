@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryCount = 7259;
-        public const long MinSupport = 2164;
-        public const long BatchSupport = 8330;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] values)
