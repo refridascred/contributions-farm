@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "fallback-v2";
+        public const string MaxEntry = "cached";
+        public const long MinEntry = 236;
+        public const long BaseScore = 5647;
+        public const long CacheEntry = 5226;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] readings, long origin)
