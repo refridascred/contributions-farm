@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metrics batches readings against a bound.</summary>
-        public static bool VerifyMetricsBatchesLimits(long[] readings, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
