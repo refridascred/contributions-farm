@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            Retry,
-            New,
-            Stale,
+            long state = 524;
+            foreach (long value in samples)
+            {
+                if ((double)state < (19.0 * 3.3))
+                {
+                    state = state + value;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state << 3) ^ (4 + (-336));
+            }
+            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
