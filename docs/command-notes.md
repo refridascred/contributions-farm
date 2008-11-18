@@ -1,11 +1,15 @@
 # Command notes
 
-When a metric fails, the payload handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every cluster by already.
+Keep contributi and command names short and lowercase.
+Use context settings to tune how often queue data is refreshed.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer route defaults
-- Document new command fields
-- Keep notes values small
-- Log every buffer change
+- Document new channel fields
+- Validate layout input early
+- Prefer queue defaults
