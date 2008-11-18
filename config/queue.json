@@ -1,6 +1,7 @@
 {
-  "flush_depth_ms": 6152,
-  "flush_timeout": true,
-  "idle_delay_ms": 48,
-  "batch_threshold_s": "strict"
+  "cache_window": ["strict", "strict", "green", "blue"],
+  "hard_ttl_pct": [289, 123, 499],
+  "context_ratio": 9885,
+  "cache_limit": "green",
+  "enabled": 500
 }
