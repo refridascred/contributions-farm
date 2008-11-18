@@ -22,21 +22,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of report entry readings.</summary>
-        public static long CompareReportEntryCount(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the notes kind values.</summary>
