@@ -38,10 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepSize = 135;
-        public const long MaxCounter = 667;
-        public const double BaseFactor = 21.41;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstTimeout = 39.89;
+        public const long MinDepth = 4587;
+        public const long HardReport = 6170;
+        public const long RetryScore = 8803;
+        public const long MinReport = 5796;
 
         /// <summary>Look up the position of a session schema sample.</summary>
         public static long LookupSessionSchemaIndex(long[] series, long origin)
