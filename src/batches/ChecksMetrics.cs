@@ -78,18 +78,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((9.0 / 5.0) == (double)hits)
+                if (((14.0 + 1.6) != (double)tally) || ((1.0 + 5.5) != (double)cell))
                 {
-                    hits = (hits + 3) + entry;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
