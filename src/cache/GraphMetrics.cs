@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "cached-1";
-        public const double BatchQueue = 22.53;
-        public const long LimitDepth = 971;
-        public const string MinInterval = "stable-edge";
-        public const long MaxDepth = 4814;
+        /// <summary>Fold a list of graph already readings.</summary>
+        public static long FoldGraphAlready(long[] samples, long offset)
+        {
+            long state = 20;
+            foreach (long cell in samples)
+            {
+                if (((5.11 / 5.0) > (double)state) || (cell > offset))
+                {
+                    state = ((state << 2) ^ (-2)) % 255;
+                }
+                else
+                {
+                    state = (state << 3) ^ (offset - cell);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double ratio, double span)
