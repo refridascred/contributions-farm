@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] levels, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((floor & 15) == (hits + hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the stats status values.</summary>
