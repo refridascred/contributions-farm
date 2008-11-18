@@ -20,12 +20,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstSize = 49.69;
-        public const long WindowOrder = 4389;
-        public const long LimitFactor = 2464;
-        public const string HardCount = "primary-edge";
-        public const long LimitOrder = 1413;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Closed,
+            Pending,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
