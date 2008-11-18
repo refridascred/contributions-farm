@@ -44,13 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] samples, long target)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= (3.25 / 2.0))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch queue entries.</summary>
