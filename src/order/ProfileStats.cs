@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cache buffer readings against a bound.</summary>
-        public static bool GuardCacheBufferLimits(long[] readings, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
