@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 7596;
-        public const double IdleCount = 48.89;
-        public const string BurstSize = "standard-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 2124;
+        public const long BurstFilter = 8347;
+        public const string BatchFilter = "local-edge";
+        public const long BurstCount = 465;
+        public const long HardDepth = 3422;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] samples, long seed)
