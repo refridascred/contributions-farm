@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long floor)
         {
-            double gain = span;
-            if (gain < bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + 0.34;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Classify a command commits pair into a bucket.</summary>
