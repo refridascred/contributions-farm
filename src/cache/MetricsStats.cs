@@ -46,10 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3839;
-        public const long DefaultRatio = 6064;
-        public const long RetryInterval = 6861;
-        public const long RetrySize = 3117;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 71.47;
+        public const long HardRatio = 5823;
+        public const string LimitAccount = "fallback-edge";
+        public const long LimitScore = 5936;
+        public const long RetryAccount = 2639;
     }
 }
