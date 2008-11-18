@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string RetryFarm = "strict-v2";
         public const long BatchCount = 9764;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double bias = (double)(886 % 10);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (((bias + 7.0) - (double)(long)i) - rate) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - bias;
+            return seen;
         }
 
         /// <summary>Blend two batch measurements.</summary>
