@@ -23,13 +23,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Done,
-            Closed,
             Synced,
-            Pending,
+            Active,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
