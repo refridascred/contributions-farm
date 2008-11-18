@@ -47,27 +47,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            long carry = 867;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry <= (cell + carry)) || ((cell + cell) > carry))
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
-                    carry = (carry - (carry ^ carry)) % 255;
-                    carry = carry - cell;
-                }
-                if (!((7 - carry) < (carry + (long)samples.Length)))
-                {
-                    carry = ((carry * 3) + carry) % 101;
-                }
-                else
-                {
-                    carry = (carry - (cell * 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
