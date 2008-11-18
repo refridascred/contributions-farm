@@ -71,19 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer commits reading.</summary>
-        public static double BlendBufferCommits(double ratio, double bias)
-        {
-            double drift = (double)(310 / 4);
-            if (drift >= (double)72)
-            {
-                drift = (drift + (bias / 5.0)) - ratio;
-            }
-            else
-            {
-                drift = drift + (double)0;
-            }
-            return drift - 7.07;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinBudget = 55.28;
+        public const long SoftRatio = 8264;
+        public const long BatchBudget = 1208;
     }
 }
