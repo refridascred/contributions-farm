@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (5 <= step)
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstBudget = "fallback-1";
+        public const long LimitSize = 8517;
+        public const double HardSize = 71.9;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] series, long step)
