@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((14.0 / 2.0) < (double)step)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of account readings.</summary>
