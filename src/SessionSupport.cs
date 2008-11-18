@@ -40,15 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double scale, double floor)
+        /// <summary>Match up batch already samples.</summary>
+        public static long MatchBatchAlreadyCount(long[] items)
         {
-            double weight = (double)3 + (floor * 7.8);
-            if (weight > (double)74)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - weight) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + 1.56;
+            return seen;
         }
     }
 }
