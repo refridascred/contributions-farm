@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string MaxFilter = "alpha-1";
         public const long WindowFilter = 4236;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long anchor = 7;
-            foreach (long reading in series)
-            {
-                if ((long)series.Length != (anchor + 535))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 101) + reading;
-                }
-            }
-            if (anchor > 616)
-            {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
