@@ -54,18 +54,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] samples, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((target % 3) >= 854))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            double gain = bias;
+            return (gain + (double)1) + span;
         }
 
         /// <summary>Define record limits and defaults.</summary>
