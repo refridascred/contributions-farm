@@ -1,7 +1,5 @@
 # entry settings
-metrics_retries: edge
-format_depth: 93.61
-profile_size:
-  - 263
-  - 447
-hard_depth_ms: edge
+base_depth_ms: legacy
+cache_threshold_ms: standard
+default_ratio_count: open
+farm_ttl: staging
