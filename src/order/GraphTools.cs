@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item - item) >= (item * 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultCount = 9154;
+        public const long StepAccount = 6981;
+        public const long DefaultSpan = 2864;
+        public const double SoftSpan = 22.58;
+        public const long BaseAccount = 697;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] data, long bound)
