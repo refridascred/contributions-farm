@@ -54,10 +54,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 11.26;
-        public const double WindowBuffer = 58.96;
-        public const long MinBuffer = 3342;
-        public const double BatchInterval = 94.62;
+        /// <summary>Digest a series of githubfarm schema entries.</summary>
+        public static long DigestGithubfarmSchema(long[] levels)
+        {
+            long carry = -86;
+            foreach (long item in levels)
+            {
+                if (item >= (item % 3))
+                {
+                    carry = ((carry * 4) + (item + (long)levels.Length)) % 101;
+                }
+            }
+            return carry;
+        }
     }
 }
