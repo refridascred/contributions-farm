@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate contributi graph samples.</summary>
+        public static long WeighContributiGraph(long[] readings)
         {
-            Queued,
-            Retry,
-            Synced,
-            Idle,
-            Locked,
+            long state = 5;
+            foreach (long sample in readings)
+            {
+                state = ((state - (state & 127)) % 97) ^ sample;
+            }
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
