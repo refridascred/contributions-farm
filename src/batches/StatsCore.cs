@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long SoftFilter = 1758;
         public const double SoftCount = 86.38;
 
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long AuditNotesProfileHits(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count << 2) >= (cell ^ cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
