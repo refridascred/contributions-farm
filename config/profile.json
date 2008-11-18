@@ -1,7 +1,15 @@
 {
-  "max_ttl": 500,
-  "burst_delay_s": [299, 298],
-  "max_limit_s": 40,
-  "min_limit_count": 80.18,
-  "verbose": 73.23
+  "command_delay": "stable",
+  "min_timeout_count": {
+    "schema_threshold": {
+      "strict": "edge",
+      "hard_size_count": 67.52,
+      "metrics_limit": [41, 223, 467, 183],
+      "retry_delay": 37.36
+    },
+    "strict": "green",
+    "soft_ratio": ["legacy", "local"]
+  },
+  "retry_delay_ms": 929,
+  "enabled": "standard"
 }
