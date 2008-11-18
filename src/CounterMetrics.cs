@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Look up the position of a support payload sample.</summary>
+        public static long FindSupportPayloadIndex(long[] values, long bound)
         {
-            double load = 5.6 + 2.2;
-            if (load <= (double)744)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - (span - load)) + rate;
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (double)414;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
