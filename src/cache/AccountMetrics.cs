@@ -89,10 +89,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2343;
-        public const double RetryBuffer = 20.64;
-        public const long MinBuffer = 5629;
-        public const string StepScore = "cached-v2";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Draft,
+            Synced,
+            Ready,
+        }
     }
 }
