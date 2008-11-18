@@ -51,18 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] series, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((offset + offset) == (offset >> 3)) && ((offset / 3) < (offset & 3)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
