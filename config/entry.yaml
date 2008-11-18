@@ -1,16 +1,11 @@
 # entry settings
-audit:
-  - stable
-  - primary
-  - blue
-  - eu-west
-min_delay:
-  batch_retries_count: 92
-  persist: primary
-  warm_capacity_count: 9023
-  base_delay: blue
-  enabled: true
-hard_threshold_pct: true
-session_timeout: 9060
-session_delay: 100
-warm_capacity_ms: green
+min_size_pct: primary
+retry_timeout: 76.64
+strict:
+  verbose: 1187
+  hard_ttl: 66
+  idle_timeout_s: green
+  persist: edge
+  min_timeout_count:
+    - local
+    - fallback
