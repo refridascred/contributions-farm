@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry < target)
+                if (!((4.0 / 8.0) >= (double)datum))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Blend two payload tools measurements.</summary>
