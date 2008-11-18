@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long offset)
         {
-            long total = 94;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((1.33 * 18.0) != (double)sample)
+                if (value <= offset)
                 {
-                    total = ((total ^ (64 & 1)) % 1000) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the channel status values.</summary>
