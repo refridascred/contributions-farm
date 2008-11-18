@@ -51,19 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric already value from a seed.</summary>
-        public static long SeriesMetricAlready(long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((sum + sum) < offset)
-                {
-                    sum = (sum << 3) ^ (offset * 4);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Locked,
+            Queued,
+            Done,
         }
     }
 }
