@@ -23,26 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long bound)
-        {
-            long span = offset ^ bound;
-            if ((bound ^ offset) > span)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 31) <= (offset + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepWidth = 78.77;
+        public const string WindowTimeout = "local-edge";
+        public const string CacheGithubfarm = "cached-edge";
+        public const long SoftDepth = 6273;
+        public const string MaxSpan = "alpha-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] levels, long seed)
