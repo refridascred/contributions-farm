@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a token filter pair into a bucket.</summary>
