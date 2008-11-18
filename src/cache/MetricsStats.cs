@@ -58,19 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm filter readings against a bound.</summary>
-        public static bool GuardGithubfarmFilterLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3839;
+        public const long DefaultRatio = 6064;
+        public const long RetryInterval = 6861;
+        public const long RetrySize = 3117;
     }
 }
