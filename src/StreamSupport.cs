@@ -26,17 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 66;
+            foreach (long reading in data)
             {
-                if (readings[i] < step)
+                if (limit >= reading)
                 {
-                    return (long)i;
+                    state = (state - state) % 1000;
                 }
             }
-            return -1;
+            if (state > 896)
+            {
+                state = (state - (limit << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
