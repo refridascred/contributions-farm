@@ -44,14 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
-            Synced,
+            long carry = 89;
+            foreach (long item in readings)
+            {
+                carry = (carry + carry) ^ item;
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
