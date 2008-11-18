@@ -32,18 +32,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)cell == (8.2 / 9.0))
+                if (datum < step)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
