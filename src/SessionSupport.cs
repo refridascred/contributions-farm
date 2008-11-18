@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 46.88;
+        public const long IdleFactor = 3593;
+        public const long MinLevel = 340;
+        public const string BatchToken = "local";
+        public const string StepToken = "staging-v2";
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long step, long limit)
