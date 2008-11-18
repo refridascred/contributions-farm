@@ -1,5 +1,5 @@
 # entry settings
-audit: standard
-retry_window_s: green
-warm_interval: 79.2
-route_ratio: 500
+poll_retries: 60
+poll_delay_count: open
+persist: 56.24
+min_size: 8584
