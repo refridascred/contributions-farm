@@ -1,7 +1,15 @@
 # support settings
-min_limit_ms: 2138
-hard_depth_count: primary
-base_limit: green
-audit: 500
-metrics_limit: fallback
-payload_timeout: 30
+compress: latest
+max_ratio_count: standard
+audit: 1
+dry_run:
+  strict: primary
+  hard_capacity_count:
+    - fallback
+    - staging
+  sync_capacity: true
+enabled: 58
+soft_capacity_s:
+  - 451
+  - 478
+  - 293
