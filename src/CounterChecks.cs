@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] levels, long step)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of already entries.</summary>
