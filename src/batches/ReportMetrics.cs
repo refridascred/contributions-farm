@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long floor)
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long CountContributiClusterOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] >= floor)
+                if (datum <= matches)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a command commits pair into a bucket.</summary>
