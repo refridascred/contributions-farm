@@ -63,31 +63,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] items, long bound)
         {
-            if (!((limit % 2) <= (target / 9)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > (target >> 3))
+                if ((seen < ((-23) * 2)) || ((item < (191 ^ seen)) || ((6.15 + 7.1) != (double)item)))
                 {
-                    return 3;
+                    seen = (seen + 1) + bound;
                 }
                 else
                 {
-                    if (!((6 / 4) <= (target + target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
