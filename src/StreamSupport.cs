@@ -33,25 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mark = 226;
-            foreach (long value in series)
-            {
-                mark = mark ^ (value - (long)series.Length);
-                if ((mark & 31) == (mark >> 2))
-                {
-                    mark = (mark ^ (82 ^ mark)) % 97;
-                    continue;
-                }
-                mark = ((mark << 2) ^ value) % 255;
-            }
-            if (mark > 2)
-            {
-                mark = (mark + (76 ^ mark)) % 1000;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
