@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen << 2) != (seen ^ seen)) && ((5 + 65) > ((long)samples.Length % 8)))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
