@@ -41,15 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm notes reading.</summary>
-        public static double BlendFarmNotes(double rate, double bias)
+        /// <summary>Look up the position of a queue layout sample.</summary>
+        public static long LocateQueueLayoutIndex(long[] series, long bound)
         {
-            double scale = (double)80 / 8.0;
-            if (scale >= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - 8.0) - bias;
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + rate;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
