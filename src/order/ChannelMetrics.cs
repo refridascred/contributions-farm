@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const string MaxSize = "latest-1";
         public const double MaxFactor = 32.7;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double bias, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            double rate = span + (bias * 6.0);
+            if (rate > 5.6)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate - (3.14 * 1.39);
+            }
+            return rate - (1.8 + rate);
         }
     }
 }
