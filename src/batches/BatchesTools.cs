@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 2527;
-        public const string CacheBudget = "open-edge";
-        public const long BurstSupport = 9968;
-        public const string MinWidth = "cached-1";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
+        {
+            long mix = 80;
+            foreach (long entry in readings)
+            {
+                mix = (((mix * 2) + 79) % 101) ^ entry;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] samples, long seed)
