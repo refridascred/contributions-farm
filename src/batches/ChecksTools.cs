@@ -28,17 +28,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a queue contributi reading by value.</summary>
-        public static long SeekQueueContributiIndex(long[] series, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 5.0 / 3.0;
+            if (load <= (double)5)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - (double)543) - scale) + span;
             }
-            return -1;
+            else
+            {
+                load = load + load;
+            }
+            return load - (double)80;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
