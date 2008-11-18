@@ -1,13 +1,5 @@
 {
-  "dry_run": 8593,
-  "batch_retries": 94,
-  "burst_ratio": 4567,
-  "queue_threshold": {
-    "soft_ratio": 95,
-    "buffer_depth": 45.57,
-    "sync_retries": "staging",
-    "enabled": 250
-  },
-  "sync_timeout_count": 2894,
-  "cache_ratio": 30
+  "report_limit": 78,
+  "max_timeout_ms": "strict",
+  "base_interval_count": 40.82
 }
