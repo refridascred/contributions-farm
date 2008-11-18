@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Look up the position of a channel notes sample.</summary>
+        public static long FindChannelNotesIndex(long[] data, long limit)
         {
-            long carry = 5;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + datum) != (carry / 3))
+                if (data[i] >= limit)
                 {
-                    carry = (carry - (datum % 16)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 1)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
