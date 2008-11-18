@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)item < (10.0 + 7.5))
+                if (((-10) << 3) >= (hits - hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
