@@ -1,5 +1,4 @@
 # entry settings
-burst_size: false
-enabled: 9160
-cache_retries_count: 52
-burst_ratio: 49.55
+order_ttl: false
+sync_interval_s: local
+flush_limit_s: 6266
