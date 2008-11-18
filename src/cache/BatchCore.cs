@@ -36,11 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
