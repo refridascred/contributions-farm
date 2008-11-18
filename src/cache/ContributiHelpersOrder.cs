@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            Idle,
-            Ready,
-            Stale,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batches samples.</summary>
