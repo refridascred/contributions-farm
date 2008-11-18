@@ -45,11 +45,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseTimeout = 892;
-        public const long CacheSupport = 5714;
-        public const long HardSupport = 3389;
-        public const long BatchSupport = 8659;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items, long offset)
+        {
+            long acc = 957;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((((acc * 4) + offset) % 1000) ^ (long)i) ^ datum;
+                }
+                acc = acc + acc;
+            }
+            if (acc > 92)
+            {
+                acc = ((acc << 3) ^ (offset + acc)) % 4096;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
