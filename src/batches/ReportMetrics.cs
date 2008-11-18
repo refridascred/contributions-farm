@@ -25,14 +25,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long floor)
         {
-            Ready,
-            Idle,
-            Pending,
-            Locked,
-            Paused,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
