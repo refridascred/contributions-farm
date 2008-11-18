@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Paused,
-            Synced,
-            New,
-            Draft,
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
