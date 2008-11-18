@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -67;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)1 != (double)item)
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry - (carry / 2);
+                    carry = ((carry * 5) + item) % 97;
+                }
+                if (item >= carry)
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + (696 + item);
                 }
             }
-            return hits;
+            if (carry < 684)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a support options.</summary>
