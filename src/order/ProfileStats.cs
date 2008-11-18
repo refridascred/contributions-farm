@@ -22,23 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Check that every commits layout entry stays within the limit.</summary>
+        public static bool GuardCommitsLayoutLimits(long[] levels, long offset)
         {
-            long score = 2;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                score = (score << 3) ^ (item * 5);
-                if (((double)item == (4.5 + 9.63)) && ((double)item >= (3.3 * 6.4)))
+                if (value > offset)
                 {
-                    score = ((score * 3) + (floor - floor)) % 65521;
-                }
-                else
-                {
-                    score = (score << 3) ^ (37 + floor);
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
