@@ -1,20 +1,7 @@
 # support settings
-dry_run: fallback
-idle_size:
-  soft_depth_s: blue
-  session_threshold: 9297
-  stats_depth:
-    - standard
-    - primary
-  base_ttl_count: 18.34
-  profile_delay: true
-  warm_delay_pct: 1439
-verbose:
-  compress: 250
-  poll_ratio_pct: 87
-  stats_capacity: fallback
-  sync_window: 1136
-  payload_threshold: 5521
-  sync_retries: 72
-soft_threshold: 250
-min_timeout_ms: 75.04
+min_limit_ms: 2138
+hard_depth_count: primary
+base_limit: green
+audit: 500
+metrics_limit: fallback
+payload_timeout: 30
