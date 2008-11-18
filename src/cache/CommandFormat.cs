@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            double mean = 0.53;
+            if (mean <= (mean * 2.4))
             {
-                if (((floor << 1) > (floor & 31)) && ((floor << 1) > (score % 60)))
-                {
-                    score = ((score << 3) ^ ((long)i - floor)) % 1000;
-                }
-                score = (score << 3) ^ (floor * 4);
-                score = ((score * 2) + (long)i) % 65521;
+                mean = ((mean - (double)(-32)) - weight) - floor;
             }
-            return score;
+            else
+            {
+                mean = mean - (17.0 * 0.9);
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
