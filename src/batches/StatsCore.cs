@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowLevel = 3361;
-        public const string BatchFilter = "open-edge";
-        public const double DefaultInterval = 98.49;
-        public const long SoftFilter = 1758;
-        public const double SoftCount = 86.38;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((3.0 / 5.0) > (double)matches)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
