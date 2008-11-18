@@ -50,21 +50,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up queue notes samples.</summary>
-        public static long PairQueueNotesCount(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] > step)
                 {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
