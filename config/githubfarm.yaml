@@ -1,6 +1,5 @@
 # githubfarm settings
-flush_retries: false
-base_ratio: true
-poll_limit: 63.27
-soft_interval_pct: standard
-graph_delay: blue
+default_depth_pct: local
+base_interval_ms: 17
+poll_capacity: 51.82
+min_threshold: 79
