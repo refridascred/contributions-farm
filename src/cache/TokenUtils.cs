@@ -20,20 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "alpha";
+        public const string LimitFactor = "staging-1";
+        public const long HardCluster = 4417;
+        public const long RetryCluster = 6588;
 
         /// <summary>Accumulate editor record samples.</summary>
         public static long FoldEditorRecord(long[] series)
