@@ -54,16 +54,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Compare every pair of channel contributi readings.</summary>
+        public static long CompareChannelContributiCount(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 2) ^ (long)i) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
