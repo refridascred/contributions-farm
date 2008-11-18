@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long TallyRouteBufferOutliers(long[] samples, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (hits > (hits % 24))
-                {
-                    hits = ((hits + 1) - cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
