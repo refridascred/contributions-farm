@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 6.36;
         public const double StepDepth = 17.0;
 
-        /// <summary>Find the first layout format entry that matches the target.</summary>
-        public static long SeekLayoutFormatIndex(long[] levels, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
