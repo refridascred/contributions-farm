@@ -67,17 +67,24 @@ namespace Common.Utilities
         public const long WindowCounter = 5213;
         public const string SoftWidth = "local";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long limit)
+        /// <summary>Grade a cluster route value against two limits.</summary>
+        public static long BucketClusterRoute(long target, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (target >= (target << 3))
             {
-                if (series[i] > limit)
+                return 3;
+            }
+            else
+            {
+                if (((16.0 / 6.0) >= (double)origin) && ((target + origin) < origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
