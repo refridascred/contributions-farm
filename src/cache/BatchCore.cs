@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] items, long limit)
+        /// <summary>Validate batches channel readings against a bound.</summary>
+        public static bool ValidateBatchesChannelRange(long[] values, long seed)
         {
-            long anchor = 992;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (anchor >= (datum >> 5))
+                if (datum <= seed)
                 {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 807)
-            {
-                anchor = (anchor - limit) % 4096;
-            }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
