@@ -18,13 +18,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
