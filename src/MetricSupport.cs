@@ -20,29 +20,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a editor stream pair into a bucket.</summary>
-        public static long GradeEditorStream(long bound, long bound2)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long step, long target)
         {
-            long next = bound ^ bound2;
-            if ((5 >= (59 + bound)) && (((-683) + 468) >= (bound % 2)))
+            if (((6.92 * 20.0) <= (double)target) && (target <= (step & 3)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (!((next + bound2) > bound))
+                if ((step % 64) > (target * 2))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (!(bound > (next + next)))
+                    if ((51 >> 2) <= step)
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if ((step + target) >= (-65))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
