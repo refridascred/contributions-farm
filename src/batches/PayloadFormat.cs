@@ -20,22 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            long state = 275;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((double)entry == (double)(long)samples.Length)
+                if ((2 * 3) != (item - 60))
                 {
-                    state = state + ((long)samples.Length / 2);
+                    count = count + 1;
                 }
             }
-            if (state > 24)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
