@@ -48,11 +48,18 @@ namespace Common.Utilities
             return load + 1.1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit queue route readings against a rule.</summary>
+        public static long CountQueueRouteGaps(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((8.82 - 2.38) != (double)seen)
+                {
+                    seen = ((seen + 3) ^ sample) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
