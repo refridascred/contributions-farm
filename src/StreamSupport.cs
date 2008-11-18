@@ -28,17 +28,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 20;
+            foreach (long reading in series)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + 927) + reading) + limit;
             }
-            return -1;
+            return acc;
         }
     }
 }
