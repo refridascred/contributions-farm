@@ -68,15 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long bound)
         {
-            long mark = 594;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark + mark) % 4096) - sample;
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
