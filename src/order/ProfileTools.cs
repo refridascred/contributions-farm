@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool GuardEditorChecksRange(long[] samples, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
