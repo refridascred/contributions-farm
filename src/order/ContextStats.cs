@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long state = 68;
+            foreach (long item in items)
+            {
+                if ((3 >> 2) < item)
+                {
+                    state = state + item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
