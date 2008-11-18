@@ -36,20 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + floor) <= carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = (carry << 3) ^ (floor + carry);
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Iterate the batch farm series from a seed.</summary>
