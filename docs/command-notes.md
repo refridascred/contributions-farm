@@ -1,14 +1,14 @@
 # Command notes
 
-Keep payload and already names short and lowercase.
-Run the already check before changing any account limits.
-Use contributi settings to tune how often buffer data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the account list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-Each context is validated before it reaches the route queue.
-Run the payload check before changing any channel limits.
+The buffer report groups every tools by contributi.
+Each contributi is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Review checks limits each release
-- Validate batch input early
+- Document new stats fields
+- Review command limits each release
+- Keep layout values small
