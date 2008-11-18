@@ -20,25 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long offset, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long slot = offset - target;
-            if (target <= 311)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((3 & 15) <= slot) && ((offset ^ slot) == (target & 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Done,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
