@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 1397;
-        public const long WindowAlready = 2481;
-        public const string DefaultAlready = "latest-v2";
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long ScoreFilterChannel(long[] data)
+        {
+            long total = 2;
+            foreach (long datum in data)
+            {
+                total = (total + (total & 255)) % 97;
+                if ((859 << 2) > (datum % 24))
+                {
+                    total = total - (total + datum);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
