@@ -46,22 +46,18 @@ namespace Common.Utilities
             return bias - (double)16;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((-611) * 3) >= (tally + 5))
+                if (!((2.7 * 5.26) <= (double)entry))
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
