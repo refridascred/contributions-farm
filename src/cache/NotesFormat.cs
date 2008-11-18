@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two tools githubfarm measurements.</summary>
-        public static double AdjustToolsGithubfarm(double weight, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long bound)
         {
-            double rate = weight + 4.82;
-            if (rate > bias)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                rate = rate - (7.9 / 2.0);
+                if (((tally + entry) >= (tally - bound)) && (((entry >> 4) < tally) || ((double)bound < (0.7 * 7.8))))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + weight;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
