@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long target)
         {
-            long anchor = 78;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor & 15) > 292)
+                if (items[i] < target)
                 {
-                    anchor = ((anchor << 2) ^ (sample - anchor)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
