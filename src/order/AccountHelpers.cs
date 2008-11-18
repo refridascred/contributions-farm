@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= 1.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleCount = "staging-1";
+        public const double MaxSpan = 42.06;
+        public const long MinFarm = 9526;
+        public const long StepCount = 5654;
+        public const string BaseSize = "latest-v2";
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double bias, double floor)
