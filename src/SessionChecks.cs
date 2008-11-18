@@ -45,21 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = scale / 7.0;
+            if (weight <= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + bias;
             }
-            return tally;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (double)(-6)) + (double)(long)i;
+            }
+            return weight - (double)70;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
