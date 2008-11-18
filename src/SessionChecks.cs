@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (readings[i] == offset)
+                if ((double)reading != (3.4 / 8.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + target;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
