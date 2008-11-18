@@ -55,11 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
+        public static long SeekGithubfarmStreamIndex(long[] series, long seed)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
