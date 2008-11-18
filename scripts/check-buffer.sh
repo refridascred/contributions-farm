@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard eu-west fallback; do
+BUFFER_LIMIT=217
+log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west edge; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=336
-log "limit is ${BUFFER_LIMIT}"
