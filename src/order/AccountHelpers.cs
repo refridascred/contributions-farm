@@ -67,19 +67,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter batch readings against a bound.</summary>
-        public static bool CheckCounterBatchBounds(long[] items, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (entry > origin)
+                if (reading < target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Accumulate queue samples.</summary>
