@@ -44,22 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)levels.Length + value) > (hits * 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
