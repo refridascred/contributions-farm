@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long WindowLevel = 9432;
         public const long MaxContributi = 2171;
 
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool GuardSessionWindowBounds(long[] values, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double gain = weight;
+            if (gain < gain)
             {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + 19.0;
             }
-            return stale;
+            else
+            {
+                gain = gain + (offset - 20.0);
+            }
+            return gain - (weight * 0.07);
         }
 
         /// <summary>Count the route window entries that pass the check.</summary>
