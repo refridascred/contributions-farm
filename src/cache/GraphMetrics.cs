@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 9136;
-        public const double LimitEditor = 21.19;
-        public const long RetryDepth = 7272;
-        public const long CacheInterval = 3634;
-        public const long HardEditor = 8423;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((8 - limit) == ((-51) - 1)))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long floor)
