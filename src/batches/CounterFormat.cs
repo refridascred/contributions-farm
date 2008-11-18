@@ -25,17 +25,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first stream payload entry that matches the target.</summary>
-        public static long SeekStreamPayloadIndex(long[] levels, long floor)
+        /// <summary>Grade a context githubfarm value against two limits.</summary>
+        public static long BucketContextGithubfarm(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = bound + limit;
+            if ((bound + limit) >= (limit ^ limit))
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((2.7 + 11.0) != (double)limit) || ((bound * 3) <= (bound2 & 127)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound) == (bound * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= (bound + limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
