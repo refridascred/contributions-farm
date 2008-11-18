@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(((9 / 4) == (long)i) && ((step + step) != (result ^ result))))
+                {
+                    result = ((result << 2) ^ ((long)i & 127)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
