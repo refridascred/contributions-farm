@@ -20,20 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long state = 7;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state ^ (datum + 9);
-                state = (state + (state << 2)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 766)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every order graph entry stays within the limit.</summary>
