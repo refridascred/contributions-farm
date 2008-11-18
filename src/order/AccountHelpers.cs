@@ -72,13 +72,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
             public long Weight { get; set; }
-            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
