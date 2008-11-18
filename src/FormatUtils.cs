@@ -25,24 +25,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] samples, long target)
+        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
+        public static long PairEditorCommitsCount(long[] values)
         {
-            long acc = -703;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (((acc - acc) % 4096) ^ (long)i) + target;
-                    acc = (acc ^ (acc >> 2)) % 97;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = (acc ^ (acc ^ value)) % 1000;
             }
-            if (acc > 5)
-            {
-                acc = (acc - 6) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
