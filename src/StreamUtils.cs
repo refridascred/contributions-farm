@@ -33,13 +33,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftFactor = 4475;
+        public const long RetryBatch = 2969;
+        public const double CacheBatch = 89.47;
+        public const long WindowInterval = 7472;
 
         /// <summary>Match up session format samples.</summary>
         public static long OverlapSessionFormatCount(long[] items)
