@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] values, long target)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (result >= (result ^ step))
+                if ((double)matches != (0.7 * 2.0))
                 {
-                    result = result ^ (step - step);
+                    matches = ((matches + 2) + datum) + target;
                 }
-                else
-                {
-                    result = ((result * 3) + (result - (long)i)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
