@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((reading / 8) < (reading / 2))
+                if (datum < floor)
                 {
-                    tally = (tally + 3) - step;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
