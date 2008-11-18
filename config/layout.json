@@ -1,18 +1,5 @@
 {
-  "min_size_s": 43.86,
-  "batch_window": 83.34,
-  "payload_capacity": 45,
-  "max_capacity_pct": ["fallback", "legacy"],
-  "min_capacity_s": {
-    "audit": {
-      "cache_interval": 9114,
-      "stream_ttl": "open",
-      "warm_ttl": "cached"
-    },
-    "batch_size": false,
-    "cache_retries": 60,
-    "batch_depth_count": [51, 482, 99],
-    "stream_capacity": "cached"
-  },
-  "compress": 48
+  "dry_run": 500,
+  "strict": 6.02,
+  "soft_timeout_s": 250
 }
