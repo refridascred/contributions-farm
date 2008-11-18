@@ -38,27 +38,21 @@ namespace Common.Utilities
         public const long MinReport = 2859;
         public const string RetryReport = "stable-edge";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long anchor = -7;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 5) + (item - limit);
-                if ((0.38 + 5.63) <= (double)limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (item >> 3)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 279)
-            {
-                anchor = anchor + (limit + limit);
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
