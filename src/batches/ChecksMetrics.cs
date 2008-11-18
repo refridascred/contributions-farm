@@ -62,18 +62,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((0 + (long)series.Length) <= (matches / 3))
+                if ((offset ^ 6) > (offset - offset))
                 {
-                    matches = (matches + 1) + entry;
+                    anchor = ((anchor << 3) ^ (36 - offset)) % 4096;
+                    anchor = ((anchor << 2) ^ 36) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
