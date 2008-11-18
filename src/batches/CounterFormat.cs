@@ -21,21 +21,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
+        public static long OverlapBufferChannelCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 15)
+                    if ((samples[i] + samples[j]) > 16)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
