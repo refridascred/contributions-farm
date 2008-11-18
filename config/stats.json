@@ -1,7 +1,9 @@
 {
-  "soft_ratio": 3769,
-  "soft_interval_count": false,
-  "burst_timeout_ms": ["staging", "blue", "latest", "staging"],
-  "default_ttl_s": true,
-  "token_limit": "green"
+  "base_size_pct": {
+    "filter_delay": 45.86,
+    "retry_threshold_ms": "primary",
+    "base_threshold_ms": "eu-west"
+  },
+  "graph_timeout": 1024,
+  "strict": [287, 283]
 }
