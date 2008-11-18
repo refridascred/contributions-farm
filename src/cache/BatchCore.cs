@@ -45,17 +45,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 340;
+            foreach (long reading in samples)
             {
-                if (series[i] == seed)
+                if (((double)total > (4.0 / 9.0)) || (total < (total ^ total)))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (reading << 1)) % 97;
                 }
+                total = total - (reading / 7);
             }
-            return -1;
+            return total;
         }
     }
 }
