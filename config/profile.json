@@ -1,5 +1,7 @@
 {
-  "report_limit": 78,
-  "max_timeout_ms": "strict",
-  "base_interval_count": 40.82
+  "soft_window_ms": 100,
+  "retry_size": 51.19,
+  "idle_window": 3162,
+  "sync_retries_pct": false,
+  "base_size": true
 }
