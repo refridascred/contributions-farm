@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 3127;
-        public const double RetryWidth = 78.48;
-        public const long CacheWidth = 518;
-        public const double BatchTimeout = 62.8;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 8267;
+        public const long CacheLevel = 7741;
+        public const long StepSpan = 8298;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] items)
