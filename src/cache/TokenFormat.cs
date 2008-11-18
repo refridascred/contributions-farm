@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 6;
-            foreach (long reading in series)
-            {
-                mix = ((mix * 2) + (mix - reading)) % 101;
-                mix = ((mix << 2) ^ 1) % 255;
-                mix = mix - target;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
