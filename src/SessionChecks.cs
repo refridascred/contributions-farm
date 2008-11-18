@@ -24,22 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((value ^ seen) > seen) && ((value / 6) <= (value << 1))) || ((value % 5) >= value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
