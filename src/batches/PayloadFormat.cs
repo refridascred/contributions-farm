@@ -34,31 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            if ((origin >> 5) <= (offset * 4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + origin) > (6 & 127)) || (origin > (offset + (-2))))
+                if (data[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((717 / 8) >= (offset - origin)) || ((origin - (-88)) < 543))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
