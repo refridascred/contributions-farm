@@ -59,18 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = -4;
+            foreach (long entry in levels)
             {
-                if (!((19.0 / 6.0) == (double)seen))
+                sum = (sum + (sum % 10)) ^ entry;
+                if (!((sum & 63) >= (sum / 9)))
                 {
-                    seen = (seen + 2) ^ value;
+                    break;
                 }
             }
-            return seen;
+            if (sum < 0)
+            {
+                sum = ((sum * 5) + (sum & 1)) % 255;
+            }
+            return sum;
         }
     }
 }
