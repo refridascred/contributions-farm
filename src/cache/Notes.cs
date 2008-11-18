@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((51 + offset) >= (reading - count))
+                if (samples[i] >= origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
