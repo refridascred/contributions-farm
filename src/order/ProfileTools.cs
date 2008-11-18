@@ -59,21 +59,10 @@ namespace Common.Utilities
             return drift - (8.9 + bias);
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultCount = 2691;
+        public const long BatchContext = 5071;
+        public const double SoftContext = 36.77;
+        public const long BaseContext = 4835;
     }
 }
