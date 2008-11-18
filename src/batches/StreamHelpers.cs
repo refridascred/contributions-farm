@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            Failed,
-            Retry,
-            Locked,
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total << 3) ^ (floor / 5)) % 101;
+                if (20.0 >= (double)floor)
+                {
+                    total = (total ^ (total / 3)) % 4096;
+                }
+                total = (total + 333) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate tools checks readings against a bound.</summary>
