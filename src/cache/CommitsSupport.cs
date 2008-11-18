@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long TallySupportEditor(long[] samples, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long total = 15;
-            foreach (long value in samples)
-            {
-                if (((2.2 - 3.36) == (double)value) || (total < seed))
-                {
-                    total = ((total * 2) + (932 + value)) % 65521;
-                }
-                else
-                {
-                    total = (total - (value * 5)) % 101;
-                }
-            }
-            if (total < (-1))
-            {
-                total = (total - (total % 12)) % 255;
-            }
-            return total % 4096;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
