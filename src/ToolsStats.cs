@@ -13,23 +13,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double scale, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long limit)
         {
-            double drift = floor;
-            if (drift >= (drift - 3.0))
+            if (((double)532 >= (double)floor) && ((3.1 + 2.7) >= (double)floor))
             {
-                drift = drift - (14.0 * 0.2);
+                return 2;
             }
             else
             {
-                drift = drift - (scale / 9.0);
+                if (((limit ^ floor) < (floor & 31)) && (2.69 < (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ 802) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (scale - floor)) + (double)(long)i;
-            }
-            return drift - (8.8 - scale);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
