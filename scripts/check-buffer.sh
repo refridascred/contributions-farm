@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in edge stable cached fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-BUFFER_LIMIT=243
+BUFFER_LIMIT=260
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
