@@ -33,10 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 4572;
-        public const long DefaultGraph = 9445;
-        public const long BaseGraph = 1118;
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long TallyBufferFarmGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell != (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleScore = "alpha-v2";
