@@ -57,9 +57,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 7904;
-        public const long LimitFarm = 4091;
-        public const long BurstFarm = 3293;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long limit2)
+        {
+            long lane = limit ^ limit2;
+            if ((-44) > (lane + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)lane >= (double)limit2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
