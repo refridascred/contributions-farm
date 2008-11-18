@@ -64,18 +64,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = 687;
-            foreach (long sample in readings)
-            {
-                if ((bound ^ sample) >= (sample / 2))
-                {
-                    mix = ((mix * 4) + (bound + bound)) % 101;
-                }
-            }
-            return mix;
+            Locked,
+            Synced,
+            Stale,
+            Pending,
         }
     }
 }
