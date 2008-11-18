@@ -1,31 +1,36 @@
 # support settings
-warm_threshold_count: latest
-window_interval: 137
-tools_interval:
-  - stable
-  - eu-west
-  - blue
-soft_ratio_s:
-  strict:
-    - 108
-    - 135
-    - 468
-  retry_limit_count: 1659
-  context_capacity:
-    flush_interval:
-      - 283
-      - 72
-      - 210
-      - 400
-    soft_ttl: 39.54
-    readonly: latest
-  max_threshold: true
-  hard_size:
-    - open
-    - blue
+enabled:
+  hard_delay_pct:
+    - eu-west
     - primary
+    - edge
     - blue
-  retry_interval_pct:
+  poll_size_s: 72.55
+  hard_limit: 95.87
+  poll_timeout: true
+  soft_interval_pct: eu-west
+dry_run:
+  soft_ttl_pct: 21.6
+  idle_size_pct: 39.46
+  idle_ttl_s:
+    max_ratio_pct: 6.69
+    dry_run: false
+    burst_window_count: primary
+    flush_depth_s: primary
+    hard_capacity_s: 7.21
+  sync_retries:
+    - green
+    - stable
+    - strict
+    - legacy
+verbose:
+  order_ratio:
+    - 88
+    - 25
+    - 404
+  idle_timeout_s: standard
+  commits_ratio: false
+  verbose:
     - primary
-    - local
-    - open
+    - green
+  sync_ratio_count: 66.71
