@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const double IdleCount = 48.89;
         public const string BurstSize = "standard-v2";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long seed)
         {
-            long state = 85;
-            foreach (long cell in values)
+            long acc = 817;
+            foreach (long cell in samples)
             {
-                if ((3.9 > (double)cell) && ((state + bound) == (62 % 3)))
+                if ((cell / 4) > (long)samples.Length)
                 {
-                    state = (state - (bound + cell)) % 255;
-                    state = state - (bound - cell);
-                }
-                if (((cell & 255) >= (92 ^ state)) && ((cell >> 1) <= (cell ^ 27)))
-                {
-                    state = state + (state - cell);
+                    acc = (acc + (cell / 4)) - seed;
                 }
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
