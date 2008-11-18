@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account buffer readings against a rule.</summary>
-        public static long AuditAccountBufferGaps(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample - sample) != (37 - matches))
-                {
-                    matches = matches + 3;
-                }
+                score = score ^ (long)i;
+                score = (score - (seed % 5)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
