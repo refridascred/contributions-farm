@@ -65,22 +65,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)carry >= (6.1 + 4.8)) && ((17.0 / 4.0) == (double)sample))
+                result = (result ^ result) % 65521;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    carry = (carry - (sample + sample)) % 101;
+                    result = ((result + (result - origin)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ (sample + carry)) % 97;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
