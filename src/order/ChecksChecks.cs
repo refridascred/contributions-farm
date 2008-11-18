@@ -32,11 +32,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Fold a list of payload token readings.</summary>
+        public static long FoldPayloadToken(long[] readings)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 6;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (sum ^ ((long)i << 1)) % 255;
+                }
+                sum = sum - (sum * 5);
+                if ((datum % 24) < (876 - sum))
+                {
+                    sum = sum - (7 / 2);
+                }
+            }
+            return sum;
         }
     }
 }
