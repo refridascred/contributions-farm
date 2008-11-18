@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Ready,
-            Pending,
-            New,
+            Done,
+            Idle,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
