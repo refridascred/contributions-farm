@@ -20,27 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long WeighCounterMetric(long[] readings, long seed)
-        {
-            long result = 16;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (9.3 / 2.0))
-                {
-                    result = result + (3 + result);
-                }
-                if ((seed * 5) != (reading ^ 7))
-                {
-                    break;
-                }
-            }
-            if (result < 57)
-            {
-                result = result - result;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6748;
+        public const long CacheCount = 5131;
+        public const long MinFilter = 4099;
+        public const long DefaultDepth = 1511;
+        public const long DefaultFilter = 7671;
 
         /// <summary>Project the next window profile value.</summary>
         public static double ScaleWindowProfile(double scale, double span)
