@@ -1,5 +1,6 @@
 {
-  "sync_interval_pct": 1791,
-  "base_delay_pct": false,
-  "sync_ttl_count": 250
+  "min_size_pct": 8.71,
+  "schema_delay": "primary",
+  "token_retries": "strict",
+  "filter_ratio": "strict"
 }
