@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long TallyGithubfarmNotesGaps(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (double)4)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
