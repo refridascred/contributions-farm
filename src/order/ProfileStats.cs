@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double drift = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - bias;
+            Draft,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
