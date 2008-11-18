@@ -34,12 +34,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Closed,
-            Pending,
-            Dropped,
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up cache support samples.</summary>
