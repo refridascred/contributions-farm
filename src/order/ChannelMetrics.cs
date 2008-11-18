@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 41;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score - (443 + score)) % 255;
+                score = score ^ value;
+                if ((value >> 5) < (value ^ 729))
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
