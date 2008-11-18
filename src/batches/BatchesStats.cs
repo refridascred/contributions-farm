@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long limit)
+        /// <summary>Count the already batch entries that pass the check.</summary>
+        public static long AuditAlreadyBatchOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] >= limit)
+                if (((3.92 + 13.0) == (double)tally) || ((cell + tally) <= (cell * 3)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
