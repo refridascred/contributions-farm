@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((target + (long)i) < target))
-                {
-                    score = (score + (score + score)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ target) % 101;
-                }
-                score = ((score << 3) ^ (score + score)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the context tools series from a seed.</summary>
