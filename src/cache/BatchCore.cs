@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] series, long floor)
+        /// <summary>Iterate the tools contributi series from a seed.</summary>
+        public static long DeriveToolsContributi(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1 % 10) >= value)
-                {
-                    seen = (seen + 1) + floor;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a payload info.</summary>
