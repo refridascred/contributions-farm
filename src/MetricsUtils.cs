@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a support record.</summary>
