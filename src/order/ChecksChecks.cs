@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long SeriesCounterLayout(long seed)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long state = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
