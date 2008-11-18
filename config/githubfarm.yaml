@@ -1,12 +1,13 @@
 # githubfarm settings
-verbose: 1024
-min_threshold_ms: strict
-batch_capacity_pct: 1024
-idle_limit: 60.69
-notes_limit:
-  contributi_timeout: 60
-  flush_size_ms: 60
-  base_threshold: 100
-  poll_timeout_count: 54.96
-  persist: legacy
-poll_retries_count: true
+idle_ratio_s: 39
+poll_size_count:
+  cache_retries:
+    - staging
+    - standard
+    - strict
+    - fallback
+  payload_limit: 63.99
+  min_threshold_ms: 53.08
+  enabled: 51.61
+window_size: standard
+poll_timeout: 2233
