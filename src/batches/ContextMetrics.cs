@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 2) ^ seed) % 65521;
+                result = (result + (result / 3)) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
