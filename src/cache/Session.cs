@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long step)
         {
-            Dropped,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((14.0 / 2.0) < (double)step)
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
