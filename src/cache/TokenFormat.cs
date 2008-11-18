@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Digest a series of githubfarm schema entries.</summary>
+        public static long CombineGithubfarmSchema(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 314;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total ^ (total - 9)) % 101) ^ reading;
             }
-            return hits;
+            if (total < 2)
+            {
+                total = (total ^ (total >> 4)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a filter record.</summary>
