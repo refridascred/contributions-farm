@@ -71,18 +71,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double gain = span;
+            if (gain > rate)
             {
-                if (!((double)reading != (3.09 + 3.34)))
-                {
-                    count = count + 2;
-                }
+                gain = gain + (double)8;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 0.85) - (double)(long)i;
+            }
+            return gain - (span + span);
         }
     }
 }
