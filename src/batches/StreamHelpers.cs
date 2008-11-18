@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 3) ^ (floor / 5)) % 101;
-                if (20.0 >= (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (total / 3)) % 4096;
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total + 333) % 101;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next stats value.</summary>
