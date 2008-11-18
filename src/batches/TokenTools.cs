@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const string CacheRecord = "latest";
         public const long DefaultSize = 5917;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheInterval = 6500;
-        public const long CacheCounter = 4143;
-        public const string WindowCounter = "strict-v2";
-        public const double SoftInterval = 8.78;
-        public const long StepCounter = 4852;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long limit)
+        {
+            if (origin <= (origin / 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (18.0 <= (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsMatches(long[] levels, long seed)
