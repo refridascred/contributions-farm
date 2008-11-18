@@ -17,17 +17,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Rank report input into a small class.</summary>
