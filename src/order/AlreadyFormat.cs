@@ -49,19 +49,22 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Validate already layout readings against a bound.</summary>
-        public static bool VerifyAlreadyLayoutLimits(long[] values, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                if (reading > bound)
+                if ((16.0 / 8.0) != (double)sample)
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc * 3) + acc) % 4096) - step;
+                }
+                if ((sample >> 5) < acc)
+                {
+                    acc = (acc * 2) + (sample + 362);
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
