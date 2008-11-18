@@ -43,12 +43,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            Paused,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((3.8 < (double)tally) && (((515 << 2) < entry) && ((double)tally < (1.98 + 6.3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
