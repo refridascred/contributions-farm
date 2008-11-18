@@ -74,21 +74,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 2) + (step << 2)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
