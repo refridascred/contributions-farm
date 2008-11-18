@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Retry,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the channel status values.</summary>
