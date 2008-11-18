@@ -1,6 +1,7 @@
 {
-  "max_ratio_count": 46,
-  "hard_limit_count": "primary",
-  "max_delay_s": 1024,
-  "report_ratio": "fallback"
+  "flush_interval_s": "primary",
+  "support_delay": ["stable", "local", "local", "strict"],
+  "strict": 60,
+  "retry_size": "latest",
+  "editor_interval": 34.21
 }
