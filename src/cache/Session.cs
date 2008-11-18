@@ -47,38 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((3 << 2) != (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit < (5.0 * 7.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit * 4) == (seed + seed)) || ((seed + seed) <= (1 + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (seed + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Pending,
         }
     }
 }
