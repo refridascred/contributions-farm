@@ -54,19 +54,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheDepth = 2799;
+        public const long StepNotes = 1657;
+        public const long IdleNotes = 4630;
     }
 }
