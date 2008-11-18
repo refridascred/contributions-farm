@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] samples, long step)
         {
-            long sum = 2;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (limit < sum)
+                if ((tally + tally) > (step + 516))
                 {
-                    sum = (sum - (sum + sum)) ^ datum;
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
