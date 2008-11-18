@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double bias = ratio;
+            if (bias >= ratio)
             {
-                if ((datum % 5) == (datum + 619))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + (span * 1.0);
             }
-            return tally;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (double)16;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
