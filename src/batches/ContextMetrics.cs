@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long BurstSize = 5568;
         public const long BaseLevel = 7233;
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor + anchor) <= anchor)
                 {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor - (seed << 2)) % 65521) ^ item;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
