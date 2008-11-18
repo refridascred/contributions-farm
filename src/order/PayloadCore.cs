@@ -23,22 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits > (17.0 + 1.2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 2) + sample) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
