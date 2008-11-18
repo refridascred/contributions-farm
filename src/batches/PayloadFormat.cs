@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 530;
+            foreach (long item in readings)
             {
-                mix = mix ^ ((long)i >> 4);
-                mix = ((mix * 2) + ((long)i + mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (!((1.75 * 9.5) <= (double)carry))
+                {
+                    carry = (carry ^ carry) - item;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ target;
+                }
             }
-            return mix;
+            if (carry > 420)
+            {
+                carry = ((carry * 2) + (carry << 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of layout checks readings.</summary>
