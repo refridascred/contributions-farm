@@ -42,10 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleScore = "alpha-v2";
-        public const double CacheScore = 51.03;
-        public const double DefaultInterval = 24.93;
-        public const long BurstTimeout = 1269;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Dropped,
+            Done,
+            Pending,
+        }
     }
 }
