@@ -1,29 +1,10 @@
 # entry settings
-stream_delay: 49
-flush_retries_ms: 51.24
-cluster_limit:
-  default_limit_s:
-    sync_delay_pct: primary
-    flush_retries_pct: true
-    tools_depth: open
-    idle_retries_s: eu-west
-    format_retries: 20.1
-    max_size:
-      - 114
-      - 254
-      - 403
-  flush_window_s: 60
-  compress: local
-  default_delay:
-    - 261
-    - 348
-    - 363
-    - 484
-  max_threshold: 8987
-  max_delay_count: legacy
-command_timeout: strict
-audit:
-  - primary
-  - standard
-  - standard
-soft_retries_s: 50.49
+default_threshold_count:
+  idle_ttl_s: 12.82
+  strict: 62
+  compress: edge
+poll_ratio_pct: 86.01
+min_retries: 65.17
+burst_depth: 21.25
+editor_capacity: 6338
+hard_ttl_pct: false
