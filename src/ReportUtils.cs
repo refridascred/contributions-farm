@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double drift = weight;
-            if (drift >= (double)20)
-            {
-                drift = (drift + (drift * 0.92)) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift + weight)) + (double)(long)i;
-            }
-            return drift + (weight * 14.0);
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
