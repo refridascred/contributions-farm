@@ -22,14 +22,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank entry stats input into a small class.</summary>
+        public static long GradeEntryStats(long step, long origin)
         {
-            Locked,
-            Active,
-            Idle,
-            Dropped,
-            Stale,
+            long bound = step ^ origin;
+            if (origin > (bound << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) > (origin ^ 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 12) < (step - (-80)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes kind values.</summary>
