@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long target)
         {
-            double rate = (double)(-20) * 2.8;
-            for (int i = 0; i < 4; i++)
+            long prev = offset ^ target;
+            if ((prev << 2) > (prev - 179))
             {
-                rate = ((rate + (rate / 4.0)) + (double)(long)i) - scale;
+                return 1;
             }
-            return rate - bias;
+            else
+            {
+                if (offset > (target & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many profile route samples are out of range.</summary>
