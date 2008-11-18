@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long step)
         {
-            long acc = -4;
-            foreach (long item in values)
+            long mark = 583;
+            foreach (long sample in values)
             {
-                if ((7.8 <= (double)item) && ((6 - item) < acc))
-                {
-                    acc = (acc ^ (item % 24)) % 101;
-                }
+                mark = ((((mark << 3) ^ (3 % 97)) % 255) ^ sample) + step;
             }
-            if (acc < 374)
-            {
-                acc = ((acc * 3) + (acc >> 1)) % 101;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the route status values.</summary>
