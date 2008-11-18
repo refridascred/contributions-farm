@@ -57,10 +57,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSize = 39.06;
-        public const string MaxSession = "staging-1";
-        public const long StepSession = 9311;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Stale,
+            Queued,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Classify a profile graph pair into a bucket.</summary>
         public static long GradeProfileGraph(long offset, long offset2)
