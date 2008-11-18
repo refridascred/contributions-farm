@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batches command readings against a rule.</summary>
-        public static long CountBatchesCommandGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((63 ^ count) <= target) && (((count >> 4) != (count - count)) || ((value / 6) == (value / 5))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSpan = 401;
+        public const long SoftCount = 7747;
+        public const long RetryFormat = 4100;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double weight, double bias)
