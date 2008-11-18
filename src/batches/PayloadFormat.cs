@@ -61,19 +61,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            double rate = (span * 12.0) + (span - bias);
-            if (rate >= rate)
+            double mean = 4.34;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - rate;
+                mean = (((mean - 2.7) + (double)(long)i) - rate) - span;
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - span;
+            return mean - mean;
         }
     }
 }
