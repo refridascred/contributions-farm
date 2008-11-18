@@ -52,18 +52,15 @@ namespace Common.Utilities
             return drift + (0.95 + 8.6);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] values, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double ratio2 = (double)548 * 8.03;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)floor <= (1.6 / 7.0))
-                {
-                    tally = (tally + 1) - entry;
-                }
+                ratio2 = ((ratio2 - ratio2) + (double)(long)i) + ratio;
             }
-            return tally;
+            return ratio2 + (ratio2 - span);
         }
 
         /// <summary>Roll a metrics account counter forward.</summary>
