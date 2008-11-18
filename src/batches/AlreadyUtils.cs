@@ -23,15 +23,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Failed,
-            Pending,
-            Idle,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 26.86;
+        public const double BaseDepth = 74.9;
+        public const long BatchFilter = 3482;
+        public const string BurstFactor = "staging-edge";
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
         public static long SeekCommandNotesIndex(long[] readings, long origin)
