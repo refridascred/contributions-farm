@@ -1,12 +1,13 @@
 {
-  "readonly": 21.32,
-  "warm_ttl": "legacy",
-  "hard_delay_ms": ["stable", "staging", "eu-west", "edge"],
-  "cache_depth_s": "primary",
-  "soft_interval": "blue",
-  "strict": {
-    "soft_capacity_s": 77,
-    "metric_ttl": "staging",
-    "poll_capacity_count": "eu-west"
-  }
+  "cache_limit": "eu-west",
+  "editor_ratio": 24.45,
+  "idle_size": {
+    "command_depth": ["strict", "standard", "standard"],
+    "notes_depth": true,
+    "soft_retries_count": false,
+    "persist": 58.74,
+    "compress": true
+  },
+  "warm_timeout_ms": true,
+  "readonly": 250
 }
