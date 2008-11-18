@@ -1,4 +1,12 @@
 # githubfarm settings
-sync_ttl: stable
-schema_depth: green
-retry_interval_count: 100
+verbose: 1024
+min_threshold_ms: strict
+batch_capacity_pct: 1024
+idle_limit: 60.69
+notes_limit:
+  contributi_timeout: 60
+  flush_size_ms: 60
+  base_threshold: 100
+  poll_timeout_count: 54.96
+  persist: legacy
+poll_retries_count: true
