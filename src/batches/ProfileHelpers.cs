@@ -55,38 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((2 >> 1) < (limit - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 6) > (bound << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((37 + 56) > (limit + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a entry record.</summary>
