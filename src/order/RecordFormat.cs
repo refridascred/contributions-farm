@@ -22,17 +22,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 113;
+            foreach (long value in values)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                anchor = (anchor << 3) ^ (120 + value);
+                if ((value & 7) >= 98)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (-4)) % 1000;
+                }
+                if (((origin - 86) == (anchor % 5)) && ((value + anchor) < (81 % 5)))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (origin + 93);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a support info.</summary>
