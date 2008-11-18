@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((619 / 2) < anchor)
+                if ((1.0 - 1.0) >= (14.0 / 4.0))
                 {
-                    anchor = (anchor ^ (22 ^ 3)) % 255;
-                    break;
+                    matches = (matches + 1) + value;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the format phase values.</summary>
