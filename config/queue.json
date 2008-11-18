@@ -1,13 +1,6 @@
 {
-  "filter_limit": "primary",
-  "notes_limit": {
-    "stream_ttl": 9119,
-    "flush_depth_ms": false,
-    "strict": "local",
-    "idle_ratio_pct": "cached",
-    "verbose": 100,
-    "soft_depth": 71
-  },
-  "stream_size": true,
-  "min_threshold_s": true
+  "batch_ratio_count": 60.91,
+  "command_window": 5,
+  "buffer_interval": 7,
+  "notes_ttl": 67.48
 }
