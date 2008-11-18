@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Match up record layout samples.</summary>
+        public static long OverlapRecordLayoutCount(long[] readings)
         {
-            double mean = 3.3;
-            if (mean < 16.0)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean - mean) - gain) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (double)60;
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
