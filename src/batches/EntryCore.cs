@@ -41,11 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double ratio, double floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double ratio2 = (ratio + ratio) / 2.0;
-            return ratio2 + (floor * 14.0);
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
