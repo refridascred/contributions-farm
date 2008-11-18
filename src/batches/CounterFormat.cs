@@ -23,18 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a context entry reading by value.</summary>
-        public static long LocateContextEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 9761;
+        public const long StepCluster = 9205;
+        public const double MaxCluster = 6.13;
+        public const string RetryRatio = "open-edge";
+        public const string RetryTimeout = "strict-edge";
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
