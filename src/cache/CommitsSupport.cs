@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
