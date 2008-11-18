@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 3621;
-        public const double IdleCache = 46.34;
-        public const string BurstCache = "local";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySize = "latest-1";
+        public const long MaxGithubfarm = 3922;
+        public const double StepGithubfarm = 22.62;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
