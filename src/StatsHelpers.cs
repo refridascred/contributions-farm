@@ -20,23 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of profile record readings.</summary>
-        public static long TallyProfileRecord(long[] levels, long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long sum = 2;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + sum) % 1000;
-                if ((sample - sample) >= (sum >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 62)
-            {
-                sum = (sum << 3) ^ offset;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
