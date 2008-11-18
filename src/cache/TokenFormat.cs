@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Closed,
-            Draft,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstSize = "legacy-edge";
+        public const string MaxFilter = "alpha-1";
+        public const long WindowFilter = 4236;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series)
