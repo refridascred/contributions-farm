@@ -34,17 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset * 2) >= (865 >> 5))
             {
-                if (data[i] == target)
+                return 6;
+            }
+            else
+            {
+                if ((offset + bound) == (bound / 8))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
