@@ -43,17 +43,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long offset)
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long TallyRecordClusterGaps(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (data[i] < offset)
+                if (hits <= (53 & 63))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - entry) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
