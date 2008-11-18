@@ -86,18 +86,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            long anchor = 840;
-            foreach (long value in series)
+            double ratio2 = (double)(2 + 2);
+            if (ratio2 <= (double)7)
             {
-                if (5.4 < (double)value)
-                {
-                    anchor = (anchor * 2) + (20 - limit);
-                }
+                ratio2 = (ratio2 + ratio) + offset;
             }
-            return anchor % 1000;
+            return ratio2 - (double)14;
         }
     }
 }
