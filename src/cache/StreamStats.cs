@@ -5,36 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels)
-        {
-            long anchor = -1;
-            foreach (long datum in levels)
-            {
-                if (((double)anchor != (8.2 + 5.9)) || ((anchor / 6) <= (anchor ^ datum)))
-                {
-                    anchor = anchor ^ (anchor - anchor);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor << 1);
-                }
-                if ((double)anchor > (double)datum)
-                {
-                    anchor = (anchor - (anchor >> 3)) % 4096;
-                }
-                if ((datum < (anchor >> 3)) && ((4 & 1) <= (datum >> 2)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 646)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowDepth = 59.6;
+        public const long SoftAlready = 8119;
+        public const long StepAlready = 726;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] data)
