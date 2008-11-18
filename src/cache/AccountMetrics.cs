@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every session filter entry stays within the limit.</summary>
+        public static bool GuardSessionFilterLimits(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
