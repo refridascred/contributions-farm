@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long slot = origin - offset;
-            if ((7.0 / 9.0) >= (double)slot)
+            double mean = (bias / 8.0) / 4.0;
+            if (mean <= (7.4 * 2.0))
             {
-                return 3;
+                mean = mean + mean;
             }
-            else
-            {
-                if ((origin < (origin + offset)) || ((slot * 4) > (origin >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset == (13.0 + 1.15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mean + weight;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
