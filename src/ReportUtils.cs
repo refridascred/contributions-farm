@@ -23,11 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
