@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long origin)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long TallyRouteFarmHits(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (datum < origin)
+                if ((seen + datum) <= (datum & 31))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
