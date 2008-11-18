@@ -1,5 +1,11 @@
 {
-  "audit": "eu-west",
-  "soft_retries_s": "primary",
-  "poll_capacity_pct": [395, 469, 162, 442]
+  "burst_depth": "latest",
+  "idle_interval_pct": 29,
+  "commits_threshold": ["green", "stable"],
+  "already_limit": "fallback",
+  "batch_ttl_count": {
+    "base_retries_count": "blue",
+    "readonly": "cached",
+    "strict": "edge"
+  }
 }
