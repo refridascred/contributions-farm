@@ -31,12 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                if ((values[i] == offset) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
