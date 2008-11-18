@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next account commits value from a seed.</summary>
-        public static long RollAccountCommits(long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] levels, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((sum >> 1) < seed))
+                if (((seed / 9) != (cell & 255)) || ((seen - seed) > (seed + seen)))
                 {
-                    sum = ((sum * 3) + ((long)i - sum)) % 65521;
+                    seen = seen + 3;
                 }
-                if (!(seed <= (long)i))
-                {
-                    sum = (sum + (sum / 2)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
