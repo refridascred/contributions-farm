@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double rate, double floor)
         {
-            Dropped,
-            New,
-            Ready,
-            Active,
-            Failed,
+            double load = rate;
+            if (load >= (0.1 / 4.0))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load - floor)) + (double)(long)i;
+            }
+            return load - (double)57;
         }
 
         /// <summary>Hold a stats record.</summary>
