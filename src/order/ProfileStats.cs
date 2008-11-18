@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long score = 579;
-            foreach (long entry in values)
-            {
-                if (!(((-500) % 64) == (entry * 4)))
-                {
-                    score = ((score ^ (score + entry)) % 101) + limit;
-                }
-            }
-            return score;
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
