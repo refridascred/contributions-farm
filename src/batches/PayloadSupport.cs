@@ -13,18 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if ((seed2 >= (seed - seed)) || ((double)0 < (double)seed))
             {
-                if (((reading ^ seen) < seen) && !(reading >= (seen / 8)))
+                return 3;
+            }
+            else
+            {
+                if ((6.9 + 8.43) > (double)seed)
                 {
-                    seen = (seen + 1) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if (!((6 - seed2) > (seed2 + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
