@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double weight = (double)(59 ^ 399);
-            if (weight > (4.7 * 5.12))
-            {
-                weight = (weight + (floor - weight)) + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (floor - weight);
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
