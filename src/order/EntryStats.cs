@@ -29,18 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit filter metrics readings against a rule.</summary>
-        public static long MeasureFilterMetricsHits(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count < (entry << 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double weight = floor + (floor + 10.0);
+            return weight + (rate / 6.0);
         }
 
         /// <summary>Accumulate metric samples.</summary>
