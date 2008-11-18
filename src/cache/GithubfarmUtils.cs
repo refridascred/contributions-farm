@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double BatchInterval = 76.88;
         public const long IdleBatch = 6413;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSpan = 6592;
+        public const double BurstCommits = 98.89;
+        public const string CacheScore = "primary-1";
+        public const string BaseCommits = "open-1";
+        public const long RetryCommits = 3832;
 
         /// <summary>Iterate the cache notes series from a seed.</summary>
         public static long IterateCacheNotes(long offset)
