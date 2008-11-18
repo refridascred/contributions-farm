@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stats counter value against two limits.</summary>
-        public static long RankStatsCounter(long seed, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long bound = seed - floor;
-            if ((floor & 7) <= seed)
+            long score = 4;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6 - bound) <= (8 * 5))
+                if ((6.49 - 18.0) >= (double)score)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.16 < (0.96 / 4.0)) || ((double)bound != (20.0 - 8.3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + floor) != (bound << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = ((score * 5) + (score << 2)) + entry;
                 }
             }
+            if (score < 47)
+            {
+                score = (score << 2) ^ (score << 3);
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a route reading by value.</summary>
