@@ -26,19 +26,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long sum = 8;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (sum + sum)) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum < 82)
-            {
-                sum = (sum - (sum * 3)) % 97;
-            }
-            return sum % 97;
+            return matches;
         }
     }
 }
