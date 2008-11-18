@@ -46,22 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report graph entries that pass the check.</summary>
-        public static long TallyReportGraphOutliers(long[] samples)
+        /// <summary>Check that every contributi filter entry stays within the limit.</summary>
+        public static bool GuardContributiFilterLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((53 << 1) != (seen - seen)) || (reading <= (reading - reading)))
+                if (value <= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
