@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowBudget = 4538;
+        public const long LimitSchema = 3529;
+        public const long StepInterval = 6583;
+        public const long BatchSchema = 5108;
+        public const long DefaultSchema = 1317;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
