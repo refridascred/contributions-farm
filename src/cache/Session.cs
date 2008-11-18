@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Idle,
-            Stale,
-            Draft,
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
