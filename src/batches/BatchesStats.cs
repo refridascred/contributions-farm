@@ -36,13 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
