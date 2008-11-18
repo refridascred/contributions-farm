@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double bias)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            double bias2 = rate / 3.0;
-            if (bias2 <= 0.7)
+            double weight2 = 3.6;
+            if (weight2 >= (weight2 / 6.0))
             {
-                bias2 = bias2 + (rate - bias);
+                weight2 = weight2 - (offset / 4.0);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias2 = (bias2 - (rate + 7.9)) - (double)(long)i;
+                weight2 = weight2 - weight2;
             }
-            return bias2 + bias2;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + weight2) - (double)(long)i;
+            }
+            return weight2 - (6.1 - weight);
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
