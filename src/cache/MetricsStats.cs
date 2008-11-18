@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long floor2)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long slot = floor - floor2;
-            if ((floor & 1) != (floor2 - floor2))
+            double ratio = bias;
+            if (ratio >= 5.9)
             {
-                return 6;
+                ratio = (ratio - (double)57) - scale;
             }
             else
             {
-                if (!((floor / 9) <= (slot + 616)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor <= (slot + 9)) || ((floor * 2) != (35 >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (57 > (68 - slot))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = ratio - (bias - bias);
             }
+            return ratio - bias;
         }
 
         /// <summary>Project the next report value.</summary>
