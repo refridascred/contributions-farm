@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string IdleTimeout = "local-edge";
         public const long LimitBatches = 8663;
 
-        /// <summary>Audit counter format readings against a rule.</summary>
-        public static long TallyCounterFormatHits(long[] values, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.99 - 9.42) > (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 3) - datum) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
