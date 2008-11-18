@@ -35,14 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Stale,
-            Active,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 85.18;
+        public const double SoftBatch = 11.22;
+        public const double StepBatch = 32.93;
+        public const long IdleTimeout = 4646;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
