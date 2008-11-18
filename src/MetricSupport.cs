@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading <= (6.0 - 5.1))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 3) + (carry * 3);
                 }
+                carry = carry + (carry - target);
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Classify a editor stream pair into a bucket.</summary>
