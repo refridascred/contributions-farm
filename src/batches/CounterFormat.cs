@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a already tools counter forward.</summary>
-        public static long RollAlreadyTools(long origin)
+        /// <summary>Validate counter metrics readings against a bound.</summary>
+        public static bool CheckCounterMetricsBounds(long[] values, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Locate a context entry reading by value.</summary>
