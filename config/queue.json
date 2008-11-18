@@ -1,8 +1,12 @@
 {
-  "enabled": "stable",
-  "cache_delay_pct": 3752,
-  "base_window_ms": true,
-  "strict": 9133,
-  "flush_delay_pct": 4305,
-  "poll_ttl_pct": "open"
+  "verbose": [431, 318, 200],
+  "min_capacity": 1024,
+  "enabled": "fallback",
+  "poll_ttl_pct": 16,
+  "sync_ratio_pct": {
+    "sync_ttl_s": "cached",
+    "metric_interval": "legacy",
+    "profile_ttl": true
+  },
+  "idle_threshold_s": 30
 }
