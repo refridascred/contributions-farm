@@ -1,6 +1,6 @@
-id,active,count,state
-1,146,stable,79.45
-2,706,122,348
-3,91,51.0,local
-4,198,83.94,blue
-5,latest,fallback,standard
+id,level,state
+1,79,37.63
+2,93,blue
+3,271,780
+4,stable,558
+5,526,primary
