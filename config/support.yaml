@@ -1,5 +1,7 @@
 # support settings
-token_interval: primary
-strict: 8325
-warm_size_count: stable
-min_interval_count: green
+audit: stable
+base_depth_ms: 37.46
+hard_window_pct:
+  - local
+  - staging
+cache_retries: open
