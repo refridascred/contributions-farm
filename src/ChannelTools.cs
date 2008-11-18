@@ -39,19 +39,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats cluster readings against a bound.</summary>
-        public static bool GuardStatsClusterLimits(long[] readings, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long slot = origin - seed;
+            if (((slot >> 2) != (seed & 3)) || ((double)slot > (4.32 + 12.0)))
             {
-                if (entry <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((7.8 - 6.6) < (double)origin)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((origin + seed) > seed) && ((slot + seed) > seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
