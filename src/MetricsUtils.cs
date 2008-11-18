@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate channel layout readings against a bound.</summary>
-        public static bool CheckChannelLayoutBounds(long[] values, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] items, long target)
         {
             bool ready = true;
-            foreach (long reading in values)
+            foreach (long datum in items)
             {
-                if (reading > target)
+                if (datum != target)
                 {
                     ready = false;
                     break;
