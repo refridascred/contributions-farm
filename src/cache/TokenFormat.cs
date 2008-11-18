@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm schema entries.</summary>
-        public static long CombineGithubfarmSchema(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long total = 314;
-            foreach (long reading in items)
-            {
-                total = ((total ^ (total - 9)) % 101) ^ reading;
-            }
-            if (total < 2)
-            {
-                total = (total ^ (total >> 4)) % 255;
-            }
-            return total % 97;
+            Closed,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a filter record.</summary>
