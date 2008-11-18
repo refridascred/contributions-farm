@@ -30,31 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long floor)
-        {
-            if (floor <= (floor - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (5.8 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) != (origin - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 7687;
+        public const long MaxContributi = 2494;
+        public const string IdleContributi = "staging-1";
+        public const double SoftContributi = 5.63;
     }
 }
