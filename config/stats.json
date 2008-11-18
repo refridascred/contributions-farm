@@ -1,8 +1,20 @@
 {
-  "batch_interval_count": 1024,
-  "burst_retries": 8,
-  "soft_threshold_count": 11.1,
-  "payload_threshold": "open",
-  "burst_ratio": ["blue", "green", "staging"],
-  "min_threshold_s": "cached"
+  "audit": 8347,
+  "enabled": 30,
+  "farm_threshold": "legacy",
+  "default_size_ms": {
+    "profile_threshold": {
+      "burst_depth_ms": [214, 153, 274, 177],
+      "hard_size_pct": 78,
+      "readonly": false,
+      "account_window": 500,
+      "checks_ratio": 1024,
+      "hard_threshold_s": 42.03
+    },
+    "min_interval_s": 5671,
+    "default_ttl_pct": 30,
+    "warm_ttl": true,
+    "verbose": "primary",
+    "support_capacity": "green"
+  }
 }
