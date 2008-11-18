@@ -57,18 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches contributi readings against a rule.</summary>
-        public static long AuditBatchesContributiMatches(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((datum / 8) < datum)
+                if (((offset + offset) == (offset >> 3)) && ((offset / 3) < (offset & 3)))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
