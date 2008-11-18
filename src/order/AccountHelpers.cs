@@ -82,12 +82,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long mix = 2;
+            foreach (long reading in levels)
+            {
+                mix = (mix * 2) + (reading % 10);
+            }
+            return mix;
         }
     }
 }
