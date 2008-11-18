@@ -20,11 +20,21 @@ namespace Common.Utilities
             return load - (double)57;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
