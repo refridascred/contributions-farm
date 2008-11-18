@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = offset;
+            if (weight < 6.21)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)66) - scale;
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight - weight);
+            }
+            return weight + offset;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
