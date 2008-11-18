@@ -16,22 +16,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long span = offset ^ floor;
+            if ((span * 3) < (-4))
             {
-                if (4.0 <= (1.6 / 4.0))
+                return 0;
+            }
+            else
+            {
+                if ((offset % 100) == (span ^ (-1)))
                 {
-                    count = ((count + 2) + entry) + seed;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (offset >= 71)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + offset) == (floor << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
