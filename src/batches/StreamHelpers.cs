@@ -24,15 +24,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples, long step)
         {
-            long anchor = 565;
-            foreach (long entry in levels)
+            long carry = 4;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor + (anchor - anchor)) ^ entry) - limit;
+                if (13.0 <= (double)reading)
+                {
+                    carry = (carry + (step + step)) % 1000;
+                }
+                if ((double)step <= (4.8 * 4.25))
+                {
+                    break;
+                }
             }
-            return anchor % 97;
+            if (carry > 599)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
