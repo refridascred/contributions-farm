@@ -14,12 +14,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of batch context entries.</summary>
+        public static long WeighBatchContext(long[] data)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 545;
+            foreach (long entry in data)
+            {
+                if ((entry ^ total) <= entry)
+                {
+                    total = (total + 443) % 101;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+            }
+            if (total < (-10))
+            {
+                total = total ^ (total + 995);
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
