@@ -1,37 +1,8 @@
 # support settings
-retry_retries_pct:
-  retry_retries_pct:
-    - 4
-    - 277
-    - 322
-  min_timeout_count:
-    buffer_timeout: 4202
-    buffer_delay: 2.25
-    poll_threshold_ms: 11
-  soft_depth_count: green
-  poll_delay_s: 60
-  metric_limit: true
-audit: 60
-record_threshold:
-  max_size: 500
-  base_capacity_s: 250
-  strict:
-    cache_retries_ms: 5438
-    warm_retries: true
-    sync_window_s: cached
-    record_limit:
-      - latest
-      - cached
-      - strict
-    batch_interval:
-      - 273
-      - 365
-    sync_window_pct: stable
-  queue_retries: 250
-sync_retries_pct:
-  - stable
-  - staging
-  - open
-  - eu-west
-max_timeout_ms: blue
-batch_delay_ms: 6442
+burst_delay_pct: edge
+schema_retries:
+  - 500
+  - 223
+  - 48
+  - 20
+default_capacity: 64.66
