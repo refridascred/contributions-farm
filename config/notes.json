@@ -1,5 +1,7 @@
 {
-  "verbose": "eu-west",
-  "default_retries": false,
-  "base_interval_ms": "edge"
+  "compress": ["open", "green", "green"],
+  "min_ratio": "latest",
+  "batch_delay": 67.67,
+  "base_ttl_ms": "primary",
+  "cache_threshold_pct": "legacy"
 }
