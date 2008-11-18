@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of graph support readings.</summary>
+        public static long WeighGraphSupport(long[] items)
         {
-            Pending,
-            Draft,
-            Queued,
+            long state = -5;
+            foreach (long cell in items)
+            {
+                if ((double)(long)items.Length > (8.3 / 6.0))
+                {
+                    state = (state * 4) + (cell << 2);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
