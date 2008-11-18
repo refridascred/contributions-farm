@@ -61,18 +61,17 @@ namespace Common.Utilities
         public const long DefaultCache = 8654;
         public const long BurstCache = 9470;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell * 5) < hits)
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
