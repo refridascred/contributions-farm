@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit entry filter readings against a rule.</summary>
-        public static long TallyEntryFilterOutliers(long[] levels, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - entry) <= entry)
+                if (samples[i] > floor)
                 {
-                    seen = (seen + 3) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
