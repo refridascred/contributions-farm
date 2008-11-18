@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const string RetryWidth = "primary-v2";
         public const long MinCounter = 9179;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate contributi checks readings against a bound.</summary>
+        public static bool CheckContributiChecksLimits(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
