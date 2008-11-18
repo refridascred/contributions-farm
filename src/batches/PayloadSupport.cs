@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the checks notes entries that pass the check.</summary>
-        public static long CountChecksNotesHits(long[] items, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((origin - matches) != (value + matches))
+                if (((tally & 31) <= reading) || (((reading ^ tally) <= tally) && ((tally % 7) != (tally >> 4))))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
