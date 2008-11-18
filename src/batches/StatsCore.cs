@@ -55,21 +55,12 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
