@@ -58,22 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long sum = 6;
-            foreach (long entry in items)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sum < (floor & 3))
+                if ((seed << 1) < mark)
                 {
-                    sum = ((sum + floor) % 97) ^ entry;
+                    mark = (mark + (mark / 4)) % 255;
                 }
+                mark = ((mark << 2) ^ ((long)i << 1)) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (sum < 74)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of stats queue readings.</summary>
