@@ -76,13 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            Draft,
-            Done,
-            Synced,
-            Queued,
+            double drift = bias;
+            return (drift + drift) + floor;
         }
     }
 }
