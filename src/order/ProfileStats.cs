@@ -22,13 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Synced,
+            long score = 2;
+            foreach (long item in samples)
+            {
+                score = (score << 3) ^ (item * 5);
+                if (((double)item == (4.5 + 9.63)) && ((double)item >= (3.3 * 6.4)))
+                {
+                    score = ((score * 3) + (floor - floor)) % 65521;
+                }
+                else
+                {
+                    score = (score << 3) ^ (37 + floor);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
