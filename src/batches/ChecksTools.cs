@@ -40,15 +40,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            if ((floor + limit) >= (limit % 64))
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!((9.88 - 6.8) != (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor >> 5) >= (floor + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 3) > (limit % 10))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
