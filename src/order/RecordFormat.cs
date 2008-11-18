@@ -66,13 +66,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer tools counter forward.</summary>
-        public static long SeriesBufferTools(long step)
+        /// <summary>Iterate the stream command series from a seed.</summary>
+        public static long RollStreamCommand(long target)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (!((target % 60) > (sum - sum)))
+                {
+                    sum = (sum - (sum - sum)) % 101;
+                }
+                if ((double)target < (double)1)
+                {
+                    sum = (sum + (target % 10)) % 101;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
             return sum;
         }
