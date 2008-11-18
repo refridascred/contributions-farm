@@ -35,12 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long floor)
         {
-            Dropped,
-            Closed,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
