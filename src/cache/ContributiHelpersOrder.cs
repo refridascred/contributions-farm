@@ -36,14 +36,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Locked,
+            Queued,
             New,
-            Failed,
-            Dropped,
-            Stale,
+            Paused,
         }
     }
 }
