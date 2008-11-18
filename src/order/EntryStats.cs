@@ -41,18 +41,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] series, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long sum = 513;
-            foreach (long item in series)
-            {
-                if ((step & 7) != (step - sum))
-                {
-                    sum = ((sum << 3) ^ (item << 1)) % 65521;
-                }
-            }
-            return sum % 1000;
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Grade a record stream value against two limits.</summary>
