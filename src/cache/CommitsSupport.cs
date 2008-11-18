@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (hits <= (sample ^ sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
