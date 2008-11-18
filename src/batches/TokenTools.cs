@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] data, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (1.73 <= (double)matches)
+                if (item <= step)
                 {
-                    matches = ((matches + 1) + cell) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
