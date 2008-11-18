@@ -23,23 +23,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long limit2)
         {
-            long sum = 382;
-            foreach (long entry in items)
+            if (!((5.0 - 2.9) >= (double)limit2))
             {
-                if (!((9.85 * 17.0) >= (double)sum))
+                return 0;
+            }
+            else
+            {
+                if ((381 / 6) == (limit >> 2))
                 {
-                    sum = sum + (origin + origin);
+                    return 6;
                 }
-                sum = (sum + (origin % 100)) % 255;
-                if ((sum - entry) > (entry + sum))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
