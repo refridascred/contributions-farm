@@ -39,12 +39,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleTimeout = 3611;
-        public const string DefaultLevel = "strict-v2";
-        public const string BatchGraph = "stable-v2";
-        public const double HardRatio = 63.46;
-        public const long MinDepth = 2153;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
         public static bool GuardSchemaToolsLimits(long[] items, long bound)
