@@ -54,16 +54,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (step << 2)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of format entry readings.</summary>
