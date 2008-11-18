@@ -1,8 +1,12 @@
 {
-  "strict": "legacy",
-  "entry_depth": true,
-  "channel_window": 46,
-  "entry_ratio": 5241,
-  "enabled": 73.63,
-  "session_ttl": 70
+  "soft_size": "stable",
+  "flush_interval_count": true,
+  "audit": [295, 359, 353, 348],
+  "retry_limit_count": 84,
+  "flush_timeout_ms": 36,
+  "persist": {
+    "dry_run": ["legacy", "strict", "eu-west", "eu-west"],
+    "soft_capacity": false,
+    "warm_limit_count": false
+  }
 }
