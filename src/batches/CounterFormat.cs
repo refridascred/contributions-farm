@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 108;
         public const long LimitQueue = 6491;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples, long target)
         {
-            double drift = (double)(4 & 3);
-            if (drift > gain)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                drift = drift + (double)337;
+                if ((target * 5) <= hits)
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            else
-            {
-                drift = drift + (double)0;
-            }
-            return drift + (floor * 1.2);
+            return hits;
         }
     }
 }
