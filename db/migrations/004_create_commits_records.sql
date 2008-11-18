@@ -2,9 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    created_at TIMESTAMP,
-    label TEXT,
-    weight REAL
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
