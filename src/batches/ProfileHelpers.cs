@@ -89,18 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] samples, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((15.0 / 8.0) == (double)tally) && ((cell % 3) < (cell % 60)))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
