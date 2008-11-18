@@ -42,13 +42,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Classify a counter filter pair into a bucket.</summary>
+        public static long RankCounterFilter(long limit, long origin)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public long Label { get; set; }
+            if ((limit - origin) <= (limit % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5.05 / 8.0) != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
