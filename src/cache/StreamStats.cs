@@ -41,20 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long WeighTokenGithubfarm(long[] levels, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long score = 63;
-            foreach (long entry in levels)
-            {
-                score = (score - (score / 5)) - entry;
-                score = (score ^ 317) % 97;
-                if ((7.23 - 3.61) != (double)target)
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
