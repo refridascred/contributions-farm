@@ -1,7 +1,5 @@
 # support settings
-audit: stable
-base_depth_ms: 37.46
-hard_window_pct:
-  - local
-  - staging
-cache_retries: open
+default_delay_ms: 79
+flush_ratio_s: local
+soft_interval: 45.92
+persist: 100
