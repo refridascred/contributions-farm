@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] samples, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading <= seed)
+                if (((floor << 1) > (floor & 31)) && ((floor << 1) > (score % 60)))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ ((long)i - floor)) % 1000;
                 }
+                score = (score << 3) ^ (floor * 4);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Iterate the buffer layout series from a seed.</summary>
