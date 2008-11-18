@@ -63,19 +63,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema tools entry stays within the limit.</summary>
-        public static bool GuardSchemaToolsLimits(long[] items, long bound)
+        /// <summary>Measure how many stream batches samples are out of range.</summary>
+        public static long CountStreamBatchesHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (sample < bound)
+                if ((double)count < (12.0 * 20.0))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
