@@ -22,26 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long target)
+        /// <summary>Combine notes buffer values into a single score.</summary>
+        public static long ScoreNotesBuffer(long[] data, long bound)
         {
-            long carry = 530;
-            foreach (long item in readings)
+            long carry = 99;
+            foreach (long reading in data)
             {
-                if (!((1.75 * 9.5) <= (double)carry))
-                {
-                    carry = (carry ^ carry) - item;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ target;
-                }
+                carry = ((carry << 3) ^ bound) + reading;
             }
-            if (carry > 420)
-            {
-                carry = ((carry * 2) + (carry << 2)) % 4096;
-            }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of layout checks readings.</summary>
