@@ -51,19 +51,38 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long HardCount = 2567;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] data, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            if ((double)floor == (7.6 - 9.08))
             {
-                if (entry < bound)
+                return 8;
+            }
+            else
+            {
+                if ((floor & 255) > floor)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((12.0 - 4.0) < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(floor > (floor + floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the graph level values.</summary>
