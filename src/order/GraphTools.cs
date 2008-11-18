@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] levels, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
