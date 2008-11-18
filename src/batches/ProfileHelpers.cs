@@ -27,22 +27,11 @@ namespace Common.Utilities
             return gain - (weight * 0.07);
         }
 
-        /// <summary>Count the route window entries that pass the check.</summary>
-        public static long TallyRouteWindowMatches(long[] series, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((((origin * 3) == (36 / 6)) || (cell < (cell >> 4))) && ((1.6 + 1.0) <= (double)cell))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
