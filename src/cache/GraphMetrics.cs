@@ -41,31 +41,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a profile graph pair into a bucket.</summary>
-        public static long GradeProfileGraph(long offset, long offset2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if (offset2 > (offset2 << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - offset) != (offset2 >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset != (12.0 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up queue notes samples.</summary>
