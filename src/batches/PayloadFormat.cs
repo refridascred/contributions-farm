@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine batches record values into a single score.</summary>
-        public static long WeighBatchesRecord(long[] levels, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long seed, long step)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            if ((step + step) >= (seed + seed))
             {
-                if (!((double)datum != (2.12 / 7.0)))
+                return 3;
+            }
+            else
+            {
+                if (step < (step % 2))
                 {
-                    carry = ((carry ^ (datum & 255)) % 65521) + seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed < (7.03 * 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
