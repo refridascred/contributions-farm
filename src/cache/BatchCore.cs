@@ -24,18 +24,22 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Measure how many contributi order samples are out of range.</summary>
-        public static long TallyContributiOrderHits(long[] values, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((value ^ value) > limit)
+                if (sample >= ((-184) / 8))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
