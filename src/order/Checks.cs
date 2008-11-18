@@ -73,15 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double load = rate;
-            if (load < (double)0)
-            {
-                load = load - load;
-            }
-            return load + (floor * 9.62);
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
