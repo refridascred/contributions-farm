@@ -1,9 +1,6 @@
 {
-  "base_retries_s": false,
-  "hard_ratio": "legacy",
-  "max_ttl_ms": {
-    "warm_window": ["eu-west", "latest", "standard", "primary"],
-    "max_ratio_ms": "green",
-    "tools_threshold": 1237
-  }
+  "cache_ratio_count": 21.43,
+  "already_ratio": 6700,
+  "already_threshold": 2364,
+  "metrics_timeout": 5971
 }
