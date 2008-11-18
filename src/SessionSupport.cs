@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Retry,
-            Queued,
-            Dropped,
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
