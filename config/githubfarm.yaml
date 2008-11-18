@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_ttl_pct: 4932
-default_threshold_count: 13.93
-default_threshold: 61
+stream_ratio: green
+enabled: 100
+batch_threshold: 501
+retry_capacity: eu-west
