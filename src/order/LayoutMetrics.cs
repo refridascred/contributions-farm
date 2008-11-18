@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardCount = 4405;
+        public const long BurstAlready = 460;
+        public const double IdleFactor = 47.48;
+        public const string SoftAlready = "latest-edge";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double scale, double bias)
