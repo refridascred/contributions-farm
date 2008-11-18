@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long seed2)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] items, long bound)
         {
-            long slot = seed ^ seed2;
-            if ((239 + slot) >= seed)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (7.5 / 2.0))
+                if (entry > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed == (2.58 / 4.0)) || (2.0 <= (double)slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed2 <= (4.31 / 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up route samples.</summary>
