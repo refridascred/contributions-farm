@@ -1,17 +1,12 @@
 {
-  "default_delay": 37,
-  "session_ratio": {
-    "batches_interval": false,
-    "poll_window": "staging",
-    "max_interval_ms": 77.32,
-    "token_ratio": {
-      "dry_run": "local",
-      "hard_retries": "latest",
-      "hard_limit": false
-    },
-    "dry_run": false,
-    "idle_capacity_pct": 500
+  "already_limit": {
+    "verbose": 67.54,
+    "persist": true,
+    "base_limit_count": "local"
   },
-  "warm_retries": 84.05,
-  "account_capacity": "primary"
+  "batch_timeout_pct": false,
+  "hard_retries_s": true,
+  "warm_depth_ms": "cached",
+  "warm_size": "legacy",
+  "retry_retries_s": "fallback"
 }
