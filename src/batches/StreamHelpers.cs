@@ -49,21 +49,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long mix = 1;
+            foreach (long datum in data)
             {
-                if ((anchor > (9 - (long)i)) || ((long)i > (anchor & 31)))
+                mix = mix ^ 363;
+                if (datum < (mix ^ mix))
                 {
-                    anchor = anchor ^ (limit ^ anchor);
-                    anchor = (anchor ^ anchor) % 65521;
-                    break;
+                    mix = ((mix << 3) ^ (datum / 6)) % 1000;
+                    continue;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((datum - mix) > (mix + 540)) || ((datum % 7) > 0))
+                {
+                    mix = (mix - (datum / 4)) % 4096;
+                }
             }
-            return anchor;
+            return mix % 1000;
         }
 
         /// <summary>Hold a record options.</summary>
