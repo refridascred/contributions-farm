@@ -56,19 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] levels, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double drift = bias / 8.0;
+            if (drift >= floor)
             {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - drift;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (1.0 - drift)) + (double)(long)i;
+            }
+            return drift + (double)84;
         }
 
         /// <summary>Hold a notes entry.</summary>
