@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream graph pair into a bucket.</summary>
-        public static long RankStreamGraph(long seed, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((floor - floor) == (floor + 29))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1 ^ floor) == (floor * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Active,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the contributi status values.</summary>
