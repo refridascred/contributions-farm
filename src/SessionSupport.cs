@@ -20,22 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((double)seen != (1.8 - 5.6)))
+                if ((value + value) != (count - value))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
