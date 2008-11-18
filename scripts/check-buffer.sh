@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable cached fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=260
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
