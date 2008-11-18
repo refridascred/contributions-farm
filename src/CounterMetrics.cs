@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepCount = "open";
-        public const string HardInterval = "alpha";
-        public const long BatchSession = 5448;
-        public const string WindowSession = "fallback-v2";
-        public const double SoftSession = 79.65;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitCount = 268;
+        public const long BaseRecord = 9076;
+        public const long MaxCount = 9614;
+        public const string CacheRecord = "fallback-edge";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
