@@ -46,19 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi filter entry stays within the limit.</summary>
-        public static bool GuardContributiFilterLimits(long[] series, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
