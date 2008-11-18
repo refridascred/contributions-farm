@@ -27,22 +27,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 8;
-            foreach (long sample in readings)
-            {
-                if ((bound % 12) < (result % 100))
-                {
-                    result = result - (sample - result);
-                }
-                if ((result * 3) == (bound & 7))
-                {
-                    break;
-                }
-            }
-            return result;
+            New,
+            Draft,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate layout samples.</summary>
