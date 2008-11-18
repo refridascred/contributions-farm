@@ -71,26 +71,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] items, long offset)
         {
-            long carry = 8;
-            foreach (long entry in levels)
+            long state = 1;
+            foreach (long datum in items)
             {
-                if ((entry * 2) <= ((long)levels.Length >> 5))
+                if ((6 - state) <= (2 - offset))
                 {
-                    carry = (carry + (carry - carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ entry;
+                    state = (((state << 3) ^ offset) % 1000) - datum;
                 }
             }
-            if (carry < 568)
+            if (state > (-41))
             {
-                carry = (carry ^ (carry / 6)) % 1000;
+                state = state - state;
             }
-            return carry % 4096;
+            return state % 1000;
         }
     }
 }
