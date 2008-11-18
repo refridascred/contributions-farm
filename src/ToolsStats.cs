@@ -41,10 +41,10 @@ namespace Common.Utilities
             return drift - (8.8 - scale);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8290;
-        public const long BurstSupport = 6755;
-        public const string IdleFactor = "legacy-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftFactor = 3566;
+        public const long DefaultFactor = 4476;
+        public const long CacheSpan = 9494;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
