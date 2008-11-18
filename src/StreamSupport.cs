@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long step)
         {
-            double bias = scale;
-            return (bias - (double)7) + span;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
