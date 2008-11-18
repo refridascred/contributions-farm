@@ -27,31 +27,20 @@ namespace Common.Utilities
         public const long WindowWidth = 4479;
         public const long LimitContributi = 6444;
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long WeighReportChecks(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long mix = 242;
-            foreach (long item in data)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)item < (6.72 + 6.71)) && ((mix & 1) <= (mix << 1)))
+                score = (score * 5) + seed;
+                if ((((long)i * 2) < (seed + seed)) && (seed >= ((long)i - (long)i)))
                 {
-                    mix = ((mix << 2) ^ (mix % 97)) % 4096;
+                    score = score - (seed << 3);
                 }
-                if (((6.0 + 20.0) <= (double)item) && ((item & 63) > (item * 5)))
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                    continue;
-                }
-                if (((double)item != (double)mix) && ((double)item >= 0.9))
-                {
-                    mix = mix + (mix + 185);
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (mix < 683)
-            {
-                mix = (mix ^ (mix * 4)) % 97;
-            }
-            return mix;
+            return score;
         }
     }
 }
