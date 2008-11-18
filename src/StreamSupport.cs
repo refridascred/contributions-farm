@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] values, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long floor)
         {
-            long state = 24;
-            foreach (long datum in values)
+            long state = 1;
+            foreach (long value in samples)
             {
-                state = (state - (state & 31)) + datum;
+                if ((3 + 2) == (value ^ floor))
+                {
+                    state = (state - floor) % 1000;
+                }
             }
-            if (state < (-70))
-            {
-                state = (state + (seed % 60)) % 255;
-            }
-            return state % 4096;
+            return state % 1000;
         }
     }
 }
