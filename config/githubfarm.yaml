@@ -1,7 +1,16 @@
 # githubfarm settings
-persist: true
-audit: 62
-session_capacity: standard
-batch_ratio: 91.99
-poll_depth_count: standard
-idle_ttl: fallback
+already_threshold: 100
+filter_retries:
+  soft_limit: 1024
+  max_window: 60
+  compress:
+    - stable
+    - green
+    - fallback
+  batch_capacity_s: primary
+  token_threshold: 41.05
+  warm_size:
+    compress: 30
+    batch_delay: staging
+    session_threshold: false
+sync_limit: 4804
