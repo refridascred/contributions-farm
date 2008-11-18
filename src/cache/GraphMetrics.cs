@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 5) > (datum + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 9136;
+        public const double LimitEditor = 21.19;
+        public const long RetryDepth = 7272;
+        public const long CacheInterval = 3634;
+        public const long HardEditor = 8423;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long target, long bound)
