@@ -25,18 +25,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long MeasureMetricsBufferHits(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = 958;
+            foreach (long datum in samples)
             {
-                if ((matches % 16) <= (matches + sample))
+                if ((total ^ floor) <= (datum & 7))
                 {
-                    matches = matches + 1;
+                    total = (total - (floor + floor)) % 101;
+                }
+                if (((floor - datum) > (floor + (-2))) && ((3 + total) == (datum ^ 5)))
+                {
+                    total = (total + (28 + (-87))) % 4096;
+                    total = ((total * 4) + (datum / 2)) % 65521;
+                }
+                if ((floor + total) < (datum - total))
+                {
+                    total = total - (datum + floor);
+                }
+                if ((1.2 / 3.0) == (double)datum)
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Match up session samples.</summary>
