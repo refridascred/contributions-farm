@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            Draft,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a buffer options.</summary>
