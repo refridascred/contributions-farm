@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels, long seed)
         {
-            Retry,
-            Active,
-            Failed,
-            Ready,
-            Draft,
+            long mark = 67;
+            foreach (long cell in levels)
+            {
+                mark = (mark << 2) ^ (178 + seed);
+                mark = (mark ^ (cell + 73)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
