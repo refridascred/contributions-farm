@@ -1,11 +1,5 @@
 {
-  "hard_ttl_ms": true,
-  "poll_interval": {
-    "audit": 2365,
-    "base_ttl_s": ["edge", "local", "latest", "local"],
-    "readonly": 100,
-    "soft_interval_count": 3446
-  },
-  "warm_ratio": ["stable", "edge"],
-  "record_retries": true
+  "cache_threshold": 100,
+  "batch_limit": 54,
+  "payload_depth": 500
 }
