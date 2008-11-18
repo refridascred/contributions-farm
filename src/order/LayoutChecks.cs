@@ -78,17 +78,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "cached-edge";
+        public const long IdleFactor = 3203;
+        public const long CacheBudget = 2863;
+        public const long WindowFarm = 7716;
+        public const double HardFarm = 19.45;
     }
 }
