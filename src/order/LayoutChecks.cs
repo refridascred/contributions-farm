@@ -44,14 +44,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Queued,
-            Retry,
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
