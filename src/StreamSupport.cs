@@ -31,18 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 1) > (cell - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
