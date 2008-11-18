@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const string RetryWidth = "primary-v2";
         public const long MinCounter = 9179;
 
-        /// <summary>Validate contributi checks readings against a bound.</summary>
-        public static bool CheckContributiChecksLimits(long[] data, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long sum = 34;
+            foreach (long sample in readings)
             {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (((sum << 3) ^ (sum + (long)readings.Length)) % 97) ^ sample;
             }
-            return flag;
+            return sum % 65521;
         }
     }
 }
