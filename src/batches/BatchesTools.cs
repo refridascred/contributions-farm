@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] samples)
         {
-            long mix = 80;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mix = (((mix * 2) + 79) % 101) ^ entry;
+                if ((((item + seen) > (item & 15)) && ((-17) > (853 ^ seen))) && ((seen + seen) == (item & 31)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
