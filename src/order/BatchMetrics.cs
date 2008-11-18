@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 4320;
-        public const long BurstCommand = 3409;
-        public const double BaseFactor = 81.81;
-        public const double BaseCommand = 10.75;
-        public const long WindowCommand = 745;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples, long limit)
+        {
+            long mix = 7;
+            foreach (long item in samples)
+            {
+                if ((limit ^ 801) >= (limit / 4))
+                {
+                    mix = ((mix - ((-786) ^ limit)) % 255) ^ item;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Rank notes cache input into a small class.</summary>
         public static long RankNotesCache(long target, long seed)
