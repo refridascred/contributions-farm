@@ -18,13 +18,26 @@ namespace Common.Utilities
         public const long DefaultSpan = 1403;
         public const long RetryNotes = 2003;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            Closed,
-            Pending,
-            New,
-            Done,
+            long acc = 4;
+            foreach (long datum in readings)
+            {
+                if ((1.54 + 10.0) >= (1.0 / 9.0))
+                {
+                    acc = ((acc << 2) ^ 144) ^ datum;
+                }
+                else
+                {
+                    acc = (acc + (356 + acc)) % 1000;
+                }
+            }
+            if (acc < 17)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a order header.</summary>
