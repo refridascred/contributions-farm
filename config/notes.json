@@ -1,8 +1,6 @@
 {
-  "dry_run": 93.75,
-  "warm_capacity": "strict",
-  "min_depth_pct": false,
-  "burst_window_s": "blue",
-  "channel_threshold": [112, 83, 9, 119],
-  "strict": 8138
+  "entry_capacity": "blue",
+  "strict": 7129,
+  "compress": false,
+  "layout_size": ["local", "edge", "green"]
 }
