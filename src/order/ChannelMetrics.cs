@@ -35,17 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 50.21;
+        public const double BaseInterval = 77.77;
+        public const string MinBudget = "latest";
     }
 }
