@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 7094;
-        public const double CachePayload = 68.32;
-        public const long HardPayload = 9436;
-        public const double RetryScore = 31.13;
-        public const string DefaultPayload = "standard";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Synced,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] levels, long target)
