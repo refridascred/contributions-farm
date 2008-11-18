@@ -31,32 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a token filter pair into a bucket.</summary>
-        public static long GradeTokenFilter(long step, long target)
-        {
-            if ((target > (step + 0)) || ((step * 4) <= 110))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step << 3) <= (step / 8)) || ((target + step) != (target & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)target == (6.0 * 3.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6553;
+        public const double WindowMetrics = 6.47;
+        public const string RetryScore = "strict-edge";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
