@@ -18,21 +18,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Adjust a stats reading.</summary>
