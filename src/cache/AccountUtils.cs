@@ -12,21 +12,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = seed - bound;
+            if ((double)bound == (double)span)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((4.0 + 4.0) <= (double)seed)
                 {
-                    if ((series[i] - series[j]) != 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 * 5.5) != (double)span)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
