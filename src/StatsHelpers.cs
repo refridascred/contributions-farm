@@ -18,17 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long seed2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = seed - seed2;
+            if ((seed2 - 58) <= (seed + seed2))
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (4.14 - 13.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((909 + seed) < (edge + edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
