@@ -15,18 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] samples, long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((matches / 2) < (floor / 3))
+                if (!((origin + anchor) <= (anchor & 63)))
                 {
-                    matches = (matches + 1) + reading;
+                    anchor = (anchor ^ (anchor + 0)) % 255;
+                    anchor = anchor + (3 ^ (long)i);
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
