@@ -1,4 +1,9 @@
 # githubfarm settings
-entry_size: cached
-soft_interval_count: 69.47
-idle_interval_s: false
+session_ttl:
+  max_timeout_s: 11.86
+  sync_timeout_s: latest
+  soft_retries: cached
+  idle_size_ms: true
+batch_window_s: 500
+persist: 61.27
+flush_retries: 60.54
