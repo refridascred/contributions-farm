@@ -28,17 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] readings, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
