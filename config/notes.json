@@ -1,15 +1,13 @@
 {
-  "compress": {
-    "command_interval": [70, 203, 374, 420],
-    "graph_timeout": ["stable", "legacy", "green"],
-    "poll_threshold": "fallback"
-  },
-  "strict": {
-    "flush_capacity": 73.15,
-    "editor_timeout": 4601,
-    "payload_retries": 72.12,
-    "base_depth_ms": false,
-    "readonly": false
-  },
-  "base_ttl": false
+  "default_timeout_s": false,
+  "tools_threshold": "staging",
+  "flush_depth_count": 250,
+  "hard_timeout_s": 100,
+  "account_ratio": {
+    "window_capacity": 10,
+    "warm_timeout_ms": [263, 122],
+    "warm_interval_ms": "blue",
+    "readonly": 55.01,
+    "farm_limit": 60
+  }
 }
