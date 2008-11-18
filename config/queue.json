@@ -1,11 +1,8 @@
 {
-  "flush_interval_count": {
-    "poll_timeout_s": "primary",
-    "sync_threshold": ["local", "cached", "strict", "fallback"],
-    "warm_size": 8.26,
-    "record_timeout": 7596,
-    "retry_retries_pct": 67
-  },
-  "retry_limit_s": "cached",
-  "contributi_delay": "staging"
+  "base_depth_count": 70,
+  "contributi_capacity": false,
+  "sync_ttl_ms": 100,
+  "default_interval_count": [470, 148, 475, 456],
+  "route_depth": "stable",
+  "base_threshold_pct": 250
 }
