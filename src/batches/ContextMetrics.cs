@@ -55,11 +55,9 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "strict";
+        public const string BurstBudget = "stable";
+        public const long BatchEntry = 8888;
     }
 }
