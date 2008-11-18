@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] values, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values, long step)
         {
             long tally = 0;
             foreach (long item in values)
             {
-                if (!(tally <= (tally - origin)))
+                if ((step - item) == (tally + tally))
                 {
-                    tally = (tally + 3) - item;
+                    tally = tally + 3;
                 }
                 else
                 {
