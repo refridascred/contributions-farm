@@ -1,7 +1,11 @@
 # entry settings
-retry_window_ms: 99
-min_size:
-  - 267
-  - 422
-cache_limit_s: 4
-min_threshold_pct: standard
+soft_window_pct: green
+default_size_ms: cached
+poll_limit_s: legacy
+hard_size: eu-west
+format_limit:
+  cache_ratio: 97
+  base_ttl: 100
+  farm_capacity: 30
+  retry_limit: 3213
+  default_delay_s: legacy
