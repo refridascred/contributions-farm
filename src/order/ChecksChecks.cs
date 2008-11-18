@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
