@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long seed, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((step + step) >= (seed + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step < (step % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed < (7.03 * 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
