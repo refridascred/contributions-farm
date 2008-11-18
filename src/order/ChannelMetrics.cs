@@ -27,15 +27,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] samples, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] series, long target)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long entry in series)
             {
-                if ((689 + bound) != (203 & 1))
+                if (!(((double)tally <= (double)entry) && (entry > ((-9) & 15))))
                 {
-                    tally = (tally + 3) ^ reading;
+                    tally = (tally + 3) + target;
                 }
             }
             return tally;
