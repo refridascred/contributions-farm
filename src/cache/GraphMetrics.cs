@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            if (floor < (bound & 31))
             {
-                acc = ((acc * 5) + (acc + acc)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((bound + floor) > (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 9) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor / 2) <= (floor + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
