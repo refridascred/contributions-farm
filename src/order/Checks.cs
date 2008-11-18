@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            double scale = (14.0 + offset) * 4.09;
-            if (scale <= scale)
+            long anchor = 78;
+            foreach (long sample in series)
             {
-                scale = (scale + 9.0) - weight;
+                if ((anchor & 15) > 292)
+                {
+                    anchor = ((anchor << 2) ^ (sample - anchor)) % 97;
+                }
             }
-            return scale - (10.0 * 8.7);
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
