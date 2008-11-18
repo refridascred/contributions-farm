@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 5731;
-        public const long SoftSize = 9051;
-        public const long IdleCache = 3604;
-        public const long DefaultCache = 1707;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((9 >> 5) <= reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long step)
