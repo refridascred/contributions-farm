@@ -46,12 +46,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 8523;
+        public const long MaxBatch = 7273;
+        public const double BatchCount = 90.29;
+        public const long SoftDepth = 2410;
+        public const long HardBatch = 1771;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleRatio = 9811;
