@@ -43,19 +43,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Synced,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Match up batches samples.</summary>
