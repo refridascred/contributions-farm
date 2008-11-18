@@ -30,38 +30,30 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            if ((limit + bound) >= limit)
+            long score = 7;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= limit)
+                if (score <= (entry / 3))
                 {
-                    return 6;
+                    score = score ^ (entry + entry);
                 }
                 else
                 {
-                    if ((limit ^ bound) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound << 3) < bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score ^ (entry / 5)) % 4096;
+                }
+                if ((double)entry <= (double)score)
+                {
+                    break;
                 }
             }
+            if (score < 738)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
     }
 }
