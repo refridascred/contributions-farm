@@ -71,24 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] values, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + 613) == (target + (long)i))
+                if (values[i] <= offset)
                 {
-                    score = score - (target + 926);
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score ^ (89 - score)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
