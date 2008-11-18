@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in staging latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-blue}"
 case "${mode}" in
     open)
         log "fast path"
@@ -17,11 +21,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in primary latest; do
-    log "checking ${item}"
-done
