@@ -42,11 +42,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)tally > (5.18 - 5.0))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
