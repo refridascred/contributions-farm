@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 9965;
+        public const double WindowFactor = 55.42;
+        public const string RetryFarm = "strict-v2";
+        public const long BatchCount = 9764;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double rate, double offset)
