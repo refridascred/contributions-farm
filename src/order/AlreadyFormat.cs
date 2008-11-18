@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream githubfarm measurements.</summary>
-        public static double SmoothStreamGithubfarm(double scale, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            double weight = span * 6.0;
-            if (weight > (double)50)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight + (span * 6.6)) - scale;
+                mark = ((mark * 5) + (target & 1)) % 65521;
+                mark = mark + (mark + 0);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return weight + (span * 7.45);
+            return mark;
         }
 
         /// <summary>Hold a cluster entry.</summary>
