@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!!((seen - seen) < (seen + seed)))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8364;
+        public const string IdleTimeout = "local-edge";
+        public const long LimitBatches = 8663;
 
         /// <summary>Audit counter format readings against a rule.</summary>
         public static long TallyCounterFormatHits(long[] values, long origin)
