@@ -25,18 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] data, long origin)
+        /// <summary>Grade a window command value against two limits.</summary>
+        public static long RankWindowCommand(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((limit << 2) <= (limit - limit2))
             {
-                if ((double)origin > (14.0 - 3.34))
+                return 5;
+            }
+            else
+            {
+                if ((limit2 % 8) >= (limit2 % 2))
                 {
-                    hits = (hits + 1) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
