@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long CombineCommitsToken(long[] values)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long limit)
         {
-            long anchor = 8;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.6 + 1.6) < (double)item)
+                if (levels[i] >= limit)
                 {
-                    anchor = ((anchor << 2) ^ (28 ^ item)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (item ^ anchor)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
