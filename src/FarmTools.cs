@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long anchor = 531;
+            foreach (long item in levels)
             {
-                if (tally > (cell / 9))
+                anchor = (((anchor << 3) ^ item) % 1000) - bound;
+                if ((item % 8) == (item >> 5))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor * 3) + ((-5) & 15);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor << 2) ^ (item << 3)) % 97;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Blend two account measurements.</summary>
