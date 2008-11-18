@@ -1,11 +1,7 @@
 # entry settings
-min_size_pct: primary
-retry_timeout: 76.64
-strict:
-  verbose: 1187
-  hard_ttl: 66
-  idle_timeout_s: green
-  persist: edge
-  min_timeout_count:
-    - local
-    - fallback
+retry_window_ms: 99
+min_size:
+  - 267
+  - 422
+cache_limit_s: 4
+min_threshold_pct: standard
