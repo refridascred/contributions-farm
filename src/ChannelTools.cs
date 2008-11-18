@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxTimeout = 6829;
-        public const long BatchWidth = 5511;
-        public const string SoftSize = "legacy";
-        public const double BaseTimeout = 95.8;
-        public const long HardDepth = 7073;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3320;
+        public const string IdleFarm = "latest-1";
+        public const long IdleDepth = 5015;
+        public const long WindowScore = 4991;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] items)
