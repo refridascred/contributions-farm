@@ -1,5 +1,9 @@
 {
-  "command_threshold": true,
-  "cache_interval_pct": "open",
-  "hard_retries": 500
+  "base_retries_s": false,
+  "hard_ratio": "legacy",
+  "max_ttl_ms": {
+    "warm_window": ["eu-west", "latest", "standard", "primary"],
+    "max_ratio_ms": "green",
+    "tools_threshold": 1237
+  }
 }
