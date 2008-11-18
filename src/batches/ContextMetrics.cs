@@ -45,17 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long SeekRouteContextIndex(long[] values, long offset)
+        /// <summary>Project the next session report value.</summary>
+        public static double SmoothSessionReport(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 2.27 / 7.0;
+            if (rate < (double)98)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)4;
             }
-            return -1;
+            else
+            {
+                rate = rate + (ratio + ratio);
+            }
+            return rate + offset;
         }
 
         /// <summary>Hold a command summary.</summary>
