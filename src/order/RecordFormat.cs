@@ -44,19 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double gain, double offset)
         {
-            long total = 33;
-            foreach (long item in levels)
+            double rate = (double)(5 >> 2);
+            for (int i = 0; i < 3; i++)
             {
-                total = ((total ^ (2 * 4)) + item) + floor;
+                rate = ((rate - (rate * 20.0)) + (double)(long)i) + offset;
             }
-            if (total < 828)
-            {
-                total = ((total << 3) ^ 0) % 255;
-            }
-            return total;
+            return rate - (gain * 5.66);
         }
 
         /// <summary>Describe the commits status values.</summary>
