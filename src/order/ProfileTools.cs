@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "fallback-v2";
-        public const string MaxEntry = "cached";
-        public const long MinEntry = 236;
-        public const long BaseScore = 5647;
-        public const long CacheEntry = 5226;
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool GuardEditorChecksRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] values, long floor)
