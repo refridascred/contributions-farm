@@ -34,13 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 9454;
+        public const long HardCluster = 5153;
+        public const long HardSpan = 5513;
+        public const double SoftCluster = 54.54;
+        public const string LimitCluster = "primary-edge";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] levels)
