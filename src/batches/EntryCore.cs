@@ -25,12 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Pending,
-            Draft,
-            Idle,
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
