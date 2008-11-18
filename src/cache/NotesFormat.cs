@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count support window pairs that satisfy a relation.</summary>
-        public static long OverlapSupportWindowCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 3621;
+        public const double IdleCache = 46.34;
+        public const string BurstCache = "local";
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
