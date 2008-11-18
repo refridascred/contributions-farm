@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] items, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
