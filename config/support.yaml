@@ -1,8 +1,4 @@
 # support settings
-burst_size_s: local
-sync_delay_ms: green
-min_retries_pct:
-  - 175
-  - 148
-  - 263
-dry_run: true
+route_capacity: 100
+compress: 59.16
+githubfarm_threshold: 100
