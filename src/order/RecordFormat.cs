@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a support summary.</summary>
