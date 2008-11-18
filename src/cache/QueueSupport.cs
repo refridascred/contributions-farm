@@ -25,19 +25,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] data, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
