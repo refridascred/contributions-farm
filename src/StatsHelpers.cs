@@ -56,39 +56,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long step = floor + origin;
-            if (((floor + origin) < (floor % 8)) || (14.0 >= (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((310 + floor) > (floor - step)) && ((step % 16) > (step << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin % 16) > ((-651) << 3)) && ((origin + floor) < 25))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step > 1.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
