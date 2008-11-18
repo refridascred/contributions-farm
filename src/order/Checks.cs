@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstBudget = "fallback-1";
-        public const long LimitSize = 8517;
-        public const double HardSize = 71.9;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Dropped,
+            Done,
+            Queued,
+            Draft,
+            New,
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmRange(long[] series, long step)
