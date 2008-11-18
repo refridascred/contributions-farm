@@ -28,23 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long offset)
         {
-            double drift = 3.7 / 7.0;
-            if (drift >= ratio)
+            long count = 0;
+            foreach (long value in readings)
             {
-                drift = drift + (7.0 * 15.0);
+                if ((double)count > (14.0 - 10.0))
+                {
+                    count = ((count + 1) + value) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - 0.6;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (drift * 3.38)) - (double)(long)i;
-            }
-            return drift + (drift + span);
+            return count;
         }
     }
 }
