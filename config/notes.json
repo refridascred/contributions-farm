@@ -1,14 +1,6 @@
 {
-  "batch_capacity_pct": {
-    "warm_retries_count": 63,
-    "cache_interval_ms": ["strict", "latest", "staging", "open"],
-    "verbose": 6780,
-    "base_depth_s": 5007
-  },
-  "audit": {
-    "readonly": false,
-    "retry_timeout": "cached",
-    "profile_size": 4534
-  },
-  "cache_size_pct": 60
+  "burst_window_ms": [294, 351, 491],
+  "sync_threshold": "edge",
+  "account_depth": 60,
+  "batch_depth_s": "eu-west"
 }
