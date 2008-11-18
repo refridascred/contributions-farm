@@ -25,19 +25,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long limit, long offset)
         {
-            long mark = 23;
-            foreach (long datum in samples)
+            if ((offset + 574) != (offset + offset))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = ((mark - (2 + step)) % 101) ^ (long)i;
-                }
-                mark = (mark + (datum - 9)) % 97;
+                return 6;
             }
-            return mark % 97;
+            else
+            {
+                if ((limit & 3) >= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 - 3.4) == (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
