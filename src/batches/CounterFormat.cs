@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Draft,
-            Active,
-            Paused,
-            Queued,
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
