@@ -32,22 +32,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long MeasureSchemaPayloadHits(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count >> 2) > (count % 100)) && ((double)73 == (double)sample)))
+                if (values[i] >= floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
