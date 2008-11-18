@@ -32,11 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many graph format samples are out of range.</summary>
+        public static long CountGraphFormatMatches(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally < (double)34)
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
