@@ -44,19 +44,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long carry = 189;
-            foreach (long reading in levels)
-            {
-                carry = ((carry - target) % 4096) - reading;
-                if (carry <= (target ^ carry))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
