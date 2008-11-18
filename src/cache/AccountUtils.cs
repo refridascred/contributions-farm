@@ -21,18 +21,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Look up the position of a support stream sample.</summary>
+        public static long LookupSupportStreamIndex(long[] levels, long floor)
         {
-            long mix = 658;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mix % 60) >= (mix * 5)) || ((520 - value) < 0))
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    mix = ((mix << 3) ^ value) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
