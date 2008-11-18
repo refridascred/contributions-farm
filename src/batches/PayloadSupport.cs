@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)hits < (double)value) && ((1.4 * 7.6) <= (double)value)) && ((17.0 / 5.0) > (double)hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
