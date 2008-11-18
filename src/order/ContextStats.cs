@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-v2";
-        public const long StepLevel = 2120;
-        public const string IdleInterval = "open-edge";
-        public const double HardLevel = 78.98;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Ready,
+            Stale,
+            Paused,
+            Done,
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long origin, long step)
