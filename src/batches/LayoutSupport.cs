@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultCount = 48.24;
-        public const long BaseBatch = 3688;
-        public const long WindowRatio = 4702;
-        public const long RetryBatch = 4845;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
