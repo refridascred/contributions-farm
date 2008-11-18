@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepRatio = 7200;
+        public const double LimitSpan = 54.74;
+        public const long CacheSupport = 7898;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double scale, double floor)
