@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((1.0 - 1.0) >= (14.0 / 4.0))
+                if (sample > origin)
                 {
-                    matches = (matches + 1) + value;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the format phase values.</summary>
