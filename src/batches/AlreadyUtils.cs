@@ -32,19 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi context entry stays within the limit.</summary>
-        public static bool ValidateContributiContextRange(long[] series, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if (((floor + floor) != (floor & 255)) && ((floor * 5) != (floor + 0)))
             {
-                if (datum <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((floor2 * 2) < (floor & 15))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the channel class values.</summary>
