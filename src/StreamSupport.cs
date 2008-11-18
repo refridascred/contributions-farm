@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultCount = 23.04;
-        public const long CacheNotes = 7161;
-        public const long RetryNotes = 355;
-        public const long RetryTimeout = 5121;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long limit)
+        {
+            long mark = 15;
+            foreach (long entry in data)
+            {
+                if ((mark + limit) < mark)
+                {
+                    mark = (mark - limit) ^ entry;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = (mark << 3) ^ limit;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
