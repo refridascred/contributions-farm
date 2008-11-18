@@ -1,7 +1,9 @@
-id,owner,region
-1,574,258
-2,393,latest
-3,primary,latest
-4,97.76,5.9
-5,42.44,green
-6,green,799
+id,region,weight,level
+1,356,cached,94
+2,538,61.46,86
+3,562,stable,87.26
+4,primary,48,211
+5,12.46,670,911
+6,4.37,157,636
+7,latest,cached,open
+8,edge,249,485
