@@ -39,22 +39,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long total = 528;
-            foreach (long value in items)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((total < (value + total)) && ((value * 5) < (total - total)))
-                {
-                    total = total - value;
-                }
+                total = (total ^ limit) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (total > 29)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total % 97;
+            return total;
         }
     }
 }
