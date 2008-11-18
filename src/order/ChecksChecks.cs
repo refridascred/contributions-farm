@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double IdleTimeout = 6.36;
         public const double StepDepth = 17.0;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Draft,
-            Closed,
-            Locked,
-            Idle,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
