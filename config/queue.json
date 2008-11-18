@@ -1,7 +1,13 @@
 {
-  "cache_window": ["strict", "strict", "green", "blue"],
-  "hard_ttl_pct": [289, 123, 499],
-  "context_ratio": 9885,
-  "cache_limit": "green",
-  "enabled": 500
+  "retry_size_s": true,
+  "default_ttl_count": "blue",
+  "max_interval": {
+    "default_interval_s": 61,
+    "flush_limit": "legacy",
+    "verbose": true,
+    "batch_ratio_pct": [34, 289],
+    "order_depth": false,
+    "sync_threshold_pct": "primary"
+  },
+  "default_size": false
 }
