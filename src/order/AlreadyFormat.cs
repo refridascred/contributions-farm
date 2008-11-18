@@ -19,11 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long carry = 2;
+            foreach (long value in levels)
+            {
+                carry = (((carry * 3) + (96 * 5)) % 65521) - value;
+            }
+            if (carry < 234)
+            {
+                carry = ((carry << 3) ^ (carry + 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
