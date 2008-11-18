@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Match up metrics notes samples.</summary>
+        public static long OverlapMetricsNotesCount(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum > 5.97)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
