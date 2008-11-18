@@ -42,10 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 2939;
-        public const long BaseFactor = 2396;
-        public const double MinTimeout = 46.25;
+        /// <summary>Audit batches contributi readings against a rule.</summary>
+        public static long AuditBatchesContributiMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 8) < datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
