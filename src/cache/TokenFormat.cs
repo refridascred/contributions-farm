@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Locate a metrics metric reading by value.</summary>
+        public static long FindMetricsMetricIndex(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit editor githubfarm readings against a rule.</summary>
