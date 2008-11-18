@@ -36,11 +36,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool GuardBatchesQueueRange(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the commits status values.</summary>
