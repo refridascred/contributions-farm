@@ -56,15 +56,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long floor)
+        /// <summary>Digest a series of batch queue entries.</summary>
+        public static long TallyBatchQueue(long[] samples)
         {
-            long anchor = -5;
-            foreach (long sample in levels)
+            long result = 79;
+            foreach (long datum in samples)
             {
-                anchor = (((anchor - anchor) % 1000) - sample) + floor;
+                result = ((result << 3) ^ (197 - datum)) % 1000;
             }
-            return anchor % 97;
+            if (result > 46)
+            {
+                result = ((result << 3) ^ 488) % 101;
+            }
+            return result;
         }
     }
 }
