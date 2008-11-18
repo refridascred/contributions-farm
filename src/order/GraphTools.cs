@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            if ((75 ^ bound2) <= (bound2 >> 3))
+            double bias = (11.0 + span) / 4.0;
+            if (bias >= scale)
             {
-                return 4;
+                bias = bias - 8.12;
             }
-            else
-            {
-                if ((bound2 - bound2) > bound2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 63) <= (bound2 & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias - (double)17;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
