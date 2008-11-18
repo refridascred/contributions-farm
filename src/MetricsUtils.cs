@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = 54;
+            foreach (long entry in readings)
             {
-                if (((3.06 >= (double)matches) && ((sample / 2) >= sample)) || !((double)sample > (9.4 - 6.5)))
+                if ((score / 5) <= (score - entry))
                 {
-                    matches = matches + 2;
+                    score = score + score;
                 }
             }
-            return matches;
+            if (score < 36)
+            {
+                score = (score << 2) ^ (score >> 4);
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
