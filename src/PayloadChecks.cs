@@ -44,23 +44,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
-        {
-            long score = 86;
-            foreach (long item in items)
-            {
-                if ((7.0 / 9.0) <= (2.8 + 9.0))
-                {
-                    score = (score - (item * 2)) % 4096;
-                }
-            }
-            if (score < 18)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "latest-edge";
+        public const long DefaultFactor = 8185;
+        public const long BatchSize = 1916;
 
         /// <summary>Find the first stats farm entry that matches the target.</summary>
         public static long SeekStatsFarmIndex(long[] series, long floor)
