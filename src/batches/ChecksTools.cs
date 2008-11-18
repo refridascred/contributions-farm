@@ -62,38 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long limit)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if ((floor + limit) >= (limit % 64))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((9.88 - 6.8) != (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor >> 5) >= (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 3) > (limit % 10))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Idle,
         }
     }
 }
