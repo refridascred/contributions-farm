@@ -37,19 +37,10 @@ namespace Common.Utilities
         public const long BurstSpan = 5383;
         public const long RetryRatio = 4824;
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long MeasureWindowTokenMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((seen % 97) < (53 - cell)))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryTimeout = 8571;
+        public const long LimitFactor = 4018;
+        public const long WindowSpan = 7224;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryMatches(long[] series, long limit)
