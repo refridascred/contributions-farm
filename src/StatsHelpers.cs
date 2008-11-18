@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double bias)
+        /// <summary>Validate editor tools readings against a bound.</summary>
+        public static bool VerifyEditorToolsLimits(long[] samples, long step)
         {
-            double gain = (double)((-51) - 9);
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                gain = ((gain - (double)57) + (double)(long)i) - bias;
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (rate - 6.96);
+            return valid;
         }
 
         /// <summary>Rank report input into a small class.</summary>
