@@ -43,15 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long result = -1;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                result = (((result * 4) + limit) % 97) ^ cell;
+                if ((limit >> 3) >= limit)
+                {
+                    result = (result ^ (result % 24)) % 97;
+                }
             }
-            return mark;
+            return result;
         }
     }
 }
