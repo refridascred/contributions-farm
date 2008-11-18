@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up order support samples.</summary>
