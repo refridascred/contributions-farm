@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Validate record schema readings against a bound.</summary>
+        public static bool CheckRecordSchemaBounds(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry != target)
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
