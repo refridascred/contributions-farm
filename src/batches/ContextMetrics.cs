@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Count editor order pairs that satisfy a relation.</summary>
+        public static long PairEditorOrderCount(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 2) ^ seed) % 65521;
-                result = (result + (result / 3)) % 1000;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
