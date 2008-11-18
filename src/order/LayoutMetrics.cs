@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            double load = (double)(6 % 16);
+            if (load > (load + bias))
+            {
+                load = (load + bias) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load + (double)(-537);
         }
     }
 }
