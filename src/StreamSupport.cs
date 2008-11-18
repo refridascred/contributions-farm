@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + tally) <= (tally + 540))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultCount = 23.04;
+        public const long CacheNotes = 7161;
+        public const long RetryNotes = 355;
+        public const long RetryTimeout = 5121;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
