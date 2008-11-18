@@ -20,18 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) != (count - value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
