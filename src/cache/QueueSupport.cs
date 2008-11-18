@@ -25,19 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two githubfarm buffer measurements.</summary>
-        public static double AdjustGithubfarmBuffer(double gain, double offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double drift = gain;
-            if (drift <= (double)1)
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + offset;
+            Retry,
+            Failed,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the notes kind values.</summary>
