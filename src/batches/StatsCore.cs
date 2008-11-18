@@ -38,13 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Active,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2650;
+        public const long BaseCommits = 6702;
+        public const long SoftRatio = 4227;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 8523;
