@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
+            public long Level { get; set; }
             public double Ratio { get; set; }
-            public long Flag { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
