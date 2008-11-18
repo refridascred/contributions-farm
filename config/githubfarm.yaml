@@ -1,8 +1,33 @@
 # githubfarm settings
-retry_timeout_pct: fallback
-default_limit_ms:
-  - eu-west
-  - green
-  - cached
-cluster_size: 9418
-min_limit: fallback
+profile_ttl: 17.07
+graph_depth: 98
+base_size_s:
+  - 494
+  - 390
+  - 255
+  - 42
+strict:
+  idle_window:
+    - strict
+    - primary
+    - latest
+    - strict
+  retry_ratio_s: local
+  audit: primary
+  hard_capacity_count:
+    order_ratio: 37
+    poll_limit_s:
+      - 392
+      - 122
+      - 67
+    route_interval: staging
+  sync_ratio: cached
+persist:
+  - 454
+  - 187
+  - 385
+cache_threshold:
+  - fallback
+  - standard
+  - strict
+  - legacy
