@@ -1,5 +1,5 @@
 {
-  "persist": [417, 137, 275],
-  "verbose": 13.15,
-  "max_retries": 5724
+  "sync_interval_pct": 1791,
+  "base_delay_pct": false,
+  "sync_ttl_count": 250
 }
