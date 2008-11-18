@@ -40,31 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long mix = 62;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seed + 723) >= ((long)levels.Length + 618)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix ^ (mix + entry);
-                    mix = ((mix << 2) ^ (mix ^ 1)) % 97;
-                }
-                if ((mix << 2) != (mix * 2))
-                {
-                    mix = mix ^ (seed - entry);
-                }
-                if ((double)seed > (8.3 - 7.04))
-                {
-                    mix = mix ^ (seed & 127);
-                }
-                else
-                {
-                    mix = mix ^ (92 * 2);
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
