@@ -53,19 +53,21 @@ namespace Common.Utilities
             return (gain + (double)1) + span;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Match up cache already samples.</summary>
+        public static long PairCacheAlreadyCount(long[] series)
         {
-            double weight2 = weight * 9.25;
-            if (weight2 <= (double)89)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 + weight2) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - (1.7 + weight);
-            }
-            return weight2 - 5.3;
+            return hits;
         }
     }
 }
