@@ -39,14 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate stats cluster readings against a bound.</summary>
+        public static bool GuardStatsClusterLimits(long[] readings, long seed)
         {
-            Active,
-            New,
-            Closed,
-            Paused,
-            Done,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
