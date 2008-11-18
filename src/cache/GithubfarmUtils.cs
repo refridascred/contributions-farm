@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] levels)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + 7) >= matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
