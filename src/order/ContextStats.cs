@@ -22,32 +22,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank entry stats input into a small class.</summary>
-        public static long GradeEntryStats(long step, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            long bound = step ^ origin;
-            if (origin > (bound << 3))
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound + bound) > (origin ^ 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 12) < (step - (-80)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
