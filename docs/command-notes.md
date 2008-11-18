@@ -1,11 +1,14 @@
 # Command notes
 
-Keep layout and queue names short and lowercase.
-A commits that stays idle for too long is moved to the report list.
+Run the buffer check before changing any context limits.
+Defaults for checks live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
+
+Keep githubfarm and payload names short and lowercase.
+Each already is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Document new editor fields
-- Review tools limits each release
-- Validate channel input early
-- Prefer format defaults
+- Prefer cache defaults
+- Validate route input early
+- Log every metrics change
