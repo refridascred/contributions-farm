@@ -25,31 +25,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long limit, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] levels, long limit)
         {
-            if ((offset + 574) != (offset + offset))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 3) >= offset)
+                if (matches <= 90)
                 {
-                    return 0;
+                    matches = ((matches + 2) ^ cell) + limit;
                 }
                 else
                 {
-                    if ((4.0 - 3.4) == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
