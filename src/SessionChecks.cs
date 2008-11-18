@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((((long)levels.Length > cell) || ((matches + cell) >= (matches * 3))) || !((double)matches >= (2.8 + 6.43)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 9445;
+        public const long MinCluster = 2491;
+        public const long BaseFactor = 6745;
+        public const double DefaultFactor = 84.0;
+        public const long CacheCluster = 7840;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleScore = "alpha-v2";
