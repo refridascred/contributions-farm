@@ -32,11 +32,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepDepth = 5892;
-        public const long CacheLayout = 9716;
-        public const long IdleLayout = 5452;
-        public const long LimitLayout = 3575;
-        public const long BaseLayout = 7692;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
