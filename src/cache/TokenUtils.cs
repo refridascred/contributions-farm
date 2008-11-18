@@ -30,13 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            Closed,
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
