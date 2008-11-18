@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Audit contributi schema readings against a rule.</summary>
+        public static long CountContributiSchemaHits(long[] values)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long sample in values)
             {
-                if (datum >= (29 + datum))
+                if ((count * 3) == (count + sample))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
