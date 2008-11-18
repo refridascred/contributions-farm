@@ -69,22 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long AuditProfileSchemaGaps(long[] samples, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 95;
+            foreach (long entry in data)
             {
-                if (bound >= (entry % 8))
+                if ((mix % 60) < (3 * 4))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix * 3) + entry) % 101;
                 }
             }
-            return tally;
+            if (mix > 384)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix;
         }
     }
 }
