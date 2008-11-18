@@ -67,24 +67,23 @@ namespace Common.Utilities
         public const long WindowCounter = 5213;
         public const string SoftWidth = "local";
 
-        /// <summary>Grade a cluster route value against two limits.</summary>
-        public static long BucketClusterRoute(long target, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long origin)
         {
-            if (target >= (target << 3))
+            long total = 8;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((16.0 / 6.0) >= (double)origin) && ((target + origin) < origin))
+                total = (((total * 4) + total) - entry) - origin;
+                if ((7.9 + 17.0) > (double)total)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    total = (total - (total + total)) % 101;
                 }
             }
+            if (total > 69)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
