@@ -76,13 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Done,
+            Synced,
+            Queued,
         }
     }
 }
