@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long bound)
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long TallyCounterFormatHits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                if ((9.99 - 9.42) > (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - datum) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
