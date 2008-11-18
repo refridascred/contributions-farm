@@ -1,10 +1,20 @@
 {
-  "soft_delay_s": {
-    "report_size": true,
-    "counter_ratio": 6190,
-    "max_ratio": 889,
-    "default_interval_ms": [370, 209, 122]
+  "contributi_ttl": {
+    "counter_delay": 9839,
+    "persist": ["blue", "staging", "green", "eu-west"],
+    "account_size": "staging",
+    "sync_size": 69.88,
+    "soft_interval": true
   },
-  "soft_ratio_s": "primary",
-  "audit": "green"
+  "verbose": ["stable", "latest"],
+  "max_capacity_s": false,
+  "readonly": 10,
+  "compress": {
+    "max_ttl_s": ["edge", "stable", "stable", "staging"],
+    "retry_retries": 250,
+    "dry_run": 31.67,
+    "poll_retries_pct": ["fallback", "local", "blue"],
+    "session_ttl": ["green", "green", "local"]
+  },
+  "default_capacity": 7430
 }
