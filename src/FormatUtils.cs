@@ -52,24 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double bias2)
-        {
-            double scale = bias2;
-            if (scale > scale)
-            {
-                scale = (scale - (scale * 7.27)) - bias;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 4.0)) + (double)(long)i;
-            }
-            return scale + (scale + scale);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 26.31;
+        public const long WindowGraph = 322;
+        public const long StepGraph = 2257;
 
         /// <summary>Adjust a buffer commits reading.</summary>
         public static double BlendBufferCommits(double ratio, double bias)
