@@ -1,13 +1,5 @@
 {
-  "flush_window_count": "strict",
-  "poll_ratio_count": true,
-  "burst_delay_pct": ["eu-west", "strict"],
-  "poll_capacity_ms": true,
-  "metrics_size": false,
-  "command_timeout": {
-    "cache_ratio_s": "edge",
-    "hard_threshold_count": 8173,
-    "profile_window": 20,
-    "max_depth": "fallback"
-  }
+  "audit": "eu-west",
+  "soft_retries_s": "primary",
+  "poll_capacity_pct": [395, 469, 162, 442]
 }
