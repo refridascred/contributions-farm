@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long MeasureAlreadySessionGaps(long[] values, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed - value) <= (seed + 1))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
