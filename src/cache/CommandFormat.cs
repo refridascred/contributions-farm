@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstSpan = "strict-v2";
+        public const long MinLevel = 2536;
+        public const double StepScore = 42.1;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] samples, long offset)
