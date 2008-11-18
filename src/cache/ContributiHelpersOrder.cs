@@ -20,32 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long offset)
-        {
-            if (offset <= (offset + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((-5) <= (origin << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= (origin % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 9431;
+        public const long RetryRecord = 9562;
+        public const long IdleBudget = 8285;
+        public const long MaxRecord = 3454;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
