@@ -63,11 +63,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "stable-edge";
-        public const string BaseInterval = "legacy-edge";
-        public const double SoftCluster = 7.3;
-        public const long HardInterval = 1563;
-        public const long MaxCluster = 2350;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long limit, long bound)
+        {
+            long step = limit + bound;
+            if ((double)step <= 5.53)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 5) < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
