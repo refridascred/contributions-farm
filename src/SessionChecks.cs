@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "standard-1";
-        public const double WindowReport = 75.89;
-        public const long HardReport = 8920;
+        /// <summary>Classify a context counter pair into a bucket.</summary>
+        public static long GradeContextCounter(long floor, long target)
+        {
+            long gap = floor ^ target;
+            if (target >= gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((870 >> 5) == (target + gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap * 4) >= gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (1 % 60))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit stream stats readings against a rule.</summary>
         public static long MeasureStreamStatsMatches(long[] values)
