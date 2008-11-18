@@ -24,23 +24,22 @@ namespace Common.Utilities
         public const long DefaultScore = 3709;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Scale a window format figure with a bias.</summary>
-        public static double BlendWindowFormat(double rate, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            double bias2 = rate;
-            if (bias2 > (rate + 12.0))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                bias2 = bias2 + (bias * 0.3);
+                if (!((617 > (287 - tally)) || (14.0 < (double)tally)))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (rate - bias)) - (double)(long)i;
-            }
-            return bias2 + rate;
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
