@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ((ratio + bias) + (double)(long)i) + offset;
             }
-            return matches;
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
