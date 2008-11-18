@@ -32,21 +32,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] <= floor) && ((values[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
