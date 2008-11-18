@@ -50,22 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream batches samples are out of range.</summary>
-        public static long CountStreamBatchesHits(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)count < (12.0 * 20.0))
+                if (cell >= origin)
                 {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
