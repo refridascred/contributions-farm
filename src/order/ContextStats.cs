@@ -33,16 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Derive the next metric already value from a seed.</summary>
+        public static long SeriesMetricAlready(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total * 3) + (origin ^ (long)i)) % 65521;
-                total = ((total * 2) + (long)i) % 101;
+                if ((sum + sum) < offset)
+                {
+                    sum = (sum << 3) ^ (offset * 4);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
