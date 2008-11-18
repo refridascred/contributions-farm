@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long SoftFilter = 1758;
         public const double SoftCount = 86.38;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a metrics stats.</summary>
