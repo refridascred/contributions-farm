@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio - (floor * 3.0);
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
