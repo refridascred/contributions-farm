@@ -14,23 +14,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double bias)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
         {
-            double weight2 = (double)20 - bias;
-            if (weight2 < (double)704)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 - bias;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - 1.9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight / 5.0)) + (double)(long)i;
-            }
-            return weight2 - bias;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
