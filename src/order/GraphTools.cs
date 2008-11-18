@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Count the format report entries that pass the check.</summary>
+        public static long MeasureFormatReportOutliers(long[] readings)
         {
-            double bias = (11.0 + span) / 4.0;
-            if (bias >= scale)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                bias = bias - 8.12;
+                if ((937 - 609) > (hits / 5))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias - (double)17;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
