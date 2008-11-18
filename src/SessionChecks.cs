@@ -31,21 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Roll a filter cluster counter forward.</summary>
+        public static long StepFilterCluster(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 3) + ((long)i / 3)) % 101;
+                total = total ^ (step >> 4);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
