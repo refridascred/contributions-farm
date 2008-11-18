@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const long MinSupport = 2164;
         public const long BatchSupport = 8330;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((((long)data.Length * 4) >= (87 + 8)) && (count > (count ^ value)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the cache notes series from a seed.</summary>
