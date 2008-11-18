@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a notes stream value against two limits.</summary>
-        public static long ClassifyNotesStream(long step, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            long prev = step + limit;
-            if ((6 >> 3) > (prev ^ prev))
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                mark = (mark + (mark * 5)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (prev < (-571))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >= (limit >> 4)) && ((prev + prev) > limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
