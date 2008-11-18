@@ -41,12 +41,13 @@ namespace Common.Utilities
             return load - (double)936;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            Closed,
+            Stale,
+            New,
+            Done,
         }
     }
 }
