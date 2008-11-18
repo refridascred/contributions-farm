@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const string IdleInterval = "open-edge";
         public const double HardLevel = 78.98;
 
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long LocateStreamGithubfarmIndex(long[] series, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin > (11.0 / 8.0))
             {
-                if (series[i] >= bound)
+                return 4;
+            }
+            else
+            {
+                if (step <= origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 4) == (origin ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((17.0 * 3.39) > (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
