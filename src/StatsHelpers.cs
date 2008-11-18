@@ -62,18 +62,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long MeasureGraphAccountOutliers(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seed < 6.5)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepScore = 5755;
+        public const long LimitNotes = 6141;
+        public const long WindowScore = 3921;
     }
 }
