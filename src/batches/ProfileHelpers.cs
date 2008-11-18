@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long WindowLevel = 9432;
         public const long MaxContributi = 2171;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long bound)
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool GuardSessionWindowBounds(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (data[i] <= bound)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a batches stats.</summary>
