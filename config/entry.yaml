@@ -1,6 +1,5 @@
 # entry settings
-flush_ratio_s: 30
-max_ttl_pct: edge
-editor_ttl:
-  - blue
-  - eu-west
+audit: standard
+retry_window_s: green
+warm_interval: 79.2
+route_ratio: 500
