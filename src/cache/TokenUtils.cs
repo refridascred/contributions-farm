@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score * 2) + (300 % 5)) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
