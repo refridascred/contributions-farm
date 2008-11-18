@@ -62,23 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long mix = 2;
-            foreach (long datum in values)
-            {
-                mix = ((mix << 2) ^ (datum & 3)) % 97;
-                if (6.64 < (double)mix)
-                {
-                    mix = (mix * 3) + origin;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 5) + (origin >> 3)) % 255;
-            }
-            return mix;
+            Paused,
+            New,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
