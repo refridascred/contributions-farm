@@ -1,14 +1,6 @@
 {
-  "githubfarm_threshold": 3959,
-  "min_limit": {
-    "min_interval_count": 91,
-    "max_delay_ms": 5,
-    "metric_window": "primary",
-    "already_size": 570,
-    "enabled": [196, 82, 448],
-    "readonly": 92.94
-  },
-  "burst_threshold": "latest",
-  "record_threshold": "cached",
-  "cache_retries_pct": 7.5
+  "context_delay": 81.64,
+  "hard_capacity_pct": 1027,
+  "dry_run": "cached",
+  "base_delay_count": 90.87
 }
