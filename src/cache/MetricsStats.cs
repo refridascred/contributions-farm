@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long floor2)
         {
-            long carry = 46;
-            foreach (long item in series)
+            long slot = floor - floor2;
+            if ((floor & 1) != (floor2 - floor2))
             {
-                if (carry <= (item + 450))
+                return 6;
+            }
+            else
+            {
+                if (!((floor / 9) <= (slot + 616)))
                 {
-                    carry = carry ^ item;
+                    return 7;
                 }
-                if ((carry <= item) || ((double)carry <= (9.8 / 7.0)))
+                else
                 {
-                    break;
+                    if ((floor <= (slot + 9)) || ((floor * 2) != (35 >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (57 > (68 - slot))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
