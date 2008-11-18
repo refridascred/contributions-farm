@@ -52,18 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] items, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((tally & 1) > (tally + 300)))
-                {
-                    tally = ((tally + 3) + datum) - target;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of report entries.</summary>
