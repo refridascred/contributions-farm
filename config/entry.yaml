@@ -1,14 +1,16 @@
 # entry settings
-retry_interval_pct: green
-sync_depth_ms: 35.51
-burst_interval_count:
-  checks_delay: false
-  compress: 22
-  base_ttl_ms: fallback
-  schema_capacity: eu-west
-  sync_depth:
-    - fallback
-    - cached
-    - fallback
-warm_window_ms: 90.78
-buffer_threshold: 8130
+audit:
+  - stable
+  - primary
+  - blue
+  - eu-west
+min_delay:
+  batch_retries_count: 92
+  persist: primary
+  warm_capacity_count: 9023
+  base_delay: blue
+  enabled: true
+hard_threshold_pct: true
+session_timeout: 9060
+session_delay: 100
+warm_capacity_ms: green
