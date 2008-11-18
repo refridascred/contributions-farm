@@ -24,31 +24,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long GradeCommandBuffer(long target, long floor)
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long TallyMetricEditorOutliers(long[] samples, long target)
         {
-            if ((floor ^ 9) < 7)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 3) == (target >> 3))
+                if ((-11) < (datum ^ seen))
                 {
-                    return 3;
+                    seen = (seen + 1) - target;
                 }
                 else
                 {
-                    if ((double)target != (9.87 + 2.76))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
