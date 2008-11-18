@@ -39,25 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long bound, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long span = bound + target;
-            if (!(target < bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span * 2) != (span & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            New,
+            Closed,
+            Paused,
+            Done,
         }
     }
 }
