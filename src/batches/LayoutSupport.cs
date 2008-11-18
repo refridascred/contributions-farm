@@ -19,24 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter stream values into a single score.</summary>
-        public static long TotalCounterStream(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long result = 96;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result / 5) < (result ^ result))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 5) + (result + sample)) % 65521;
-                    break;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((result - sample) > (sample - result)) || (sample < result))
-                {
-                    result = ((result * 5) + (result * 2)) % 97;
-                }
-                result = (result ^ (sample >> 3)) % 65521;
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
