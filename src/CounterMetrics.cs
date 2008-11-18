@@ -37,10 +37,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowTimeout = 4776;
-        public const long BurstWidth = 1481;
-        public const double BurstInterval = 43.31;
-        public const string WindowRatio = "alpha-edge";
+        /// <summary>Grade a checks buffer value against two limits.</summary>
+        public static long RankChecksBuffer(long step, long origin)
+        {
+            if ((double)step != (9.4 * 8.01))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin >> 3) > (-9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step >= (5.1 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin % 60) == (step % 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
