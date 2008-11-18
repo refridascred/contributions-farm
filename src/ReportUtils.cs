@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the editor token entries that pass the check.</summary>
-        public static long MeasureEditorTokenMatches(long[] series)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((8.52 - 19.0) <= (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Adjust a report reading.</summary>
