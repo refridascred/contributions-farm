@@ -1,10 +1,20 @@
 # support settings
-burst_interval_pct: local
-batch_threshold_count:
-  - standard
-  - blue
-  - blue
-  - green
-soft_size_ms: edge
-cache_capacity: open
-farm_interval: true
+dry_run: fallback
+idle_size:
+  soft_depth_s: blue
+  session_threshold: 9297
+  stats_depth:
+    - standard
+    - primary
+  base_ttl_count: 18.34
+  profile_delay: true
+  warm_delay_pct: 1439
+verbose:
+  compress: 250
+  poll_ratio_pct: 87
+  stats_capacity: fallback
+  sync_window: 1136
+  payload_threshold: 5521
+  sync_retries: 72
+soft_threshold: 250
+min_timeout_ms: 75.04
