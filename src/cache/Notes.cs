@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            Failed,
-            Draft,
-            Paused,
-            Stale,
-            Queued,
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state ^ 0;
+                state = state + origin;
+                state = ((state << 3) ^ ((long)i % 60)) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
