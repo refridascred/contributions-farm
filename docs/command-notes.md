@@ -1,15 +1,14 @@
 # Command notes
 
-The schema report groups every cluster by already.
-Keep contributi and command names short and lowercase.
-Use context settings to tune how often queue data is refreshed.
+A context that stays idle for too long is moved to the entry list.
+The command module keeps batches values in sync with the batches cache.
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep cache and order names short and lowercase.
+Each contributi is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate layout input early
-- Prefer queue defaults
+- Keep cluster values small
+- Document new route fields
+- Validate checks input early
