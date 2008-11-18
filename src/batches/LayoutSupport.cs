@@ -46,11 +46,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 5406;
-        public const long HardBatches = 3775;
-        public const long MinBatches = 6346;
-        public const long BatchLevel = 6865;
-        public const double IdleBatches = 37.31;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
