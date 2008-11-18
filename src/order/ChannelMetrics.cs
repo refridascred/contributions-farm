@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a layout graph counter forward.</summary>
+        public static long DeriveLayoutGraph(long seed)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state + seed) % 65521;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Roll a support counter forward.</summary>
