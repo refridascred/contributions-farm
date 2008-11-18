@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 4476;
         public const long CacheSpan = 9494;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the context mode values.</summary>
