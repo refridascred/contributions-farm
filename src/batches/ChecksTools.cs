@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultWidth = 5123;
+        public const long WindowOrder = 4662;
+        public const string DefaultOrder = "primary";
+        public const string MinInterval = "legacy-1";
+        public const string LimitOrder = "standard-edge";
 
         /// <summary>Fold a list of graph support readings.</summary>
         public static long WeighGraphSupport(long[] items)
