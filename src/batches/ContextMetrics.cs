@@ -61,11 +61,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches stream entry stays within the limit.</summary>
-        public static bool ValidateBatchesStreamLimits(long[] readings, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long bound)
         {
             bool ok = true;
-            foreach (long value in readings)
+            foreach (long value in levels)
             {
                 if (value <= bound)
                 {
