@@ -39,39 +39,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long target)
-        {
-            long gap = seed + target;
-            if (92 <= (seed - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (7.37 + 8.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((gap >> 4) >= (target * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((gap - seed) == (target + gap))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 30.95;
+        public const double MinChecks = 8.53;
+        public const long IdleChecks = 1264;
     }
 }
