@@ -18,21 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up order support samples.</summary>
-        public static long PairOrderSupportCount(long[] readings)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
