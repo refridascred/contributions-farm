@@ -58,17 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long limit)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long MeasureBatchFilterHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                if ((4.0 + 5.0) != (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
