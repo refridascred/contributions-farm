@@ -48,12 +48,39 @@ namespace Common.Utilities
         public const long RetryRatio = 9073;
         public const long BatchTimeout = 57;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Rank support batch input into a small class.</summary>
+        public static long BucketSupportBatch(long floor, long target)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long delta = floor ^ target;
+            if (!((double)floor > 8.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.81 * 17.0) >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)22 < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)delta != (5.2 / 7.0)) || (target <= (delta >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support order readings against a bound.</summary>
