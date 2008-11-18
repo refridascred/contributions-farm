@@ -78,15 +78,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double span)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double bias = 6.1;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias - (double)56) + (double)(long)i) + span;
-            }
-            return bias - weight;
+            Active,
+            Failed,
+            New,
+            Locked,
+            Pending,
         }
     }
 }
