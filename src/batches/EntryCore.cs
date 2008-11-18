@@ -59,17 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long seed)
+        /// <summary>Validate format filter readings against a bound.</summary>
+        public static bool CheckFormatFilterLimits(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
