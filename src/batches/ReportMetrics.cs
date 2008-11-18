@@ -30,9 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 8.32;
-        public const string WindowEntry = "strict-v2";
-        public const long HardRatio = 6068;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long floor)
+        {
+            if (floor <= (floor - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > (5.8 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) != (origin - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
