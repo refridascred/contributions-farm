@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Synced,
-            New,
-            Dropped,
-            Active,
+            Closed,
+            Queued,
+            Idle,
         }
     }
 }
