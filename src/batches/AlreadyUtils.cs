@@ -42,19 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry already entry stays within the limit.</summary>
-        public static bool ValidateEntryAlreadyBounds(long[] readings, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
