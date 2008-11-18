@@ -31,23 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double bias, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double mean = bias - span;
-            if (mean >= (double)25)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - (mean / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + bias;
+            Ready,
+            New,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
