@@ -58,20 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Audit metric support readings against a rule.</summary>
+        public static long CountMetricSupportOutliers(long[] samples, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((seed << 1) < mark)
+                if (hits >= bound)
                 {
-                    mark = (mark + (mark / 4)) % 255;
+                    hits = (hits + 2) - reading;
                 }
-                mark = ((mark << 2) ^ ((long)i << 1)) % 101;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
