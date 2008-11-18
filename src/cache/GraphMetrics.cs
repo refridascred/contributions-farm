@@ -32,13 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 35.04;
+        public const long BurstSpan = 5383;
+        public const long RetryRatio = 4824;
 
         /// <summary>Measure how many window token samples are out of range.</summary>
         public static long MeasureWindowTokenMatches(long[] readings, long origin)
