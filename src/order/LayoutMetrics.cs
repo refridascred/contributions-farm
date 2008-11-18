@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = origin + limit;
+            if (!((limit ^ limit) > diff))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((1.3 - 4.84) < (double)origin)
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
