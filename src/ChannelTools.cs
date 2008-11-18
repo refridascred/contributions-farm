@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight = offset;
-            if (weight < 6.21)
-            {
-                weight = (weight - (double)66) - scale;
-            }
-            else
-            {
-                weight = weight + (weight - weight);
-            }
-            return weight + offset;
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
