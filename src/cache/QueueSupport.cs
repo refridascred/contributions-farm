@@ -33,12 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseTimeout = 3.58;
+        public const long IdleWidth = 7589;
+        public const long CacheTimeout = 1565;
     }
 }
