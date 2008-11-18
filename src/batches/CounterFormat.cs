@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long DigestCounterContext(long[] data)
-        {
-            long mark = 0;
-            foreach (long sample in data)
-            {
-                if (mark < (968 + 902))
-                {
-                    mark = ((mark << 3) ^ (sample << 3)) % 101;
-                }
-            }
-            if (mark < 16)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 8943;
+        public const string BurstWidth = "open-edge";
+        public const long BaseCache = 6026;
+        public const string WindowCache = "fallback-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchSize = "standard";
