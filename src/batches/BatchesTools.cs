@@ -20,12 +20,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "stable-v2";
-        public const string LimitCount = "alpha";
-        public const long LimitFactor = 2111;
-        public const long StepFarm = 9384;
-        public const long IdleDepth = 4949;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long step)
+        {
+            if ((floor - floor) != (step + 962))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((10 ^ step) < floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 3) <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor * 4) >= (floor / 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] readings, long floor)
