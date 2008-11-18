@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long mix = 658;
+            foreach (long value in items)
             {
-                if (item < offset)
+                if (((mix % 60) >= (mix * 5)) || ((520 - value) < 0))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix << 3) ^ value) % 65521;
                 }
             }
-            return flag;
+            return mix % 97;
         }
     }
 }
