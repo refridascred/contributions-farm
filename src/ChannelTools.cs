@@ -26,19 +26,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order graph entry stays within the limit.</summary>
-        public static bool GuardOrderGraphLimits(long[] readings, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long span = bound + target;
+            if (!(target < bound))
             {
-                if (cell < floor)
+                return 0;
+            }
+            else
+            {
+                if ((span * 2) != (span & 63))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
