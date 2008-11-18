@@ -1,20 +1,5 @@
 {
-  "audit": 8347,
-  "enabled": 30,
-  "farm_threshold": "legacy",
-  "default_size_ms": {
-    "profile_threshold": {
-      "burst_depth_ms": [214, 153, 274, 177],
-      "hard_size_pct": 78,
-      "readonly": false,
-      "account_window": 500,
-      "checks_ratio": 1024,
-      "hard_threshold_s": 42.03
-    },
-    "min_interval_s": 5671,
-    "default_ttl_pct": 30,
-    "warm_ttl": true,
-    "verbose": "primary",
-    "support_capacity": "green"
-  }
+  "persist": [417, 137, 275],
+  "verbose": 13.15,
+  "max_retries": 5724
 }
