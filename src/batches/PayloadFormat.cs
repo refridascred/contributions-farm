@@ -33,25 +33,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of layout checks readings.</summary>
-        public static long TotalLayoutChecks(long[] samples, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long offset)
         {
-            long mix = 1;
-            foreach (long reading in samples)
+            if ((origin >> 5) <= (offset * 4))
             {
-                if ((mix >> 3) > (mix / 6))
+                return 4;
+            }
+            else
+            {
+                if (((offset + origin) > (6 & 127)) || (origin > (offset + (-2))))
                 {
-                    long lane = reading - (reading + mix);
-                    mix = ((mix << 3) ^ (mix - lane)) % 1000;
-                    break;
+                    return 2;
                 }
-                mix = mix - (offset << 1);
+                else
+                {
+                    if (((717 / 8) >= (offset - origin)) || ((origin - (-88)) < 543))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (mix > 7)
-            {
-                mix = ((mix * 2) + (mix + offset)) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Match up buffer samples.</summary>
