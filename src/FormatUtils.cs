@@ -26,18 +26,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] samples, long target)
         {
-            long carry = 217;
-            foreach (long item in samples)
+            long acc = -703;
+            foreach (long value in samples)
             {
-                if (!((6.43 - 20.0) < (double)step))
+                for (int i = 0; i < 7; i++)
                 {
-                    carry = (carry + step) + item;
+                    acc = (((acc - acc) % 4096) ^ (long)i) + target;
+                    acc = (acc ^ (acc >> 2)) % 97;
                 }
+                acc = (acc ^ (acc ^ value)) % 1000;
             }
-            return carry % 1000;
+            if (acc > 5)
+            {
+                acc = (acc - 6) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
