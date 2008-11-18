@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardDepth = 9922;
+        public const string RetryRatio = "cached-1";
+        public const long IdleLevel = 9923;
+        public const long CacheCommits = 3771;
+        public const string HardRatio = "staging-v2";
 
         /// <summary>Count the support filter entries that pass the check.</summary>
         public static long AuditSupportFilterHits(long[] values)
