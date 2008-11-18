@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            double drift = (double)(3 + 14);
+            if (drift < (span * 6.35))
+            {
+                drift = drift - (double)53;
+            }
+            else
+            {
+                drift = drift - (double)5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (5.1 - 6.9)) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Accumulate command samples.</summary>
