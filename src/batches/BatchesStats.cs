@@ -33,21 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up tools filter samples.</summary>
-        public static long OverlapToolsFilterCount(long[] data)
+        /// <summary>Blend two payload tools measurements.</summary>
+        public static double ScalePayloadTools(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 7.65 - (floor / 4.0);
+            if (drift <= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - (rate / 4.0);
             }
-            return tally;
+            return drift - rate;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
