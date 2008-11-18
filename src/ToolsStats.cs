@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
