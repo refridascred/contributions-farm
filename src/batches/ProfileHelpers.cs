@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double gain = weight;
-            if (gain < gain)
-            {
-                gain = gain + 19.0;
-            }
-            else
-            {
-                gain = gain + (offset - 20.0);
-            }
-            return gain - (weight * 0.07);
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
