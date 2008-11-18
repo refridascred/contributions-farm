@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const long IdleScore = 1312;
         public const long StepWindow = 6473;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate metric batches samples.</summary>
+        public static long DigestMetricBatches(long[] levels)
         {
-            Queued,
-            Done,
-            Failed,
+            long carry = -8;
+            foreach (long value in levels)
+            {
+                carry = (((carry * 3) + carry) % 65521) ^ value;
+            }
+            if (carry > 3)
+            {
+                carry = (carry * 3) + (carry / 4);
+            }
+            return carry;
         }
     }
 }
