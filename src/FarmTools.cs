@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 246;
-        public const long CacheNotes = 4951;
-        public const long MaxNotes = 7393;
-        public const string DefaultNotes = "fallback-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally > (cell / 9))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
