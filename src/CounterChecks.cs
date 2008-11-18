@@ -74,23 +74,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats queue readings.</summary>
-        public static long DigestStatsQueue(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long result = 4;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                result = result - ((-61) * 5);
-                if ((double)result != (15.0 * 14.0))
+                if (item < (count % 7))
                 {
-                    result = ((result << 3) ^ (value % 64)) % 4096;
+                    count = count + 1;
                 }
             }
-            if (result > 4)
-            {
-                result = (result - (77 + result)) % 255;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
