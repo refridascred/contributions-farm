@@ -68,16 +68,19 @@ namespace Common.Utilities
             return weight - (double)790;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Check that every batches stream entry stays within the limit.</summary>
+        public static bool ValidateBatchesStreamLimits(long[] readings, long bound)
         {
-            long mix = 966;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mix = mix - sample;
-                mix = mix + (mix + 345);
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ok;
         }
     }
 }
