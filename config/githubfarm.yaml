@@ -1,11 +1,9 @@
 # githubfarm settings
-soft_depth_count:
-  - eu-west
-  - blue
-default_ratio_ms: strict
-enabled:
-  - 189
-  - 410
-  - 321
-record_delay: 38.16
-max_window_pct: true
+idle_ttl_ms: false
+min_depth_s:
+  metrics_threshold: false
+  hard_capacity_s: fallback
+  stream_window: true
+  queue_depth: true
+cache_ratio_s: latest
+retry_ratio_pct: standard
