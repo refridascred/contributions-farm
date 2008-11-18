@@ -1,7 +1,5 @@
 {
-  "soft_interval_count": "staging",
-  "retry_ratio": "legacy",
-  "default_retries_ms": true,
-  "batch_timeout_s": 62,
-  "min_capacity_ms": 9
+  "channel_size": true,
+  "default_depth_count": "staging",
+  "verbose": 32
 }
