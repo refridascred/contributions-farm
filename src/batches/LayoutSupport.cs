@@ -19,14 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long origin2)
         {
-            Dropped,
-            Closed,
-            New,
-            Draft,
-            Active,
+            long edge = origin ^ origin2;
+            if ((0 * 4) <= (origin2 + origin2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin2 - origin) == (56 + origin)) || ((edge * 4) < (origin2 >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)edge == (double)87)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin2 + 41) <= (origin2 >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
