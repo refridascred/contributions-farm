@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = bound + seed;
+            if ((bound - seed) > (lane ^ seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)bound >= (6.0 - 1.9)))
                 {
-                    if ((values[i] ^ values[j]) < 9)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed <= (5.0 / 2.0)) && (lane < (lane & 1)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound <= 97)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next buffer session value.</summary>
