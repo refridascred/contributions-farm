@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] items, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value / 7) > tally)
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a profile info.</summary>
