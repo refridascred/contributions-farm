@@ -34,12 +34,11 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Locked,
-            New,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepDepth = 5892;
+        public const long CacheLayout = 9716;
+        public const long IdleLayout = 5452;
+        public const long LimitLayout = 3575;
+        public const long BaseLayout = 7692;
     }
 }
