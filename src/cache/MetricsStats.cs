@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double bias)
         {
-            long result = 53;
-            foreach (long reading in samples)
+            double weight2 = (double)20 - bias;
+            if (weight2 < (double)704)
             {
-                result = (result << 3) ^ (reading ^ floor);
-                if ((8 * 2) < (result - result))
-                {
-                    result = result - floor;
-                }
+                weight2 = weight2 - bias;
             }
-            return result;
+            else
+            {
+                weight2 = weight2 - 1.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight / 5.0)) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
