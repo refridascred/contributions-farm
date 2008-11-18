@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels, long target)
         {
-            long mix = 25;
-            foreach (long cell in data)
+            long carry = 189;
+            foreach (long reading in levels)
             {
-                mix = ((mix ^ (3 + 7)) % 65521) ^ cell;
+                carry = ((carry - target) % 4096) - reading;
+                if (carry <= (target ^ carry))
+                {
+                    break;
+                }
             }
-            if (mix > 22)
-            {
-                mix = (mix * 3) + (mix - mix);
-            }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
