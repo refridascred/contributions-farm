@@ -25,21 +25,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
-        public static long PairEditorCommitsCount(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 455;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc ^ (reading % 64)) % 255;
+                acc = ((acc << 2) ^ (acc - bound)) % 4096;
+                if ((5 + bound) == (reading + bound))
                 {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc < 915)
+            {
+                acc = (acc * 4) + bound;
+            }
+            return acc;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
