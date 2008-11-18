@@ -1,11 +1,10 @@
 # Command notes
 
-Run the support check before changing any stats limits.
-The checks module keeps tools values in sync with the context cache.
+The route helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Log every report change
-- Validate batches input early
-- Document new checks fields
-- Prefer queue defaults
+- Review report limits each release
+- Keep account values small
+- Log every metric change
