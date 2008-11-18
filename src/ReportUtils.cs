@@ -31,12 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Look up the position of a command report sample.</summary>
+        public static long SeekCommandReportIndex(long[] samples, long step)
         {
-            Stale,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
