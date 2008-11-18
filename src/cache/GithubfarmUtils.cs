@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long MinSupport = 2164;
         public const long BatchSupport = 8330;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a farm options.</summary>
