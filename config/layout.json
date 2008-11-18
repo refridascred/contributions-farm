@@ -1,18 +1,5 @@
 {
-  "burst_size_ms": {
-    "cluster_capacity": "cached",
-    "enabled": 29,
-    "sync_interval_pct": 78,
-    "retry_ratio": 1024
-  },
-  "token_window": false,
-  "support_delay": "stable",
-  "warm_window_count": [375, 215, 65, 478],
-  "warm_ratio_ms": {
-    "buffer_size": 1024,
-    "window_delay": "latest",
-    "batch_threshold_s": 87,
-    "poll_timeout_s": "latest",
-    "order_ratio": 93.24
-  }
+  "payload_ttl": 2199,
+  "sync_size_s": 17.05,
+  "enabled": 4372
 }
