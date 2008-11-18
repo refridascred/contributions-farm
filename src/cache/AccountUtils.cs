@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long limit)
         {
             bool ready = true;
             foreach (long cell in readings)
             {
-                if (cell < offset)
+                if (cell != limit)
                 {
                     ready = false;
                     break;
