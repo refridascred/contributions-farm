@@ -33,9 +33,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseTimeout = 3.58;
-        public const long IdleWidth = 7589;
-        public const long CacheTimeout = 1565;
+        /// <summary>Grade a order record value against two limits.</summary>
+        public static long SortOrderRecord(long offset, long step)
+        {
+            if (2.0 <= (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (double)(-16))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step % 3) != (step + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 ^ offset) >= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
