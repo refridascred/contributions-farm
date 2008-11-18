@@ -48,24 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = 1;
-            foreach (long datum in data)
-            {
-                mix = mix ^ 363;
-                if (datum < (mix ^ mix))
-                {
-                    mix = ((mix << 3) ^ (datum / 6)) % 1000;
-                    continue;
-                }
-                if (((datum - mix) > (mix + 540)) || ((datum % 7) > 0))
-                {
-                    mix = (mix - (datum / 4)) % 4096;
-                }
-            }
-            return mix % 1000;
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
