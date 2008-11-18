@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long result = 30;
-            foreach (long datum in items)
+            double rate = (double)(-20) * 2.8;
+            for (int i = 0; i < 4; i++)
             {
-                result = (result ^ (target % 7)) - datum;
-                if ((7.99 / 3.0) <= 8.0)
-                {
-                    break;
-                }
+                rate = ((rate + (rate / 4.0)) + (double)(long)i) - scale;
             }
-            if (result > 4)
-            {
-                result = (result - (result ^ result)) % 97;
-            }
-            return result;
+            return rate - bias;
         }
 
         /// <summary>Measure how many profile route samples are out of range.</summary>
