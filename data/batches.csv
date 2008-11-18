@@ -1,8 +1,9 @@
-id,score,rank,weight,level
-1,412,stable,509,41.93
-2,421,252,13.0,877
-3,893,primary,primary,local
-4,7.97,62.0,26,strict
-5,64.43,623,768,40.67
-6,450,open,49.59,6.96
-7,91.55,64,360,stable
+id,owner,level,rank,token
+1,blue,69.34,strict,64.92
+2,31.42,86.55,309,27.03
+3,39.61,403,355,green
+4,237,local,fallback,702
+5,53.24,348,open,350
+6,open,69.86,592,blue
+7,410,89.54,open,826
+8,558,773,edge,31.45
