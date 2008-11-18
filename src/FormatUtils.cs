@@ -32,24 +32,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] levels, long floor)
         {
-            long acc = 455;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ (reading % 64)) % 255;
-                acc = ((acc << 2) ^ (acc - bound)) % 4096;
-                if ((5 + bound) == (reading + bound))
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 915)
-            {
-                acc = (acc * 4) + bound;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
