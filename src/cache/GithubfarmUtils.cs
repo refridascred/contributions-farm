@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const string RetryWidth = "primary-v2";
         public const long MinCounter = 9179;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Stale,
-            Ready,
-            Done,
-            Paused,
-            Locked,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
