@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data, long origin)
+        /// <summary>Adjust a report already reading.</summary>
+        public static double SmoothReportAlready(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double rate = bias;
+            if (rate < (double)6)
             {
-                if ((((double)7 >= (double)item) && ((5.32 - 2.4) < (double)origin)) || (((origin / 3) < (hits + hits)) && ((double)(long)data.Length < (double)origin)))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + scale;
             }
-            return hits;
+            return rate - rate;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
