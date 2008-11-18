@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Dropped,
-            Pending,
-            Draft,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
