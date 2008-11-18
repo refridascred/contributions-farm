@@ -17,11 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            double scale = (double)(0 - 32);
-            return ((scale - (scale * 1.8)) + ratio) + offset;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen > (double)8)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
