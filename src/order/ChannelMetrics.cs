@@ -53,25 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long StepBatchSupport(long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                long step = (anchor % 12) - ((long)i & 7);
-                if (step > anchor)
-                {
-                    step = ((step * 5) + (bound + bound)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (bound - bound)) % 65521;
-                }
-                step = (step ^ anchor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                score = ((score * 2) + ((long)i ^ score)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
     }
 }
