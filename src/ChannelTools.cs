@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long limit)
+        /// <summary>Audit batches command readings against a rule.</summary>
+        public static long CountBatchesCommandGaps(long[] data, long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (entry > limit)
+                if (((63 ^ count) <= target) && (((count >> 4) != (count - count)) || ((value / 6) == (value / 5))))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
