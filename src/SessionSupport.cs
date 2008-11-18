@@ -26,35 +26,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long limit, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long step, long limit)
         {
-            long next = limit + bound;
-            if ((double)next <= (0.21 * 14.0))
+            if ((step < (limit / 4)) && ((double)limit <= 6.0))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((limit + bound) == (bound >> 2))
+                if ((double)step != (5.66 * 0.91))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((next >> 4) < (next - limit)) || ((59 * 2) > next))
+                    if ((step < (limit & 255)) && ((9.64 + 16.0) <= (double)5))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if ((double)next == (10.0 * 1.1))
+                        if ((limit * 5) == (limit + limit))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 1;
                         }
                     }
                 }
