@@ -1,5 +1,14 @@
 {
-  "soft_timeout_pct": [150, 443, 484, 119],
-  "cache_capacity": "blue",
-  "batch_timeout": 500
+  "session_delay": "blue",
+  "batch_depth": {
+    "sync_limit": 63.09,
+    "persist": "primary",
+    "account_delay": "strict",
+    "max_depth_ms": {
+      "sync_timeout_count": 1024,
+      "retry_depth_count": "eu-west",
+      "soft_interval_pct": 345
+    }
+  },
+  "flush_retries_count": "standard"
 }
