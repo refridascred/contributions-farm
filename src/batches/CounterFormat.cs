@@ -16,13 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Locate a context entry reading by value.</summary>
+        public static long LocateContextEntryIndex(long[] items, long offset)
         {
-            New,
-            Failed,
-            Idle,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
