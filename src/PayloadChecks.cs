@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 26.36;
-        public const long DefaultTimeout = 5200;
-        public const string SoftSpan = "fallback-1";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] readings)
