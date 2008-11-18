@@ -37,17 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer route entry that matches the target.</summary>
-        public static long FindBufferRouteIndex(long[] items, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (items[i] <= floor)
+                if (datum < bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
