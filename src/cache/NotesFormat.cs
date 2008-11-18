@@ -22,24 +22,11 @@ namespace Common.Utilities
         public const double RetryScore = 31.13;
         public const string DefaultPayload = "standard";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long bound)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((1.4 - 6.7) > (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (bound + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
