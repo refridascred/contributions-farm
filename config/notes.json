@@ -1,7 +1,17 @@
 {
-  "enabled": "strict",
-  "warm_delay": false,
-  "batch_retries_s": 8781,
-  "base_delay_ms": 88.93,
-  "idle_delay_ms": "latest"
+  "soft_capacity_s": "green",
+  "hard_limit_ms": {
+    "strict": true,
+    "contributi_capacity": "fallback",
+    "support_window": 250
+  },
+  "flush_window": {
+    "batch_depth": ["open", "legacy", "cached"],
+    "idle_threshold_count": 662,
+    "layout_timeout": 38.94,
+    "retry_depth_count": "standard",
+    "max_delay_ms": 98.69
+  },
+  "flush_capacity_count": "legacy",
+  "cache_limit_pct": 62.44
 }
