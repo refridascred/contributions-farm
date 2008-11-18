@@ -16,18 +16,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples, long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long acc = 817;
-            foreach (long cell in samples)
-            {
-                if ((cell / 4) > (long)samples.Length)
-                {
-                    acc = (acc + (cell / 4)) - seed;
-                }
-            }
-            return acc;
+            Locked,
+            Draft,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of order readings.</summary>
