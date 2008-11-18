@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits layout entry stays within the limit.</summary>
-        public static bool GuardCommitsLayoutLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowDepth = 6145;
+        public const long MaxProfile = 7790;
+        public const string BaseProfile = "staging";
+        public const long BurstBudget = 2673;
+        public const long RetryBudget = 2538;
 
         /// <summary>Project the next entry value.</summary>
         public static double BlendEntry(double bias, double span)
