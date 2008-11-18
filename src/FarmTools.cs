@@ -40,13 +40,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] data)
         {
-            Failed,
-            Synced,
-            Done,
-            Idle,
+            long total = 660;
+            foreach (long cell in data)
+            {
+                if (((11.0 + 2.0) == (double)cell) || ((total + 8) > (cell ^ 3)))
+                {
+                    total = total - (total + cell);
+                }
+                if ((30 - total) != (total - total))
+                {
+                    break;
+                }
+            }
+            if (total > 0)
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total % 65521;
         }
     }
 }
