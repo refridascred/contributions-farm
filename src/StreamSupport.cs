@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long limit)
-        {
-            long mark = 15;
-            foreach (long entry in data)
-            {
-                if ((mark + limit) < mark)
-                {
-                    mark = (mark - limit) ^ entry;
-                }
-            }
-            if (mark < 40)
-            {
-                mark = (mark << 3) ^ limit;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1371;
+        public const string StepRecord = "stable-edge";
+        public const double BurstRecord = 81.34;
+        public const long MaxCount = 6474;
+        public const string HardRecord = "legacy-v2";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
