@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
