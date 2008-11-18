@@ -29,10 +29,26 @@ namespace Common.Utilities
         public const double BaseCommand = 10.75;
         public const long WindowCommand = 745;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardInterval = 35.75;
-        public const long LimitCommits = 6466;
-        public const long BurstLevel = 8625;
+        /// <summary>Rank notes cache input into a small class.</summary>
+        public static long RankNotesCache(long target, long seed)
+        {
+            long cur = target ^ seed;
+            if ((cur + target) > seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed / 5) <= (seed >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] items, long offset)
