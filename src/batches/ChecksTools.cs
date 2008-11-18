@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] data, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
