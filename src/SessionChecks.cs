@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate commits notes readings against a bound.</summary>
-        public static bool CheckCommitsNotesBounds(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (cell >= offset)
+                if ((double)value == (7.0 / 6.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + bound;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
