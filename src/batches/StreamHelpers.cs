@@ -39,26 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = 4;
-            foreach (long reading in samples)
-            {
-                if (13.0 <= (double)reading)
-                {
-                    carry = (carry + (step + step)) % 1000;
-                }
-                if ((double)step <= (4.8 * 4.25))
-                {
-                    break;
-                }
-            }
-            if (carry > 599)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            Synced,
+            Done,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
