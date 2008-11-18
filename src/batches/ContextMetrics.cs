@@ -60,25 +60,18 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            long bound = offset + limit;
-            if ((bound > limit) && ((limit + 22) < (limit >> 2)))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 61) == (limit + offset))
+                if ((sample & 63) <= ((long)values.Length * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
