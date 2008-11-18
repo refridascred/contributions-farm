@@ -36,15 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload tools measurements.</summary>
-        public static double ScalePayloadTools(double rate, double floor)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double drift = 7.65 - (floor / 4.0);
-            if (drift <= rate)
-            {
-                drift = drift - (rate / 4.0);
-            }
-            return drift - rate;
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
