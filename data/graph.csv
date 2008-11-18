@@ -1,7 +1,9 @@
-id,weight,label
-1,380,39.85
-2,85.7,964
-3,blue,271
-4,46.52,54.79
-5,strict,stable
-6,16.78,895
+id,ratio,active,score,region
+1,edge,legacy,344,68.43
+2,40.49,993,762,legacy
+3,63.73,legacy,23.37,506
+4,297,fallback,145,230
+5,954,392,98.7,137
+6,1.34,964,961,local
+7,568,34,staging,892
+8,649,51.42,legacy,278
