@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            Queued,
+            Draft,
+            Failed,
+            Closed,
         }
     }
 }
