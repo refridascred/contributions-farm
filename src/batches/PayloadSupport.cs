@@ -37,23 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long state = 68;
+            foreach (long item in readings)
             {
-                if ((limit >> 5) <= (limit - 93))
+                if ((item << 2) > state)
                 {
-                    acc = (acc - acc) % 101;
+                    state = (state * 4) + (14 % 2);
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (limit + acc)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
     }
 }
