@@ -63,10 +63,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSize = "cached-1";
-        public const double LimitCounter = 14.18;
-        public const long RetryCounter = 4684;
-        public const long HardCounter = 2496;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length % 10) >= reading)
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
