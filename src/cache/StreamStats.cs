@@ -78,22 +78,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Iterate the batch farm series from a seed.</summary>
+        public static long StepBatchFarm(long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((17.0 * 0.32) <= (double)count) || !((cell - count) <= (67 * 2)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
