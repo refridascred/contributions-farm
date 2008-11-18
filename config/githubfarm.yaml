@@ -1,9 +1,12 @@
 # githubfarm settings
-batch_window: 9598
-cache_delay: false
-enabled: false
-burst_window_pct: 5109
-dry_run:
-  - blue
-  - edge
-  - local
+persist:
+  poll_ttl:
+    - cached
+    - local
+  hard_ratio_s: true
+  cache_depth_pct: 63
+poll_interval_pct: cached
+cluster_interval: 59
+notes_ttl: eu-west
+max_retries_ms: true
+strict: legacy
