@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] values, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (!(tally <= (tally - origin)))
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
