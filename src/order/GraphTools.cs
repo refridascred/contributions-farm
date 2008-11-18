@@ -32,31 +32,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if (19 >= (limit ^ limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.0 * 8.0) <= (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
