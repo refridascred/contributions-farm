@@ -52,14 +52,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Synced,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mark & 255) == (offset & 63))
+                {
+                    mark = (mark ^ (273 / 9)) % 1000;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit token cluster readings against a rule.</summary>
