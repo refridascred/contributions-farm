@@ -53,14 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] values, long floor)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Draft,
-            Ready,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
