@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = 0;
-            foreach (long item in values)
-            {
-                if ((anchor + anchor) <= anchor)
-                {
-                    anchor = ((anchor - (seed << 2)) % 65521) ^ item;
-                }
-            }
-            return anchor;
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Project the next session report value.</summary>
