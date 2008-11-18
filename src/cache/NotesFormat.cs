@@ -28,10 +28,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleWidth = 702;
-        public const long BaseScore = 8456;
-        public const double LimitScore = 51.68;
-        public const string MaxMetric = "strict-edge";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long origin, long bound)
+        {
+            if ((1.4 - 6.7) > (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
