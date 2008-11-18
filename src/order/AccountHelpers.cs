@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
