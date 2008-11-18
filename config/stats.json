@@ -1,5 +1,11 @@
 {
-  "channel_size": true,
-  "default_depth_count": "staging",
-  "verbose": 32
+  "contributi_size": 63,
+  "base_timeout_pct": "stable",
+  "readonly": ["blue", "standard", "open"],
+  "min_window_count": 30,
+  "poll_size_count": {
+    "sync_window_pct": false,
+    "dry_run": 1024,
+    "profile_depth": 444
+  }
 }
