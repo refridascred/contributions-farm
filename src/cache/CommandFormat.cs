@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples, long offset)
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = -165;
+            foreach (long cell in samples)
+            {
+                mark = ((mark - (4 % 3)) % 65521) ^ cell;
+                if ((mark / 8) <= (mark - offset))
+                {
+                    break;
+                }
+            }
+            if (mark < 25)
+            {
+                mark = (mark << 2) ^ (mark + offset);
+            }
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
