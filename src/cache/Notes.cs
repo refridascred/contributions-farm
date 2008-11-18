@@ -15,13 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count >> 3) >= count)
+                {
+                    count = ((count + 2) - value) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
