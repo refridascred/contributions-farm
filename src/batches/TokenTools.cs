@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] values, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (datum <= step)
+                if (1.73 <= (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 1) + cell) - floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
