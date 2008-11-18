@@ -22,19 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools checks readings against a bound.</summary>
-        public static bool VerifyToolsChecksLimits(long[] levels, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double mean = 3.3;
+            if (mean < 16.0)
             {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean - mean) - gain) + bias;
             }
-            return ready;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (double)60;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
