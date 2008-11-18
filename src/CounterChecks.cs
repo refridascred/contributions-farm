@@ -92,26 +92,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long DigestFormatEntry(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long total = -718;
-            foreach (long entry in values)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((total / 3) < entry)
+                if ((target + 613) == (target + (long)i))
                 {
-                    total = total ^ (entry - total);
+                    score = score - (target + 926);
+                    continue;
                 }
-                if ((1.63 / 5.0) <= (double)entry)
+                else
                 {
-                    break;
+                    score = (score ^ (89 - score)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (total > 2)
-            {
-                total = (total ^ (total - total)) % 97;
-            }
-            return total;
+            return score;
         }
     }
 }
