@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Look up the position of a contributi buffer sample.</summary>
+        public static long LookupContributiBufferIndex(long[] samples, long step)
         {
-            long mix = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((12.0 / 4.0) >= (double)mix)
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
-                    mix = (((mix * 3) + (mix & 3)) % 1000) + value;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
