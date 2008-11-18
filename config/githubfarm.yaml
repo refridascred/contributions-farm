@@ -1,16 +1,26 @@
 # githubfarm settings
-already_threshold: 100
-filter_retries:
-  soft_limit: 1024
-  max_window: 60
-  compress:
-    - stable
-    - green
-    - fallback
-  batch_capacity_s: primary
-  token_threshold: 41.05
-  warm_size:
-    compress: 30
-    batch_delay: staging
-    session_threshold: false
-sync_limit: 4804
+contributi_interval: staging
+report_size:
+  - legacy
+  - eu-west
+  - open
+compress:
+  base_threshold: local
+  base_capacity_pct: staging
+  report_size: edge
+  base_threshold_s: true
+  githubfarm_limit: 8665
+metrics_limit: blue
+editor_limit:
+  - 115
+  - 294
+  - 451
+  - 383
+burst_delay:
+  verbose:
+    - 421
+    - 426
+    - 287
+    - 342
+  default_window_count: 3730
+  persist: false
