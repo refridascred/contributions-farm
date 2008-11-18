@@ -37,23 +37,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long limit)
-        {
-            long anchor = 24;
-            foreach (long value in samples)
-            {
-                if (!((anchor + limit) <= (limit + value)))
-                {
-                    anchor = ((anchor << 3) ^ limit) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (value & 15)) % 101;
-                }
-                anchor = (anchor - value) % 255;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowTimeout = 4776;
+        public const long BurstWidth = 1481;
+        public const double BurstInterval = 43.31;
+        public const string WindowRatio = "alpha-edge";
     }
 }
