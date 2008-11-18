@@ -33,18 +33,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + origin) > matches)
+                if (levels[i] > offset)
                 {
-                    matches = (matches + 3) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
