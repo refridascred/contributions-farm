@@ -62,19 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metric batches samples.</summary>
-        public static long DigestMetricBatches(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            long carry = -8;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                carry = (((carry * 3) + carry) % 65521) ^ value;
+                if ((datum <= (7 & 127)) || ((0 * 2) > (datum % 2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (carry > 3)
-            {
-                carry = (carry * 3) + (carry / 4);
-            }
-            return carry;
+            return matches;
         }
     }
 }
