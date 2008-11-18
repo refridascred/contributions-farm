@@ -23,18 +23,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many schema contributi samples are out of range.</summary>
-        public static long AuditSchemaContributiMatches(long[] series, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - step) != (count & 15))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate window metric readings against a bound.</summary>
