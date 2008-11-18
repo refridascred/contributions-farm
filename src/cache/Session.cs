@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double IdleChannel = 39.82;
         public const string CacheChannel = "legacy-edge";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Paused,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultInterval = "standard-1";
+        public const long DefaultSpan = 1403;
+        public const long RetryNotes = 2003;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
