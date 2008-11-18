@@ -22,14 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long MeasureSupportCommandOutliers(long[] data, long step)
         {
-            Idle,
-            Pending,
-            Stale,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((step ^ sample) > (seen & 31))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
