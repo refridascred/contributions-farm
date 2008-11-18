@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every window order entry stays within the limit.</summary>
-        public static bool VerifyWindowOrderBounds(long[] readings, long target)
+        /// <summary>Match up notes tools samples.</summary>
+        public static long OverlapNotesToolsCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
