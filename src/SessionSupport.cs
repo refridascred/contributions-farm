@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            long acc = 1;
-            foreach (long reading in samples)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (acc - (reading + floor)) % 4096;
-            }
-            if (acc > 8)
-            {
-                acc = acc - (acc >> 3);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
             return acc;
         }
