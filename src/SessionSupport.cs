@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels, long floor)
         {
-            Done,
-            Paused,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry ^ hits) > hits))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
