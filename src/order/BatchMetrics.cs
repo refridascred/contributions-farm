@@ -42,19 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long FoldGraphMetric(long[] data, long step)
-        {
-            long mix = 10;
-            foreach (long datum in data)
-            {
-                if (!((mix / 7) > (step - step)))
-                {
-                    mix = ((mix - (step << 2)) % 4096) ^ datum;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 2939;
+        public const long BaseFactor = 2396;
+        public const double MinTimeout = 46.25;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
