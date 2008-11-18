@@ -53,25 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long limit, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long offset)
         {
-            long diff = limit - floor;
-            if ((floor + floor) <= (floor & 127))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff * 5) < diff)
+                if (values[i] <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
