@@ -56,12 +56,22 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long step)
         {
-            Ready,
-            Stale,
-            New,
+            long acc = 112;
+            foreach (long entry in samples)
+            {
+                if (!((3.3 + 3.2) == (double)acc))
+                {
+                    acc = ((acc + (entry ^ acc)) % 97) + step;
+                }
+                if ((double)entry == (double)acc)
+                {
+                    acc = ((acc * 2) + (acc + (long)samples.Length)) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
