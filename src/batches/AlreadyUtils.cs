@@ -47,11 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 8906;
-        public const long BurstLevel = 758;
-        public const long IdleScore = 1312;
-        public const long StepWindow = 6473;
+        /// <summary>Check that every entry already entry stays within the limit.</summary>
+        public static bool ValidateEntryAlreadyBounds(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate metric batches samples.</summary>
         public static long DigestMetricBatches(long[] levels)
