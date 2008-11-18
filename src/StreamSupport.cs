@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Audit checks graph readings against a rule.</summary>
+        public static long MeasureChecksGraphGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((cell / 4) != (cell - cell))
+                if (((sample * 3) < (sample - matches)) || (((sample * 4) == (matches << 2)) || ((double)sample < (double)matches)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
