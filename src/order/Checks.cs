@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long limit)
+        /// <summary>Match up farm already samples.</summary>
+        public static long OverlapFarmAlreadyCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
