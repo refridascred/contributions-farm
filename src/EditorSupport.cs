@@ -41,23 +41,18 @@ namespace Common.Utilities
         public const long MinBudget = 4761;
         public const double IdleBatches = 42.66;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] data)
         {
-            double ratio = scale - bias;
-            if (ratio <= (bias / 4.0))
+            long count = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + 5.39;
+                if ((sample ^ sample) >= (sample + sample))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)483) - (double)(long)i;
-            }
-            return ratio - scale;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
