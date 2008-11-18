@@ -53,10 +53,19 @@ namespace Common.Utilities
             return (gain + (double)1) + span;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleCount = "strict-1";
-        public const long WindowRecord = 6181;
-        public const long DefaultRecord = 9553;
-        public const string BaseRecord = "fallback";
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double weight, double span)
+        {
+            double weight2 = weight * 9.25;
+            if (weight2 <= (double)89)
+            {
+                weight2 = (weight2 + weight2) - span;
+            }
+            else
+            {
+                weight2 = weight2 - (1.7 + weight);
+            }
+            return weight2 - 5.3;
+        }
     }
 }
