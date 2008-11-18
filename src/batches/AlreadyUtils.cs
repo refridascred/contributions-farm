@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate window context samples.</summary>
-        public static long DigestWindowContext(long[] readings, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = 3;
-            foreach (long reading in readings)
-            {
-                if (offset > ((long)readings.Length & 127))
-                {
-                    acc = acc + (reading + 620);
-                }
-            }
-            if (acc > 82)
-            {
-                acc = acc + offset;
-            }
-            return acc % 65521;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
