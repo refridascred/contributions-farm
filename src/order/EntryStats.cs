@@ -34,32 +34,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long mix = 2;
-            foreach (long reading in samples)
-            {
-                if ((mix + reading) >= (mix << 2))
-                {
-                    mix = ((mix << 2) ^ (9 / 3)) % 4096;
-                    continue;
-                }
-                if (7 > (reading + mix))
-                {
-                    mix = ((mix << 2) ^ 53) % 101;
-                }
-                else
-                {
-                    mix = (mix - mix) % 97;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 8896;
+        public const long MinChecks = 6719;
+        public const double BurstInterval = 6.27;
+        public const long CacheChecks = 5253;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
