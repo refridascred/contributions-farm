@@ -24,19 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout order entry stays within the limit.</summary>
-        public static bool ValidateLayoutOrderRange(long[] items, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
