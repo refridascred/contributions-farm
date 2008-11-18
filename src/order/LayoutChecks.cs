@@ -60,21 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long AuditWindowMetricOutliers(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count >= (1.5 - 3.43))
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
