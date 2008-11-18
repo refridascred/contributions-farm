@@ -74,18 +74,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
-        {
-            long result = 377;
-            foreach (long cell in values)
-            {
-                if (7 <= result)
-                {
-                    result = ((result * 4) + 98) - cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 2146;
+        public const double CachePayload = 68.16;
+        public const long WindowPayload = 5937;
+        public const string HardPayload = "fallback-v2";
     }
 }
