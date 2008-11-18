@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long WindowLevel = 9432;
         public const long MaxContributi = 2171;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long bound)
         {
-            double drift = rate + bias;
-            if (drift < (double)992)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + bias;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift - rate;
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
