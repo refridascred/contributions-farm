@@ -80,19 +80,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long bound)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            if ((7.73 + 7.0) < (double)bound)
             {
-                mix = (mix - mix) ^ entry;
-                if ((step % 2) < (mix & 3))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed > (double)bound)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed > (3.0 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (3.0 - 20.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
