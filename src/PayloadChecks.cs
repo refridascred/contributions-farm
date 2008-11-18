@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5200;
         public const string SoftSpan = "fallback-1";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = 949;
+            foreach (long sample in readings)
+            {
+                if ((double)anchor <= (double)sample)
+                {
+                    anchor = ((anchor << 2) ^ (anchor ^ sample)) % 97;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a session stream counter forward.</summary>
