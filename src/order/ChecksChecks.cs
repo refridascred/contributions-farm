@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8834;
-        public const double IdleTimeout = 6.36;
-        public const double StepDepth = 17.0;
+        /// <summary>Accumulate report already samples.</summary>
+        public static long CombineReportAlready(long[] series, long offset)
+        {
+            long acc = 54;
+            foreach (long sample in series)
+            {
+                if ((acc > (0 - 0)) || ((5.76 * 5.1) <= (double)offset))
+                {
+                    acc = (acc ^ (acc % 3)) ^ sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
