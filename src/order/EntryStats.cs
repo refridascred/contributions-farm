@@ -32,11 +32,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "fallback-edge";
-        public const long LimitChannel = 677;
-        public const long BaseChannel = 995;
-        public const long MinDepth = 4197;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] series, long step)
+        {
+            long sum = 513;
+            foreach (long item in series)
+            {
+                if ((step & 7) != (step - sum))
+                {
+                    sum = ((sum << 3) ^ (item << 1)) % 65521;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Grade a record stream value against two limits.</summary>
         public static long BucketRecordStream(long origin, long seed)
