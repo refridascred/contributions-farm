@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] samples, long step)
+        /// <summary>Derive the next account commits value from a seed.</summary>
+        public static long RollAccountCommits(long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell <= step)
+                if (!((sum >> 1) < seed))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 3) + ((long)i - sum)) % 65521;
                 }
+                if (!(seed <= (long)i))
+                {
+                    sum = (sum + (sum / 2)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Look up the position of a profile session sample.</summary>
