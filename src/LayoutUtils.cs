@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long origin)
+        /// <summary>Adjust a counter batch reading.</summary>
+        public static double SmoothCounterBatch(double gain, double offset)
         {
-            if ((double)origin >= (3.29 + 9.0))
+            double rate = gain;
+            if (rate < offset)
             {
-                return 0;
+                rate = rate + (double)727;
             }
             else
             {
-                if (((-530) ^ seed) == (seed - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 3) >= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate + rate;
             }
+            return rate - gain;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
