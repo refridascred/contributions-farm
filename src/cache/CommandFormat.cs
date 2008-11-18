@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            long mark = -165;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark - (4 % 3)) % 65521) ^ cell;
-                if ((mark / 8) <= (mark - offset))
+                if ((seen >> 5) == (sample & 15))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 25)
-            {
-                mark = (mark << 2) ^ (mark + offset);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Blend two batches token measurements.</summary>
