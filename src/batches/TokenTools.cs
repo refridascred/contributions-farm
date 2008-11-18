@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 9304;
-        public const long BurstRecord = 1221;
-        public const double CacheScore = 50.09;
-        public const string CacheRecord = "latest";
-        public const long DefaultSize = 5917;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long bound)
+        {
+            long edge = step - bound;
+            if (!((step & 15) == (edge - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((50 ^ step) < (bound + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long origin, long limit)
