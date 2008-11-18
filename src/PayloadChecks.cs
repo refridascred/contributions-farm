@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 975;
+        public const double HardQueue = 68.58;
+        public const long BatchInterval = 434;
+        public const long BatchQueue = 1930;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] readings)
