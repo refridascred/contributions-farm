@@ -1,6 +1,13 @@
 {
-  "batch_ratio_count": 60.91,
-  "command_window": 5,
-  "buffer_interval": 7,
-  "notes_ttl": 67.48
+  "flush_window_count": "strict",
+  "poll_ratio_count": true,
+  "burst_delay_pct": ["eu-west", "strict"],
+  "poll_capacity_ms": true,
+  "metrics_size": false,
+  "command_timeout": {
+    "cache_ratio_s": "edge",
+    "hard_threshold_count": 8173,
+    "profile_window": 20,
+    "max_depth": "fallback"
+  }
 }
