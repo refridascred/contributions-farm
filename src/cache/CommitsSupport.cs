@@ -49,18 +49,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = -71;
+            foreach (long datum in samples)
             {
-                if ((tally << 3) <= (item & 7))
+                mix = ((mix * 4) + (mix << 2)) % 97;
+                if ((30 & 1) == (mix - 9))
                 {
-                    tally = tally + 3;
+                    mix = (mix << 2) ^ (mix - datum);
                 }
             }
-            return tally;
+            if (mix < 263)
+            {
+                mix = (mix - (876 + origin)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
