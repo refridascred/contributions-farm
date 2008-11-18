@@ -34,19 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double drift = 9.98;
-            if (drift < (double)542)
-            {
-                drift = (drift + (double)2) + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + 1.0;
+            Paused,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the batches state values.</summary>
