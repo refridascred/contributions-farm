@@ -41,18 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long origin)
         {
-            long mix = 37;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((sample - mix) == (sample ^ mix))
+                if (!(((-917) + origin) <= (matches >> 4)))
                 {
-                    mix = (mix + (sample * 4)) % 101;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
