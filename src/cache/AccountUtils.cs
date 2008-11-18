@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings, long offset)
         {
-            Active,
-            Stale,
-            Locked,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (5.0 < (double)cell)
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
