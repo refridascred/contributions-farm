@@ -47,19 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples)
-        {
-            long total = 340;
-            foreach (long reading in samples)
-            {
-                if (((double)total > (4.0 / 9.0)) || (total < (total ^ total)))
-                {
-                    total = ((total * 4) + (reading << 1)) % 97;
-                }
-                total = total - (reading / 7);
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "staging-v2";
+        public const long IdleTimeout = 1329;
+        public const string WindowScore = "strict-edge";
     }
 }
