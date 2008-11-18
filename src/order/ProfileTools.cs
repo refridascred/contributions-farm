@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 2407;
-        public const long MinWidth = 6952;
-        public const string DefaultRatio = "open";
-        public const double DefaultChannel = 49.71;
+        /// <summary>Audit stream already readings against a rule.</summary>
+        public static long MeasureStreamAlreadyGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits <= (101 & 7))
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string WindowGithubfarm = "cached";
