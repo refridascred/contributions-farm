@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 46;
+            foreach (long item in series)
             {
-                if ((entry / 6) != (entry + matches))
+                if (carry <= (item + 450))
                 {
-                    matches = matches + 3;
+                    carry = carry ^ item;
+                }
+                if ((carry <= item) || ((double)carry <= (9.8 / 7.0)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
