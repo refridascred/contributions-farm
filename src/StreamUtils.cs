@@ -20,21 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = rate;
+            if (load >= (floor + rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + load;
             }
-            return tally;
+            return load - (13.0 * 3.8);
         }
 
         /// <summary>Describe the payload phase values.</summary>
