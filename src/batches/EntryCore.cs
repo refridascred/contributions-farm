@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheRatio = 3399;
-        public const double BaseSpan = 39.2;
-        public const long LimitCluster = 6303;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result * 5) + result) ^ (long)i2;
+                }
+                if (!((8 - (long)i) < (seed >> 2)))
+                {
+                    result = result ^ (long)i;
+                    result = (result + (757 >> 4)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
