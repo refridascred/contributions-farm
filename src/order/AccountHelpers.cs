@@ -59,13 +59,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
