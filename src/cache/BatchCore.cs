@@ -46,18 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = 43;
-            foreach (long reading in readings)
-            {
-                if (total > (reading + reading))
-                {
-                    total = (total + total) % 101;
-                }
-            }
-            return total % 65521;
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
