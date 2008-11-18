@@ -28,11 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((95 + 4) > (value % 8)))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
