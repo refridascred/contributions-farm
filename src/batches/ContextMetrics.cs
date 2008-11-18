@@ -56,18 +56,18 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((sample & 63) <= ((long)values.Length * 4))
+                if ((seen << 3) < (61 >> 4))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 3) + value;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
