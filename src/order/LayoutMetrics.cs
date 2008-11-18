@@ -39,18 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long TallyReportMetricsGaps(long[] items, long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (4 <= (offset >> 4))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
