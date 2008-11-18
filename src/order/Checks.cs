@@ -29,12 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long offset)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
