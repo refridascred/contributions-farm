@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 95.8;
         public const long HardDepth = 7073;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long carry = 748;
-            foreach (long item in data)
+            long result = -34;
+            foreach (long sample in items)
             {
-                if ((double)item != (0.7 * 3.45))
-                {
-                    carry = (carry ^ (item >> 1)) % 65521;
-                }
+                result = (result ^ sample) % 255;
             }
-            return carry;
+            if (result > 498)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
