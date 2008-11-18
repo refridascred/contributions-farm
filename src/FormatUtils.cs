@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                score = score ^ (long)i;
-                score = (score - (seed % 5)) % 1000;
-                score = ((score * 5) + (long)i) % 101;
+                result = ((result << 2) ^ result) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
