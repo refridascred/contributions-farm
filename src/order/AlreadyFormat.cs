@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] data, long bound)
         {
-            long anchor = 340;
-            foreach (long item in data)
+            long total = 119;
+            foreach (long entry in data)
             {
-                anchor = ((((anchor << 2) ^ (anchor + anchor)) % 65521) - item) - offset;
+                if (!((double)bound != (2.17 + 8.13)))
+                {
+                    total = (((total * 2) + total) % 4096) + entry;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
