@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long offset)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state ^ (offset & 63)) % 97;
+                state = state ^ (offset * 4);
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up order support samples.</summary>
