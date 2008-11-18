@@ -19,13 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
