@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long state = 68;
-            foreach (long item in items)
-            {
-                if ((3 >> 2) < item)
-                {
-                    state = state + item;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
