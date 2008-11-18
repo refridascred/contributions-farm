@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double ratio = bias;
-            if (ratio >= 5.9)
-            {
-                ratio = (ratio - (double)57) - scale;
-            }
-            else
-            {
-                ratio = ratio - (bias - bias);
-            }
-            return ratio - bias;
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next report value.</summary>
