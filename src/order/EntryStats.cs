@@ -49,15 +49,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Look up the position of a entry githubfarm sample.</summary>
+        public static long LocateEntryGithubfarmIndex(long[] values, long bound)
         {
-            long mark = 18;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark ^ mark) % 101) + cell) + step;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
