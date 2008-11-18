@@ -26,39 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long step)
         {
-            long step = target ^ offset;
-            if ((target ^ 99) != (step + 52))
+            long carry = 217;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.0 - 5.0) <= (double)offset) || ((target & 1) <= (step - target)))
+                if (!((6.43 - 20.0) < (double)step))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) != (step + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >> 1) <= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry + step) + item;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
