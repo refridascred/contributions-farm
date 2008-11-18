@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command batch pair into a bucket.</summary>
-        public static long RankCommandBatch(long floor, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] samples, long floor)
         {
-            if ((limit % 10) <= (limit << 3))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit - limit) < 692) && (604 <= (floor - limit)))
+                if ((matches / 2) < (floor / 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
