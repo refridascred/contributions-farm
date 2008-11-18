@@ -13,11 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Locate a cache batches reading by value.</summary>
+        public static long FindCacheBatchesIndex(long[] series, long target)
         {
-            double gain = offset;
-            return (gain - gain) + rate;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
