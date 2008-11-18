@@ -16,18 +16,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Classify a graph batches pair into a bucket.</summary>
+        public static long GradeGraphBatches(long target, long target2)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (target2 > (target2 & 3))
             {
-                if (((entry >= (entry + entry)) && ((hits - 943) >= (7 << 1))) || ((entry & 3) == (81 + entry)))
+                return 1;
+            }
+            else
+            {
+                if (6.9 > (double)target)
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((target2 + target2) >= (target >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target / 5) == (target2 / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
