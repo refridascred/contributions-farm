@@ -34,11 +34,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double floor)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            double gain2 = gain;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 + (gain2 * 2.0);
+            }
+            else
+            {
+                gain2 = gain2 + (gain - floor);
+            }
+            return gain2 + (floor / 8.0);
         }
 
         /// <summary>Hold a stats info.</summary>
