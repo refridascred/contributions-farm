@@ -37,13 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Grade a graph filter value against two limits.</summary>
+        public static long SortGraphFilter(long floor, long bound)
         {
-            Done,
-            Pending,
-            Stale,
-            Dropped,
+            if (floor <= (floor ^ bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.0 + 2.0) > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
