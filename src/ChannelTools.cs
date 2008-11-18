@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchCount = 9186;
+        public const long IdleSpan = 2512;
+        public const long MinCount = 4980;
+        public const long SoftScore = 8178;
+        public const double MaxRatio = 67.12;
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] series)
