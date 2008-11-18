@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "strict-1";
-        public const long MinTimeout = 2114;
-        public const string DefaultBudget = "legacy-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 6) != (entry + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] readings)
