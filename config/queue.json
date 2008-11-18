@@ -1,13 +1,12 @@
 {
-  "retry_size_s": true,
-  "default_ttl_count": "blue",
-  "max_interval": {
-    "default_interval_s": 61,
-    "flush_limit": "legacy",
-    "verbose": true,
-    "batch_ratio_pct": [34, 289],
-    "order_depth": false,
-    "sync_threshold_pct": "primary"
+  "warm_capacity": ["staging", "open"],
+  "hard_delay": ["blue", "open"],
+  "sync_timeout_pct": "open",
+  "batch_capacity_s": "cached",
+  "max_capacity": {
+    "queue_interval": false,
+    "min_size_s": 8803,
+    "base_window_pct": 500
   },
-  "default_size": false
+  "strict": 84.71
 }
