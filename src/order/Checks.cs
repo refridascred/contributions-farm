@@ -57,9 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 244;
-        public const long LimitTools = 9251;
-        public const string BurstTools = "local-edge";
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Paused,
+            Done,
+            Stale,
+            Draft,
+            Ready,
+        }
     }
 }
