@@ -1,11 +1,14 @@
 # Command notes
 
-Run the schema check before changing any tools limits.
-Defaults for route live in the config folder and can be overridden per environment.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often record data is refreshed.
+Each context is validated before it reaches the window queue.
+
+Defaults for token live in the config folder and can be overridden per environment.
+Keep token and metric names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every tools change
-- Keep profile values small
+- Prefer already defaults
+- Log every payload change
+- Document new queue fields
+- Validate schema input early
