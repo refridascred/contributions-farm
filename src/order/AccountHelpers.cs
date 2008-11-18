@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            Locked,
-            New,
-            Closed,
-            Idle,
-            Failed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (7.7 / 4.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
