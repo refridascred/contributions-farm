@@ -48,19 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double bias = gain;
+            if (bias > bias)
             {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + (bias - floor);
             }
-            return ok;
+            return bias - (floor + floor);
         }
     }
 }
