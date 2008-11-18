@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + ((long)i * 3)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
