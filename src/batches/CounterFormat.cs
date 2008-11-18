@@ -14,12 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSize = "standard";
-        public const long DefaultQueue = 7540;
-        public const string CacheQueue = "stable-v2";
-        public const long CacheTimeout = 108;
-        public const long LimitQueue = 6491;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            New,
+            Failed,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] items)
