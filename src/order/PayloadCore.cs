@@ -68,25 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long limit, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long step = limit + bound;
-            if ((double)step <= 5.53)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 5) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
