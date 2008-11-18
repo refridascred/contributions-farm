@@ -13,18 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] series, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 707;
+            foreach (long sample in data)
             {
-                if ((entry - matches) != (matches << 2))
+                if ((sum / 6) <= sample)
                 {
-                    matches = (matches + 3) - origin;
+                    sum = sum + (sum - sum);
                 }
             }
-            return matches;
+            if (sum < 94)
+            {
+                sum = ((sum * 4) + (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
