@@ -27,13 +27,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
