@@ -55,12 +55,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFactor = "primary-v2";
-        public const long LimitInterval = 2984;
-        public const string MinFormat = "alpha-v2";
-        public const long LimitFormat = 3295;
-        public const long CacheFormat = 3929;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long target)
+        {
+            if ((target << 3) <= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= 2.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset != (15.0 / 9.0)) || ((double)target < (2.7 / 5.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] levels)
