@@ -22,39 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi format input into a small class.</summary>
-        public static long SortContributiFormat(long floor, long bound)
-        {
-            if (((floor >> 1) >= 76) && ((bound + 1) > 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor & 127) <= (floor % 60)) || ((bound - bound) >= (97 & 255)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound == (6.0 / 9.0)) && (1 >= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > (floor * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9932;
+        public const long WindowWidth = 4479;
+        public const long LimitContributi = 6444;
 
         /// <summary>Check that every window notes entry stays within the limit.</summary>
         public static bool ValidateWindowNotesRange(long[] levels, long seed)
