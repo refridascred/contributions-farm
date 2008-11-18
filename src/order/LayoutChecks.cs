@@ -33,20 +33,11 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseDepth = 75.0;
+        public const double HardCommand = 23.5;
+        public const string IdleScore = "alpha";
+        public const long BurstCommand = 6548;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
