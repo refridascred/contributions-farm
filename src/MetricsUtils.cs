@@ -24,18 +24,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Rank farm report input into a small class.</summary>
+        public static long SortFarmReport(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (((bound ^ 517) >= (bound - 0)) || ((limit % 64) < (limit - bound)))
             {
-                if ((26 + 3) == (matches + matches))
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 2) != (692 % 100))
                 {
-                    matches = (matches + 3) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 31) <= (bound >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound < 16.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
