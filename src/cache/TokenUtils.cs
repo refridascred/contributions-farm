@@ -31,10 +31,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 5183;
-        public const string BaseSize = "fallback-edge";
-        public const long MinOrder = 1918;
-        public const long BatchOrder = 1036;
+        /// <summary>Accumulate editor record samples.</summary>
+        public static long FoldEditorRecord(long[] series)
+        {
+            long score = -528;
+            foreach (long item in series)
+            {
+                score = ((score << 2) ^ score) % 4096;
+                score = score + (item + item);
+            }
+            if (score < 923)
+            {
+                score = (score - score) % 255;
+            }
+            return score;
+        }
     }
 }
