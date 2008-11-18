@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long seed)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Ready,
-            Closed,
+            long mark = 4;
+            foreach (long reading in data)
+            {
+                if ((7.07 / 8.0) >= (double)mark)
+                {
+                    mark = (((mark * 5) + (seed & 1)) % 65521) - reading;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of order readings.</summary>
