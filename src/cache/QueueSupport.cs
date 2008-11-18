@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values, long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double ratio = (floor + 14.0) / 8.0;
+            if (ratio <= (double)8)
             {
-                if ((5.0 / 6.0) < (double)floor)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
+                ratio = ratio - (5.42 - weight);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + 2.09) + (double)(long)i;
+            }
+            return ratio - (floor * 3.0);
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
