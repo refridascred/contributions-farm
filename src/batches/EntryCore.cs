@@ -25,11 +25,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry * 3) + (bound << 2);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
