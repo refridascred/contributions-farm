@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSpan = 401;
-        public const long SoftCount = 7747;
-        public const long RetryFormat = 4100;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((seed >> 1) <= (sample + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double weight, double bias)
