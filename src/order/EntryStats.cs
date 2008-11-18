@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowSpan = 34.5;
-        public const string BatchDepth = "latest-v2";
-        public const long SoftCount = 4382;
-        public const long RetryFactor = 4911;
-        public const double IdleTools = 23.43;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] readings)
