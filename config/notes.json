@@ -1,6 +1,6 @@
 {
-  "cache_ratio_count": 21.43,
-  "already_ratio": 6700,
-  "already_threshold": 2364,
-  "metrics_timeout": 5971
+  "base_retries_s": ["latest", "strict"],
+  "soft_window_pct": false,
+  "batch_capacity": 500,
+  "strict": "stable"
 }
