@@ -33,18 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] levels, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 226;
+            foreach (long value in series)
             {
-                if ((2.21 + 8.4) != (double)sample)
+                mark = mark ^ (value - (long)series.Length);
+                if ((mark & 31) == (mark >> 2))
                 {
-                    seen = (seen + 3) - origin;
+                    mark = (mark ^ (82 ^ mark)) % 97;
+                    continue;
                 }
+                mark = ((mark << 2) ^ value) % 255;
             }
-            return seen;
+            if (mark > 2)
+            {
+                mark = (mark + (76 ^ mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
