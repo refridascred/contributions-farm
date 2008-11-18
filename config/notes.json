@@ -1,11 +1,5 @@
 {
-  "githubfarm_retries": 41,
-  "flush_timeout_s": "stable",
-  "cache_delay_pct": 88,
-  "stream_size": {
-    "base_interval_pct": 66,
-    "hard_size": 1827,
-    "graph_interval": "staging",
-    "idle_ratio": ["edge", "strict"]
-  }
+  "min_timeout_s": "primary",
+  "githubfarm_limit": ["cached", "strict", "stable", "staging"],
+  "warm_ratio_pct": 9567
 }
