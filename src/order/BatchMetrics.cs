@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            double rate = (double)(23 - 0);
-            if (rate >= rate)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - offset) - (double)(long)i;
-            }
-            return rate + (rate + rate);
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
