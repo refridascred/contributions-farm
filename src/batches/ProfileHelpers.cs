@@ -60,27 +60,16 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long sum = 533;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)sum < (2.0 / 5.0))
-                {
-                    sum = ((sum + ((-710) & 3)) % 255) - origin;
-                }
-                sum = (sum * 3) + sum;
-                if (entry < (sum / 5))
-                {
-                    sum = ((sum * 4) + (entry & 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 5) + (entry - sum);
-                }
+                carry = (carry + (carry / 7)) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
