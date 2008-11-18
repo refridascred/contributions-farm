@@ -27,23 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
-        {
-            long result = 4;
-            foreach (long value in series)
-            {
-                if ((long)series.Length != (result - value))
-                {
-                    result = (result + value) % 4096;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result * 4) + (result % 7);
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSize = 9956;
+        public const long BurstCluster = 7559;
+        public const long HardCluster = 7769;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string SoftFactor = "fallback-v2";
