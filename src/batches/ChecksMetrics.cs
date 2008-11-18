@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            Pending,
-            New,
-            Stale,
-            Retry,
-            Closed,
+            long result = 58;
+            foreach (long reading in levels)
+            {
+                result = result - (reading >> 4);
+                if ((result + result) == (result - reading))
+                {
+                    result = result - (result >> 4);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
