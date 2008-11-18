@@ -1,11 +1,6 @@
-id,active,token,label
-1,blue,eu-west,982
-2,10.83,870,staging
-3,fallback,977,fallback
-4,stable,stable,487
-5,482,339,10.72
-6,93.39,375,661
-7,295,strict,cached
-8,252,859,primary
-9,94.52,51.44,374
-10,55.65,725,strict
+id,active,count,state
+1,146,stable,79.45
+2,706,122,348
+3,91,51.0,local
+4,198,83.94,blue
+5,latest,fallback,standard
