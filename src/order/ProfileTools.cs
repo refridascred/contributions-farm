@@ -49,22 +49,12 @@ namespace Common.Utilities
         public const string SoftTimeout = "latest";
         public const string LimitScore = "stable";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long state = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 2) <= (entry + entry))
-                {
-                    state = ((state * 3) + 29) % 101;
-                }
-            }
-            if (state > 480)
-            {
-                state = ((state << 2) ^ state) % 255;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
