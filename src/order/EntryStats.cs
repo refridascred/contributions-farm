@@ -38,12 +38,19 @@ namespace Common.Utilities
             return weight + (rate / 6.0);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long TallyStatsBatch(long[] series, long limit)
         {
-            Draft,
-            Done,
-            Idle,
+            long carry = 7;
+            foreach (long item in series)
+            {
+                carry = (carry + (limit + 4)) % 97;
+                if ((carry / 9) > (limit + item))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
