@@ -47,21 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Count the report graph entries that pass the check.</summary>
+        public static long TallyReportGraphOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((53 << 1) != (seen - seen)) || (reading <= (reading - reading)))
                 {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
