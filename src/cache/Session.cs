@@ -36,10 +36,11 @@ namespace Common.Utilities
         public const long BurstCluster = 7559;
         public const long HardCluster = 7769;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftFactor = "fallback-v2";
-        public const long HardScore = 1055;
-        public const double MaxTimeout = 97.17;
-        public const double BurstBudget = 56.19;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 37.05;
+        public const double CacheCommand = 32.53;
+        public const long BatchCommand = 8246;
+        public const double DefaultScore = 82.68;
+        public const double SoftCommand = 58.14;
     }
 }
