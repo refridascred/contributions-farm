@@ -46,13 +46,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            long result = 0;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (((result * 5) + (entry * 4)) % 97) + (long)i;
+                }
+                if (entry > (result ^ 54))
+                {
+                    result = (result - (entry + result)) % 97;
+                }
+                else
+                {
+                    result = (result - (result * 5)) % 97;
+                }
+            }
+            if (result < 26)
+            {
+                result = (result * 4) + (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
