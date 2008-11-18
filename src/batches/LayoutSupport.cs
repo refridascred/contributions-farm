@@ -36,14 +36,18 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] readings, long origin)
         {
-            Closed,
-            Locked,
-            New,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (matches < (item / 2))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
