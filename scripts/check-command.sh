@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=30
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in eu-west strict legacy; do
-    log "checking ${item}"
-done
