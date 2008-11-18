@@ -59,10 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 2146;
-        public const double CachePayload = 68.16;
-        public const long WindowPayload = 5937;
-        public const string HardPayload = "fallback-v2";
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double floor)
+        {
+            double load = rate;
+            if (load < (double)0)
+            {
+                load = load - load;
+            }
+            return load + (floor * 9.62);
+        }
     }
 }
