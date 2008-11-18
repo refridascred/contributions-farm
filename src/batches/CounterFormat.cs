@@ -41,21 +41,12 @@ namespace Common.Utilities
             return ratio2 - (ratio / 9.0);
         }
 
-        /// <summary>Compare every pair of context profile readings.</summary>
-        public static long MatchContextProfileCount(long[] data)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
