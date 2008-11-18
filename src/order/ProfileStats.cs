@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools already series from a seed.</summary>
-        public static long SeriesToolsAlready(long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first stats commits entry that matches the target.</summary>
