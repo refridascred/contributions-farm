@@ -27,11 +27,13 @@ namespace Common.Utilities
             return gain - (weight * 0.07);
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
