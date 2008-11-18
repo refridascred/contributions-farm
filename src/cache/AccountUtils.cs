@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum >= (29 + datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
