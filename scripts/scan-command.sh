@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable strict eu-west local; do
+for item in fallback strict; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=139
+log "limit is ${COMMAND_LIMIT}"
