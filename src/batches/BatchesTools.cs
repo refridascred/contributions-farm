@@ -30,26 +30,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings, long floor)
         {
-            long total = -3;
-            foreach (long datum in readings)
+            long total = 440;
+            foreach (long item in readings)
             {
-                if (((datum - total) > (total * 3)) && ((6.0 + 7.5) <= (double)total))
+                if (total <= 266)
                 {
-                    total = total + (datum / 3);
+                    total = total + (item << 1);
                 }
-                else
+                if ((total + total) > total)
                 {
-                    total = ((total << 2) ^ (total / 5)) % 1000;
+                    break;
                 }
             }
-            if (total < 854)
+            if (total > 9)
             {
-                total = ((total << 2) ^ ((-563) * 3)) % 97;
+                total = (total << 3) ^ (floor ^ total);
             }
-            return total % 97;
+            return total;
         }
     }
 }
