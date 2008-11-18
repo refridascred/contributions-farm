@@ -23,21 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 214;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item << 1) >= (carry - carry))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry << 2) ^ (item - item);
+                }
+                if (813 >= (item - carry))
+                {
+                    carry = (carry ^ (item >> 3)) % 101;
                 }
             }
-            return tally;
+            if (carry < 78)
+            {
+                carry = carry ^ (carry / 6);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up batch already samples.</summary>
