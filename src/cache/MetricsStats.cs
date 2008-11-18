@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long anchor = 25;
-            foreach (long value in readings)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset ^ anchor) != ((long)readings.Length & 3))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value << 1)) % 101;
-                }
+                carry = (carry + (605 / 6)) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
