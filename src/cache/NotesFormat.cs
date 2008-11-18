@@ -22,19 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Locked,
+            Queued,
         }
     }
 }
