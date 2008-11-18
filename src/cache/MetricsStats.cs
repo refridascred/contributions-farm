@@ -25,12 +25,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "alpha-v2";
-        public const long HardSize = 8431;
-        public const double DefaultLevel = 35.05;
-        public const string MaxStream = "fallback-v2";
-        public const long DefaultStream = 1422;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2198;
+        public const double IdleSize = 29.18;
+        public const long BaseCluster = 1030;
+        public const long MinCluster = 781;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutOutliers(long[] data)
