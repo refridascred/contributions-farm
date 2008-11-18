@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 3) ^ bound;
-                score = ((score * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
