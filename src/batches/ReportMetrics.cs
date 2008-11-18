@@ -36,10 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 7687;
-        public const long MaxContributi = 2494;
-        public const string IdleContributi = "staging-1";
-        public const double SoftContributi = 5.63;
+        /// <summary>Count the stats payload entries that pass the check.</summary>
+        public static long CountStatsPayloadHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!(reading > (reading + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
