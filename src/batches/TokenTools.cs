@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const double SoftInterval = 8.78;
         public const long StepCounter = 4852;
 
-        /// <summary>Audit metric cache readings against a rule.</summary>
-        public static long TallyMetricCacheHits(long[] series, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (4.3 >= (double)matches)
+                if (((long)levels.Length + seed) <= 2)
                 {
-                    matches = ((matches + 1) + value) + limit;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
