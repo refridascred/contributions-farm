@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long total = 862;
-            foreach (long cell in series)
-            {
-                total = (((total * 4) + total) % 65521) ^ cell;
-                total = total ^ (total + offset);
-                if ((6.8 + 9.0) == (double)total)
-                {
-                    break;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total - (675 - offset)) % 4096;
-            }
-            return total % 1000;
+            Dropped,
+            New,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of window entries.</summary>
