@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] data, long bound)
         {
-            Draft,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((bound < (seen - 9)) && ((seen - datum) >= (seen - bound)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up tools samples.</summary>
