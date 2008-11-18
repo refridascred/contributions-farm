@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long HardCount = 2567;
 
-        /// <summary>Match up channel tools samples.</summary>
-        public static long OverlapChannelToolsCount(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < bound)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the graph level values.</summary>
