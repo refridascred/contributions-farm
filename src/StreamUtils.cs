@@ -52,11 +52,14 @@ namespace Common.Utilities
         public const double MinCount = 62.04;
         public const long MaxRatio = 8514;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double span)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double bias = span;
-            return (bias + span) + scale;
+            Ready,
+            Pending,
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
