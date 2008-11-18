@@ -29,12 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long target)
         {
-            Dropped,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value < (value & 3))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a record stream value against two limits.</summary>
