@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            double ratio = (bias + gain) / 8.0;
+            if (ratio >= (ratio + ratio))
+            {
+                ratio = ratio - (ratio + bias);
+            }
+            return ratio + ratio;
         }
     }
 }
