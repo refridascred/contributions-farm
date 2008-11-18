@@ -34,15 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next window profile value.</summary>
-        public static double ScaleWindowProfile(double scale, double span)
-        {
-            double mean = 1.0 * 3.3;
-            if (mean >= mean)
-            {
-                mean = (mean - (double)2) + scale;
-            }
-            return mean - span;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFactor = 16.49;
+        public const long CacheSize = 4853;
+        public const long RetryFormat = 4702;
+        public const long IdleDepth = 1578;
     }
 }
