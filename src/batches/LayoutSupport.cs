@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultCount = 48.24;
+        public const long BaseBatch = 3688;
+        public const long WindowRatio = 4702;
+        public const long RetryBatch = 4845;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
