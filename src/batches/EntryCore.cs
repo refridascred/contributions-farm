@@ -41,13 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((-611) * 3) >= (tally + 5))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
