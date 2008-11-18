@@ -36,13 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell == (8.2 / 9.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
