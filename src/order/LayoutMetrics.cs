@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Draft,
-            Active,
-            Queued,
-            Synced,
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
