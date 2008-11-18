@@ -25,17 +25,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a already metrics reading by value.</summary>
-        public static long LocateAlreadyMetricsIndex(long[] series, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
