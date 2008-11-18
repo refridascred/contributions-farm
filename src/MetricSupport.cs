@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double bias)
         {
-            Closed,
-            Queued,
-            Idle,
+            double weight = (rate / 5.0) + rate;
+            if (weight >= (weight * 1.6))
+            {
+                weight = weight - (weight * 8.96);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (rate + weight)) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
