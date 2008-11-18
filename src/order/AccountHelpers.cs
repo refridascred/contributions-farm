@@ -52,10 +52,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6553;
-        public const double WindowMetrics = 6.47;
-        public const string RetryScore = "strict-edge";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Queued,
+            Stale,
+            Done,
+        }
 
         /// <summary>Validate counter batch readings against a bound.</summary>
         public static bool CheckCounterBatchBounds(long[] items, long origin)
