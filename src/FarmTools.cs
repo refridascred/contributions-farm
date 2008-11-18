@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double floor)
         {
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            double load = (double)(46 + 591);
+            if (load > (floor + floor))
+            {
+                load = (load - (load * 3.51)) - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)487) + (double)(long)i;
+            }
+            return load + (load + load);
         }
     }
 }
