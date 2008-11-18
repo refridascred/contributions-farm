@@ -1,11 +1,11 @@
 # Command notes
 
-Each commits is validated before it reaches the window queue.
-When a channel fails, the cluster handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Validate contributi input early
-- Keep contributi values small
-- Log every account change
-- Prefer order defaults
+- Keep order values small
+- Log every token change
+- Review order limits each release
+- Validate account input early
