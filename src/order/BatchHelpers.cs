@@ -29,39 +29,12 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long span = limit - origin;
-            if (!(limit <= (origin - limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((11.0 - 3.27) > 7.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin * 2) != (origin ^ origin)) || ((span & 7) == (origin & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit << 2) <= (305 / 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
