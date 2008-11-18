@@ -39,24 +39,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
-        {
-            long state = -999;
-            foreach (long entry in levels)
-            {
-                state = (state - (state / 3)) % 65521;
-                if (state > entry)
-                {
-                    break;
-                }
-            }
-            if (state < 8)
-            {
-                state = state ^ (9 ^ state);
-            }
-            return state % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleTimeout = 3611;
+        public const string DefaultLevel = "strict-v2";
+        public const string BatchGraph = "stable-v2";
+        public const double HardRatio = 63.46;
+        public const long MinDepth = 2153;
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
         public static bool GuardSchemaToolsLimits(long[] items, long bound)
