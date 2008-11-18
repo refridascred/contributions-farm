@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=52
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge eu-west open; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=208
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
