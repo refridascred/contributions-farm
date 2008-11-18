@@ -78,11 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double span)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            double bias = 6.1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - (double)56) + (double)(long)i) + span;
+            }
+            return bias - weight;
         }
     }
 }
