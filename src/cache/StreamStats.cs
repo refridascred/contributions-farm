@@ -35,11 +35,31 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long limit2)
         {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            if ((limit2 << 1) >= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(limit < (limit2 + limit2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.5 / 2.0) > (1.0 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
