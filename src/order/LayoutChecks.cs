@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count the metric command entries that pass the check.</summary>
+        public static long TallyMetricCommandMatches(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9 << 2) == (matches * 3))
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 2) - entry) + offset;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the command status values.</summary>
