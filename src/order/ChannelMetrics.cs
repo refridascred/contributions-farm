@@ -21,19 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + count) >= (step / 8))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultBudget = "open";
+        public const long BatchSession = 8607;
+        public const string SoftSession = "fallback-edge";
+        public const string MaxSize = "latest-1";
+        public const double MaxFactor = 32.7;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterGaps(long[] samples)
