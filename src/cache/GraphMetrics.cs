@@ -41,10 +41,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 7207;
-        public const double WindowEditor = 0.33;
-        public const long MinEditor = 5936;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] readings, long step)
