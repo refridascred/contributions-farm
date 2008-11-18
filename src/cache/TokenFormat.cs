@@ -21,18 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long MeasureChannelSchemaGaps(long[] readings, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = 7;
+            foreach (long reading in series)
             {
-                if ((seen / 7) < (seen - bound))
+                if ((long)series.Length != (anchor + 535))
                 {
-                    seen = (seen + 3) - reading;
+                    anchor = (((anchor << 3) ^ anchor) % 101) + reading;
                 }
             }
-            return seen;
+            if (anchor > 616)
+            {
+                anchor = ((anchor * 4) + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
