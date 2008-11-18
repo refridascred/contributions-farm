@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long TallyChecksTokenOutliers(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((8.01 < (double)anchor) || (anchor > (anchor + (long)i)))
+                if ((7 - hits) == (entry - hits))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
     }
 }
