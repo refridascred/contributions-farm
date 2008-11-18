@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 5731;
+        public const long SoftSize = 9051;
+        public const long IdleCache = 3604;
+        public const long DefaultCache = 1707;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long step)
