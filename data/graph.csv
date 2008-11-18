@@ -1,9 +1,7 @@
-id,region,count,state,weight
-1,516,open,547,30.75
-2,23.25,46.94,656,449
-3,212,278,14.89,primary
-4,green,792,latest,459
-5,8.83,open,224,316
-6,83,open,864,open
-7,staging,1.41,465,stable
-8,primary,86.71,612,eu-west
+id,token,rank,owner
+1,89.61,1.16,44.36
+2,5.42,363,staging
+3,208,119,430
+4,627,644,latest
+5,47,822,blue
+6,714,31.97,781
