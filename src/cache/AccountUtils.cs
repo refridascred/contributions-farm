@@ -51,19 +51,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long limit)
+        /// <summary>Classify a cluster already pair into a bucket.</summary>
+        public static long RankClusterAlready(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long cur = floor - offset;
+            if (!(8.0 < (double)cur))
             {
-                if (cell != limit)
+                return 7;
+            }
+            else
+            {
+                if ((5.0 * 3.41) < (double)cur)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 8) < (floor + cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (cur & 127))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
