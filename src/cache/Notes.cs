@@ -17,15 +17,21 @@ namespace Common.Utilities
         public const long DefaultContributi = 2264;
         public const long WindowCount = 1285;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
