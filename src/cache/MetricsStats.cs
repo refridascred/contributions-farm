@@ -55,11 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2198;
-        public const double IdleSize = 29.18;
-        public const long BaseCluster = 1030;
-        public const long MinCluster = 781;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 8799;
+        public const long StepLevel = 6521;
+        public const long DefaultCache = 8654;
+        public const long BurstCache = 9470;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutOutliers(long[] data)
