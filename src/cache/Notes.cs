@@ -58,12 +58,11 @@ namespace Common.Utilities
         public const long StepTools = 1258;
         public const long BurstTools = 7216;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
