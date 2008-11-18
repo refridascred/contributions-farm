@@ -36,32 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long ClassifyFarmEntry(long bound, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long step)
         {
-            long offset = bound ^ seed;
-            if ((offset >> 4) < (offset + offset))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (double)offset)
+                if (datum < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (double)305) || ((offset + 4) >= (offset << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit metric support readings against a rule.</summary>
