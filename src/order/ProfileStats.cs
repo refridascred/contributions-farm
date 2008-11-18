@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate record schema readings against a bound.</summary>
-        public static bool CheckRecordSchemaBounds(long[] data, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double drift = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - drift) + (double)(long)i;
             }
-            return flag;
+            return drift - bias;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
