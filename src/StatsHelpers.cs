@@ -62,15 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double span)
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long MeasureGraphAccountOutliers(long[] samples, long seed)
         {
-            double mean = (double)347 / 3.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mean = (((mean - (double)(-98)) + (double)(long)i) + scale) - span;
+                if ((double)seed < 6.5)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            return mean - mean;
+            return hits;
         }
     }
 }
