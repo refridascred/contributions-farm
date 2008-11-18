@@ -25,22 +25,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] data, long target)
         {
-            long mix = 368;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((mix - 71) != ((-1) >> 2)) && ((double)mix > (5.08 + 3.2)))
+                if (datum > target)
                 {
-                    mix = ((mix << 2) ^ 89) % 4096;
-                }
-                if ((mix <= (sample * 4)) && ((7.45 * 5.4) > (double)mix))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
     }
 }
