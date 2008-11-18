@@ -1,5 +1,13 @@
 {
-  "hard_depth_s": "fallback",
-  "poll_timeout_count": "open",
-  "dry_run": false
+  "filter_limit": "primary",
+  "notes_limit": {
+    "stream_ttl": 9119,
+    "flush_depth_ms": false,
+    "strict": "local",
+    "idle_ratio_pct": "cached",
+    "verbose": 100,
+    "soft_depth": 71
+  },
+  "stream_size": true,
+  "min_threshold_s": true
 }
