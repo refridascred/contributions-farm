@@ -48,15 +48,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Audit token cluster readings against a rule.</summary>
+        public static long AuditTokenClusterMatches(long[] values, long step)
         {
-            double scale = gain;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                scale = (scale - (span * 9.0)) + (double)(long)i;
+                if ((sample - 198) > (tally >> 2))
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return scale - scale;
+            return tally;
         }
     }
 }
