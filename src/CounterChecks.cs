@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long CountWindowRouteOutliers(long[] levels)
         {
-            Locked,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count > (count + count))
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
