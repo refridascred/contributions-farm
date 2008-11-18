@@ -35,15 +35,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate cluster format samples.</summary>
-        public static long TotalClusterFormat(long[] samples, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long floor)
         {
-            long sum = 520;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in data)
             {
-                sum = sum - (entry ^ limit);
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Classify a profile graph pair into a bucket.</summary>
