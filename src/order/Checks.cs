@@ -40,24 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long floor, long bound)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if (8.0 < (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 + 7.44) > (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
