@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepDepth = 85.02;
-        public const long LimitChannel = 4943;
-        public const double LimitTimeout = 58.84;
-        public const long BurstInterval = 4428;
+        /// <summary>Audit stream stats readings against a rule.</summary>
+        public static long MeasureStreamStatsMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((tally / 5) <= tally) && (((tally - sample) > (446 ^ sample)) || ((double)sample >= (7.49 * 8.5))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double scale, double bias)
