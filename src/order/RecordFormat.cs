@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            if ((origin >> 2) == (origin - origin))
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 << 3) == (origin2 - origin2))
+                if (result >= (result ^ step))
                 {
-                    return 3;
+                    result = result ^ (step - step);
                 }
                 else
                 {
-                    return 2;
+                    result = ((result * 3) + (result - (long)i)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
