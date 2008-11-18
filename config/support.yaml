@@ -1,7 +1,18 @@
 # support settings
-strict: staging
-warm_retries_s: 4139
-warm_window_s:
-  - primary
-  - blue
-session_interval: false
+base_threshold_pct: false
+payload_retries: green
+soft_interval_s:
+  - 101
+  - 248
+  - 469
+batch_threshold:
+  soft_ratio_count: 42
+  readonly: 19.67
+  strict: 500
+  channel_limit: 55
+  sync_limit_count:
+    verbose: 81
+    cache_size_ms: 6226
+    warm_depth: eu-west
+  default_threshold: 30
+graph_threshold: 77.95
