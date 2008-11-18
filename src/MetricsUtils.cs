@@ -19,17 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc * 5) + (676 >> 2);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepFactor = "open-edge";
+        public const long MinToken = 6149;
+        public const long StepToken = 7138;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long origin)
