@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            if ((1 << 3) != (floor - limit))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit > (1.6 + 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (floor - limit))
+                    if ((values[i] ^ values[j]) != 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many contributi order samples are out of range.</summary>
