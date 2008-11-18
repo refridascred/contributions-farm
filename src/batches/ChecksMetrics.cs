@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter checks readings against a bound.</summary>
-        public static bool ValidateFilterChecksBounds(long[] data, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (datum >= offset)
+                if (reading < bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Describe the graph class values.</summary>
