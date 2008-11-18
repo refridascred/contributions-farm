@@ -20,38 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if ((floor - floor) != (step + 962))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((10 ^ step) < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 3) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor * 4) >= (floor / 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of order readings.</summary>
