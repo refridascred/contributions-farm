@@ -68,16 +68,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a route format counter forward.</summary>
-        public static long SeriesRouteFormat(long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)537 + (4.0 - offset);
+            if (drift >= gain)
             {
-                sum = sum ^ ((long)i % 7);
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = drift - (8.5 - 1.4);
             }
-            return sum;
+            else
+            {
+                drift = drift + (double)113;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (gain * 6.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
