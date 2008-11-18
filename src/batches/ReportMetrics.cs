@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitFactor = 31.42;
-        public const string MaxBatch = "fallback";
-        public const long HardBatch = 5933;
-        public const long RetryBatch = 5400;
-        public const long CacheBatch = 2755;
+        /// <summary>Audit token editor readings against a rule.</summary>
+        public static long MeasureTokenEditorOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((808 & 7) < (reading / 7))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a command commits pair into a bucket.</summary>
         public static long BucketCommandCommits(long offset, long limit)
