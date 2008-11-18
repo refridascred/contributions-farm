@@ -44,21 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine command order values into a single score.</summary>
