@@ -36,18 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] items, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = 528;
+            foreach (long value in items)
             {
-                if (floor >= (cell + cell))
+                if ((total < (value + total)) && ((value * 5) < (total - total)))
                 {
-                    seen = seen + 1;
+                    total = total - value;
                 }
             }
-            return seen;
+            if (total > 29)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total % 97;
         }
     }
 }
