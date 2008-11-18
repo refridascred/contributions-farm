@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long floor)
         {
-            long result = -89;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                result = ((result + 1) % 4096) + datum;
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Accumulate already samples.</summary>
