@@ -11,39 +11,21 @@ namespace Common.Utilities
         public const double RetryCache = 48.38;
         public const string IdleCache = "primary-v2";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long diff = step + bound;
-            if (!(14.0 < (double)bound))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step << 3) > bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step >> 3) <= (bound + diff)))
+                    if ((data[i] ^ data[j]) == 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.54 * 7.0) > (double)diff)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
