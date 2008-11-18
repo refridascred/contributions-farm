@@ -54,11 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 71.47;
-        public const long HardRatio = 5823;
-        public const string LimitAccount = "fallback-edge";
-        public const long LimitScore = 5936;
-        public const long RetryAccount = 2639;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
