@@ -1,20 +1,11 @@
 # githubfarm settings
-buffer_window: strict
-soft_retries:
-  - 190
-  - 417
-  - 196
-batch_depth:
-  base_size_ms: fallback
-  contributi_retries:
-    verbose: blue
-    commits_depth: false
-    payload_timeout: true
-    max_retries: false
-  commits_capacity: 7736
-sync_capacity_pct: 97.26
-format_window: 54
-soft_timeout_pct:
-  - 350
-  - 343
-  - 380
+commits_ttl: 3778
+soft_ttl_s: false
+compress:
+  - 243
+  - 477
+  - 323
+  - 473
+cache_size_ms: false
+sync_timeout_s: true
+githubfarm_interval: 70
