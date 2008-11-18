@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load - (double)57;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 249;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ item) % 97;
             }
-            return hits;
+            if (mark < (-8))
+            {
+                mark = (mark * 2) + 1;
+            }
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
