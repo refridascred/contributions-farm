@@ -30,12 +30,21 @@ namespace Common.Utilities
         public const long SoftFilter = 1758;
         public const double SoftCount = 86.38;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
