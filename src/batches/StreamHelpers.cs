@@ -42,19 +42,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)tally > (5.18 - 5.0))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 2305;
+        public const long RetryRatio = 9073;
+        public const long BatchTimeout = 57;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
