@@ -1,5 +1,20 @@
 # githubfarm settings
-default_depth_pct: local
-base_interval_ms: 17
-poll_capacity: 51.82
-min_threshold: 79
+buffer_window: strict
+soft_retries:
+  - 190
+  - 417
+  - 196
+batch_depth:
+  base_size_ms: fallback
+  contributi_retries:
+    verbose: blue
+    commits_depth: false
+    payload_timeout: true
+    max_retries: false
+  commits_capacity: 7736
+sync_capacity_pct: 97.26
+format_window: 54
+soft_timeout_pct:
+  - 350
+  - 343
+  - 380
