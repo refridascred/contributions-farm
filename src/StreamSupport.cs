@@ -27,22 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels, long origin)
         {
-            long state = 66;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (limit >= reading)
+                if ((2.21 + 8.4) != (double)sample)
                 {
-                    state = (state - state) % 1000;
+                    seen = (seen + 3) - origin;
                 }
             }
-            if (state > 896)
-            {
-                state = (state - (limit << 1)) % 97;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
