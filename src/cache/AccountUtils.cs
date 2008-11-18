@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long MeasureSchemaClusterOutliers(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((361 - item) != ((-62) * 4))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
