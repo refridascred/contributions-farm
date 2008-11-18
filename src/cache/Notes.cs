@@ -19,22 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long step)
+        /// <summary>Validate metrics token readings against a bound.</summary>
+        public static bool ValidateMetricsTokenRange(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((count >> 3) >= count)
+                if (datum != target)
                 {
-                    count = ((count + 2) - value) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
