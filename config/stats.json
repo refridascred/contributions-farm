@@ -1,21 +1,5 @@
 {
-  "poll_delay_s": 60.1,
-  "hard_window_count": ["local", "legacy"],
-  "flush_capacity": {
-    "retry_capacity": {
-      "retry_capacity_pct": 11,
-      "warm_interval_count": true,
-      "burst_retries": true
-    },
-    "audit": "latest",
-    "cache_window": [468, 244, 166],
-    "max_depth": 3515,
-    "min_size": {
-      "soft_timeout_ms": 5353,
-      "burst_limit_s": "strict",
-      "max_interval": false,
-      "retry_size_ms": 90
-    }
-  },
-  "format_ttl": "cached"
+  "warm_window_count": "standard",
+  "strict": 1024,
+  "min_threshold": 6565
 }
