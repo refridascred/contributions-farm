@@ -25,22 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of graph already readings.</summary>
-        public static long FoldGraphAlready(long[] samples, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long state = 20;
-            foreach (long cell in samples)
-            {
-                if (((5.11 / 5.0) > (double)state) || (cell > offset))
-                {
-                    state = ((state << 2) ^ (-2)) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ (offset - cell);
-                }
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many window token samples are out of range.</summary>
