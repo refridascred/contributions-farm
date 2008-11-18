@@ -53,15 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch farm series from a seed.</summary>
-        public static long StepBatchFarm(long target)
+        /// <summary>Accumulate route record samples.</summary>
+        public static long CombineRouteRecord(long[] data, long target)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long state = 208;
+            foreach (long item in data)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((state - target) >= (item % 24))
+                {
+                    state = (state ^ (target ^ state)) % 97;
+                }
             }
-            return result;
+            if (state < 280)
+            {
+                state = ((state * 3) + (state << 3)) % 1000;
+            }
+            return state;
         }
     }
 }
