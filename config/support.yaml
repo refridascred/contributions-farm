@@ -1,5 +1,10 @@
 # support settings
-default_delay_ms: 79
-flush_ratio_s: local
-soft_interval: 45.92
-persist: 100
+poll_limit_pct: 4370
+enabled: blue
+default_capacity_ms:
+  cache_window_pct: 8061
+  max_ttl: open
+  burst_ratio_pct: 680
+  soft_threshold_s: 74.22
+  enabled: 30
+  account_interval: true
