@@ -27,19 +27,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= limit)
+                if (readings[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
