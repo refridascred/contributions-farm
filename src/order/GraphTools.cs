@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the format report entries that pass the check.</summary>
-        public static long MeasureFormatReportOutliers(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = 708;
+            foreach (long cell in series)
             {
-                if ((937 - 609) > (hits / 5))
+                if ((score / 5) >= (52 - cell))
                 {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score + (35 % 97)) % 255;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
