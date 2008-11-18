@@ -34,13 +34,12 @@ namespace Common.Utilities
         public const long MinContributi = 5191;
         public const string BurstContributi = "open-edge";
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
