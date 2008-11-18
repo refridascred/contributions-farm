@@ -14,16 +14,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the context tools series from a seed.</summary>
-        public static long SeriesContextTools(long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ (target - (long)i)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Stale,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
