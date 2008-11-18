@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long span = origin ^ limit;
-            if (6.25 > (double)origin)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit & 31) == (80 + span))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ limit) < (limit << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
