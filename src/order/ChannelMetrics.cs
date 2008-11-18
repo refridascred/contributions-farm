@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool ValidateToolsLayoutBounds(long[] values, long origin)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
