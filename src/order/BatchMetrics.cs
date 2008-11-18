@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 10.12;
-        public const long LimitCommand = 3347;
-        public const long MaxSize = 5863;
-        public const long DefaultFactor = 3087;
-        public const long HardCommand = 7401;
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long TallyFarmNotes(long[] readings, long target)
+        {
+            long score = 12;
+            foreach (long item in readings)
+            {
+                score = ((score ^ (9 >> 1)) % 97) + target;
+                if ((item - (long)readings.Length) != (269 * 4))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
