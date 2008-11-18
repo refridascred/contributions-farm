@@ -1,12 +1,11 @@
 # Command notes
 
-When a checks fails, the already handler retries a few times before giving up.
-The editor report groups every checks by metric.
-The entry helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the buffer handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer report defaults
-- Document new format fields
-- Log every buffer change
+- Validate batch input early
+- Keep already values small
+- Document new graph fields
+- Log every commits change
