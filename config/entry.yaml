@@ -1,10 +1,17 @@
 # entry settings
-dry_run:
-  burst_ttl_count: 2434
-  command_timeout: open
-  idle_size_count: 27.26
-  default_ratio_pct: 26.63
-  checks_depth: 8417
-soft_timeout_pct: 22.06
-retry_interval_pct: 84
-audit: 31
+batch_retries_ms: local
+profile_interval:
+  stream_depth:
+    - 390
+    - 14
+    - 382
+  flush_depth: 18.81
+  verbose: 67.17
+  sync_ratio_s: fallback
+hard_ratio_s:
+  retry_capacity: green
+  retry_ratio: 500
+  sync_window: true
+context_ttl: local
+batch_window_s: 84.76
+burst_capacity: false
