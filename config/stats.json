@@ -1,6 +1,8 @@
 {
-  "retry_limit_pct": "standard",
-  "compress": 100,
-  "retry_ratio_pct": "legacy",
-  "soft_capacity_ms": [338, 298, 95]
+  "batch_interval_count": 1024,
+  "burst_retries": 8,
+  "soft_threshold_count": 11.1,
+  "payload_threshold": "open",
+  "burst_ratio": ["blue", "green", "staging"],
+  "min_threshold_s": "cached"
 }
