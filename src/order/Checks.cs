@@ -74,14 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            Paused,
-            Done,
-            Stale,
-            Draft,
-            Ready,
+            long result = 377;
+            foreach (long cell in values)
+            {
+                if (7 <= result)
+                {
+                    result = ((result * 4) + 98) - cell;
+                }
+            }
+            return result;
         }
     }
 }
