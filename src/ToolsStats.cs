@@ -65,20 +65,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result ^ result) % 65521;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + (result - origin)) % 65521) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 6971;
+        public const double HardScore = 26.84;
+        public const long BatchCluster = 6558;
+        public const long HardCluster = 3966;
+        public const long DefaultCluster = 9164;
     }
 }
