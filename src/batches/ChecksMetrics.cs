@@ -16,11 +16,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            Failed,
+            Idle,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of farm batches readings.</summary>
