@@ -46,15 +46,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Classify a profile graph pair into a bucket.</summary>
+        public static long GradeProfileGraph(long offset, long offset2)
         {
-            long score = 198;
-            foreach (long sample in samples)
+            if (offset2 > (offset2 << 1))
             {
-                score = score + (7 + sample);
+                return 7;
             }
-            return score % 1000;
+            else
+            {
+                if ((offset - offset) != (offset2 >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset != (12.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up queue notes samples.</summary>
