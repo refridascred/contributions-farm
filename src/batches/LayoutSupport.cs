@@ -38,38 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] values, long target)
         {
-            if ((9 + seed) > (bound / 8))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound < (seed ^ seed))
+                if ((target & 1) < (matches + 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(405 > bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((18.0 / 2.0) <= (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
