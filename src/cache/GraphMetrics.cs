@@ -57,15 +57,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            double ratio2 = (double)548 * 8.03;
-            for (int i = 0; i < 2; i++)
+            double weight2 = (double)(147 - (-4));
+            if (weight2 > (weight2 / 7.0))
             {
-                ratio2 = ((ratio2 - ratio2) + (double)(long)i) + ratio;
+                weight2 = ((weight2 + weight2) - weight) - floor;
             }
-            return ratio2 + (ratio2 - span);
+            return weight2 - weight2;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
