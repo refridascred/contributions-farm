@@ -44,23 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen ^ item) == (seed + item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 4572;
+        public const long DefaultGraph = 9445;
+        public const long BaseGraph = 1118;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleScore = "alpha-v2";
