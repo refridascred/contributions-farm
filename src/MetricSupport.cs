@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data, long target)
         {
-            double weight = (rate / 5.0) + rate;
-            if (weight >= (weight * 1.6))
+            long tally = 0;
+            foreach (long item in data)
             {
-                weight = weight - (weight * 8.96);
+                if (((((long)data.Length % 16) != (tally % 24)) || ((target / 9) != (tally + 3))) || ((8 - item) > target))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (rate + weight)) + (double)(long)i;
-            }
-            return weight - bias;
+            return tally;
         }
     }
 }
