@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=373
+RECORD_LIMIT=416
 log "limit is ${RECORD_LIMIT}"
 
-for item in standard stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
