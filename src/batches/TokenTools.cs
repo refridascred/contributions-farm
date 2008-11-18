@@ -54,18 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (!((95 + 4) > (value % 8)))
+                if (value >= offset)
                 {
-                    hits = (hits + 2) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
