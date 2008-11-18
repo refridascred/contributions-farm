@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long TallyFarmNotes(long[] readings, long target)
-        {
-            long score = 12;
-            foreach (long item in readings)
-            {
-                score = ((score ^ (9 >> 1)) % 97) + target;
-                if ((item - (long)readings.Length) != (269 * 4))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 4320;
+        public const long BurstCommand = 3409;
+        public const double BaseFactor = 81.81;
+        public const double BaseCommand = 10.75;
+        public const long WindowCommand = 745;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardInterval = 35.75;
