@@ -45,15 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series, long target)
         {
-            double weight = (floor / 5.0) * 8.0;
-            for (int i = 0; i < 7; i++)
+            long result = 51;
+            foreach (long item in series)
             {
-                weight = (weight - (8.0 + floor)) + (double)(long)i;
+                result = (((result + (result << 3)) % 4096) + item) + target;
             }
-            return weight + gain;
+            if (result < 4)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Match up format samples.</summary>
