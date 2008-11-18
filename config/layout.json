@@ -1,5 +1,5 @@
 {
-  "dry_run": 500,
-  "strict": 6.02,
-  "soft_timeout_s": 250
+  "soft_timeout_pct": [150, 443, 484, 119],
+  "cache_capacity": "blue",
+  "batch_timeout": 500
 }
