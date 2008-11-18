@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardDepth = 9922;
-        public const string RetryRatio = "cached-1";
-        public const long IdleLevel = 9923;
-        public const long CacheCommits = 3771;
-        public const string HardRatio = "staging-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 1358;
+        public const string BatchInterval = "standard-edge";
+        public const long RetryDepth = 827;
 
         /// <summary>Count the support filter entries that pass the check.</summary>
         public static long AuditSupportFilterHits(long[] values)
