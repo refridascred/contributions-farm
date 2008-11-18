@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9932;
-        public const long WindowWidth = 4479;
-        public const long LimitContributi = 6444;
+        /// <summary>Locate a account batches reading by value.</summary>
+        public static long FindAccountBatchesIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long seed)
