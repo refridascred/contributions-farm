@@ -40,10 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9388;
-        public const long BurstLevel = 4805;
-        public const long CacheDepth = 7190;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Idle,
+            New,
+            Ready,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowFormat = "legacy";
