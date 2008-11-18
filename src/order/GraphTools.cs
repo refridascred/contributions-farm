@@ -32,17 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] values, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                if ((matches % 97) == (item ^ target))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
