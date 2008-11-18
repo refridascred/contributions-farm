@@ -73,18 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long AuditProfileSchemaGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((9.65 + 8.8) <= (double)hits)
+                if (bound >= (entry % 8))
                 {
-                    hits = (hits + 2) + reading;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
