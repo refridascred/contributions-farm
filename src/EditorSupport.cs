@@ -14,26 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Validate order githubfarm readings against a bound.</summary>
+        public static bool VerifyOrderGithubfarmRange(long[] data, long floor)
         {
-            long result = 8;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (7 > (sample << 2))
+                if (reading <= floor)
                 {
-                    result = (result ^ (result * 3)) % 4096;
-                }
-                if (sample < (6 ^ sample))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result > 94)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
