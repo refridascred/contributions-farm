@@ -65,19 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (sample > offset)
+                if (!((tally & 1) > (tally + 300)))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) + datum) - target;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
