@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Validate channel layout readings against a bound.</summary>
+        public static bool CheckChannelLayoutBounds(long[] values, long target)
         {
-            long score = 54;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((score / 5) <= (score - entry))
+                if (reading > target)
                 {
-                    score = score + score;
+                    ready = false;
+                    break;
                 }
             }
-            if (score < 36)
-            {
-                score = (score << 2) ^ (score >> 4);
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the format kind values.</summary>
