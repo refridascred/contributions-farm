@@ -27,18 +27,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] series, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((double)tally <= (double)entry) && (entry > ((-9) & 15))))
+                long step = (anchor % 12) - ((long)i & 7);
+                if (step > anchor)
                 {
-                    tally = (tally + 3) + target;
+                    step = ((step * 5) + (bound + bound)) % 97;
                 }
+                else
+                {
+                    anchor = ((anchor * 2) + (bound - bound)) % 65521;
+                }
+                step = (step ^ anchor) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
