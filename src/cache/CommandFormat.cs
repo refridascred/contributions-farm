@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (4 > tally)
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
