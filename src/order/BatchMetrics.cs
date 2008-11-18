@@ -37,12 +37,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((28 % 5) >= (seen - entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
