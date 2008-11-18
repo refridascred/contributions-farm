@@ -41,22 +41,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long ScoreQueueCluster(long[] values, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            long carry = 9;
-            foreach (long reading in values)
+            double gain = span;
+            if (gain < (1.22 + 3.1))
             {
-                if ((carry ^ carry) >= (444 / 5))
-                {
-                    carry = (carry + (reading - origin)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (reading * 5);
-                }
+                gain = gain + gain;
             }
-            return carry % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + (weight + 8.0);
         }
 
         /// <summary>Describe the farm phase values.</summary>
