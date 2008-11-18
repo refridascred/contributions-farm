@@ -30,17 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long origin)
+        /// <summary>Check that every layout order entry stays within the limit.</summary>
+        public static bool ValidateLayoutOrderRange(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (samples[i] >= origin)
+                if (value > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
