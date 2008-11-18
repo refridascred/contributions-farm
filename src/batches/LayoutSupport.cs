@@ -36,18 +36,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] values, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((target & 1) < (matches + 3))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
