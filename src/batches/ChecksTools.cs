@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] values)
         {
-            Idle,
-            New,
-            Pending,
+            long mix = 0;
+            foreach (long value in values)
+            {
+                if ((12.0 / 4.0) >= (double)mix)
+                {
+                    mix = (((mix * 3) + (mix & 3)) % 1000) + value;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
