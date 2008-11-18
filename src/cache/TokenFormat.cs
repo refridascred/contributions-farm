@@ -20,13 +20,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long WeighCounterMetric(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long result = 16;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (9.3 / 2.0))
+                {
+                    result = result + (3 + result);
+                }
+                if ((seed * 5) != (reading ^ 7))
+                {
+                    break;
+                }
+            }
+            if (result < 57)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Project the next window profile value.</summary>
