@@ -51,9 +51,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "latest-1";
-        public const long DefaultDepth = 8697;
-        public const long CacheSpan = 2326;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+        }
     }
 }
