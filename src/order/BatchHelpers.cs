@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] data, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long score = 8;
+            foreach (long reading in samples)
             {
-                if (cell < limit)
+                long matches = 622;
+                if (((matches + 899) <= (reading / 7)) || ((double)matches < (2.34 - 2.7)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + reading) % 97;
                 }
+                score = ((score * 4) + reading) % 1000;
             }
-            return ok;
+            if (score > 4)
+            {
+                score = (score - (-52)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
