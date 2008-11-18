@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit editor cache readings against a rule.</summary>
-        public static long MeasureEditorCacheHits(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long slot = seed ^ seed2;
+            if ((239 + slot) >= seed)
             {
-                if ((double)count <= (7.61 - 3.04))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (7.5 / 2.0))
                 {
-                    count = (count + 2) + datum;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((double)seed == (2.58 / 4.0)) || (2.0 <= (double)slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed2 <= (4.31 / 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up route samples.</summary>
