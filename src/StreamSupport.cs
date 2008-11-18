@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            long state = 1;
-            foreach (long value in samples)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((3 + 2) == (value ^ floor))
-                {
-                    state = (state - floor) % 1000;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return state % 1000;
+            return mix;
         }
     }
 }
