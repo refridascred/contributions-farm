@@ -44,18 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] samples, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (3.25 / 2.0))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
