@@ -87,11 +87,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] readings, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up batches samples.</summary>
