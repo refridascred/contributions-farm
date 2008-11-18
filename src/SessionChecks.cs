@@ -31,16 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix + ((long)i - mix);
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
