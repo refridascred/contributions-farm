@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 246;
+        public const long CacheNotes = 4951;
+        public const long MaxNotes = 7393;
+        public const string DefaultNotes = "fallback-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] readings, long offset)
