@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account batches reading by value.</summary>
-        public static long FindAccountBatchesIndex(long[] values, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
