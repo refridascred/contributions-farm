@@ -44,15 +44,14 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Synced,
+            Idle,
+            New,
+            Draft,
+            Paused,
         }
     }
 }
