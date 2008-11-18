@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool VerifyBufferClusterLimits(long[] levels, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (value > step)
+                if (!((target + (long)i) < target))
                 {
-                    flag = false;
-                    break;
+                    score = (score + (score + score)) % 65521;
                 }
+                else
+                {
+                    score = ((score << 3) ^ target) % 101;
+                }
+                score = ((score << 3) ^ (score + score)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Iterate the context tools series from a seed.</summary>
