@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = 9;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (((state << 2) ^ (state ^ 338)) + (long)i) + target;
-                }
-                if ((long)items.Length <= sample)
-                {
-                    state = state - (sample & 3);
-                }
-                else
-                {
-                    state = (state + (sample + sample)) % 101;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit editor githubfarm readings against a rule.</summary>
