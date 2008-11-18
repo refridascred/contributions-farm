@@ -68,18 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                if (((14.0 + 1.6) != (double)tally) || ((1.0 + 5.5) != (double)cell))
+                mix = (mix - mix) ^ entry;
+                if ((step % 2) < (mix & 3))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
