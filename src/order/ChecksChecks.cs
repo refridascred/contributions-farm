@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] levels, long limit)
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long DigestLayoutFormat(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = -4;
+            foreach (long datum in readings)
             {
-                if (5 <= (limit << 2))
+                if ((-4) > (state - state))
                 {
-                    tally = (tally + 1) - entry;
+                    state = (state * 5) + datum;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Hold a session info.</summary>
