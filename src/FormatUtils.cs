@@ -31,19 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] samples, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Find the first commits batches entry that matches the target.</summary>
