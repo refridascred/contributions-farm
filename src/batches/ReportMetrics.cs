@@ -25,35 +25,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate order support samples.</summary>
-        public static long TotalOrderSupport(long[] values, long origin)
+        /// <summary>Locate a already metrics reading by value.</summary>
+        public static long LocateAlreadyMetricsIndex(long[] series, long target)
         {
-            long result = 257;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > (result % 10))
+                if (series[i] == target)
                 {
-                    result = ((result << 2) ^ 99) % 1000;
-                }
-                else
-                {
-                    result = (result * 5) + cell;
-                }
-                result = result - result;
-                if ((double)80 == (double)result)
-                {
-                    result = ((result * 3) + (3 >> 3)) % 101;
-                }
-                else
-                {
-                    result = result ^ (result / 7);
-                }
-                if (((cell >> 1) <= (long)values.Length) || (result >= (origin ^ 20)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
