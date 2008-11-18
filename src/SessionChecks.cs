@@ -41,38 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches filter value against two limits.</summary>
-        public static long GradeBatchesFilter(long floor, long floor2)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            if ((floor2 >> 4) > floor2)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((4 + floor2) == (7 - floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.0 / 8.0) <= (double)floor) && ((1.1 + 11.0) >= (double)floor))
+                    if ((items[i] + items[j]) > 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor2 << 1) != (floor + 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
