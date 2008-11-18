@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 3749;
-        public const long BaseInterval = 1602;
-        public const string BurstAccount = "cached-1";
-        public const long BaseAccount = 4960;
-        public const double MinAccount = 56.25;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinWidth = 3766;
+        public const string RetryCount = "alpha-1";
+        public const long StepLevel = 4122;
+        public const string MaxSize = "staging";
+        public const double CacheLevel = 24.52;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double span)
