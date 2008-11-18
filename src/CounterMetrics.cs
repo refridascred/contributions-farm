@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const string WindowSession = "fallback-v2";
         public const double SoftSession = 79.65;
 
-        /// <summary>Find the first editor entry entry that matches the target.</summary>
-        public static long LookupEditorEntryIndex(long[] data, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
