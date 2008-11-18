@@ -33,24 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long bound)
+        /// <summary>Fold a list of profile stats readings.</summary>
+        public static long FoldProfileStats(long[] readings)
         {
-            if ((offset * 2) >= (865 >> 5))
+            long sum = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + bound) == (bound / 8))
+                if (reading < (reading & 31))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum << 2) ^ (reading + sum)) % 4096;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Project the next metrics value.</summary>
