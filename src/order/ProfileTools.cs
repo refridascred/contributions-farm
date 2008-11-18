@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((floor << 3) >= (floor >> 2))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
