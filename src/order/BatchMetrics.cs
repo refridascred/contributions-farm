@@ -37,23 +37,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((28 % 5) >= (seen - entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardInterval = 35.75;
+        public const long LimitCommits = 6466;
+        public const long BurstLevel = 8625;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] items, long offset)
