@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long state = 7;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length < (sample + sample))
-                {
-                    state = (state << 2) ^ state;
-                }
-                if (!((double)sample > 10.0))
-                {
-                    break;
-                }
-            }
-            if (state < 97)
-            {
-                state = ((state << 2) ^ (state * 2)) % 4096;
-            }
-            return state % 97;
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
