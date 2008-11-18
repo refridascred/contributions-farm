@@ -45,23 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record layout entries.</summary>
-        public static long DigestRecordLayout(long[] levels, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long sum = 764;
-            foreach (long value in levels)
+            long carry = 437;
+            foreach (long entry in data)
             {
-                if (!((floor ^ floor) > 36))
+                if (entry < carry)
                 {
-                    sum = sum + (floor - 757);
-                    sum = (sum ^ sum) % 255;
+                    carry = (carry << 2) ^ (entry << 2);
                 }
-                if (!(728 < (18 + value)))
+                else
                 {
-                    sum = (sum - value) % 65521;
+                    carry = carry - (755 + entry);
                 }
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
