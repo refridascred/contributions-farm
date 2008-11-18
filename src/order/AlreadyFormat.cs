@@ -63,18 +63,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm schema entries.</summary>
-        public static long DigestGithubfarmSchema(long[] levels)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long carry = -86;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= (item % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 4) + (item + (long)levels.Length)) % 101;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
