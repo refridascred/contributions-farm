@@ -24,24 +24,11 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings, long limit)
-        {
-            long state = 4;
-            foreach (long item in readings)
-            {
-                state = state - (item / 2);
-                if (!(396 > limit))
-                {
-                    break;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state * 5) + (limit / 7);
-            }
-            return state % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardTimeout = 81.28;
+        public const double SoftCluster = 21.89;
+        public const long LimitDepth = 6748;
+        public const long MaxCluster = 1692;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string LimitRoute = "staging-v2";
