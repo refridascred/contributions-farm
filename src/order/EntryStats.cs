@@ -49,11 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long offset)
         {
-            double drift = bias;
-            return (drift + drift) + floor;
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
