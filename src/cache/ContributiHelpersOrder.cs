@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally - tally) <= (reading + tally))
+                if (((long)i & 3) == (limit - acc))
                 {
-                    tally = tally + 3;
+                    acc = (acc << 2) ^ (acc << 2);
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate batches samples.</summary>
