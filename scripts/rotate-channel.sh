@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-staging}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=131
+CHANNEL_LIMIT=71
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable edge blue green; do
+    log "checking ${item}"
+done
