@@ -35,38 +35,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            if ((seed ^ seed) > (offset / 7))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(offset > (offset & 7)))
+                if ((tally << 3) <= (item & 7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset > (2.0 - 8.7)) || ((offset >> 5) <= (offset - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.27 + 7.5) < (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cluster class values.</summary>
