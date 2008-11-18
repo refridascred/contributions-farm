@@ -14,12 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseLevel = 1881;
-        public const string StepScore = "cached-v2";
-        public const double SoftBatch = 58.63;
-        public const long CacheBatch = 7394;
-        public const string LimitBatch = "local-v2";
+        /// <summary>Count order tools pairs that satisfy a relation.</summary>
+        public static long CompareOrderToolsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] samples)
