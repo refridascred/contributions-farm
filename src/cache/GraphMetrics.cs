@@ -47,21 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes window samples.</summary>
-        public static long OverlapNotesWindowCount(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((entry * 5) >= (tally - tally)) && ((tally + entry) < entry))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
