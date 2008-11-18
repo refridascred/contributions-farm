@@ -36,12 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchFactor = 7050;
-        public const string LimitWidth = "standard-v2";
-        public const long DefaultBatches = 8822;
-        public const long MinBudget = 4761;
-        public const double IdleBatches = 42.66;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
+        {
+            long anchor = 7;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor << 3) ^ cell) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] data)
