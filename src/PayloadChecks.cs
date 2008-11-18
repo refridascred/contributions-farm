@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = 2;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ (state & 127)) % 4096;
-                if (reading <= (8 + state))
-                {
-                    state = (state << 3) ^ (5 - state);
-                }
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
