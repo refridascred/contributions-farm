@@ -15,24 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long floor)
         {
-            if ((floor + step) != (floor + floor))
+            bool valid = true;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (0.65 <= (double)step)
+                if (datum != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
