@@ -44,18 +44,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Check that every schema tools entry stays within the limit.</summary>
+        public static bool GuardSchemaToolsLimits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((3.8 < (double)tally) && (((515 << 2) < entry) && ((double)tally < (1.98 + 6.3))))
+                if (sample < bound)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
