@@ -55,12 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            Locked,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((2 * 2) <= (sample % 8)) || ((double)sample != (1.19 + 3.6)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
