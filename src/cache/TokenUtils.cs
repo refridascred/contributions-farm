@@ -20,11 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "alpha";
-        public const string LimitFactor = "staging-1";
-        public const long HardCluster = 4417;
-        public const long RetryCluster = 6588;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 >= (rate - rate2))
+            {
+                rate2 = rate2 - (double)909;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 + (rate / 2.0);
+        }
 
         /// <summary>Accumulate editor record samples.</summary>
         public static long FoldEditorRecord(long[] series)
