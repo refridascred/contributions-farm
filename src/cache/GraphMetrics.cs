@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if (floor < (bound & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + floor) > (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound / 9) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor / 2) <= (floor + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of route entries.</summary>
