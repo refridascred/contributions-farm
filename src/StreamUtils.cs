@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long TallyProfileOrderMatches(long[] data, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                state = (state ^ (offset & 63)) % 97;
-                state = state ^ (offset * 4);
-                state = ((state * 5) + (long)i) % 1000;
+                if (offset >= (offset + hits))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
