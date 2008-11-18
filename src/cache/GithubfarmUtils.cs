@@ -24,22 +24,14 @@ namespace Common.Utilities
         public const long DefaultScore = 3709;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((617 > (287 - tally)) || (14.0 < (double)tally)))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the context kind values.</summary>
