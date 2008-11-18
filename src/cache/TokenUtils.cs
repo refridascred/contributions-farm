@@ -31,13 +31,13 @@ namespace Common.Utilities
             return load - (double)936;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Closed,
-            Stale,
-            New,
-            Done,
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
