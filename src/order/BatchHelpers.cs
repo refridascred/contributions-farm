@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-edge";
         public const long RetryDepth = 827;
 
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long AuditSupportFilterHits(long[] values)
+        /// <summary>Adjust a window context reading.</summary>
+        public static double ScaleWindowContext(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double weight = 7.99 + (rate - 9.2);
+            if (weight > (5.94 / 6.0))
             {
-                if (8 < (datum >> 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + (double)3;
             }
-            return count;
+            else
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (4.1 - rate)) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
