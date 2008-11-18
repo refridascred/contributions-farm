@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] levels, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length + seed) <= 2)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
