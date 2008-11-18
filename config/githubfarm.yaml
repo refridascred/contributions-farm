@@ -1,36 +1,5 @@
 # githubfarm settings
-warm_timeout:
-  retry_retries_pct: 2846
-  report_limit: false
-  strict:
-    - 42
-    - 499
-  cluster_ratio: false
-  idle_ttl_ms: 1024
-  batches_ratio: 81.65
-enabled:
-  tools_interval: 1387
-  dry_run:
-    record_interval: 67
-    commits_limit: edge
-    session_threshold: 66.47
-    flush_timeout_count: edge
-    min_window_ms: 28.9
-  verbose: fallback
-  cache_timeout: eu-west
-  hard_window_count: staging
-  metric_interval:
-    - eu-west
-    - blue
-    - staging
-    - green
-session_delay: 85
-soft_timeout:
-  soft_depth_ms: 3541
-  max_window:
-    - 28
-    - 280
-  readonly: true
-  schema_depth: 35
-  audit: 39.34
-report_limit: 7223
+order_interval: 68
+command_timeout: fallback
+cache_window_s: 40.11
+warm_depth_s: standard
