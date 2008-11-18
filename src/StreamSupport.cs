@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 5) + ((long)i * 4)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            double bias = scale;
+            return (bias - (double)7) + span;
         }
 
         /// <summary>Fold a list of route readings.</summary>
