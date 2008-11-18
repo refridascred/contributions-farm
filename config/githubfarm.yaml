@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_window_count: true
-base_interval_ms: 1905
-burst_ratio_ms: open
-soft_capacity_s: open
-flush_size: 60
-sync_delay_count: 77
+base_interval_count: true
+compress: cached
+enabled: green
