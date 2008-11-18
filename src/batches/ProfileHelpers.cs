@@ -44,19 +44,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command metric values into a single score.</summary>
-        public static long CombineCommandMetric(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long mark = 63;
-            foreach (long reading in items)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark ^ (reading - mark)) % 255;
-                if ((960 - mark) == (608 & 1))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
