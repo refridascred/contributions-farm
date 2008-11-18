@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double MaxSize = 39.0;
         public const string HardCommits = "staging";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((seen - datum) >= (datum / 8)) && ((datum >> 4) < (datum >> 5)))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "stable-1";
+        public const long HardProfile = 3101;
+        public const long BurstProfile = 9702;
+        public const long BurstSpan = 6338;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
