@@ -1,24 +1,5 @@
 # entry settings
-cache_limit:
-  retry_depth: 10
-  stream_limit:
-    - primary
-    - staging
-    - stable
-    - latest
-  persist:
-    sync_retries: edge
-    route_depth: false
-    strict:
-      - primary
-      - standard
-    sync_delay:
-      - 165
-      - 289
-      - 101
-    audit: standard
-    format_depth: 36.43
-batch_interval: true
-stats_interval: false
-dry_run: latest
-persist: 30
+burst_size: false
+enabled: 9160
+cache_retries_count: 52
+burst_ratio: 49.55
