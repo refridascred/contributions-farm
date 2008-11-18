@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] data, long bound)
+        /// <summary>Project the next schema checks value.</summary>
+        public static double ScaleSchemaChecks(double gain, double span)
         {
-            long total = 119;
-            foreach (long entry in data)
-            {
-                if (!((double)bound != (2.17 + 8.13)))
-                {
-                    total = (((total * 2) + total) % 4096) + entry;
-                }
-            }
-            return total;
+            double gain2 = (gain * 17.0) / 7.0;
+            return (gain2 - (8.2 * 7.13)) + span;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
