@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool GuardSessionFilterLimits(long[] data, long seed)
+        /// <summary>Digest a series of contributi metric entries.</summary>
+        public static long WeighContributiMetric(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = -3;
+            foreach (long entry in series)
             {
-                if (sample <= seed)
+                if ((double)entry <= (20.0 / 5.0))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 3) + (floor + 993)) % 1000;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
