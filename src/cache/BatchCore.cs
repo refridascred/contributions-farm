@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] series, long floor)
         {
-            long total = 706;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!(total >= (total - total)))
+                if ((1 % 10) >= value)
                 {
-                    total = total - (total - reading);
+                    seen = (seen + 1) + floor;
                 }
             }
-            if (total > 2)
-            {
-                total = total ^ (total * 2);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
