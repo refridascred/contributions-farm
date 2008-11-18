@@ -28,18 +28,9 @@ namespace Common.Utilities
         public const string MaxSize = "latest-1";
         public const double MaxFactor = 32.7;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + seen) > (seen ^ cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstRatio = 5827;
+        public const long BaseTimeout = 3854;
+        public const long BatchScore = 2995;
     }
 }
