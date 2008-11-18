@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 2124;
-        public const long BurstFilter = 8347;
-        public const string BatchFilter = "local-edge";
-        public const long BurstCount = 465;
-        public const long HardDepth = 3422;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 2527;
+        public const string CacheBudget = "open-edge";
+        public const long BurstSupport = 9968;
+        public const string MinWidth = "cached-1";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] samples, long seed)
