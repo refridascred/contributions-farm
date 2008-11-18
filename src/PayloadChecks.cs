@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5200;
         public const string SoftSpan = "fallback-1";
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a session stream counter forward.</summary>
