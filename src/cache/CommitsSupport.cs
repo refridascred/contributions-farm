@@ -57,21 +57,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up metrics cache samples.</summary>
-        public static long OverlapMetricsCacheCount(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 840;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (5.4 < (double)value)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 2) + (20 - limit);
                 }
             }
-            return count;
+            return anchor % 1000;
         }
     }
 }
