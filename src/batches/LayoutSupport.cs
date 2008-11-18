@@ -28,12 +28,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Paused,
-            Dropped,
-            Retry,
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
