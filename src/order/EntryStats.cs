@@ -38,13 +38,25 @@ namespace Common.Utilities
         public const long BaseChannel = 995;
         public const long MinDepth = 4197;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a record stream value against two limits.</summary>
+        public static long BucketRecordStream(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long lane = origin ^ seed;
+            if (2 < seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (double)lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry githubfarm sample.</summary>
