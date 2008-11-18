@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batches channel readings against a bound.</summary>
-        public static bool ValidateBatchesChannelRange(long[] values, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
