@@ -28,29 +28,25 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            long delta = floor ^ limit;
+            if (limit > (limit * 4))
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                return 3;
+            }
+            else
+            {
+                if (limit < (limit + delta))
                 {
-                    anchor = ((anchor << 3) ^ (step + 510)) - (long)i2;
-                    anchor = anchor - (step & 31);
-                }
-                if (((step / 6) == (long)i) || ((step ^ step) == (step / 3)))
-                {
-                    anchor = (anchor ^ (anchor ^ step)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + anchor;
-                    anchor = anchor ^ (step * 5);
+                    return 0;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
         }
     }
 }
