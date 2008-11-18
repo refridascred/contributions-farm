@@ -30,31 +30,18 @@ namespace Common.Utilities
         public const double StepBudget = 90.76;
         public const double BaseCounter = 37.77;
 
-        /// <summary>Classify a counter filter pair into a bucket.</summary>
-        public static long RankCounterFilter(long limit, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            if ((limit - origin) <= (limit % 8))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.05 / 8.0) != (double)limit)
+                if ((double)datum > 5.97)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) < (limit + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
