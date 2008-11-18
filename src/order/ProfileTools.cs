@@ -43,15 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Draft,
-            Retry,
-            Locked,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "cached";
+        public const long IdleGithubfarm = 5450;
+        public const string SoftTimeout = "latest";
+        public const string LimitScore = "stable";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] samples)
