@@ -67,13 +67,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            Done,
-            Queued,
-            Paused,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
