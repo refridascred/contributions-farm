@@ -41,15 +41,18 @@ namespace Common.Utilities
             return (load - load) + weight;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long acc = 23;
-            foreach (long cell in items)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                acc = (acc * 2) + (cell >> 5);
+                if ((carry ^ cell) == (cell + carry))
+                {
+                    carry = (carry ^ (cell * 4)) % 4096;
+                }
             }
-            return acc;
+            return carry % 97;
         }
     }
 }
