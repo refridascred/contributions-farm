@@ -37,14 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
             Synced,
-            Done,
             Ready,
-            Locked,
-            Queued,
+            Paused,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
