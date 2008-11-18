@@ -63,19 +63,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double span)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long DigestFormatEntry(long[] values)
         {
-            double gain = span;
-            if (gain > rate)
+            long total = -718;
+            foreach (long entry in values)
             {
-                gain = gain + (double)8;
+                if ((total / 3) < entry)
+                {
+                    total = total ^ (entry - total);
+                }
+                if ((1.63 / 5.0) <= (double)entry)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 2)
             {
-                gain = (gain - 0.85) - (double)(long)i;
+                total = (total ^ (total - total)) % 97;
             }
-            return gain - (span + span);
+            return total;
         }
     }
 }
