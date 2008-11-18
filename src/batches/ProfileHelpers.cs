@@ -59,22 +59,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] items, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((2 >> 1) < (limit - bound))
             {
-                if (tally <= (origin & 63))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) < bound)
                 {
-                    tally = (tally + 3) ^ entry;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound / 6) > (bound << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((37 + 56) > (limit + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
