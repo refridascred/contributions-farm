@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ratio - (floor * 3.0);
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Blend two githubfarm buffer measurements.</summary>
+        public static double AdjustGithubfarmBuffer(double gain, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            double drift = gain;
+            if (drift <= (double)1)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                drift = drift + offset;
             }
-            return total;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + offset;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
