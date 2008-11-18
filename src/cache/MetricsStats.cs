@@ -17,18 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((double)seen > (double)8)
+                if (sample < floor)
                 {
-                    seen = (seen + 3) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
