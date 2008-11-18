@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Queued,
-            Active,
-            Failed,
-            New,
-            Closed,
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
