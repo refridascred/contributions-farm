@@ -28,23 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double gain = floor;
-            if (gain <= (double)(-266))
-            {
-                gain = gain + floor;
-            }
-            else
-            {
-                gain = gain + (floor + gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + weight;
+            New,
+            Retry,
+            Closed,
+            Draft,
+            Idle,
         }
     }
 }
