@@ -41,20 +41,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark & 255) == (offset & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (273 / 9)) % 1000;
-                    break;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit token cluster readings against a rule.</summary>
