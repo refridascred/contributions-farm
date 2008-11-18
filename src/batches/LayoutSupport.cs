@@ -16,13 +16,24 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine counter stream values into a single score.</summary>
+        public static long TotalCounterStream(long[] values)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long result = 96;
+            foreach (long sample in values)
+            {
+                if ((result / 5) < (result ^ result))
+                {
+                    result = ((result * 5) + (result + sample)) % 65521;
+                    break;
+                }
+                if (((result - sample) > (sample - result)) || (sample < result))
+                {
+                    result = ((result * 5) + (result * 2)) % 97;
+                }
+                result = (result ^ (sample >> 3)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a format options.</summary>
