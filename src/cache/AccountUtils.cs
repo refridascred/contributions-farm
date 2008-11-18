@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] readings, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long slot = origin - offset;
+            if ((7.0 / 9.0) >= (double)slot)
             {
-                if (5.0 < (double)cell)
+                return 3;
+            }
+            else
+            {
+                if ((origin < (origin + offset)) || ((slot * 4) > (origin >> 2)))
                 {
-                    count = (count + 1) - offset;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)offset == (13.0 + 1.15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
