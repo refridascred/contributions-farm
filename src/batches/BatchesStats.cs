@@ -31,13 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            Pending,
-            Idle,
-            Draft,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of batch report readings.</summary>
