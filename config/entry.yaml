@@ -1,16 +1,7 @@
 # entry settings
-already_ratio: staging
-retry_retries_ms: 250
-flush_ratio_ms:
-  enabled: fallback
-  retry_capacity_pct: 81.76
-  base_ratio_ms:
-    stream_threshold: 56.07
-    retry_depth: 89.86
-    audit: 374
-    base_threshold_s: true
-    burst_ratio_s:
-      - 331
-      - 225
-      - 288
-    dry_run: 1024
+metrics_retries: edge
+format_depth: 93.61
+profile_size:
+  - 263
+  - 447
+hard_depth_ms: edge
