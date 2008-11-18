@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const long HardMetrics = 4002;
         public const string BaseCount = "standard-1";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 8170;
+        public const double StepBudget = 90.76;
+        public const double BaseCounter = 37.77;
 
         /// <summary>Classify a counter filter pair into a bucket.</summary>
         public static long RankCounterFilter(long limit, long origin)
