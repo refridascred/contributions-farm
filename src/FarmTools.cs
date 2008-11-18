@@ -30,24 +30,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches stream values into a single score.</summary>
-        public static long ScoreBatchesStream(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long origin, long origin2)
         {
-            long carry = 884;
-            foreach (long sample in samples)
+            long edge = origin ^ origin2;
+            if (edge < (34 % 7))
             {
-                for (int i = 0; i < 9; i++)
+                return 0;
+            }
+            else
+            {
+                if (582 <= (5 + origin))
                 {
-                    carry = ((carry * 2) + (carry * 3)) + (long)i;
+                    return 5;
                 }
-                carry = (carry << 2) ^ (4 ^ sample);
-                carry = ((carry * 3) + sample) % 65521;
-                if (4.12 <= (double)sample)
+                else
                 {
-                    break;
+                    if (!(edge >= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
