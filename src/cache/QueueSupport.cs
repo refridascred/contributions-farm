@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long MeasureCommandReportGaps(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)sample <= (1.8 + 5.1)) || ((8.18 - 4.8) != (double)count)))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
