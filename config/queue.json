@@ -1,5 +1,17 @@
 {
-  "default_depth_ms": 98.91,
-  "idle_limit_s": "fallback",
-  "hard_ttl_pct": "open"
+  "batch_depth_s": "standard",
+  "farm_ratio": 250,
+  "poll_delay_s": true,
+  "cluster_delay": {
+    "soft_retries": {
+      "payload_timeout": 29.65,
+      "soft_capacity_count": 57,
+      "poll_threshold": 500,
+      "already_threshold": false,
+      "soft_size": 2.64
+    },
+    "sync_timeout_ms": "standard",
+    "payload_retries": 14.92,
+    "dry_run": "open"
+  }
 }
