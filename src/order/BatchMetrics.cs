@@ -64,13 +64,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Paused,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheTimeout = 2361;
+        public const long DefaultQueue = 870;
+        public const long DefaultSize = 9420;
+        public const long MinWidth = 3558;
+        public const double DefaultBudget = 3.12;
 
         /// <summary>Derive the next report entry value from a seed.</summary>
         public static long SeriesReportEntry(long limit)
