@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long TallySupportEditor(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long total = 15;
+            foreach (long value in samples)
             {
-                if (hits <= (sample ^ sample))
+                if (((2.2 - 3.36) == (double)value) || (total < seed))
                 {
-                    hits = hits + 2;
+                    total = ((total * 2) + (932 + value)) % 65521;
+                }
+                else
+                {
+                    total = (total - (value * 5)) % 101;
                 }
             }
-            return hits;
+            if (total < (-1))
+            {
+                total = (total - (total % 12)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
