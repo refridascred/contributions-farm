@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (item >= target)
+                if (!!((seen - seen) < (seen + seed)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
