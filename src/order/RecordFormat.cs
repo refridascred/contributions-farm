@@ -53,12 +53,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings, long bound)
         {
-            Active,
-            Synced,
-            Retry,
+            long mix = 687;
+            foreach (long sample in readings)
+            {
+                if ((bound ^ sample) >= (sample / 2))
+                {
+                    mix = ((mix * 4) + (bound + bound)) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
