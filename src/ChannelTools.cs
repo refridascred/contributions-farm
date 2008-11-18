@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long IdleDepth = 5015;
         public const long WindowScore = 4991;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "cached-v2";
-        public const long BaseWidth = 8355;
-        public const double CacheSupport = 44.0;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] levels)
