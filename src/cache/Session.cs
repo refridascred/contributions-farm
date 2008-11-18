@@ -45,13 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Failed,
-            Queued,
-            Retry,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftFactor = "fallback-v2";
+        public const long HardScore = 1055;
+        public const double MaxTimeout = 97.17;
+        public const double BurstBudget = 56.19;
     }
 }
