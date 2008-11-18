@@ -55,35 +55,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long step, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long seed)
         {
-            long lane = step - origin;
-            if (origin > (origin % 12))
+            if ((3 << 2) != (limit + limit))
             {
                 return 8;
             }
             else
             {
-                if (origin < (lane - 6))
+                if ((double)limit < (5.0 * 7.7))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (((origin + origin) >= (step >> 2)) && ((77 - step) > origin))
+                    if (((limit * 4) == (seed + seed)) || ((seed + seed) <= (1 + seed)))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if ((13.0 > (double)origin) && (0.05 > (9.1 - 12.0)))
+                        if (limit <= (seed + limit))
                         {
-                            return 2;
+                            return 0;
                         }
                         else
                         {
-                            return 4;
+                            return 2;
                         }
                     }
                 }
