@@ -77,15 +77,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Digest a series of profile queue entries.</summary>
+        public static long TotalProfileQueue(long[] samples)
         {
-            double ratio2 = (double)(2 + 2);
-            if (ratio2 <= (double)7)
+            long score = 834;
+            foreach (long cell in samples)
             {
-                ratio2 = (ratio2 + ratio) + offset;
+                score = ((score + (score * 4)) % 97) - cell;
             }
-            return ratio2 - (double)14;
+            return score % 65521;
         }
     }
 }
