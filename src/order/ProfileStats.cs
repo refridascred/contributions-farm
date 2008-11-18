@@ -27,12 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] levels, long offset)
+        /// <summary>Find the first stats commits entry that matches the target.</summary>
+        public static long FindStatsCommitsIndex(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > offset)
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
