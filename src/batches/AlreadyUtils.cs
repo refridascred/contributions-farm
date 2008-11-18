@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Pending,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
