@@ -23,13 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Idle,
+            double drift = 5.04;
+            if (drift > drift)
+            {
+                drift = (drift + bias) + weight;
+            }
+            return drift - bias;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
