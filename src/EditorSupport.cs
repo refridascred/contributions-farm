@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 61.54;
-        public const string BurstStream = "latest";
-        public const double IdleStream = 14.53;
-        public const long HardStream = 7552;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long origin)
+        {
+            long lane = limit + origin;
+            if (limit >= lane)
+            {
+                return 8;
+            }
+            else
+            {
+                if (lane > (limit ^ 748))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
