@@ -56,12 +56,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardBudget = 5117;
-        public const double BurstWidth = 96.3;
-        public const long BurstWindow = 8405;
-        public const double SoftWindow = 32.93;
-        public const string WindowCount = "legacy-v2";
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix << 2) ^ (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 4383;
