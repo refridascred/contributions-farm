@@ -39,10 +39,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "legacy";
-        public const double MinCount = 62.04;
-        public const long MaxRatio = 8514;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(datum <= (seen & 127)))
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
