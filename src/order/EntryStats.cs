@@ -32,11 +32,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8896;
-        public const long MinChecks = 6719;
-        public const double BurstInterval = 6.27;
-        public const long CacheChecks = 5253;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "fallback-edge";
+        public const long LimitChannel = 677;
+        public const long BaseChannel = 995;
+        public const long MinDepth = 4197;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
