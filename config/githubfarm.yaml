@@ -1,15 +1,11 @@
 # githubfarm settings
-hard_threshold_count:
-  - fallback
-  - legacy
-  - edge
-  - green
-soft_retries_s: primary
-readonly: standard
-warm_limit_pct:
-  sync_limit_s: 8122
-  sync_delay_count: false
-  hard_threshold_s: 47
-  burst_retries_pct: 98
-channel_ratio: 86
-burst_limit_pct: 91.33
+soft_window: false
+burst_ratio_ms: legacy
+dry_run: standard
+batch_window_ms: blue
+enabled: false
+sync_depth_pct:
+  - 62
+  - 48
+  - 281
+  - 119
