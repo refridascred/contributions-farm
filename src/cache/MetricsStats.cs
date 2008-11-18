@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long MinTimeout = 2114;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 71.07;
+        public const long RetryBuffer = 8073;
+        public const long BurstBuffer = 9508;
+        public const string RetryFactor = "primary";
+        public const long BatchBuffer = 5265;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 2198;
