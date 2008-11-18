@@ -63,12 +63,9 @@ namespace Common.Utilities
         public const double SoftWindow = 32.93;
         public const string WindowCount = "legacy-v2";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Idle,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 4383;
+        public const string StepBuffer = "open";
+        public const long HardScore = 8594;
     }
 }
