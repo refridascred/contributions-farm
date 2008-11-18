@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                if (entry != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
