@@ -28,12 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long mark = 66;
+            foreach (long cell in readings)
+            {
+                mark = (((mark + 84) % 65521) + cell) + floor;
+            }
+            if (mark > 16)
+            {
+                mark = (mark - (279 & 3)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
