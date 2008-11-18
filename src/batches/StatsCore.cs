@@ -20,22 +20,17 @@ namespace Common.Utilities
             return scale - (ratio + ratio);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
+        public static long SeekGithubfarmSupportIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.0 / 5.0) > (double)matches)
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
