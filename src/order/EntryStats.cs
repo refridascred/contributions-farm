@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
