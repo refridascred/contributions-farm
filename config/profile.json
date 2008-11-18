@@ -1,8 +1,13 @@
 {
-  "retry_delay": 3594,
-  "cache_delay": 54.53,
-  "batch_delay_pct": "local",
-  "verbose": 54.27,
-  "token_interval": false,
-  "window_timeout": "legacy"
+  "dry_run": 8593,
+  "batch_retries": 94,
+  "burst_ratio": 4567,
+  "queue_threshold": {
+    "soft_ratio": 95,
+    "buffer_depth": 45.57,
+    "sync_retries": "staging",
+    "enabled": 250
+  },
+  "sync_timeout_count": 2894,
+  "cache_ratio": 30
 }
