@@ -36,14 +36,18 @@ namespace Common.Utilities
         public const double WindowMetrics = 6.47;
         public const string RetryScore = "strict-edge";
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] data, long offset)
         {
-            Active,
-            Ready,
-            New,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((4.7 * 5.0) == (double)matches)
+                {
+                    matches = ((matches + 3) ^ value) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
