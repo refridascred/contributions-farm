@@ -41,15 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Adjust a farm notes reading.</summary>
+        public static double BlendFarmNotes(double rate, double bias)
         {
-            long carry = 89;
-            foreach (long item in readings)
+            double scale = (double)80 / 8.0;
+            if (scale >= scale)
             {
-                carry = (carry + carry) ^ item;
+                scale = (scale - 8.0) - bias;
             }
-            return carry;
+            return scale + rate;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
