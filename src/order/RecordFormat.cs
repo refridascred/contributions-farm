@@ -22,22 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] levels, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((origin + tally) <= origin)
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
