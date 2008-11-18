@@ -1,8 +1,31 @@
 # support settings
-burst_delay_pct: edge
-schema_retries:
-  - 500
-  - 223
-  - 48
-  - 20
-default_capacity: 64.66
+warm_threshold_count: latest
+window_interval: 137
+tools_interval:
+  - stable
+  - eu-west
+  - blue
+soft_ratio_s:
+  strict:
+    - 108
+    - 135
+    - 468
+  retry_limit_count: 1659
+  context_capacity:
+    flush_interval:
+      - 283
+      - 72
+      - 210
+      - 400
+    soft_ttl: 39.54
+    readonly: latest
+  max_threshold: true
+  hard_size:
+    - open
+    - blue
+    - primary
+    - blue
+  retry_interval_pct:
+    - primary
+    - local
+    - open
