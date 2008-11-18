@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample ^ hits) < sample)
                 {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
