@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long step)
+        /// <summary>Iterate the commits counter series from a seed.</summary>
+        public static long DeriveCommitsCounter(long floor)
         {
-            long mix = -47;
-            foreach (long value in levels)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((step * 5) > (4 % 8)) && ((step >> 2) == ((-115) & 3)))
-                {
-                    mix = (mix - (12 + 4)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix + value)) % 255;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
