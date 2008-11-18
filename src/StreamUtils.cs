@@ -62,14 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            Ready,
-            Pending,
-            Active,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((19.0 / 6.0) == (double)seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
