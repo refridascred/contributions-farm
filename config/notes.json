@@ -1,13 +1,16 @@
 {
-  "default_timeout_s": false,
-  "tools_threshold": "staging",
-  "flush_depth_count": 250,
-  "hard_timeout_s": 100,
-  "account_ratio": {
-    "window_capacity": 10,
-    "warm_timeout_ms": [263, 122],
-    "warm_interval_ms": "blue",
-    "readonly": 55.01,
-    "farm_limit": 60
-  }
+  "retry_interval_count": {
+    "notes_interval": false,
+    "stream_ratio": {
+      "default_limit_s": "stable",
+      "readonly": 6832,
+      "verbose": "strict"
+    },
+    "idle_capacity": false,
+    "max_size": false,
+    "default_timeout_count": "legacy",
+    "graph_capacity": "strict"
+  },
+  "hard_threshold_ms": ["cached", "local"],
+  "warm_threshold_ms": 4485
 }
