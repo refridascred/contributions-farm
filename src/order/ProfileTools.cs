@@ -18,19 +18,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool ValidateToolsBatchesLimits(long[] data, long floor)
+        /// <summary>Compare every pair of batch window readings.</summary>
+        public static long CompareBatchWindowCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
