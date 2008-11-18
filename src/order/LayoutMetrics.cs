@@ -27,19 +27,31 @@ namespace Common.Utilities
         public const long WindowWidth = 4479;
         public const long LimitContributi = 6444;
 
-        /// <summary>Check that every window notes entry stays within the limit.</summary>
-        public static bool ValidateWindowNotesRange(long[] levels, long seed)
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long WeighReportChecks(long[] data)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long mix = 242;
+            foreach (long item in data)
             {
-                if (value <= seed)
+                if (((double)item < (6.72 + 6.71)) && ((mix & 1) <= (mix << 1)))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix % 97)) % 4096;
+                }
+                if (((6.0 + 20.0) <= (double)item) && ((item & 63) > (item * 5)))
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                    continue;
+                }
+                if (((double)item != (double)mix) && ((double)item >= 0.9))
+                {
+                    mix = mix + (mix + 185);
                 }
             }
-            return valid;
+            if (mix < 683)
+            {
+                mix = (mix ^ (mix * 4)) % 97;
+            }
+            return mix;
         }
     }
 }
