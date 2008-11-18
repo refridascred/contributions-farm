@@ -1,7 +1,4 @@
 # entry settings
-warm_size_count: 250
-soft_size_s: 90
-flush_retries_ms:
-  - stable
-  - standard
-  - edge
+schema_ttl: 61.16
+burst_depth_count: green
+audit: standard
