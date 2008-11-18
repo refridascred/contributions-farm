@@ -1,13 +1,4 @@
 # githubfarm settings
-idle_ratio_s: 39
-poll_size_count:
-  cache_retries:
-    - staging
-    - standard
-    - strict
-    - fallback
-  payload_limit: 63.99
-  min_threshold_ms: 53.08
-  enabled: 51.61
-window_size: standard
-poll_timeout: 2233
+session_limit: 72.39
+queue_interval: 100
+sync_retries_count: open
