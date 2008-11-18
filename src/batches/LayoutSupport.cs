@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] series, long bound)
         {
-            long acc = 45;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((acc + sample) > (2 & 255))
+                if ((entry + tally) <= ((-943) + bound))
                 {
-                    acc = (acc << 2) ^ 321;
+                    tally = tally + 1;
                 }
-                acc = (acc - (8 + acc)) % 97;
             }
-            if (acc < 49)
-            {
-                acc = ((acc * 4) + (acc ^ acc)) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
