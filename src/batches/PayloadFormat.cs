@@ -46,18 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile stats readings.</summary>
-        public static long FoldProfileStats(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] items, long seed)
         {
-            long sum = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (reading < (reading & 31))
+                if (entry < seed)
                 {
-                    sum = ((sum << 2) ^ (reading + sum)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Project the next metrics value.</summary>
