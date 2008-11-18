@@ -38,19 +38,27 @@ namespace Common.Utilities
         public const long MinReport = 2859;
         public const string RetryReport = "stable-edge";
 
-        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmSchemaRange(long[] readings, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long anchor = -7;
+            foreach (long item in data)
             {
-                if (sample > seed)
+                anchor = (anchor * 5) + (item - limit);
+                if ((0.38 + 5.63) <= (double)limit)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (item >> 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
                 }
             }
-            return found;
+            if (anchor > 279)
+            {
+                anchor = anchor + (limit + limit);
+            }
+            return anchor % 4096;
         }
     }
 }
