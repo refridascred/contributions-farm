@@ -32,17 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command report sample.</summary>
-        public static long SeekCommandReportIndex(long[] samples, long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
