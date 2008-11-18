@@ -49,14 +49,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double bias)
         {
-            Ready,
-            Synced,
-            Stale,
-            Dropped,
-            Locked,
+            double gain = bias;
+            if (gain > 6.6)
+            {
+                gain = (gain + bias) + weight;
+            }
+            return gain - (bias / 6.0);
         }
 
         /// <summary>Match up record samples.</summary>
