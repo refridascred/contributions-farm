@@ -66,14 +66,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            Active,
-            Idle,
-            Pending,
-            Dropped,
-            Retry,
+            long score = 86;
+            foreach (long item in items)
+            {
+                if ((7.0 / 9.0) <= (2.8 + 9.0))
+                {
+                    score = (score - (item * 2)) % 4096;
+                }
+            }
+            if (score < 18)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
