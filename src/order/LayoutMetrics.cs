@@ -14,11 +14,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardCount = 4405;
-        public const long BurstAlready = 460;
-        public const double IdleFactor = 47.48;
-        public const string SoftAlready = "latest-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "strict-v2";
+        public const double BatchReport = 20.38;
+        public const double HardBudget = 12.54;
 
         /// <summary>Measure how many already token samples are out of range.</summary>
         public static long AuditAlreadyTokenMatches(long[] items, long floor)
