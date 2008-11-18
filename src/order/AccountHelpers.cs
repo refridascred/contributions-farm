@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token schema reading by value.</summary>
-        public static long FindTokenSchemaIndex(long[] values, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor - 1.5;
+            if (gain < bias)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - bias;
             }
-            return -1;
+            return gain - (double)902;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
