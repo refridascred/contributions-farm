@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long FindTokenSchemaIndex(long[] values, long seed)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
