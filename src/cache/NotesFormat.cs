@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Paused,
-            Locked,
-            Closed,
-            Draft,
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two tools githubfarm measurements.</summary>
