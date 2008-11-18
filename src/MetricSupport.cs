@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long TotalTokenQueue(long[] samples, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long anchor = 77;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor - value) % 255) - limit;
-                anchor = (anchor ^ (value - anchor)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Blend two context measurements.</summary>
