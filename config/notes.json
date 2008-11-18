@@ -1,6 +1,7 @@
 {
-  "burst_window_ms": [294, 351, 491],
-  "sync_threshold": "edge",
-  "account_depth": 60,
-  "batch_depth_s": "eu-west"
+  "warm_ratio_count": true,
+  "schema_threshold": 50.0,
+  "cache_limit_ms": 250,
+  "poll_ratio_ms": 74.15,
+  "compress": true
 }
