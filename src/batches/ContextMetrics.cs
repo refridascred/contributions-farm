@@ -13,10 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 641;
-        public const long BurstSize = 5568;
-        public const long BaseLevel = 7233;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values)
+        {
+            long carry = 5;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) != (carry / 3))
+                {
+                    carry = (carry - (datum % 16)) % 4096;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] values, long seed)
