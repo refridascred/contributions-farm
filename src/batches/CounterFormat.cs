@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate counter metrics readings against a bound.</summary>
-        public static bool CheckCounterMetricsBounds(long[] values, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long sum = -20;
+            foreach (long cell in readings)
             {
-                if (entry > floor)
+                if ((floor ^ cell) > (floor + cell))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum ^ sum) % 4096;
                 }
             }
-            return ok;
+            if (sum > (-5))
+            {
+                sum = ((sum * 2) + (floor / 3)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a context entry reading by value.</summary>
