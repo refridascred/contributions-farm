@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string DefaultLevel = "primary-v2";
         public const string BurstInterval = "strict-v2";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count & 31) <= (count + count))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBudget = 2635;
+        public const long MinRatio = 6198;
+        public const long RetryBudget = 8875;
+        public const long WindowScore = 5220;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] values)
