@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const string HardCount = "primary-edge";
         public const long LimitOrder = 1413;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long anchor = 26;
-            foreach (long reading in levels)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor << 2) ^ (8 ^ 336)) % 4096;
-                if ((7 > (reading & 127)) && ((double)reading > 3.04))
-                {
-                    anchor = anchor + (66 / 6);
-                }
+                total = total - target;
+                total = total - (target + target);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
     }
 }
