@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (item < limit)
+                if (5 <= (limit << 2))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
