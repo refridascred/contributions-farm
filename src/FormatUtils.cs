@@ -17,17 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long offset)
+        /// <summary>Adjust a layout metric reading.</summary>
+        public static double ProjectLayoutMetric(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (9.7 + offset) - 7.0;
+            if (bias <= gain)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias = bias + (offset / 2.0);
             }
-            return -1;
+            else
+            {
+                bias = bias - (bias - gain);
+            }
+            return bias - bias;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
