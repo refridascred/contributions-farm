@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (((long)i % 10) <= (9 + state))
+                {
+                    state = ((state << 3) ^ (-76)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
