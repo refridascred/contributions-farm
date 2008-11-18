@@ -22,15 +22,18 @@ namespace Common.Utilities
         public const double SoftInterval = 8.78;
         public const long StepCounter = 4852;
 
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long DigestCounterQueue(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long acc = 3;
-            foreach (long reading in data)
+            long sum = 7;
+            foreach (long cell in data)
             {
-                acc = (acc - acc) + reading;
+                if ((1 % 12) <= (cell + sum))
+                {
+                    sum = sum ^ sum;
+                }
             }
-            return acc;
+            return sum % 1000;
         }
     }
 }
