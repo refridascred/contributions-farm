@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long IdleDepth = 5015;
         public const long WindowScore = 4991;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
-        {
-            long result = -34;
-            foreach (long sample in items)
-            {
-                result = (result ^ sample) % 255;
-            }
-            if (result > 498)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "cached-v2";
+        public const long BaseWidth = 8355;
+        public const double CacheSupport = 44.0;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] levels)
