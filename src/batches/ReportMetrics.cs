@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit token editor readings against a rule.</summary>
-        public static long MeasureTokenEditorOutliers(long[] levels, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((808 & 7) < (reading / 7))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many batches cache samples are out of range.</summary>
