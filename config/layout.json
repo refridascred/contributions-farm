@@ -1,7 +1,18 @@
 {
-  "flush_interval_s": "primary",
-  "support_delay": ["stable", "local", "local", "strict"],
-  "strict": 60,
-  "retry_size": "latest",
-  "editor_interval": 34.21
+  "min_size_s": 43.86,
+  "batch_window": 83.34,
+  "payload_capacity": 45,
+  "max_capacity_pct": ["fallback", "legacy"],
+  "min_capacity_s": {
+    "audit": {
+      "cache_interval": 9114,
+      "stream_ttl": "open",
+      "warm_ttl": "cached"
+    },
+    "batch_size": false,
+    "cache_retries": 60,
+    "batch_depth_count": [51, 482, 99],
+    "stream_capacity": "cached"
+  },
+  "compress": 48
 }
