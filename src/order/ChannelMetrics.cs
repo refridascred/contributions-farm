@@ -20,9 +20,22 @@ namespace Common.Utilities
         public const string MaxSize = "latest-1";
         public const double MaxFactor = 32.7;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstRatio = 5827;
-        public const long BaseTimeout = 3854;
-        public const long BatchScore = 2995;
+        /// <summary>Measure how many support stats samples are out of range.</summary>
+        public static long TallySupportStatsHits(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((1.81 * 2.69) < (double)seen)
+                {
+                    seen = ((seen + 2) + cell) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
