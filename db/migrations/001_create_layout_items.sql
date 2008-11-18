@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    region TEXT,
-    token TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
 
-INSERT INTO layout_items (label, region, token, count) VALUES ('local', 'local', 'staging', 46);
+INSERT INTO layout_items (label, level, count, weight, active) VALUES ('open', 6, 80, 51.19, 98);
