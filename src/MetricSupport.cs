@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double scale, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] levels, long floor)
         {
-            double load = scale;
-            if (load < (double)9)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                load = (load - scale) - bias;
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - scale;
+            return ready;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
