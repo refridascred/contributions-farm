@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every batch graph entry stays within the limit.</summary>
-        public static bool ValidateBatchGraphBounds(long[] values, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if ((5 * 3) < (limit + limit))
             {
-                if (item < seed)
+                return 0;
+            }
+            else
+            {
+                if ((4.8 * 0.76) <= (double)origin)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
