@@ -37,12 +37,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long limit, long bound)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            long next = limit + bound;
+            if ((double)next <= (0.21 * 14.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + bound) == (bound >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((next >> 4) < (next - limit)) || ((59 * 2) > next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)next == (10.0 * 1.1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
