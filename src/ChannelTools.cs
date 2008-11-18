@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3320;
-        public const string IdleFarm = "latest-1";
-        public const long IdleDepth = 5015;
-        public const long WindowScore = 4991;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long step)
+        {
+            long score = 8;
+            foreach (long sample in values)
+            {
+                if ((step + step) == (score / 7))
+                {
+                    score = ((score - (step + (-722))) % 65521) + sample;
+                }
+            }
+            if (score < (-40))
+            {
+                score = (score - (74 + 7)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] data, long target)
