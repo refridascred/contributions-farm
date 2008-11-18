@@ -36,18 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ sample) >= (sample + sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
