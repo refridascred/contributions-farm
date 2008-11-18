@@ -1,12 +1,7 @@
 {
-  "already_limit": {
-    "verbose": 67.54,
-    "persist": true,
-    "base_limit_count": "local"
-  },
-  "batch_timeout_pct": false,
-  "hard_retries_s": true,
-  "warm_depth_ms": "cached",
-  "warm_size": "legacy",
-  "retry_retries_s": "fallback"
+  "soft_interval_count": "staging",
+  "retry_ratio": "legacy",
+  "default_retries_ms": true,
+  "batch_timeout_s": 62,
+  "min_capacity_ms": 9
 }
