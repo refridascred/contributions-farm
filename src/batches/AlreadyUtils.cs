@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Accumulate window context samples.</summary>
+        public static long DigestWindowContext(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long reading in readings)
             {
-                if (levels[i] == origin)
+                if (offset > ((long)readings.Length & 127))
                 {
-                    return (long)i;
+                    acc = acc + (reading + 620);
                 }
             }
-            return -1;
+            if (acc > 82)
+            {
+                acc = acc + offset;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
