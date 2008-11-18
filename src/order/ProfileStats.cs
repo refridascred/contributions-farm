@@ -13,18 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the githubfarm tools entries that pass the check.</summary>
-        public static long AuditGithubfarmToolsHits(long[] levels, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long score = 579;
+            foreach (long entry in values)
             {
-                if ((floor ^ sample) != (floor >> 5))
+                if (!(((-500) % 64) == (entry * 4)))
                 {
-                    matches = matches + 3;
+                    score = ((score ^ (score + entry)) % 101) + limit;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
