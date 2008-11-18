@@ -36,13 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
