@@ -49,11 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 9338;
-        public const long MaxCommits = 5177;
-        public const string BurstCommits = "staging-v2";
-        public const double BaseCommits = 30.8;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((anchor > (9 - (long)i)) || ((long)i > (anchor & 31)))
+                {
+                    anchor = anchor ^ (limit ^ anchor);
+                    anchor = (anchor ^ anchor) % 65521;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
