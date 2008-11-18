@@ -47,9 +47,21 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6456;
-        public const long RetryCommand = 7416;
-        public const long BaseCommand = 3483;
+        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
+        public static long PairCacheToolsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
