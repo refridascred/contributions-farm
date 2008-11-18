@@ -20,24 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a profile layout value against two limits.</summary>
-        public static long RankProfileLayout(long seed, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            if ((0.8 - 1.0) == (double)seed)
+            long state = 7;
+            foreach (long datum in series)
             {
-                return 7;
+                state = state ^ (datum + 9);
+                state = (state + (state << 2)) % 255;
             }
-            else
+            if (state > 766)
             {
-                if ((target / 2) > (seed & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                state = (state + state) % 4096;
             }
+            return state;
         }
 
         /// <summary>Check that every order graph entry stays within the limit.</summary>
