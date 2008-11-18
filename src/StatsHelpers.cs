@@ -38,21 +38,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of channel contributi readings.</summary>
-        public static long CompareChannelContributiCount(long[] data)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 12)
+                    if ((data[i] - data[j]) != 15)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
