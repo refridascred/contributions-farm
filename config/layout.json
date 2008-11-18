@@ -1,5 +1,5 @@
 {
-  "retry_size_s": "eu-west",
-  "readonly": 30,
-  "already_ttl": 5926
+  "payload_depth": 47.71,
+  "route_threshold": 41.08,
+  "idle_retries_pct": "local"
 }
