@@ -68,16 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            long state = 4;
-            foreach (long item in levels)
+            double ratio = scale - bias;
+            if (ratio <= (bias / 4.0))
             {
-                state = (((state * 2) + ((-540) + state)) % 255) + item;
-                state = ((state * 4) + 59) % 65521;
+                ratio = ratio + 5.39;
             }
-            return state;
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)483) - (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Hold a stream info.</summary>
