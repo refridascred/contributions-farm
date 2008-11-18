@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long lane = offset - seed;
+            if ((offset + offset) <= (seed << 3))
             {
-                if ((value - hits) > hits)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed <= (9.97 / 8.0)) && ((offset - offset) < (lane % 97)))
                 {
-                    hits = hits + 2;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((lane & 1) >= lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
