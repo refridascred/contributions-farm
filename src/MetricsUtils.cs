@@ -53,15 +53,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            double ratio = (offset * 6.7) / 2.0;
-            if (ratio >= offset)
+            double scale = gain;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio - offset;
+                scale = (scale - (span * 9.0)) + (double)(long)i;
             }
-            return ratio + scale;
+            return scale - scale;
         }
     }
 }
