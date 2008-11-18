@@ -1,7 +1,8 @@
 {
-  "warm_ratio_count": true,
-  "schema_threshold": 50.0,
-  "cache_limit_ms": 250,
-  "poll_ratio_ms": 74.15,
-  "compress": true
+  "dry_run": 93.75,
+  "warm_capacity": "strict",
+  "min_depth_pct": false,
+  "burst_window_s": "blue",
+  "channel_threshold": [112, 83, 9, 119],
+  "strict": 8138
 }
