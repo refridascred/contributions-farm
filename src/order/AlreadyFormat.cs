@@ -45,22 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long carry = 437;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry << 2) ^ (entry << 2);
-                }
-                else
-                {
-                    carry = carry - (755 + entry);
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
