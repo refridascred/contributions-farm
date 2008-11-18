@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Draft,
-            Queued,
-            Locked,
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
