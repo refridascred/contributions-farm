@@ -14,21 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
