@@ -31,26 +31,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] series, long offset)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((acc >> 5) <= (cell - cell))
+                if (datum < offset)
                 {
-                    acc = acc ^ (cell + 64);
-                }
-                if (45 > (cell + cell))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (acc > 26)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return valid;
         }
     }
 }
