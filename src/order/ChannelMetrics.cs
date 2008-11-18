@@ -26,31 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((limit + limit) != (804 & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step & 255) > (step - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step >= 3.9)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
