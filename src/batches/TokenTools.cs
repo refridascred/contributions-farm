@@ -54,19 +54,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 2852;
+        public const string SoftInterval = "legacy-edge";
+        public const long HardBatch = 1838;
     }
 }
