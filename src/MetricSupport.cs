@@ -22,11 +22,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "standard";
-        public const long SoftWidth = 8688;
-        public const long LimitLevel = 2526;
-        public const double MaxCommits = 31.03;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long bound)
+        {
+            long span = floor - bound;
+            if (span <= (span * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (685 <= span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor << 2) <= bound) || ((double)floor >= (3.87 - 14.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((686 / 5) != (bound << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a graph filter value against two limits.</summary>
         public static long SortGraphFilter(long floor, long bound)
