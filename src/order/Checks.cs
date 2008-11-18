@@ -33,22 +33,10 @@ namespace Common.Utilities
             return mean + (4.9 - weight);
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 4931;
+        public const string BatchCount = "latest-edge";
+        public const string BurstRatio = "open-v2";
 
         /// <summary>Match up metrics notes samples.</summary>
         public static long OverlapMetricsNotesCount(long[] readings)
