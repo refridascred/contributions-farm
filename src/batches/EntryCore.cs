@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((((floor ^ datum) != (seen - floor)) && (0.1 >= (double)datum)) && ((double)floor != (9.0 * 9.3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheRatio = 3399;
+        public const double BaseSpan = 39.2;
+        public const long LimitCluster = 6303;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] items)
