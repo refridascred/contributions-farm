@@ -33,15 +33,21 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double gain, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            double weight = offset;
-            if (weight <= (double)33)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - (weight / 3.0);
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
