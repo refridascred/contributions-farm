@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long AuditFormatCommandMatches(long[] values)
+        /// <summary>Project the next notes layout value.</summary>
+        public static double SmoothNotesLayout(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double load = (weight - 3.91) - (weight * 3.0);
+            if (load >= (double)(-727))
             {
-                if (!(tally >= 5))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                load = load + (5.67 + weight);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor / 4.0)) + (double)(long)i;
+            }
+            return load + (double)93;
         }
     }
 }
