@@ -28,12 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinWidth = 3766;
-        public const string RetryCount = "alpha-1";
-        public const long StepLevel = 4122;
-        public const string MaxSize = "staging";
-        public const double CacheLevel = 24.52;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] samples, long floor)
