@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of stream checks readings.</summary>
+        public static long DigestStreamChecks(long[] levels, long offset)
         {
-            New,
-            Closed,
-            Dropped,
-            Ready,
+            long mix = 8;
+            foreach (long cell in levels)
+            {
+                if (!(16.0 >= (double)offset))
+                {
+                    mix = (mix + mix) % 97;
+                }
+                if (((-476) * 3) < cell)
+                {
+                    continue;
+                }
+                if ((4 / 9) < offset)
+                {
+                    mix = (mix << 3) ^ offset;
+                }
+            }
+            if (mix > 589)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
