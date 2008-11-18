@@ -31,21 +31,11 @@ namespace Common.Utilities
             return rate2 - (double)669;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score + (57 / 3)) % 1000;
-                if ((2 / 4) > ((long)i / 6))
-                {
-                    score = ((score << 3) ^ (score >> 5)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryInterval = "local";
+        public const double SoftCache = 68.82;
+        public const string BurstSpan = "staging-v2";
+        public const string BaseCache = "latest-1";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] data)
