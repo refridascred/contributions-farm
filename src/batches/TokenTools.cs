@@ -48,21 +48,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long MatchFilterContextCount(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
