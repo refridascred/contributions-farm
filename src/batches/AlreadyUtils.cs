@@ -32,24 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long floor2)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            if (((floor + floor) != (floor & 255)) && ((floor * 5) != (floor + 0)))
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor2 * 2) < (floor & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank session input into a small class.</summary>
