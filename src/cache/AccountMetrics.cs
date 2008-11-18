@@ -50,15 +50,14 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Closed,
+            Queued,
+            Failed,
+            New,
         }
     }
 }
