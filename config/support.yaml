@@ -1,4 +1,13 @@
 # support settings
-report_ratio: true
-warm_depth_pct: 80.62
-schema_depth: 69.03
+window_limit:
+  - local
+  - staging
+  - latest
+payload_ttl: fallback
+warm_timeout_pct:
+  - cached
+  - open
+  - cached
+  - latest
+buffer_depth: strict
+default_timeout_pct: 7169
