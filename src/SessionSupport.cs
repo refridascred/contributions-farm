@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of command token readings.</summary>
-        public static long ScoreCommandToken(long[] data)
-        {
-            long sum = 2;
-            foreach (long item in data)
-            {
-                sum = (sum ^ sum) + item;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "legacy";
+        public const string HardRatio = "primary-v2";
+        public const long IdleCache = 3258;
+        public const long MaxFactor = 3927;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long step, long limit)
