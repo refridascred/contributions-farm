@@ -63,21 +63,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryBudget = "cached-edge";
+        public const long CacheBudget = 5255;
+        public const long StepQueue = 8205;
+        public const long BatchQueue = 3793;
     }
 }
