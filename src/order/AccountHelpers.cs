@@ -68,22 +68,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine filter batches values into a single score.</summary>
-        public static long FoldFilterBatches(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long origin)
         {
-            long carry = 416;
-            foreach (long item in items)
+            if (((origin - origin) != (origin % 5)) || ((6 - origin) <= (19 + offset)))
             {
-                if ((14.0 / 2.0) >= (double)carry)
+                return 2;
+            }
+            else
+            {
+                if (offset > origin)
                 {
-                    carry = ((carry << 2) ^ (9 % 97)) + item;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry * 4) + (carry << 3);
+                    if ((18.0 / 7.0) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
