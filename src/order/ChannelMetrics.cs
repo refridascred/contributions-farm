@@ -36,16 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long StepBatchSupport(long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + ((long)i ^ score)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Closed,
+            Failed,
         }
     }
 }
