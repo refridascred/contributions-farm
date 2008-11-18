@@ -52,12 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftLevel = 2725;
-        public const double HardCounter = 8.81;
-        public const long BatchLevel = 327;
-        public const long WindowCounter = 5213;
-        public const string SoftWidth = "local";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (tally <= (origin & 63))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] series, long origin)
