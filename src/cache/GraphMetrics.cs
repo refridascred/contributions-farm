@@ -12,24 +12,17 @@ namespace Common.Utilities
         public const long CacheInterval = 3634;
         public const long HardEditor = 8423;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            if ((target + 883) >= (bound << 2))
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                long edge = state;
+                state = ((state * 3) + (state + edge)) % 65521;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound << 2) < (bound + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of graph already readings.</summary>
