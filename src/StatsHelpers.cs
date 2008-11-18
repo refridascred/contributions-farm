@@ -55,9 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 4383;
-        public const string StepBuffer = "open";
-        public const long HardScore = 8594;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double span)
+        {
+            double mean = (double)347 / 3.0;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (((mean - (double)(-98)) + (double)(long)i) + scale) - span;
+            }
+            return mean - mean;
+        }
     }
 }
