@@ -35,32 +35,12 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long delta = seed ^ target;
-            if (((delta >> 4) >= (seed + target)) || (delta >= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((20.0 / 8.0) > (double)target) && ((delta - 0) != (target >> 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - 98) != (253 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Failed,
         }
     }
 }
