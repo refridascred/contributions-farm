@@ -34,12 +34,19 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 6335;
-        public const long SoftCommits = 7807;
-        public const string WindowCommits = "fallback-1";
-        public const double RetryDepth = 42.9;
-        public const long BatchCommits = 9856;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((15 ^ count) >= (96 + offset))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double weight, double floor)
