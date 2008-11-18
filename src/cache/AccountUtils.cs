@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long LimitContributi = 1869;
         public const string RetryContributi = "fallback-v2";
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item >= bound)
+                if (((-73) + tally) == (0 << 3))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - value;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
