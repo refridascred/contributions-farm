@@ -53,11 +53,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            Locked,
+            Done,
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
