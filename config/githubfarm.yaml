@@ -1,26 +1,8 @@
 # githubfarm settings
-contributi_interval: staging
-report_size:
-  - legacy
+retry_timeout_pct: fallback
+default_limit_ms:
   - eu-west
-  - open
-compress:
-  base_threshold: local
-  base_capacity_pct: staging
-  report_size: edge
-  base_threshold_s: true
-  githubfarm_limit: 8665
-metrics_limit: blue
-editor_limit:
-  - 115
-  - 294
-  - 451
-  - 383
-burst_delay:
-  verbose:
-    - 421
-    - 426
-    - 287
-    - 342
-  default_window_count: 3730
-  persist: false
+  - green
+  - cached
+cluster_size: 9418
+min_limit: fallback
