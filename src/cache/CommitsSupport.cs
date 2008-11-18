@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long MeasureSupportCommandOutliers(long[] data, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((step ^ sample) > (seen & 31))
+                if ((double)matches <= (double)value)
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
