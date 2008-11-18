@@ -76,18 +76,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long floor)
         {
-            long state = -57;
-            foreach (long cell in items)
+            if ((limit > floor) && ((5.58 + 1.5) > (double)limit))
             {
-                if (state > (cell / 4))
+                return 8;
+            }
+            else
+            {
+                if (((double)limit == (5.7 * 0.2)) && ((double)floor == (2.0 - 8.9)))
                 {
-                    state = state ^ state;
+                    return 2;
+                }
+                else
+                {
+                    if (((-258) << 2) < (limit + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
     }
 }
