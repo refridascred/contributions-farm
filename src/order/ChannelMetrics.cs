@@ -35,9 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 50.21;
-        public const double BaseInterval = 77.77;
-        public const string MinBudget = "latest";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + seen) > (seen ^ cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
