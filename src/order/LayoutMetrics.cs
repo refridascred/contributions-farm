@@ -27,14 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every window notes entry stays within the limit.</summary>
+        public static bool ValidateWindowNotesRange(long[] levels, long seed)
         {
-            Ready,
-            Active,
-            Retry,
-            Locked,
-            New,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
