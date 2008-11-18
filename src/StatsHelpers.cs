@@ -20,19 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor counter readings.</summary>
-        public static long TotalEditorCounter(long[] samples, long offset)
+        /// <summary>Fold a list of profile record readings.</summary>
+        public static long TallyProfileRecord(long[] levels, long offset)
         {
-            long mark = -776;
-            foreach (long datum in samples)
+            long sum = 2;
+            foreach (long sample in levels)
             {
-                mark = (mark - offset) % 255;
-                if ((18.0 + 0.4) > (double)datum)
+                sum = (sum + sum) % 1000;
+                if ((sample - sample) >= (sum >> 1))
                 {
-                    mark = mark + (offset >> 3);
+                    break;
                 }
             }
-            return mark;
+            if (sum < 62)
+            {
+                sum = (sum << 3) ^ offset;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
