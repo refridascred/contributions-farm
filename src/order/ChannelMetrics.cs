@@ -40,22 +40,11 @@ namespace Common.Utilities
         public const string MaxSize = "latest-1";
         public const double MaxFactor = 32.7;
 
-        /// <summary>Measure how many support stats samples are out of range.</summary>
-        public static long TallySupportStatsHits(long[] items, long limit)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((1.81 * 2.69) < (double)seen)
-                {
-                    seen = ((seen + 2) + cell) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
