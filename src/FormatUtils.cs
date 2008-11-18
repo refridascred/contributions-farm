@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a layout metric reading.</summary>
-        public static double ProjectLayoutMetric(double gain, double offset)
+        /// <summary>Iterate the contributi metric series from a seed.</summary>
+        public static long StepContributiMetric(long bound)
         {
-            double bias = (9.7 + offset) - 7.0;
-            if (bias <= gain)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias + (offset / 2.0);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias - (bias - gain);
-            }
-            return bias - bias;
+            return state;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
