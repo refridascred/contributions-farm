@@ -56,17 +56,11 @@ namespace Common.Utilities
         public const double MinCount = 62.04;
         public const long MaxRatio = 8514;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = span;
+            return (bias + span) + scale;
         }
     }
 }
