@@ -19,17 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                long edge = state;
-                state = ((state * 3) + (state + edge)) % 65521;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Queued,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
