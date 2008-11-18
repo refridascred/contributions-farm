@@ -1,36 +1,17 @@
 # support settings
-enabled:
-  hard_delay_pct:
-    - eu-west
-    - primary
-    - edge
-    - blue
-  poll_size_s: 72.55
-  hard_limit: 95.87
-  poll_timeout: true
-  soft_interval_pct: eu-west
-dry_run:
-  soft_ttl_pct: 21.6
-  idle_size_pct: 39.46
-  idle_ttl_s:
-    max_ratio_pct: 6.69
-    dry_run: false
-    burst_window_count: primary
-    flush_depth_s: primary
-    hard_capacity_s: 7.21
-  sync_retries:
-    - green
-    - stable
-    - strict
-    - legacy
-verbose:
-  order_ratio:
-    - 88
-    - 25
-    - 404
-  idle_timeout_s: standard
-  commits_ratio: false
-  verbose:
-    - primary
-    - green
-  sync_ratio_count: 66.71
+batches_retries: 97.44
+flush_size_pct:
+  - 284
+  - 216
+base_limit: 500
+min_capacity_count: strict
+dry_run: 5259
+hard_size_pct:
+  idle_delay_s:
+    base_interval_s: 500
+    flush_capacity: eu-west
+    cache_depth_count: 100
+    soft_retries_count: 500
+    sync_ratio_count: 38
+  strict: 95.17
+  audit: false
