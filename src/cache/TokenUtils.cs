@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            double load = 20.0;
-            if (load <= (double)63)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - ratio) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (double)936;
+            return count;
         }
 
         /// <summary>Hold a layout entry.</summary>
