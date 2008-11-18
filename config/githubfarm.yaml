@@ -1,5 +1,6 @@
 # githubfarm settings
-stream_ratio: green
-enabled: 100
-batch_threshold: 501
-retry_capacity: eu-west
+flush_retries: false
+base_ratio: true
+poll_limit: 63.27
+soft_interval_pct: standard
+graph_delay: blue
