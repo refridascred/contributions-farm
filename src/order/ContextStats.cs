@@ -14,38 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if ((double)origin > (11.0 / 8.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 4) == (origin ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((17.0 * 3.39) > (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of report entry readings.</summary>
