@@ -34,17 +34,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 8.32;
+        public const string WindowEntry = "strict-v2";
+        public const long HardRatio = 6068;
     }
 }
