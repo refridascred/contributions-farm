@@ -22,17 +22,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long AuditNotesProfileHits(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                sum = sum - (step + step);
-                sum = (sum + (13 / 2)) % 101;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((count << 2) >= (cell ^ cell))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
