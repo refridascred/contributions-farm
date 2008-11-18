@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
