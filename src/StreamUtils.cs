@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (8.36 <= (double)count)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
