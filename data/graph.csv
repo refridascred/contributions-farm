@@ -1,7 +1,10 @@
-id,state,region,count,token
-1,stable,legacy,33.06,open
-2,3.59,585,edge,53.69
-3,legacy,668,stable,718
-4,9.24,64.19,blue,323
-5,eu-west,4.16,595,41.74
-6,3.96,green,37,15.1
+id,rank,count,level
+1,498,cached,36.43
+2,326,713,405
+3,52,local,strict
+4,66.88,608,open
+5,93.63,460,591
+6,edge,481,7.79
+7,18,edge,18.01
+8,25.54,open,fallback
+9,548,45.0,620
