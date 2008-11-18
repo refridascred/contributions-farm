@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long target)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            if ((6.2 + 5.14) <= (double)8)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((694 << 3) <= (seed * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + seed) == (seed ^ 63)) || ((4 >> 2) <= (seed - seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (2.0 <= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
