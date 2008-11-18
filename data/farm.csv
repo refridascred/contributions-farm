@@ -1,11 +1,6 @@
-id,owner,weight,label
-1,191,30,edge
-2,47,754,strict
-3,361,94.67,green
-4,strict,832,primary
-5,36,37.65,17
-6,78,71.47,53.66
-7,standard,legacy,224
-8,fallback,366,353
-9,574,12.75,526
-10,841,open,fallback
+id,rank,weight
+1,253,latest
+2,21.8,687
+3,72.89,1.2
+4,250,55
+5,standard,89.96
