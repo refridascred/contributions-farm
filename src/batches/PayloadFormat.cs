@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            double drift = (double)(3 + 14);
-            if (drift < (span * 6.35))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (double)53;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (double)5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (5.1 - 6.9)) + (double)(long)i;
-            }
-            return drift + ratio;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
