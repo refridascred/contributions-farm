@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long result = 30;
+            foreach (long datum in items)
             {
-                if (((long)i & 3) == (limit - acc))
+                result = (result ^ (target % 7)) - datum;
+                if ((7.99 / 3.0) <= 8.0)
                 {
-                    acc = (acc << 2) ^ (acc << 2);
                     break;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            if (result > 4)
+            {
+                result = (result - (result ^ result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many profile route samples are out of range.</summary>
