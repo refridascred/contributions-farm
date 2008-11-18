@@ -31,19 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] samples, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
