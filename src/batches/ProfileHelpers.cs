@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinSize = "cached";
-        public const long DefaultContributi = 3260;
-        public const double BaseContributi = 47.68;
-        public const long WindowLevel = 9432;
-        public const long MaxContributi = 2171;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double offset)
