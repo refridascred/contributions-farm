@@ -68,22 +68,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] readings, long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double mean = 11.0 - (scale + 7.41);
+            if (mean > 6.0)
             {
-                if ((double)target != (5.38 / 8.0))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + scale) + offset;
             }
-            return hits;
+            return mean - (7.0 - scale);
         }
 
         /// <summary>Locate a support reading by value.</summary>
