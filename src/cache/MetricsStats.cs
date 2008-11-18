@@ -44,18 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.16 >= (double)tally) || ((value <= (value / 7)) && ((double)97 <= (double)tally)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine command order values into a single score.</summary>
