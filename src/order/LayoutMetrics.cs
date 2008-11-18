@@ -13,17 +13,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Rank contributi format input into a small class.</summary>
+        public static long SortContributiFormat(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor >> 1) >= 76) && ((bound + 1) > 6))
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((floor & 127) <= (floor % 60)) || ((bound - bound) >= (97 & 255)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound == (6.0 / 9.0)) && (1 >= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > (floor * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every window notes entry stays within the limit.</summary>
