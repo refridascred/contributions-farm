@@ -48,11 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxTimeout = 41.3;
-        public const long CacheMetric = 7898;
-        public const long LimitMetric = 1498;
-        public const long BurstWidth = 4199;
-        public const long MaxMetric = 8048;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseBudget = 2629;
+        public const long BurstTools = 7716;
+        public const long BaseCount = 8601;
+        public const double DefaultTools = 44.01;
+        public const long BatchTools = 6688;
     }
 }
