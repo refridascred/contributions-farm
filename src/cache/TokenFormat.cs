@@ -27,12 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6748;
-        public const long CacheCount = 5131;
-        public const long MinFilter = 4099;
-        public const long DefaultDepth = 1511;
-        public const long DefaultFilter = 7671;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values)
+        {
+            long total = 44;
+            foreach (long datum in values)
+            {
+                if (datum > (total + total))
+                {
+                    total = (total * 2) + datum;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next window profile value.</summary>
         public static double ScaleWindowProfile(double scale, double span)
