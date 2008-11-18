@@ -28,11 +28,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryLevel = 73.17;
-        public const string WindowReport = "fallback-1";
-        public const long MinReport = 2859;
-        public const string RetryReport = "stable-edge";
+        /// <summary>Adjust a route buffer reading.</summary>
+        public static double ScaleRouteBuffer(double gain, double floor)
+        {
+            double bias = gain;
+            if (bias <= 8.09)
+            {
+                bias = bias + (gain + 8.22);
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (floor + gain)) + (double)(long)i;
+            }
+            return bias + (10.0 * 8.9);
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] samples)
