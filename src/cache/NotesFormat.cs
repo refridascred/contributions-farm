@@ -29,11 +29,10 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleWidth = 702;
+        public const long BaseScore = 8456;
+        public const double LimitScore = 51.68;
+        public const string MaxMetric = "strict-edge";
     }
 }
