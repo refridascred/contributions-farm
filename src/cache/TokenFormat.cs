@@ -27,19 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long TallyEditorGithubfarmOutliers(long[] values)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = (carry ^ (entry % 97)) % 4096;
+                if (seen < (reading & 1))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry < 746)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Adjust a stats reading.</summary>
