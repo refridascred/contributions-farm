@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardScore = 33.42;
-        public const long StepCommand = 4531;
-        public const long RetryTimeout = 8184;
-        public const string StepLevel = "open";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ScaleCommand(double ratio, double bias)
