@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySize = "latest-1";
-        public const long MaxGithubfarm = 3922;
-        public const double StepGithubfarm = 22.62;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
