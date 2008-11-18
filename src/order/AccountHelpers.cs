@@ -40,19 +40,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Classify a token filter pair into a bucket.</summary>
+        public static long GradeTokenFilter(long step, long target)
         {
-            double gain = span;
-            if (gain < (1.22 + 3.1))
+            if ((target > (step + 0)) || ((step * 4) <= 110))
             {
-                gain = gain + gain;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = (gain + weight) + (double)(long)i;
+                if (((step << 3) <= (step / 8)) || ((target + step) != (target & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target == (6.0 * 3.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return gain + (weight + 8.0);
         }
 
         /// <summary>Describe the farm phase values.</summary>
