@@ -24,18 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer farm readings against a rule.</summary>
-        public static long TallyBufferFarmGaps(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)cell != (double)matches)
+                if ((((value ^ seen) > seen) && ((value / 6) <= (value << 1))) || ((value % 5) >= value))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
