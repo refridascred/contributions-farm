@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + (605 / 6)) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "strict-1";
+        public const long MinTimeout = 2114;
+        public const string DefaultBudget = "legacy-v2";
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] values, long floor)
