@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long bound)
-        {
-            if (!((315 + bound) > bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(origin >= (2 + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8834;
+        public const double IdleTimeout = 6.36;
+        public const double StepDepth = 17.0;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
