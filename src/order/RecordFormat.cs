@@ -44,39 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor already value against two limits.</summary>
-        public static long RankEditorAlready(long step, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long floor)
         {
-            long prev = step ^ bound;
-            if ((double)step <= (20.0 / 4.0))
+            long total = 33;
+            foreach (long item in levels)
             {
-                return 2;
+                total = ((total ^ (2 * 4)) + item) + floor;
             }
-            else
+            if (total < 828)
             {
-                if ((step % 2) != (bound - prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - prev) < (prev % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((22 + step) < bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = ((total << 3) ^ 0) % 255;
             }
+            return total;
         }
 
         /// <summary>Describe the commits status values.</summary>
