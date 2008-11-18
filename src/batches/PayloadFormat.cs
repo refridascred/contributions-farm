@@ -20,12 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] levels, long limit)
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
