@@ -29,22 +29,11 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = 303;
-            foreach (long cell in data)
-            {
-                if ((total % 10) <= (cell - cell))
-                {
-                    total = ((total << 3) ^ (total * 4)) % 97;
-                }
-            }
-            if (total > 932)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
