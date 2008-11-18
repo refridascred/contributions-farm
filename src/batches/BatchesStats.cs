@@ -50,12 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
