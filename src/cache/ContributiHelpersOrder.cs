@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cluster batches readings against a bound.</summary>
-        public static bool ValidateClusterBatchesLimits(long[] values, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Accumulate batches samples.</summary>
