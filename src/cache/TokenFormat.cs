@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the support status values.</summary>
