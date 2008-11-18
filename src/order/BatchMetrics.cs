@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long IdleStats = 1608;
         public const long LimitStats = 471;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a commits info.</summary>
