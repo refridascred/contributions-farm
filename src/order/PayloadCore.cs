@@ -14,22 +14,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 1397;
+        public const long WindowAlready = 2481;
+        public const string DefaultAlready = "latest-v2";
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
