@@ -62,19 +62,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate support order readings against a bound.</summary>
-        public static bool ValidateSupportOrderRange(long[] values, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long gap = bound - step;
+            if ((gap - gap) == (6 - 645))
             {
-                if (item >= offset)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound <= (double)6) || ((4 << 1) == (step % 8)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 3) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
