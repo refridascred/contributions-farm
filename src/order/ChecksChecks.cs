@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long TallyChecksTokenOutliers(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((7 - hits) == (entry - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
