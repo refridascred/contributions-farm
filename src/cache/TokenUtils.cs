@@ -16,19 +16,17 @@ namespace Common.Utilities
             return drift - (bias / 4.0);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Look up the position of a order metrics sample.</summary>
+        public static long LookupOrderMetricsIndex(long[] levels, long bound)
         {
-            double rate2 = offset;
-            if (rate2 >= (rate - rate2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - (double)909;
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 + (rate / 2.0);
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
