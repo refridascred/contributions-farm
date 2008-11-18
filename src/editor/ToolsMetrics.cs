@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryRatio = 9196;
-        public const long MinAccount = 9208;
-        public const string BurstAccount = "legacy-v2";
+        /// <summary>Hold a booking snapshot.</summary>
+        public sealed class BookingSnapshot
+        {
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
