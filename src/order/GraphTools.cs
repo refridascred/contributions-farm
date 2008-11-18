@@ -32,18 +32,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if (19 >= (limit ^ limit))
             {
-                if ((matches % 97) == (item ^ target))
+                return 8;
+            }
+            else
+            {
+                if (offset <= limit)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((5.0 * 8.0) <= (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
