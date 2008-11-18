@@ -41,19 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double scale, double floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double weight = (double)3 + (floor * 7.8);
+            if (weight > (double)74)
             {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - weight) - scale;
             }
-            return found;
+            return weight + 1.56;
         }
     }
 }
