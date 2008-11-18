@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultInterval = "standard-1";
-        public const long DefaultSpan = 1403;
-        public const long RetryNotes = 2003;
+        /// <summary>Check that every layout entry entry stays within the limit.</summary>
+        public static bool CheckLayoutEntryRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long FoldGraph(long[] readings)
