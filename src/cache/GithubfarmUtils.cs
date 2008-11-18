@@ -43,23 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Adjust a context buffer reading.</summary>
+        public static double SmoothContextBuffer(double ratio, double bias)
         {
-            long state = -3;
-            foreach (long sample in samples)
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
             {
-                state = state + state;
-                if ((sample >= ((long)samples.Length * 3)) && (sample >= (sample % 97)))
-                {
-                    break;
-                }
+                gain = ((gain + 10.0) + (double)(long)i) + ratio;
             }
-            if (state > 78)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            return gain + bias;
         }
     }
 }
