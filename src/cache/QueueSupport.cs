@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] items, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long carry = 59;
-            foreach (long cell in items)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell + floor) < (cell ^ carry))
-                {
-                    carry = carry - (carry / 2);
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
             return carry;
         }
