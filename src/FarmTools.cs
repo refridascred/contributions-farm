@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] data, long seed)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many profile layout samples are out of range.</summary>
