@@ -26,11 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a cache record.</summary>
