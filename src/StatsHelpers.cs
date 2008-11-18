@@ -15,32 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long seed2)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long origin)
         {
-            long edge = seed - seed2;
-            if ((seed2 - 58) <= (seed + seed2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (4.14 - 13.0))
+                if (series[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((909 + seed) < (edge + edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
