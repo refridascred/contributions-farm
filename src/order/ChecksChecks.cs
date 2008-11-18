@@ -18,19 +18,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long score = 317;
+            foreach (long value in series)
             {
-                if (datum < step)
+                if ((double)score >= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    score = (score - (seed + score)) + value;
                 }
             }
-            return ready;
+            return score % 97;
         }
     }
 }
