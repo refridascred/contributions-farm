@@ -35,12 +35,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long offset)
         {
-            Ready,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell <= 15.0) && (cell < (cell >> 1)))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
