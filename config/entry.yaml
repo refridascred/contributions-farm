@@ -1,6 +1,9 @@
 # entry settings
-readonly: 4
-batch_depth_s:
-  - primary
-  - latest
-warm_timeout_ms: 64.24
+editor_delay: green
+cache_window_s:
+  - 408
+  - 268
+  - 434
+  - 19
+githubfarm_interval: 22.04
+dry_run: standard
