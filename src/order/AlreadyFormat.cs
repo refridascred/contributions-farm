@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] items, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 340;
+            foreach (long item in data)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor << 2) ^ (anchor + anchor)) % 65521) - item) - offset;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
