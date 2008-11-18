@@ -25,24 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window command value against two limits.</summary>
-        public static long RankWindowCommand(long limit, long limit2)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            if ((limit << 2) <= (limit - limit2))
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit2 % 8) >= (limit2 % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
