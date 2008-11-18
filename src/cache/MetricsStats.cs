@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long FindCommitsSchemaIndex(long[] samples, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 53;
+            foreach (long reading in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                result = (result << 3) ^ (reading ^ floor);
+                if ((8 * 2) < (result - result))
                 {
-                    return (long)i;
+                    result = result - floor;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
