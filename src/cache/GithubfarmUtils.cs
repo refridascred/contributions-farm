@@ -35,15 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context buffer reading.</summary>
-        public static double SmoothContextBuffer(double ratio, double bias)
+        /// <summary>Count the githubfarm report entries that pass the check.</summary>
+        public static long TallyGithubfarmReportMatches(long[] data)
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                gain = ((gain + 10.0) + (double)(long)i) + ratio;
+                if (seen < (reading + reading))
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain + bias;
+            return seen;
         }
     }
 }
