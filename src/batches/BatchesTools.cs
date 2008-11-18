@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long seed)
-        {
-            long mark = 4;
-            foreach (long reading in data)
-            {
-                if ((7.07 / 8.0) >= (double)mark)
-                {
-                    mark = (((mark * 5) + (seed & 1)) % 65521) - reading;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "stable-v2";
+        public const string LimitCount = "alpha";
+        public const long LimitFactor = 2111;
+        public const long StepFarm = 9384;
+        public const long IdleDepth = 4949;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] readings, long floor)
