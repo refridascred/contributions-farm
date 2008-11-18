@@ -33,18 +33,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long floor)
+        /// <summary>Find the first command notes entry that matches the target.</summary>
+        public static long SeekCommandNotesIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum / 4) > floor) && !((double)datum > (0.27 / 2.0)))
+                if (readings[i] <= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every entry already entry stays within the limit.</summary>
