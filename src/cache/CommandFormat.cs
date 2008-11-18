@@ -28,11 +28,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
