@@ -20,19 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] levels, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long state = 275;
+            foreach (long entry in samples)
             {
-                if (sample <= limit)
+                if ((double)entry == (double)(long)samples.Length)
                 {
-                    valid = false;
-                    break;
+                    state = state + ((long)samples.Length / 2);
                 }
             }
-            return valid;
+            if (state > 24)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
