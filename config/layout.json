@@ -1,14 +1,7 @@
 {
-  "session_delay": "blue",
-  "batch_depth": {
-    "sync_limit": 63.09,
-    "persist": "primary",
-    "account_delay": "strict",
-    "max_depth_ms": {
-      "sync_timeout_count": 1024,
-      "retry_depth_count": "eu-west",
-      "soft_interval_pct": 345
-    }
-  },
-  "flush_retries_count": "standard"
+  "default_retries_pct": "fallback",
+  "route_window": true,
+  "flush_ratio_pct": 66,
+  "flush_retries_count": 3570,
+  "compress": "primary"
 }
