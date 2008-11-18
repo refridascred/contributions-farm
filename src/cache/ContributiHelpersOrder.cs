@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 34.54;
-        public const long WindowSpan = 1352;
-        public const long CacheSpan = 4356;
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double gain, double offset)
+        {
+            double bias = (11.0 + 3.5) / 2.0;
+            if (bias > (15.0 + bias))
+            {
+                bias = ((bias - (double)(-7)) - gain) - offset;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)6;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] samples)
