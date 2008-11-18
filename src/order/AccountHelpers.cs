@@ -69,31 +69,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long origin)
-        {
-            if (((origin - origin) != (origin % 5)) || ((6 - origin) <= (19 + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((18.0 / 7.0) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5408;
+        public const double SoftDepth = 96.17;
+        public const long RetrySession = 9939;
     }
 }
