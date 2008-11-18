@@ -33,17 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (target & 1)) % 65521;
-                mark = mark + (mark + 0);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Stale,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the counter phase values.</summary>
