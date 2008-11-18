@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double IdleFactor = 47.48;
         public const string SoftAlready = "latest-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardRatio = 11.79;
-        public const long BurstAccount = 9096;
-        public const long DefaultAccount = 5754;
-        public const double HardAccount = 96.85;
-        public const long HardInterval = 7680;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
