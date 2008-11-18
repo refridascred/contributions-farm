@@ -74,21 +74,10 @@ namespace Common.Utilities
             return gain - (bias / 6.0);
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheSize = "cached-1";
+        public const double LimitCounter = 14.18;
+        public const long RetryCounter = 4684;
+        public const long HardCounter = 2496;
     }
 }
