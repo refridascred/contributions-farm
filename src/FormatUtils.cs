@@ -28,17 +28,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 3) ^ ((long)i + step);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
