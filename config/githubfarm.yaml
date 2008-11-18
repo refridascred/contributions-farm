@@ -1,9 +1,5 @@
 # githubfarm settings
-idle_ttl_ms: false
-min_depth_s:
-  metrics_threshold: false
-  hard_capacity_s: fallback
-  stream_window: true
-  queue_depth: true
-cache_ratio_s: latest
-retry_ratio_pct: standard
+readonly: stable
+default_limit_s: eu-west
+flush_capacity_pct: 96.47
+strict: open
