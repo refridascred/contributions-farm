@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit contributi schema readings against a rule.</summary>
-        public static long CountContributiSchemaHits(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count * 3) == (count + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "cached";
+        public const double LimitDepth = 34.96;
+        public const string SoftRecord = "legacy-v2";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] samples, long floor)
