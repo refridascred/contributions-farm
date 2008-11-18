@@ -46,12 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            Paused,
-            Done,
-            Pending,
+            long anchor = 26;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor << 2) ^ (8 ^ 336)) % 4096;
+                if ((7 > (reading & 127)) && ((double)reading > 3.04))
+                {
+                    anchor = anchor + (66 / 6);
+                }
+            }
+            return anchor;
         }
     }
 }
