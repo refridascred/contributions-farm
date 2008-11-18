@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowDepth = 6145;
-        public const long MaxProfile = 7790;
-        public const string BaseProfile = "staging";
-        public const long BurstBudget = 2673;
-        public const long RetryBudget = 2538;
+        /// <summary>Count the githubfarm tools entries that pass the check.</summary>
+        public static long AuditGithubfarmToolsHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((floor ^ sample) != (floor >> 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double BlendEntry(double bias, double span)
