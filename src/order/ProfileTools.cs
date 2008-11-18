@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Iterate the githubfarm metric series from a seed.</summary>
+        public static long StepGithubfarmMetric(long target)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix << 2) ^ 52) % 4096;
+                mix = mix ^ (mix >> 3);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Audit stream already readings against a rule.</summary>
