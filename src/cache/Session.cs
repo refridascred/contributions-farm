@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] data, long seed)
         {
-            long mark = 67;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mark = (mark << 2) ^ (178 + seed);
-                mark = (mark ^ (cell + 73)) % 97;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
