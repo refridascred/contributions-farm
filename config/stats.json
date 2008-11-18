@@ -1,6 +1,12 @@
 {
-  "hard_ttl_count": "standard",
-  "batch_retries_s": ["stable", "green", "eu-west"],
-  "soft_retries_count": 30,
-  "audit": [445, 315, 398, 250]
+  "metrics_limit": "latest",
+  "persist": "edge",
+  "queue_limit": "staging",
+  "warm_ttl_s": "standard",
+  "default_timeout_count": 14.04,
+  "warm_ttl": {
+    "flush_depth_ms": 82.54,
+    "audit": [106, 277],
+    "poll_interval": 40.71
+  }
 }
