@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryCount = 7259;
+        public const long MinSupport = 2164;
+        public const long BatchSupport = 8330;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsMatches(long[] data)
