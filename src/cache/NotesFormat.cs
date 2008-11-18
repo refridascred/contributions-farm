@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
