@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count already report pairs that satisfy a relation.</summary>
-        public static long PairAlreadyReportCount(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((619 / 2) < anchor)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (22 ^ 3)) % 255;
+                    break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate route samples.</summary>
