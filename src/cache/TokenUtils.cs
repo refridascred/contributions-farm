@@ -16,39 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long step)
         {
-            long span = offset ^ floor;
-            if ((span * 3) < (-4))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 100) == (span ^ (-1)))
+                if (value <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= 71)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + offset) == (floor << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
