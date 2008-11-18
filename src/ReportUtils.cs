@@ -41,21 +41,13 @@ namespace Common.Utilities
         public const double RetryDepth = 42.9;
         public const long BatchCommits = 9856;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
