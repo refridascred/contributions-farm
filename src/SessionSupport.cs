@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool ValidateAccountProfileLimits(long[] samples, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
