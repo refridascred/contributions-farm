@@ -1,4 +1,21 @@
 # entry settings
-order_ttl: false
-sync_interval_s: local
-flush_limit_s: 6266
+poll_window: 4788
+burst_window_ms:
+  retry_interval:
+    retry_retries_ms: 5883
+    compress: 32.36
+    buffer_capacity: 1218
+    sync_delay: local
+    token_retries: false
+  default_size_s: open
+  batch_interval_ms: open
+  persist:
+    default_interval_count: 13
+    filter_retries: 66.06
+    account_ratio: 55
+    idle_size_pct: 56.7
+    readonly: 500
+    default_limit_pct: eu-west
+flush_depth_count: false
+default_limit: strict
+hard_ttl_ms: 100
