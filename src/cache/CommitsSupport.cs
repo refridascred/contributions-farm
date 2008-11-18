@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long origin)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count route profile pairs that satisfy a relation.</summary>
