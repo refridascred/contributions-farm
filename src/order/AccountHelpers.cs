@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const double WindowMetrics = 6.47;
         public const string RetryScore = "strict-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] data, long offset)
+        /// <summary>Validate counter batch readings against a bound.</summary>
+        public static bool CheckCounterBatchBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((4.7 * 5.0) == (double)matches)
+                if (entry > origin)
                 {
-                    matches = ((matches + 3) ^ value) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
