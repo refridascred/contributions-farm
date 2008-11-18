@@ -13,17 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a cache batches reading by value.</summary>
-        public static long FindCacheBatchesIndex(long[] series, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
