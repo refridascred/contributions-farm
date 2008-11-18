@@ -41,17 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue layout sample.</summary>
-        public static long LocateQueueLayoutIndex(long[] series, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target >> 4) > (target + limit))
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (target >= 409)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
