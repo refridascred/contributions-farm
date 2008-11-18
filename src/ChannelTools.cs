@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchCount = 9186;
-        public const long IdleSpan = 2512;
-        public const long MinCount = 4980;
-        public const long SoftScore = 8178;
-        public const double MaxRatio = 67.12;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long step)
+        {
+            if ((82 - offset) >= (offset + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2.58 + 5.41) < (double)step) || (((-8) + offset) < step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] data)
