@@ -13,17 +13,39 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi buffer sample.</summary>
-        public static long LookupContributiBufferIndex(long[] samples, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = step - bound;
+            if ((step / 8) >= (diff % 10))
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((1.2 / 8.0) >= (double)step)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((27 >> 1) < (bound & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((2 - step) == (step * 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
