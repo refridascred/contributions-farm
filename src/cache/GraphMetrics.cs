@@ -29,10 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 5048;
-        public const string MaxAlready = "strict-1";
-        public const long WindowWidth = 7664;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Paused,
+            Done,
+            Draft,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryTimeout = 8571;
