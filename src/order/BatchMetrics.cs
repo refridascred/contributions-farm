@@ -36,25 +36,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank notes cache input into a small class.</summary>
-        public static long RankNotesCache(long target, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            long cur = target ^ seed;
-            if ((cur + target) > seed)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 5) <= (seed >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
