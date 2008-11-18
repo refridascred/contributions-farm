@@ -54,19 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] data, long offset)
+        /// <summary>Combine checks counter values into a single score.</summary>
+        public static long DigestChecksCounter(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long mark = 58;
+            foreach (long reading in samples)
             {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark ^ (reading + mark)) % 101) + limit;
             }
-            return stale;
+            return mark % 4096;
         }
     }
 }
