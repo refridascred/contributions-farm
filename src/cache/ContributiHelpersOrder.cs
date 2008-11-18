@@ -26,10 +26,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 9730;
-        public const string RetryWidth = "primary";
-        public const long BaseWindow = 2522;
-        public const double MaxWindow = 22.93;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Locked,
+            New,
+            Failed,
+            Dropped,
+            Stale,
+        }
     }
 }
