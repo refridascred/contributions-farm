@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Draft,
-            Dropped,
-            Stale,
-            Pending,
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
