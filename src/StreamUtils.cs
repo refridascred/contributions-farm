@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long TallyProfileOrderMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (offset >= (offset + hits))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardBudget = 2774;
+        public const double RetryPayload = 62.84;
+        public const string HardPayload = "alpha-v2";
+        public const long SoftPayload = 8491;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
