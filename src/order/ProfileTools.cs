@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the githubfarm metric series from a seed.</summary>
-        public static long StepGithubfarmMetric(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                mix = ((mix << 2) ^ 52) % 4096;
-                mix = mix ^ (mix >> 3);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Compare every pair of batch window readings.</summary>
