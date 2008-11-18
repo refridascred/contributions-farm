@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] series, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((seed >> 1) <= (sample + matches))
+                if (entry != target)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
