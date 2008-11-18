@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the metrics channel entries that pass the check.</summary>
+        public static long AuditMetricsChannelHits(long[] samples, long offset)
         {
-            Done,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value + matches) == (offset - offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph format samples are out of range.</summary>
