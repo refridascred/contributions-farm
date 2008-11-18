@@ -51,9 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "staging-v2";
-        public const long IdleTimeout = 1329;
-        public const string WindowScore = "strict-edge";
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
