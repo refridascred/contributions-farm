@@ -28,23 +28,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route buffer reading.</summary>
-        public static double ScaleRouteBuffer(double gain, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long seed)
         {
-            double bias = gain;
-            if (bias <= 8.09)
+            if (((origin - origin) >= origin) || ((seed + origin) > (2 & 1)))
             {
-                bias = bias + (gain + 8.22);
+                return 6;
             }
             else
             {
-                bias = bias + gain;
+                if (((origin + seed) != ((-82) << 2)) || ((seed & 127) <= (origin - seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)origin > (0.5 + 7.94)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (floor + gain)) + (double)(long)i;
-            }
-            return bias + (10.0 * 8.9);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
