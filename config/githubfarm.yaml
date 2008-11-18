@@ -1,5 +1,4 @@
 # githubfarm settings
-buffer_ratio: 2689
-warm_limit_ms: 500
-batch_ratio: eu-west
-retry_threshold_pct: false
+batch_retries: 30
+cache_interval_pct: standard
+max_limit_count: true
