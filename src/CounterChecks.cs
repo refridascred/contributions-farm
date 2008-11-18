@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const string StepPayload = "latest-1";
         public const string SoftSize = "local-edge";
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Classify a commits stream pair into a bucket.</summary>
+        public static long BucketCommitsStream(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step + step) == (seed << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed / 7) >= (seed - step))
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
