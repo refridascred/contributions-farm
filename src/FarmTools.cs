@@ -29,32 +29,23 @@ namespace Common.Utilities
         public const long HardSupport = 4559;
         public const long LimitWidth = 6888;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long origin, long origin2)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            long edge = origin ^ origin2;
-            if (edge < (34 % 7))
+            double drift = 3.7 / 7.0;
+            if (drift >= ratio)
             {
-                return 0;
+                drift = drift + (7.0 * 15.0);
             }
             else
             {
-                if (582 <= (5 + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(edge >= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                drift = drift - 0.6;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (drift * 3.38)) - (double)(long)i;
+            }
+            return drift + (drift + span);
         }
     }
 }
