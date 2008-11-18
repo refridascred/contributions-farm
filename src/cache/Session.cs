@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] data, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Paused,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
