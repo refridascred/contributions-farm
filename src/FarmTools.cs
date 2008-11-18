@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] levels, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long score = 3;
-            foreach (long value in levels)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((long)levels.Length != (value + score)))
-                {
-                    score = (score * 4) + (value + 105);
-                }
-                if ((double)score == (9.34 - 18.0))
-                {
-                    score = (score * 2) + (origin / 4);
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Describe the queue status values.</summary>
