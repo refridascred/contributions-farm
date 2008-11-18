@@ -42,27 +42,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] data, long bound)
-        {
-            long anchor = 1;
-            foreach (long reading in data)
-            {
-                anchor = (anchor + (anchor % 12)) % 4096;
-                if ((anchor * 3) == (anchor << 3))
-                {
-                    anchor = (anchor ^ (reading + reading)) % 97;
-                }
-                if ((anchor ^ bound) < anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 492)
-            {
-                anchor = anchor - ((-472) & 7);
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 54.34;
+        public const long BaseWindow = 4361;
+        public const long IdleRatio = 9775;
+        public const double LimitLevel = 83.66;
+        public const double StepWindow = 81.22;
     }
 }
