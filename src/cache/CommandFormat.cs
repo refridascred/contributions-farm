@@ -33,11 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batches token measurements.</summary>
-        public static double ScaleBatchesToken(double weight, double floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            double load = floor / 2.0;
-            return (load - load) + weight;
+            double drift = 9.98;
+            if (drift < (double)542)
+            {
+                drift = (drift + (double)2) + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + 1.0;
         }
 
         /// <summary>Describe the batches state values.</summary>
