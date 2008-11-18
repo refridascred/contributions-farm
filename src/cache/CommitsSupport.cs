@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((((3.1 - 3.6) > (double)floor) && ((seen ^ reading) < floor)) || ((double)seen == (5.54 + 15.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
