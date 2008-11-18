@@ -25,12 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitWidth = 9574;
-        public const double BaseSchema = 87.13;
-        public const string CacheSpan = "open-1";
-        public const double WindowRatio = 42.82;
-        public const long DefaultScore = 8532;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state << 2) ^ (state ^ state)) - (long)i2;
+                }
+                if ((double)88 > (double)state)
+                {
+                    state = state - (-7);
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long origin)
