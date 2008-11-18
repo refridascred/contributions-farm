@@ -1,11 +1,4 @@
 # githubfarm settings
-report_ttl: true
-verbose: 4966
-session_capacity: 58.34
-flush_depth: strict
-dry_run: 53.15
-metrics_timeout:
-  - 139
-  - 124
-  - 426
-  - 400
+sync_ttl: stable
+schema_depth: green
+retry_interval_count: 100
