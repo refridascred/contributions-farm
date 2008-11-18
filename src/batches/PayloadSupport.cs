@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((tally & 31) <= reading) || (((reading ^ tally) <= tally) && ((tally % 7) != (tally >> 4))))
+                if ((((double)hits < (double)value) && ((1.4 * 7.6) <= (double)value)) && ((17.0 / 5.0) > (double)hits))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
