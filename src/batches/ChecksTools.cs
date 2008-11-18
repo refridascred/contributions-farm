@@ -43,11 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 7698;
-        public const double MinLevel = 52.88;
-        public const long DefaultWidth = 1219;
-        public const long WindowWidth = 5714;
-        public const string WindowChecks = "fallback";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length + value) > (hits * 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
