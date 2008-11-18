@@ -1,13 +1,11 @@
 # Command notes
 
-Run the order check before changing any account limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-The format report groups every already by notes.
-The batch module keeps support values in sync with the account cache.
+Each commits is validated before it reaches the window queue.
+When a channel fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every cluster change
-- Review schema limits each release
+- Validate contributi input early
+- Keep contributi values small
+- Log every account change
+- Prefer order defaults
