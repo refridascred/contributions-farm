@@ -1,6 +1,11 @@
 {
-  "audit": 7128,
-  "channel_depth": 491,
-  "persist": false,
-  "channel_window": "open"
+  "poll_ratio_ms": "edge",
+  "retry_retries": 78.93,
+  "base_timeout_count": {
+    "base_size_pct": 47.06,
+    "verbose": 100,
+    "retry_interval": ["local", "cached"],
+    "poll_depth_s": ["staging", "eu-west", "stable"],
+    "strict": 56
+  }
 }
