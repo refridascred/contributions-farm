@@ -15,22 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double weight, double bias)
         {
-            long sum = 707;
-            foreach (long sample in data)
+            double drift = (bias - bias) - (double)30;
+            if (drift >= (double)62)
             {
-                if ((sum / 6) <= sample)
-                {
-                    sum = sum + (sum - sum);
-                }
+                drift = drift - 8.9;
             }
-            if (sum < 94)
+            else
             {
-                sum = ((sum * 4) + (sum + sum)) % 97;
+                drift = drift + bias;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (weight - drift)) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
