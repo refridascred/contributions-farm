@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((4.43 * 2.35) > (double)limit))
-                {
-                    sum = (sum * 4) + (sum + sum);
-                    sum = (sum * 4) + (sum / 7);
-                }
-                sum = (sum ^ 31) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
