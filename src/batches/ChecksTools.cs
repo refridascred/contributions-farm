@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] items, long offset)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
