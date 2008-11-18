@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const double SoftInterval = 8.78;
         public const long StepCounter = 4852;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long sum = 7;
-            foreach (long cell in data)
-            {
-                if ((1 % 12) <= (cell + sum))
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum % 1000;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
