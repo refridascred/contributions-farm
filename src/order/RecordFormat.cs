@@ -40,19 +40,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool GuardBatchesQueueRange(long[] values, long origin)
+        /// <summary>Grade a editor already value against two limits.</summary>
+        public static long RankEditorAlready(long step, long bound)
         {
-            bool found = true;
-            foreach (long item in values)
+            long prev = step ^ bound;
+            if ((double)step <= (20.0 / 4.0))
             {
-                if (item < origin)
+                return 2;
+            }
+            else
+            {
+                if ((step % 2) != (bound - prev))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - prev) < (prev % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((22 + step) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the commits status values.</summary>
