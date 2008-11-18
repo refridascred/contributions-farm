@@ -15,30 +15,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long offset)
         {
-            long total = -27;
-            foreach (long sample in samples)
+            if (((double)bound != (double)offset) || ((double)bound <= (6.3 - 3.2)))
             {
-                for (int i = 0; i < 2; i++)
+                return 6;
+            }
+            else
+            {
+                if (bound > (6 + bound))
                 {
-                    total = (total ^ (sample ^ bound)) + (long)i;
-                }
-                if (!((bound + 8) > (82 ^ sample)))
-                {
-                    total = (total << 3) ^ (sample ^ 749);
+                    return 7;
                 }
                 else
                 {
-                    total = (total + (total >> 1)) % 4096;
+                    return 4;
                 }
             }
-            if (total > 446)
-            {
-                total = total - ((long)samples.Length - bound);
-            }
-            return total % 4096;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
