@@ -23,32 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long limit)
-        {
-            if ((double)2 < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.52 * 0.7) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((7 + limit) > (limit * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSize = "standard";
+        public const long DefaultQueue = 7540;
+        public const string CacheQueue = "stable-v2";
+        public const long CacheTimeout = 108;
+        public const long LimitQueue = 6491;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ScaleStats(double gain, double floor)
