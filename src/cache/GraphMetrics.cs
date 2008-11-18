@@ -57,15 +57,21 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - span);
         }
 
-        /// <summary>Roll a metrics account counter forward.</summary>
-        public static long IterateMetricsAccount(long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
