@@ -51,12 +51,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Queued,
-            Closed,
-            Draft,
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
