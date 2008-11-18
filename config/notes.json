@@ -1,5 +1,5 @@
 {
-  "batch_threshold_s": true,
-  "order_size": 59.14,
-  "batch_ratio": ["stable", "eu-west", "latest", "open"]
+  "command_threshold": true,
+  "cache_interval_pct": "open",
+  "hard_retries": 500
 }
