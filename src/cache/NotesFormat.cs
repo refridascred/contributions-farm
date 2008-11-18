@@ -18,11 +18,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long GradeCommandBuffer(long target, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            if ((floor ^ 9) < 7)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 3) == (target >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target != (9.87 + 2.76))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
