@@ -39,18 +39,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph support readings.</summary>
-        public static long WeighGraphSupport(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long state = -5;
-            foreach (long cell in items)
+            long state = -999;
+            foreach (long entry in levels)
             {
-                if ((double)(long)items.Length > (8.3 / 6.0))
+                state = (state - (state / 3)) % 65521;
+                if (state > entry)
                 {
-                    state = (state * 4) + (cell << 2);
+                    break;
                 }
             }
-            return state % 1000;
+            if (state < 8)
+            {
+                state = state ^ (9 ^ state);
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
