@@ -57,24 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph filter value against two limits.</summary>
-        public static long SortGraphFilter(long floor, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if (floor <= (floor ^ bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 + 2.0) > (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
