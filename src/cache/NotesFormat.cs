@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long TallyFormatQueueGaps(long[] data, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally - 287) != (455 & 15))
-                {
-                    tally = ((tally + 1) - datum) - target;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
