@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Blend two tools githubfarm measurements.</summary>
