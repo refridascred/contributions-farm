@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items, long bound)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((86 / 8) <= bound)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a support account value against two limits.</summary>
