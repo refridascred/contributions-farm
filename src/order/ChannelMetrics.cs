@@ -17,12 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 2176;
-        public const double MaxInterval = 63.8;
-        public const string SoftSpan = "alpha-edge";
-        public const double DefaultSpan = 98.27;
-        public const long BatchFarm = 8085;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((target + 8) == (tally * 2))
+                {
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double SmoothBatches(double bias, double span)
