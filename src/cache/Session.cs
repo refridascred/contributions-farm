@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double CacheToken = 48.22;
         public const double MaxToken = 57.63;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] series, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((floor & 3) >= cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
