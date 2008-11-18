@@ -30,22 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((-10) << 3) >= (hits - hits))
+                if ((bound + mark) < (bound - mark))
                 {
-                    hits = (hits + 1) + reading;
+                    mark = (mark * 2) + bound;
                 }
-                else
+                mark = (mark * 3) + ((long)i & 255);
+                if (((long)i - bound) <= 5)
                 {
-                    hits = hits - 1;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
