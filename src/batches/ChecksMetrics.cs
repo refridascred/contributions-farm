@@ -83,38 +83,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long bound)
-        {
-            if ((7.73 + 7.0) < (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed > (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > (3.0 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (3.0 - 20.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "strict-v2";
+        public const double LimitContributi = 32.93;
+        public const double BaseContributi = 45.87;
+        public const long BurstRatio = 7601;
     }
 }
