@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values, long target)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!!(hits < cell))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
