@@ -1,8 +1,7 @@
-id,level,score,state,region
-1,97.66,15.7,2.72,15.11
-2,43.12,45.46,primary,94.83
-3,720,27.68,blue,staging
-4,22.65,446,blue,82.68
-5,239,63,green,890
-6,fallback,staging,cached,17.33
-7,966,69.31,218,latest
+id,score,count
+1,6.87,primary
+2,527,367
+3,68.35,626
+4,796,open
+5,blue,95.99
+6,63.66,eu-west
