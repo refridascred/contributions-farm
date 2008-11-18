@@ -1,8 +1,18 @@
 {
-  "enabled": "fallback",
-  "hard_window_ms": "fallback",
-  "buffer_interval": false,
-  "audit": 9.54,
-  "entry_depth": 39.81,
-  "warm_interval_count": "eu-west"
+  "readonly": {
+    "compress": [370, 210, 146, 427],
+    "persist": {
+      "min_limit_ms": "legacy",
+      "layout_depth": "staging",
+      "idle_timeout": 100,
+      "min_delay": 100,
+      "poll_size_ms": [205, 276, 341, 13]
+    },
+    "commits_window": "legacy",
+    "enabled": ["strict", "stable", "fallback", "standard"],
+    "retry_depth_pct": "fallback",
+    "queue_timeout": "local"
+  },
+  "audit": "local",
+  "warm_capacity_ms": 95
 }
