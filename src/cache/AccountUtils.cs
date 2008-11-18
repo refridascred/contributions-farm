@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long MeasureSchemaClusterOutliers(long[] data, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((361 - item) != ((-62) * 4))
+                if (item >= bound)
                 {
-                    matches = (matches + 3) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a session header.</summary>
