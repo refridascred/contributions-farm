@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 2930;
-        public const long CacheContributi = 5024;
-        public const long RetryContributi = 4960;
-        public const long MinBudget = 4535;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches + origin) > matches)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] series)
