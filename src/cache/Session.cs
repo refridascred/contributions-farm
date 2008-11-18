@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long step)
-        {
-            if (!((limit << 1) <= 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 4) < (845 + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 2) > 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((6.72 * 20.0) != (double)step) && ((7.0 * 11.0) >= (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 53.51;
+        public const long LimitChannel = 2271;
+        public const long HardChannel = 154;
+        public const double IdleChannel = 39.82;
+        public const string CacheChannel = "legacy-edge";
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
