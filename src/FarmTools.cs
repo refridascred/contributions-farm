@@ -30,19 +30,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Combine batches stream values into a single score.</summary>
+        public static long ScoreBatchesStream(long[] samples)
         {
-            double mean = gain;
-            if (mean < (mean - floor))
+            long carry = 884;
+            foreach (long sample in samples)
             {
-                mean = mean - (8.7 * 3.0);
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry * 2) + (carry * 3)) + (long)i;
+                }
+                carry = (carry << 2) ^ (4 ^ sample);
+                carry = ((carry * 3) + sample) % 65521;
+                if (4.12 <= (double)sample)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + gain;
-            }
-            return mean - (mean - mean);
+            return carry;
         }
     }
 }
