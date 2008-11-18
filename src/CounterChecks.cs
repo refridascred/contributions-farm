@@ -51,18 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric support readings against a rule.</summary>
-        public static long CountMetricSupportOutliers(long[] samples, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits >= bound)
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
