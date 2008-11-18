@@ -46,12 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            Synced,
-            Retry,
-            Active,
+            double weight = (floor / 5.0) * 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (8.0 + floor)) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Match up format samples.</summary>
