@@ -65,22 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
-        {
-            long mix = 95;
-            foreach (long entry in data)
-            {
-                if ((mix % 60) < (3 * 4))
-                {
-                    mix = ((mix * 3) + entry) % 101;
-                }
-            }
-            if (mix > 384)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "strict-edge";
+        public const string RetryBudget = "stable-v2";
+        public const long SoftSize = 8787;
+        public const long CacheBatches = 2304;
     }
 }
