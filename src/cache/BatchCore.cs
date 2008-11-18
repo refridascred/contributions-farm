@@ -24,22 +24,23 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 4;
+            foreach (long item in readings)
             {
-                if (sample >= ((-184) / 8))
+                state = state - (item / 2);
+                if (!(396 > limit))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (state > 0)
+            {
+                state = (state * 5) + (limit / 7);
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
