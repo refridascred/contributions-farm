@@ -26,21 +26,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = target ^ offset;
+            if ((target ^ 99) != (step + 52))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((5.0 - 5.0) <= (double)offset) || ((target & 1) <= (step - target)))
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) != (step + offset))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >> 1) <= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
