@@ -65,12 +65,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchBudget = "primary";
-        public const string MinRatio = "alpha-1";
-        public const double IdleTools = 55.25;
-        public const long StepTools = 1258;
-        public const long BurstTools = 7216;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long limit)
+        {
+            if ((step + limit) < (limit - 99))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((19.0 * 0.5) < (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit & 7) <= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.47 * 6.19) > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] values)
