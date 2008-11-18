@@ -60,11 +60,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 6971;
-        public const double HardScore = 26.84;
-        public const long BatchCluster = 6558;
-        public const long HardCluster = 3966;
-        public const long DefaultCluster = 9164;
+        /// <summary>Match up cache support samples.</summary>
+        public static long CompareCacheSupportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
