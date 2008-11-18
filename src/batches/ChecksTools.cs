@@ -13,39 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long diff = step - bound;
-            if ((step / 8) >= (diff % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.2 / 8.0) >= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((27 >> 1) < (bound & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((2 - step) == (step * 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of graph support readings.</summary>
