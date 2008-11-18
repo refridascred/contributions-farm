@@ -32,11 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            Queued,
+            Closed,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
