@@ -27,12 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long limit)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit >> 5) <= (limit - 93))
+                {
+                    acc = (acc - acc) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (limit + acc)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
