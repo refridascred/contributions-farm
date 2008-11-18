@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] samples, long target)
         {
-            long score = 8;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!((datum * 3) != (datum + score)))
+                if (datum <= target)
                 {
-                    score = score - score;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (datum * 4)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
