@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double bias2)
-        {
-            double gain = (bias / 5.0) - bias2;
-            if (gain >= (9.0 + 2.7))
-            {
-                gain = gain + (16.0 - bias2);
-            }
-            return gain + bias2;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 7596;
+        public const double IdleCount = 48.89;
+        public const string BurstSize = "standard-v2";
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
