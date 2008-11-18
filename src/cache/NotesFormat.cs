@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSize = 116;
-        public const long WindowWidth = 8036;
-        public const double StepRatio = 53.41;
-        public const long BaseCache = 6628;
-        public const double IdleSpan = 90.27;
+        /// <summary>Blend two tools githubfarm measurements.</summary>
+        public static double AdjustToolsGithubfarm(double weight, double bias)
+        {
+            double rate = weight + 4.82;
+            if (rate > bias)
+            {
+                rate = rate - (7.9 / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + weight;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
