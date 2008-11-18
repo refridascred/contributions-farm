@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double gain = (double)(6 + 3);
-            return ((gain + 4.2) + scale) + span;
+            Paused,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
