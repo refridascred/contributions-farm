@@ -29,22 +29,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            long mix = -723;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)mix == (6.37 / 2.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - 45) % 4096;
-                }
-                if ((cell << 3) < (cell >> 1))
-                {
-                    mix = mix ^ mix;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
