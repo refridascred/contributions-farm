@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double bias, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples, long seed)
         {
-            double mean = 1.5 / 6.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mean = ((mean - (double)9) + (double)(long)i) - bias;
+                if (4.0 <= (1.6 / 4.0))
+                {
+                    count = ((count + 2) + entry) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean + floor;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
