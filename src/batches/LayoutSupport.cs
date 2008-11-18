@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] series, long bound)
+        /// <summary>Locate a checks window reading by value.</summary>
+        public static long SeekChecksWindowIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry + tally) <= ((-943) + bound))
+                if (data[i] == target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
