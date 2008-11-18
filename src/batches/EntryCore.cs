@@ -32,17 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches counter reading by value.</summary>
-        public static long SeekBatchesCounterIndex(long[] values, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
