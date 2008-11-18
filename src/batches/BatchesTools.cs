@@ -16,13 +16,12 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
