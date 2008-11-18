@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const string RetryFarm = "strict-v2";
         public const long BatchCount = 9764;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Fold a list of filter already readings.</summary>
+        public static long CombineFilterAlready(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 62;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry ^ (entry ^ 111)) % 255) - offset;
+                carry = (carry ^ (carry / 4)) % 1000;
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
