@@ -60,19 +60,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] samples, long seed)
+        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
+        public static long PairProfileContributiCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
