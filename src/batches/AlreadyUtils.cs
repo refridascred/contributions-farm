@@ -43,26 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long floor)
-        {
-            long span = seed - floor;
-            if ((floor - floor) < (span & 255))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((72 - (-3)) <= span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 8906;
+        public const long BurstLevel = 758;
+        public const long IdleScore = 1312;
+        public const long StepWindow = 6473;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] values, long limit)
