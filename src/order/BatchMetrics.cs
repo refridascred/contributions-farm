@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long DefaultBatch = 7586;
         public const long BurstBatch = 1939;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = 7;
-            foreach (long item in samples)
-            {
-                if ((limit ^ 801) >= (limit / 4))
-                {
-                    mix = ((mix - ((-786) ^ limit)) % 255) ^ item;
-                }
-            }
-            return mix % 1000;
+            New,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a session stats.</summary>
