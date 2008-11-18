@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] items, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (items[i] < target)
+                if ((double)reading >= (7.9 / 6.0))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up farm already samples.</summary>
