@@ -47,18 +47,11 @@ namespace Common.Utilities
             return bias + (10.0 * 8.9);
         }
 
-        /// <summary>Combine window graph values into a single score.</summary>
-        public static long ScoreWindowGraph(long[] values)
-        {
-            long state = 36;
-            foreach (long datum in values)
-            {
-                if (((datum + datum) < (state ^ datum)) || ((4.2 + 11.0) <= (double)datum))
-                {
-                    state = (state << 2) ^ (datum + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "stable-edge";
+        public const string BaseInterval = "legacy-edge";
+        public const double SoftCluster = 7.3;
+        public const long HardInterval = 1563;
+        public const long MaxCluster = 2350;
     }
 }
