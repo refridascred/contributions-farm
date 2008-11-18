@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long DigestLayoutFormat(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long bound)
         {
-            long state = -4;
-            foreach (long datum in readings)
+            if (!((315 + bound) > bound))
             {
-                if ((-4) > (state - state))
+                return 0;
+            }
+            else
+            {
+                if (!(origin >= (2 + origin)))
                 {
-                    state = (state * 5) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
