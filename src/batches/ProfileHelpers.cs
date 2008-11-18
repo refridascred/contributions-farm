@@ -38,18 +38,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples, long seed)
+        /// <summary>Combine command metric values into a single score.</summary>
+        public static long CombineCommandMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 63;
+            foreach (long reading in items)
             {
-                if (((604 % 24) < value) || !((seed << 1) == (874 / 7)))
+                mark = (mark ^ (reading - mark)) % 255;
+                if ((960 - mark) == (608 & 1))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
