@@ -49,9 +49,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchScore = 7128;
-        public const double MinBudget = 30.65;
-        public const string MinRatio = "cached-1";
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
