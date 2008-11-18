@@ -61,15 +61,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double weight, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] samples)
         {
-            double gain = bias;
-            if (gain > 6.6)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                gain = (gain + bias) + weight;
+                if (((18.0 * 3.34) == (double)item) && ((tally - tally) != (item * 5)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return gain - (bias / 6.0);
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
