@@ -69,13 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Queued,
+            double ratio = floor;
+            return (ratio - 9.82) + bias;
         }
     }
 }
