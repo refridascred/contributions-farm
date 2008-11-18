@@ -61,15 +61,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double span)
-        {
-            double mean = 4.34;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (((mean - 2.7) + (double)(long)i) - rate) - span;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 89.25;
+        public const string SoftCount = "cached-v2";
+        public const string DefaultFactor = "open-edge";
     }
 }
