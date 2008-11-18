@@ -1,6 +1,14 @@
 {
-  "context_delay": 81.64,
-  "hard_capacity_pct": 1027,
-  "dry_run": "cached",
-  "base_delay_count": 90.87
+  "default_ttl_ms": ["stable", "local"],
+  "batch_capacity_count": [25, 145, 473, 292],
+  "flush_timeout_s": ["fallback", "latest", "latest", "primary"],
+  "tools_depth": 3783,
+  "retry_ratio_ms": {
+    "entry_capacity": 99,
+    "channel_size": 1934,
+    "min_retries_s": 1024,
+    "base_size_s": "cached",
+    "batches_interval": "standard",
+    "default_ttl_count": 95
+  }
 }
