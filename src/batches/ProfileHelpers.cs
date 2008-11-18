@@ -60,17 +60,12 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry + (carry / 7)) % 97;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 2725;
+        public const double HardCounter = 8.81;
+        public const long BatchLevel = 327;
+        public const long WindowCounter = 5213;
+        public const string SoftWidth = "local";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] series, long limit)
