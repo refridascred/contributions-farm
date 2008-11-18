@@ -55,21 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 949;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading / 6) == (result ^ result))
                 {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (long)series.Length;
                 }
             }
-            return tally;
+            if (result < 856)
+            {
+                result = (result - 57) % 101;
+            }
+            return result % 4096;
         }
     }
 }
