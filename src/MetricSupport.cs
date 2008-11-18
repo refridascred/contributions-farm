@@ -54,39 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long target)
+        /// <summary>Roll a channel profile counter forward.</summary>
+        public static long DeriveChannelProfile(long floor)
         {
-            long step = offset - target;
-            if (step >= offset)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step & 7) < (step << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > (target & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - target) > target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
