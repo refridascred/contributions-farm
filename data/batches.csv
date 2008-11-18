@@ -1,6 +1,10 @@
-id,level,count,weight,owner
-1,403,67,stable,primary
-2,19.01,56.58,53.95,stable
-3,latest,88.7,staging,93.84
-4,134,97.61,32.37,71.67
-5,38.5,292,493,41.12
+id,score,weight
+1,open,726
+2,79.98,fallback
+3,primary,77.13
+4,316,140
+5,22.64,370
+6,0.94,legacy
+7,180,828
+8,14,912
+9,165,61.33
