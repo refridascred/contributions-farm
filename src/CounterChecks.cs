@@ -32,22 +32,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the contributi editor entries that pass the check.</summary>
-        public static long MeasureContributiEditorGaps(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 8;
+            foreach (long sample in readings)
             {
-                if ((seen + datum) >= (5 % 10))
+                if ((bound % 12) < (result % 100))
                 {
-                    seen = seen + 2;
+                    result = result - (sample - result);
                 }
-                else
+                if ((result * 3) == (bound & 7))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
