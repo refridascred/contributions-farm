@@ -1,6 +1,19 @@
 {
-  "base_retries_s": ["latest", "strict"],
-  "soft_window_pct": false,
-  "batch_capacity": 500,
-  "strict": "stable"
+  "min_capacity": 100,
+  "retry_threshold_s": {
+    "enabled": 28.48,
+    "counter_window": "blue",
+    "flush_size_count": "open",
+    "max_window": {
+      "flush_window_pct": 1342,
+      "dry_run": 500,
+      "default_limit_ms": [26, 93]
+    },
+    "persist": 18,
+    "flush_depth": "fallback"
+  },
+  "already_threshold": 40.36,
+  "readonly": "blue",
+  "idle_retries_count": true,
+  "default_ttl": "primary"
 }
