@@ -1,20 +1,10 @@
 # githubfarm settings
-strict: 1.26
-compress: 500
-soft_capacity_ms: 49.18
-payload_depth: 8501
-persist:
-  burst_threshold_pct: 500
-  filter_delay: legacy
-  compress: primary
-  cache_delay_ms:
-    - 262
-    - 276
-  persist:
-    warm_limit_ms: 49.64
-    graph_window: open
-    metric_retries: true
-dry_run:
-  - local
-  - local
-  - legacy
+idle_delay_count:
+  - primary
+  - edge
+  - latest
+  - open
+min_timeout_pct: 57
+support_timeout: false
+readonly: strict
+cache_capacity: true
