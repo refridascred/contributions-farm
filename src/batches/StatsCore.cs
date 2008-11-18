@@ -38,10 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 2650;
-        public const long BaseCommits = 6702;
-        public const long SoftRatio = 4227;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 8523;
