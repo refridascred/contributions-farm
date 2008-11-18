@@ -33,10 +33,13 @@ namespace Common.Utilities
             return mean + (4.9 - weight);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 4931;
-        public const string BatchCount = "latest-edge";
-        public const string BurstRatio = "open-v2";
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Match up metrics notes samples.</summary>
         public static long OverlapMetricsNotesCount(long[] readings)
