@@ -19,22 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((4.0 / 8.0) >= (double)datum))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state * 4) + (target + (long)i);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the account phase values.</summary>
