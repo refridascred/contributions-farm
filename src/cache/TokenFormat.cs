@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long TallyEditorGithubfarmOutliers(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen < (reading & 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next window profile value.</summary>
