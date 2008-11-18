@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] levels, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (3.4 / 8.0))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
