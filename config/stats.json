@@ -1,6 +1,22 @@
 {
-  "support_ratio": ["standard", "strict"],
-  "tools_delay": false,
-  "account_ratio": 30,
-  "metric_capacity": 12
+  "base_depth_pct": {
+    "metric_ratio": 1024,
+    "cache_timeout": 9074,
+    "idle_size_s": {
+      "stream_timeout": true,
+      "max_timeout": "eu-west",
+      "base_limit_ms": "eu-west",
+      "batch_retries": 84.63
+    },
+    "strict": 60
+  },
+  "tools_interval": 3193,
+  "context_window": true,
+  "readonly": {
+    "verbose": 1788,
+    "readonly": "blue",
+    "flush_limit_pct": 2403,
+    "compress": [147, 353, 313, 184]
+  },
+  "flush_ttl": "stable"
 }
