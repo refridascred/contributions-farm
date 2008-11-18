@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long limit)
         {
-            long state = 524;
-            foreach (long value in samples)
+            if ((1 << 3) != (floor - limit))
             {
-                if ((double)state < (19.0 * 3.3))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit > (1.6 + 6.0))
                 {
-                    state = state + value;
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (floor - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = (state << 3) ^ (4 + (-336));
-            }
-            return state;
         }
 
         /// <summary>Combine record values into a single score.</summary>
