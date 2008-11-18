@@ -41,20 +41,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = 384;
+            foreach (long sample in series)
             {
-                if ((1.77 / 9.0) <= (double)origin)
+                anchor = (anchor ^ sample) % 1000;
+                for (int i = 0; i < 10; i++)
                 {
-                    score = ((score << 3) ^ 3) % 65521;
-                    break;
+                    anchor = ((anchor * 3) + ((long)i / 8)) % 4096;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                if ((sample + sample) < (anchor - bound))
+                {
+                    anchor = (anchor + (sample - sample)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (sample + anchor)) % 65521;
+                }
             }
-            return score;
+            if (anchor > 70)
+            {
+                anchor = (anchor ^ (bound << 3)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
