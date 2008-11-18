@@ -53,14 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long limit, long floor)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Active,
-            New,
+            long diff = limit - floor;
+            if ((floor + floor) <= (floor & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((diff * 5) < diff)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
