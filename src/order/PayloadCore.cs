@@ -47,21 +47,18 @@ namespace Common.Utilities
             return bias + (10.0 * 8.9);
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Combine window graph values into a single score.</summary>
+        public static long ScoreWindowGraph(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 36;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((datum + datum) < (state ^ datum)) || ((4.2 + 11.0) <= (double)datum))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state << 2) ^ (datum + state);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
