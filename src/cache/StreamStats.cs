@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double rate, double floor)
-        {
-            double load = rate;
-            if (load >= (0.1 / 4.0))
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load - floor)) + (double)(long)i;
-            }
-            return load - (double)57;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 3127;
+        public const double RetryWidth = 78.48;
+        public const long CacheWidth = 518;
+        public const double BatchTimeout = 62.8;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] items)
