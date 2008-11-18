@@ -48,15 +48,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long limit2)
         {
-            double scale = floor;
-            if (scale <= (4.0 + 9.1))
+            long prev = limit - limit2;
+            if ((limit2 % 2) < limit2)
             {
-                scale = scale - weight;
+                return 1;
             }
-            return scale - scale;
+            else
+            {
+                if (!((prev << 1) > (122 + limit2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
