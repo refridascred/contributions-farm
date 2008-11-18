@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] series, long bound)
+        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
+        public static bool CheckMetricsMetricBounds(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (entry > bound)
+                if (sample < origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Fold a list of farm batches readings.</summary>
