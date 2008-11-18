@@ -23,38 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            if ((limit > (origin + origin)) || ((limit + origin) >= (origin - limit)))
+            double drift = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                drift = (drift - span) - (double)(long)i;
             }
-            else
-            {
-                if ((origin + 791) != (origin & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin > 1.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.03 - 2.0) <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Describe the order kind values.</summary>
