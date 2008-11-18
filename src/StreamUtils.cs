@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const long IdleCounter = 3266;
         public const string WindowCounter = "strict-edge";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
