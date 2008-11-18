@@ -23,11 +23,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 26.86;
-        public const double BaseDepth = 74.9;
-        public const long BatchFilter = 3482;
-        public const string BurstFactor = "staging-edge";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items, long origin)
+        {
+            long sum = 382;
+            foreach (long entry in items)
+            {
+                if (!((9.85 * 17.0) >= (double)sum))
+                {
+                    sum = sum + (origin + origin);
+                }
+                sum = (sum + (origin % 100)) % 255;
+                if ((sum - entry) > (entry + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
         public static long SeekCommandNotesIndex(long[] readings, long origin)
