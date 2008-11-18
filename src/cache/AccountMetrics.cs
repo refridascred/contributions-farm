@@ -34,38 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long step)
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long FoldFormatContributi(long[] series, long limit)
         {
-            if (floor >= 99)
+            long anchor = 5;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= (9.0 + 12.0))
+                if (15 >= (item + 98))
                 {
-                    return 6;
+                    anchor = (((anchor * 4) + (item << 3)) % 65521) - limit;
                 }
                 else
                 {
-                    if (!(step < (step % 100)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((507 * 5) <= (floor / 8)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ item;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
