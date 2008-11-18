@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] data, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)origin > (14.0 - 3.34))
                 {
-                    state = ((state << 2) ^ (state ^ state)) - (long)i2;
+                    hits = (hits + 1) ^ value;
                 }
-                if ((double)88 > (double)state)
-                {
-                    state = state - (-7);
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
