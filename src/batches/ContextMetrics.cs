@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheTimeout = 2877;
-        public const long MinTimeout = 6803;
-        public const double RetryCache = 48.38;
-        public const string IdleCache = "primary-v2";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] data)
