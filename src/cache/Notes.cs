@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = state ^ 0;
-                state = state + origin;
-                state = ((state << 3) ^ ((long)i % 60)) % 101;
-                state = ((state * 5) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
