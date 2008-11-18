@@ -52,18 +52,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the metric schema entries that pass the check.</summary>
-        public static long TallyMetricSchemaGaps(long[] samples, long step)
+        /// <summary>Fold a list of route channel readings.</summary>
+        public static long FoldRouteChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = 3;
+            foreach (long value in levels)
             {
-                if ((reading % 8) != (tally & 63))
+                if (!(value < (value / 2)))
                 {
-                    tally = (tally + 1) - step;
+                    score = (score + (value & 7)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (score + score)) % 97;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
