@@ -36,13 +36,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long MeasureSchemaPayloadHits(long[] series)
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(((count >> 2) > (count % 100)) && ((double)73 == (double)sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
