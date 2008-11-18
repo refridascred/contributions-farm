@@ -57,21 +57,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = bound ^ floor;
+            if ((slot + bound) > (83 + bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)slot >= (20.0 - 7.69))
                 {
-                    if ((data[i] - data[j]) != 7)
+                    return 3;
+                }
+                else
+                {
+                    if ((8.7 * 6.6) > (double)slot)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
     }
 }
