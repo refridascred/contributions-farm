@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool ValidateCommandOrderBounds(long[] values, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > bound)
+                state = state ^ (seed & 15);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    long tally = 4;
+                    state = (state - (tally << 1)) ^ (long)i2;
                 }
+                state = state ^ state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
