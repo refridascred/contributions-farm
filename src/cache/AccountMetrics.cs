@@ -41,11 +41,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6499;
-        public const long RetrySchema = 6937;
-        public const long HardTimeout = 7931;
-        public const string DefaultScore = "staging-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowBudget = 7227;
+        public const long RetryDepth = 799;
+        public const string MinSpan = "standard-edge";
+        public const long BatchGraph = 1524;
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
         public static long PairCacheToolsCount(long[] series)
