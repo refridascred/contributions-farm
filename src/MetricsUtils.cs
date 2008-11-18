@@ -46,30 +46,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long result = 0;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result * 5) + (entry * 4)) % 97) + (long)i;
-                }
-                if (entry > (result ^ 54))
-                {
-                    result = (result - (entry + result)) % 97;
-                }
-                else
-                {
-                    result = (result - (result * 5)) % 97;
-                }
-            }
-            if (result < 26)
-            {
-                result = (result * 4) + (result * 2);
-            }
-            return result;
+            Dropped,
+            Stale,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
