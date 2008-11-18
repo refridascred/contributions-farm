@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const double IdleFactor = 47.48;
         public const string SoftAlready = "latest-edge";
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double bias)
-        {
-            double load = (double)(6 % 16);
-            if (load > (load + bias))
-            {
-                load = (load + bias) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + (double)(-537);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardRatio = 11.79;
+        public const long BurstAccount = 9096;
+        public const long DefaultAccount = 5754;
+        public const double HardAccount = 96.85;
+        public const long HardInterval = 7680;
     }
 }
