@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long TallyRouteFarmHits(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double weight = (double)(49 >> 2);
+            if (weight > (double)2)
             {
-                if ((seen + datum) <= (datum & 31))
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight - (double)7) - scale) - bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 3.2) + (double)(long)i;
+            }
+            return weight - (double)61;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
