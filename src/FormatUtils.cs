@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] levels, long seed)
+        /// <summary>Audit account buffer readings against a rule.</summary>
+        public static long AuditAccountBufferGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((seed / 9) != (cell & 255)) || ((seen - seed) > (seed + seen)))
+                if ((sample - sample) != (37 - matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
