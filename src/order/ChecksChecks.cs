@@ -19,13 +19,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitWidth = 9574;
+        public const double BaseSchema = 87.13;
+        public const string CacheSpan = "open-1";
+        public const double WindowRatio = 42.82;
+        public const long DefaultScore = 8532;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] items)
