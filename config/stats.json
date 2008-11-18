@@ -1,8 +1,13 @@
 {
-  "record_delay": "eu-west",
-  "metrics_ttl": 49,
-  "idle_ttl_pct": [208, 74, 348],
-  "account_delay": 32,
-  "token_ratio": "stable",
-  "layout_delay": 89.07
+  "max_window": {
+    "default_timeout": 60,
+    "poll_size": 1024,
+    "sync_threshold": "cached",
+    "default_depth": "strict",
+    "idle_interval_count": "cached",
+    "queue_depth": false
+  },
+  "readonly": [329, 319, 390],
+  "batch_limit": 5012,
+  "audit": "strict"
 }
