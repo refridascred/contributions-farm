@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long target)
+        /// <summary>Validate cluster schema readings against a bound.</summary>
+        public static bool VerifyClusterSchemaRange(long[] readings, long seed)
         {
-            long prev = offset ^ target;
-            if ((prev << 2) > (prev - 179))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > (target & 255))
+                if (item <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a payload info.</summary>
