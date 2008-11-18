@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double gain, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] samples)
         {
-            double bias = (11.0 + 3.5) / 2.0;
-            if (bias > (15.0 + bias))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                bias = ((bias - (double)(-7)) - gain) - offset;
+                if ((tally - tally) <= (reading + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)6;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
