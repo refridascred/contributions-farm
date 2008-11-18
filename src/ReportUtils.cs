@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const string IdleTimeout = "local-edge";
         public const long LimitBatches = 8663;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = limit + origin;
+            if ((delta - 517) < (origin << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((delta & 7) <= (origin - limit)))
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
