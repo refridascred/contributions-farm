@@ -49,22 +49,11 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long acc = 6;
-            foreach (long sample in data)
-            {
-                if ((16.0 / 8.0) != (double)sample)
-                {
-                    acc = (((acc * 3) + acc) % 4096) - step;
-                }
-                if ((sample >> 5) < acc)
-                {
-                    acc = (acc * 2) + (sample + 362);
-                }
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
