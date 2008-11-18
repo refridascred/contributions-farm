@@ -35,12 +35,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
             Pending,
-            Paused,
-            Failed,
+            Synced,
+            Idle,
+            Active,
         }
     }
 }
