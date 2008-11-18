@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((26 + 3) == (matches + matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
