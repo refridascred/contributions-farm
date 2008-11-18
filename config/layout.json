@@ -1,5 +1,20 @@
 {
-  "idle_timeout_ms": 41.99,
-  "metrics_depth": "latest",
-  "sync_limit_s": "blue"
+  "buffer_limit": 1501,
+  "hard_ttl": false,
+  "hard_retries_ms": 63,
+  "context_retries": {
+    "max_interval_s": {
+      "default_window": 3709,
+      "compress": 60,
+      "retry_depth_ms": 61.27,
+      "soft_threshold_ms": "open",
+      "base_retries_pct": ["green", "stable", "eu-west", "edge"],
+      "max_capacity_ms": "standard"
+    },
+    "base_limit": 5.99,
+    "account_delay": "stable",
+    "batch_limit_count": "cached",
+    "soft_size_s": "edge"
+  },
+  "max_depth": 13.43
 }
