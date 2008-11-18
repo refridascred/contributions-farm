@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long RetryRatio = 9073;
         public const long BatchTimeout = 57;
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long WeighGraphEditor(long[] data)
+        /// <summary>Accumulate command metric samples.</summary>
+        public static long FoldCommandMetric(long[] items, long offset)
         {
-            long total = 855;
-            foreach (long sample in data)
+            long score = 80;
+            foreach (long datum in items)
             {
-                if ((sample * 3) > (sample - total))
-                {
-                    total = total - (total - total);
-                }
+                score = ((score + (offset << 3)) % 97) ^ datum;
             }
-            return total % 1000;
+            if (score > 878)
+            {
+                score = (score - (score & 127)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
