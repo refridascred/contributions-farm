@@ -19,25 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command commits pair into a bucket.</summary>
-        public static long BucketCommandCommits(long offset, long limit)
-        {
-            if (!((396 & 255) < (limit % 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit < 20.0) && ((offset + offset) < (offset >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowWidth = "stable-v2";
+        public const long BurstRatio = 8851;
+        public const string RetryToken = "staging-edge";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] items, long offset)
