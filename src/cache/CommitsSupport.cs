@@ -35,23 +35,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] samples)
         {
-            long mix = -71;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 4) + (mix << 2)) % 97;
-                if ((30 & 1) == (mix - 9))
+                if (!(seen < (sample & 63)))
                 {
-                    mix = (mix << 2) ^ (mix - datum);
+                    seen = seen + 2;
                 }
             }
-            if (mix < 263)
-            {
-                mix = (mix - (876 + origin)) % 255;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
