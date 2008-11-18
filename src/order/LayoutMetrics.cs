@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double bias)
         {
-            long diff = origin + limit;
-            if (!((limit ^ limit) > diff))
+            double bias2 = rate / 3.0;
+            if (bias2 <= 0.7)
             {
-                return 4;
+                bias2 = bias2 + (rate - bias);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((1.3 - 4.84) < (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias2 = (bias2 - (rate + 7.9)) - (double)(long)i;
             }
+            return bias2 + bias2;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
