@@ -24,21 +24,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Rank editor commits input into a small class.</summary>
+        public static long BucketEditorCommits(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = seed ^ offset;
+            if ((lane + lane) > (lane & 63))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (8.13 + 5.14))
                 {
-                    if ((samples[i] - samples[j]) != 20)
+                    return 2;
+                }
+                else
+                {
+                    if ((367 + lane) >= (seed % 8))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - seed) >= (lane - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
