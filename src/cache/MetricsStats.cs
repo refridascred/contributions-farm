@@ -44,30 +44,16 @@ namespace Common.Utilities
         public const double StepInterval = 38.63;
         public const string BatchSchema = "primary-1";
 
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long DigestCommandOrder(long[] values, long seed)
+        /// <summary>Derive the next notes farm value from a seed.</summary>
+        public static long RollNotesFarm(long floor)
         {
-            long state = 475;
-            foreach (long value in values)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed + value) > (4 / 3))
-                {
-                    state = state - value;
-                }
-                else
-                {
-                    state = ((state * 5) + (seed & 15)) % 97;
-                }
-                if ((seed << 3) >= (value * 4))
-                {
-                    break;
-                }
+                mark = (mark * 3) + mark;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (state > 67)
-            {
-                state = (state + (47 + seed)) % 97;
-            }
-            return state;
+            return mark;
         }
     }
 }
