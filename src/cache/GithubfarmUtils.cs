@@ -25,12 +25,23 @@ namespace Common.Utilities
         public const double BatchInterval = 76.88;
         public const long IdleBatch = 6413;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSpan = 6592;
-        public const double BurstCommits = 98.89;
-        public const string CacheScore = "primary-1";
-        public const string BaseCommits = "open-1";
-        public const long RetryCommits = 3832;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((((long)data.Length * 4) >= (87 + 8)) && (count > (count ^ value)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the cache notes series from a seed.</summary>
         public static long IterateCacheNotes(long offset)
