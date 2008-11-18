@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain + (double)7;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = floor;
+            if (rate2 < 16.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = (rate2 + 4.0) - rate;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - 3.82;
+            }
+            return rate2 - (double)669;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
