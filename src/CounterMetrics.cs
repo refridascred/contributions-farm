@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit editor window readings against a rule.</summary>
-        public static long AuditEditorWindowHits(long[] series, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double load = 5.6 + 2.2;
+            if (load <= (double)744)
             {
-                if (origin > (origin - item))
-                {
-                    tally = tally + 3;
-                }
+                load = (load - (span - load)) + rate;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (double)414;
         }
 
         /// <summary>Match up stats samples.</summary>
