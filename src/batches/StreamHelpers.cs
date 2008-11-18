@@ -70,32 +70,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long gap = bound - step;
-            if ((gap - gap) == (6 - 645))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound <= (double)6) || ((4 << 1) == (step % 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 3) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Retry,
+            Queued,
         }
     }
 }
