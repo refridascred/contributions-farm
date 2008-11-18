@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long bound)
         {
-            long carry = 2;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((double)reading <= (6.0 - 5.1))
+                if (datum != bound)
                 {
-                    carry = (carry * 3) + (carry * 3);
+                    valid = false;
+                    break;
                 }
-                carry = carry + (carry - target);
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Classify a editor stream pair into a bucket.</summary>
