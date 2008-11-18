@@ -15,20 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstCount = 9457;
+        public const long BurstMetrics = 3992;
+        public const long HardMetrics = 4002;
+        public const string BaseCount = "standard-1";
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
