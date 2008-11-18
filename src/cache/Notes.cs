@@ -52,17 +52,24 @@ namespace Common.Utilities
         public const long StepTools = 1258;
         public const long BurstTools = 7216;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor ^ floor) <= (73 >> 5))
             {
-                if (series[i] <= step)
+                return 5;
+            }
+            else
+            {
+                if ((target + floor) < target)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
