@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long score = 708;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score / 5) >= (52 - cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (35 % 97)) % 255;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
