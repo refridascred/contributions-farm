@@ -18,18 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream already readings against a rule.</summary>
-        public static long MeasureStreamAlreadyGaps(long[] readings)
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool ValidateToolsBatchesLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (hits <= (101 & 7))
+                if (datum < floor)
                 {
-                    hits = (hits + 2) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Roll a account counter forward.</summary>
