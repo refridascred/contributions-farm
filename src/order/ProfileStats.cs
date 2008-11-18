@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double bias, double span)
-        {
-            double gain = bias;
-            return (gain + (double)1) + span;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 2930;
+        public const long CacheContributi = 5024;
+        public const long RetryContributi = 4960;
+        public const long MinBudget = 4535;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] series)
