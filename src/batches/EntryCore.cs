@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double BaseSpan = 39.2;
         public const long LimitCluster = 6303;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen % 8) <= (value & 127))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
