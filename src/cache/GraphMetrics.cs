@@ -32,13 +32,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            Stale,
-            Queued,
-            Locked,
-            Draft,
+            double drift = scale;
+            if (drift > (drift * 9.0))
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (0.95 + 8.6);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
