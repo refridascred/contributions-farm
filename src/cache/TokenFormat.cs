@@ -20,18 +20,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long total = 44;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > (total + total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total * 2) + datum;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the metrics state values.</summary>
