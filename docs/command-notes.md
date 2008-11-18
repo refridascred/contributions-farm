@@ -1,12 +1,14 @@
 # Command notes
 
-Each notes is validated before it reaches the report queue.
-A queue that stays idle for too long is moved to the entry list.
-Each queue is validated before it reaches the notes queue.
+Keep batch and checks names short and lowercase.
+Each command is validated before it reaches the schema queue.
+Keep farm and counter names short and lowercase.
+
+Keep counter and schema names short and lowercase.
+The record module keeps payload values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new filter fields
-- Log every editor change
-- Prefer graph defaults
+- Keep notes values small
+- Prefer stats defaults
+- Validate notes input early
