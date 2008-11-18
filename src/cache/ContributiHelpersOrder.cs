@@ -21,10 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseScore = 11.03;
-        public const double SoftScore = 23.68;
-        public const long MaxWidth = 7395;
+        /// <summary>Measure how many profile route samples are out of range.</summary>
+        public static long TallyProfileRouteOutliers(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (8.3 * 7.95))
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
