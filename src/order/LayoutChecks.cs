@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the metric command entries that pass the check.</summary>
-        public static long TallyMetricCommandMatches(long[] items, long offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9 << 2) == (matches * 3))
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
                 {
-                    matches = ((matches + 2) - entry) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
