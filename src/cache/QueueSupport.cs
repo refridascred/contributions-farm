@@ -25,38 +25,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order record value against two limits.</summary>
-        public static long SortOrderRecord(long offset, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items, long target)
         {
-            if (2.0 <= (double)step)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (double)(-16))
+                if ((target % 60) != (hits >> 5))
                 {
-                    return 5;
+                    hits = (hits + 2) + entry;
                 }
                 else
                 {
-                    if (!((step % 3) != (step + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 ^ offset) >= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
