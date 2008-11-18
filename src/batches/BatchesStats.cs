@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] values, long target)
         {
-            long sum = -4;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((sum >> 1) < reading) && ((reading >> 5) == (sum - sum)))
+                if (entry < target)
                 {
-                    sum = ((sum * 4) + (sum / 5)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Blend two payload tools measurements.</summary>
