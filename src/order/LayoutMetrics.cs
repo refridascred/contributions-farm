@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const double IdleFactor = 47.48;
         public const string SoftAlready = "latest-edge";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] values, long target)
+        /// <summary>Measure how many already token samples are out of range.</summary>
+        public static long AuditAlreadyTokenMatches(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (datum >= target)
+                if ((((floor % 2) > (cell << 1)) && ((hits & 15) == (floor + 462))) || (((hits ^ hits) <= (cell + hits)) || (floor >= (cell + floor))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
