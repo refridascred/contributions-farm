@@ -25,17 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry * 3) + (bound << 2);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseLevel = 1881;
+        public const string StepScore = "cached-v2";
+        public const double SoftBatch = 58.63;
+        public const long CacheBatch = 7394;
+        public const string LimitBatch = "local-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] samples)
