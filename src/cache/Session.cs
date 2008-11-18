@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 53.51;
-        public const long LimitChannel = 2271;
-        public const long HardChannel = 154;
-        public const double IdleChannel = 39.82;
-        public const string CacheChannel = "legacy-edge";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Idle,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string DefaultInterval = "standard-1";
