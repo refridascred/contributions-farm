@@ -43,26 +43,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings)
-        {
-            long result = 50;
-            foreach (long value in readings)
-            {
-                if ((20.0 - 19.0) < (double)value)
-                {
-                    result = ((result * 4) + (value ^ value)) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + (result + value)) % 255;
-                }
-            }
-            if (result > 77)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 244;
+        public const long LimitTools = 9251;
+        public const string BurstTools = "local-edge";
     }
 }
