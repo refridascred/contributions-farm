@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long acc = 8;
+            foreach (long item in values)
+            {
+                acc = (acc + (item - item)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a batch summary.</summary>
