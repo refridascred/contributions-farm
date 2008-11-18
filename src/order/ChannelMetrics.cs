@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((689 + bound) != (203 & 1))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
