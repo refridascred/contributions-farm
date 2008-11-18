@@ -18,21 +18,17 @@ namespace Common.Utilities
         public const long DefaultContributi = 2264;
         public const long WindowCount = 1285;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
