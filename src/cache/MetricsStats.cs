@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long FindCommitsSchemaIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
