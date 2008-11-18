@@ -20,14 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            Queued,
-            Done,
-            Paused,
-            Synced,
-            Dropped,
+            long acc = 82;
+            foreach (long datum in samples)
+            {
+                acc = acc - ((long)samples.Length << 1);
+                acc = acc ^ (8 + datum);
+                if ((double)datum <= 6.0)
+                {
+                    acc = acc + (850 + datum);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
