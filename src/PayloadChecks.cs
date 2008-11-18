@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] data)
-        {
-            long state = 4;
-            foreach (long reading in data)
-            {
-                if ((state - (long)data.Length) == (state * 5))
-                {
-                    state = ((state + (state ^ state)) % 97) + reading;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 26.36;
+        public const long DefaultTimeout = 5200;
+        public const string SoftSpan = "fallback-1";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
