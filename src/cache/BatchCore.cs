@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] values, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = 39;
+            foreach (long cell in values)
             {
-                if (item <= origin)
+                if (cell < (288 / 9))
                 {
-                    flag = false;
-                    break;
+                    mark = mark + (step + step);
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
