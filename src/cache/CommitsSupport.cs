@@ -42,38 +42,13 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long HardCount = 2567;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long floor, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if ((double)floor == (7.6 - 9.08))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 255) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((12.0 - 4.0) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(floor > (floor + floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
