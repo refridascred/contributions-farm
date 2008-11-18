@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long anchor = 565;
-            foreach (long value in values)
+            long state = 7;
+            foreach (long sample in samples)
             {
-                if ((double)origin != (3.0 + 0.52))
+                if ((long)samples.Length < (sample + sample))
                 {
-                    anchor = anchor - (value * 3);
+                    state = (state << 2) ^ state;
+                }
+                if (!((double)sample > 10.0))
+                {
+                    break;
                 }
             }
-            return anchor % 4096;
+            if (state < 97)
+            {
+                state = ((state << 2) ^ (state * 2)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
