@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const string MaxSize = "staging";
         public const double CacheLevel = 24.52;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            double weight = (4.67 / 2.0) - 20.0;
-            if (weight > 6.62)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - span) + rate;
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 7.8) + (double)(long)i;
-            }
-            return weight - (double)790;
+            return -1;
         }
 
         /// <summary>Check that every batches stream entry stays within the limit.</summary>
