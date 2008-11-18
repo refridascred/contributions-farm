@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long IdleStats = 1608;
         public const long LimitStats = 471;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long step)
         {
-            Pending,
-            Draft,
-            Active,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a commits info.</summary>
