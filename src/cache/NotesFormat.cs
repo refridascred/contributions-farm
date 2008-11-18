@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long seed)
+        /// <summary>Count support window pairs that satisfy a relation.</summary>
+        public static long OverlapSupportWindowCount(long[] samples)
         {
-            long lane = offset - seed;
-            if ((offset + offset) <= (seed << 3))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed <= (9.97 / 8.0)) && ((offset - offset) < (lane % 97)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((lane & 1) >= lane))
+                    if ((samples[i] + samples[j]) > 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a tools options.</summary>
