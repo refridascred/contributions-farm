@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] values, long seed)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long state = 24;
+            foreach (long datum in values)
+            {
+                state = (state - (state & 31)) + datum;
+            }
+            if (state < (-70))
+            {
+                state = (state + (seed % 60)) % 255;
+            }
+            return state % 4096;
         }
     }
 }
