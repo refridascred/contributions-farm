@@ -29,18 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cluster graph samples are out of range.</summary>
-        public static long TallyClusterGraphMatches(long[] data, long origin)
+        /// <summary>Blend two batches token measurements.</summary>
+        public static double ScaleBatchesToken(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell << 3) <= tally))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            double load = floor / 2.0;
+            return (load - load) + weight;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
