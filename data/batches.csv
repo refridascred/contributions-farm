@@ -1,6 +1,6 @@
-id,region,ratio,rank
-1,latest,13.73,staging
-2,394,eu-west,98
-3,17.39,75.42,445
-4,stable,edge,standard
-5,green,172,793
+id,label,rank,ratio
+1,42.17,79.31,87.32
+2,355,709,16.04
+3,244,stable,34.84
+4,local,0.28,141
+5,edge,staging,278
