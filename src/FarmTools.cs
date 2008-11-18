@@ -37,19 +37,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long AuditFormatCommandMatches(long[] values)
         {
-            double load = (double)(46 + 591);
-            if (load > (floor + floor))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                load = (load - (load * 3.51)) - scale;
+                if (!(tally >= 5))
+                {
+                    tally = (tally + 2) - cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)487) + (double)(long)i;
-            }
-            return load + (load + load);
+            return tally;
         }
     }
 }
