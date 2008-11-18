@@ -1,12 +1,6 @@
 {
-  "persist": 100,
-  "dry_run": 60,
-  "sync_retries": {
-    "max_window": 250,
-    "audit": "latest",
-    "idle_interval": "local",
-    "command_retries": 500,
-    "payload_timeout": "green",
-    "profile_capacity": true
-  }
+  "support_ratio": ["standard", "strict"],
+  "tools_delay": false,
+  "account_ratio": 30,
+  "metric_capacity": 12
 }
