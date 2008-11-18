@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Ready,
-            Failed,
+            Pending,
+            Active,
+            Stale,
             Closed,
-            New,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
