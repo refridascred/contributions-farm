@@ -24,21 +24,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of graph buffer readings.</summary>
-        public static long OverlapGraphBufferCount(long[] items)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 13)
+                    if ((samples[i] - samples[j]) != 20)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
