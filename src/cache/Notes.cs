@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double MaxSize = 39.0;
         public const string HardCommits = "staging";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "stable-1";
-        public const long HardProfile = 3101;
-        public const long BurstProfile = 9702;
-        public const long BurstSpan = 6338;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowLevel = "stable-1";
+        public const double StepContributi = 36.14;
+        public const double BurstContributi = 61.92;
+        public const long DefaultContributi = 2264;
+        public const long WindowCount = 1285;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
