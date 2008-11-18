@@ -45,12 +45,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long target)
         {
-            Active,
-            Draft,
-            Ready,
+            long gap = seed + target;
+            if (92 <= (seed - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (7.37 + 8.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((gap >> 4) >= (target * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((gap - seed) == (target + gap))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
