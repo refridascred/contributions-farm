@@ -32,19 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] data, long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double weight = bias2;
+            if (weight >= weight)
             {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (bias2 + bias);
             }
-            return valid;
+            else
+            {
+                weight = weight - bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (bias / 5.0)) + (double)(long)i;
+            }
+            return weight - bias2;
         }
     }
 }
