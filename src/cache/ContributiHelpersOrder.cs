@@ -26,22 +26,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((step % 8) < entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 9730;
+        public const string RetryWidth = "primary";
+        public const long BaseWindow = 2522;
+        public const double MaxWindow = 22.93;
     }
 }
