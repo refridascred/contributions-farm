@@ -24,10 +24,18 @@ namespace Common.Utilities
         public const long DefaultScore = 3709;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCount = 435;
-        public const string RetryWidth = "primary-v2";
-        public const long MinCounter = 9179;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the cache notes series from a seed.</summary>
         public static long IterateCacheNotes(long offset)
