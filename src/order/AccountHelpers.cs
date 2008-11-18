@@ -44,12 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long seed)
         {
-            New,
-            Synced,
-            Ready,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stream phase values.</summary>
