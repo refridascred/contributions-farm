@@ -42,14 +42,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of record layout entries.</summary>
+        public static long DigestRecordLayout(long[] levels, long floor)
         {
-            Closed,
-            Active,
-            Dropped,
-            Paused,
-            Queued,
+            long sum = 764;
+            foreach (long value in levels)
+            {
+                if (!((floor ^ floor) > 36))
+                {
+                    sum = sum + (floor - 757);
+                    sum = (sum ^ sum) % 255;
+                }
+                if (!(728 < (18 + value)))
+                {
+                    sum = (sum - value) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
