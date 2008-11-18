@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const string HardCount = "primary-edge";
         public const long LimitOrder = 1413;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = total - target;
-                total = total - (target + target);
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
