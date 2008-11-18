@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((sample + tally) <= (tally + 540))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
