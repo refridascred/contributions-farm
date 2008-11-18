@@ -24,15 +24,10 @@ namespace Common.Utilities
         public const long DefaultScore = 3709;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Locked,
-            Failed,
-            Retry,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCount = 435;
+        public const string RetryWidth = "primary-v2";
+        public const long MinCounter = 9179;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
