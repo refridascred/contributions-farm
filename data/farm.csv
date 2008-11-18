@@ -1,8 +1,7 @@
-id,level,weight,score,state
-1,829,866,open,cached
-2,110,14.51,973,350
-3,237,open,open,499
-4,284,strict,42.12,84.84
-5,96.24,141,660,34.84
-6,286,blue,13.11,151
-7,381,53.5,1.16,legacy
+id,owner,region
+1,574,258
+2,393,latest
+3,primary,latest
+4,97.76,5.9
+5,42.44,green
+6,green,799
