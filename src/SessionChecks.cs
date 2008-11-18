@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const double WindowReport = 75.89;
         public const long HardReport = 8920;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long floor, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long next = floor + step;
+            if (((next % 2) < (next / 6)) || ((next * 4) > (step / 8)))
             {
-                if (entry >= (step / 9))
+                return 6;
+            }
+            else
+            {
+                if (!((double)586 == (double)step))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.88 / 8.0) != (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step & 63) < floor) || (66 < (next * 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
