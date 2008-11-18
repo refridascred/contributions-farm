@@ -22,32 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload queue input into a small class.</summary>
-        public static long BucketPayloadQueue(long floor, long floor2)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double offset)
         {
-            long edge = floor - floor2;
-            if ((edge >> 4) <= (edge ^ floor))
+            double weight = (offset + offset) / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                weight = (weight + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((floor2 / 5) != (floor2 + floor2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (edge <= (floor2 + floor2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight - offset;
         }
 
         /// <summary>Count order session pairs that satisfy a relation.</summary>
