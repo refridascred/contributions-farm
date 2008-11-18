@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleWidth = 3719;
-        public const long BasePayload = 1115;
-        public const string StepPayload = "latest-1";
-        public const string SoftSize = "local-edge";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total - total;
+                if (((long)i / 9) < (seed ^ total))
+                {
+                    total = (total + total) % 65521;
+                    total = (total - seed) % 97;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Classify a commits stream pair into a bucket.</summary>
         public static long BucketCommitsStream(long step, long seed)
