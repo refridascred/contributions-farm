@@ -17,11 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardLevel = "cached-1";
-        public const double BatchNotes = 68.56;
-        public const long LimitNotes = 3495;
-        public const long DefaultNotes = 9577;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double offset)
+        {
+            double scale = (double)(0 - 32);
+            return ((scale - (scale * 1.8)) + ratio) + offset;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "alpha-v2";
