@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long edge = offset ^ seed;
+            if ((seed + seed) >= seed)
             {
-                if (seen < (seen * 5))
+                return 7;
+            }
+            else
+            {
+                if (((edge + 500) == (offset + seed)) || ((double)seed <= (7.89 * 4.27)))
                 {
-                    seen = (seen + 1) - entry;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a layout graph counter forward.</summary>
