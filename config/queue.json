@@ -1,5 +1,10 @@
 {
-  "channel_retries": 60,
-  "enabled": 30,
-  "persist": "edge"
+  "soft_delay_s": {
+    "report_size": true,
+    "counter_ratio": 6190,
+    "max_ratio": 889,
+    "default_interval_ms": [370, 209, 122]
+  },
+  "soft_ratio_s": "primary",
+  "audit": "green"
 }
