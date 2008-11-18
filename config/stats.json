@@ -1,8 +1,6 @@
 {
-  "already_ratio": [88, 433, 139, 404],
-  "base_depth_ms": 84.26,
-  "min_timeout_ms": true,
-  "compress": "fallback",
-  "hard_delay_ms": false,
-  "base_ttl_s": "open"
+  "retry_limit_pct": "standard",
+  "compress": 100,
+  "retry_ratio_pct": "legacy",
+  "soft_capacity_ms": [338, 298, 95]
 }
