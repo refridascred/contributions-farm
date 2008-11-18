@@ -1,11 +1,11 @@
 # githubfarm settings
-commits_ttl: 3778
-soft_ttl_s: false
-compress:
-  - 243
-  - 477
-  - 323
-  - 473
-cache_size_ms: false
-sync_timeout_s: true
-githubfarm_interval: 70
+report_ttl: true
+verbose: 4966
+session_capacity: 58.34
+flush_depth: strict
+dry_run: 53.15
+metrics_timeout:
+  - 139
+  - 124
+  - 426
+  - 400
