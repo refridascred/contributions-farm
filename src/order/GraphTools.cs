@@ -35,14 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Queued,
-            Closed,
-            Dropped,
-            New,
-            Paused,
+            Idle,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
