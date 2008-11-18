@@ -1,13 +1,6 @@
 {
-  "payload_limit": false,
-  "max_timeout": 1024,
-  "soft_capacity_s": {
-    "readonly": "primary",
-    "enabled": ["legacy", "open"],
-    "cluster_threshold": false,
-    "booking_retries": 100,
-    "soft_threshold_s": 34,
-    "retry_threshold_s": 100
-  },
-  "readonly": 37.24
+  "contributi_ratio": 42.71,
+  "token_limit": [340, 97, 429],
+  "max_window_count": 20.61,
+  "compress": 219
 }
