@@ -1,10 +1,6 @@
-id,level
-1,17.88
-2,eu-west
-3,24.77
-4,489
-5,74.25
-6,416
-7,68.18
-8,83.35
-9,824
+id,rank,weight,score,region
+1,208,9.72,latest,eu-west
+2,edge,95.78,925,907
+3,local,32.85,56.9,standard
+4,50.63,445,477,98.41
+5,legacy,local,20.98,365
