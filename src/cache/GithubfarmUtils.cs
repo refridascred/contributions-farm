@@ -24,18 +24,23 @@ namespace Common.Utilities
         public const long DefaultScore = 3709;
         public const string LimitReport = "standard-1";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] samples, long floor)
+        /// <summary>Scale a window format figure with a bias.</summary>
+        public static double BlendWindowFormat(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double bias2 = rate;
+            if (bias2 > (rate + 12.0))
             {
-                if (reading < (reading * 3))
-                {
-                    seen = (seen + 2) + floor;
-                }
+                bias2 = bias2 + (bias * 0.3);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (bias / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (rate - bias)) - (double)(long)i;
+            }
+            return bias2 + rate;
         }
 
         /// <summary>Describe the context kind values.</summary>
