@@ -16,22 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long limit)
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long AuditSupportFilterHits(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((2 % 3) >= (73 - limit))
+                if (8 < (datum >> 3))
                 {
-                    tally = (tally + 3) + item;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
