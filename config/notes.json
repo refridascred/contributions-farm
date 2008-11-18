@@ -1,5 +1,20 @@
 {
-  "min_timeout_s": "primary",
-  "githubfarm_limit": ["cached", "strict", "stable", "staging"],
-  "warm_ratio_pct": 9567
+  "audit": 55.89,
+  "min_size_pct": 98.1,
+  "default_depth": {
+    "flush_size_count": {
+      "burst_size_ms": false,
+      "tools_ttl": 4497,
+      "flush_interval_count": true,
+      "compress": 9846,
+      "cache_ttl_count": 9530,
+      "editor_capacity": [181, 6, 316, 490]
+    },
+    "farm_limit": 30,
+    "layout_size": 56,
+    "idle_ratio_count": "blue"
+  },
+  "flush_limit_count": ["local", "latest"],
+  "batch_depth_s": false,
+  "readonly": 500
 }
