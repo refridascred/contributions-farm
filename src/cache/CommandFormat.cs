@@ -32,14 +32,17 @@ namespace Common.Utilities
         public const long DefaultSize = 1326;
         public const long HardStats = 7471;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Look up the position of a session schema sample.</summary>
+        public static long LookupSessionSchemaIndex(long[] series, long origin)
         {
-            Locked,
-            Retry,
-            Idle,
-            Paused,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
