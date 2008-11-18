@@ -23,12 +23,21 @@ namespace Common.Utilities
         public const long MinSupport = 2164;
         public const long BatchSupport = 8330;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
