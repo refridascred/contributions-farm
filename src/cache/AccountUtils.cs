@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double weight, double bias)
-        {
-            double mean = (bias / 8.0) / 4.0;
-            if (mean <= (7.4 * 2.0))
-            {
-                mean = mean + mean;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 4579;
+        public const long BurstContributi = 9052;
+        public const long BatchBudget = 5951;
+        public const long LimitContributi = 1869;
+        public const string RetryContributi = "fallback-v2";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordBounds(long[] samples, long bound)
