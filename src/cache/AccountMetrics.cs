@@ -20,12 +20,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long seed)
         {
-            Closed,
-            Locked,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
