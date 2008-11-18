@@ -29,17 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support stream sample.</summary>
-        public static long LookupSupportStreamIndex(long[] levels, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if (cell < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
