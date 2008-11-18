@@ -43,25 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long limit, long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] samples, long limit)
         {
-            long lane = limit ^ origin;
-            if ((31 + lane) <= (origin + 9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + lane) >= (lane / 2))
+                if (samples[i] < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
