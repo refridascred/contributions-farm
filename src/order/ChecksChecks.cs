@@ -50,11 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token entry figure with a bias.</summary>
-        public static double ProjectTokenEntry(double rate, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] items)
         {
-            double drift = rate * 4.29;
-            return (drift - (drift - rate)) + bias;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)(long)items.Length <= 2.48)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
