@@ -29,9 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinDepth = 6883;
-        public const long BurstSize = 336;
-        public const double MaxSize = 77.7;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Draft,
+            Paused,
+            New,
+        }
     }
 }
