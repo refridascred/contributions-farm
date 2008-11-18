@@ -1,10 +1,13 @@
 {
-  "channel_limit": {
-    "default_limit_s": [483, 365, 320],
-    "cluster_size": 6614,
-    "token_ttl": [31, 57, 412, 92]
-  },
-  "flush_interval": [307, 317],
-  "min_interval_s": "local",
-  "verbose": [342, 37]
+  "readonly": "green",
+  "payload_limit": 91.39,
+  "report_size": [338, 210, 256],
+  "already_timeout": 2651,
+  "idle_threshold": {
+    "dry_run": 1024,
+    "max_capacity": 60,
+    "burst_window_count": ["open", "local", "green", "stable"],
+    "soft_depth_s": 21,
+    "max_window_pct": 60
+  }
 }
