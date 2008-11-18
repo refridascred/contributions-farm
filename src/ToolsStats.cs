@@ -41,17 +41,10 @@ namespace Common.Utilities
             return drift - (8.8 - scale);
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result << 3) ^ (limit % 60);
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 8290;
+        public const long BurstSupport = 6755;
+        public const string IdleFactor = "legacy-edge";
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
