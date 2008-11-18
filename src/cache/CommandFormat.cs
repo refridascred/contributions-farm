@@ -28,13 +28,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] readings, long seed)
         {
-            Paused,
-            Synced,
-            Dropped,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
