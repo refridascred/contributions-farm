@@ -27,18 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long CountBufferContextGaps(long[] data)
+        /// <summary>Fold a list of farm batches readings.</summary>
+        public static long WeighFarmBatches(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 22;
+            foreach (long entry in series)
             {
-                if ((value & 7) > (value >> 5))
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = hits + 2;
+                    total = ((total + (474 - entry)) % 101) - (long)i;
+                    total = (total + (entry * 5)) % 4096;
+                }
+                total = (total + total) % 101;
+                if (((7 + limit) > (entry & 15)) || ((entry ^ limit) > (entry / 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
