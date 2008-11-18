@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate format commits samples.</summary>
+        public static long ScoreFormatCommits(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long mix = 429;
+            foreach (long reading in readings)
+            {
+                mix = mix - (target >> 5);
+                if (reading < (mix / 9))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
