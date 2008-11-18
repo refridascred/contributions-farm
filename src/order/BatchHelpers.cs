@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            long score = 8;
-            foreach (long reading in samples)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                long matches = 622;
-                if (((matches + 899) <= (reading / 7)) || ((double)matches < (2.34 - 2.7)))
-                {
-                    matches = (matches + reading) % 97;
-                }
-                score = ((score * 4) + reading) % 1000;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (score > 4)
-            {
-                score = (score - (-52)) % 255;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
