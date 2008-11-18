@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=252
+log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west standard open; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=179
-log "limit is ${BUFFER_LIMIT}"
