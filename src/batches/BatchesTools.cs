@@ -23,15 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double drift = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - span) - (double)(long)i;
-            }
-            return drift - (drift / 4.0);
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
