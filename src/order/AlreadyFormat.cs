@@ -64,10 +64,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryBudget = "cached-edge";
-        public const long CacheBudget = 5255;
-        public const long StepQueue = 8205;
-        public const long BatchQueue = 3793;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchScore = 7128;
+        public const double MinBudget = 30.65;
+        public const string MinRatio = "cached-1";
     }
 }
