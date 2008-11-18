@@ -53,19 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long CountSessionOrderHits(long[] data, long step)
         {
-            double load = 3.0 * 4.13;
-            if (load <= (double)95)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                load = load + (weight + bias);
+                if ((double)reading <= (9.4 + 1.0))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + 1.1;
+            return matches;
         }
 
         /// <summary>Audit queue route readings against a rule.</summary>
