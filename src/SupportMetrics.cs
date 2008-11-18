@@ -61,11 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetrySize = "alpha-1";
-        public const double BurstInterval = 29.53;
-        public const long DefaultStream = 4472;
-        public const long BatchStream = 7516;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((item % 97) < (item ^ step)) && ((7.0 * 1.2) != (double)step))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchBudget = 394;
