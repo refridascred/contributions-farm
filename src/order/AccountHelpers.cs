@@ -23,13 +23,12 @@ namespace Common.Utilities
             return gain - (double)902;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Closed,
-            Active,
-            Dropped,
-            Pending,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Classify a token filter pair into a bucket.</summary>
