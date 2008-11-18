@@ -32,12 +32,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long bound)
         {
-            Draft,
-            Paused,
-            New,
+            if ((limit + bound) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ bound) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound << 3) < bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
