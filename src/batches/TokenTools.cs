@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long edge = step - bound;
-            if (!((step & 15) == (edge - bound)))
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((50 ^ step) < (bound + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
