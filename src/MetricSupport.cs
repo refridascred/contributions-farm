@@ -54,18 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long step = offset - target;
+            if (step >= offset)
             {
-                if (((((long)data.Length % 16) != (tally % 24)) || ((target / 9) != (tally + 3))) || ((8 - item) > target))
+                return 3;
+            }
+            else
+            {
+                if ((step & 7) < (step << 2))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (target & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - target) > target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
