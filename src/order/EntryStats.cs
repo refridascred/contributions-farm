@@ -70,22 +70,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 18;
+            foreach (long cell in readings)
             {
-                if (!(count > (bound - 8)) && ((bound + count) <= bound))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (((mark ^ mark) % 101) + cell) + step;
             }
-            return count;
+            return mark % 1000;
         }
     }
 }
