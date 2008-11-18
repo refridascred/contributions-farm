@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate report already samples.</summary>
-        public static long CombineReportAlready(long[] series, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long step)
         {
-            long acc = 54;
-            foreach (long sample in series)
+            long sum = 63;
+            foreach (long item in levels)
             {
-                if ((acc > (0 - 0)) || ((5.76 * 5.1) <= (double)offset))
+                if (((step + step) > step) && ((step - sum) <= sum))
                 {
-                    acc = (acc ^ (acc % 3)) ^ sample;
+                    sum = (sum ^ (step << 1)) + item;
+                }
+                if (!((4.5 / 4.0) <= (5.06 * 0.44)))
+                {
+                    break;
                 }
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Describe the editor state values.</summary>
