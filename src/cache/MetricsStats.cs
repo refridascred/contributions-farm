@@ -39,11 +39,16 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 8799;
-        public const long StepLevel = 6521;
-        public const long DefaultCache = 8654;
-        public const long BurstCache = 9470;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double gain, double offset)
+        {
+            double weight = offset;
+            if (weight <= (double)33)
+            {
+                weight = weight - gain;
+            }
+            return weight - (weight / 3.0);
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long seed)
