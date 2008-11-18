@@ -46,19 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next session command value.</summary>
-        public static double ScaleSessionCommand(double rate, double bias)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double weight = bias;
-            if (weight >= (rate - bias))
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (double)48) - (double)(long)i;
-            }
-            return weight + (4.91 + bias);
+            Closed,
+            Active,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
