@@ -77,23 +77,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double drift = (double)537 + (4.0 - offset);
-            if (drift >= gain)
-            {
-                drift = drift - (8.5 - 1.4);
-            }
-            else
-            {
-                drift = drift + (double)113;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (gain * 6.0);
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
