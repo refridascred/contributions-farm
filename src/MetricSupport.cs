@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 9462;
+        public const double BatchTimeout = 79.37;
+        public const string DefaultToken = "strict-v2";
+        public const string BurstToken = "cached-edge";
+        public const long LimitCount = 5364;
     }
 }
