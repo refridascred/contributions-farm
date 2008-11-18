@@ -23,12 +23,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 9761;
-        public const long StepCluster = 9205;
-        public const double MaxCluster = 6.13;
-        public const string RetryRatio = "open-edge";
-        public const string RetryTimeout = "strict-edge";
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double bias)
+        {
+            double ratio2 = 6.0 - (bias / 6.0);
+            if (ratio2 > 2.8)
+            {
+                ratio2 = ratio2 - bias;
+            }
+            else
+            {
+                ratio2 = ratio2 + 3.5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio + bias)) - (double)(long)i;
+            }
+            return ratio2 - (ratio / 9.0);
+        }
 
         /// <summary>Compare every pair of context profile readings.</summary>
         public static long MatchContextProfileCount(long[] data)
