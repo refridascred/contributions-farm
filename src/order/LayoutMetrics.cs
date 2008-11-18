@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long target)
-        {
-            long state = 823;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state + state) ^ (long)i) ^ item;
-                }
-                state = ((state << 2) ^ (target - 65)) % 65521;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 5690;
+        public const long IdleContributi = 6070;
+        public const long LimitContributi = 4639;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BurstReport = "strict-v2";
