@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Pending,
-            Active,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 243;
+        public const long MaxSpan = 5256;
+        public const long BaseCommand = 5399;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionMatches(long[] series, long floor)
