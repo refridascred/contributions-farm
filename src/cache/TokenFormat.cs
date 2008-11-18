@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry - (entry + entry);
             }
-            return tally;
+            if (carry < 5)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a stream options.</summary>
