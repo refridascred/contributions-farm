@@ -1,9 +1,19 @@
 {
-  "base_size_pct": {
-    "filter_delay": 45.86,
-    "retry_threshold_ms": "primary",
-    "base_threshold_ms": "eu-west"
-  },
-  "graph_timeout": 1024,
-  "strict": [287, 283]
+  "burst_ttl": "staging",
+  "max_threshold_ms": "edge",
+  "hard_timeout": "fallback",
+  "schema_depth": 500,
+  "warm_interval": 53,
+  "cache_timeout": {
+    "flush_limit_count": 24.2,
+    "notes_retries": 33,
+    "cache_depth_count": true,
+    "idle_ratio_count": {
+      "sync_timeout_ms": "open",
+      "max_ttl_s": ["edge", "staging", "legacy", "staging"],
+      "soft_window_pct": ["latest", "latest", "open", "fallback"],
+      "compress": "cached",
+      "channel_capacity": 22.86
+    }
+  }
 }
