@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a report already reading.</summary>
-        public static double SmoothReportAlready(double scale, double bias)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            double rate = bias;
-            if (rate < (double)6)
+            double gain = span;
+            if (gain < bias)
             {
-                rate = rate + scale;
+                gain = gain + 0.34;
             }
-            return rate - rate;
+            return gain - gain;
         }
 
         /// <summary>Classify a command commits pair into a bucket.</summary>
