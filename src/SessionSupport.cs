@@ -26,13 +26,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Pending,
-            Synced,
-            Idle,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 10;
+        public const double DefaultBudget = 20.89;
+        public const long LimitRatio = 3692;
+        public const long RetryRoute = 1392;
     }
 }
