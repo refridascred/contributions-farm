@@ -26,12 +26,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9326;
-        public const string BaseProfile = "strict-1";
-        public const long BurstProfile = 104;
-        public const double HardScore = 8.39;
-        public const string MaxProfile = "strict-v2";
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] samples, long target)
