@@ -45,11 +45,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi info.</summary>
