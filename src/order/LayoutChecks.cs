@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 282;
+            foreach (long item in levels)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (item * 2)) % 97;
+                total = (total * 5) + total;
             }
-            return -1;
+            if (total < 843)
+            {
+                total = (total ^ (total - bound)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
