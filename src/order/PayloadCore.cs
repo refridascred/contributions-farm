@@ -46,17 +46,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((9.4 <= (double)bound) || ((floor / 8) > (floor + floor)))
             {
-                if (values[i] <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) < floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound == (5.0 - 9.99))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
