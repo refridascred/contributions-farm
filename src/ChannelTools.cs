@@ -40,30 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Check that every order graph entry stays within the limit.</summary>
+        public static bool GuardOrderGraphLimits(long[] readings, long floor)
         {
-            long score = 7;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (score <= (entry / 3))
+                if (cell < floor)
                 {
-                    score = score ^ (entry + entry);
-                }
-                else
-                {
-                    score = (score ^ (entry / 5)) % 4096;
-                }
-                if ((double)entry <= (double)score)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (score < 738)
-            {
-                score = score - score;
-            }
-            return score % 65521;
+            return flag;
         }
     }
 }
