@@ -49,19 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings, long limit)
-        {
-            long result = -1;
-            foreach (long cell in readings)
-            {
-                result = (((result * 4) + limit) % 97) ^ cell;
-                if ((limit >> 3) >= limit)
-                {
-                    result = (result ^ (result % 24)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleCount = "strict-1";
+        public const long WindowRecord = 6181;
+        public const long DefaultRecord = 9553;
+        public const string BaseRecord = "fallback";
     }
 }
