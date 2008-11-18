@@ -22,10 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 49.72;
-        public const long WindowSpan = 7280;
-        public const long DefaultSpan = 7603;
+        /// <summary>Project the next buffer session value.</summary>
+        public static double AdjustBufferSession(double weight, double bias)
+        {
+            double mean = 14.0 + (8.4 / 2.0);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (bias - bias)) + (double)(long)i;
+            }
+            return mean + (4.9 - weight);
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] series)
