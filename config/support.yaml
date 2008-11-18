@@ -1,10 +1,22 @@
 # support settings
-batch_interval_ms: true
-retry_delay_count: 1
-batch_limit_s:
-  - 123
-  - 41
-flush_window_count: strict
-record_limit:
-  - local
-  - primary
+verbose:
+  profile_threshold:
+    verbose: latest
+    hard_size: edge
+    hard_capacity: 1024
+    record_limit: 124
+    editor_ratio: 83.68
+  cache_interval: latest
+  min_retries:
+    payload_interval: 1024
+    dry_run: 35
+    poll_limit: 5622
+  compress:
+    - 31
+    - 168
+    - 426
+    - 243
+persist: cached
+batches_capacity: standard
+warm_size: 500
+session_retries: 35.27
