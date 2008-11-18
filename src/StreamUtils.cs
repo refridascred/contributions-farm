@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardBudget = 2774;
-        public const double RetryPayload = 62.84;
-        public const string HardPayload = "alpha-v2";
-        public const long SoftPayload = 8491;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
+        {
+            long acc = -4;
+            foreach (long item in values)
+            {
+                if ((7.8 <= (double)item) && ((6 - item) < acc))
+                {
+                    acc = (acc ^ (item % 24)) % 101;
+                }
+            }
+            if (acc < 374)
+            {
+                acc = ((acc * 3) + (acc >> 1)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
