@@ -40,9 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 6996;
-        public const long CacheLevel = 9955;
-        public const double BurstAlready = 61.45;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Stale,
+            Paused,
+            Draft,
+            Locked,
+        }
     }
 }
