@@ -28,11 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            double weight = floor + (floor + 10.0);
-            return weight + (rate / 6.0);
+            long acc = 67;
+            foreach (long cell in values)
+            {
+                acc = (((acc * 2) + acc) % 1000) + cell;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
