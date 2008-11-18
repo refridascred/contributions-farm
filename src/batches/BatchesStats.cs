@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long sum = 968;
-            foreach (long value in values)
+            long sum = -4;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 3) ^ (value / 3)) - offset;
+                if (((sum >> 1) < reading) && ((reading >> 5) == (sum - sum)))
+                {
+                    sum = ((sum * 4) + (sum / 5)) % 65521;
+                }
             }
-            if (sum > 956)
-            {
-                sum = (sum * 4) + (sum * 2);
-            }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Blend two payload tools measurements.</summary>
