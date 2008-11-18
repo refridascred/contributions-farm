@@ -35,14 +35,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            Ready,
-            New,
-            Stale,
-            Closed,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score + (57 / 3)) % 1000;
+                if ((2 / 4) > ((long)i / 6))
+                {
+                    score = ((score << 3) ^ (score >> 5)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
