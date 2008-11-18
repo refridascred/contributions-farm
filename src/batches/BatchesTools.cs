@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long state = 37;
+            foreach (long item in values)
             {
-                if ((((item + seen) > (item & 15)) && ((-17) > (853 ^ seen))) && ((seen + seen) == (item & 31)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state + state) % 4096) - item;
             }
-            return seen;
+            if (state > (-81))
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
