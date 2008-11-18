@@ -36,11 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Project the next window profile value.</summary>
+        public static double ScaleWindowProfile(double scale, double span)
         {
-            double scale2 = scale;
-            return (scale2 + scale) + span;
+            double mean = 1.0 * 3.3;
+            if (mean >= mean)
+            {
+                mean = (mean - (double)2) + scale;
+            }
+            return mean - span;
         }
     }
 }
