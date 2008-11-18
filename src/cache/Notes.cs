@@ -31,18 +31,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = 9;
+            foreach (long value in series)
             {
-                if ((double)matches > (9.0 + 1.52))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                acc = (acc ^ (value >> 2)) % 101;
+                acc = ((acc * 4) + (acc - value)) % 97;
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
