@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MinTimeout = 2114;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 71.07;
-        public const long RetryBuffer = 8073;
-        public const long BurstBuffer = 9508;
-        public const string RetryFactor = "primary";
-        public const long BatchBuffer = 5265;
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultCluster = 2198;
