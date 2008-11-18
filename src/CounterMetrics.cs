@@ -28,25 +28,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long limit)
         {
-            long delta = floor ^ limit;
-            if (limit > (limit * 4))
+            long anchor = 24;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit + delta))
+                if (!((anchor + limit) <= (limit + value)))
                 {
-                    return 2;
+                    anchor = ((anchor << 3) ^ limit) % 97;
                 }
                 else
                 {
-                    return 0;
+                    anchor = (anchor - (value & 15)) % 101;
                 }
+                anchor = (anchor - value) % 255;
             }
+            return anchor % 1000;
         }
     }
 }
