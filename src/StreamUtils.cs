@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] levels)
+        /// <summary>Match up order support samples.</summary>
+        public static long PairOrderSupportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8.36 <= (double)count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
