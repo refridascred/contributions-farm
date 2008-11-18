@@ -31,24 +31,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long target, long target2)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            if (((target + 81) >= target2) && ((target2 * 3) <= (target2 - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) < target2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
