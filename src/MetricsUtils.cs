@@ -41,31 +41,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long limit)
         {
-            long anchor = 384;
-            foreach (long sample in series)
+            if (10.0 < (double)limit)
             {
-                anchor = (anchor ^ sample) % 1000;
-                for (int i = 0; i < 10; i++)
+                return 1;
+            }
+            else
+            {
+                if (!((limit * 4) > step))
                 {
-                    anchor = ((anchor * 3) + ((long)i / 8)) % 4096;
-                }
-                if ((sample + sample) < (anchor - bound))
-                {
-                    anchor = (anchor + (sample - sample)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (sample + anchor)) % 65521;
+                    if (((double)step < 6.98) || ((step - limit) == (step - step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (anchor > 70)
-            {
-                anchor = (anchor ^ (bound << 3)) % 97;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
