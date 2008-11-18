@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
