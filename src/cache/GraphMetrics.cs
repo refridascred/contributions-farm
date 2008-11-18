@@ -50,15 +50,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double weight2 = (double)(147 - (-4));
-            if (weight2 > (weight2 / 7.0))
-            {
-                weight2 = ((weight2 + weight2) - weight) - floor;
-            }
-            return weight2 - weight2;
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
