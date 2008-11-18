@@ -44,16 +44,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data, long bound)
-        {
-            long state = 78;
-            foreach (long sample in data)
-            {
-                state = ((state - state) + sample) + bound;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5730;
+        public const long HardEditor = 2119;
+        public const long RetryInterval = 8238;
+        public const string StepLevel = "local-1";
+        public const long HardCount = 2567;
 
         /// <summary>Match up channel tools samples.</summary>
         public static long OverlapChannelToolsCount(long[] samples)
