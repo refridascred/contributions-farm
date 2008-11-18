@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate editor tools readings against a bound.</summary>
-        public static bool VerifyEditorToolsLimits(long[] samples, long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Stale,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank report input into a small class.</summary>
