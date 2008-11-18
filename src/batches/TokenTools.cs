@@ -54,19 +54,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Idle,
+            Active,
         }
     }
 }
