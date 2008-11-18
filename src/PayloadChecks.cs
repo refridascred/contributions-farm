@@ -25,31 +25,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long total = 958;
-            foreach (long datum in samples)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total ^ floor) <= (datum & 7))
-                {
-                    total = (total - (floor + floor)) % 101;
-                }
-                if (((floor - datum) > (floor + (-2))) && ((3 + total) == (datum ^ 5)))
-                {
-                    total = (total + (28 + (-87))) % 4096;
-                    total = ((total * 4) + (datum / 2)) % 65521;
-                }
-                if ((floor + total) < (datum - total))
-                {
-                    total = total - (datum + floor);
-                }
-                if ((1.2 / 3.0) == (double)datum)
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
