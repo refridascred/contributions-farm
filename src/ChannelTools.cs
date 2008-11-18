@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long step)
-        {
-            if ((82 - offset) >= (offset + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((2.58 + 5.41) < (double)step) || (((-8) + offset) < step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 6829;
+        public const long BatchWidth = 5511;
+        public const string SoftSize = "legacy";
+        public const double BaseTimeout = 95.8;
+        public const long HardDepth = 7073;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] data)
