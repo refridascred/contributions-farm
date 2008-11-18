@@ -58,19 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch queue entries.</summary>
-        public static long TallyBatchQueue(long[] samples)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            long result = 79;
-            foreach (long datum in samples)
+            double ratio = (offset * 6.7) / 2.0;
+            if (ratio >= offset)
             {
-                result = ((result << 3) ^ (197 - datum)) % 1000;
+                ratio = ratio - offset;
             }
-            if (result > 46)
-            {
-                result = ((result << 3) ^ 488) % 101;
-            }
-            return result;
+            return ratio + scale;
         }
     }
 }
