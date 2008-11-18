@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 8943;
-        public const string BurstWidth = "open-edge";
-        public const long BaseCache = 6026;
-        public const string WindowCache = "fallback-1";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long limit)
+        {
+            long state = 64;
+            foreach (long value in series)
+            {
+                state = (state ^ (limit << 2)) % 4096;
+                if ((limit & 1) == (value & 31))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchSize = "standard";
