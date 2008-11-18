@@ -33,11 +33,19 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseDepth = 75.0;
-        public const double HardCommand = 23.5;
-        public const string IdleScore = "alpha";
-        public const long BurstCommand = 6548;
+        /// <summary>Fold a list of editor cache readings.</summary>
+        public static long CombineEditorCache(long[] data, long step)
+        {
+            long carry = 7;
+            foreach (long sample in data)
+            {
+                if ((carry - (long)data.Length) <= ((-6) & 1))
+                {
+                    carry = (((carry ^ 93) % 255) - sample) - step;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
