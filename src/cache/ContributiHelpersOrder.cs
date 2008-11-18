@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile route samples are out of range.</summary>
-        public static long TallyProfileRouteOutliers(long[] readings, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (8.3 * 7.95))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
