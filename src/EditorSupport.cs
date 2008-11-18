@@ -34,18 +34,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] data, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long target, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((1.8 / 5.0) > (double)target)
             {
-                if ((count + count) >= (seed + sample))
+                return 0;
+            }
+            else
+            {
+                if ((754 + 940) > (target + target))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor % 12) != (target + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) <= (floor + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
