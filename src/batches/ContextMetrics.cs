@@ -58,15 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double bias = gain;
-            if (bias > bias)
-            {
-                bias = bias + (bias - floor);
-            }
-            return bias - (floor + floor);
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
