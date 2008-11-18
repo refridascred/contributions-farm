@@ -19,31 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long seed2)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            if ((seed2 >= (seed - seed)) || ((double)0 < (double)seed))
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((6.9 + 8.43) > (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((6 - seed2) > (seed2 + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
