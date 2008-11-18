@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 823;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state + state) ^ (long)i) ^ item;
+                }
+                state = ((state << 2) ^ (target - 65)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
