@@ -1,12 +1,28 @@
 # githubfarm settings
-persist:
-  poll_ttl:
-    - cached
+persist: 55
+cache_ttl_count:
+  - 453
+  - 187
+  - 71
+readonly: primary
+soft_limit_ms: 4.93
+payload_retries:
+  burst_ttl_ms: staging
+  cluster_timeout: 66.57
+  compress: latest
+  readonly:
+    - edge
+    - eu-west
+    - edge
     - local
-  hard_ratio_s: true
-  cache_depth_pct: 63
-poll_interval_pct: cached
-cluster_interval: 59
-notes_ttl: eu-west
-max_retries_ms: true
-strict: legacy
+  batch_threshold_count:
+    default_ratio: 94.5
+    order_delay: open
+    hard_ttl_pct:
+      - latest
+      - strict
+      - edge
+      - fallback
+    default_ratio_pct: false
+    retry_delay: staging
+burst_window: 7914
