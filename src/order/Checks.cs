@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mean + (4.9 - weight);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] samples, long bound)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up metrics notes samples.</summary>
