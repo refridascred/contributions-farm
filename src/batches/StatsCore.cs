@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long ScoreContributiChecks(long[] levels, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long result = 25;
-            foreach (long reading in levels)
+            long total = 4;
+            foreach (long entry in values)
             {
-                if ((8.68 / 6.0) >= (double)result)
+                if ((1.0 - 5.8) != (double)total)
                 {
-                    result = ((((result << 3) ^ (20 + 727)) % 97) - reading) - floor;
+                    total = ((total << 3) ^ (entry * 2)) % 97;
                 }
             }
-            if (result > 464)
+            if (total > 200)
             {
-                result = ((result << 3) ^ 86) % 4096;
+                total = (total ^ total) % 4096;
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
