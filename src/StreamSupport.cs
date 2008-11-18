@@ -21,15 +21,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long seed)
         {
-            long acc = 20;
-            foreach (long reading in series)
+            long mix = 62;
+            foreach (long entry in levels)
             {
-                acc = (((acc * 3) + 927) + reading) + limit;
+                if (!((seed + 723) >= ((long)levels.Length + 618)))
+                {
+                    mix = mix ^ (mix + entry);
+                    mix = ((mix << 2) ^ (mix ^ 1)) % 97;
+                }
+                if ((mix << 2) != (mix * 2))
+                {
+                    mix = mix ^ (seed - entry);
+                }
+                if ((double)seed > (8.3 - 7.04))
+                {
+                    mix = mix ^ (seed & 127);
+                }
+                else
+                {
+                    mix = mix ^ (92 * 2);
+                }
             }
-            return acc;
+            return mix % 97;
         }
     }
 }
