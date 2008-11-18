@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double IdleTimeout = 6.36;
         public const double StepDepth = 17.0;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Find the first layout format entry that matches the target.</summary>
+        public static long SeekLayoutFormatIndex(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
