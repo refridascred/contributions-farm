@@ -23,17 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 706;
+            foreach (long reading in items)
             {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                if (!(total >= (total - total)))
                 {
-                    return (long)i;
+                    total = total - (total - reading);
                 }
             }
-            return -1;
+            if (total > 2)
+            {
+                total = total ^ (total * 2);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
