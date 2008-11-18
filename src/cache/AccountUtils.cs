@@ -38,12 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
