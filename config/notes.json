@@ -1,7 +1,15 @@
 {
-  "compress": ["open", "green", "green"],
-  "min_ratio": "latest",
-  "batch_delay": 67.67,
-  "base_ttl_ms": "primary",
-  "cache_threshold_pct": "legacy"
+  "compress": {
+    "command_interval": [70, 203, 374, 420],
+    "graph_timeout": ["stable", "legacy", "green"],
+    "poll_threshold": "fallback"
+  },
+  "strict": {
+    "flush_capacity": 73.15,
+    "editor_timeout": 4601,
+    "payload_retries": 72.12,
+    "base_depth_ms": false,
+    "readonly": false
+  },
+  "base_ttl": false
 }
