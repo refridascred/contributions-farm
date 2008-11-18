@@ -16,38 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels)
         {
-            if ((6.2 + 5.14) <= (double)8)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((694 << 3) <= (seed * 4))
+                if ((long)levels.Length >= (999 - 8))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + seed) == (seed ^ 63)) || ((4 >> 2) <= (seed - seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (2.0 <= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
