@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "local";
-        public const long MaxStats = 2689;
-        public const long IdleStats = 1608;
-        public const long LimitStats = 471;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double offset)
+        {
+            double rate = (double)(23 - 0);
+            if (rate >= rate)
+            {
+                rate = rate - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - offset) - (double)(long)i;
+            }
+            return rate + (rate + rate);
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchBounds(long[] samples, long step)
