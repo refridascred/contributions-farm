@@ -20,19 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)tally >= 0.34)
-                {
-                    tally = ((tally + 1) - cell) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstSize = 49.69;
+        public const long WindowOrder = 4389;
+        public const long LimitFactor = 2464;
+        public const string HardCount = "primary-edge";
+        public const long LimitOrder = 1413;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] levels)
