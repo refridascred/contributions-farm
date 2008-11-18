@@ -29,38 +29,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long step, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if ((step < (limit / 4)) && ((double)limit <= 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step != (5.66 * 0.91))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step < (limit & 255)) && ((9.64 + 16.0) <= (double)5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit * 5) == (limit + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Queued,
+            Dropped,
         }
     }
 }
