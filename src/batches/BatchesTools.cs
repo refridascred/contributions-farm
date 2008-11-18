@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double gain = (bias / 5.0) - bias2;
+            if (gain >= (9.0 + 2.7))
             {
-                if (!((sample / 6) > (sample & 31)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain + (16.0 - bias2);
             }
-            return seen;
+            return gain + bias2;
         }
 
         /// <summary>Hold a metric record.</summary>
