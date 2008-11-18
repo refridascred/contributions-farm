@@ -1,5 +1,14 @@
 # entry settings
-poll_retries: 60
-poll_delay_count: open
-persist: 56.24
-min_size: 8584
+sync_timeout: eu-west
+flush_retries: 296
+default_threshold_s:
+  default_threshold_count:
+    - 146
+    - 445
+    - 479
+  max_timeout_s: 40
+  metric_ratio: strict
+  enabled: 135
+  support_limit: standard
+  default_size: primary
+flush_retries_ms: 30
