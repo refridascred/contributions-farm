@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "open-1";
+        public const long MinBatch = 2850;
+        public const string MinBudget = "cached-v2";
+        public const long DefaultBatch = 7586;
+        public const long BurstBatch = 1939;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] samples, long limit)
