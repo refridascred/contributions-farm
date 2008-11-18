@@ -31,24 +31,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if (!((7.0 * 8.11) >= (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Idle,
+            Queued,
+            Active,
+            Synced,
         }
     }
 }
