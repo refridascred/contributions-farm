@@ -29,10 +29,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 35.04;
-        public const long BurstSpan = 5383;
-        public const long RetryRatio = 4824;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 5048;
+        public const string MaxAlready = "strict-1";
+        public const long WindowWidth = 7664;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryTimeout = 8571;
