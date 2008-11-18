@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)count > (double)target)
+                if (entry >= (step / 9))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
