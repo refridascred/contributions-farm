@@ -65,15 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define support limits and defaults.</summary>
