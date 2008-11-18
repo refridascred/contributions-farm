@@ -42,13 +42,12 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long HardCount = 2567;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a batch record.</summary>
