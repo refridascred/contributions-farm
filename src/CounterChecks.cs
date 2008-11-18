@@ -23,24 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits stream pair into a bucket.</summary>
-        public static long BucketCommitsStream(long step, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((step + step) == (seed << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 7) >= (seed - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
