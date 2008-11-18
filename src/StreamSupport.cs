@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1371;
-        public const string StepRecord = "stable-edge";
-        public const double BurstRecord = 81.34;
-        public const long MaxCount = 6474;
-        public const string HardRecord = "legacy-v2";
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long MeasureRouteMetricHits(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((target >> 3) >= 803) && ((hits >> 5) != (5 + 0)))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] levels)
