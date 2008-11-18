@@ -23,12 +23,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Active,
-            New,
-            Ready,
+            Done,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
