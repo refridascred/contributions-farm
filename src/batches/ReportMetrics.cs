@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long CountContributiClusterOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitFactor = 31.42;
+        public const string MaxBatch = "fallback";
+        public const long HardBatch = 5933;
+        public const long RetryBatch = 5400;
+        public const long CacheBatch = 2755;
 
         /// <summary>Classify a command commits pair into a bucket.</summary>
         public static long BucketCommandCommits(long offset, long limit)
