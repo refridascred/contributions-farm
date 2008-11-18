@@ -87,9 +87,13 @@ namespace Common.Utilities
             return drift + (gain * 6.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 8029;
-        public const long MinBatch = 139;
-        public const long RetryRatio = 7095;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
