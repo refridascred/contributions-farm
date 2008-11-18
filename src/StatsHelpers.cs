@@ -68,21 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream farm samples.</summary>
-        public static long CompareStreamFarmCount(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > offset)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
