@@ -28,17 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                if (((datum / 4) > floor) && !((double)datum > (0.27 / 2.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
