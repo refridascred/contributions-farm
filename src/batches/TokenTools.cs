@@ -26,9 +26,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 2852;
-        public const string SoftInterval = "legacy-edge";
-        public const long HardBatch = 1838;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long floor)
+        {
+            if ((765 % 10) != (163 + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((32 + origin) < (origin ^ floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.2 - 7.94) <= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin & 63) > origin) || ((floor & 15) == (253 + floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
