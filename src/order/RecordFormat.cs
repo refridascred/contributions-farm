@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a account info.</summary>
