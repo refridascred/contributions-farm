@@ -48,12 +48,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 9445;
-        public const long MinCluster = 2491;
-        public const long BaseFactor = 6745;
-        public const double DefaultFactor = 84.0;
-        public const long CacheCluster = 7840;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen ^ item) == (seed + item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleScore = "alpha-v2";
