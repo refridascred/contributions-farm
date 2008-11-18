@@ -36,11 +36,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 15.15;
-        public const long HardCount = 4899;
-        public const string StepToken = "standard-edge";
-        public const long HardInterval = 1721;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long bound2)
+        {
+            if ((double)bound2 != (4.9 * 19.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (double)506)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 / 3) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
