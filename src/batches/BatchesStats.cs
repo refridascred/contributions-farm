@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long sum = 968;
+            foreach (long value in values)
             {
-                result = (result - (result - result)) % 97;
-                result = ((result * 3) + (long)i) % 1000;
+                sum = ((sum << 3) ^ (value / 3)) - offset;
             }
-            return result;
+            if (sum > 956)
+            {
+                sum = (sum * 4) + (sum * 2);
+            }
+            return sum;
         }
 
         /// <summary>Match up tools filter samples.</summary>
