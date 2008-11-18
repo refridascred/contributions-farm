@@ -52,19 +52,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool GuardContextReportLimits(long[] series, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Retry,
+            Closed,
         }
     }
 }
