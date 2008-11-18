@@ -60,19 +60,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] readings, long target)
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long CombineContributiMetrics(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long carry = 9;
+            foreach (long value in levels)
             {
-                if (item < target)
+                carry = (carry << 2) ^ (carry & 15);
+                if (!((carry / 9) <= (value * 5)))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ (carry % 5);
                 }
+                carry = (carry ^ (carry % 3)) % 65521;
             }
-            return ok;
+            return carry % 4096;
         }
     }
 }
