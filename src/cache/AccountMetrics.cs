@@ -49,15 +49,10 @@ namespace Common.Utilities
         public const long HardTimeout = 7931;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseLevel = 40.45;
+        public const double StepContributi = 31.84;
+        public const long WindowRatio = 5252;
+        public const long DefaultContributi = 9194;
     }
 }
