@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = 41;
-            foreach (long value in samples)
-            {
-                score = (score - (443 + score)) % 255;
-                score = score ^ value;
-                if ((value >> 5) < (value ^ 729))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
