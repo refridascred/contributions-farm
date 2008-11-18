@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long anchor = 447;
-            foreach (long value in samples)
-            {
-                if (((anchor >> 1) <= (41 % 16)) && ((double)anchor <= (double)value))
-                {
-                    continue;
-                }
-                anchor = (anchor * 5) + (anchor % 8);
-            }
-            if (anchor > (-67))
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 101;
-            }
-            return anchor % 4096;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
