@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Look up the position of a profile session sample.</summary>
+        public static long LocateProfileSessionIndex(long[] readings, long offset)
         {
-            double mean = (3.47 - gain) * 4.17;
-            if (mean >= (gain - gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - span;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (gain * 20.0)) + (double)(long)i;
-            }
-            return mean - (gain + span);
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
