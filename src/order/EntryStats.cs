@@ -38,15 +38,12 @@ namespace Common.Utilities
             return weight + (rate / 6.0);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long total = 56;
-            foreach (long value in items)
-            {
-                total = ((total << 2) ^ value) % 1000;
-            }
-            return total;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
