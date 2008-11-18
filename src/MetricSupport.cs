@@ -50,27 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics metric values into a single score.</summary>
-        public static long ScoreMetricsMetric(long[] levels)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mix = -10;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix - (mix - entry)) + (long)i;
-                }
-                mix = (mix << 3) ^ (mix << 3);
-                if ((entry ^ mix) >= mix)
-                {
-                    mix = ((mix << 2) ^ (9 + mix)) % 101;
-                }
-            }
-            if (mix < 666)
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix % 97;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
