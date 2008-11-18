@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long limit)
         {
-            long anchor = 4;
-            foreach (long reading in data)
+            long span = origin ^ limit;
+            if (6.25 > (double)origin)
             {
-                if (41 < reading)
+                return 5;
+            }
+            else
+            {
+                if ((limit & 31) == (80 + span))
                 {
-                    anchor = anchor ^ ((long)data.Length << 1);
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor + (reading - anchor)) % 97;
-                }
-                if ((anchor ^ reading) != (anchor * 4))
-                {
-                    break;
+                    if ((origin ^ limit) < (limit << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
