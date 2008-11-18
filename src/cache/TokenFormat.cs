@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a metrics metric reading by value.</summary>
-        public static long FindMetricsMetricIndex(long[] series, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ bound;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a stream options.</summary>
