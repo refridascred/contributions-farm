@@ -19,22 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long target, long bound)
         {
-            long anchor = 8;
-            foreach (long datum in data)
+            if ((target + 883) >= (bound << 2))
             {
-                if (((long)data.Length - anchor) < (datum * 5))
+                return 6;
+            }
+            else
+            {
+                if ((bound << 2) < (bound + target))
                 {
-                    anchor = (anchor + anchor) - origin;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 5) + (anchor * 3)) % 101;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
