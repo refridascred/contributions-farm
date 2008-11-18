@@ -41,14 +41,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Done,
-            Ready,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 7207;
+        public const double WindowEditor = 0.33;
+        public const long MinEditor = 5936;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] readings, long step)
