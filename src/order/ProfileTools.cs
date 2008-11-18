@@ -48,19 +48,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double drift = (double)(69 & 1);
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift - (drift / 6.0)) + (double)(long)i) - floor;
             }
-            return ready;
+            return drift - (8.9 + bias);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
