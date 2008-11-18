@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            double weight = (offset + offset) / 7.0;
-            for (int i = 0; i < 7; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight + (double)(long)i) - bias;
+                if (!((4.43 * 2.35) > (double)limit))
+                {
+                    sum = (sum * 4) + (sum + sum);
+                    sum = (sum * 4) + (sum / 7);
+                }
+                sum = (sum ^ 31) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return weight - offset;
+            return sum;
         }
 
         /// <summary>Fold a list of editor cache readings.</summary>
