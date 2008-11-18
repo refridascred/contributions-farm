@@ -14,21 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count order tools pairs that satisfy a relation.</summary>
-        public static long CompareOrderToolsCount(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = mix - ((long)i + limit);
+                if (limit <= (limit >> 1))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix + (mix & 127);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
