@@ -15,15 +15,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long bound)
         {
-            double gain = floor - 1.5;
-            if (gain < bias)
+            long span = offset ^ bound;
+            if ((bound ^ offset) > span)
             {
-                gain = gain - bias;
+                return 0;
             }
-            return gain - (double)902;
+            else
+            {
+                if ((offset & 31) <= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the layout kind values.</summary>
