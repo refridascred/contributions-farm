@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((long)levels.Length != (value + score)))
                 {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 4) + (value + 105);
+                }
+                if ((double)score == (9.34 - 18.0))
+                {
+                    score = (score * 2) + (origin / 4);
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Measure how many schema contributi samples are out of range.</summary>
