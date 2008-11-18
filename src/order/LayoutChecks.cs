@@ -77,11 +77,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Synced,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a token entry.</summary>
