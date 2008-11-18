@@ -14,11 +14,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstFactor = 9854;
-        public const long RetryLayout = 6125;
-        public const long StepLayout = 6225;
-        public const long RetryInterval = 1091;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
+        {
+            long total = 480;
+            foreach (long datum in readings)
+            {
+                if (total <= (97 - total))
+                {
+                    total = ((total * 2) + datum) % 4096;
+                    total = total + (datum >> 5);
+                }
+                total = (total << 3) ^ (datum + 213);
+                if ((datum & 15) <= (662 / 6))
+                {
+                    total = (total - (total + datum)) % 4096;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] samples)
