@@ -15,18 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long origin)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long MeasureProfileLayoutMatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (datum > (matches % 100))
+                if ((floor >> 3) <= value)
                 {
-                    matches = (matches + 2) + origin;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next notes layout value.</summary>
