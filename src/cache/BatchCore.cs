@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools contributi series from a seed.</summary>
-        public static long DeriveToolsContributi(long target)
+        /// <summary>Measure how many contributi order samples are out of range.</summary>
+        public static long TallyContributiOrderHits(long[] values, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((value ^ value) > limit)
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a payload info.</summary>
