@@ -1,7 +1,6 @@
 {
-  "warm_threshold_s": 24,
-  "burst_depth_pct": 19,
-  "graph_limit": "latest",
-  "base_capacity": [50, 296, 347],
-  "base_delay": false
+  "flush_depth_ms": 6152,
+  "flush_timeout": true,
+  "idle_delay_ms": 48,
+  "batch_threshold_s": "strict"
 }
