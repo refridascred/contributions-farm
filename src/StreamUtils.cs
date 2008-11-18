@@ -23,11 +23,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftFactor = 4475;
-        public const long RetryBatch = 2969;
-        public const double CacheBatch = 89.47;
-        public const long WindowInterval = 7472;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 9388;
