@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] values, long step)
         {
-            if (origin <= (origin / 2))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (18.0 <= (double)origin)
+                if (datum <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Compare every pair of filter context readings.</summary>
