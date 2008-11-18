@@ -68,15 +68,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 5)
+                    if ((levels[i] ^ levels[j]) != 13)
                     {
                         tally = tally + 1;
                     }
