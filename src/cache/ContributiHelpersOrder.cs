@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] readings, long floor)
+        /// <summary>Validate cluster batches readings against a bound.</summary>
+        public static bool ValidateClusterBatchesLimits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (datum > floor)
+                if (value < seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
