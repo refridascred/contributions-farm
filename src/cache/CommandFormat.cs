@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] data, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if (limit < sum)
                 {
-                    return (long)i;
+                    sum = (sum - (sum + sum)) ^ datum;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of context entries.</summary>
