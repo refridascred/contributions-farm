@@ -17,13 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Closed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardLevel = "cached-1";
+        public const double BatchNotes = 68.56;
+        public const long LimitNotes = 3495;
+        public const long DefaultNotes = 9577;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "alpha-v2";
