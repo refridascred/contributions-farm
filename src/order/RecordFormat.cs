@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long BurstFactor = 4329;
         public const long WindowInterval = 9409;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] data, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((bound < (seen - 9)) && ((seen - datum) >= (seen - bound)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
