@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((matches + floor) <= (cell ^ cell))
+                if (((entry >= (entry + entry)) && ((hits - 943) >= (7 << 1))) || ((entry & 3) == (81 + entry)))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
