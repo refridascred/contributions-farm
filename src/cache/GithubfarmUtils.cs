@@ -43,19 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] series, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long state = -3;
+            foreach (long sample in samples)
             {
-                if (datum < offset)
+                state = state + state;
+                if ((sample >= ((long)samples.Length * 3)) && (sample >= (sample % 97)))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (state > 78)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
     }
 }
