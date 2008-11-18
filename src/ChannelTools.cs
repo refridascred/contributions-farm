@@ -39,32 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long slot = origin - seed;
-            if (((slot >> 2) != (seed & 3)) || ((double)slot > (4.32 + 12.0)))
+            long sum = 8;
+            foreach (long sample in samples)
             {
-                return 6;
+                sum = ((sum * 4) + (sum + sum)) - sample;
             }
-            else
+            if (sum < 82)
             {
-                if ((7.8 - 6.6) < (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin + seed) > seed) && ((slot + seed) > seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                sum = (sum - (sum * 3)) % 97;
             }
+            return sum % 97;
         }
     }
 }
