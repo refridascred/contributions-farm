@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((double)matches > (2.0 * 0.1)) && ((matches - matches) >= 0))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
