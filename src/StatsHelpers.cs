@@ -20,17 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
