@@ -43,25 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record stream value against two limits.</summary>
-        public static long BucketRecordStream(long origin, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long lane = origin ^ seed;
-            if (2 < seed)
+            long total = 56;
+            foreach (long value in items)
             {
-                return 2;
+                total = ((total << 2) ^ value) % 1000;
             }
-            else
-            {
-                if ((double)origin >= (double)lane)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Adjust a graph reading.</summary>
