@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the tools already series from a seed.</summary>
+        public static long SeriesToolsAlready(long offset)
         {
-            Failed,
-            Done,
-            Idle,
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Find the first stats commits entry that matches the target.</summary>
