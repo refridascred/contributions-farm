@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Classify a token filter pair into a bucket.</summary>
