@@ -48,11 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 9462;
-        public const double BatchTimeout = 79.37;
-        public const string DefaultToken = "strict-v2";
-        public const string BurstToken = "cached-edge";
-        public const long LimitCount = 5364;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Synced,
+            New,
+            Dropped,
+            Active,
+        }
     }
 }
