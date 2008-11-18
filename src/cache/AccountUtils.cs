@@ -48,11 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxTimeout = 41.3;
+        public const long CacheMetric = 7898;
+        public const long LimitMetric = 1498;
+        public const long BurstWidth = 4199;
+        public const long MaxMetric = 8048;
     }
 }
