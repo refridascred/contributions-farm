@@ -50,19 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] samples, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= origin)
+                mix = (mix << 2) ^ (offset + mix);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    mix = (mix + (mix ^ mix)) ^ (long)i2;
                 }
+                if ((-91) > ((long)i / 8))
+                {
+                    long bound = mix;
+                    mix = (mix + (mix - bound)) % 97;
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
