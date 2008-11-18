@@ -22,22 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm already samples.</summary>
-        public static long OverlapFarmAlreadyCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 49.72;
+        public const long WindowSpan = 7280;
+        public const long DefaultSpan = 7603;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] series)
