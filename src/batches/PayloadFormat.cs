@@ -52,13 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Stale,
-            Retry,
-            Queued,
             Done,
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
