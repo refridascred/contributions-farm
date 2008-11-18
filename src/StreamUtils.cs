@@ -39,22 +39,10 @@ namespace Common.Utilities
         public const double CacheBatch = 89.47;
         public const long WindowInterval = 7472;
 
-        /// <summary>Match up session format samples.</summary>
-        public static long OverlapSessionFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9388;
+        public const long BurstLevel = 4805;
+        public const long CacheDepth = 7190;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowLevel = 7561;
