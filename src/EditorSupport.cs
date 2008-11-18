@@ -14,12 +14,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            Done,
-            Idle,
-            Queued,
+            long result = 8;
+            foreach (long sample in items)
+            {
+                if (7 > (sample << 2))
+                {
+                    result = (result ^ (result * 3)) % 4096;
+                }
+                if (sample < (6 ^ sample))
+                {
+                    break;
+                }
+            }
+            if (result > 94)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
