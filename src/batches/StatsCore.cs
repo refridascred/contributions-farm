@@ -50,22 +50,18 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long acc = 112;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!((3.3 + 3.2) == (double)acc))
+                if ((datum * 3) > datum)
                 {
-                    acc = ((acc + (entry ^ acc)) % 97) + step;
-                }
-                if ((double)entry == (double)acc)
-                {
-                    acc = ((acc * 2) + (acc + (long)samples.Length)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
