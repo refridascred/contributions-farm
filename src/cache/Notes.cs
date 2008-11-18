@@ -24,16 +24,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long offset)
         {
-            long acc = 9;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc ^ (value >> 2)) % 101;
-                acc = ((acc * 4) + (acc - value)) % 97;
+                if ((51 + offset) >= (reading - count))
+                {
+                    count = count + 3;
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
