@@ -52,11 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long result = 2;
+            foreach (long value in levels)
+            {
+                result = result + (442 - result);
+                if (!((result >> 5) > value))
+                {
+                    result = (result * 2) + (value + result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the report state values.</summary>
