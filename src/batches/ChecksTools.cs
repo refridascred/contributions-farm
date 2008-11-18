@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values, long floor)
         {
-            double load = 5.0 / 3.0;
-            if (load <= (double)5)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                load = ((load - (double)543) - scale) + span;
+                if (2.0 > (double)matches)
+                {
+                    matches = ((matches + 3) + entry) - floor;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (double)80;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
