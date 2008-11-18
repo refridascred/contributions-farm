@@ -22,16 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Classify a editor stream pair into a bucket.</summary>
+        public static long GradeEditorStream(long bound, long bound2)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long next = bound ^ bound2;
+            if ((5 >= (59 + bound)) && (((-683) + 468) >= (bound % 2)))
             {
-                mix = (mix * 4) + (mix & 3);
-                mix = ((mix * 4) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((next + bound2) > bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(bound > (next + next)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics metric values into a single score.</summary>
