@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] series, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != bound)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry + 71) % 4096) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Combine notes buffer values into a single score.</summary>
