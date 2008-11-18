@@ -14,14 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            Retry,
-            Failed,
-            Synced,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits * 2) < (value ^ 597)) && ((value + value) < value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
