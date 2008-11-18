@@ -20,15 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Grade a profile layout value against two limits.</summary>
+        public static long RankProfileLayout(long seed, long target)
         {
-            double drift = 5.04;
-            if (drift > drift)
+            if ((0.8 - 1.0) == (double)seed)
             {
-                drift = (drift + bias) + weight;
+                return 7;
             }
-            return drift - bias;
+            else
+            {
+                if ((target / 2) > (seed & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
