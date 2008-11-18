@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer session value.</summary>
-        public static double AdjustBufferSession(double weight, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long floor)
         {
-            double mean = 14.0 + (8.4 / 2.0);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mean = (mean - (bias - bias)) + (double)(long)i;
+                if ((0 << 1) <= (floor * 5))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return mean + (4.9 - weight);
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
