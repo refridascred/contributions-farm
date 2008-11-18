@@ -1,17 +1,16 @@
 # entry settings
-batch_retries_ms: local
-profile_interval:
-  stream_depth:
-    - 390
-    - 14
-    - 382
-  flush_depth: 18.81
-  verbose: 67.17
-  sync_ratio_s: fallback
-hard_ratio_s:
-  retry_capacity: green
-  retry_ratio: 500
-  sync_window: true
-context_ttl: local
-batch_window_s: 84.76
-burst_capacity: false
+min_ttl_s:
+  cache_capacity_pct: edge
+  batch_timeout_ms:
+    cache_ttl: standard
+    idle_delay_s: false
+    max_window: 2479
+  compress:
+    sync_ttl_count: latest
+    context_ttl: 7928
+    poll_ttl_ms: 10
+    hard_threshold: true
+    poll_size_pct: blue
+retry_timeout_pct: fallback
+poll_delay_count: 30
+tools_ratio: true
