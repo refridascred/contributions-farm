@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate order githubfarm readings against a bound.</summary>
-        public static bool VerifyOrderGithubfarmRange(long[] data, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double rate = bias;
+            if (rate >= gain)
             {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + 2.99;
             }
-            return flag;
+            return rate + (bias / 3.0);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
