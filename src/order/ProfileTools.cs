@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string SoftTimeout = "latest";
         public const string LimitScore = "stable";
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public double Total { get; set; }
+            double load = 3.0 * 4.13;
+            if (load <= (double)95)
+            {
+                load = load + (weight + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + 1.1;
         }
 
         /// <summary>Hold a token summary.</summary>
