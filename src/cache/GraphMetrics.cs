@@ -66,17 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
-        public static long SeekGithubfarmStreamIndex(long[] series, long seed)
+        /// <summary>Roll a metrics account counter forward.</summary>
+        public static long IterateMetricsAccount(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
