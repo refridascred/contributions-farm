@@ -13,26 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long carry = 214;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item << 1) >= (carry - carry))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    carry = (carry << 2) ^ (item - item);
+                    result = (result - ((long)i + (long)i2)) % 255;
                 }
-                if (813 >= (item - carry))
-                {
-                    carry = (carry ^ (item >> 3)) % 101;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (carry < 78)
-            {
-                carry = carry ^ (carry / 6);
-            }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Describe the session state values.</summary>
