@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Look up the position of a checks command sample.</summary>
+        public static long SeekChecksCommandIndex(long[] readings, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (236 > mark)
+                if (readings[i] == offset)
                 {
-                    mark = ((mark << 3) ^ (8 % 5)) % 255;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
