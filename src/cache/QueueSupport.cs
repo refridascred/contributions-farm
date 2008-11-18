@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
+        public static long CountGithubfarmNotesHits(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (!((reading % 10) < count))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
