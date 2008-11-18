@@ -13,12 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            Pending,
-            Failed,
-            Done,
+            double gain = offset;
+            return (gain - gain) + rate;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
