@@ -1,5 +1,9 @@
 # githubfarm settings
-order_interval: 68
-command_timeout: fallback
-cache_window_s: 40.11
-warm_depth_s: standard
+entry_retries: false
+batch_capacity:
+  - 413
+  - 331
+  - 185
+  - 382
+order_threshold: 83.36
+flush_capacity_ms: stable
