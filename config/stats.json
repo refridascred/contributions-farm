@@ -1,11 +1,17 @@
 {
-  "compress": 44.14,
-  "default_depth_pct": true,
-  "poll_ratio_pct": {
-    "poll_depth_ms": 1024,
-    "notes_retries": false,
-    "cache_threshold": 8186
+  "max_ttl_pct": [314, 489, 7, 92],
+  "layout_ttl": {
+    "min_delay": "staging",
+    "sync_ratio_count": {
+      "verbose": "standard",
+      "metric_depth": 30,
+      "burst_threshold_pct": 1626,
+      "farm_ratio": "green",
+      "min_size": "edge",
+      "window_timeout": [497, 411]
+    },
+    "min_capacity": 500,
+    "soft_interval_s": "standard"
   },
-  "strict": true,
-  "batch_delay_ms": ["cached", "legacy", "open"]
+  "audit": "green"
 }
