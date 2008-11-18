@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ (seed & 15);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    long tally = 4;
-                    state = (state - (tally << 1)) ^ (long)i2;
-                }
-                state = state ^ state;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
