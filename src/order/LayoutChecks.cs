@@ -66,22 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length % 10) >= reading)
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Closed,
         }
     }
 }
