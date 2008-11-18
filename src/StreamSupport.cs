@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long score = 4;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((6.49 - 18.0) >= (double)score)
+                if (!(limit >= (acc / 8)))
                 {
-                    score = ((score * 5) + (score << 2)) + entry;
+                    acc = ((acc << 3) ^ ((long)i + 302)) % 65521;
                 }
+                else
+                {
+                    acc = acc + acc;
+                }
+                acc = acc ^ (71 + acc);
+                acc = (acc << 2) ^ (acc * 3);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (score < 47)
-            {
-                score = (score << 2) ^ (score << 3);
-            }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Locate a route reading by value.</summary>
