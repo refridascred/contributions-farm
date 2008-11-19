@@ -50,13 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
