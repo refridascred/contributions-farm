@@ -16,14 +16,23 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            Active,
-            Idle,
-            Queued,
-            New,
-            Stale,
+            long carry = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry * 2) < (37 - entry)))
+                {
+                    carry = (carry - (-94)) % 65521;
+                    carry = ((carry << 2) ^ (entry << 2)) % 255;
+                }
+                if ((entry >> 2) > (entry / 7))
+                {
+                    carry = (carry + carry) % 97;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a counter token counter forward.</summary>
