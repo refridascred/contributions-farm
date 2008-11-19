@@ -1,21 +1,9 @@
 # support settings
-retry_ratio: 36.74
-flush_limit_pct: primary
-warm_threshold_count: 8947
-verbose: false
-min_size_s:
-  min_ratio_ms: strict
-  metric_timeout:
-    soft_interval: 250
-    payload_threshold: 60
-    queue_retries:
-      - 63
-      - 369
-      - 149
-      - 241
-    hard_delay_s: strict
-  persist: 250
-  compress: 27
-soft_ratio_pct:
-  - 237
-  - 198
+min_ttl_count: false
+burst_threshold_count: strict
+hard_depth_ms: local
+warm_capacity_pct:
+  cache_window_count: 33.5
+  compress: legacy
+  soft_interval: 60
+  stats_capacity: eu-west
