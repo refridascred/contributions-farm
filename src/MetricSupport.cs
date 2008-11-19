@@ -36,38 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch layout input into a small class.</summary>
-        public static long ClassifyBatchLayout(long floor, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] readings, long origin)
         {
-            if ((double)offset >= (7.06 + 6.68))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (4.0 + 10.0))
+                if (item > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + offset) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset < (1 - offset)) && (floor < (offset << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
