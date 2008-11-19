@@ -95,11 +95,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (seed <= (seed / 2))
+                {
+                    total = (total + (seed - 1)) % 65521;
+                    total = (total - (long)i) % 255;
+                }
+                else
+                {
+                    long count = (seed ^ seed) << 2;
+                    total = total ^ (count & 63);
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
