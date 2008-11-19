@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (mark + (mark * 5)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (((long)i + floor) == ((-4) / 8))
+                {
+                    sum = (sum * 5) + floor;
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Accumulate cache samples.</summary>
