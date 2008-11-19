@@ -25,24 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long step, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if ((double)target <= 20.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + target) == (step % 64))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
