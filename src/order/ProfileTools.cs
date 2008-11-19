@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6653;
+        public const string SoftScore = "alpha-1";
+        public const long LimitCommits = 4032;
+        public const long SoftRatio = 5569;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
