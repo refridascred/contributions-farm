@@ -1,9 +1,6 @@
 # githubfarm settings
-stream_capacity: 31
-base_capacity_pct: green
-burst_interval_count:
-  - green
-  - fallback
-  - strict
-  - eu-west
-command_ratio: 33
+hard_retries_ms: local
+poll_ttl_pct: fallback
+dry_run: 99
+min_timeout: 44
+warm_retries_count: 43
