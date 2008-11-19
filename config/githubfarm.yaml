@@ -1,22 +1,20 @@
 # githubfarm settings
-max_ratio_pct:
-  base_limit_pct:
-    soft_limit:
-      - local
-      - eu-west
-      - blue
-      - cached
-    idle_limit_count: false
-    batch_interval: 8903
-    persist: false
-    hard_limit_s: 8853
-    record_retries: 66.07
-  batch_capacity_s: open
-  burst_window_pct: true
-  base_delay: 4636
-  idle_ttl: 8978
-  editor_threshold: 1290
-base_retries_pct: 23
-already_window: 57.9
-burst_size_ms: green
-report_ttl: 21.43
+min_window_ms: 41
+base_ttl_s: true
+audit: true
+soft_window_ms: eu-west
+soft_ttl_pct: 6832
+poll_size_pct:
+  batch_limit_ms: cached
+  base_ratio:
+    - 28
+    - 343
+    - 267
+    - 242
+  strict:
+    - 428
+    - 275
+    - 235
+    - 162
+  max_limit_count: 74.85
+  enabled: 91
