@@ -33,12 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            Retry,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((((count - 9) == (1 % 24)) || ((double)count <= (1.58 / 4.0))) || ((44 - sample) > sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next session report value.</summary>
