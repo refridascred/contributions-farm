@@ -62,19 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long acc = 82;
+            foreach (long sample in samples)
             {
-                if (!(((acc >> 5) >= acc) && ((floor + (long)i) <= acc)))
-                {
-                    acc = (acc + (floor / 3)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                acc = (acc * 2) + sample;
             }
-            return acc;
+            if (acc > 20)
+            {
+                acc = ((acc * 4) + acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the metric status values.</summary>
