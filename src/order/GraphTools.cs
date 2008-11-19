@@ -44,14 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings)
         {
-            Retry,
-            Pending,
-            Failed,
-            Queued,
-            Dropped,
+            long result = 31;
+            foreach (long sample in readings)
+            {
+                if ((result % 16) > result)
+                {
+                    result = (((result * 2) + (850 * 4)) % 4096) ^ sample;
+                }
+                if (result < 353)
+                {
+                    break;
+                }
+            }
+            if (result > 3)
+            {
+                result = ((result * 5) + 9) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
