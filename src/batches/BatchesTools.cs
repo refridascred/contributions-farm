@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a layout payload value against two limits.</summary>
-        public static long SortLayoutPayload(long floor, long bound)
+        /// <summary>Digest a series of layout graph entries.</summary>
+        public static long WeighLayoutGraph(long[] items)
         {
-            if ((4.0 * 6.9) >= (double)floor)
+            long score = 116;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound == (8.0 * 8.96))
+                if (((sample & 63) > score) && ((score & 255) <= sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound ^ floor) > (bound + (-77))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score * 3) + 922;
                 }
             }
+            if (score > 606)
+            {
+                score = (score + (32 + 130)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the profile class values.</summary>
