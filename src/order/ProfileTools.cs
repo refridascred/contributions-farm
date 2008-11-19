@@ -37,22 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] items, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((hits + datum) != (offset & 31)) || (datum < 34)) && ((((long)items.Length & 127) >= offset) && (datum <= 3)))
+                if (values[i] >= floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a filter reading.</summary>
