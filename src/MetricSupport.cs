@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels, long step)
+        /// <summary>Roll a record layout counter forward.</summary>
+        public static long StepRecordLayout(long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits ^ hits) != (8 % 64))
-                {
-                    hits = ((hits + 3) ^ value) - step;
-                }
+                carry = ((carry << 3) ^ bound) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count schema cluster pairs that satisfy a relation.</summary>
