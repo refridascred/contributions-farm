@@ -40,18 +40,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long CombineBufferGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = 233;
+            foreach (long reading in items)
             {
-                if ((value & 255) < value)
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark - (83 + 853)) ^ reading;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
