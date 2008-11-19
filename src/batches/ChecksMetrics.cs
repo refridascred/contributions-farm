@@ -14,14 +14,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            Active,
-            Done,
-            Draft,
-            Synced,
-            Stale,
+            long anchor = 6;
+            foreach (long datum in samples)
+            {
+                anchor = anchor + 136;
+                if ((double)datum <= 2.5)
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + datum) % 97;
+                }
+            }
+            if (anchor < 69)
+            {
+                anchor = anchor ^ 5;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
