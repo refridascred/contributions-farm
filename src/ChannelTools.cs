@@ -38,26 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long mark = 9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.68 - 0.1) != (double)value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 3) ^ (61 & 255);
-                }
-                if (value >= (limit >> 2))
-                {
-                    mark = (mark ^ (limit / 4)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ value;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
     }
 }
