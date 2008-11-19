@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            long state = 46;
+            foreach (long cell in data)
+            {
+                state = ((state * 4) + (target + cell)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
