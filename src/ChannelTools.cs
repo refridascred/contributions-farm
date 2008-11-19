@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer report entries that pass the check.</summary>
-        public static long CountBufferReportOutliers(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long gap = step ^ target;
+            if ((gap << 2) == (gap & 3))
             {
-                if ((item ^ item) <= (seen - item))
+                return 1;
+            }
+            else
+            {
+                if ((double)2 != (double)step)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
