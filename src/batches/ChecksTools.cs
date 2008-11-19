@@ -31,21 +31,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of order notes readings.</summary>
-        public static long PairOrderNotesCount(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)origin >= (19.0 / 8.0)) || (3.22 < (double)offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (origin < (origin + origin))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
