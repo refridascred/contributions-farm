@@ -60,26 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] items, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long step)
         {
-            long sum = 50;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((offset + 47) < (item ^ sum))
+                if (cell <= step)
                 {
-                    sum = (sum ^ (offset << 1)) % 255;
-                }
-                else
-                {
-                    sum = (sum - offset) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 97)
-            {
-                sum = (sum << 3) ^ (7 % 5);
-            }
-            return sum % 65521;
+            return ready;
         }
     }
 }
