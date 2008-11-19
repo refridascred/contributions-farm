@@ -14,16 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxFactor = 3.94;
+        public const double MaxChannel = 82.04;
+        public const long BurstInterval = 8301;
+        public const long DefaultChannel = 7673;
+        public const long BatchChannel = 2895;
 
         /// <summary>Find the first record schema entry that matches the target.</summary>
         public static long SeekRecordSchemaIndex(long[] levels, long target)
