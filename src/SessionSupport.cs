@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double weight2 = weight - weight;
+            if (weight2 < (offset * 0.6))
             {
-                if ((9 >> 5) <= reading)
-                {
-                    matches = matches + 1;
-                }
+                weight2 = weight2 - (weight2 * 2.94);
             }
-            return matches;
+            else
+            {
+                weight2 = weight2 + (offset + weight);
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Hold a session snapshot.</summary>
