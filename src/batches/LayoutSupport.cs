@@ -35,12 +35,13 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4262;
-        public const double HardTimeout = 79.93;
-        public const long IdleDepth = 1168;
-        public const string MaxTimeout = "strict-v2";
-        public const double SoftRecord = 46.03;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long origin, long floor)
