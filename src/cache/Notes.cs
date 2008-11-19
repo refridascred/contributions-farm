@@ -13,18 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values, long origin)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double load = rate;
+            if (load < load)
             {
-                if ((reading - origin) >= hits)
-                {
-                    hits = hits + 1;
-                }
+                load = (load - (double)4) + bias;
             }
-            return hits;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - rate) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
