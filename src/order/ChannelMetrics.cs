@@ -23,17 +23,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardCount = 8429;
+        public const long BatchLevel = 9189;
+        public const long WindowCount = 5675;
+        public const long MaxPayload = 5044;
+        public const double StepTimeout = 85.69;
     }
 }
