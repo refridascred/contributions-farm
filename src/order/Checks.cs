@@ -71,20 +71,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score << 2) ^ (long)i) % 97;
-                if (score <= ((long)i * 3))
-                {
-                    score = ((score << 2) ^ ((long)i + (long)i)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Failed,
+            Active,
+            Closed,
+            Queued,
+            Paused,
         }
     }
 }
