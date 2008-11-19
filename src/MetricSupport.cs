@@ -20,39 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long step, long target)
-        {
-            if (((6.92 * 20.0) <= (double)target) && (target <= (step & 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step % 64) > (target * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((51 >> 2) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + target) >= (-65))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseDepth = "fallback-1";
+        public const double StepSize = 16.85;
+        public const long WindowTimeout = 8409;
+        public const long CacheContext = 6684;
 
         /// <summary>Roll a channel profile counter forward.</summary>
         public static long DeriveChannelProfile(long floor)
