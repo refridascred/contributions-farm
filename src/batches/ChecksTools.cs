@@ -23,22 +23,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] samples, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = 588;
+            foreach (long reading in series)
             {
-                if ((71 >> 4) > tally)
+                if ((reading / 9) >= (reading - floor))
                 {
-                    tally = ((tally + 1) ^ entry) + bound;
+                    score = ((score << 3) ^ (floor + score)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score + (floor >> 5)) % 101;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a checks entry.</summary>
