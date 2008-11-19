@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheWidth = 16.75;
-        public const long MinMetric = 5326;
-        public const double StepSize = 92.45;
-        public const double DefaultMetric = 2.45;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 6483;
+        public const long LimitRatio = 3394;
+        public const string RetryLevel = "open-1";
+        public const long StepDepth = 5819;
+        public const long BaseToken = 7769;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 1680;
