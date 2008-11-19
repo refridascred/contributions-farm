@@ -25,11 +25,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long acc = 76;
+            foreach (long sample in levels)
+            {
+                acc = (acc ^ (387 + acc)) % 101;
+                acc = acc - sample;
+                acc = (acc ^ (sample + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
