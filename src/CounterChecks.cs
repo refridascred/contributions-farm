@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 445;
+            foreach (long cell in items)
             {
-                if ((cell * 5) < (37 + count))
+                if ((double)cell <= (5.4 * 8.36))
                 {
-                    count = count + 3;
+                    sum = sum ^ (cell % 24);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Check that every layout schema entry stays within the limit.</summary>
