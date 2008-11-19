@@ -45,14 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Done,
-            Idle,
-            Closed,
-            Failed,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitScore = "latest-v2";
+        public const long WindowTimeout = 5650;
+        public const string BaseBuffer = "strict-v2";
+        public const long HardBuffer = 9785;
+        public const long BurstBuffer = 4392;
     }
 }
