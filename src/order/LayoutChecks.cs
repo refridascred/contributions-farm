@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool CheckTokenEditorLimits(long[] readings, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
