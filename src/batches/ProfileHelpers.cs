@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values, long origin)
+        /// <summary>Find the first profile counter entry that matches the target.</summary>
+        public static long LookupProfileCounterIndex(long[] data, long target)
         {
-            long anchor = 877;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - ((long)values.Length * 2)) % 101;
-                if ((origin - anchor) == (anchor + sample))
+                if (data[i] >= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
