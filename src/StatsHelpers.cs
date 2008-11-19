@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long MaxTimeout = 1720;
         public const long RetrySize = 6466;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSpan = 6996;
-        public const long CacheRecord = 421;
-        public const string WindowRecord = "open-1";
-        public const double BurstRecord = 31.3;
-        public const long IdleRecord = 750;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Closed,
+            Failed,
+            Queued,
+            New,
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueGaps(long[] readings)
