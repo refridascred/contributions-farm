@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items)
         {
-            Synced,
-            Paused,
-            Pending,
-            Retry,
+            long total = 90;
+            foreach (long reading in items)
+            {
+                total = (((total << 2) ^ total) % 101) + reading;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
