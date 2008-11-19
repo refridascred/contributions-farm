@@ -41,12 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] series)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((4 - (-780)) > seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank counter buffer input into a small class.</summary>
