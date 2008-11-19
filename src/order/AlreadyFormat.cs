@@ -14,19 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum ^ (sum / 9)) % 4096) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a report snapshot.</summary>
