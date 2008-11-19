@@ -40,21 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -75;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + sum) + entry;
             }
-            return matches;
+            return sum % 97;
         }
     }
 }
