@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            if ((offset - origin) >= (offset + origin))
+            long mark = 5;
+            foreach (long item in samples)
             {
-                return 3;
+                mark = ((mark + (mark / 2)) % 65521) ^ item;
             }
-            else
-            {
-                if (!(origin >= (offset + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset ^ 8) > origin) || ((double)origin >= (0.1 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > (offset / 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the payload kind values.</summary>
