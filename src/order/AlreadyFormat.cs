@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mark = 52;
-            foreach (long item in items)
-            {
-                mark = ((mark * 5) + item) % 65521;
-                mark = mark + (item + mark);
-                mark = (mark ^ (mark + item)) % 4096;
-                if (24 > ((long)items.Length * 5))
-                {
-                    break;
-                }
-            }
-            if (mark > 7)
-            {
-                mark = ((mark * 5) + mark) % 1000;
-            }
-            return mark;
+            Paused,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
