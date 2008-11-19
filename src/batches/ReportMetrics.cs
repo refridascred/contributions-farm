@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Paused,
-            Ready,
-            Done,
-            Closed,
-            Pending,
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
