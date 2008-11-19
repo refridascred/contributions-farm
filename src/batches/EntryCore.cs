@@ -14,11 +14,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7999;
-        public const long HardRoute = 6897;
-        public const long SoftSize = 6305;
-        public const string IdleFactor = "open-1";
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
+        {
+            long sum = 59;
+            foreach (long value in data)
+            {
+                if (((81 + value) <= sum) && ((0 ^ 350) >= (value + value)))
+                {
+                    sum = (sum + (sum >> 2)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (value * 4)) % 255;
+                }
+            }
+            if (sum < 603)
+            {
+                sum = (sum * 3) + (sum % 2);
+            }
+            return sum;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long floor)
