@@ -25,21 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Scale a stream batch figure with a bias.</summary>
+        public static double ProjectStreamBatch(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = offset + weight;
+            if (rate <= (0.3 / 9.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + weight;
             }
-            return seen;
+            else
+            {
+                rate = rate - (2.79 + offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - 6.0;
         }
     }
 }
