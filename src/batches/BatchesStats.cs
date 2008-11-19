@@ -14,14 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            Closed,
-            Active,
-            Queued,
-            Synced,
-            Failed,
+            double ratio2 = (ratio - bias) + (bias * 18.0);
+            if (ratio2 >= ratio)
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio2 * 3.81);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio2 - 3.36;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
