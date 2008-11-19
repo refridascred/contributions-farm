@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((((count - 9) == (1 % 24)) || ((double)count <= (1.58 / 4.0))) || ((44 - sample) > sample))
+                if (reading >= seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Project the next session report value.</summary>
