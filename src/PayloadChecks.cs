@@ -54,17 +54,9 @@ namespace Common.Utilities
         public const long DefaultFactor = 8185;
         public const long BatchSize = 1916;
 
-        /// <summary>Find the first stats farm entry that matches the target.</summary>
-        public static long SeekStatsFarmIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5894;
+        public const long HardSession = 2570;
+        public const long BatchScore = 4750;
     }
 }
