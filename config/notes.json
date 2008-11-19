@@ -1,8 +1,7 @@
 {
-  "max_threshold_pct": "edge",
-  "idle_ratio_pct": 500,
-  "strict": "staging",
-  "compress": false,
-  "soft_depth_s": [286, 393, 112],
-  "warm_window": "green"
+  "compress": true,
+  "persist": 500,
+  "sync_ratio_count": "standard",
+  "min_interval": "strict",
+  "report_size": ["latest", "blue"]
 }
