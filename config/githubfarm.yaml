@@ -1,20 +1,4 @@
 # githubfarm settings
-poll_retries_s: 52
-cache_interval: standard
-idle_capacity_pct: 3702
-warm_depth_s:
-  hard_window_pct: true
-  batch_ratio: legacy
-  flush_ttl:
-    farm_delay: 57.89
-    retry_threshold_count: 45.49
-    cache_threshold_pct: green
-    editor_threshold:
-      - 383
-      - 320
-      - 200
-    soft_ratio_s: cached
-    burst_threshold_count: primary
-  hard_threshold_count: 1024
-base_size_ms: edge
-metric_limit: 250
+batch_retries_ms: eu-west
+flush_size_pct: 97
+cache_delay_ms: blue
