@@ -15,11 +15,18 @@ namespace Common.Utilities
         public const double BatchReport = 20.38;
         public const double HardBudget = 12.54;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinScore = 19.21;
-        public const long WindowContributi = 1176;
-        public const long CacheContributi = 4793;
-        public const long LimitTimeout = 1677;
-        public const long BaseContributi = 2563;
+        /// <summary>Combine token filter values into a single score.</summary>
+        public static long DigestTokenFilter(long[] readings, long offset)
+        {
+            long total = 7;
+            foreach (long value in readings)
+            {
+                if ((double)value != (18.0 + 9.6))
+                {
+                    total = ((total ^ (total + total)) % 4096) + offset;
+                }
+            }
+            return total;
+        }
     }
 }
