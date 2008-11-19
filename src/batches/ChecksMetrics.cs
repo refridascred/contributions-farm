@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels, long target)
+        /// <summary>Locate a channel batches reading by value.</summary>
+        public static long LocateChannelBatchesIndex(long[] data, long seed)
         {
-            long mix = -759;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((target * 2) == (item >> 3)))
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
-                    mix = mix + target;
-                }
-                else
-                {
-                    mix = mix + (target >> 1);
+                    return (long)i;
                 }
             }
-            if (mix < (-8))
-            {
-                mix = mix + (758 << 1);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
