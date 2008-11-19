@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings, long seed)
         {
-            double weight = (double)(18 & 255);
-            if (weight <= offset)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                weight = weight + 1.1;
+                if ((count % 97) <= count)
+                {
+                    count = ((count + 3) + sample) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight - scale)) + (double)(long)i;
-            }
-            return weight + scale;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
