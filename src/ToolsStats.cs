@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "standard";
-        public const double BaseDepth = 29.34;
-        public const double CacheInterval = 98.81;
-        public const double BurstRatio = 57.32;
-        public const long WindowCount = 795;
+        /// <summary>Locate a filter profile reading by value.</summary>
+        public static long SeekFilterProfileIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] series)
