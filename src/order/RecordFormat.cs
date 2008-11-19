@@ -26,13 +26,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long target)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            if (!((double)limit != (7.6 / 2.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 63) >= (55 / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target == (9.0 * 7.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
