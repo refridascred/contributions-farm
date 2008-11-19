@@ -7,10 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=83
+for item in cached open standard primary; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=278
 log "limit is ${COMMAND_LIMIT}"
