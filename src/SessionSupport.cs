@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 62.62;
-        public const double BaseDepth = 12.15;
-        public const long RetryGithubfarm = 5402;
-        public const string LimitGithubfarm = "staging-edge";
-        public const long WindowGithubfarm = 8114;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowSpan = 49.77;
+        public const long RetryCount = 6745;
+        public const long MaxSpan = 3812;
+        public const long MinSize = 5212;
+        public const double BurstEditor = 74.88;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheQueue = 6729;
