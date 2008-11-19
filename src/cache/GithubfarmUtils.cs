@@ -23,15 +23,22 @@ namespace Common.Utilities
         public const long BurstSize = 9422;
         public const long IdleRatio = 8758;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long state = 5;
+            foreach (long entry in values)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (((long)values.Length + (-58)) != (state + 121))
+                {
+                    state = ((state + 631) % 101) ^ entry;
+                }
             }
-            return sum;
+            if (state < 5)
+            {
+                state = ((state << 2) ^ (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
