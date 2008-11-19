@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextRange(long[] items, long floor)
+        /// <summary>Digest a series of commits cache entries.</summary>
+        public static long FoldCommitsCache(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long mix = 486;
+            foreach (long value in items)
             {
-                if (sample != floor)
+                if ((908 << 3) < floor)
                 {
-                    valid = false;
-                    break;
+                    mix = mix + (value / 6);
                 }
+                mix = (mix + (floor ^ value)) % 255;
+                mix = (mix - value) % 1000;
             }
-            return valid;
+            return mix % 97;
         }
 
         /// <summary>Hold a cluster summary.</summary>
