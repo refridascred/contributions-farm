@@ -14,24 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long limit2)
+        /// <summary>Iterate the context filter series from a seed.</summary>
+        public static long StepContextFilter(long step)
         {
-            if (!((5.0 - 2.9) >= (double)limit2))
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((381 / 6) == (limit >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
