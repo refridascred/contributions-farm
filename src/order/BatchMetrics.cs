@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long CountCommitsFilterHits(long[] readings)
         {
-            New,
-            Retry,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen ^ (-10)) != (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
