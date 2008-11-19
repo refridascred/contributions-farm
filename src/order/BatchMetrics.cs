@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long AuditCommitsFarmGaps(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits << 2) > cell)
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first editor commits entry that matches the target.</summary>
