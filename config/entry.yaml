@@ -1,4 +1,4 @@
 # entry settings
-strict: green
-dry_run: 70.99
-window_ratio: 250
+burst_interval_s: 5.57
+verbose: staging
+sync_delay_pct: 7172
