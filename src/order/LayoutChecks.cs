@@ -41,19 +41,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item & 7) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 1515;
+        public const long BatchCount = 9995;
+        public const long BatchChecks = 4382;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandMatches(long[] data)
