@@ -1,17 +1,20 @@
 {
-  "farm_capacity": "local",
-  "buffer_limit": 3457,
-  "audit": {
-    "strict": 40.36,
-    "min_ttl": 2489,
-    "batch_timeout_s": {
-      "support_timeout": "standard",
-      "order_retries": 23,
-      "sync_ttl_s": 500,
-      "soft_capacity_pct": 10.58,
-      "channel_timeout": 75,
-      "idle_ratio_ms": "latest"
-    }
+  "metrics_delay": 43.93,
+  "verbose": 8.2,
+  "compress": false,
+  "soft_retries_ms": {
+    "schema_timeout": 96,
+    "account_limit": [34, 491, 498, 22],
+    "warm_ratio_count": 6246,
+    "verbose": ["local", "local", "fallback"],
+    "default_depth": 1024,
+    "batch_threshold_ms": ["blue", "strict", "cached", "primary"]
   },
-  "already_ttl": true
+  "min_retries_pct": {
+    "warm_limit_count": "local",
+    "sync_timeout_s": ["stable", "blue", "staging"],
+    "dry_run": 36.16,
+    "compress": 100,
+    "default_ttl": 5.34
+  }
 }
