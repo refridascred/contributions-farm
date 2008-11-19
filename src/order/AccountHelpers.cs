@@ -25,12 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "latest-edge";
-        public const long MinToken = 3011;
-        public const long IdleToken = 5224;
-        public const long BaseSize = 3803;
-        public const long RetryToken = 5673;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double ratio, double floor)
