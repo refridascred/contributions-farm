@@ -29,12 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((8.1 * 7.0) < (double)datum) && ((1.0 / 9.0) >= (4.26 / 7.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the session record series from a seed.</summary>
