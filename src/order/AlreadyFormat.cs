@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long HardInterval = 6732;
         public const double WindowFactor = 77.27;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
