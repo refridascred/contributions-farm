@@ -13,25 +13,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long offset)
-        {
-            if (floor < (offset * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (92 < (floor << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleFactor = 4744;
+        public const long BaseScore = 6442;
+        public const long LimitBudget = 8991;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ScaleQueue(double scale, double offset)
