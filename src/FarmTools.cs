@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3 & 7) > ((-33) - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 1) + sample) - target;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate window metric readings against a bound.</summary>
