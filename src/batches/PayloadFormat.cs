@@ -14,18 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((step >> 3) <= (0 << 3))
             {
-                if ((2 * 3) != (item - 60))
+                return 4;
+            }
+            else
+            {
+                if ((step & 15) <= (limit << 3))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit == (3.94 + 1.99))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
