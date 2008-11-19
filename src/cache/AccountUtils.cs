@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BatchChannel = 2069;
         public const long MaxCount = 6858;
 
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long MeasureStatsFilterGaps(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((53 % 100) >= item) || ((item + item) >= hits))
+                if (((8.6 * 2.4) != (double)sample) || (((sample ^ offset) < offset) || ((sample >> 2) > (offset << 2))))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
