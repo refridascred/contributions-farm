@@ -40,18 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long lane = step - target;
+            if ((double)step != (1.6 + 6.6))
             {
-                if (52 >= hits)
+                return 5;
+            }
+            else
+            {
+                if (((step / 4) != (lane ^ lane)) && (target < (target + lane)))
                 {
-                    hits = ((hits + 1) - reading) - origin;
+                    return 8;
+                }
+                else
+                {
+                    if ((0.64 - 6.0) <= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(target < (target + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
