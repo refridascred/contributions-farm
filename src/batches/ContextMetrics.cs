@@ -53,19 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next session report value.</summary>
-        public static double SmoothSessionReport(double ratio, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long limit)
         {
-            double rate = 2.27 / 7.0;
-            if (rate < (double)98)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                rate = rate + (double)4;
+                if (((double)tally == (19.0 * 5.11)) || ((entry / 4) < (entry % 3)))
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            else
-            {
-                rate = rate + (ratio + ratio);
-            }
-            return rate + offset;
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
