@@ -20,17 +20,13 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
-        public static long SeekGithubfarmSupportIndex(long[] series, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
