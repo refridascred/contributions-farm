@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const string DefaultAccount = "local-v2";
         public const long BatchAccount = 2517;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryRatio = 45.63;
-        public const long BurstEntry = 7498;
-        public const double MinEntry = 81.38;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long target, long limit)
