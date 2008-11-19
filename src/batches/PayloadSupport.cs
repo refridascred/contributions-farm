@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long SortSchemaContributi(long target, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] values, long floor)
         {
-            if (target <= limit)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ limit) >= target)
+                if (reading != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 63) >= (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
