@@ -23,21 +23,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count checks order pairs that satisfy a relation.</summary>
-        public static long OverlapChecksOrderCount(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Match up order context samples.</summary>
