@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BatchChannel = 2069;
         public const long MaxCount = 6858;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] values, long target)
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long MeasureStatsFilterGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (item >= target)
+                if (((53 % 100) >= item) || ((item + item) >= hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
