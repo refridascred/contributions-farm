@@ -20,11 +20,13 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryBudget = 12.79;
-        public const string RetryTimeout = "local";
-        public const long SoftGraph = 5675;
-        public const string LimitRatio = "local";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Pending,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double SoftRoute = 9.0;
