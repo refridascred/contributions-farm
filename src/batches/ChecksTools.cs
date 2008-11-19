@@ -16,13 +16,19 @@ namespace Common.Utilities
         public const long IdleWidth = 5205;
         public const long MaxStream = 3001;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long origin)
         {
-            Queued,
-            Paused,
-            Locked,
-            Dropped,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of order notes readings.</summary>
