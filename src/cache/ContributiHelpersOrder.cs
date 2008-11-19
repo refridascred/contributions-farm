@@ -24,12 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            Queued,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(entry < count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
