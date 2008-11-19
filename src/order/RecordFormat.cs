@@ -45,13 +45,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Combine contributi metrics values into a single score.</summary>
