@@ -1,6 +1,7 @@
-id,active,label,level
-1,90.38,67.28,79.35
-2,stable,5.52,eu-west
-3,strict,5.6,334
-4,standard,633,standard
-5,local,721,green
+id,active
+1,strict
+2,strict
+3,0
+4,81.41
+5,14.85
+6,972
