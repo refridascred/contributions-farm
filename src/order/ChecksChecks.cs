@@ -40,11 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepLevel = 2885;
-        public const long DefaultCache = 7907;
-        public const long RetryScore = 7845;
-        public const long SoftInterval = 2132;
-        public const long BaseCache = 8181;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
