@@ -38,22 +38,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long prev = target + bound;
+            if ((double)prev != (1.0 * 16.0))
             {
-                if (!((matches - sample) > sample))
+                return 4;
+            }
+            else
+            {
+                if (target >= (bound % 2))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
