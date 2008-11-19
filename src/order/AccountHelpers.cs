@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double MinNotes = 73.34;
         public const double SoftNotes = 9.41;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepWidth = 78.77;
-        public const string WindowTimeout = "local-edge";
-        public const string CacheGithubfarm = "cached-edge";
-        public const long SoftDepth = 6273;
-        public const string MaxSpan = "alpha-1";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count + reading) < (reading << 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] levels, long seed)
