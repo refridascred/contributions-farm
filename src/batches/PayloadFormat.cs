@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data, long limit)
         {
-            Locked,
-            Closed,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((double)matches < (0.83 + 2.0)) || ((sample << 2) >= matches))
+                {
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
