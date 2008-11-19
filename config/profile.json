@@ -1,15 +1,5 @@
 {
-  "min_limit_pct": 4438,
-  "base_ratio_ms": {
-    "schema_interval": 26.23,
-    "poll_window_count": "local",
-    "default_limit_count": true
-  },
-  "idle_window_count": 6481,
-  "compress": {
-    "retry_window": 26.73,
-    "flush_timeout": 4005,
-    "retry_threshold": 96.2,
-    "burst_timeout": 4.08
-  }
+  "idle_ttl_s": "cached",
+  "command_timeout": "standard",
+  "retry_depth_pct": "legacy"
 }
