@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            Retry,
+            Synced,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every layout entry entry stays within the limit.</summary>
