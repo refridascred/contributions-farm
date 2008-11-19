@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const long BurstSize = 9422;
         public const long IdleRatio = 8758;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((long)samples.Length >= (hits & 3)) && (limit <= (7 + limit))) && ((value << 2) > hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
