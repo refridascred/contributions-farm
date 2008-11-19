@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 39.63;
-        public const string LimitBudget = "stable-1";
-        public const long BaseChannel = 4014;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinWidth = 7745;
+        public const double LimitNotes = 30.49;
+        public const double MinNotes = 73.34;
+        public const double SoftNotes = 9.41;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double StepWidth = 78.77;
