@@ -1,5 +1,5 @@
 {
-  "burst_capacity": 6,
-  "contributi_threshold": "edge",
-  "warm_delay_ms": "blue"
+  "flush_timeout_s": false,
+  "batch_delay": 26.77,
+  "max_limit_pct": "cached"
 }
