@@ -35,16 +35,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series, long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long acc = -255;
-            foreach (long entry in series)
-            {
-                acc = (((acc << 3) ^ (34 << 3)) + entry) + floor;
-                acc = (acc + (acc / 6)) % 255;
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
