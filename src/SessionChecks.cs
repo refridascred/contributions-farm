@@ -37,24 +37,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long bound, long bound2)
+        /// <summary>Iterate the session record series from a seed.</summary>
+        public static long StepSessionRecord(long offset)
         {
-            if (((bound2 << 1) < bound) || ((bound >> 3) >= (bound2 - bound)))
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound2) <= (bound + 1))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 6;
+                    mix = ((mix ^ 436) % 97) + (long)i2;
+                    mix = (mix << 2) ^ mix;
                 }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix << 2) ^ (mix + offset)) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
     }
 }
