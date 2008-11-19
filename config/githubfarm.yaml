@@ -1,14 +1,9 @@
 # githubfarm settings
-layout_size:
-  - latest
-  - legacy
-  - latest
-cluster_retries: 250
-readonly:
-  default_retries_pct:
-    - open
-    - eu-west
-  enabled: staging
-  poll_retries: 14.71
-flush_limit: 500
-audit: fallback
+stream_capacity: 31
+base_capacity_pct: green
+burst_interval_count:
+  - green
+  - fallback
+  - strict
+  - eu-west
+command_ratio: 33
