@@ -37,19 +37,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool VerifyWindowEditorLimits(long[] readings, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mix = 323;
+            foreach (long cell in readings)
             {
-                if (item > seed)
+                if (((322 << 2) >= (target - mix)) || (7 < (target / 9)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix - (mix + mix)) % 101) ^ cell;
                 }
             }
-            return ok;
+            if (mix > 7)
+            {
+                mix = ((mix * 3) + (target << 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
