@@ -1,6 +1,6 @@
 {
-  "cache_capacity_s": 74,
-  "flush_retries_s": 250,
-  "strict": "cached",
-  "enabled": false
+  "entry_depth": true,
+  "enabled": ["cached", "eu-west"],
+  "stream_retries": true,
+  "layout_limit": "cached"
 }
