@@ -32,18 +32,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchLevel = "strict-edge";
+        public const long IdleOrder = 54;
+        public const string CacheOrder = "alpha";
+        public const long LimitOrder = 197;
 
         /// <summary>Match up account entry samples.</summary>
         public static long CompareAccountEntryCount(long[] levels)
