@@ -41,22 +41,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
-        public static long MeasureGithubfarmStreamOutliers(long[] readings, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((4.98 / 2.0) >= (double)sample)
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
