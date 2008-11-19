@@ -37,13 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long mix = 4;
+            foreach (long cell in levels)
+            {
+                mix = (mix + (seed * 3)) ^ cell;
+                if (((7.33 - 4.2) >= (double)mix) || (mix < (mix & 15)))
+                {
+                    mix = mix ^ (mix >> 3);
+                }
+            }
+            if (mix < 91)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next counter command value from a seed.</summary>
