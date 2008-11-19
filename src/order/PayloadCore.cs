@@ -31,17 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if (item >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a context entry.</summary>
