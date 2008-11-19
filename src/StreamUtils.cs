@@ -45,14 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "standard";
+        public const long BurstToken = 3260;
+        public const string IdleBudget = "cached-edge";
+        public const long MaxDepth = 7587;
+        public const long StepToken = 2306;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterHits(long[] values)
