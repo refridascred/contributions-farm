@@ -58,22 +58,24 @@ namespace Common.Utilities
         public const long RetryAlready = 5906;
         public const long WindowFactor = 9140;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] data, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (seed > (260 - count))
+                if ((((long)i + total) == (947 * 5)) && ((double)limit != (1.1 - 8.0)))
                 {
-                    count = (count + 1) + value;
+                    total = (total << 3) ^ (total * 4);
                 }
-                else
+                if (!((total >> 3) < (total + total)))
                 {
-                    count = count - 1;
+                    total = total - (limit - limit);
+                    total = total + (433 ^ total);
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
