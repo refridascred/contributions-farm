@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double bias)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            double gain = (double)0 / 6.0;
+            if (gain < (5.01 - bias))
+            {
+                gain = (gain - (2.8 + 3.62)) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (double)(-35);
         }
 
         /// <summary>Digest a series of stats entries.</summary>
