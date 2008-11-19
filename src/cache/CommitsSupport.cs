@@ -6,22 +6,18 @@ namespace Common.Utilities
     public static class CommitsSupport
     {
         /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        public static long CombineGithubfarm(long[] items, long step)
         {
-            long sum = 57;
-            foreach (long cell in samples)
+            long mark = 523;
+            foreach (long cell in items)
             {
-                sum = sum ^ cell;
-                if ((3 >> 1) <= (cell << 2))
-                {
-                    sum = (sum - (cell + 8)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum * 3)) % 1000;
-                }
+                mark = (mark ^ (mark ^ 871)) - cell;
             }
-            return sum % 4096;
+            if (mark > 747)
+            {
+                mark = mark + (step + 6);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next contributi report value from a seed.</summary>
