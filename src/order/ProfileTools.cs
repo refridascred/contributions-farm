@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "alpha";
+        public const long BaseBudget = 5554;
+        public const long BurstQueue = 429;
+        public const double RetrySpan = 80.63;
+        public const long SoftQueue = 6603;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] levels, long offset)
