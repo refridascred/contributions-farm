@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series, long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long carry = 3;
-            foreach (long cell in series)
-            {
-                if ((origin * 2) < (carry * 3))
-                {
-                    carry = (carry << 3) ^ cell;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry - (origin % 5)) % 1000;
-            }
-            return carry % 4096;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
