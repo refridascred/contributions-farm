@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long step)
+        /// <summary>Blend two contributi cache measurements.</summary>
+        public static double AdjustContributiCache(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (1 <= matches)
-                {
-                    matches = ((matches + 1) - cell) - step;
-                }
-            }
-            return matches;
+            double scale = offset;
+            return (scale - scale) + gain;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
