@@ -27,13 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Done,
-            New,
-            Ready,
             Draft,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a stream summary.</summary>
