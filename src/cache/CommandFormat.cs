@@ -30,19 +30,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long limit)
+        /// <summary>Rank notes layout input into a small class.</summary>
+        public static long BucketNotesLayout(long step, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((seed & 127) > (191 * 2))
             {
-                if (entry < limit)
+                return 2;
+            }
+            else
+            {
+                if (((seed & 63) <= step) || ((step - seed) == (seed + seed)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (step & 127)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2.65 + 11.0) == (double)seed) && ((seed + seed) < 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the graph mode values.</summary>
