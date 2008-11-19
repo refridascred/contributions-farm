@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            New,
-            Ready,
-            Closed,
+            double weight = span;
+            if (weight <= (span + weight))
+            {
+                weight = weight - ratio;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Measure how many entry account samples are out of range.</summary>
