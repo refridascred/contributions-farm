@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long ClassifyTokenEditor(long seed, long target)
-        {
-            if ((double)seed > 5.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((6.0 + 1.07) > (double)seed) || (((-960) / 7) <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5853;
+        public const long WindowProfile = 428;
+        public const long StepInterval = 8824;
+        public const long CacheFactor = 2360;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long DigestChecks(long[] readings)
