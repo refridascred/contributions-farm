@@ -37,11 +37,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                if ((74 + sum) >= sample)
+                {
+                    sum = sum + 318;
+                    sum = (sum + (sum & 3)) % 101;
+                }
+                if ((double)sample > (9.35 / 7.0))
+                {
+                    sum = (sum * 2) + (6 & 63);
+                }
+                else
+                {
+                    sum = sum - (sum - sum);
+                }
+            }
+            if (sum > 0)
+            {
+                sum = ((sum << 3) ^ sum) % 1000;
+            }
+            return sum;
         }
     }
 }
