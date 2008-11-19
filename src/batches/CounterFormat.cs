@@ -39,12 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((1.2 * 7.0) >= (double)count) || ((7.88 * 7.0) != (double)sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
