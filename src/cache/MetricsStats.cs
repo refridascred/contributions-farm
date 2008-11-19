@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Accumulate token notes samples.</summary>
+        public static long FoldTokenNotes(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 1;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum + sum) - datum) - target;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up session samples.</summary>
