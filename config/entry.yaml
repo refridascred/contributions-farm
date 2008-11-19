@@ -1,6 +1,4 @@
 # entry settings
-window_depth: stable
-retry_depth_ms: 46.68
-notes_interval: latest
-idle_delay_s: open
-hard_delay_s: 25
+strict: green
+dry_run: 70.99
+window_ratio: 250
