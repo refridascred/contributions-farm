@@ -48,13 +48,21 @@ namespace Common.Utilities
         public const double MaxSpan = 36.62;
         public const long StepBudget = 5757;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Match up metrics support samples.</summary>
+        public static long MatchMetricsSupportCount(long[] items)
         {
-            New,
-            Retry,
-            Synced,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
