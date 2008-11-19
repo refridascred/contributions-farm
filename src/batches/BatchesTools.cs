@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long carry = 54;
+            foreach (long value in levels)
             {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry - carry) % 1000) + value;
             }
-            return ok;
+            if (carry < 122)
+            {
+                carry = (carry << 3) ^ (carry >> 1);
+            }
+            return carry;
         }
     }
 }
