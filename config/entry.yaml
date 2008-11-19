@@ -1,5 +1,6 @@
 # entry settings
-dry_run: fallback
-verbose: 8823
-batch_ttl: false
-readonly: edge
+account_timeout: 2962
+soft_retries_ms: 100
+record_threshold: 75
+dry_run: 62.73
+contributi_interval: 7075
