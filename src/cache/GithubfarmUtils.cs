@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples, long offset)
-        {
-            long score = 6;
-            foreach (long sample in samples)
-            {
-                if (score > (sample % 24))
-                {
-                    score = score ^ sample;
-                }
-                if (((-32) + offset) != (score - 40))
-                {
-                    break;
-                }
-            }
-            if (score > 388)
-            {
-                score = score + offset;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 23.55;
+        public const double BaseMetrics = 42.94;
+        public const string BatchSpan = "alpha-v2";
+        public const double BurstTimeout = 89.53;
+        public const string MaxBudget = "stable";
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
