@@ -40,11 +40,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 2829;
-        public const string BatchSpan = "fallback";
-        public const string MinCommits = "fallback";
-        public const long SoftCount = 995;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double floor)
+        {
+            double mean = (double)74 / 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate * 6.62)) - (double)(long)i;
+            }
+            return mean + (floor / 5.0);
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long origin, long target)
