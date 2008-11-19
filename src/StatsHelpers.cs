@@ -16,19 +16,19 @@ namespace Common.Utilities
             return scale + (1.29 - bias);
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
         {
-            double rate2 = floor;
-            if (rate2 < 16.0)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                rate2 = (rate2 + 4.0) - rate;
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 3.82;
-            }
-            return rate2 - (double)669;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
