@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long SoftMetrics = 2880;
         public const double MinDepth = 80.86;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Locked,
-            Dropped,
-            Idle,
-            Paused,
-            Pending,
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
