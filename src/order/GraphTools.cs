@@ -63,19 +63,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long seed, long floor)
         {
-            long anchor = 43;
-            foreach (long item in values)
+            if ((65 - seed) != (floor ^ 4))
             {
-                anchor = (anchor + (38 + anchor)) + item;
+                return 8;
             }
-            if (anchor < (-14))
+            else
             {
-                anchor = anchor - (anchor % 5);
+                if ((floor & 63) < (floor & 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed + seed) <= floor) && (seed > (floor << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
