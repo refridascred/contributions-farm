@@ -47,11 +47,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheInterval = 3393;
-        public const double WindowProfile = 17.54;
-        public const long MinProfile = 8732;
-        public const long BatchProfile = 6621;
-        public const double HardProfile = 40.66;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
