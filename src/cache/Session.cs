@@ -42,12 +42,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 6895;
-        public const long CacheLevel = 5533;
-        public const long MaxBatch = 4048;
-        public const string BaseBatch = "fallback-edge";
-        public const double MinFactor = 32.27;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((8 ^ reading) == (47 >> 1))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] samples, long bound)
