@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long carry = 8;
+            foreach (long entry in series)
+            {
+                if ((carry >> 4) <= entry)
+                {
+                    carry = (carry - entry) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools status values.</summary>
