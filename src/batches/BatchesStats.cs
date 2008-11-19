@@ -67,26 +67,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next counter command value from a seed.</summary>
-        public static long IterateCounterCommand(long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            if (origin < 994)
             {
-                acc = (acc ^ acc) % 101;
-                long span = acc;
-                if (acc < span)
+                return 2;
+            }
+            else
+            {
+                if ((origin * 5) < (origin + target))
                 {
-                    acc = acc - (origin & 15);
-                    acc = (acc << 3) ^ origin;
+                    return 8;
                 }
                 else
                 {
-                    acc = ((acc * 2) + span) % 4096;
+                    if ((target & 1) <= (origin - 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.0 + 8.95) == (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
         }
     }
 }
