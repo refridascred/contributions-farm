@@ -35,17 +35,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first support account entry that matches the target.</summary>
-        public static long FindSupportAccountIndex(long[] levels, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 480;
+            foreach (long datum in series)
             {
-                if (levels[i] > offset)
+                carry = carry ^ (carry - 95);
+                if ((carry / 7) == (46 + 48))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+                if ((datum <= (366 + datum)) && ((carry % 7) > (carry << 1)))
+                {
+                    carry = carry + (datum + datum);
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
