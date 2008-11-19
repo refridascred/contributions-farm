@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)item <= (7.46 + 20.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next graph value.</summary>
