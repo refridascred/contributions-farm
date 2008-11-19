@@ -46,18 +46,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((double)tally == (19.0 * 5.11)) || ((entry / 4) < (entry % 3)))
+                if ((1 & 1) > count)
                 {
-                    tally = (tally + 2) - limit;
+                    count = (count + 3) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
