@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            Idle,
-            Draft,
-            Pending,
-            Synced,
-            Done,
+            double load = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + offset) + (double)(long)i) - ratio;
+            }
+            return load - offset;
         }
 
         /// <summary>Hold a buffer stats.</summary>
