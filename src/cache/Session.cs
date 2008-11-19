@@ -42,18 +42,30 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data, long floor)
+        /// <summary>Digest a series of metrics tools entries.</summary>
+        public static long CombineMetricsTools(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 30;
+            foreach (long entry in values)
             {
-                if ((8 ^ reading) == (47 >> 1))
+                if ((double)anchor < 3.0)
                 {
-                    hits = (hits + 3) + floor;
+                    anchor = ((anchor * 5) + entry) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (entry % 97);
+                }
+                if ((194 / 7) > anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 631)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
