@@ -35,22 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count * 4) <= (cell >> 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Retry,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Accumulate format samples.</summary>
