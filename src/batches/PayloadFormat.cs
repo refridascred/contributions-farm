@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (readings[i] < seed)
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
