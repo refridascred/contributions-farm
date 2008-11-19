@@ -29,14 +29,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Iterate the notes cluster series from a seed.</summary>
+        public static long RollNotesCluster(long target)
         {
-            Retry,
-            Closed,
-            Pending,
-            Paused,
-            Locked,
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((2 + (long)i) != (long)i)
+                {
+                    state = ((state << 2) ^ (75 >> 4)) % 65521;
+                    state = state + target;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
