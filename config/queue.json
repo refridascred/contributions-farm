@@ -1,16 +1,17 @@
 {
-  "persist": "fallback",
-  "batch_size_ms": {
-    "idle_ratio_ms": 8978,
-    "cache_size": {
-      "record_limit": 5655,
-      "verbose": "local",
-      "warm_ttl_s": 1304
-    },
-    "min_window_s": 33,
-    "base_ratio": "green"
+  "compress": {
+    "soft_interval_count": 30,
+    "base_size": ["blue", "standard", "fallback"],
+    "persist": 9.17,
+    "sync_ratio_ms": 75.08,
+    "flush_interval": {
+      "hard_interval_ms": "open",
+      "poll_ttl": 14,
+      "max_depth_pct": false
+    }
   },
-  "compress": "eu-west",
-  "filter_window": 500,
-  "default_interval": false
+  "audit": false,
+  "sync_retries_count": 43.8,
+  "retry_threshold_ms": 7790,
+  "max_delay_s": true
 }
