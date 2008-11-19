@@ -51,19 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool ValidateGraphMetricsLimits(long[] series, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (reading <= step)
+                if ((0.79 <= (double)target) || ((target * 2) <= matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
