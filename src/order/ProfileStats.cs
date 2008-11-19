@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long offset)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            long acc = 4;
+            foreach (long datum in items)
             {
-                mix = (mix + mix) % 4096;
-                if ((698 + mix) <= (mix & 1))
+                if ((acc >= ((-74) - acc)) && ((offset << 2) > offset))
                 {
-                    mix = ((mix * 3) + (cell + cell)) % 97;
+                    acc = (acc ^ (datum / 2)) % 65521;
                 }
-                if ((16.0 + 0.94) > (double)(long)samples.Length)
+                else
                 {
-                    break;
+                    acc = (acc + (600 + acc)) % 65521;
                 }
             }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
