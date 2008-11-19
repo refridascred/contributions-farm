@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count ^ limit) == (value / 6))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a support header.</summary>
