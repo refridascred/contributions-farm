@@ -40,31 +40,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long origin)
-        {
-            if ((origin << 3) <= (floor + 37))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor * 5) != (origin + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin % 60) < (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepLevel = 2885;
+        public const long DefaultCache = 7907;
+        public const long RetryScore = 7845;
+        public const long SoftInterval = 2132;
+        public const long BaseCache = 8181;
     }
 }
