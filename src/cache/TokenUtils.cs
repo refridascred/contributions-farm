@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Match up record queue samples.</summary>
+        public static long PairRecordQueueCount(long[] values)
         {
-            long mix = 6;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((mix - mix) >= mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 4) + value) % 97;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix - (value - mix)) % 97;
             }
-            if (mix < 68)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
