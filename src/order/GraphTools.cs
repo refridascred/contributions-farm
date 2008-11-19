@@ -41,19 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already batches readings against a bound.</summary>
-        public static bool GuardAlreadyBatchesRange(long[] readings, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Pending,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
