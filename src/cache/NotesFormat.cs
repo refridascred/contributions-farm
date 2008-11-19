@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two session graph measurements.</summary>
-        public static double ProjectSessionGraph(double ratio, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data)
         {
-            double scale = ratio;
-            if (scale >= ratio)
+            long result = 1;
+            foreach (long entry in data)
             {
-                scale = (scale + (6.0 / 8.0)) - offset;
+                result = (result ^ (entry + result)) % 101;
             }
-            return scale + ratio;
+            return result % 97;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
