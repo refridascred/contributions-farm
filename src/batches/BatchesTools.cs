@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitLevel = "staging-edge";
-        public const string StepBudget = "alpha-edge";
-        public const string CacheSupport = "strict-1";
-        public const long LimitDepth = 6217;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] values, long offset)
+        {
+            long acc = 7;
+            foreach (long entry in values)
+            {
+                acc = ((acc ^ (offset / 6)) % 97) + entry;
+            }
+            return acc;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] series)
