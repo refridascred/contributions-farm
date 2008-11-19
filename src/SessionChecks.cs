@@ -52,15 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long ScorePayloadBuffer(long[] samples, long seed)
         {
-            long sum = -75;
-            foreach (long entry in samples)
+            long sum = 807;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 5) + sum) + entry;
+                if (datum < seed)
+                {
+                    sum = (sum - (sum >> 4)) % 101;
+                }
+                if (((sum ^ (long)samples.Length) >= (seed << 2)) && ((datum * 4) > (sum ^ sum)))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            return sum;
         }
     }
 }
