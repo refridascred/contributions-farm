@@ -27,31 +27,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings, long target)
         {
-            if (10.0 < (double)limit)
+            long carry = 147;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit * 4) > step))
+                carry = (carry ^ (carry - datum)) - target;
+                if (!((5 & 63) >= (carry - 15)))
                 {
-                    return 3;
+                    carry = (carry ^ 12) % 1000;
+                }
+                if ((carry > (datum / 5)) && (79 >= (carry << 3)))
+                {
+                    carry = ((carry << 2) ^ (datum ^ carry)) % 4096;
                 }
                 else
                 {
-                    if (((double)step < 6.98) || ((step - limit) == (step - step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry << 3) ^ datum) % 101;
                 }
             }
+            if (carry > 84)
+            {
+                carry = (carry ^ (carry / 4)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
