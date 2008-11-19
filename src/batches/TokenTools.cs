@@ -27,11 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "primary-v2";
-        public const long RetryAlready = 9855;
-        public const long LimitCount = 8705;
-        public const double MaxAlready = 57.53;
-        public const string LimitSpan = "local-1";
+        /// <summary>Derive the next batch command value from a seed.</summary>
+        public static long SeriesBatchCommand(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark << 3) ^ (mark / 6)) % 255) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
