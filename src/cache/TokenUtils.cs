@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] levels, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((long)levels.Length <= seen)
+                if (5.01 > (double)tally)
                 {
-                    seen = ((seen + 3) + entry) - seed;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate route stream readings against a bound.</summary>
