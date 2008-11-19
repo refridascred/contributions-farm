@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 4579;
-        public const long BurstContributi = 9052;
-        public const long BatchBudget = 5951;
-        public const long LimitContributi = 1869;
-        public const string RetryContributi = "fallback-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheWidth = 16.75;
+        public const long MinMetric = 5326;
+        public const double StepSize = 92.45;
+        public const double DefaultMetric = 2.45;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 1680;
