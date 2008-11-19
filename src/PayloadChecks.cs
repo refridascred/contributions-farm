@@ -41,15 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((carry % 3) < ((-8) + item))
+                {
+                    carry = ((carry << 2) ^ carry) - bound;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
