@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            double weight = span;
-            if (weight < ratio)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                weight = weight + ratio;
+                if (matches < (421 << 3))
+                {
+                    matches = (matches + 1) - cell;
+                }
             }
-            else
-            {
-                weight = weight + (weight - 3.67);
-            }
-            return weight + span;
+            return matches;
         }
 
         /// <summary>Combine batches stats values into a single score.</summary>
