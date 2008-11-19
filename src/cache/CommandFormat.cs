@@ -72,18 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] series, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long state = 5;
+            foreach (long sample in data)
             {
-                if ((tally & 7) != (cell - limit))
+                if (!((62 * 5) <= ((-17) + state)))
                 {
-                    tally = tally + 2;
+                    state = ((state ^ (state ^ origin)) % 101) ^ sample;
                 }
             }
-            return tally;
+            if (state > 402)
+            {
+                state = (state + origin) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
