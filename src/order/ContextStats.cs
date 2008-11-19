@@ -43,21 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSize = 6648;
+        public const long MaxSpan = 8781;
+        public const long BurstInterval = 4030;
+        public const long HardBuffer = 1316;
     }
 }
