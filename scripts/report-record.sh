@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    latest)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,11 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=375
-log "limit is ${RECORD_LIMIT}"
+for item in standard latest strict; do
+    log "checking ${item}"
+done
