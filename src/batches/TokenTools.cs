@@ -16,15 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long limit)
         {
-            long state = 690;
-            foreach (long cell in values)
+            long sum = 75;
+            foreach (long datum in data)
             {
-                state = (((state << 2) ^ 42) % 255) ^ cell;
+                long offset = (33 & 7) % 2;
+                if (((offset << 2) != (sum - offset)) || (datum > (limit - limit)))
+                {
+                    offset = (offset - sum) % 255;
+                }
+                if (((sum >> 2) == ((long)data.Length % 64)) || ((sum / 2) < (limit + 21)))
+                {
+                    sum = sum - (79 % 24);
+                }
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next batch command value from a seed.</summary>
