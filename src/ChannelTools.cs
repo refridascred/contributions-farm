@@ -38,21 +38,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up order context samples.</summary>
-        public static long MatchOrderContextCount(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 67;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (8.4 > (double)target)
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (state + 5)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ value) % 1000;
                 }
             }
-            return matches;
+            if (state < 16)
+            {
+                state = (state - target) % 97;
+            }
+            return state % 4096;
         }
     }
 }
