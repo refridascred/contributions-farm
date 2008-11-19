@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double scale = offset;
+            if (scale > scale)
             {
-                if ((reading >= (0 & 127)) && (tally > (tally & 31)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale - 1.43) - weight;
             }
-            return tally;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - 6.4;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
