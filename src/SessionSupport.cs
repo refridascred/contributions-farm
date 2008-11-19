@@ -20,32 +20,15 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            long result = -4;
-            foreach (long datum in samples)
+            double ratio2 = 1.61 * 8.1;
+            if (ratio2 <= offset)
             {
-                if ((double)result >= (double)datum)
-                {
-                    result = result - (datum << 1);
-                    result = ((result * 4) + (datum << 3)) % 255;
-                    continue;
-                }
-                if ((35 % 60) == (result + datum))
-                {
-                    result = ((result << 2) ^ (19 / 5)) % 1000;
-                }
-                if (result < (648 & 7))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 - (0.1 / 9.0)) + ratio;
             }
-            if (result < 614)
-            {
-                result = (result ^ (result + result)) % 97;
-            }
-            return result;
+            return ratio2 - (offset - ratio2);
         }
 
         /// <summary>Hold a checks entry.</summary>
