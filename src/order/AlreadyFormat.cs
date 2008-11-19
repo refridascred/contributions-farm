@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((2 + offset) != (value & 63))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
