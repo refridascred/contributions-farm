@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 57;
+            foreach (long cell in samples)
             {
-                if (sample != origin)
+                sum = sum ^ cell;
+                if ((3 >> 1) <= (cell << 2))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (cell + 8)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum * 3)) % 1000;
                 }
             }
-            return ok;
+            return sum % 4096;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
