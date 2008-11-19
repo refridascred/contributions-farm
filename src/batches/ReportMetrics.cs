@@ -15,11 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long AuditGraphCacheMatches(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((double)value > 8.65))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
