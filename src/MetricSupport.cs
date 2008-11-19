@@ -17,22 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count schema cluster pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaClusterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultScore = "standard-v2";
+        public const long MinBatches = 5321;
+        public const long BatchScore = 6841;
+        public const string CacheBatches = "local-edge";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] readings, long origin)
