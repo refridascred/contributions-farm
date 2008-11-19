@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] levels)
         {
-            long sum = -8;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                sum = (((sum - (long)values.Length) % 97) ^ value) - limit;
+                if ((seen ^ entry) > (entry / 4))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Hold a filter summary.</summary>
