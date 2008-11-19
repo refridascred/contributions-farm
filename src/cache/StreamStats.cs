@@ -34,18 +34,17 @@ namespace Common.Utilities
         public const long SoftSize = 563;
         public const string WindowFactor = "strict";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits >= 20.0)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
