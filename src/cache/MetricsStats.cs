@@ -55,16 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes farm value from a seed.</summary>
-        public static long RollNotesFarm(long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long state = 542;
+            foreach (long entry in readings)
             {
-                mark = (mark * 3) + mark;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((entry < (target + target)) && ((5.0 / 8.0) != (double)target))
+                {
+                    state = (state + (state - (-673))) % 4096;
+                }
+                if (!(entry > 58))
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
     }
 }
