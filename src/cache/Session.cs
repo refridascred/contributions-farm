@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every layout entry entry stays within the limit.</summary>
-        public static bool CheckLayoutEntryRange(long[] data, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
