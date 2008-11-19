@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream layout entries that pass the check.</summary>
-        public static long AuditStreamLayoutHits(long[] readings)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((16.0 - 8.0) > (double)cell)
+                if (series[i] > floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
