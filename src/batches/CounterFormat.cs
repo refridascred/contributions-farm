@@ -36,10 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitCount = "latest-v2";
-        public const long LimitRatio = 4711;
-        public const string LimitDepth = "local-v2";
-        public const long BaseInterval = 6636;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
