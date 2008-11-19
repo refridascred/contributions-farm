@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long floor, long seed)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long delta = floor ^ seed;
+            if ((double)seed != (2.69 - 7.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.18 / 5.0) == (double)delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta << 1) != (delta * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
