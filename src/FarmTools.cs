@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
