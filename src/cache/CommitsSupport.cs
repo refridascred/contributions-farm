@@ -38,19 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (datum >= (734 + bound))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinInterval = 5355;
+        public const string LimitRatio = "stable";
+        public const long MinLevel = 5561;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
