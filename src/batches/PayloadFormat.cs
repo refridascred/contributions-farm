@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 1153;
+        public const string RetryRecord = "primary-edge";
+        public const long WindowWidth = 222;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
