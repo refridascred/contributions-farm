@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache contributi readings against a rule.</summary>
-        public static long TallyCacheContributiHits(long[] series)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((45 ^ reading) <= (count >> 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double gain = (double)(4 >> 1);
+            return ((gain + (2.54 - gain)) + rate) + span;
         }
 
         /// <summary>Combine schema tools values into a single score.</summary>
