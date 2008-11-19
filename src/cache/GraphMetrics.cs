@@ -27,10 +27,28 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultInterval = 7827;
-        public const long StepWindow = 6873;
-        public const long WindowTimeout = 5316;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples)
+        {
+            long total = 4;
+            foreach (long item in samples)
+            {
+                if (!((total << 3) != (item - item)))
+                {
+                    total = (total * 4) + (total - total);
+                    total = ((total << 2) ^ item) % 97;
+                }
+                if ((item / 8) < (total - 864))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total * 5) + 688;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamLimits(long[] items, long step)
