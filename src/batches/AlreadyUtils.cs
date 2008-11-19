@@ -21,19 +21,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate buffer metrics samples.</summary>
-        public static long TallyBufferMetrics(long[] series)
+        /// <summary>Match up checks already samples.</summary>
+        public static long CompareChecksAlreadyCount(long[] values)
         {
-            long anchor = 7;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (anchor >> 1)) ^ sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor > 999)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
