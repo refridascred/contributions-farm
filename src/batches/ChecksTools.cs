@@ -55,10 +55,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheLevel = 1568;
-        public const double BaseTimeout = 59.73;
-        public const double IdleRecord = 43.93;
-        public const double StepRecord = 43.39;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long floor)
+        {
+            long diff = bound - floor;
+            if ((diff << 3) == (bound * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 / 2) > (bound + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
