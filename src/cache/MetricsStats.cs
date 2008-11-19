@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)14 + span;
+            if (weight <= (double)(-27))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (2.2 - weight);
             }
-            return hits;
+            else
+            {
+                weight = weight - (scale + span);
+            }
+            return weight + (double)57;
         }
 
         /// <summary>Describe the queue status values.</summary>
