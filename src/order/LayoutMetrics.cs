@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Failed,
-            Locked,
-            Ready,
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
