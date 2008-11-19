@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Paused,
-            Retry,
-            Synced,
-            Active,
+            Locked,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Grade a context record value against two limits.</summary>
