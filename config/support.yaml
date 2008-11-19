@@ -1,4 +1,35 @@
 # support settings
-burst_timeout_count: fallback
-idle_ttl_s: standard
-stats_capacity: 96
+entry_capacity:
+  - fallback
+  - eu-west
+  - edge
+layout_retries:
+  enabled:
+    - 436
+    - 475
+  commits_limit: 250
+  max_window_ms: cached
+  strict: 29.77
+  tools_timeout:
+    - 472
+    - 346
+    - 176
+commits_ttl: standard
+base_delay_count:
+  base_window_count:
+    - cached
+    - open
+  strict: 45.05
+  metrics_timeout: 63
+  flush_ratio_pct:
+    dry_run: staging
+    token_ratio: 65.0
+    support_interval: 250
+    burst_retries_s: false
+    poll_timeout: true
+    idle_delay_pct:
+      - 54
+      - 140
+  default_ratio: edge
+stream_window: primary
+max_timeout: standard
