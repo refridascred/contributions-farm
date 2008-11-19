@@ -24,24 +24,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 531;
+            foreach (long cell in readings)
             {
-                bool found = offset > (sum / 4);
-                if (found)
+                state = state ^ (cell + state);
+                state = (state + (state + state)) % 97;
+                if ((4.5 * 4.94) > (double)origin)
                 {
-                    found = offset > ((long)i << 3);
+                    break;
                 }
-                else
-                {
-                    sum = ((sum * 3) + (offset + (long)i)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            if (state > 69)
+            {
+                state = (state * 4) + 4;
+            }
+            return state;
         }
 
         /// <summary>Combine already values into a single score.</summary>
