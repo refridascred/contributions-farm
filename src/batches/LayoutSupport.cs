@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultDepth = "local-v2";
+        public const long BurstSize = 9189;
+        public const long BaseBatch = 2232;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] items, long origin)
