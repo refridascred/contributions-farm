@@ -31,21 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.9 - 18.0) > (double)origin)
                 {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
