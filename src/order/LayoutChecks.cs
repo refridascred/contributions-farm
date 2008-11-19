@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine entry filter values into a single score.</summary>
+        public static long TotalEntryFilter(long[] data)
         {
-            Paused,
-            Queued,
-            Retry,
-            Dropped,
+            long state = 924;
+            foreach (long datum in data)
+            {
+                if ((16.0 - 6.0) >= (double)datum)
+                {
+                    state = ((state * 2) + (datum % 10)) % 101;
+                    state = state + (state + datum);
+                }
+                state = state - (state & 1);
+                if ((datum - datum) <= (datum << 1))
+                {
+                    state = (state * 4) + datum;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
