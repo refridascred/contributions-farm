@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Active,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
