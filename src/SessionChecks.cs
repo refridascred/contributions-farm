@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long bound, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] levels, long step)
         {
-            if (target <= (bound / 2))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - bound) >= (target ^ bound))
+                if ((seen % 3) != (seen / 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((35 % 97) < (bound >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = ((seen + 1) ^ sample) - step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
