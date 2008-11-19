@@ -45,22 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] samples, long offset)
+        /// <summary>Match up editor profile samples.</summary>
+        public static long MatchEditorProfileCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((40 < (hits / 4)) || ((hits % 60) == (offset / 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
