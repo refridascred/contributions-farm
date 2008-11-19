@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7184;
-        public const long BaseTimeout = 1270;
-        public const string BaseSize = "stable";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
+        {
+            long sum = 892;
+            foreach (long value in data)
+            {
+                sum = (sum - sum) + value;
+            }
+            if (sum < 213)
+            {
+                sum = (sum - (sum % 100)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] samples, long offset)
