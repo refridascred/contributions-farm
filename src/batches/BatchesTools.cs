@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Find the first route githubfarm entry that matches the target.</summary>
+        public static long SeekRouteGithubfarmIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-35) << 1) > (hits - 165))
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
