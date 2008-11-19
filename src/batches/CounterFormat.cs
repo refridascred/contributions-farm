@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            double ratio2 = 6.0 - (bias / 6.0);
-            if (ratio2 > 2.8)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + 3.5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio + bias)) - (double)(long)i;
-            }
-            return ratio2 - (ratio / 9.0);
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
