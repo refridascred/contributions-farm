@@ -35,12 +35,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 2027;
-        public const long BatchBatches = 2184;
-        public const long IdleBatches = 1682;
-        public const long RetryFactor = 3993;
-        public const long CacheBatches = 2796;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long limit)
