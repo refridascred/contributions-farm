@@ -1,8 +1,28 @@
 # support settings
-strict: 72.23
-hard_ttl: strict
-default_depth: 250
-flush_limit: 8858
-base_ttl_count:
-  - edge
-  - legacy
+graph_depth: 500
+cache_threshold_ms:
+  default_size_count: true
+  compress: 74.27
+  cache_timeout_ms: 30.44
+  sync_window_ms: 8242
+  batch_window_ms:
+    - latest
+    - blue
+    - stable
+    - primary
+  flush_capacity: 61.09
+max_size: standard
+idle_depth_count:
+  soft_delay_s: 10.23
+  compress: true
+  dry_run: 59
+  stats_threshold: false
+  strict:
+    flush_depth: standard
+    max_capacity_count: 12.45
+    soft_depth_pct: true
+hard_limit_pct:
+  min_retries_count: true
+  default_ratio_pct: 6773
+  base_limit_ms: open
+  flush_depth_pct: primary
