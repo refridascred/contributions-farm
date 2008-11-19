@@ -1,7 +1,7 @@
 {
-  "soft_ratio": false,
-  "burst_threshold_pct": "primary",
-  "poll_limit_pct": "cached",
-  "cache_timeout_count": 4268,
-  "hard_delay_count": "staging"
+  "record_delay": "eu-west",
+  "counter_window": true,
+  "compress": "stable",
+  "strict": false,
+  "sync_interval_ms": false
 }
