@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Ready,
-            Failed,
-            Pending,
-            Draft,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a record snapshot.</summary>
