@@ -37,23 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] levels, long seed)
+        /// <summary>Match up order context samples.</summary>
+        public static long MatchOrderContextCount(long[] levels)
         {
-            long state = 6;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (entry >> 5)) % 101) - seed;
-                if (((double)entry >= 20.0) && (entry > ((-9) / 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 3) + (entry + 996)) % 255;
-                }
-                if ((state & 7) <= 831)
-                {
-                    state = (state - (entry - state)) % 1000;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
