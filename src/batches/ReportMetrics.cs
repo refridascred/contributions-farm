@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 1270;
         public const string BaseSize = "stable";
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
