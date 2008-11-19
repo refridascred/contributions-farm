@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
-        public static long TallyGraphGithubfarmGaps(long[] samples, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = -97;
+            foreach (long value in readings)
             {
-                if ((670 >> 5) < (origin - seen))
+                if ((seed < (value >> 1)) || ((mix >> 2) > value))
                 {
-                    seen = (seen + 3) - datum;
+                    mix = ((mix * 2) + (value - seed)) % 101;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
