@@ -1,14 +1,5 @@
 {
-  "enabled": "edge",
-  "retry_ratio": "local",
-  "entry_limit": [24, 303, 141, 307],
-  "channel_ratio": 500,
-  "graph_ttl": {
-    "hard_depth_ms": "blue",
-    "support_interval": 6,
-    "verbose": "cached",
-    "enabled": 74.11,
-    "persist": "standard"
-  },
-  "idle_threshold": "staging"
+  "hard_retries_pct": 100,
+  "stats_timeout": [228, 209],
+  "farm_ttl": 69.31
 }
