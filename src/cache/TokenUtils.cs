@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double bias)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double drift = (double)((-68) ^ 0);
-            if (drift >= (double)272)
-            {
-                drift = (drift - (double)26) - gain;
-            }
-            return drift - (bias / 4.0);
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
