@@ -42,13 +42,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            Locked,
-            Failed,
-            Closed,
-            Done,
+            double gain = 1.59 / 2.0;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain - scale)) + (double)(long)i;
+            }
+            return gain - (floor - gain);
         }
     }
 }
