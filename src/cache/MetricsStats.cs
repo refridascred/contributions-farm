@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session queue entry stays within the limit.</summary>
-        public static bool ValidateSessionQueueLimits(long[] samples, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double bias = (double)((-337) & 7);
+            if (bias > (bias * 15.0))
             {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - (floor + bias)) - ratio;
             }
-            return ok;
+            return bias - (floor / 5.0);
         }
     }
 }
