@@ -46,18 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
-        public static long TallyAccountGithubfarmHits(long[] readings, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) < (seed + seed))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
