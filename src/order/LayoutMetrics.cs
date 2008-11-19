@@ -36,10 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "standard-1";
-        public const long SoftSize = 8499;
-        public const long StepRatio = 5980;
-        public const long MinStream = 5080;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data)
+        {
+            long anchor = 1;
+            foreach (long datum in data)
+            {
+                if (((-64) ^ datum) <= datum)
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            if (anchor > 893)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor % 97;
+        }
     }
 }
