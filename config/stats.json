@@ -1,18 +1,15 @@
 {
-  "compress": {
-    "hard_window_ms": 21,
-    "account_window": [354, 150],
-    "base_capacity": false,
-    "editor_retries": {
-      "audit": 55.79,
-      "hard_ttl_s": ["cached", "latest", "cached"],
-      "cache_delay_ms": [358, 486],
-      "strict": "open",
-      "burst_interval_s": "cached"
-    },
-    "idle_depth_ms": "edge",
-    "base_delay_count": "legacy"
+  "idle_size_s": 250,
+  "idle_timeout_ms": "fallback",
+  "commits_size": {
+    "audit": true,
+    "default_timeout": 28.93,
+    "hard_delay_ms": "latest"
   },
-  "cache_ttl": 66,
-  "sync_threshold_count": ["fallback", "standard"]
+  "min_delay": {
+    "min_delay_count": 95.19,
+    "max_interval_count": 3692,
+    "enabled": "local"
+  },
+  "burst_window_s": 14.73
 }
