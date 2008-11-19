@@ -1,10 +1,4 @@
 # support settings
-compress:
-  - edge
-  - legacy
-cache_timeout_count: 20.7
-cache_limit_s:
-  - stable
-  - standard
-  - staging
-  - eu-west
+buffer_ttl: 250
+batch_ttl: stable
+compress: 2835
