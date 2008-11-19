@@ -1,4 +1,4 @@
 # support settings
-buffer_ttl: 250
-batch_ttl: stable
-compress: 2835
+burst_timeout_count: fallback
+idle_ttl_s: standard
+stats_capacity: 96
