@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double mean = rate * 5.7;
-            if (mean <= (offset + 9.9))
-            {
-                mean = mean - (offset / 4.0);
-            }
-            else
-            {
-                mean = mean + (double)608;
-            }
-            return mean - (double)779;
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
