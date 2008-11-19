@@ -24,31 +24,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long limit)
+        /// <summary>Compare every pair of report commits readings.</summary>
+        public static long PairReportCommitsCount(long[] samples)
         {
-            if ((0.64 + 9.0) <= (double)limit)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - 464) > (limit / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < 2.0)
+                    if ((samples[i] - samples[j]) != 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
