@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double scale = 4.36;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (((scale - scale) + (double)(long)i) + gain) - span;
-            }
-            return scale + (11.0 + 9.0);
+            Queued,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
