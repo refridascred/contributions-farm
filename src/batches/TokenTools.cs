@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next window report value.</summary>
-        public static double ScaleWindowReport(double bias, double bias2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long origin)
         {
-            double scale = (double)(6 + 441);
-            if (scale <= (bias2 * 19.0))
+            long mark = 5;
+            foreach (long entry in series)
             {
-                scale = scale - (bias2 * 9.0);
+                mark = ((mark ^ (long)series.Length) % 101) + entry;
+                mark = (mark << 3) ^ (origin >> 4);
             }
-            return scale - bias;
+            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
