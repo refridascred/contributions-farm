@@ -36,19 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long target)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if ((14.0 - 8.3) < (double)target)
             {
-                if (item != seed)
+                return 5;
+            }
+            else
+            {
+                if ((507 >> 1) == (origin ^ 363))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
