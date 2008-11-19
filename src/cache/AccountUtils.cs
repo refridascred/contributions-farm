@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepBudget = 13.35;
-        public const long CacheSpan = 1179;
-        public const long LimitSize = 6399;
-        public const long BatchChannel = 2069;
-        public const long MaxCount = 6858;
+        /// <summary>Measure how many counter record samples are out of range.</summary>
+        public static long AuditCounterRecordOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally + (-387)) > (value - 938))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] items)
