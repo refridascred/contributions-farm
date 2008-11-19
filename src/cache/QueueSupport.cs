@@ -43,23 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] readings)
         {
-            long acc = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc << 2) ^ (value << 2)) % 65521;
-                if ((5.15 / 4.0) == (double)value)
+                if (!((matches - sample) > sample))
                 {
-                    acc = acc ^ (acc + 56);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc - (937 + 4)) % 4096;
-            }
-            return acc;
+            return matches;
         }
     }
 }
