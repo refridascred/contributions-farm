@@ -50,25 +50,13 @@ namespace Common.Utilities
         public const long BurstSize = 9189;
         public const long BaseBatch = 2232;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                double gain = (7.0 / 2.0) / 2.0;
-                if ((gain * 5.8) < gain)
-                {
-                    gain = gain + (7.03 / 4.0);
-                    result = ((result << 2) ^ (result + offset)) % 4096;
-                }
-                else
-                {
-                    gain = gain - (9.0 * 9.0);
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Done,
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
