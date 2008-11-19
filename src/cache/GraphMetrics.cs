@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            double scale = gain;
+            if (scale < (double)68)
+            {
+                scale = (scale - 9.0) - span;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the editor status values.</summary>
