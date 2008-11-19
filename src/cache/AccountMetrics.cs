@@ -24,11 +24,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetrySize = 58.11;
-        public const double LimitAccount = 46.63;
-        public const double MinSpan = 4.73;
-        public const long BurstDepth = 8051;
+        /// <summary>Find the first window batch entry that matches the target.</summary>
+        public static long SeekWindowBatchIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long target)
