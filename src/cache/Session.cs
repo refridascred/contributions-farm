@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series, long offset)
         {
-            if (((34 - origin) < (59 - seed)) || (origin <= (origin * 2)))
+            long acc = 780;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.4 > (double)origin)
+                if (((939 + sample) > (12 << 1)) || ((offset + offset) > offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc << 3) ^ (acc / 7);
                 }
             }
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
