@@ -1,5 +1,23 @@
 {
-  "batch_interval_ms": 34.21,
-  "min_size_pct": 30,
-  "retry_ratio": 22.18
+  "token_ratio": 5271,
+  "max_ttl": {
+    "layout_interval": false,
+    "soft_threshold_s": 1733,
+    "queue_threshold": 77.53,
+    "strict": {
+      "flush_ttl_count": 3212,
+      "base_timeout": "open",
+      "max_window": 93.3,
+      "audit": true,
+      "soft_interval_count": [474, 26],
+      "warm_limit_ms": "open"
+    },
+    "sync_size_ms": {
+      "burst_interval": false,
+      "dry_run": 21.88,
+      "sync_capacity_ms": 78.2
+    },
+    "cache_retries_ms": 250
+  },
+  "verbose": "staging"
 }
