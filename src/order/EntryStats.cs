@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale + (11.0 + 9.0);
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
