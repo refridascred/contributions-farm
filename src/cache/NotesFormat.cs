@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
