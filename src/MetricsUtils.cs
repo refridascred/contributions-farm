@@ -75,17 +75,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Find the first batches format entry that matches the target.</summary>
-        public static long SeekBatchesFormatIndex(long[] values, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Synced,
         }
     }
 }
