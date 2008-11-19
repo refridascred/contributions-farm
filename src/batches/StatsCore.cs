@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            double load = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + offset) + (double)(long)i) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - offset;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
