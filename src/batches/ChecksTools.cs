@@ -26,13 +26,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowRatio = 9909;
+        public const long StepSpan = 3397;
+        public const long LimitScore = 4869;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
