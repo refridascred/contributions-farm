@@ -1,8 +1,21 @@
 {
-  "cache_capacity": [259, 57, 488],
-  "default_delay": 7509,
-  "cache_depth_pct": false,
-  "enabled": 35,
-  "contributi_interval": ["blue", "edge"],
-  "persist": 8
+  "filter_timeout": {
+    "graph_limit": 14,
+    "cache_delay_count": ["open", "latest", "eu-west", "blue"],
+    "dry_run": {
+      "sync_ratio_s": true,
+      "max_capacity_ms": "eu-west",
+      "soft_depth": false,
+      "persist": ["fallback", "primary"],
+      "base_ttl": ["standard", "fallback", "cached"]
+    },
+    "cluster_ttl": "fallback",
+    "retry_window_ms": 500,
+    "account_threshold": 66.35
+  },
+  "stream_delay": "eu-west",
+  "soft_retries": "blue",
+  "graph_window": "blue",
+  "soft_ttl_count": false,
+  "audit": 708
 }
