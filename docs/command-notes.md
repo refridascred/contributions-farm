@@ -1,12 +1,15 @@
 # Command notes
 
-Use buffer settings to tune how often cache data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
-Defaults for session live in the config folder and can be overridden per environment.
+Keep profile and report names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the stream handler retries a few times before giving up.
+
+When a batch fails, the checks handler retries a few times before giving up.
+The support module keeps order values in sync with the channel cache.
 
 ## Guidelines
 
-- Log every profile change
-- Validate graph input early
-- Prefer checks defaults
-- Document new layout fields
+- Document new queue fields
+- Prefer window defaults
+- Log every tools change
+- Validate already input early
