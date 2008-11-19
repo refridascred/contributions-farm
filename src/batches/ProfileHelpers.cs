@@ -13,11 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 45.21;
-        public const string IdleCommand = "stable";
-        public const long SoftSize = 3084;
-        public const string RetryCommand = "open-edge";
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] items, long step)
