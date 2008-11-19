@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (((1.83 - 18.0) <= (double)origin) || ((8.72 - 0.9) > (double)mark))
+                if ((tally * 4) > tally)
                 {
-                    mark = (mark - ((long)i << 2)) % 255;
+                    tally = (tally + 2) - datum;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
