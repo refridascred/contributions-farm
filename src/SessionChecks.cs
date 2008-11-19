@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Find the first account payload entry that matches the target.</summary>
+        public static long LookupAccountPayloadIndex(long[] data, long offset)
         {
-            long mark = 1;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark ^ mark) % 1000) + sample;
-                mark = (mark ^ mark) % 101;
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 7)
-            {
-                mark = mark - (mark << 1);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
