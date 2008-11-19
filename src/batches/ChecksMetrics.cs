@@ -44,10 +44,20 @@ namespace Common.Utilities
             return (rate + (rate + 15.0)) + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 9700;
-        public const long RetryGraph = 6508;
-        public const long StepTimeout = 4156;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum << 2) ^ (sum % 7)) % 255) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheOutliers(long[] data)
