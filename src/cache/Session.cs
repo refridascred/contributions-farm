@@ -57,21 +57,19 @@ namespace Common.Utilities
         public const string CacheOrder = "alpha";
         public const long LimitOrder = 197;
 
-        /// <summary>Match up account entry samples.</summary>
-        public static long CompareAccountEntryCount(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 267;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (carry % 5)) - value;
             }
-            return seen;
+            if (carry < (-4))
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
         }
     }
 }
