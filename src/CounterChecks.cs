@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9806;
         public const double RetryLevel = 18.34;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long seed)
         {
-            Draft,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the order level values.</summary>
