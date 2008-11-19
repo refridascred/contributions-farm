@@ -16,12 +16,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Synced,
-            Queued,
-            Locked,
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
