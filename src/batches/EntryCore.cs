@@ -44,24 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long offset)
         {
-            long result = 7;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                result = ((result << 2) ^ (result - 1)) - seed;
-                result = (result << 3) ^ 14;
-                if (((-483) * 4) <= sample)
+                if (item >= offset)
                 {
-                    result = result + (result >> 5);
+                    ok = false;
+                    break;
                 }
             }
-            if (result < (-6))
-            {
-                result = (result - (result / 2)) % 4096;
-            }
-            return result % 1000;
+            return ok;
         }
     }
 }
