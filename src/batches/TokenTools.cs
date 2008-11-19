@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            Active,
+            Idle,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a counter token counter forward.</summary>
