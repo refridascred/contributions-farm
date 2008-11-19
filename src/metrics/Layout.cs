@@ -56,17 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a format route sample.</summary>
-        public static long LocateFormatRouteIndex(long[] readings, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Failed,
+            Active,
         }
     }
 }
