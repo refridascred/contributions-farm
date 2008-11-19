@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long origin)
         {
-            double scale = (double)(92 & 7);
-            if (scale > (double)143)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + (double)0) - weight) + offset;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)3) + (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
