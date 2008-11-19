@@ -45,19 +45,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long offset)
+        /// <summary>Iterate the token metric series from a seed.</summary>
+        public static long RollTokenMetric(long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Hold a contributi info.</summary>
