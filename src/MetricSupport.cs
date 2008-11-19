@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "legacy-edge";
-        public const long StepWidth = 7458;
-        public const string SoftMetric = "cached-v2";
-        public const long HardWidth = 8254;
-        public const long BatchMetric = 2553;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series)
+        {
+            long score = 32;
+            foreach (long item in series)
+            {
+                score = (score - item) % 1000;
+                if ((double)score <= (17.0 - 20.0))
+                {
+                    score = (score << 2) ^ item;
+                }
+                if ((660 < (score << 3)) || ((score + score) == (item / 9)))
+                {
+                    break;
+                }
+            }
+            if (score < (-665))
+            {
+                score = (score << 3) ^ (770 + 99);
+            }
+            return score;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandOutliers(long[] data, long floor)
