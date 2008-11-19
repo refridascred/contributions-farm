@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry account samples are out of range.</summary>
-        public static long TallyEntryAccountGaps(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = 281;
+            foreach (long datum in series)
             {
-                if (!((count + count) >= (long)items.Length) || ((datum < (60 + 0)) && ((double)count <= 0.9)))
+                if (!(772 < ((long)series.Length % 10)))
                 {
-                    count = count + 1;
+                    acc = (acc ^ acc) % 97;
                 }
-                else
+                if (datum >= (acc + datum))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate support samples.</summary>
