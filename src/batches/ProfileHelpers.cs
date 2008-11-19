@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long sum = 7;
+            foreach (long item in readings)
             {
-                if (datum != step)
+                if (item >= sum)
                 {
-                    ready = false;
-                    break;
+                    sum = (((sum * 4) + 88) % 65521) - offset;
                 }
             }
-            return ready;
+            return sum % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
