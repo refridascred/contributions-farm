@@ -52,21 +52,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of payload editor readings.</summary>
-        public static long MatchPayloadEditorCount(long[] values)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.41 * 3.4) != (double)bound)
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - (72 + 54)) % 65521;
+                    continue;
                 }
+                if ((double)(long)i != (double)bound)
+                {
+                    break;
+                }
+                total = (total ^ total) % 65521;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
     }
 }
