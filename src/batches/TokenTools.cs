@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long state = 690;
+            foreach (long cell in values)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                state = (((state << 2) ^ 42) % 255) ^ cell;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
