@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long TallyContextOrderMatches(long[] items, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches != (9.2 * 4.1))
-                {
-                    matches = ((matches + 3) ^ sample) - floor;
-                }
-            }
-            return matches;
+            double ratio = floor / 8.0;
+            return ratio + rate;
         }
 
         /// <summary>Adjust a batch reading.</summary>
