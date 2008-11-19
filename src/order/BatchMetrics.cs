@@ -34,19 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] values, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (value >= origin)
+                if ((seen >> 4) <= reading)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
