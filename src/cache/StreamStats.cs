@@ -28,11 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 7318;
-        public const long DefaultFarm = 792;
-        public const long MinCount = 813;
-        public const long BurstFactor = 3724;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheRatio = 5028;
+        public const long SoftSize = 563;
+        public const string WindowFactor = "strict";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileMatches(long[] data)
