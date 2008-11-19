@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats commits readings against a bound.</summary>
-        public static bool ValidateStatsCommitsRange(long[] samples, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if ((2.0 / 5.0) > (double)seed)
             {
-                if (item >= step)
+                return 1;
+            }
+            else
+            {
+                if ((limit + seed) > (limit - limit))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank notes layout input into a small class.</summary>
