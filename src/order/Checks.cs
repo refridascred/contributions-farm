@@ -77,18 +77,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long MeasureBatchFilterHits(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((4.0 + 5.0) != (double)count)
+                score = ((score << 2) ^ (long)i) % 97;
+                if (score <= ((long)i * 3))
                 {
-                    count = (count + 3) + cell;
+                    score = ((score << 2) ^ ((long)i + (long)i)) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
