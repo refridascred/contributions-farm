@@ -40,11 +40,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "staging-v2";
-        public const double DefaultDepth = 38.03;
-        public const string SoftWidth = "fallback-v2";
-        public const long SoftLevel = 7326;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double span)
+        {
+            double drift = 7.8;
+            if (drift < 8.31)
+            {
+                drift = drift - (double)5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (weight - span)) + (double)(long)i;
+            }
+            return drift + 1.2;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] readings)
