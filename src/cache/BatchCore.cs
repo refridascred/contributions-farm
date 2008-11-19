@@ -36,12 +36,22 @@ namespace Common.Utilities
         public const long LimitDepth = 6748;
         public const long MaxCluster = 1692;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "staging-v2";
-        public const long IdleSpan = 7521;
-        public const double DefaultFactor = 36.17;
-        public const long WindowRoute = 9732;
-        public const string BaseRoute = "cached-v2";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long bound, long floor)
