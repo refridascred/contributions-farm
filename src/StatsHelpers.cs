@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 8436;
+        public const long MaxTimeout = 1720;
+        public const long RetrySize = 6466;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleSpan = 6996;
