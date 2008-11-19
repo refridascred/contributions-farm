@@ -28,16 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 2) ^ (limit / 6)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
