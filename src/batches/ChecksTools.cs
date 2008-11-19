@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels, long step)
-        {
-            long sum = -470;
-            foreach (long cell in levels)
-            {
-                if ((double)sum <= (double)(-210))
-                {
-                    sum = (((sum + sum) % 4096) + cell) + step;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "alpha-v2";
+        public const double BaseEntry = 16.37;
+        public const double BatchSize = 44.46;
+        public const long BatchEntry = 7282;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double bias, double bias2)
