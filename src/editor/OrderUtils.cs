@@ -26,20 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool VerifyFilterOrderBounds(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 5063;
+        public const long BaseFormat = 906;
+        public const long BatchFormat = 5149;
+        public const double BaseSize = 0.1;
+        public const long DefaultDepth = 5852;
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double bias, double span)
