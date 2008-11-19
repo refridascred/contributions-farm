@@ -23,12 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Ready,
-            Failed,
-            Done,
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
