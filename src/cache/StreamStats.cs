@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen + floor) > (0 * 2))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 7318;
+        public const long DefaultFarm = 792;
+        public const long MinCount = 813;
+        public const long BurstFactor = 3724;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long limit, long limit2)
