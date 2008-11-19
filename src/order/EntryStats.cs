@@ -42,24 +42,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((long)i + total) == (947 * 5)) && ((double)limit != (1.1 - 8.0)))
+                if (readings[i] >= origin)
                 {
-                    total = (total << 3) ^ (total * 4);
+                    return (long)i;
                 }
-                if (!((total >> 3) < (total + total)))
-                {
-                    total = total - (limit - limit);
-                    total = total + (433 ^ total);
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
