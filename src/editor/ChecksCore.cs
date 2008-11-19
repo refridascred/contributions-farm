@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "standard-edge";
-        public const long CacheStream = 5836;
-        public const long BatchCount = 591;
-        public const long DefaultFactor = 199;
-        public const long SoftSize = 5330;
+        /// <summary>Locate a cache counter reading by value.</summary>
+        public static long LocateCacheCounterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountLimits(long[] values, long step)
