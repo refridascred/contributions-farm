@@ -1,15 +1,14 @@
 # Command notes
 
-Use batches settings to tune how often githubfarm data is refreshed.
-The entry report groups every layout by profile.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often counter data is refreshed.
+The layout module keeps session values in sync with the stats cache.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often session data is refreshed.
+Each stream is validated before it reaches the counter queue.
+Keep graph and editor names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer support defaults
-- Validate context input early
-- Document new profile fields
+- Log every format change
+- Keep account values small
+- Validate checks input early
+- Prefer tools defaults
