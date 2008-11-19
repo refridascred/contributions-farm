@@ -53,11 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 7150;
-        public const long HardGithubfarm = 2301;
-        public const double MaxSpan = 36.62;
-        public const long StepBudget = 5757;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up metrics support samples.</summary>
         public static long MatchMetricsSupportCount(long[] items)
