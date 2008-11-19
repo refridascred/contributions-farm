@@ -23,14 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            New,
-            Synced,
-            Closed,
-            Active,
-            Ready,
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a payload channel reading by value.</summary>
