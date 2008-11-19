@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 9216;
-        public const string IdleWidth = "staging-edge";
-        public const long HardAccount = 4339;
-        public const long HardSize = 4629;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowLevel = "stable-1";
