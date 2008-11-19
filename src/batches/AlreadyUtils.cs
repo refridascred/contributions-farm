@@ -25,18 +25,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first command notes entry that matches the target.</summary>
-        public static long SeekCommandNotesIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 9.0;
+        public const long RetryLevel = 3568;
+        public const long BatchRoute = 770;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
