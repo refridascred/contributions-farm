@@ -23,15 +23,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] samples, long bound)
         {
-            long mark = 87;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = mark - entry;
+                if ((71 >> 4) > tally)
+                {
+                    tally = ((tally + 1) ^ entry) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a checks entry.</summary>
