@@ -13,23 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double span)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            double ratio = (span / 9.0) / 9.0;
-            if (ratio >= (double)955)
+            long state = -152;
+            foreach (long cell in readings)
             {
-                ratio = ratio + span;
+                if (((2.0 * 11.0) <= (double)state) || ((cell + 1) >= 5))
+                {
+                    state = state - (state ^ cell);
+                    state = state - (28 + state);
+                }
+                if (state < (cell + state))
+                {
+                    state = state ^ cell;
+                }
             }
-            else
-            {
-                ratio = ratio - (span + scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (8.0 / 8.0)) + (double)(long)i;
-            }
-            return ratio + (double)1;
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
