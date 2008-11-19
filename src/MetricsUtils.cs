@@ -89,12 +89,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a order report pair into a bucket.</summary>
+        public static long ClassifyOrderReport(long target, long floor)
         {
-            Ready,
-            Closed,
-            Synced,
+            long gap = target + floor;
+            if ((5.56 - 5.1) < (double)gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((16.0 + 18.0) > (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
