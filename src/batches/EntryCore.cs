@@ -62,15 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double gain = 1.59 / 2.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain - scale)) + (double)(long)i;
-            }
-            return gain - (floor - gain);
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
