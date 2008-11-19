@@ -19,25 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long step, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            long lane = step + bound;
-            if ((double)lane >= (0.19 + 8.6))
+            double scale = bias;
+            if (scale <= (double)4)
             {
-                return 6;
+                scale = scale + bias2;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((lane & 31) >= lane)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                scale = (scale + (double)4) + (double)(long)i;
             }
+            return scale - (double)27;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
