@@ -45,14 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Failed,
             Active,
-            Locked,
-            Synced,
-            Idle,
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Find the first checks cache entry that matches the target.</summary>
