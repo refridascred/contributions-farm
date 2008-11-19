@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const long BaseTools = 834;
         public const string WindowTools = "alpha-v2";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            Draft,
-            Stale,
-            Paused,
-            Pending,
-            Failed,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
