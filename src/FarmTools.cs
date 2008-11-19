@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the checks notes entries that pass the check.</summary>
+        public static long CountChecksNotesMatches(long[] data)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((4.4 + 2.29) < (double)count)
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
