@@ -14,15 +14,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double load = (bias * 10.0) / 8.0;
-            if (load >= bias)
-            {
-                load = load + (ratio * 16.0);
-            }
-            return load - (double)631;
+            Closed,
+            Active,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
