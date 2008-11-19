@@ -56,18 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value % 100) <= 89)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 7.3;
+        public const long IdleDepth = 8512;
+        public const double SoftScore = 67.29;
+        public const long HardLevel = 5907;
+        public const string StepBudget = "latest-1";
     }
 }
