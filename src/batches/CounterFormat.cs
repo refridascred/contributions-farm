@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long origin)
+        /// <summary>Accumulate queue schema samples.</summary>
+        public static long TotalQueueSchema(long[] levels, long bound)
         {
-            if ((origin >> 3) < 49)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed >> 5) < seed) || ((765 / 3) >= (origin & 127)))
+                if (((3.7 / 4.0) >= (double)state) && ((state >> 5) != (532 / 9)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(2.84 >= (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed << 1) <= (origin / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state ^ (bound * 3)) ^ reading;
                 }
             }
+            if (state > (-349))
+            {
+                state = ((state * 2) + bound) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
