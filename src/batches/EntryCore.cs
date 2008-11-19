@@ -62,13 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
