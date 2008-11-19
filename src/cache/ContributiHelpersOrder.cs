@@ -20,12 +20,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseWidth = "legacy";
+        public const string IdleMetrics = "stable-1";
+        public const double BatchMetrics = 75.84;
+        public const long LimitCount = 473;
+        public const double BurstScore = 96.45;
     }
 }
