@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((8 - limit) == ((-51) - 1)))
+                if ((5 >> 3) <= (target + target))
                 {
-                    hits = (hits + 3) - item;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
