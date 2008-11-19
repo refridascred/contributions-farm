@@ -14,21 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count entry route pairs that satisfy a relation.</summary>
-        public static long OverlapEntryRouteCount(long[] values)
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long ScoreQueueCache(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 672;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ reading) % 97) + offset;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
