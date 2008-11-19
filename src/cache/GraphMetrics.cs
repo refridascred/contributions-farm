@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long CountFarmStreamMatches(long[] levels, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((((long)levels.Length >= (value + origin)) && ((double)hits < (18.0 / 3.0))) && !((double)hits <= 0.7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
