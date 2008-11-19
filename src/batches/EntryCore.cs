@@ -49,19 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long floor)
         {
-            double bias = ratio;
-            if (bias >= ratio)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias + (span * 1.0);
+                score = (score << 3) ^ (floor >> 2);
+                score = (score << 2) ^ (floor >> 4);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (double)16;
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
