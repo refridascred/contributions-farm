@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((((-6) % 10) == (entry & 63)) || ((entry - entry) == ((-84) + count)))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWidth = 1.23;
+        public const long BatchWindow = 3662;
+        public const string BurstDepth = "strict-v2";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] values, long target)
