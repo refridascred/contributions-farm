@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = 18;
+            foreach (long reading in values)
             {
-                if (((long)levels.Length * 5) == (543 % 2))
+                if (((reading ^ score) != (score % 16)) && ((75 + (long)values.Length) == (score ^ score)))
                 {
-                    matches = ((matches + 3) + reading) - limit;
+                    score = (score + (score + score)) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a batch header.</summary>
