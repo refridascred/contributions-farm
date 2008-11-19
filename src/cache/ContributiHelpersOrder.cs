@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double RetryEditor = 12.7;
         public const long WindowCount = 5367;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] series, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (465 >= (seen + seen))
+                {
+                    seen = ((seen + 2) + datum) + origin;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
