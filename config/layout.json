@@ -1,7 +1,10 @@
 {
-  "counter_window": "green",
-  "cache_retries": [9, 247],
-  "soft_threshold_ms": "eu-west",
-  "commits_timeout": "edge",
-  "token_ratio": 82
+  "persist": {
+    "burst_size_pct": 250,
+    "cache_delay_ms": true,
+    "soft_delay_ms": "green"
+  },
+  "retry_window_s": 63.5,
+  "enabled": ["primary", "cached"],
+  "sync_depth_ms": true
 }
