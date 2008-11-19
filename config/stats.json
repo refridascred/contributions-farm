@@ -1,11 +1,5 @@
 {
-  "hard_size_pct": {
-    "strict": 47.54,
-    "route_window": 28,
-    "persist": 5
-  },
-  "flush_depth_s": [267, 291],
-  "hard_delay": "staging",
-  "githubfarm_limit": 45.31,
-  "buffer_ratio": [298, 323, 257]
+  "warm_threshold_s": false,
+  "commits_timeout": ["local", "staging", "fallback"],
+  "hard_ttl_count": 6405
 }
