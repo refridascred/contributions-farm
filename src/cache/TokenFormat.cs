@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSpan = 90.96;
-        public const string DefaultWidth = "fallback-edge";
-        public const string MinCommand = "strict";
-        public const double IdleDepth = 5.23;
-        public const long WindowCommand = 7065;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Done,
+            Pending,
+            New,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data)
