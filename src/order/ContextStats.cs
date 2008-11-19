@@ -18,24 +18,11 @@ namespace Common.Utilities
         public const long BaseScore = 6442;
         public const long LimitBudget = 8991;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double scale, double offset)
-        {
-            double bias = (double)(240 + 898);
-            if (bias <= scale)
-            {
-                bias = bias - (double)6;
-            }
-            else
-            {
-                bias = bias - (offset / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (scale + bias)) - (double)(long)i;
-            }
-            return bias + offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitTimeout = 1492;
+        public const string WindowSpan = "local-v2";
+        public const long WindowEditor = 4730;
+        public const long MinEditor = 1370;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
