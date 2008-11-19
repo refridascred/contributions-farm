@@ -49,19 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state + target) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
