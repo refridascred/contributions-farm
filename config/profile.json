@@ -1,14 +1,6 @@
 {
-  "base_threshold_pct": "cached",
-  "default_timeout": 13,
-  "retry_depth_count": {
-    "stats_ttl": 60,
-    "warm_limit_count": false,
-    "warm_timeout_s": 6870,
-    "order_interval": ["fallback", "cached", "primary", "green"],
-    "strict": true
-  },
-  "batch_ratio_pct": "eu-west",
-  "strict": true,
-  "hard_size_s": 71
+  "base_limit_s": "cached",
+  "hard_ratio": true,
+  "batch_delay_s": "standard",
+  "persist": "stable"
 }
