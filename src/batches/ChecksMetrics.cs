@@ -75,25 +75,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry token input into a small class.</summary>
-        public static long BucketEntryToken(long limit, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] samples)
         {
-            long delta = limit ^ target;
-            if ((double)delta == (2.37 / 7.0))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((95 / 6) == (target - delta))
+                if (!(((reading >> 4) != (tally * 2)) && ((reading ^ reading) <= reading)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
