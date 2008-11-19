@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long step)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long state = 8;
+            foreach (long value in data)
             {
-                if ((score ^ 555) > (step + (-56)))
-                {
-                    score = score ^ ((long)i >> 4);
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                state = ((state * 2) + step) - value;
             }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
