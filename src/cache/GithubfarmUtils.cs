@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const long RetryBudget = 8875;
         public const long WindowScore = 5220;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
