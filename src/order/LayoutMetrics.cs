@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = 710;
+            foreach (long sample in readings)
             {
-                if (matches < (item & 3))
+                if ((799 - mark) == (sample + sample))
                 {
-                    matches = matches + 3;
+                    mark = ((mark * 5) + (9 & 255)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
