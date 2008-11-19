@@ -1,19 +1,5 @@
 {
-  "flush_window_pct": 250,
-  "persist": {
-    "retry_threshold_count": 69.63,
-    "retry_retries": ["staging", "blue", "legacy", "local"],
-    "poll_threshold": {
-      "cache_interval": "local",
-      "strict": true,
-      "dry_run": "legacy",
-      "audit": 86.77,
-      "token_limit": 1.36
-    },
-    "idle_size_s": 1612,
-    "hard_retries_pct": true
-  },
-  "base_ratio_count": true,
-  "default_size_pct": 500,
-  "dry_run": "legacy"
+  "warm_ttl_s": false,
+  "idle_limit_s": false,
+  "enabled": 100
 }
