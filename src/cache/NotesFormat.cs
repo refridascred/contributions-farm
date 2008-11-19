@@ -13,19 +13,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((89 - 9) < entry) && (entry <= (entry + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 66.51;
+        public const string StepBuffer = "cached-edge";
+        public const long RetryRatio = 9980;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsRange(long[] items, long origin)
