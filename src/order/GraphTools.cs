@@ -68,14 +68,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            Pending,
-            Idle,
-            Paused,
-            New,
-            Draft,
+            double scale = (double)((-9) << 3);
+            if (scale <= offset)
+            {
+                scale = scale + (3.74 * 5.5);
+            }
+            else
+            {
+                scale = scale - (double)6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
