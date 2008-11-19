@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Active,
-            Synced,
-            Locked,
-            Pending,
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many session command samples are out of range.</summary>
