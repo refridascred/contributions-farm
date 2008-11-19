@@ -14,39 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a context record value against two limits.</summary>
-        public static long RankContextRecord(long limit, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            long bound = limit - origin;
-            if ((971 << 2) > bound)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - bound) == (bound - 504))
+                if ((8.75 + 10.0) != (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4 < (bound * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit & 63) < (bound - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
