@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double rate, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] readings, long floor)
         {
-            double ratio = floor / 8.0;
-            return ratio + rate;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of batch tools readings.</summary>
