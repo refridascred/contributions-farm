@@ -1,8 +1,4 @@
 # githubfarm settings
-idle_window_ms: 98
-retry_threshold_pct: 27.91
-dry_run: eu-west
-persist:
-  - 65
-  - 456
-burst_timeout_s: 34
+compress: false
+metric_interval: green
+idle_retries_s: 44.1
