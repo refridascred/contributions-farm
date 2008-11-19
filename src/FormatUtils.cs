@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3726;
-        public const long BatchFactor = 6860;
-        public const long StepFarm = 2579;
-        public const long StepWidth = 3719;
-        public const string HardFarm = "primary";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Done,
+            New,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long step)
