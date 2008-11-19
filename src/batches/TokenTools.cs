@@ -17,23 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            long carry = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((entry * 2) < (37 - entry)))
+                if ((((double)1 > (double)value) || ((14.0 - 3.0) < (double)value)) && !(value <= (value - 1)))
                 {
-                    carry = (carry - (-94)) % 65521;
-                    carry = ((carry << 2) ^ (entry << 2)) % 255;
-                }
-                if ((entry >> 2) > (entry / 7))
-                {
-                    carry = (carry + carry) % 97;
+                    tally = tally + 1;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Roll a counter token counter forward.</summary>
