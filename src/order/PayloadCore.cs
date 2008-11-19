@@ -28,11 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((((long)readings.Length * 4) <= (3 / 3)) && ((tally ^ sample) < (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
