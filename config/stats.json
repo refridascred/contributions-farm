@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "audit": 915,
-  "soft_timeout_pct": 76.57,
-  "base_limit": ["eu-west", "stable", "open"],
-  "min_depth_pct": "edge"
+  "poll_window": 54.82,
+  "batch_capacity_count": ["local", "green"],
+  "batch_ratio": 1,
+  "strict": 19.38
 }
