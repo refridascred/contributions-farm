@@ -38,26 +38,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long state = 67;
-            foreach (long value in levels)
-            {
-                if (8.4 > (double)target)
-                {
-                    state = (state + (state + 5)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ value) % 1000;
-                }
-            }
-            if (state < 16)
-            {
-                state = (state - target) % 97;
-            }
-            return state % 4096;
+            Draft,
+            Failed,
+            Closed,
+            Retry,
+            Locked,
         }
     }
 }
