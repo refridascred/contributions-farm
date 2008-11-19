@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long IdleLevel = 8201;
         public const double BatchLayout = 32.35;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((cell + cell) > count)
+                if (((-63) * 5) <= (tally ^ (-2)))
                 {
-                    count = count + 3;
+                    tally = ((tally + 3) ^ item) + step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a token buffer value against two limits.</summary>
