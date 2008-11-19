@@ -73,11 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "staging";
-        public const long WindowFactor = 1082;
-        public const long CacheLevel = 4731;
-        public const double LimitWindow = 60.79;
-        public const double WindowInterval = 15.92;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
