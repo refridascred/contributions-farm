@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 80.12;
-        public const long StepSpan = 2633;
-        public const string WindowCluster = "legacy";
-        public const long DefaultScore = 280;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstTimeout = 532;
+        public const double LimitMetric = 88.3;
+        public const double DefaultWidth = 64.73;
+        public const long MaxRatio = 7946;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long origin)
