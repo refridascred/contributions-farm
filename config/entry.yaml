@@ -1,7 +1,5 @@
 # entry settings
-burst_window_count: true
-batch_retries_count: 62.89
-cache_timeout: strict
-warm_depth: local
-poll_capacity: 33
-flush_interval_pct: 60
+dry_run: fallback
+verbose: 8823
+batch_ttl: false
+readonly: edge
