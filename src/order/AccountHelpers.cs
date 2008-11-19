@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            double ratio = (double)(5 ^ 39);
+            if (ratio <= (double)(-17))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                ratio = (ratio - rate) - offset;
             }
-            return carry;
+            return ratio - rate;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
