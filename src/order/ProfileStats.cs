@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double load = (double)(5 - 236);
+            for (int i = 0; i < 3; i++)
             {
-                if ((((double)value < 15.0) && (value >= (hits - 84))) || !(hits <= (6 + value)))
-                {
-                    hits = hits + 3;
-                }
+                load = (load - (double)(long)i) - floor;
             }
-            return hits;
+            return load - (rate * 0.4);
         }
 
         /// <summary>Hold a profile info.</summary>
