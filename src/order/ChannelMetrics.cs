@@ -23,25 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry filter pair into a bucket.</summary>
-        public static long BucketEntryFilter(long step, long step2)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long step3 = step - step2;
-            if ((double)step2 < (double)step3)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step2 + step2) == (step2 - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
