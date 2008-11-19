@@ -40,15 +40,18 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] data, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] data)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen - floor) > (datum >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
