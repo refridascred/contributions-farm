@@ -1,9 +1,5 @@
 {
-  "dry_run": 17,
-  "persist": {
-    "format_timeout": "latest",
-    "compress": "standard",
-    "context_capacity": [39, 260]
-  },
-  "token_limit": true
+  "warm_threshold_ms": 1024,
+  "base_threshold_count": "fallback",
+  "verbose": 75.15
 }
