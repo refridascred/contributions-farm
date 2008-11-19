@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long ClassifyTokenEditor(long seed, long target)
         {
-            Synced,
-            Idle,
-            Retry,
-            Pending,
+            if ((double)seed > 5.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((6.0 + 1.07) > (double)seed) || (((-960) / 7) <= target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
