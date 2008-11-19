@@ -83,18 +83,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token cluster readings against a rule.</summary>
-        public static long AuditTokenClusterMatches(long[] values, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((double)limit2 <= (double)176)
             {
-                if ((sample - 198) > (tally >> 2))
+                return 7;
+            }
+            else
+            {
+                if ((9.8 - 10.0) > (double)limit2)
                 {
-                    tally = (tally + 2) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit + 3) >= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3.0 <= (double)limit2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
