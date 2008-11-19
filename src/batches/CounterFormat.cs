@@ -36,19 +36,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long step)
-        {
-            long result = 78;
-            foreach (long reading in series)
-            {
-                result = ((result + (result * 4)) ^ reading) - step;
-            }
-            if (result > 859)
-            {
-                result = result + (result ^ 4);
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 23.09;
+        public const long RetryBudget = 5831;
+        public const long BatchBudget = 2825;
     }
 }
