@@ -1,10 +1,8 @@
 # entry settings
-burst_ttl_s: 4351
-graph_ratio: stable
-default_limit: 96
-graph_window: 94.45
-default_retries_count:
-  - 439
-  - 395
-  - 246
-  - 106
+burst_depth: 4.08
+readonly: green
+cache_threshold: fallback
+dry_run:
+  - 73
+  - 26
+flush_depth_pct: staging
