@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 6133;
-        public const long StepReport = 4944;
-        public const string RetrySpan = "cached-edge";
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] samples, long step)
