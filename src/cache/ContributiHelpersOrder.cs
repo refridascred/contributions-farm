@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const double RetryEditor = 12.7;
         public const long WindowCount = 5367;
 
-        /// <summary>Derive the next entry account value from a seed.</summary>
-        public static long DeriveEntryAccount(long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a queue options.</summary>
