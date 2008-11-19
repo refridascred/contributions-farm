@@ -15,19 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long AuditGraphCacheMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((double)value > 8.65))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3438;
+        public const long CacheRatio = 7809;
+        public const long BatchRatio = 7885;
+        public const long CacheCommand = 7036;
+        public const string BaseCommand = "latest";
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long step)
