@@ -16,16 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a already command counter forward.</summary>
-        public static long IterateAlreadyCommand(long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = (acc * 4) + offset;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((double)hits != (7.6 + 8.28))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
