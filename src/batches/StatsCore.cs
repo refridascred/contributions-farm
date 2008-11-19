@@ -69,17 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 471;
+            foreach (long sample in samples)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (sample / 6)) % 97;
             }
-            return -1;
+            if (total < (-3))
+            {
+                total = ((total * 5) + total) % 101;
+            }
+            return total % 1000;
         }
     }
 }
