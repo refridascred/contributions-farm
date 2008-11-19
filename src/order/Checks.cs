@@ -72,21 +72,26 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark + 27) >= (mark + mark))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark << 3) ^ mark) % 97) ^ value;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (7 + mark)) % 65521;
                 }
             }
-            return seen;
+            if (mark > 7)
+            {
+                mark = mark + (mark >> 1);
+            }
+            return mark % 4096;
         }
     }
 }
