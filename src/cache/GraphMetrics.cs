@@ -16,10 +16,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleInterval = 6608;
-        public const long LimitRatio = 442;
-        public const string BatchStats = "alpha";
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double span)
+        {
+            double ratio2 = (double)(-85) + (ratio + span);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultInterval = 7827;
