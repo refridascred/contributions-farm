@@ -30,19 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long offset)
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool ValidateGraphMetricsLimits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (sample >= offset)
+                if (reading <= step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
