@@ -14,17 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many buffer session samples are out of range.</summary>
