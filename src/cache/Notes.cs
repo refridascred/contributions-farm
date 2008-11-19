@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Check that every cache buffer entry stays within the limit.</summary>
+        public static bool ValidateCacheBufferLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (count >= (datum & 1))
+                if (item > seed)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
