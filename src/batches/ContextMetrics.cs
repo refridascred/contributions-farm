@@ -38,20 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 65.19;
+        public const string DefaultSession = "alpha-1";
+        public const string IdleSession = "standard-edge";
+        public const long RetrySession = 3240;
+        public const long BaseSession = 7650;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] levels, long limit)
