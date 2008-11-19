@@ -34,22 +34,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Match up metrics notes samples.</summary>
-        public static long OverlapMetricsNotesCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchCount = 20.36;
+        public const long BatchNotes = 1527;
+        public const long MaxNotes = 5609;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] data, long floor)
