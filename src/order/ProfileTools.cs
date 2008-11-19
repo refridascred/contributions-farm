@@ -19,12 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long bound)
         {
-            Ready,
-            Closed,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
