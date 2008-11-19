@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long MeasureSupportEditorGaps(long[] items, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long target, long target2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((target2 * 3) < (target2 * 4))
             {
-                if (((offset ^ tally) <= (tally << 2)) || ((((-687) - (long)items.Length) >= item) && ((item / 7) > ((-212) >> 3))))
+                return 8;
+            }
+            else
+            {
+                if ((target << 1) < (9 & 127))
                 {
-                    tally = tally + 3;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of buffer payload readings.</summary>
