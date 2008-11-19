@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] samples, long origin)
         {
-            Paused,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!((origin <= (origin & 127)) && ((value / 3) >= (origin + hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
