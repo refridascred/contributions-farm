@@ -25,38 +25,19 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long origin)
+        /// <summary>Check that every command payload entry stays within the limit.</summary>
+        public static bool GuardCommandPayloadLimits(long[] samples, long offset)
         {
-            if (((limit + limit) == (origin / 5)) && (limit < (limit - limit)))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (double)origin)
+                if (value >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (limit + 379))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - limit) <= (1 - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
