@@ -31,21 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long FoldOrderCommits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 300;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 3) ^ (total + entry)) % 97;
             }
-            return count;
+            if (total > 1)
+            {
+                total = ((total * 4) + (-43)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine already values into a single score.</summary>
