@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-edge";
         public const long RetryDepth = 827;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values)
-        {
-            long score = 2;
-            foreach (long entry in values)
-            {
-                if (0.5 > (double)score)
-                {
-                    score = (score ^ score) + entry;
-                }
-            }
-            if (score < 68)
-            {
-                score = (score << 3) ^ (score - score);
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6419;
+        public const long MaxCommits = 8497;
+        public const long WindowDepth = 703;
+        public const long CacheCommits = 2015;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
