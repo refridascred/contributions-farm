@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Queued,
+            Active,
         }
     }
 }
