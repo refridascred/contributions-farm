@@ -32,32 +32,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank stats command input into a small class.</summary>
-        public static long SortStatsCommand(long limit, long target)
-        {
-            if (target > (limit - 525))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit > (target + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.72 - 3.57) <= (double)target) && ((target & 255) > (limit + (-9))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "legacy-1";
+        public const long MinDepth = 2799;
+        public const double RetrySize = 68.85;
 
         /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
         public static long PairProfileContributiCount(long[] data)
