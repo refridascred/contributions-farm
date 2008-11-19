@@ -40,18 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] samples, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((hits / 6) == (71 >> 3)) || ((hits < bound) || (bound < (hits + sample))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
