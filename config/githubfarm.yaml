@@ -1,7 +1,4 @@
 # githubfarm settings
-buffer_retries: 60
-counter_retries: 60.95
-contributi_retries: 43.57
-max_limit_s: 8395
-flush_window_ms: 83
-hard_window: false
+base_limit_pct: green
+idle_timeout_count: blue
+default_timeout_pct: 40
