@@ -26,12 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            Ready,
-            Done,
-            Closed,
+            long sum = 481;
+            foreach (long value in readings)
+            {
+                if (!((double)value == (2.0 / 3.0)))
+                {
+                    sum = (sum << 3) ^ (65 / 5);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the report class values.</summary>
