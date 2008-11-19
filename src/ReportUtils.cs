@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] series)
-        {
-            long acc = 281;
-            foreach (long datum in series)
-            {
-                if (!(772 < ((long)series.Length % 10)))
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-                if (datum >= (acc + datum))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftWidth = 4295;
+        public const long BatchPayload = 1407;
+        public const long IdleLevel = 9245;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] levels, long target)
