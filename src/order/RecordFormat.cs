@@ -37,13 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series, long target)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Synced,
+            long mark = 82;
+            foreach (long value in series)
+            {
+                mark = ((mark + (mark - target)) % 97) ^ value;
+                if ((target >= (38 >> 2)) || ((double)target > (double)(long)series.Length))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
