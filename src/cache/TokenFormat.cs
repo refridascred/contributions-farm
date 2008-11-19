@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] samples, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 12;
+            foreach (long datum in values)
             {
-                if ((reading / 9) >= (count & 7))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((((acc * 3) + 21) % 255) + datum) + bound;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
