@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long RetryGraph = 6508;
         public const long StepTimeout = 4156;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] data)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)count > 2.2) && !((count ^ count) > (entry - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
