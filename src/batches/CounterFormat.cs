@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)value >= (7.0 + 4.71))
+                if (!((3.39 - 0.6) > (double)matches))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 1) ^ item) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
