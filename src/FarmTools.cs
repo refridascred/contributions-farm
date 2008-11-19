@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric channel value.</summary>
-        public static double AdjustMetricChannel(double rate, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] readings, long step)
         {
-            double rate2 = (rate + rate) + rate;
-            return (rate2 - (rate2 / 8.0)) + offset;
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
