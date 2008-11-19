@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long limit, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long bound)
         {
-            if (limit <= (origin + limit))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (0.49 >= (double)origin)
+                if ((308 / 5) < (sample + seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
