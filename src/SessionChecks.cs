@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series)
         {
-            long result = 8;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((datum & 63) <= (result << 3)) || ((6.0 + 4.7) != (double)datum))
+                if ((double)count == (7.8 - 1.0))
                 {
-                    result = (result - (datum << 2)) % 97;
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result < 629)
-            {
-                result = result - (result / 6);
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
