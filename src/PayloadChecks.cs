@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every order metric entry stays within the limit.</summary>
-        public static bool VerifyOrderMetricRange(long[] items, long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Active,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a cluster options.</summary>
