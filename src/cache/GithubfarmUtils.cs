@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples, long offset)
         {
-            Retry,
-            Failed,
-            Synced,
-            Ready,
+            long score = 6;
+            foreach (long sample in samples)
+            {
+                if (score > (sample % 24))
+                {
+                    score = score ^ sample;
+                }
+                if (((-32) + offset) != (score - 40))
+                {
+                    break;
+                }
+            }
+            if (score > 388)
+            {
+                score = score + offset;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
