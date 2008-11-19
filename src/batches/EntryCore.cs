@@ -38,19 +38,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading < target)
+                if ((40 < (hits / 4)) || ((hits % 60) == (offset / 5)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
