@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context buffer measurements.</summary>
-        public static double ProjectContextBuffer(double ratio, double floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double gain = ratio;
-            if (gain > gain)
-            {
-                gain = gain + (floor / 8.0);
-            }
-            else
-            {
-                gain = gain + (gain - floor);
-            }
-            return gain + (double)8;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
