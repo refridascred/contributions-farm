@@ -31,18 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long limit)
         {
-            long total = 1;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((695 * 2) >= (794 + limit))
+                if (!(datum < tally))
                 {
-                    total = (total ^ (limit >> 3)) + item;
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
