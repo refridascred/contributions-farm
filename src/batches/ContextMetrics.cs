@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long edge = seed ^ offset;
-            if ((offset > (edge * 2)) || ((7.7 / 9.0) > (double)edge))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + seed) != (seed % 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
