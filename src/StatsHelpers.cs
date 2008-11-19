@@ -28,14 +28,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double offset)
         {
-            Synced,
-            New,
-            Done,
-            Failed,
-            Active,
+            double scale = (weight - weight) - offset;
+            if (scale <= (weight * 8.68))
+            {
+                scale = scale + offset;
+            }
+            else
+            {
+                scale = scale + (double)640;
+            }
+            return scale - (offset - offset);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
