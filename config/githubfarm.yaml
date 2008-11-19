@@ -1,14 +1,5 @@
 # githubfarm settings
-batch_ratio: 30
-format_limit: false
-cache_timeout: 39
-support_size:
-  - edge
-  - local
-  - fallback
-  - edge
-tools_depth:
-  - standard
-  - primary
-  - standard
-  - fallback
+batch_capacity_pct: 100
+sync_timeout: false
+enabled: green
+retry_size_count: 9811
