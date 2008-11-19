@@ -30,16 +30,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            double scale = rate;
+            if (scale > scale)
             {
-                state = (state << 3) ^ ((long)i + step);
-                state = ((state * 4) + (long)i) % 101;
+                scale = (scale - rate) - bias;
             }
-            return state;
+            return scale - (double)681;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
