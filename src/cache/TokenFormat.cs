@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] samples, long step)
         {
-            double rate = 0.92;
-            return (rate + (bias * 2.73)) + span;
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 9) >= (count & 7))
+                {
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
