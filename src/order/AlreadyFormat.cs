@@ -59,11 +59,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long offset2)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            if ((offset >> 3) <= (offset2 - offset2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 ^ offset) > (offset >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset << 2) < (4 % 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
