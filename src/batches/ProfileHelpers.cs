@@ -37,22 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!(cell >= (seen >> 5)) || ((cell - seen) <= (cell >> 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
