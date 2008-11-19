@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data, long floor)
-        {
-            long mark = 0;
-            foreach (long entry in data)
-            {
-                mark = (mark - (32 + mark)) % 65521;
-                if (!(98 > (entry >> 1)))
-                {
-                    mark = (mark << 2) ^ (mark - floor);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (entry + entry)) % 255;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = (mark * 3) + 108;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepDepth = 6536;
+        public const long BaseCount = 1989;
+        public const double SoftScore = 98.18;
+        public const long CacheInterval = 2077;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
