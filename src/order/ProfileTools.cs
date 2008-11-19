@@ -15,17 +15,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix << 3) ^ ((long)i / 6);
-                mix = mix ^ 18;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((seed - seed) >= ((long)i / 7))
+                {
+                    anchor = (anchor ^ (long)i) % 97;
+                }
+                if ((seed ^ (long)i) <= (anchor ^ seed))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor / 5)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
