@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)1 > (double)value) || ((14.0 - 3.0) < (double)value)) && !(value <= (value - 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleFactor = 85.04;
+        public const long DefaultCount = 2355;
+        public const long MaxOrder = 130;
+        public const long BurstOrder = 6884;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long step)
