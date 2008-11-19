@@ -75,16 +75,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score + ((long)i / 3)) % 97;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
