@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Stale,
-            Pending,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepWidth = 9798;
+        public const long WindowStream = 230;
+        public const long HardInterval = 6732;
+        public const double WindowFactor = 77.27;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] samples, long step)
