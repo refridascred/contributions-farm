@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate already counter samples.</summary>
-        public static long WeighAlreadyCounter(long[] levels)
+        /// <summary>Count the buffer report entries that pass the check.</summary>
+        public static long CountBufferReportOutliers(long[] series)
         {
-            long sum = 796;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)sum > (2.4 / 4.0))
+                if ((item ^ item) <= (seen - item))
                 {
-                    sum = ((sum << 3) ^ (value / 7)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (sum < 815)
-            {
-                sum = sum - (sum & 1);
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
