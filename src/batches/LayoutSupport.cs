@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] readings, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + origin) <= (origin * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
