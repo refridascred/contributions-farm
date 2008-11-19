@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + entry) < (entry ^ entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3484;
+        public const double RetryBudget = 77.92;
+        public const string MaxLevel = "legacy-1";
+        public const long MinSpan = 1742;
 
         /// <summary>Measure how many session command samples are out of range.</summary>
         public static long CountSessionCommandHits(long[] data, long step)
