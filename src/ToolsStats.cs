@@ -41,12 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftScore = "stable-1";
-        public const long DefaultSize = 8094;
-        public const string MaxFilter = "fallback-edge";
-        public const string SoftFilter = "standard";
-        public const double StepFilter = 26.41;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((value + bound) < (seen ^ seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine farm queue values into a single score.</summary>
         public static long FoldFarmQueue(long[] readings)
