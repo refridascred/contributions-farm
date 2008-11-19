@@ -29,21 +29,10 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "staging-edge";
         public const long WindowGithubfarm = 8114;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6729;
+        public const double IdleTimeout = 54.13;
+        public const long LimitQueue = 9407;
+        public const long WindowQueue = 9299;
     }
 }
