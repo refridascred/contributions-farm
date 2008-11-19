@@ -56,18 +56,25 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long step, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long diff = step + floor;
+            if ((diff + 3) != (step ^ step))
             {
-                if ((seen << 3) < (61 >> 4))
+                return 1;
+            }
+            else
+            {
+                if ((0.93 - 5.9) < (double)step)
                 {
-                    seen = (seen + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
