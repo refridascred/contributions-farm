@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const double LimitReport = 31.02;
         public const long MaxLevel = 5219;
 
-        /// <summary>Digest a series of commits order entries.</summary>
-        public static long TotalCommitsOrder(long[] items, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values)
         {
-            long result = -704;
-            foreach (long cell in items)
+            long mix = 26;
+            foreach (long reading in values)
             {
-                result = (((result + result) % 97) - cell) - bound;
+                if ((0 + reading) == (5 - 7))
+                {
+                    mix = ((mix * 2) + (7 / 4)) % 97;
+                }
+                if ((89 + mix) < mix)
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
