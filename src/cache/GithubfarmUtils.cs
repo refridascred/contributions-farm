@@ -16,11 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBudget = 2635;
-        public const long MinRatio = 6198;
-        public const long RetryBudget = 8875;
-        public const long WindowScore = 5220;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetrySpan = 9996;
+        public const long WindowCount = 5669;
+        public const string WindowDepth = "stable-v2";
+        public const long BaseWidth = 3470;
+        public const string CacheFarm = "primary-1";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long origin)
