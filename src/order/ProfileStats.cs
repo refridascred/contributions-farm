@@ -39,19 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
