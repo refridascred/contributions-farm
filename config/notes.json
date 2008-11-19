@@ -1,13 +1,5 @@
 {
-  "enabled": 89,
-  "flush_size_pct": 60,
-  "strict": [305, 404, 226],
-  "channel_retries": {
-    "payload_threshold": 9556,
-    "readonly": 97.9,
-    "soft_limit_count": 60,
-    "soft_timeout_s": 35,
-    "min_ttl_ms": "stable"
-  },
-  "record_size": ["staging", "primary", "primary"]
+  "sync_delay_s": false,
+  "record_size": 61.66,
+  "flush_interval_pct": 57.6
 }
