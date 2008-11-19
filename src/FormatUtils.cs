@@ -46,12 +46,21 @@ namespace Common.Utilities
         public const string SoftWidth = "fallback-v2";
         public const long SoftLevel = 7326;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of route channel readings.</summary>
