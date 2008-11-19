@@ -38,22 +38,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items, long offset)
-        {
-            long state = 1;
-            foreach (long datum in items)
-            {
-                if ((6 - state) <= (2 - offset))
-                {
-                    state = (((state << 3) ^ offset) % 1000) - datum;
-                }
-            }
-            if (state > (-41))
-            {
-                state = state - state;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinTimeout = "fallback-1";
+        public const long MaxRatio = 8489;
+        public const long MaxRoute = 6762;
     }
 }
