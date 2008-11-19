@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of batch tools readings.</summary>
-        public static long MatchBatchToolsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "standard";
+        public const double BaseDepth = 29.34;
+        public const double CacheInterval = 98.81;
+        public const double BurstRatio = 57.32;
+        public const long WindowCount = 795;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] series)
