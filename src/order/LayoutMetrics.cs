@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
