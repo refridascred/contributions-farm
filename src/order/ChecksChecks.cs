@@ -34,32 +34,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a farm notes value against two limits.</summary>
-        public static long RankFarmNotes(long target, long limit)
+        /// <summary>Find the first support account entry that matches the target.</summary>
+        public static long FindSupportAccountIndex(long[] levels, long offset)
         {
-            long edge = target - limit;
-            if ((limit - 95) <= limit)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7 << 2) != (edge / 9)) && ((2.76 * 3.38) <= (double)edge))
+                if (levels[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit <= (edge - target)) && (target <= (201 + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
