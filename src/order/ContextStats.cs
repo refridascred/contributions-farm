@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Paused,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate channel samples.</summary>
