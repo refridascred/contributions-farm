@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double bias)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale = (double)((-70) >> 5);
-            if (scale < (bias - scale))
-            {
-                scale = (scale - scale) - ratio;
-            }
-            return scale + (1.29 - bias);
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
