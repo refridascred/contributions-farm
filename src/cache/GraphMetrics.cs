@@ -50,19 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] items, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
