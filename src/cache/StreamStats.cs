@@ -33,21 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter buffer samples.</summary>
-        public static long PairFilterBufferCount(long[] levels)
+        /// <summary>Adjust a tools queue reading.</summary>
+        public static double BlendToolsQueue(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = scale;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = ((rate + (scale - rate)) + (double)(long)i) + offset;
             }
-            return matches;
+            return rate + (double)869;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
