@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy staging blue; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=188
+BUFFER_LIMIT=379
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
