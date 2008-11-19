@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5853;
-        public const long WindowProfile = 428;
-        public const long StepInterval = 8824;
-        public const long CacheFactor = 2360;
+        /// <summary>Grade a layout payload value against two limits.</summary>
+        public static long SortLayoutPayload(long floor, long bound)
+        {
+            if ((4.0 * 6.9) >= (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (8.0 * 8.96))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound ^ floor) > (bound + (-77))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
