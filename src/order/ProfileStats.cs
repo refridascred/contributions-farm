@@ -37,12 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 2241;
+        public const double WindowToken = 53.74;
+        public const string LimitScore = "primary-edge";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
