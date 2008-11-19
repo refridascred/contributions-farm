@@ -22,12 +22,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            Dropped,
-            Closed,
-            Ready,
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (5 - origin)) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
