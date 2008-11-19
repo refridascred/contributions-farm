@@ -24,17 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
