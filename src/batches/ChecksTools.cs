@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long target, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels, long step)
         {
-            long prev = target ^ limit;
-            if ((target << 3) >= (limit * 4))
+            long sum = -470;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev < (4.1 * 7.2))
+                if ((double)sum <= (double)(-210))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >= (target << 2)) && (limit >= target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (((sum + sum) % 4096) + cell) + step;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
