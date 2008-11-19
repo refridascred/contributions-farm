@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long BaseTimeout = 1270;
         public const string BaseSize = "stable";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftFactor = 7535;
-        public const string BatchAccount = "alpha-edge";
-        public const long BurstAccount = 6618;
+        /// <summary>Scale a cache route figure with a bias.</summary>
+        public static double ScaleCacheRoute(double bias, double floor)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (bias2 / 4.0)) - (double)(long)i;
+            }
+            return bias2 - floor;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] items, long offset)
