@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=258
+for item in local strict standard; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=335
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
