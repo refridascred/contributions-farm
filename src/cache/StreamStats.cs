@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string DefaultLevel = "latest-v2";
         public const string MaxCluster = "legacy";
 
-        /// <summary>Match up batches stream samples.</summary>
-        public static long PairBatchesStreamCount(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen < (seen ^ seen))
                 {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
