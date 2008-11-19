@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 360;
-        public const double HardWidth = 85.91;
-        public const long WindowWidth = 2912;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 626;
+        public const long CacheTools = 1089;
+        public const long RetryInterval = 8354;
+        public const long BaseTools = 834;
+        public const string WindowTools = "alpha-v2";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
