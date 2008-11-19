@@ -47,18 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] samples, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (reading >= ((-4) * 4))
+                if ((seen / 3) > 983)
                 {
-                    count = (count + 2) + seed;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two filter measurements.</summary>
