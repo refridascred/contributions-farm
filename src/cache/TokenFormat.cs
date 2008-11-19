@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Done,
-            Pending,
-            New,
+            long carry = 384;
+            foreach (long item in levels)
+            {
+                if (((5 - carry) >= (item & 15)) || (item < (carry + (-194))))
+                {
+                    carry = ((carry * 5) + (item & 127)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
