@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a editor info.</summary>
