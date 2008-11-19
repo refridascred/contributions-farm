@@ -52,11 +52,13 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
