@@ -34,15 +34,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next support editor value from a seed.</summary>
-        public static long SeriesSupportEditor(long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = 11;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                mix = (mix ^ mix) % 101;
+                if ((mix - 82) >= (mix >> 5))
+                {
+                    mix = (mix - (sample << 2)) % 1000;
+                }
             }
-            return sum;
+            if (mix > 9)
+            {
+                mix = (mix << 3) ^ (3 - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
