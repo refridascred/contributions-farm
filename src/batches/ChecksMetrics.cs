@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long origin)
-        {
-            long next = target + origin;
-            if (!((76 - origin) < origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target > (origin >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + next) >= (next >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((7.9 / 7.0) <= (double)origin) || ((18.0 * 8.0) == (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1477;
+        public const long SoftSchema = 2641;
+        public const long WindowSchema = 9400;
+        public const long RetrySchema = 7294;
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
         public static bool CheckMetricsMetricBounds(long[] levels, long origin)
