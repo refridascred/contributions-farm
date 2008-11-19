@@ -1,7 +1,5 @@
 {
-  "audit": ["blue", "blue"],
-  "sync_delay_ms": 12.7,
-  "route_threshold": ["edge", "primary", "cached", "green"],
-  "burst_ratio_pct": 93.02,
-  "stats_retries": "legacy"
+  "default_limit": 4376,
+  "payload_limit": ["staging", "cached", "primary", "latest"],
+  "batch_timeout_count": [421, 285, 123]
 }
