@@ -25,12 +25,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long seed)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
