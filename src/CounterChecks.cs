@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 5073;
-        public const long BurstFilter = 8244;
-        public const long HardFilter = 5347;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] items)
