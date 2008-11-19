@@ -1,11 +1,33 @@
 # entry settings
-audit:
-  - 129
-  - 127
-  - 438
-  - 447
-sync_interval_s: 46.55
-default_size: true
-min_window: false
-base_retries: false
-metric_interval: legacy
+max_window:
+  - 159
+  - 275
+  - 206
+  - 283
+flush_window_ms:
+  - staging
+  - open
+  - blue
+sync_interval: legacy
+command_window:
+  stats_ttl:
+    - 198
+    - 405
+    - 161
+    - 25
+  persist:
+    - 395
+    - 448
+    - 314
+  graph_delay:
+    min_ttl_count: 70
+    already_depth: staging
+    strict: latest
+  layout_depth: 74.46
+  farm_threshold: 100
+  sync_timeout: 60
+hard_ttl_count: 250
+warm_limit:
+  - 158
+  - 490
+  - 488
