@@ -57,19 +57,15 @@ namespace Common.Utilities
             return drift - (double)880;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
     }
 }
