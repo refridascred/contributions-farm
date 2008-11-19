@@ -16,19 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] levels, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] values, long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (datum >= floor)
+                if ((hits * 2) > (item - hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
