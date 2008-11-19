@@ -41,18 +41,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (61 > (floor + hits))
+                if ((item & 7) >= item)
                 {
-                    hits = (hits + 1) + entry;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
