@@ -66,10 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitCount = "staging-v2";
-        public const long DefaultAccount = 8849;
-        public const long CacheFactor = 3352;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
         public static long RollStatsSupport(long bound)
