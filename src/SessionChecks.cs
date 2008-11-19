@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count == (7.8 - 1.0))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
