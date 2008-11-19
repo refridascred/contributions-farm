@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Idle,
-            Queued,
-            Ready,
-            New,
-            Locked,
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
