@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] levels, long limit)
         {
-            long sum = 892;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = (sum - sum) + value;
+                if ((count ^ limit) == (value / 6))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 213)
-            {
-                sum = (sum - (sum % 100)) % 97;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
