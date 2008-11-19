@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long floor, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            long delta = floor ^ seed;
-            if ((double)seed != (2.69 - 7.6))
+            double gain2 = bias;
+            if (gain2 <= gain)
             {
-                return 1;
+                gain2 = gain2 + (bias + gain);
             }
             else
             {
-                if ((5.18 / 5.0) == (double)delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta << 1) != (delta * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + (bias - gain2);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
