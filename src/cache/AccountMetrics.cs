@@ -39,18 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((2.0 / 4.0) >= (double)tally) || ((item + item) >= (item & 1)))
+                if ((long)i <= ((long)i ^ limit))
                 {
-                    tally = tally + 2;
+                    state = state + (long)i;
+                    state = (state - ((long)i + limit)) % 65521;
                 }
+                if (((limit * 3) > (13 << 1)) && ((double)9 <= (double)state))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
