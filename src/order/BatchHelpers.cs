@@ -28,9 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "local";
-        public const long MinChecks = 2144;
-        public const string HardChecks = "open-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheFactor = 6175;
+        public const long BatchInterval = 7690;
+        public const double DefaultToken = 54.08;
+        public const long MaxToken = 3396;
     }
 }
