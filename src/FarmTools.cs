@@ -37,11 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardCount = 5264;
-        public const string RetryRecord = "staging";
-        public const string BatchRecord = "fallback-1";
-        public const long CacheRecord = 4851;
-        public const string MaxScore = "standard-v2";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count % 3) >= 699)
+                {
+                    count = ((count + 1) ^ reading) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
