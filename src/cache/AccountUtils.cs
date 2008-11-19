@@ -26,31 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if (((target - bound) > target) || ((10.0 + 1.0) <= (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target * 2) < (bound - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - target) < (target << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
