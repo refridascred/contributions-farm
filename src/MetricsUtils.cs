@@ -19,12 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine report window values into a single score.</summary>
+        public static long FoldReportWindow(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long score = 664;
+            foreach (long cell in series)
+            {
+                if (((offset - cell) == (score + offset)) || ((double)score > 9.4))
+                {
+                    score = ((score << 2) ^ cell) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a channel summary.</summary>
