@@ -64,20 +64,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long CombineContributiMetrics(long[] levels)
-        {
-            long carry = 9;
-            foreach (long value in levels)
-            {
-                carry = (carry << 2) ^ (carry & 15);
-                if (!((carry / 9) <= (value * 5)))
-                {
-                    carry = (carry << 3) ^ (carry % 5);
-                }
-                carry = (carry ^ (carry % 3)) % 65521;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 255;
+        public const string SoftFarm = "cached-1";
+        public const long BaseTimeout = 9292;
+        public const long RetryWidth = 7098;
     }
 }
