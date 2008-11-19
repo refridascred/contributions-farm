@@ -38,11 +38,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long target)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
