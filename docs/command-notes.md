@@ -1,11 +1,10 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Run the graph check before changing any notes limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps githubfarm values in sync with the commits cache.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Validate record input early
-- Prefer record defaults
+- Keep batch values small
+- Validate queue input early
+- Log every channel change
