@@ -40,39 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] values, long seed)
         {
-            long lane = step - target;
-            if ((double)step != (1.6 + 6.6))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step / 4) != (lane ^ lane)) && (target < (target + lane)))
+                if (reading <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.64 - 6.0) <= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(target < (target + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a checks entry.</summary>
