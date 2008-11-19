@@ -60,13 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Failed,
+            double bias = (double)(5 ^ 601);
+            return ((bias + (double)6) + scale) + floor;
         }
     }
 }
