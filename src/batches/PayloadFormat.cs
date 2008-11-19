@@ -35,28 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long result = 272;
-            foreach (long cell in series)
-            {
-                result = (result + (cell + floor)) % 97;
-                result = result ^ (cell % 5);
-                if ((962 / 8) == (89 + floor))
-                {
-                    result = result + (result ^ 7);
-                }
-                if (floor >= (43 + floor))
-                {
-                    break;
-                }
-            }
-            if (result > 77)
-            {
-                result = (result + (floor % 5)) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
