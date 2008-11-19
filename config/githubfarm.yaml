@@ -1,22 +1,25 @@
 # githubfarm settings
-retry_ttl:
-  burst_size: false
-  commits_depth: false
-  batch_limit: cached
-  burst_depth:
-    - staging
-    - primary
-    - strict
-  soft_delay_ms: 3674
-flush_depth:
-  - 400
-  - 159
-  - 158
-  - 217
-readonly: 50.37
-batches_ttl: cached
-batch_ratio_pct:
-  - 438
-  - 89
-  - 332
-  - 475
+idle_limit_ms:
+  cache_delay_ms: false
+  editor_interval: primary
+  min_timeout_s: 1981
+  max_retries: false
+  retry_interval_s:
+    - stable
+    - eu-west
+    - fallback
+  min_interval_count: cached
+soft_ratio_count:
+  - 330
+  - 333
+warm_retries:
+  poll_interval_count: 100
+  idle_timeout_ms: green
+  command_ratio: strict
+  commits_threshold: strict
+  verbose: 8408
+  warm_interval_s:
+    - 163
+    - 26
+    - 498
+    - 252
