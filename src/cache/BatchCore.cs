@@ -36,21 +36,22 @@ namespace Common.Utilities
         public const long LimitDepth = 6748;
         public const long MaxCluster = 1692;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long FoldClusterSupport(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 299;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (floor < (floor >> 1))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor << 2) ^ (19 << 3);
+                }
+                if ((0.98 * 9.93) == (double)value)
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Rank command input into a small class.</summary>
