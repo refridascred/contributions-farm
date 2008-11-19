@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Use route settings to tune how often githubfarm data is refreshed.
-A payload that stays idle for too long is moved to the route list.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the support handler retries a few times before giving up.
+Use contributi settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Validate cluster input early
-- Prefer cluster defaults
-- Document new tools fields
+- Validate metrics input early
+- Prefer format defaults
+- Review queue limits each release
