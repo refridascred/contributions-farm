@@ -42,12 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6231;
+        public const double IdleCommits = 30.92;
+        public const long RetrySize = 6202;
+        public const double BaseWidth = 49.64;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] data, long target)
