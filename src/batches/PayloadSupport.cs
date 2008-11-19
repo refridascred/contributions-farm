@@ -20,16 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long MeasureFilterFarmHits(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                state = (state - (state ^ offset)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
+                if ((hits - (-132)) <= hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a batches checks reading.</summary>
