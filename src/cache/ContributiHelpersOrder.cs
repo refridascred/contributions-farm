@@ -24,18 +24,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] data, long limit)
+        /// <summary>Roll a contributi already counter forward.</summary>
+        public static long RollContributiAlready(long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (value < (value / 3))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                state = (state * 5) + origin;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
