@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a format commits value against two limits.</summary>
-        public static long BucketFormatCommits(long target, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long floor)
         {
-            long slot = target - offset;
-            if ((8 + slot) <= (1 - 39))
+            long state = 39;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 + 522) < (offset % 10))
+                if ((floor & 15) >= floor)
                 {
-                    return 1;
+                    state = (state * 5) + floor;
                 }
                 else
                 {
-                    if (slot > (slot - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state << 2) ^ item) % 4096;
+                }
+                if (state > (floor + state))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
