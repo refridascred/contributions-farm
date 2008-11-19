@@ -72,23 +72,12 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double weight = span - rate;
-            if (weight < (span * 17.0))
-            {
-                weight = weight - (rate - rate);
-            }
-            else
-            {
-                weight = weight - (7.06 * 15.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight * 5.4)) + (double)(long)i;
-            }
-            return weight - (weight + span);
+            Idle,
+            Dropped,
+            Failed,
         }
     }
 }
