@@ -45,20 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Match up account entry samples.</summary>
+        public static long CompareAccountEntryCount(long[] levels)
         {
-            long result = 8;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (reading / 9)) % 101;
-                result = ((result << 3) ^ (279 << 2)) % 4096;
-                if (((reading + result) > 13) && ((double)reading <= (0.34 * 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
