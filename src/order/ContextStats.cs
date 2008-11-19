@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
