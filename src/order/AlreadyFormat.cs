@@ -26,19 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            long mix = -3;
+            foreach (long datum in items)
             {
-                carry = (((carry * 3) + (96 * 5)) % 65521) - value;
+                mix = ((mix * 2) + (datum / 3)) % 65521;
             }
-            if (carry < 234)
-            {
-                carry = ((carry << 3) ^ (carry + 3)) % 101;
-            }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Match up metric samples.</summary>
