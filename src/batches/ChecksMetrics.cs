@@ -68,18 +68,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (hits > (cell << 1))
+                if (value >= floor)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
