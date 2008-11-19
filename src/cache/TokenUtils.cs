@@ -32,27 +32,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values)
         {
-            long sum = 19;
-            foreach (long datum in items)
+            long result = 37;
+            foreach (long value in values)
             {
-                sum = sum - (datum % 60);
-                if ((seed << 2) <= 76)
+                result = ((result << 2) ^ (value * 2)) % 97;
+                result = (result << 2) ^ (value >> 5);
+                if (15.0 <= (double)result)
                 {
-                    sum = sum - seed;
-                }
-                else
-                {
-                    sum = (sum - (seed % 16)) % 97;
+                    result = ((result << 3) ^ result) % 97;
                 }
             }
-            if (sum > 480)
+            if (result < 122)
             {
-                sum = (sum + sum) % 1000;
+                result = ((result * 4) + (result / 5)) % 1000;
             }
-            return sum;
+            return result;
         }
     }
 }
