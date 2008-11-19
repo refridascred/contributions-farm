@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSpan = 90.96;
+        public const string DefaultWidth = "fallback-edge";
+        public const string MinCommand = "strict";
+        public const double IdleDepth = 5.23;
+        public const long WindowCommand = 7065;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryGaps(long[] levels)
