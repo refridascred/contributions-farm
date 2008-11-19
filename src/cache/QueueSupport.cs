@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 4125;
-        public const long WindowBatches = 5572;
-        public const long DefaultSpan = 6785;
-        public const double WindowWidth = 85.65;
+        /// <summary>Roll a context token counter forward.</summary>
+        public static long SeriesContextToken(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)score > (0.3 / 6.0)) || (3.9 > (double)score))
+                {
+                    score = score ^ (score / 5);
+                }
+                score = (score * 2) + (score << 1);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] samples)
