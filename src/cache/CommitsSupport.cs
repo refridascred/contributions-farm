@@ -37,10 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 95.26;
-        public const long CacheRatio = 7394;
-        public const long LimitCluster = 4104;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Queued,
+            Retry,
+            Active,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] items)
