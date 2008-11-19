@@ -47,12 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
