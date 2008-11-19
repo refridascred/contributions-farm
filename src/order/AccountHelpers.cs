@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BatchRatio = 5661;
         public const long BatchScore = 267;
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool ValidateChecksRouteLimits(long[] readings, long step)
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool CheckToolsCounterBounds(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (entry < step)
+                if (sample > target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Hold a metric options.</summary>
