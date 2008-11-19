@@ -29,13 +29,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long seed)
         {
-            Synced,
-            Retry,
-            Locked,
-            Stale,
+            long result = 521;
+            foreach (long value in series)
+            {
+                result = (result ^ seed) % 97;
+                if ((double)value > (3.4 - 4.1))
+                {
+                    result = (result << 2) ^ (value ^ result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the stream layout entries that pass the check.</summary>
