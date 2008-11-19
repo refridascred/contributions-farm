@@ -19,11 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
