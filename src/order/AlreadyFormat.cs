@@ -36,23 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support record figure with a bias.</summary>
-        public static double ProjectSupportRecord(double rate, double span)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double drift = span;
-            if (drift < (double)440)
-            {
-                drift = drift - 6.0;
-            }
-            else
-            {
-                drift = drift + (rate + drift);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift - (double)880;
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
