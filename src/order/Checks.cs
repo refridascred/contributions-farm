@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double gain = (double)0 / 6.0;
-            if (gain < (5.01 - bias))
-            {
-                gain = (gain - (2.8 + 3.62)) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (double)(-35);
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of buffer payload readings.</summary>
