@@ -49,27 +49,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long anchor = 113;
-            foreach (long value in values)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor << 3) ^ (120 + value);
-                if ((value & 7) >= 98)
+                if ((2.2 + 17.0) != (double)origin)
                 {
-                    anchor = (anchor ^ (-4)) % 1000;
+                    acc = (acc * 5) + (acc % 64);
                 }
-                if (((origin - 86) == (anchor % 5)) && ((value + anchor) < (81 % 5)))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (origin + 93);
-                }
+                acc = ((acc * 4) + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return acc;
         }
 
         /// <summary>Describe the checks kind values.</summary>
