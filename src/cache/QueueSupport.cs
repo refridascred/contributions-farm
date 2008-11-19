@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryBudget = 98.78;
-        public const string BurstCache = "fallback-1";
-        public const double DefaultCache = 95.13;
-        public const double IdleCache = 47.54;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] readings)
