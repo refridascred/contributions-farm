@@ -64,18 +64,11 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] readings, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (matches < (item / 2))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
