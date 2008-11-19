@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series, long step)
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long TallyContextOrderMatches(long[] items, long floor)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long sample in items)
             {
-                if ((matches / 9) < sample)
+                if ((double)matches != (9.2 * 4.1))
                 {
-                    matches = (matches + 2) + step;
+                    matches = ((matches + 3) ^ sample) - floor;
                 }
             }
             return matches;
