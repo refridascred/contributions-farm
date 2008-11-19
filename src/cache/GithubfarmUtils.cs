@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 23.55;
-        public const double BaseMetrics = 42.94;
-        public const string BatchSpan = "alpha-v2";
-        public const double BurstTimeout = 89.53;
-        public const string MaxBudget = "stable";
+        /// <summary>Scale a batch batches figure with a bias.</summary>
+        public static double BlendBatchBatches(double bias, double offset)
+        {
+            double gain = (offset - offset) / 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - offset) - (double)(long)i) - bias;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 8283;
