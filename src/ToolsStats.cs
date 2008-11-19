@@ -21,10 +21,17 @@ namespace Common.Utilities
             return (gain + (double)1) + span;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftFactor = 3566;
-        public const long DefaultFactor = 4476;
-        public const long CacheSpan = 9494;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc - 7) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] values)
