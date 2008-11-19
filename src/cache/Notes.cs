@@ -56,39 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter buffer input into a small class.</summary>
-        public static long SortCounterBuffer(long seed, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long edge = seed + floor;
-            if (((seed - 682) < (seed - floor)) && ((20.0 / 6.0) >= (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.9 * 0.82) < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((edge + seed) != (79 - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (1.39 >= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
