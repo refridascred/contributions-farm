@@ -57,10 +57,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 6251;
-        public const string IdleSpan = "latest-v2";
-        public const long BaseRecord = 4909;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Draft,
+            Idle,
+            Done,
+        }
 
         /// <summary>Audit metric order readings against a rule.</summary>
         public static long MeasureMetricOrderMatches(long[] levels)
