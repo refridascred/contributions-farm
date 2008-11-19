@@ -46,9 +46,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 3797;
-        public const long BurstTools = 9846;
-        public const long HardTools = 9253;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
