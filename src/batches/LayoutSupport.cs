@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Queued,
-            Retry,
+            Ready,
             Done,
-            Locked,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
