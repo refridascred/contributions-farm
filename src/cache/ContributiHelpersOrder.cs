@@ -20,26 +20,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long result = 707;
-            foreach (long item in series)
-            {
-                if ((result % 97) != ((-716) - result))
-                {
-                    break;
-                }
-                if ((double)result > (20.0 + 1.8))
-                {
-                    result = ((result * 4) + (long)series.Length) ^ item;
-                }
-                if ((result / 2) <= result)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
