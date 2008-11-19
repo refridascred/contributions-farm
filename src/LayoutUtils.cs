@@ -34,15 +34,11 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double span)
-        {
-            double drift = 7.1;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - span;
-            }
-            return drift - scale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 53.03;
+        public const double RetryStream = 88.35;
+        public const double CacheSize = 84.72;
+        public const string SoftStream = "standard";
+        public const double BatchSpan = 48.26;
     }
 }
