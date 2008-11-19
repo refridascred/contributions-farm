@@ -1,14 +1,5 @@
 {
-  "channel_threshold": {
-    "cache_capacity_count": ["latest", "eu-west"],
-    "sync_ratio_s": "standard",
-    "warm_timeout": false,
-    "batch_ratio_ms": 93.46,
-    "cluster_depth": 250
-  },
-  "hard_threshold": ["strict", "latest"],
-  "tools_threshold": false,
-  "sync_capacity_count": "fallback",
-  "burst_window_count": 4202,
-  "editor_timeout": 10.72
+  "cache_window": true,
+  "soft_size_count": 60,
+  "verbose": 30
 }
