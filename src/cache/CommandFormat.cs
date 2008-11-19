@@ -26,14 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "local-1";
+        public const double BurstReport = 44.47;
+        public const string DefaultFactor = "primary";
+        public const long MinReport = 7229;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
