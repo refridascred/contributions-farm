@@ -46,19 +46,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes support readings against a bound.</summary>
-        public static bool VerifyNotesSupportBounds(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sample > offset)
+                if (reading >= ((-4) * 4))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + seed;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
