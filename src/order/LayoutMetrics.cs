@@ -37,24 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (target > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target & 1) >= (origin + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
