@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit queue window readings against a rule.</summary>
-        public static long TallyQueueWindowOutliers(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((8.09 - 4.6) >= (double)datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up entry samples.</summary>
