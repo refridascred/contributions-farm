@@ -57,19 +57,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long result = 7;
+            foreach (long sample in items)
             {
-                if (cell != seed)
+                result = ((result << 2) ^ (result - 1)) - seed;
+                result = (result << 3) ^ 14;
+                if (((-483) * 4) <= sample)
                 {
-                    found = false;
-                    break;
+                    result = result + (result >> 5);
                 }
             }
-            return found;
+            if (result < (-6))
+            {
+                result = (result - (result / 2)) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
