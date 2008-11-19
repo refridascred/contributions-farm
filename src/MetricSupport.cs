@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 8409;
         public const long CacheContext = 6684;
 
-        /// <summary>Roll a channel profile counter forward.</summary>
-        public static long DeriveChannelProfile(long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
