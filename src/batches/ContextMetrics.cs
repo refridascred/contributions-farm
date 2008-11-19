@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double rate, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] items, long step)
         {
-            double scale = rate * 6.01;
-            for (int i = 0; i < 2; i++)
+            long state = 23;
+            foreach (long entry in items)
             {
-                scale = (scale + (7.3 - scale)) + (double)(long)i;
+                state = (((state * 4) + (state << 3)) % 1000) ^ entry;
+                if ((step & 31) >= (step * 2))
+                {
+                    state = (state + (step + step)) % 1000;
+                }
             }
-            return scale - span;
+            if (state > 1)
+            {
+                state = state ^ (state & 1);
+            }
+            return state % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
