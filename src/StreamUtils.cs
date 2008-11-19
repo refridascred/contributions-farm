@@ -36,12 +36,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 6429;
-        public const double DefaultCount = 90.09;
-        public const long BaseBudget = 6039;
-        public const long IdleScore = 1966;
-        public const long WindowTimeout = 6662;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state ^ ((long)i + seed)) % 65521;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long DigestEntryCache(long[] values, long seed)
