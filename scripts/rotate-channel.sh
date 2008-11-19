@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge primary local; do
+for item in latest cached legacy local; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=338
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    local)
         log "fast path"
         ;;
     *)
