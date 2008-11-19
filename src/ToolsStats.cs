@@ -77,25 +77,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            long result = 59;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                result = (result + (sample % 100)) % 255;
-                if (((sample << 1) > ((long)items.Length - sample)) || ((8.0 / 4.0) >= (double)sample))
+                if (((cell * 3) >= (matches ^ cell)) || (cell >= (cell % 7)))
                 {
-                    result = (result + (79 << 3)) % 255;
-                    continue;
+                    matches = matches + 3;
                 }
-                result = (result - (5 % 7)) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result > 77)
-            {
-                result = result + result;
-            }
-            return result % 1000;
+            return matches;
         }
     }
 }
