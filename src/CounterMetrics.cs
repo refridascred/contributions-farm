@@ -33,38 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks buffer value against two limits.</summary>
-        public static long RankChecksBuffer(long step, long origin)
-        {
-            if ((double)step != (9.4 * 8.01))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin >> 3) > (-9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= (5.1 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin % 60) == (step % 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 5.7;
+        public const double WindowStream = 93.02;
+        public const long DefaultTimeout = 797;
+        public const long CacheCount = 984;
+        public const long BaseSize = 8949;
     }
 }
