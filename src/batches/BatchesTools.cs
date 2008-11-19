@@ -47,22 +47,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] series, long seed)
         {
-            long state = 117;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((state % 100) <= 830)
+                if (datum < seed)
                 {
-                    state = (state + (sample - state)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 294)
-            {
-                state = (state << 2) ^ (state << 3);
-            }
-            return state % 4096;
+            return ok;
         }
     }
 }
