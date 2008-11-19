@@ -50,18 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] readings, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((limit & 15) == (limit >> 4))
-                {
-                    matches = (matches + 1) - cell;
-                }
+                acc = (acc * 4) + bound;
+                acc = (acc ^ ((long)i ^ 810)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
