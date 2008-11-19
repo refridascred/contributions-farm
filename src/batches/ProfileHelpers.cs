@@ -64,13 +64,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long carry = 93;
+            foreach (long cell in data)
+            {
+                carry = ((carry ^ (cell % 16)) % 255) - limit;
+                carry = carry + (511 * 2);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a support token counter forward.</summary>
