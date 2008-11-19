@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 1153;
-        public const string RetryRecord = "primary-edge";
-        public const long WindowWidth = 222;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items)
+        {
+            long score = 51;
+            foreach (long value in items)
+            {
+                score = (score << 3) ^ (value - value);
+            }
+            return score % 97;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] data)
