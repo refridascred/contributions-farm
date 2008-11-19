@@ -29,18 +29,32 @@ namespace Common.Utilities
         public const long MaxInterval = 5214;
         public const long RetryScore = 8832;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long target)
         {
-            long score = 317;
-            foreach (long value in series)
+            long diff = offset ^ target;
+            if (26 <= (1 - offset))
             {
-                if ((double)score >= (double)seed)
+                return 5;
+            }
+            else
+            {
+                if ((target * 5) >= (diff + 121))
                 {
-                    score = (score - (seed + score)) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((diff + offset) <= (target % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
