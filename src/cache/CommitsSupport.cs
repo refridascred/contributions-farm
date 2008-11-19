@@ -45,18 +45,10 @@ namespace Common.Utilities
         public const string SoftFactor = "strict";
         public const long IdleRecord = 2851;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxWidth = "staging-1";
+        public const double BurstBuffer = 12.01;
+        public const string BaseWidth = "primary-v2";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long limit, long step)
