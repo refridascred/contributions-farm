@@ -69,19 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = 471;
-            foreach (long sample in samples)
-            {
-                total = (total ^ (sample / 6)) % 97;
-            }
-            if (total < (-3))
-            {
-                total = ((total * 5) + total) % 101;
-            }
-            return total % 1000;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
