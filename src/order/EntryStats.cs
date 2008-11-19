@@ -38,12 +38,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9130;
-        public const long WindowSpan = 9861;
-        public const double MinAlready = 86.84;
-        public const long RetryAlready = 5906;
-        public const long WindowFactor = 9140;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long step)
+        {
+            long mix = 50;
+            foreach (long item in series)
+            {
+                if ((mix >> 3) <= (item + item))
+                {
+                    mix = (mix - (step + 50)) % 65521;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long limit)
