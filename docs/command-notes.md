@@ -1,10 +1,14 @@
 # Command notes
 
-Each cache is validated before it reaches the entry queue.
-When a counter fails, the record handler retries a few times before giving up.
+Run the window check before changing any notes limits.
+Each entry is validated before it reaches the graph queue.
+
+Use metrics settings to tune how often support data is refreshed.
+Keep order and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every already change
-- Validate queue input early
-- Keep farm values small
+- Validate stats input early
+- Prefer account defaults
+- Document new contributi fields
+- Keep batch values small
