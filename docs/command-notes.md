@@ -1,14 +1,14 @@
 # Command notes
 
-The schema module keeps session values in sync with the report cache.
-When a stats fails, the stats handler retries a few times before giving up.
+Run the cache check before changing any farm limits.
+The payload report groups every command by checks.
 
-When a filter fails, the checks handler retries a few times before giving up.
-Run the commits check before changing any context limits.
+Use context settings to tune how often window data is refreshed.
+Run the metrics check before changing any already limits.
 
 ## Guidelines
 
-- Review entry limits each release
-- Document new farm fields
-- Keep buffer values small
-- Log every filter change
+- Document new layout fields
+- Review context limits each release
+- Prefer metric defaults
+- Validate checks input early
