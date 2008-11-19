@@ -39,15 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of record entries.</summary>
