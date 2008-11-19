@@ -1,5 +1,8 @@
 {
-  "warm_ttl_s": false,
-  "idle_limit_s": false,
-  "enabled": 100
+  "dry_run": "legacy",
+  "batches_size": 5637,
+  "persist": 74.71,
+  "schema_depth": "latest",
+  "retry_retries_ms": 14,
+  "token_retries": 60
 }
