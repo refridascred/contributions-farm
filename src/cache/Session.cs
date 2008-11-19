@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
