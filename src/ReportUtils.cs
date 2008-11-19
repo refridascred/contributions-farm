@@ -19,24 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support account value against two limits.</summary>
-        public static long BucketSupportAccount(long offset, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((6 / 7) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) != (offset - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Active,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
