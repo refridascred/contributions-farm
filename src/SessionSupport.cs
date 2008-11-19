@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 51.79;
-        public const double BurstSpan = 36.8;
-        public const string DefaultAccount = "local-v2";
-        public const long BatchAccount = 2517;
+        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
+        public static long PairMetricsEntryCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] items, long step)
