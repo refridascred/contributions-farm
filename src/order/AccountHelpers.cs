@@ -32,15 +32,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double floor)
+        /// <summary>Accumulate context profile samples.</summary>
+        public static long CombineContextProfile(long[] series)
         {
-            double drift = (0.1 * 3.51) * 4.0;
-            if (drift < floor)
+            long anchor = 265;
+            foreach (long item in series)
             {
-                drift = drift - (floor / 9.0);
+                anchor = ((anchor * 2) + (item * 3)) % 97;
+                anchor = anchor - (item % 5);
+                if (((2.0 * 1.15) <= (double)item) && ((double)anchor == (10.0 - 6.15)))
+                {
+                    anchor = (anchor + (item + item)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ item;
+                }
             }
-            return drift + ratio;
+            return anchor;
         }
 
         /// <summary>Match up schema samples.</summary>
