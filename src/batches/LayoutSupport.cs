@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((5.82 - 2.7) >= 0.06))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
