@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double IdleDepth = 5.23;
         public const long WindowCommand = 7065;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchBudget = 8898;
-        public const string LimitDepth = "alpha-v2";
-        public const string CacheEditor = "stable-v2";
-        public const double BatchDepth = 21.86;
-        public const long LimitWidth = 7729;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((8.98 * 7.65) != (double)reading) || (((double)(long)data.Length == (2.43 / 6.0)) && ((reading * 3) >= (matches + 395))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double scale, double floor)
