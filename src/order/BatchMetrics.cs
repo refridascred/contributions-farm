@@ -63,13 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            New,
-            Idle,
-            Retry,
-            Closed,
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
