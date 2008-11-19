@@ -55,24 +55,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long origin)
         {
-            if (!((floor / 2) <= (origin << 3)))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin - origin))
+                if ((4.83 + 5.7) > (double)tally)
                 {
-                    return 2;
+                    tally = ((tally + 3) + item) + origin;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
