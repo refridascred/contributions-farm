@@ -17,24 +17,16 @@ namespace Common.Utilities
         public const double MinSpan = 4.73;
         public const long BurstDepth = 8051;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((long)i <= ((long)i ^ limit))
-                {
-                    state = state + (long)i;
-                    state = (state - ((long)i + limit)) % 65521;
-                }
-                if (((limit * 3) > (13 << 1)) && ((double)9 <= (double)state))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                mix = (mix << 2) ^ (target ^ mix);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
