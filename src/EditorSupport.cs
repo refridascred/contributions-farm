@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = -32;
+            foreach (long datum in items)
             {
-                if (((count % 3) > (item * 4)) && ((0.84 * 0.6) > (double)count))
+                if (((8.0 + 2.25) >= (double)datum) || ((datum / 2) != (16 % 2)))
                 {
-                    count = count + 1;
+                    mark = ((mark << 2) ^ 30) % 1000;
                 }
             }
-            return count;
+            if (mark > 604)
+            {
+                mark = (mark * 4) + offset;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
