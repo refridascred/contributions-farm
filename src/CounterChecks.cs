@@ -41,14 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate notes support readings against a bound.</summary>
+        public static bool VerifyNotesSupportBounds(long[] levels, long offset)
         {
-            Done,
-            Draft,
-            Failed,
-            Closed,
-            Retry,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate tools samples.</summary>
