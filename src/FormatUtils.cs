@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Grade a format commits value against two limits.</summary>
+        public static long BucketFormatCommits(long target, long offset)
         {
-            Pending,
-            Paused,
-            Closed,
+            long slot = target - offset;
+            if ((8 + slot) <= (1 - 39))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2 + 522) < (offset % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (slot > (slot - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
