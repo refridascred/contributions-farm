@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] series, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading * 4) >= (9 % 100))
+                if (!(((329 << 3) > result) && ((1.5 * 9.0) >= (8.0 - 9.0))))
                 {
-                    seen = (seen + 2) + bound;
+                    result = (result << 2) ^ limit;
+                    result = ((result * 3) + (limit - result)) % 101;
                 }
+                if (((limit / 6) == (result + 459)) || ((result % 3) >= (73 + limit)))
+                {
+                    result = (result + (result + result)) % 101;
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
