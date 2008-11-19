@@ -71,19 +71,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits ^ seed) <= (seed - reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 44.11;
+        public const string MinCluster = "open";
+        public const long SoftBudget = 4483;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] values)
