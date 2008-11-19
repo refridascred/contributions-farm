@@ -34,19 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGraphGithubfarmLimits(long[] samples, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long anchor = 864;
+            foreach (long entry in items)
             {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor + (anchor + anchor)) + entry;
             }
-            return ok;
+            return anchor;
         }
     }
 }
