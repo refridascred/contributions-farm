@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const double BatchSize = 44.46;
         public const long BatchEntry = 7282;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleSize = 2247;
-        public const long IdleWidth = 5205;
-        public const long MaxStream = 3001;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] items, long origin)
