@@ -24,24 +24,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum * 5) + (sum - origin)) ^ (long)i2;
-                }
-                if (sum < (origin - sum))
-                {
-                    sum = (sum - (sum + (long)i)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleSize = 9938;
+        public const long BurstMetric = 3845;
+        public const double StepInterval = 62.65;
+        public const double LimitSize = 15.18;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheGraph = 9700;
