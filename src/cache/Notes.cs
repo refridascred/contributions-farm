@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] levels)
         {
-            Draft,
-            Stale,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count >= (datum & 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
