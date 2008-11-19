@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long MaxTimeout = 1720;
         public const long RetrySize = 6466;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Closed,
-            Failed,
-            Queued,
-            New,
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
