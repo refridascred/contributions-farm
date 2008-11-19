@@ -1,5 +1,5 @@
 {
-  "burst_delay": "primary",
-  "readonly": true,
-  "batch_retries": false
+  "batch_interval_ms": 34.21,
+  "min_size_pct": 30,
+  "retry_ratio": 22.18
 }
