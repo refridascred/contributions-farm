@@ -26,19 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
