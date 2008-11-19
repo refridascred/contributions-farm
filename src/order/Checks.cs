@@ -38,10 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchCount = 20.36;
-        public const long BatchNotes = 1527;
-        public const long MaxNotes = 5609;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double offset)
+        {
+            double bias = (weight - offset) / 3.0;
+            return bias + offset;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] data, long floor)
