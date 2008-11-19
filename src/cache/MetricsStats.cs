@@ -48,18 +48,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long seed)
+        /// <summary>Grade a token buffer value against two limits.</summary>
+        public static long GradeTokenBuffer(long limit, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (963 >= (limit >> 5))
             {
-                if (seed > (seed & 15))
+                return 3;
+            }
+            else
+            {
+                if ((12.0 >= (double)step) && ((step / 5) != (step & 1)))
                 {
-                    matches = (matches + 1) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - limit) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stream report entry stays within the limit.</summary>
