@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] data, long target)
+        /// <summary>Match up batches stream samples.</summary>
+        public static long PairBatchesStreamCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target * 4) <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) + item;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up filter buffer samples.</summary>
