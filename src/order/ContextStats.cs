@@ -33,17 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(240 + 898);
+            if (bias <= scale)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)6;
             }
-            return -1;
+            else
+            {
+                bias = bias - (offset / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (scale + bias)) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Hold a window summary.</summary>
