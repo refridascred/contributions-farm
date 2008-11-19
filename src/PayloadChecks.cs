@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BatchInterval = 434;
         public const long BatchQueue = 1930;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Project the next stats already value.</summary>
+        public static double AdjustStatsAlready(double scale, double span)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            double rate = span;
+            if (rate >= (double)63)
+            {
+                rate = (rate + (double)652) - scale;
+            }
+            return rate + rate;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
