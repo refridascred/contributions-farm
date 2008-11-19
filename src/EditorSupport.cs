@@ -53,11 +53,33 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftCount = "open-v2";
-        public const string IdleWidth = "fallback";
-        public const long IdleAccount = 7370;
-        public const long MaxSpan = 477;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long origin2)
+        {
+            long edge = origin - origin2;
+            if ((17 & 127) < edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if (7.9 < (double)origin2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge << 1) > 89)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
         public static long RollStatsSupport(long bound)
