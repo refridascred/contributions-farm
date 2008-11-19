@@ -1,7 +1,19 @@
 {
-  "enabled": "blue",
-  "max_capacity_ms": 250,
-  "persist": "stable",
-  "warm_delay_s": false,
-  "compress": [244, 461, 105]
+  "flush_ratio_ms": 90,
+  "default_size_ms": ["staging", "blue", "strict"],
+  "readonly": 1890,
+  "compress": {
+    "githubfarm_window": "strict",
+    "flush_size_count": ["blue", "primary"],
+    "min_ttl_pct": "primary",
+    "hard_limit": {
+      "sync_depth_count": 49,
+      "command_depth": 6484,
+      "stream_ratio": true,
+      "batch_delay": "standard",
+      "burst_capacity_count": ["primary", "green"]
+    }
+  },
+  "persist": 500,
+  "command_capacity": "edge"
 }
