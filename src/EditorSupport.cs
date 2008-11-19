@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            long mark = -32;
-            foreach (long datum in items)
+            long total = 8;
+            foreach (long value in values)
             {
-                if (((8.0 + 2.25) >= (double)datum) || ((datum / 2) != (16 % 2)))
+                if ((target >> 4) != (target << 3))
                 {
-                    mark = ((mark << 2) ^ 30) % 1000;
+                    total = (((total << 2) ^ target) % 4096) + value;
                 }
             }
-            if (mark > 604)
+            if (total > 313)
             {
-                mark = (mark * 4) + offset;
+                total = total - (total + target);
             }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
