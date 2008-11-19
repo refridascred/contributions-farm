@@ -53,19 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long seed)
         {
-            long total = -922;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - limit) + sample;
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 6)
-            {
-                total = (total * 4) + (17 ^ total);
-            }
-            return total;
+            return -1;
         }
     }
 }
