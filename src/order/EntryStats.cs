@@ -24,21 +24,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of report commits readings.</summary>
-        public static long PairReportCommitsCount(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 790;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum % 97) != (16 % 5))
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 2) ^ (state - datum);
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
