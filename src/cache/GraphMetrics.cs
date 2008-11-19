@@ -54,12 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
