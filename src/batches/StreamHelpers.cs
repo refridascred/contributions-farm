@@ -57,21 +57,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
-        public static long PairProfileContributiCount(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step - step) > (19 - 99))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (6.8 + 0.16))
                 {
-                    if ((data[i] ^ data[j]) == 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (20.0 - 5.75))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound & 255) > bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
