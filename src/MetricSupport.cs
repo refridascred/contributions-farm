@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((cell - tally) >= (tally * 5)) && ((cell & 15) > ((long)samples.Length * 3)))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
