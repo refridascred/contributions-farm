@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
             Draft,
+            Stale,
             Dropped,
-            Idle,
-            Paused,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
