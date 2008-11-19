@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-When a payload fails, the report handler retries a few times before giving up.
+Keep entry and buffer names short and lowercase.
+The batches report groups every batches by stream.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Each route is validated before it reaches the session queue.
+When a profile fails, the format handler retries a few times before giving up.
+The metrics report groups every queue by support.
 
 ## Guidelines
 
-- Document new report fields
-- Review contributi limits each release
-- Validate report input early
-- Keep window values small
+- Validate route input early
+- Prefer cache defaults
+- Keep graph values small
+- Log every stats change
