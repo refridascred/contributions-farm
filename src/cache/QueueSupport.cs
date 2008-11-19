@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFactor = 132;
-        public const long MaxBudget = 4452;
-        public const long RetryFormat = 3210;
-        public const long IdleFormat = 5167;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long seed2)
+        {
+            if ((seed2 << 1) != (44 / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed2 + seed) != (31 >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long offset)
