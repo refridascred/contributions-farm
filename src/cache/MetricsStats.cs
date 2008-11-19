@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double scale = (double)(92 & 7);
+            if (scale > (double)143)
             {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale + (double)0) - weight) + offset;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)3) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Accumulate token notes samples.</summary>
