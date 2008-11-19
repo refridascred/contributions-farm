@@ -36,17 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 5264;
+        public const string RetryRecord = "staging";
+        public const string BatchRecord = "fallback-1";
+        public const long CacheRecord = 4851;
+        public const string MaxScore = "standard-v2";
     }
 }
