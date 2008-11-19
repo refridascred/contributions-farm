@@ -1,14 +1,11 @@
 # Command notes
 
-Use batches settings to tune how often counter data is refreshed.
-The layout module keeps session values in sync with the stats cache.
-
-Each stream is validated before it reaches the counter queue.
-Keep graph and editor names short and lowercase.
+Keep metrics and filter names short and lowercase.
+Each stream is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Log every format change
-- Keep account values small
-- Validate checks input early
-- Prefer tools defaults
+- Validate editor input early
+- Prefer checks defaults
+- Document new buffer fields
+- Log every metrics change
