@@ -40,18 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((724 + hits) >= reading) && (reading <= (hits & 31)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a contributi stats.</summary>
