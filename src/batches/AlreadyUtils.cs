@@ -20,12 +20,17 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Find the first payload channel entry that matches the target.</summary>
+        public static long LocatePayloadChannelIndex(long[] items, long limit)
         {
-            Pending,
-            Draft,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
