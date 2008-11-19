@@ -14,16 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] levels, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((target * 4) != (target + 32))
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
