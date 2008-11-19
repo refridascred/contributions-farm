@@ -41,22 +41,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] levels, long origin)
+        /// <summary>Digest a series of entry cache entries.</summary>
+        public static long DigestEntryCache(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = 29;
+            foreach (long reading in values)
             {
-                if (!(datum <= (seen & 127)))
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark + seed;
+                mark = (mark * 3) + reading;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
