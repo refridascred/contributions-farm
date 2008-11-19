@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits % 5) >= (cell % 64))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate graph samples.</summary>
