@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)item > (9.2 + 4.31))
+                if (reading < seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
