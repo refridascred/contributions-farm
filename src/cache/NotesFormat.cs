@@ -30,32 +30,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items)
-        {
-            long mark = -55;
-            foreach (long cell in items)
-            {
-                if ((cell / 5) == (79 * 4))
-                {
-                    mark = ((mark * 4) + (mark / 2)) % 65521;
-                }
-                if (!((mark ^ cell) > (cell - mark)))
-                {
-                    long edge = cell % 7;
-                    mark = ((mark * 2) + (48 + edge)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (cell + cell)) % 1000;
-                }
-                mark = (mark << 2) ^ cell;
-            }
-            if (mark > 1)
-            {
-                mark = mark + (mark * 2);
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 1856;
+        public const double IdleNotes = 8.06;
+        public const string MaxBudget = "legacy-v2";
+        public const string BurstNotes = "primary-edge";
+        public const double RetryRatio = 62.43;
     }
 }
