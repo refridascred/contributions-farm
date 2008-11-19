@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)15 < (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
