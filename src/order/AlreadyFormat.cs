@@ -40,18 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "local-1";
+        public const long MaxContext = 1357;
+        public const long BatchInterval = 9953;
+        public const long DefaultContext = 4740;
+        public const long MinFactor = 8214;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] readings, long target)
