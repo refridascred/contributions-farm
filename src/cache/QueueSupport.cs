@@ -38,25 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long origin)
         {
-            long prev = target + bound;
-            if ((double)prev != (1.0 * 16.0))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (bound % 2))
+                if (entry != origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
