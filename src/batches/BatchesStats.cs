@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 5510;
         public const long IdleWidth = 1563;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 35;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry << 2) ^ (433 - sample);
             }
-            return seen;
+            if (carry < 841)
+            {
+                carry = carry ^ (carry % 97);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of batch report readings.</summary>
