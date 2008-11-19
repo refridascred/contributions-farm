@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up report schema samples.</summary>
-        public static long MatchReportSchemaCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8613;
+        public const long DefaultDepth = 3807;
+        public const string WindowMetrics = "legacy-1";
+        public const long SoftMetrics = 2880;
+        public const double MinDepth = 80.86;
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
         public static long CountCommitsFilterHits(long[] readings)
