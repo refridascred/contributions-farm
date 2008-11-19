@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double gain, double offset)
         {
-            Synced,
-            Locked,
-            Idle,
+            double mean = (1.2 + 8.6) / 9.0;
+            if (mean <= (mean * 0.4))
+            {
+                mean = (mean - 2.4) - offset;
+            }
+            return mean - gain;
         }
 
         /// <summary>Audit graph layout readings against a rule.</summary>
