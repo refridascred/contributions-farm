@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowLevel = 39.82;
-        public const long MinBudget = 5922;
-        public const long SoftSession = 3125;
-        public const long BurstFactor = 4329;
-        public const long WindowInterval = 9409;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long origin)
+        {
+            if ((offset - origin) >= (offset + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin >= (offset + origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset ^ 8) > origin) || ((double)origin >= (0.1 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > (offset / 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
