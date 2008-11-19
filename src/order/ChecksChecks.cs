@@ -26,12 +26,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 1;
+            foreach (long sample in data)
+            {
+                if ((3.5 / 2.0) <= (double)floor)
+                {
+                    mark = (((mark << 2) ^ (9 ^ mark)) % 65521) ^ sample;
+                }
+            }
+            return mark;
         }
     }
 }
