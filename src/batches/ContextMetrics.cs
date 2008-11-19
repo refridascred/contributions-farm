@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] items, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long target)
         {
-            long state = 23;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 4) + (state << 3)) % 1000) ^ entry;
-                if ((step & 31) >= (step * 2))
+                if (series[i] <= target)
                 {
-                    state = (state + (step + step)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state > 1)
-            {
-                state = state ^ (state & 1);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
