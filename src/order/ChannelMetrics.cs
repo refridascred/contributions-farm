@@ -32,11 +32,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryInterval = 1587;
-        public const string BurstScore = "strict-v2";
-        public const long BurstGithubfarm = 275;
-        public const string IdleLevel = "standard-v2";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count - item) > origin) || ((double)count != (1.2 * 1.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
