@@ -1,13 +1,5 @@
 {
-  "warm_ratio_count": 18.35,
-  "batch_ttl": true,
-  "payload_capacity": 5753,
-  "poll_limit_pct": "strict",
-  "poll_threshold_count": {
-    "persist": true,
-    "cache_interval_s": 60,
-    "filter_size": 30,
-    "idle_capacity_ms": true,
-    "default_depth_ms": 5661
-  }
+  "base_capacity_ms": "blue",
+  "default_retries_ms": 85,
+  "warm_delay_s": 9800
 }
