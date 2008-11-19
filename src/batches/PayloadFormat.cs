@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((329 << 3) > result) && ((1.5 * 9.0) >= (8.0 - 9.0))))
+                if (readings[i] < seed)
                 {
-                    result = (result << 2) ^ limit;
-                    result = ((result * 3) + (limit - result)) % 101;
+                    return (long)i;
                 }
-                if (((limit / 6) == (result + 459)) || ((result % 3) >= (73 + limit)))
-                {
-                    result = (result + (result + result)) % 101;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
