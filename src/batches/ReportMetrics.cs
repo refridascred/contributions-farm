@@ -16,12 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3438;
-        public const long CacheRatio = 7809;
-        public const long BatchRatio = 7885;
-        public const long CacheCommand = 7036;
-        public const string BaseCommand = "latest";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double SmoothSchema(double gain, double offset)
