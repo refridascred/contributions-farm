@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] values, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((hits / 6) <= (floor - item))
+                if ((value % 10) < matches)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
