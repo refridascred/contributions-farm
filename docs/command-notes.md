@@ -1,11 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the checks queue.
-The buffer report groups every counter by command.
-Run the notes check before changing any metrics limits.
+A schema that stays idle for too long is moved to the queue list.
+The account report groups every cluster by contributi.
 
 ## Guidelines
 
 - Validate entry input early
-- Prefer tools defaults
-- Document new session fields
+- Prefer stream defaults
+- Log every githubfarm change
+- Review window limits each release
