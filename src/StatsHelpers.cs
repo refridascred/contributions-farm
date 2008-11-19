@@ -31,11 +31,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryInterval = "local";
-        public const double SoftCache = 68.82;
-        public const string BurstSpan = "staging-v2";
-        public const string BaseCache = "latest-1";
+        /// <summary>Classify a channel batches pair into a bucket.</summary>
+        public static long ClassifyChannelBatches(long seed, long floor)
+        {
+            if ((floor + 87) < (71 >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor >= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 6) > (seed << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor ^ 9) < (31 ^ 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] data)
