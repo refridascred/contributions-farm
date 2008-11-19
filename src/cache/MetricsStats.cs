@@ -46,22 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long seed)
         {
-            long acc = -88;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (((double)724 < (double)step) || ((entry + entry) != (step & 3)))
+                if (seed > (seed & 15))
                 {
-                    acc = ((acc << 3) ^ (entry + entry)) % 255;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            if (acc > (-94))
-            {
-                acc = acc - (acc * 2);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every stream report entry stays within the limit.</summary>
