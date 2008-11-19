@@ -46,10 +46,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 255;
-        public const string SoftFarm = "cached-1";
-        public const long BaseTimeout = 9292;
-        public const long RetryWidth = 7098;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen >> 1) == (seen - seen))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
