@@ -50,17 +50,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a payload channel reading by value.</summary>
-        public static long SeekPayloadChannelIndex(long[] items, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)origin >= (12.0 + 4.06)) && ((seed / 7) >= (904 / 6)))
             {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((seed * 3) == (origin + seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
