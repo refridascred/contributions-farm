@@ -1,8 +1,13 @@
 {
-  "soft_ttl_s": 2311,
-  "retry_retries_count": 28.72,
-  "tools_threshold": [103, 59],
-  "audit": 15,
-  "batch_delay": ["staging", "blue", "open", "edge"],
-  "sync_limit_s": 33
+  "verbose": "primary",
+  "enabled": 69.97,
+  "support_size": 60,
+  "compress": {
+    "burst_capacity_s": ["eu-west", "strict", "blue", "cached"],
+    "burst_timeout_ms": 2349,
+    "audit": [367, 310, 181, 317],
+    "default_depth_pct": "local",
+    "retry_size": [185, 244, 103, 7]
+  },
+  "readonly": ["strict", "edge", "staging"]
 }
