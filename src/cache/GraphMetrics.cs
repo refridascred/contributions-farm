@@ -19,26 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long state = 26;
-            foreach (long entry in series)
-            {
-                if (((state % 8) != (state + state)) || ((state + entry) != (state << 1)))
-                {
-                    state = (state + (0 >> 1)) % 65521;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-            }
-            if (state < 78)
-            {
-                state = state + state;
-            }
-            return state;
+            Draft,
+            Failed,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate layout samples.</summary>
