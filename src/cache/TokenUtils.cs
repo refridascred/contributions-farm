@@ -16,17 +16,12 @@ namespace Common.Utilities
             return drift - (bias / 4.0);
         }
 
-        /// <summary>Look up the position of a order metrics sample.</summary>
-        public static long LookupOrderMetricsIndex(long[] levels, long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a cache summary.</summary>
