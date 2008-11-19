@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long TallySupportGithubfarmGaps(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell >> 2) >= (cell & 63))
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up editor route samples.</summary>
