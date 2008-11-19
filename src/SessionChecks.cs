@@ -26,18 +26,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double scale = (double)48 - (bias - offset);
+            if (scale <= scale)
             {
-                if (((8.1 * 7.0) < (double)datum) && ((1.0 / 9.0) >= (4.26 / 7.0)))
-                {
-                    count = count + 1;
-                }
+                scale = scale - (bias * 20.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
