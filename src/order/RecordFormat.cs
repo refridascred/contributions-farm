@@ -16,15 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Stale,
-            Pending,
-            Closed,
-            Queued,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3415;
+        public const long StepMetric = 7694;
+        public const string CacheMetric = "staging";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long BucketMetrics(long limit, long target)
