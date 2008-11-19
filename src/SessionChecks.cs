@@ -40,21 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session record series from a seed.</summary>
-        public static long StepSessionRecord(long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix ^ 436) % 97) + (long)i2;
-                    mix = (mix << 2) ^ mix;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix << 2) ^ (mix + offset)) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
