@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Dropped,
-            Idle,
-            Locked,
+            Ready,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate graph samples.</summary>
