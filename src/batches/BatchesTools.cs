@@ -32,26 +32,20 @@ namespace Common.Utilities
         public const string CacheSupport = "strict-1";
         public const long LimitDepth = 6217;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long total = 440;
-            foreach (long item in readings)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (total <= 266)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = total + (item << 1);
+                    mix = ((mix << 3) ^ (mix / 7)) ^ (long)i2;
                 }
-                if ((total + total) > total)
-                {
-                    break;
-                }
+                mix = (mix + 250) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (total > 9)
-            {
-                total = (total << 3) ^ (floor ^ total);
-            }
-            return total;
+            return mix;
         }
     }
 }
