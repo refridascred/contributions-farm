@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "alpha-1";
-        public const long CacheContributi = 9709;
-        public const long MinContributi = 5191;
-        public const string BurstContributi = "open-edge";
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values)
+        {
+            long carry = 7;
+            foreach (long value in values)
+            {
+                if (((long)values.Length < value) && ((carry >> 3) > value))
+                {
+                    carry = ((carry * 5) + (carry >> 2)) % 97;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
