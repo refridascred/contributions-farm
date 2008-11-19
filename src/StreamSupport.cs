@@ -23,21 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark << 3) ^ (86 % 3);
+                mark = (mark + (entry >> 2)) % 255;
             }
-            return matches;
+            if (mark > 259)
+            {
+                mark = (mark + (mark * 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
