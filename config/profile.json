@@ -1,6 +1,7 @@
 {
-  "base_limit_s": "cached",
-  "hard_ratio": true,
-  "batch_delay_s": "standard",
-  "persist": "stable"
+  "soft_ratio": false,
+  "burst_threshold_pct": "primary",
+  "poll_limit_pct": "cached",
+  "cache_timeout_count": 4268,
+  "hard_delay_count": "staging"
 }
