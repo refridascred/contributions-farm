@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) >= (53 / 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
