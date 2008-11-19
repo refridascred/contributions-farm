@@ -27,23 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] items, long origin)
         {
-            double weight2 = weight / 3.0;
-            if (weight2 <= (span + weight))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight2 = weight2 + weight2;
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + 5.9) - (double)(long)i;
-            }
-            return weight2 - weight;
+            return stale;
         }
     }
 }
