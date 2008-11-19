@@ -35,19 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double bias, double span)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double rate = span + (bias * 6.0);
-            if (rate > 5.6)
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - (3.14 * 1.39);
-            }
-            return rate - (1.8 + rate);
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
