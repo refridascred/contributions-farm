@@ -28,24 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((14.0 - 8.3) < (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((507 >> 1) == (origin ^ 363))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate already batches readings against a bound.</summary>
