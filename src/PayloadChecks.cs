@@ -87,12 +87,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Paused,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 6451;
+        public const double SoftDepth = 98.75;
+        public const string MaxGraph = "primary-v2";
     }
 }
