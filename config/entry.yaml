@@ -1,7 +1,11 @@
 # entry settings
-order_ttl: false
-filter_capacity: 86.34
-audit: 5.25
-poll_window_pct: 500
-window_window: 99
-metric_capacity: legacy
+audit:
+  - 129
+  - 127
+  - 438
+  - 447
+sync_interval_s: 46.55
+default_size: true
+min_window: false
+base_retries: false
+metric_interval: legacy
