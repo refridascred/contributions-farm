@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long MeasureFilterFarmHits(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits - (-132)) <= hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Adjust a batches checks reading.</summary>
