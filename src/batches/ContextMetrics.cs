@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double scale = rate * 6.01;
+            for (int i = 0; i < 2; i++)
             {
-                if ((seen + sample) < (seen + seen))
-                {
-                    seen = seen + 3;
-                }
+                scale = (scale + (7.3 - scale)) + (double)(long)i;
             }
-            return seen;
+            return scale - span;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
