@@ -1,22 +1,6 @@
 # support settings
-persist:
-  entry_threshold:
-    - eu-west
-    - staging
-    - stable
-  token_retries: true
-  base_interval_count: primary
-  batch_size_s: false
-  verbose: true
-  readonly:
-    - 166
-    - 361
-idle_depth_s:
-  - 21
-  - 367
-  - 54
-min_window_pct:
-  - 423
-  - 257
-  - 56
-  - 463
+sync_ttl_pct: 29.45
+default_delay_ms: 57.81
+buffer_ratio: stable
+max_ttl_ms: stable
+batch_delay_count: 100
