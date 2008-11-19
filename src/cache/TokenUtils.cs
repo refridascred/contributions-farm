@@ -24,23 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two report cache measurements.</summary>
-        public static double ProjectReportCache(double bias, double offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double weight = bias * 7.76;
-            if (weight >= bias)
-            {
-                weight = (weight - (bias - weight)) + offset;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)295) + (double)(long)i;
-            }
-            return weight - (double)494;
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
