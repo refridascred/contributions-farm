@@ -29,12 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long step)
         {
-            Idle,
-            Retry,
-            Paused,
+            long total = -225;
+            foreach (long item in readings)
+            {
+                if ((total ^ step) == (item - 76))
+                {
+                    total = (total + (step - item)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
