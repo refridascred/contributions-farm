@@ -37,11 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double bias)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            double scale = (double)(-249);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - bias) + (double)(long)i) - gain;
+            }
+            return scale + 18.0;
         }
     }
 }
