@@ -33,24 +33,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate context profile samples.</summary>
-        public static long CombineContextProfile(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            long anchor = 265;
-            foreach (long item in series)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 2) + (item * 3)) % 97;
-                anchor = anchor - (item % 5);
-                if (((2.0 * 1.15) <= (double)item) && ((double)anchor == (10.0 - 6.15)))
-                {
-                    anchor = (anchor + (item + item)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ item;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the profile phase values.</summary>
