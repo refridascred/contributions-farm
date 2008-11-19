@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long limit, long target)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long gap = limit - target;
-            if (((-92) - limit) > gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((gap >> 1) > limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a route entry.</summary>
