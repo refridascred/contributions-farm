@@ -34,18 +34,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((4.97 * 5.0) == (double)sample)
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Rank stats command input into a small class.</summary>
