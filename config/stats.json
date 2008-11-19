@@ -1,6 +1,5 @@
 {
-  "queue_ttl": 3891,
-  "base_size_count": [40, 391, 178],
-  "report_size": "eu-west",
-  "retry_retries": 97
+  "burst_delay": "primary",
+  "readonly": true,
+  "batch_retries": false
 }
