@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools support entry stays within the limit.</summary>
-        public static bool ValidateToolsSupportLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 6191;
+        public const long DefaultFactor = 5510;
+        public const long IdleWidth = 1563;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] samples)
