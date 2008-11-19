@@ -55,18 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!((value - 3) < (matches & 63)))
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
