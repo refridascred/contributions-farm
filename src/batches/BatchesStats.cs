@@ -14,23 +14,30 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Fold a list of payload already readings.</summary>
+        public static long DigestPayloadAlready(long[] items, long floor)
         {
-            double ratio2 = (ratio - bias) + (bias * 18.0);
-            if (ratio2 >= ratio)
+            long state = 3;
+            foreach (long cell in items)
             {
-                ratio2 = ratio2 + ratio2;
+                if ((state - floor) >= floor)
+                {
+                    state = (state << 2) ^ (cell % 64);
+                }
+                else
+                {
+                    state = (state - (cell + cell)) % 1000;
+                }
+                if ((((long)items.Length - cell) <= (15 - cell)) || ((1 << 1) == (floor / 9)))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 6)
             {
-                ratio2 = ratio2 + (ratio2 * 3.81);
+                state = state ^ (floor + 5);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio2 - 3.36;
+            return state % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
