@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] levels, long limit)
         {
-            long result = 825;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (((reading << 2) != (result - (-6))) && (((long)values.Length - result) > result))
+                if (sample != limit)
                 {
-                    result = ((result * 5) + result) % 1000;
-                }
-                if (result >= (result << 3))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (result < 20)
-            {
-                result = result - (result % 12);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the filter kind values.</summary>
