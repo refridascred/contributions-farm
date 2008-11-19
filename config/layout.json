@@ -1,8 +1,6 @@
 {
-  "stats_threshold": 48.95,
-  "counter_delay": 30,
-  "flush_size_count": 59.7,
-  "hard_interval": "local",
-  "min_limit": [138, 18, 495, 458],
-  "readonly": "open"
+  "warm_limit": 7276,
+  "compress": 4177,
+  "queue_size": ["green", "latest", "standard", "local"],
+  "persist": 71.2
 }
