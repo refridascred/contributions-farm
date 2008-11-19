@@ -34,11 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double rate = (double)(365 * 4);
-            return (rate - offset) + gain;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
