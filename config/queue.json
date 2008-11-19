@@ -1,6 +1,18 @@
 {
-  "idle_window_pct": 6410,
-  "audit": 40,
-  "retry_ratio": "stable",
-  "githubfarm_depth": 73.54
+  "warm_threshold_s": false,
+  "batches_threshold": 7287,
+  "readonly": 48.22,
+  "sync_window_ms": "green",
+  "min_ttl": {
+    "persist": 95.99,
+    "min_retries_count": 113,
+    "max_ratio": true,
+    "idle_interval_count": 91.43,
+    "max_interval_count": 250,
+    "stats_threshold": {
+      "persist": "strict",
+      "audit": 34.88,
+      "session_delay": true
+    }
+  }
 }
