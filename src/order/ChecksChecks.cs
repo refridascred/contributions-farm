@@ -39,13 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            double weight = (double)((-64) + 3);
+            if (weight <= (rate + weight))
+            {
+                weight = weight - (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (span * 20.0)) - (double)(long)i;
+            }
+            return weight + 2.0;
         }
     }
 }
