@@ -41,26 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix << 2) ^ (offset + mix);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix + (mix ^ mix)) ^ (long)i2;
-                }
-                if ((-91) > ((long)i / 8))
-                {
-                    long bound = mix;
-                    mix = (mix + (mix - bound)) % 97;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
