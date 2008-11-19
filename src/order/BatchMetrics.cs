@@ -47,18 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (hits > (cell >> 5))
+                if (!((sample * 4) != (origin * 2)))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next metric tools value.</summary>
