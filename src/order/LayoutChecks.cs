@@ -62,18 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long AuditWindowMetricOutliers(long[] series)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count >= (1.5 - 3.43))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
