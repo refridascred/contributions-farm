@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 4328;
-        public const long BurstSize = 2903;
-        public const long WindowTimeout = 8885;
-        public const string CacheNotes = "open-v2";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((89 - 9) < entry) && (entry <= (entry + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double span)
