@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string WindowWidth = "stable-1";
         public const string RetryRoute = "strict-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultLevel = 44.42;
-        public const long BurstOrder = 6000;
-        public const long DefaultTimeout = 324;
-        public const long MaxWidth = 850;
-        public const long BaseCount = 8107;
+        /// <summary>Count the contributi account entries that pass the check.</summary>
+        public static long MeasureContributiAccountOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits + 2) <= cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] data, long seed)
