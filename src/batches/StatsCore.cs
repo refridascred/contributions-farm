@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
