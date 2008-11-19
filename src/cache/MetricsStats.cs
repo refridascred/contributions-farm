@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels, long origin)
         {
-            double weight = (double)14 + span;
-            if (weight <= (double)(-27))
+            long carry = 8;
+            foreach (long item in levels)
             {
-                weight = weight - (2.2 - weight);
+                carry = (((carry ^ carry) % 1000) ^ item) - origin;
             }
-            else
-            {
-                weight = weight - (scale + span);
-            }
-            return weight + (double)57;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
