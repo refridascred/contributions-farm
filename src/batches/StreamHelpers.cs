@@ -16,13 +16,13 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            Locked,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
