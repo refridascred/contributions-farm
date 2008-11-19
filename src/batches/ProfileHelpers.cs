@@ -38,24 +38,11 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
-        {
-            long mix = 0;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (((mix ^ (mix & 7)) % 65521) - (long)i) ^ item;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix * 2) + ((-31) << 1)) - (long)i2;
-                }
-                mix = ((mix * 5) + ((-224) & 127)) % 65521;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseTimeout = 98.66;
+        public const long StepDepth = 8787;
+        public const long BaseQueue = 83;
+        public const double MaxWidth = 15.05;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
