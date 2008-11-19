@@ -32,13 +32,11 @@ namespace Common.Utilities
         public const string DefaultFactor = "primary";
         public const long MinReport = 7229;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
