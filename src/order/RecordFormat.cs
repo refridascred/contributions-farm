@@ -49,11 +49,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next counter cache value.</summary>
-        public static double ScaleCounterCache(double ratio, double span)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double mean = (double)((-10) << 2);
-            return (mean + ratio) + span;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
