@@ -25,15 +25,10 @@ namespace Common.Utilities
         public const long LimitRatio = 442;
         public const string BatchStats = "alpha";
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Paused,
-            Done,
-            Draft,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultInterval = 7827;
+        public const long StepWindow = 6873;
+        public const long WindowTimeout = 5316;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamLimits(long[] items, long step)
