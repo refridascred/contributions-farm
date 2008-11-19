@@ -24,21 +24,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (offset > (count ^ offset))
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
