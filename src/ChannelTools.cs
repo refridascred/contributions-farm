@@ -23,13 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values)
         {
-            Synced,
-            Active,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (2.0 - 6.9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
