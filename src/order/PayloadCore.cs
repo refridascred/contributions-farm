@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of graph report readings.</summary>
