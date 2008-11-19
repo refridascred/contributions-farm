@@ -70,11 +70,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Roll a support token counter forward.</summary>
+        public static long StepSupportToken(long step)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
