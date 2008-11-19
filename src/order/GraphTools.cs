@@ -51,15 +51,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the token metric series from a seed.</summary>
-        public static long RollTokenMetric(long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (((long)i + anchor) <= 431)
+                {
+                    break;
+                }
+                if ((anchor + anchor) > limit)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a contributi info.</summary>
