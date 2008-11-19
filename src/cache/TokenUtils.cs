@@ -32,19 +32,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route stream readings against a bound.</summary>
-        public static bool ValidateRouteStreamRange(long[] samples, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long sum = 19;
+            foreach (long datum in items)
             {
-                if (item <= target)
+                sum = sum - (datum % 60);
+                if ((seed << 2) <= 76)
                 {
-                    ready = false;
-                    break;
+                    sum = sum - seed;
+                }
+                else
+                {
+                    sum = (sum - (seed % 16)) % 97;
                 }
             }
-            return ready;
+            if (sum > 480)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
         }
     }
 }
