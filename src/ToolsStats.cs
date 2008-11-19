@@ -45,18 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value + bound) < (seen ^ seen)))
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine farm queue values into a single score.</summary>
