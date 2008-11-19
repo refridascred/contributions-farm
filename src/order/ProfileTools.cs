@@ -62,12 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 100) <= 89)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
