@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] samples, long bound)
         {
-            double drift = weight * 3.6;
-            if (drift > drift)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                drift = (drift + (double)7) - offset;
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (weight * 14.0);
+            return stale;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
