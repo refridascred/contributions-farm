@@ -59,21 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit & 15) == (limit >> 4))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
