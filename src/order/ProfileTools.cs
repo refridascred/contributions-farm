@@ -59,14 +59,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Failed,
-            Closed,
-            Active,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinLevel = 6359;
+        public const long BatchChannel = 306;
+        public const double RetryChannel = 98.79;
+        public const long BurstChannel = 4197;
     }
 }
