@@ -43,15 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            long anchor = 864;
-            foreach (long entry in items)
+            long acc = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor + (anchor + anchor)) + entry;
+                acc = ((acc << 2) ^ (value << 2)) % 65521;
+                if ((5.15 / 4.0) == (double)value)
+                {
+                    acc = acc ^ (acc + 56);
+                }
             }
-            return anchor;
+            if (acc > 3)
+            {
+                acc = (acc - (937 + 4)) % 4096;
+            }
+            return acc;
         }
     }
 }
