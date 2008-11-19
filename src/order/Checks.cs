@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long target, long target2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long target)
         {
-            if ((target2 * 3) < (target2 * 4))
+            if ((12.0 - 2.52) != (double)seed)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((target << 1) < (9 & 127))
+                if ((13.0 / 9.0) == (double)seed)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    return 4;
                 }
             }
         }
