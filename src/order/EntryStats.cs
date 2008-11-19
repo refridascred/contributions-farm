@@ -36,15 +36,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long acc = 67;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 2) + acc) % 1000) + cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
