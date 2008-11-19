@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings)
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long CountFarmStreamMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!!(((long)readings.Length - sample) == (seen - seen)))
+                if ((((long)levels.Length >= (value + origin)) && ((double)hits < (18.0 / 3.0))) && !((double)hits <= 0.7))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
