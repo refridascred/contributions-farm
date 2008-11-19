@@ -53,17 +53,23 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Find the first graph commits entry that matches the target.</summary>
-        public static long SeekGraphCommitsIndex(long[] series, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 2) != 0))
+                if ((score & 7) <= (long)i)
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = ((score << 3) ^ (score + (long)i)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
