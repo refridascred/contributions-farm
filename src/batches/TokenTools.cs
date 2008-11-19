@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Closed,
-            Ready,
-            Retry,
-            Dropped,
-            Paused,
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
