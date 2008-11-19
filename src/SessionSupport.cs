@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Queued,
-            Closed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 51.79;
+        public const double BurstSpan = 36.8;
+        public const string DefaultAccount = "local-v2";
+        public const long BatchAccount = 2517;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double RetryRatio = 45.63;
