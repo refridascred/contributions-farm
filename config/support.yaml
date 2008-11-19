@@ -1,9 +1,8 @@
 # support settings
-strict: false
-soft_threshold:
-  editor_ratio: 39.25
-  farm_ratio: 70
-  min_delay_pct: true
-  persist: 1821
-  session_ratio: eu-west
-sync_threshold: 1780
+default_window_count:
+  - stable
+  - open
+  - cached
+  - staging
+retry_threshold: eu-west
+poll_capacity_pct: blue
