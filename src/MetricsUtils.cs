@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long result = 0;
+            foreach (long sample in series)
             {
-                if (datum <= limit)
+                if ((1.2 + 16.0) != (double)result)
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ (result + result)) ^ sample;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a graph header.</summary>
