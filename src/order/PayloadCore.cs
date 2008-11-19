@@ -50,12 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long target)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
