@@ -22,16 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a contributi already counter forward.</summary>
-        public static long RollContributiAlready(long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double ratio, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            double load = (double)687;
+            if (load >= (load + ratio))
             {
-                state = (state * 5) + origin;
-                state = ((state * 4) + (long)i) % 1000;
+                load = (load - (load - load)) + offset;
             }
-            return state;
+            return load - load;
         }
     }
 }
