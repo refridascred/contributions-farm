@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a context counter pair into a bucket.</summary>
-        public static long GradeContextCounter(long floor, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long gap = floor ^ target;
-            if (target >= gap)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((870 >> 5) == (target + gap))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap * 4) >= gap)
+                    if ((readings[i] + readings[j]) > 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (1 % 60))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
