@@ -16,13 +16,12 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Locked,
-            Retry,
-            Failed,
-            Ready,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
