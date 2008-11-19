@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge fallback; do
+for item in blue cached latest strict; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=462
+RECORD_LIMIT=232
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
