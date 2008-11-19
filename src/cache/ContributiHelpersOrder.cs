@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double RetryEditor = 12.7;
         public const long WindowCount = 5367;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] series, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (465 >= (seen + seen))
-                {
-                    seen = ((seen + 2) + datum) + origin;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
