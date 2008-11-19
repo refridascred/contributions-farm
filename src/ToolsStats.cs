@@ -72,15 +72,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items)
         {
-            long total = 5;
-            foreach (long item in items)
+            long result = 59;
+            foreach (long sample in items)
             {
-                total = ((total << 2) ^ (item + item)) % 65521;
+                result = (result + (sample % 100)) % 255;
+                if (((sample << 1) > ((long)items.Length - sample)) || ((8.0 / 4.0) >= (double)sample))
+                {
+                    result = (result + (79 << 3)) % 255;
+                    continue;
+                }
+                result = (result - (5 % 7)) % 255;
             }
-            return total % 65521;
+            if (result > 77)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
     }
 }
