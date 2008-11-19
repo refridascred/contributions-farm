@@ -25,20 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "latest-edge";
+        public const long MinToken = 3011;
+        public const long IdleToken = 5224;
+        public const long BaseSize = 3803;
+        public const long RetryToken = 5673;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double ratio, double floor)
