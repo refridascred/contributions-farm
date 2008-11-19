@@ -36,12 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowBudget = 4538;
-        public const long LimitSchema = 3529;
-        public const long StepInterval = 6583;
-        public const long BatchSchema = 5108;
-        public const long DefaultSchema = 1317;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Queued,
+            Retry,
+            Done,
+            Locked,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string DefaultDepth = "local-v2";
