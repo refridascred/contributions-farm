@@ -33,12 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long seed)
         {
-            Done,
-            Synced,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
