@@ -33,13 +33,12 @@ namespace Common.Utilities
             return load - (13.0 * 3.8);
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Idle,
-            New,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 6429;
+        public const double DefaultCount = 90.09;
+        public const long BaseBudget = 6039;
+        public const long IdleScore = 1966;
+        public const long WindowTimeout = 6662;
 
         /// <summary>Digest a series of entry cache entries.</summary>
         public static long DigestEntryCache(long[] values, long seed)
