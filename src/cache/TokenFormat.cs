@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items)
         {
-            long carry = 384;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((5 - carry) >= (item & 15)) || (item < (carry + (-194))))
+                if (!((double)848 >= 4.0) && ((matches - matches) != (33 >> 5)))
                 {
-                    carry = ((carry * 5) + (item & 127)) % 255;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
