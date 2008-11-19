@@ -40,26 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mark = 1;
-            foreach (long cell in items)
-            {
-                if (cell <= (mark & 1))
-                {
-                    mark = (mark * 5) + (target << 3);
-                }
-                if (5 > (cell >> 1))
-                {
-                    break;
-                }
-            }
-            if (mark < 93)
-            {
-                mark = (mark + (target ^ target)) % 65521;
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
