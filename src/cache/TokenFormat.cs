@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)848 >= 4.0) && ((matches - matches) != (33 >> 5)))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            double rate = 0.92;
+            return (rate + (bias * 2.73)) + span;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
