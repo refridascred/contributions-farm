@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Ready,
-            Synced,
             Active,
-            Done,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Measure how many session command samples are out of range.</summary>
