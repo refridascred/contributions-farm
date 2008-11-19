@@ -77,17 +77,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
