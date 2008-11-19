@@ -63,18 +63,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCount = 5386;
+        public const double RetryScore = 13.61;
+        public const double HardTimeout = 71.24;
+        public const long SoftCommand = 7297;
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
         public static long MeasureChecksGraphHits(long[] levels)
