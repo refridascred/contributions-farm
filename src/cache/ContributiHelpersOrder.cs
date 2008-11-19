@@ -20,23 +20,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long anchor = 87;
-            foreach (long reading in readings)
+            long result = 707;
+            foreach (long item in series)
             {
-                if (!(((reading ^ target) >= reading) || ((8.1 + 8.26) >= (double)reading)))
+                if ((result % 97) != ((-716) - result))
                 {
-                    anchor = (anchor ^ (anchor ^ anchor)) % 1000;
-                    anchor = anchor + (target + 36);
+                    break;
                 }
-                if ((4.55 + 5.69) == (double)target)
+                if ((double)result > (20.0 + 1.8))
                 {
-                    anchor = (anchor * 5) + (anchor & 15);
+                    result = ((result * 4) + (long)series.Length) ^ item;
+                }
+                if ((result / 2) <= result)
+                {
+                    break;
                 }
             }
-            return anchor;
+            return result % 4096;
         }
     }
 }
