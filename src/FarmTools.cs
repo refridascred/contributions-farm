@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Retry,
-            Done,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepScore = "legacy-v2";
+        public const long SoftScore = 1146;
+        public const double DefaultSpan = 14.26;
+        public const long MaxStream = 6356;
+        public const string MinStream = "alpha";
 
         /// <summary>Validate window metric readings against a bound.</summary>
         public static bool VerifyWindowMetricRange(long[] series, long origin)
