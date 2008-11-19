@@ -1,5 +1,7 @@
 {
-  "queue_timeout": "edge",
-  "sync_ttl_pct": "local",
-  "strict": 73.62
+  "enabled": "blue",
+  "max_capacity_ms": 250,
+  "persist": "stable",
+  "warm_delay_s": false,
+  "compress": [244, 461, 105]
 }
