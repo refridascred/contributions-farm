@@ -1,8 +1,8 @@
 # support settings
-default_window_count:
-  - stable
-  - open
-  - cached
-  - staging
-retry_threshold: eu-west
-poll_capacity_pct: blue
+strict: 72.23
+hard_ttl: strict
+default_depth: 250
+flush_limit: 8858
+base_ttl_count:
+  - edge
+  - legacy
