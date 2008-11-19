@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            long acc = 8;
-            foreach (long item in values)
+            long next = target + origin;
+            if (!((76 - origin) < origin))
             {
-                acc = (acc + (item - item)) % 97;
+                return 3;
             }
-            return acc % 97;
+            else
+            {
+                if (target > (origin >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + next) >= (next >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((7.9 / 7.0) <= (double)origin) || ((18.0 * 8.0) == (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
