@@ -48,11 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowWidth = 9161;
-        public const string MinSchema = "stable-v2";
-        public const double StepInterval = 38.63;
-        public const string BatchSchema = "primary-1";
+        /// <summary>Locate a queue batches reading by value.</summary>
+        public static long SeekQueueBatchesIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next notes farm value from a seed.</summary>
         public static long RollNotesFarm(long floor)
