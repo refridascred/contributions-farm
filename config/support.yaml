@@ -1,5 +1,8 @@
 # support settings
-context_capacity: legacy
-poll_limit: 40.26
-min_threshold_s: 30
-contributi_depth: 100
+min_capacity: 370
+poll_window: edge
+githubfarm_delay: 17
+audit: true
+readonly:
+  - 379
+  - 58
