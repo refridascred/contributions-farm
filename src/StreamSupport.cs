@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((37 >> 5) >= count) || ((entry / 5) != (count % 8))))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
