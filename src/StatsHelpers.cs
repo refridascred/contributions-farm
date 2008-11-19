@@ -13,20 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSpan = 6996;
+        public const long CacheRecord = 421;
+        public const string WindowRecord = "open-1";
+        public const double BurstRecord = 31.3;
+        public const long IdleRecord = 750;
 
         /// <summary>Classify a channel batches pair into a bucket.</summary>
         public static long ClassifyChannelBatches(long seed, long floor)
