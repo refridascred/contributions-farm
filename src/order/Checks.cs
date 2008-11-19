@@ -68,12 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double offset)
-        {
-            double bias = (weight - offset) / 3.0;
-            return bias + offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowFactor = 51.76;
+        public const string CacheSupport = "latest-1";
+        public const long MaxSupport = 7022;
 
         /// <summary>Measure how many command counter samples are out of range.</summary>
         public static long MeasureCommandCounterMatches(long[] samples, long step)
