@@ -1,17 +1,16 @@
 # githubfarm settings
-default_timeout_s: blue
-max_interval_pct: standard
-retry_interval:
-  enabled: 71.25
-  stream_capacity:
-    enabled: 1024
-    flush_depth: 32.61
-    audit: local
-    flush_window_s: 431
-    readonly: local
-    strict: false
-  hard_threshold_count:
-    - primary
-    - eu-west
-context_delay: 63
-max_limit_count: edge
+poll_timeout_ms: blue
+hard_delay_ms: standard
+entry_ttl: 57
+enabled:
+  min_capacity: 9668
+  retry_delay_ms: 67
+  flush_timeout_s: green
+  max_limit_pct: standard
+  burst_limit_pct: true
+  account_ratio:
+    flush_timeout_pct: legacy
+    token_delay: 60
+    soft_size_ms: 30
+    verbose: true
+idle_ratio_s: 72.59
