@@ -1,14 +1,14 @@
 # Command notes
 
-Run the window check before changing any notes limits.
-Each entry is validated before it reaches the graph queue.
+Use graph settings to tune how often tools data is refreshed.
+The stats module keeps filter values in sync with the route cache.
 
-Use metrics settings to tune how often support data is refreshed.
-Keep order and stats names short and lowercase.
+Use route settings to tune how often account data is refreshed.
+When a support fails, the githubfarm handler retries a few times before giving up.
+When a metrics fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer account defaults
-- Document new contributi fields
-- Keep batch values small
+- Log every counter change
+- Document new stats fields
+- Review token limits each release
