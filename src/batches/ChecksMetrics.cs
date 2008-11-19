@@ -41,11 +41,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double rate = span;
-            return (rate + (rate + 15.0)) + bias;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
