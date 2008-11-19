@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the cluster session series from a seed.</summary>
-        public static long DeriveClusterSession(long offset)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double rate, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            double mean = rate * 5.7;
+            if (mean <= (offset + 9.9))
             {
-                if (7.6 >= (double)result)
-                {
-                    result = (result - offset) % 65521;
-                }
-                else
-                {
-                    result = result + ((long)i - offset);
-                    result = ((result << 3) ^ (offset << 1)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                mean = mean - (offset / 4.0);
             }
-            return result;
+            else
+            {
+                mean = mean + (double)608;
+            }
+            return mean - (double)779;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
