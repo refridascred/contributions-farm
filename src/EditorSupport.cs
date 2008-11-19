@@ -53,10 +53,18 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 29.3;
-        public const long LimitWidth = 5036;
-        public const double CacheGraph = 43.84;
+        /// <summary>Find the first graph commits entry that matches the target.</summary>
+        public static long SeekGraphCommitsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
         public static long RollStatsSupport(long bound)
