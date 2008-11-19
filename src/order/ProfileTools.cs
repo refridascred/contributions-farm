@@ -28,25 +28,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                double rate = 0.72;
-                if (((double)723 >= rate) || ((7.35 / 7.0) <= (rate * 0.41)))
+                if (levels[i] > offset)
                 {
-                    rate = rate - 18.0;
-                    rate = rate + (double)step;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
