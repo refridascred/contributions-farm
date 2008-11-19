@@ -65,18 +65,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long diff = floor + seed;
+            if ((floor + floor) < (diff & 255))
             {
-                if ((751 ^ (long)samples.Length) < (587 & 15))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 97) <= (diff ^ floor))
                 {
-                    seen = (seen + 1) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed <= (double)floor) || ((diff + seed) < (diff << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (30 <= (seed + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
