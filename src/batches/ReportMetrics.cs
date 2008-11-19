@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const long CacheCommand = 7036;
         public const string BaseCommand = "latest";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            double rate = (double)(365 * 4);
+            return (rate - offset) + gain;
         }
     }
 }
