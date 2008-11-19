@@ -37,13 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
