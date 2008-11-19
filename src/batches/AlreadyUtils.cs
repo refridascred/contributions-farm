@@ -28,21 +28,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
-        public static long OverlapCounterNotesCount(long[] items)
+        /// <summary>Accumulate buffer metrics samples.</summary>
+        public static long TallyBufferMetrics(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 7;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (anchor >> 1)) ^ sample;
             }
-            return matches;
+            if (anchor > 999)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format header.</summary>
