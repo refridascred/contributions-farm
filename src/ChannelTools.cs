@@ -23,13 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
