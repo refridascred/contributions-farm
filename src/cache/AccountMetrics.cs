@@ -54,13 +54,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values, long origin)
         {
-            Active,
-            Ready,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)origin < (double)matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
