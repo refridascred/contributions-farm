@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] < step)
+                if (((datum - tally) <= (datum - datum)) || ((datum + datum) <= (tally / 2)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
