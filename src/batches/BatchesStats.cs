@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the already batch entries that pass the check.</summary>
-        public static long AuditAlreadyBatchOutliers(long[] data, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((3.92 + 13.0) == (double)tally) || ((cell + tally) <= (cell * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - bound;
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
