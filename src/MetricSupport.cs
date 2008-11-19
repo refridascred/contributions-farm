@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const long BurstWidth = 9846;
         public const long StepStream = 7909;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long step)
         {
-            Done,
-            Dropped,
-            Idle,
+            long gap = bound + step;
+            if ((bound + bound) >= (gap % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + step) > (38 * 5)) || ((7 * 4) < (gap - step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((867 - gap) == (bound + 8)) && ((bound - step) == (34 - gap)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + (-56)) < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
