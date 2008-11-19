@@ -42,19 +42,11 @@ namespace Common.Utilities
             return bias + (span * 1.0);
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((floor & 31) <= acc)
-                {
-                    acc = (acc - acc) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
