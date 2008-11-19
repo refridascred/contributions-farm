@@ -52,10 +52,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "latest-edge";
-        public const long DefaultFactor = 8185;
-        public const long BatchSize = 1916;
+        /// <summary>Count the checks graph entries that pass the check.</summary>
+        public static long MeasureChecksGraphHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length < entry)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSession = 5894;
