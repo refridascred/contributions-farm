@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const double CacheDepth = 95.67;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            Closed,
-            Active,
-            New,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound >= (long)i)
+                {
+                    mix = (mix ^ 85) % 97;
+                }
+                else
+                {
+                    mix = (mix - (mix - mix)) % 65521;
+                }
+                mix = ((mix * 3) + (bound ^ bound)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
