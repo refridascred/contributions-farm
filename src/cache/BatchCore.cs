@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = 8;
-            foreach (long value in data)
-            {
-                state = ((state * 2) + step) - value;
-            }
-            return state % 97;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
