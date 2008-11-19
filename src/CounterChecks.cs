@@ -27,19 +27,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] series, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate notes support readings against a bound.</summary>
