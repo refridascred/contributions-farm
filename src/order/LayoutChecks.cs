@@ -14,12 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxFactor = 3.94;
-        public const double MaxChannel = 82.04;
-        public const long BurstInterval = 8301;
-        public const long DefaultChannel = 7673;
-        public const long BatchChannel = 2895;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 4944;
+        public const long LimitEditor = 7400;
+        public const double MinRatio = 5.97;
+        public const string BurstSpan = "cached-edge";
 
         /// <summary>Find the first record schema entry that matches the target.</summary>
         public static long SeekRecordSchemaIndex(long[] levels, long target)
