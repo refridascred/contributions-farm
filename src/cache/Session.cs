@@ -42,11 +42,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchLevel = "strict-edge";
-        public const long IdleOrder = 54;
-        public const string CacheOrder = "alpha";
-        public const long LimitOrder = 197;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 6895;
+        public const long CacheLevel = 5533;
+        public const long MaxBatch = 4048;
+        public const string BaseBatch = "fallback-edge";
+        public const double MinFactor = 32.27;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] samples, long bound)
