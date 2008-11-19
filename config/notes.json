@@ -1,7 +1,8 @@
 {
-  "entry_retries": 76,
-  "base_depth": false,
-  "cache_ratio": false,
-  "warm_ttl_s": 89.98,
-  "batch_window_count": 9807
+  "report_ttl": "legacy",
+  "retry_retries": true,
+  "hard_depth_count": 52,
+  "dry_run": 77,
+  "enabled": ["staging", "cached", "open"],
+  "format_limit": "standard"
 }
