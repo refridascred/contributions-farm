@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 31.97;
-        public const string RetryNotes = "stable-v2";
-        public const long MinInterval = 9339;
-        public const double MinWidth = 53.83;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + hits) >= (hits + sample)) && ((1 + sample) >= (95 << 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long origin, long target)
