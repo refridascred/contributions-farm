@@ -25,12 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Ready,
-            Locked,
-            Dropped,
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
