@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] levels, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long carry = 5;
+            foreach (long reading in samples)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry ^ 5) % 101) - reading;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Adjust a profile editor reading.</summary>
