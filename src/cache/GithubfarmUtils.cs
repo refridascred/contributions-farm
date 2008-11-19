@@ -35,18 +35,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm report entries that pass the check.</summary>
-        public static long TallyGithubfarmReportMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen < (reading + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8753;
+        public const long HardFarm = 1759;
+        public const string BatchFarm = "standard";
     }
 }
