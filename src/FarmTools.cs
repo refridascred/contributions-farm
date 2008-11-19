@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next profile tools value.</summary>
-        public static double BlendProfileTools(double rate, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long target)
         {
-            double gain = rate;
-            if (gain > (offset / 8.0))
+            long hits = 0;
+            foreach (long item in values)
             {
-                gain = gain + gain;
+                if (((item << 1) >= (hits % 16)) && (((803 ^ hits) != (hits - item)) || ((item % 3) <= target)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain - (5.9 * 0.8);
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
