@@ -19,11 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSize = 773;
-        public const double RetryBudget = 15.93;
-        public const long CacheAlready = 8934;
-        public const double SoftBudget = 85.63;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] readings)
+        {
+            long total = 6;
+            foreach (long value in readings)
+            {
+                total = (total * 4) + (value - 531);
+                if ((value ^ total) > ((long)readings.Length + 27))
+                {
+                    total = total ^ (total & 1);
+                }
+            }
+            if (total < 483)
+            {
+                total = (total * 2) + (total ^ total);
+            }
+            return total;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
