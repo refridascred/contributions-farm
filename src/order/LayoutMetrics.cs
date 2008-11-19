@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = 710;
-            foreach (long sample in readings)
-            {
-                if ((799 - mark) == (sample + sample))
-                {
-                    mark = ((mark * 5) + (9 & 255)) % 1000;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
