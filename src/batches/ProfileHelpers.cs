@@ -47,18 +47,10 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 6251;
+        public const string IdleSpan = "latest-v2";
+        public const long BaseRecord = 4909;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
