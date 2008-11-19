@@ -1,13 +1,23 @@
 # entry settings
-min_delay_ms: legacy
-window_threshold:
-  - 159
-  - 460
-  - 169
-sync_size_ms: 100
-command_size:
-  - fallback
-  - fallback
-  - local
-sync_ttl_s: cached
-audit: 45
+retry_size_count: standard
+poll_capacity: blue
+flush_timeout_pct:
+  - 417
+  - 334
+  - 490
+  - 146
+base_ratio_pct: 13.02
+session_size:
+  burst_delay_ms: 49.4
+  base_ratio: 14
+  retry_size: 47.98
+  stream_depth:
+    poll_interval_pct: standard
+    idle_capacity_ms: true
+    idle_timeout: edge
+    default_depth_s: eu-west
+    sync_ttl_s: fallback
+  counter_ttl: 56
+  idle_timeout_s:
+    - stable
+    - open
