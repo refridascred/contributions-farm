@@ -1,4 +1,7 @@
 # entry settings
-batch_ratio: legacy
-warm_window_count: blue
-max_depth: true
+order_ttl: false
+filter_capacity: 86.34
+audit: 5.25
+poll_window_pct: 500
+window_window: 99
+metric_capacity: legacy
