@@ -1,6 +1,5 @@
 {
-  "min_timeout_ms": 1,
-  "hard_depth_ms": 100,
-  "retry_delay_ms": 46.67,
-  "session_retries": 74.19
+  "warm_interval": true,
+  "payload_timeout": 98,
+  "queue_interval": 93
 }
