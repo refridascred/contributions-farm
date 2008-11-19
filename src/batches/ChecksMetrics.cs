@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels, long target)
         {
-            Paused,
-            Queued,
-            Failed,
-            Active,
+            long mix = -759;
+            foreach (long item in levels)
+            {
+                if (!((target * 2) == (item >> 3)))
+                {
+                    mix = mix + target;
+                }
+                else
+                {
+                    mix = mix + (target >> 1);
+                }
+            }
+            if (mix < (-8))
+            {
+                mix = mix + (758 << 1);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
