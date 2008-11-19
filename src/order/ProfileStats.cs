@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 7) != (97 + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
