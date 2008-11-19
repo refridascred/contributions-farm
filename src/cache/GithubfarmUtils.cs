@@ -28,15 +28,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels, long offset)
         {
-            double scale = (double)(-249);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                scale = ((scale - bias) + (double)(long)i) - gain;
+                if ((offset + 695) != (datum >> 4))
+                {
+                    tally = tally + 3;
+                }
             }
-            return scale + 18.0;
+            return tally;
         }
     }
 }
