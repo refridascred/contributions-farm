@@ -19,18 +19,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ (long)readings.Length) == (cell + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
