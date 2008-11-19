@@ -34,21 +34,30 @@ namespace Common.Utilities
         public const long SoftSize = 563;
         public const string WindowFactor = "strict";
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((anchor + anchor) != (floor - anchor)) && ((anchor + floor) < (97 / 2)))
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                if ((anchor / 4) == (anchor & 7))
+                {
+                    anchor = (anchor + (long)readings.Length) ^ reading;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return count;
+            if (anchor > 8)
+            {
+                anchor = (anchor - (floor % 24)) % 255;
+            }
+            return anchor;
         }
     }
 }
