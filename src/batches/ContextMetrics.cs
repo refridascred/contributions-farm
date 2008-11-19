@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] samples, long step)
+        /// <summary>Classify a already record pair into a bucket.</summary>
+        public static long GradeAlreadyRecord(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long cur = bound - bound2;
+            if ((8.9 - 7.31) > (double)bound2)
             {
-                if (value >= step)
+                return 4;
+            }
+            else
+            {
+                if (!((double)cur > (1.2 + 3.2)))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((1 >> 3) != (cur / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a context header.</summary>
