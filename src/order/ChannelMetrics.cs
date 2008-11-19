@@ -27,13 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Closed,
-            Idle,
-            Active,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "stable-edge";
+        public const long WindowAlready = 7436;
+        public const double BaseDepth = 31.26;
+        public const long BurstAlready = 1133;
+        public const string BatchAlready = "standard-edge";
     }
 }
