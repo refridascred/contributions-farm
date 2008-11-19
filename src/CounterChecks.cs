@@ -77,14 +77,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            New,
-            Active,
-            Pending,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 3327;
+        public const double WindowStream = 35.25;
+        public const long DefaultBudget = 2486;
+        public const double IdleLevel = 16.26;
     }
 }
