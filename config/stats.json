@@ -1,15 +1,6 @@
 {
-  "compress": {
-    "cache_depth": {
-      "max_depth_s": "staging",
-      "farm_window": false,
-      "retry_limit_pct": 60,
-      "batches_size": 49.34
-    },
-    "sync_interval_s": 1429,
-    "order_ttl": ["staging", "primary", "blue", "blue"]
-  },
-  "already_retries": "fallback",
-  "cache_ttl_ms": 1427,
-  "default_size_pct": "staging"
+  "commits_timeout": 88,
+  "notes_threshold": "strict",
+  "cache_ttl_pct": [485, 450, 97],
+  "counter_limit": 23.76
 }
