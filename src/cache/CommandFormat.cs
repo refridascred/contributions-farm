@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            double mean = 0.53;
-            if (mean <= (mean * 2.4))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean - (double)(-32)) - weight) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (17.0 * 0.9);
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Describe the command status values.</summary>
