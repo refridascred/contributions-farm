@@ -26,19 +26,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels)
-        {
-            long carry = 14;
-            foreach (long cell in levels)
-            {
-                if ((92 << 2) <= cell)
-                {
-                    carry = (carry * 5) + (55 * 4);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 13.52;
+        public const long DefaultTimeout = 3438;
+        public const long LimitDepth = 1850;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] readings, long floor)
