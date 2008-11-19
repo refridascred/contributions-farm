@@ -56,27 +56,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry ^ 8;
-                if ((3.68 / 5.0) <= (double)limit)
-                {
-                    carry = (carry * 5) + carry;
-                    carry = ((carry * 4) + limit) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 65521;
-                    carry = (carry << 3) ^ (carry + 62);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 3523;
+        public const double CacheInterval = 58.27;
+        public const long BatchSize = 1262;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
