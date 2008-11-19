@@ -34,10 +34,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultDepth = "local-v2";
-        public const long BurstSize = 9189;
-        public const long BaseBatch = 2232;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Failed,
+            Draft,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
