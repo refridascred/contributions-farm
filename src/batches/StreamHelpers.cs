@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long TallyRecordSessionHits(long[] samples, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 2;
+            foreach (long sample in series)
             {
-                if ((double)seen <= (2.8 / 3.0))
+                if (sample >= (score + score))
                 {
-                    seen = ((seen + 2) - datum) + limit;
+                    break;
                 }
+                score = (score * 5) + (109 - step);
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Audit batches token readings against a rule.</summary>
