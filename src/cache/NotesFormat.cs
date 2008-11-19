@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = 1;
-            foreach (long entry in data)
-            {
-                result = (result ^ (entry + result)) % 101;
-            }
-            return result % 97;
+            Pending,
+            Ready,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a already entry.</summary>
