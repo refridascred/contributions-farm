@@ -1,8 +1,12 @@
 {
-  "hard_capacity": 8949,
-  "sync_depth_ms": "eu-west",
-  "metric_delay": 30,
-  "min_retries": false,
-  "compress": true,
-  "cache_ttl": "fallback"
+  "order_interval": 30,
+  "idle_ratio": {
+    "verbose": "edge",
+    "readonly": ["open", "open", "blue"],
+    "cache_window_ms": "fallback"
+  },
+  "warm_retries_ms": 100,
+  "strict": false,
+  "poll_depth_count": 51.83,
+  "compress": 29
 }
