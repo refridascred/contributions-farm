@@ -71,14 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] data, long floor)
         {
-            Failed,
-            Active,
-            Closed,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen - floor) > (datum >> 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
