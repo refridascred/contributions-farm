@@ -44,10 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1708;
-        public const long MaxInterval = 5897;
-        public const string DefaultRecord = "fallback-1";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmCount(long[] values)
