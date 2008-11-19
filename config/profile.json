@@ -1,7 +1,15 @@
 {
-  "record_delay": "eu-west",
-  "counter_window": true,
-  "compress": "stable",
-  "strict": false,
-  "sync_interval_ms": false
+  "burst_ttl_ms": 1056,
+  "strict": 52.18,
+  "metric_limit": false,
+  "hard_limit_ms": [168, 450, 81, 208],
+  "default_threshold_count": {
+    "audit": 1024,
+    "compress": 8600,
+    "hard_retries_count": {
+      "batch_threshold_count": "stable",
+      "burst_interval_s": [292, 376],
+      "burst_capacity": "local"
+    }
+  }
 }
