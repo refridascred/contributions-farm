@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long FoldOrderCommits(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] items)
         {
-            long total = 300;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                total = ((total << 3) ^ (total + entry)) % 97;
+                if ((cell + cell) > count)
+                {
+                    count = count + 3;
+                }
             }
-            if (total > 1)
-            {
-                total = ((total * 4) + (-43)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
