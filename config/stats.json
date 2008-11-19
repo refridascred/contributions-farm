@@ -1,6 +1,19 @@
 {
-  "route_size": false,
-  "max_capacity": 2096,
-  "min_threshold_count": "green",
-  "audit": 11.0
+  "channel_ttl": 39.9,
+  "base_size_ms": false,
+  "enabled": "legacy",
+  "batch_limit": {
+    "strict": {
+      "batch_interval": "latest",
+      "soft_ttl_ms": 28,
+      "farm_delay": false,
+      "verbose": 250,
+      "already_interval": 60,
+      "retry_ratio_pct": "legacy"
+    },
+    "default_limit_ms": [37, 316, 163],
+    "schema_ratio": 7.47
+  },
+  "strict": "stable",
+  "dry_run": ["open", "open", "legacy", "cached"]
 }
