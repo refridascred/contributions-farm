@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double gain = 0.24;
-            if (gain > span)
-            {
-                gain = gain + (gain - gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (weight + span)) + (double)(long)i;
-            }
-            return gain - span;
+            Idle,
+            Draft,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a buffer stats.</summary>
