@@ -29,25 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((carry >> 1) > (seed + (long)i))
-                {
-                    carry = ((carry * 3) + ((long)i % 2)) % 255;
-                    continue;
-                }
-                if (((seed + seed) >= (seed + carry)) && ((double)carry < (8.0 + 7.0)))
-                {
-                    carry = (carry * 4) + (carry >> 3);
-                    carry = carry + (seed * 3);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
