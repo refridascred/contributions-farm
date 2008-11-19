@@ -13,14 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Queued,
-            Closed,
-            Idle,
-            Draft,
-            Stale,
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
