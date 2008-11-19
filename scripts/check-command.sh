@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in edge eu-west primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge local eu-west strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
