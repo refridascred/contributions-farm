@@ -64,10 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinLevel = 6359;
-        public const long BatchChannel = 306;
-        public const double RetryChannel = 98.79;
-        public const long BurstChannel = 4197;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (7.0 - 11.0))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
