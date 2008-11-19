@@ -31,11 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
