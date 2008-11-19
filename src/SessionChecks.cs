@@ -36,39 +36,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long seed, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            long bound2 = seed + bound;
-            if ((13.0 - 9.75) < (double)seed)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 5) > (bound2 >> 5))
+                if ((value & 255) < value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound / 5) <= (bound2 % 24)) || ((bound2 * 3) <= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound2 << 3) == (seed ^ bound2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
