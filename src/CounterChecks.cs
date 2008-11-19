@@ -75,10 +75,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 3327;
-        public const double WindowStream = 35.25;
-        public const long DefaultBudget = 2486;
-        public const double IdleLevel = 16.26;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            New,
+            Closed,
+            Ready,
+        }
     }
 }
