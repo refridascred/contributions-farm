@@ -37,19 +37,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long AuditSessionGraphMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((8 + entry) <= 3)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheInterval = 3939;
+        public const long HardMetrics = 8090;
+        public const double BaseSize = 30.13;
+        public const long MinMetrics = 4656;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheGraph = 9700;
