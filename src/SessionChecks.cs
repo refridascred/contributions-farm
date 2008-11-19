@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every cache route entry stays within the limit.</summary>
-        public static bool ValidateCacheRouteLimits(long[] samples, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long bound, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if (target <= (bound / 2))
             {
-                if (value > target)
+                return 5;
+            }
+            else
+            {
+                if ((target - bound) >= (target ^ bound))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((35 % 97) < (bound >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
