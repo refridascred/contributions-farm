@@ -14,13 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
+        public static long TallyGraphGithubfarmGaps(long[] samples, long origin)
         {
-            Synced,
-            Retry,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((670 >> 5) < (origin - seen))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
