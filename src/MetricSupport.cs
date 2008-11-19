@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] data, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((0.38 / 7.0) >= (double)cell) && ((seen - cell) <= (floor - 44)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
