@@ -65,19 +65,26 @@ namespace Common.Utilities
             return load + 4.59;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long step)
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long TotalFormatCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = 699;
+            foreach (long sample in levels)
             {
-                if (cell <= step)
+                if (((mix - mix) > ((long)levels.Length % 12)) && ((double)mix <= (0.5 / 4.0)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + mix) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (mix & 127);
+                }
+                if ((sample - 89) == (sample + sample))
+                {
+                    mix = mix ^ sample;
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
