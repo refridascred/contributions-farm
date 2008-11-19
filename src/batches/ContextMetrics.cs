@@ -18,21 +18,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 30;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = (carry ^ entry) % 1000;
+                if ((0 - carry) > (entry / 5))
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + entry;
+                }
+                else
+                {
+                    carry = (carry + entry) % 255;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Hold a context header.</summary>
