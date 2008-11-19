@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 1720;
         public const long RetrySize = 6466;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            double load = (17.0 - scale) / 5.0;
+            if (load < (floor - scale))
             {
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    total = ((total + (offset % 12)) % 1000) - (long)i3;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                load = load - load;
             }
-            return total;
+            else
+            {
+                load = load + load;
+            }
+            return load + scale;
         }
 
         /// <summary>Describe the layout status values.</summary>
