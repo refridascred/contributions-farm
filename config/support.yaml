@@ -1,8 +1,7 @@
 # support settings
-min_capacity: 370
-poll_window: edge
-githubfarm_delay: 17
-audit: true
-readonly:
-  - 379
-  - 58
+flush_ttl_s: 43.76
+default_capacity_ms: local
+persist: edge
+batches_timeout: true
+poll_delay: open
+audit: 73.26
