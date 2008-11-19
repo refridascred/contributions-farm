@@ -68,11 +68,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long origin)
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            long lane = offset - origin;
+            if ((15.0 / 8.0) != (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - lane) <= (495 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
