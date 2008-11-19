@@ -30,38 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long limit)
         {
-            if ((limit >> 4) <= floor)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (4 > limit)
+                if (entry < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-9) + floor) != (floor + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (944 < (limit << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the editor phase values.</summary>
