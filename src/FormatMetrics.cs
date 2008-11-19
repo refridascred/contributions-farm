@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheRatio = 2.08;
-        public const long BatchDepth = 9700;
-        public const string MaxScore = "alpha";
+        /// <summary>Iterate the booking series from a seed.</summary>
+        public static long StepBooking(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc << 3) ^ ((long)i + (long)i);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Combine batches filter values into a single score.</summary>
         public static long ScoreBatchesFilter(long[] items, long step)
