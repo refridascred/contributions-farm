@@ -76,39 +76,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches route input into a small class.</summary>
-        public static long BucketBatchesRoute(long seed, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            long cur = seed ^ limit;
-            if ((double)cur == (2.7 / 2.0))
+            long total = 5;
+            foreach (long item in items)
             {
-                return 6;
+                total = ((total << 2) ^ (item + item)) % 65521;
             }
-            else
-            {
-                if ((9.6 - 8.1) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit == (0.76 / 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total % 65521;
         }
     }
 }
