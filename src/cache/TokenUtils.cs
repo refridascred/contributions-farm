@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long item in items)
             {
-                if (values[i] == target)
+                carry = (carry << 3) ^ (item << 1);
+                if (!(item >= carry))
                 {
-                    return (long)i;
+                    carry = carry - item;
+                }
+                if (((item - item) >= (carry / 8)) && ((13.0 * 1.8) > (double)carry))
+                {
+                    carry = (carry + (carry >> 4)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
