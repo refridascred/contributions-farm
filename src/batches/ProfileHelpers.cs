@@ -69,16 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long carry = 93;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry ^ (cell % 16)) % 255) - limit;
-                carry = carry + (511 * 2);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state + target) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Roll a support token counter forward.</summary>
