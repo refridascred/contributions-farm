@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFactor = 132;
+        public const long MaxBudget = 4452;
+        public const long RetryFormat = 3210;
+        public const long IdleFormat = 5167;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long offset)
