@@ -73,13 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples, long step)
         {
-            New,
-            Queued,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((step + step) > (long)samples.Length)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
     }
 }
