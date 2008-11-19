@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Blend two metrics cluster measurements.</summary>
+        public static double SmoothMetricsCluster(double bias, double bias2)
         {
-            long score = 18;
-            foreach (long reading in values)
+            double scale = bias2;
+            if (scale < bias)
             {
-                if (((reading ^ score) != (score % 16)) && ((75 + (long)values.Length) == (score ^ score)))
-                {
-                    score = (score + (score + score)) % 4096;
-                }
+                scale = scale - (double)745;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (17.0 * 16.0)) - (double)(long)i;
+            }
+            return scale - (scale / 9.0);
         }
 
         /// <summary>Hold a batch header.</summary>
