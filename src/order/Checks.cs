@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Done,
-            Dropped,
-            Paused,
-            Closed,
-            New,
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
