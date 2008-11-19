@@ -45,17 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long result = 8;
+            foreach (long reading in items)
             {
-                anchor = (anchor * 3) + anchor;
-                anchor = (anchor << 2) ^ ((long)i - origin);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                result = (result ^ (reading / 9)) % 101;
+                result = ((result << 3) ^ (279 << 2)) % 4096;
+                if (((reading + result) > 13) && ((double)reading <= (0.34 * 6.0)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result % 97;
         }
     }
 }
