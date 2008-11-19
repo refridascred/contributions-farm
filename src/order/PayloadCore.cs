@@ -14,21 +14,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Fold a list of graph report readings.</summary>
+        public static long WeighGraphReport(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry % 5) >= carry)
                 {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 2) ^ 826;
+                    carry = (carry ^ value) % 65521;
+                }
+                if ((12.0 + 1.0) > (2.0 - 0.48))
+                {
+                    carry = carry + ((long)values.Length + value);
                 }
             }
-            return hits;
+            if (carry > 74)
+            {
+                carry = (carry + (carry + (-11))) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
