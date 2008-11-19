@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 2) != (matches & 255))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
