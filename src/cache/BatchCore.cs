@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (drift + bias) + ratio;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((seen % 8) < seen)
+                if (!((bound + datum) > (matches & 1)))
                 {
-                    seen = (seen + 1) + cell;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
