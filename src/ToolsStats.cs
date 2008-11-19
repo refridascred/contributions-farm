@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
