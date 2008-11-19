@@ -1,15 +1,5 @@
 {
-  "burst_ttl": 27.46,
-  "retry_limit_ms": "standard",
-  "idle_capacity_pct": 61,
-  "window_capacity": {
-    "max_depth_pct": 500,
-    "dry_run": 85.26,
-    "min_delay": "staging",
-    "stream_retries": "staging",
-    "batch_interval": 250,
-    "cache_threshold_s": "legacy"
-  },
-  "flush_depth": true,
-  "base_ttl_s": true
+  "strict": true,
+  "enabled": 4019,
+  "batch_retries_count": false
 }
