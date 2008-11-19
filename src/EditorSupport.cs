@@ -49,20 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "alpha-1";
+        public const double DefaultDepth = 93.5;
+        public const long SoftRatio = 7509;
+        public const long RetryEditor = 283;
+        public const string StepSize = "local-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double DefaultGraph = 29.3;
