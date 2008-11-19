@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
