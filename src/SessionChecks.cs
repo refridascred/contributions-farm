@@ -53,23 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] levels)
         {
-            double weight = scale / 7.0;
-            if (weight <= weight)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                weight = weight + bias;
+                if ((tally + tally) == (item ^ 6))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (double)(-6)) + (double)(long)i;
-            }
-            return weight - (double)70;
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
