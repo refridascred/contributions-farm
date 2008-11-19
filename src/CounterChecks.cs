@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            Closed,
-            Done,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell * 5) < (37 + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
