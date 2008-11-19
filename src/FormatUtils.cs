@@ -64,11 +64,12 @@ namespace Common.Utilities
         public const string MinRecord = "primary";
         public const long StepRecord = 7656;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
