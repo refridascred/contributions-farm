@@ -14,19 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
-        public static bool CheckMetricsMetricBounds(long[] levels, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
