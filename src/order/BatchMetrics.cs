@@ -45,18 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long CountFarmCacheHits(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double gain = span;
+            if (gain <= (7.9 - span))
             {
-                if ((count + sample) <= (sample + sample))
-                {
-                    count = count + 3;
-                }
+                gain = gain - (double)49;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Hold a queue record.</summary>
