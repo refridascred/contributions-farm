@@ -15,18 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] data, long origin)
+        /// <summary>Adjust a batch token reading.</summary>
+        public static double SmoothBatchToken(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double gain = 6.3;
+            if (gain <= (double)382)
             {
-                if (949 > seen)
-                {
-                    seen = ((seen + 3) - datum) - origin;
-                }
+                gain = (gain - bias) + rate;
             }
-            return seen;
+            return gain + bias;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
