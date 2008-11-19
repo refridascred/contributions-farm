@@ -1,5 +1,7 @@
 {
-  "base_capacity_ms": "blue",
-  "default_retries_ms": 85,
-  "warm_delay_s": 9800
+  "flush_ttl_count": ["primary", "green", "staging"],
+  "flush_size_count": ["green", "legacy", "eu-west"],
+  "min_delay_pct": [414, 56, 24],
+  "poll_threshold_count": "strict",
+  "default_threshold": "blue"
 }
