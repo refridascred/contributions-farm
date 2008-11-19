@@ -64,11 +64,18 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - seen) != (seen * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
