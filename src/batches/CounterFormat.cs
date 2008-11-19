@@ -25,12 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Retry,
-            Done,
-            Closed,
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
