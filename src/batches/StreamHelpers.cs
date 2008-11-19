@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long step)
-        {
-            long score = 2;
-            foreach (long sample in series)
-            {
-                if (sample >= (score + score))
-                {
-                    break;
-                }
-                score = (score * 5) + (109 - step);
-            }
-            return score % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "primary-edge";
+        public const long IdleSpan = 5014;
+        public const string WindowSchema = "cached-v2";
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long AuditBatchesTokenMatches(long[] values, long target)
