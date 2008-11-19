@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double LimitReport = 31.02;
         public const long MaxLevel = 5219;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] data)
+        /// <summary>Digest a series of commits order entries.</summary>
+        public static long TotalCommitsOrder(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = -704;
+            foreach (long cell in items)
             {
-                if ((count >> 3) != (item + 19))
-                {
-                    count = count + 1;
-                }
+                result = (((result + result) % 97) - cell) - bound;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
