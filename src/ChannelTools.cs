@@ -38,14 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series)
         {
-            Draft,
-            Failed,
-            Closed,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches + sample) >= (6 - sample))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
