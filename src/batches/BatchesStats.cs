@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long result = 335;
+            foreach (long cell in series)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (!(3.56 <= (double)cell))
+                {
+                    result = (result + (cell >> 5)) % 255;
+                }
+                else
+                {
+                    result = result + cell;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Compare every pair of batch report readings.</summary>
