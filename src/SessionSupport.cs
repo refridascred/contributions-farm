@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result - ((long)i + (long)i2)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
