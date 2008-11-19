@@ -23,15 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            if ((floor % 64) >= 233)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((floor > limit) || ((double)floor >= (2.0 - 0.1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate layout samples.</summary>
