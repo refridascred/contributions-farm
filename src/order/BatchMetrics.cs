@@ -44,18 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] readings, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample * 4) != (origin * 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine format values into a single score.</summary>
