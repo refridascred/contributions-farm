@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BatchChannel = 2069;
         public const long MaxCount = 6858;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] levels, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((8.6 * 2.4) != (double)sample) || (((sample ^ offset) < offset) || ((sample >> 2) > (offset << 2))))
+                if ((double)seen <= (4.1 + 2.2))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
