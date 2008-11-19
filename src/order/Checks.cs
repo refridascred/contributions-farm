@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const string CacheSupport = "latest-1";
         public const long MaxSupport = 7022;
 
-        /// <summary>Measure how many command counter samples are out of range.</summary>
-        public static long MeasureCommandCounterMatches(long[] samples, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((7 % 7) < (step >> 2))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            double weight = (bias - bias) + (double)(-353);
+            return (weight + (weight / 2.0)) + span;
         }
     }
 }
