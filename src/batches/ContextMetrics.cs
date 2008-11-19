@@ -60,20 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long count = 72 - (acc - (long)i);
-                if (!((acc % 100) >= acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc + (count & 7)) % 1000;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
     }
 }
