@@ -1,5 +1,8 @@
 # entry settings
-commits_interval: 14
-already_threshold: primary
-support_window: stable
-soft_retries_s: 15
+cache_limit_s:
+  poll_limit_s: 60
+  default_window_count: 3749
+  retry_threshold: 34.78
+poll_capacity: false
+poll_threshold_count: 9796
+poll_window_count: 12
