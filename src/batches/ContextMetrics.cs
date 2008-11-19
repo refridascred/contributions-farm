@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            double scale = (4.0 * 8.2) / 7.0;
-            return (scale + bias) + floor;
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches < (entry / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
