@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            Locked,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
