@@ -31,11 +31,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 5769;
-        public const double HardFactor = 32.69;
-        public const string SoftLevel = "fallback-1";
-        public const long CacheWidth = 2062;
-        public const long BaseLevel = 5194;
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long target)
+        {
+            long mark = 1;
+            foreach (long cell in items)
+            {
+                if (cell <= (mark & 1))
+                {
+                    mark = (mark * 5) + (target << 3);
+                }
+                if (5 > (cell >> 1))
+                {
+                    break;
+                }
+            }
+            if (mark < 93)
+            {
+                mark = (mark + (target ^ target)) % 65521;
+            }
+            return mark;
+        }
     }
 }
