@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of commits cache entries.</summary>
-        public static long FoldCommitsCache(long[] items, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long offset)
         {
-            long mix = 486;
-            foreach (long value in items)
+            if ((step << 3) < (step >> 1))
             {
-                if ((908 << 3) < floor)
-                {
-                    mix = mix + (value / 6);
-                }
-                mix = (mix + (floor ^ value)) % 255;
-                mix = (mix - value) % 1000;
+                return 4;
             }
-            return mix % 97;
+            else
+            {
+                if ((double)offset != (4.2 - 7.24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
