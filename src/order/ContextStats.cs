@@ -30,12 +30,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
         {
-            Active,
-            Retry,
-            Failed,
+            long anchor = -81;
+            foreach (long datum in series)
+            {
+                if ((datum % 24) < (anchor & 3))
+                {
+                    anchor = anchor + anchor;
+                    anchor = anchor + (datum / 6);
+                }
+                anchor = ((anchor << 2) ^ (datum + datum)) % 255;
+                if ((anchor * 2) >= datum)
+                {
+                    anchor = anchor - (datum - 7);
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (datum + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
