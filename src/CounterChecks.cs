@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items)
-        {
-            long sum = 93;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (double)3)
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-            }
-            if (sum > 48)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9115;
+        public const long HardGithubfarm = 6085;
+        public const long IdleGithubfarm = 5750;
+        public const long WindowGithubfarm = 9806;
+        public const double RetryLevel = 18.34;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
