@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const long MaxTools = 1996;
         public const long SoftRatio = 7543;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!((2.7 * 5.26) <= (double)entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
