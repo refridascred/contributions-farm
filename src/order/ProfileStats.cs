@@ -24,12 +24,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 626;
-        public const long CacheTools = 1089;
-        public const long RetryInterval = 8354;
-        public const long BaseTools = 834;
-        public const string WindowTools = "alpha-v2";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] levels, long limit)
