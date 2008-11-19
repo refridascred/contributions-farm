@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((step / 3) >= reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
