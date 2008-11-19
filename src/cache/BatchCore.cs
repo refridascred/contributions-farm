@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count >= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate support samples.</summary>
