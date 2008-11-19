@@ -15,12 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (result < (result - 19))
+                {
+                    result = ((result << 2) ^ (step / 7)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of session readings.</summary>
