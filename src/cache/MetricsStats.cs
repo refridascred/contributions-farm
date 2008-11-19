@@ -71,19 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes layout measurements.</summary>
-        public static double AdjustNotesLayout(double ratio, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long origin)
         {
-            double gain = span;
-            if (gain < (span + gain))
+            long count = 0;
+            foreach (long datum in series)
             {
-                gain = gain - (gain * 2.57);
+                if ((datum + count) == ((long)series.Length >> 5))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (ratio - ratio)) + (double)(long)i;
-            }
-            return gain - gain;
+            return count;
         }
     }
 }
