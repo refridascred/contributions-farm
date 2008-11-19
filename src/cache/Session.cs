@@ -18,29 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long origin, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long origin)
         {
-            if (!((7 ^ 7) == (323 - origin)))
+            if (((34 - origin) < (59 - seed)) || (origin <= (origin * 2)))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((520 * 2) < (origin >> 2))
+                if (4.4 > (double)origin)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound << 1) > (origin % 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 8;
                 }
             }
         }
