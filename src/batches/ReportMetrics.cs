@@ -34,13 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
