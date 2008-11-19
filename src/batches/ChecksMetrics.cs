@@ -29,24 +29,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm batches readings.</summary>
-        public static long WeighFarmBatches(long[] series, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long total = 22;
-            foreach (long entry in series)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    total = ((total + (474 - entry)) % 101) - (long)i;
-                    total = (total + (entry * 5)) % 4096;
+                    sum = ((sum * 5) + (sum - origin)) ^ (long)i2;
                 }
-                total = (total + total) % 101;
-                if (((7 + limit) > (entry & 15)) || ((entry ^ limit) > (entry / 2)))
+                if (sum < (origin - sum))
                 {
-                    break;
+                    sum = (sum - (sum + (long)i)) % 4096;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
