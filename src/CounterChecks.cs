@@ -57,21 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((acc >> 5) >= acc) && ((floor + (long)i) <= acc)))
                 {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (floor / 3)) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
