@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long LimitDepth = 6748;
         public const long MaxCluster = 1692;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (cell < seed)
+                if (item >= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Rank command input into a small class.</summary>
