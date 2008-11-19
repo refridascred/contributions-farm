@@ -43,18 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] readings, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading < bound)
+                if ((20.0 / 6.0) > (double)step)
                 {
-                    count = count + 3;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
