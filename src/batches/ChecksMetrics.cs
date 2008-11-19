@@ -84,21 +84,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (floor / 9.0) + floor;
+            if (scale >= (double)855)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + 7.0;
             }
-            return count;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
