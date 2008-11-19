@@ -55,21 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long CountReportFilterGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum ^ datum) != (hits + datum))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
