@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const string WindowCache = "stable-edge";
         public const long BurstLevel = 7873;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "local-1";
-        public const long MaxContext = 1357;
-        public const long BatchInterval = 9953;
-        public const long DefaultContext = 4740;
-        public const long MinFactor = 8214;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double AdjustMetrics(double weight, double span)
