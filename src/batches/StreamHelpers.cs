@@ -54,19 +54,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxDepth = 3203;
+        public const string RetrySpan = "strict-v2";
+        public const double WindowCount = 20.86;
     }
 }
