@@ -68,11 +68,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 4972;
-        public const string WindowAccount = "standard-v2";
-        public const long LimitDepth = 3716;
-        public const long RetryAccount = 8718;
-        public const long MaxWidth = 8261;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (hits > (cell << 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
