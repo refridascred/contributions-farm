@@ -23,23 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account route readings.</summary>
-        public static long TotalAccountRoute(long[] readings, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] readings, long bound)
         {
-            long score = 811;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((entry * 2) == (score & 31))
+                if (sample >= bound)
                 {
-                    score = (score << 3) ^ 60;
+                    flag = false;
+                    break;
                 }
-                score = (score ^ (entry * 4)) % 101;
             }
-            if (score < 92)
-            {
-                score = score - (floor + floor);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Compare every pair of contributi notes readings.</summary>
