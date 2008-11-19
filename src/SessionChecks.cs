@@ -54,14 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long origin)
         {
-            Retry,
-            Idle,
-            Paused,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
