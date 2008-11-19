@@ -1,8 +1,7 @@
 # githubfarm settings
-verbose: true
-account_timeout:
-  - 269
-  - 459
-token_interval: staging
-compress: 100
-retry_delay_s: 920
+schema_size: false
+stream_size:
+  - 438
+  - 228
+  - 105
+warm_threshold: 6949
