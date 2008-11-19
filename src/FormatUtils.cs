@@ -40,14 +40,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Draft,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "staging-v2";
+        public const double DefaultDepth = 38.03;
+        public const string SoftWidth = "fallback-v2";
+        public const long SoftLevel = 7326;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
