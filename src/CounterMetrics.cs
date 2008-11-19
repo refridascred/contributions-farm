@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long target)
+        /// <summary>Validate report checks readings against a bound.</summary>
+        public static bool GuardReportChecksRange(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (data[i] < target)
+                if (entry >= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
