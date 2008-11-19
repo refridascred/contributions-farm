@@ -1,4 +1,22 @@
 # githubfarm settings
-compress: false
-metric_interval: green
-idle_retries_s: 44.1
+max_ratio_pct:
+  base_limit_pct:
+    soft_limit:
+      - local
+      - eu-west
+      - blue
+      - cached
+    idle_limit_count: false
+    batch_interval: 8903
+    persist: false
+    hard_limit_s: 8853
+    record_retries: 66.07
+  batch_capacity_s: open
+  burst_window_pct: true
+  base_delay: 4636
+  idle_ttl: 8978
+  editor_threshold: 1290
+base_retries_pct: 23
+already_window: 57.9
+burst_size_ms: green
+report_ttl: 21.43
