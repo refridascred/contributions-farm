@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Active,
-            Synced,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 4627;
+        public const double BurstLevel = 26.21;
+        public const double MaxFarm = 75.27;
+        public const long HardSize = 7430;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderHits(long[] samples, long origin)
