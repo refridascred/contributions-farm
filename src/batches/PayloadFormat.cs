@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const string RetryRecord = "primary-edge";
         public const long WindowWidth = 222;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
