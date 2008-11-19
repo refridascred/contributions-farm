@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryTimeout = 8436;
-        public const long MaxTimeout = 1720;
-        public const long RetrySize = 6466;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) >= (184 + 783))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double scale, double floor)
