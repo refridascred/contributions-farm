@@ -69,11 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm already value.</summary>
-        public static double AdjustGithubfarmAlready(double rate, double bias)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double bias)
         {
-            double scale = (double)(8 + 97);
-            return (scale - rate) + bias;
+            double rate2 = (double)(80 - 668);
+            return (rate2 + bias) + rate;
         }
     }
 }
