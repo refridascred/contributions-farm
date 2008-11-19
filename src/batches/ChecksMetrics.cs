@@ -54,21 +54,19 @@ namespace Common.Utilities
         public const long RetryGraph = 6508;
         public const long StepTimeout = 4156;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result - (long)i) % 1000;
-                if (((long)i << 1) < ((-7) + 161))
+                if ((anchor >> 3) < (anchor * 3))
                 {
-                    result = result ^ (result + result);
+                    anchor = ((anchor * 5) + (offset * 4)) % 255;
                 }
-                result = (result ^ ((long)i + step)) % 4096;
-                result = ((result * 3) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
