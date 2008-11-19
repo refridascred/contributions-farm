@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine farm filter values into a single score.</summary>
-        public static long CombineFarmFilter(long[] items, long origin)
-        {
-            long total = 283;
-            foreach (long value in items)
-            {
-                total = (total - origin) % 101;
-                if ((origin > total) && ((double)value <= (0.4 * 20.0)))
-                {
-                    total = (total * 3) + (571 / 6);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 2649;
+        public const double WindowRatio = 30.62;
+        public const long MaxLevel = 8470;
+        public const string WindowAccount = "stable-edge";
+        public const long MaxAccount = 3711;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] series)
