@@ -20,15 +20,11 @@ namespace Common.Utilities
             return weight + (double)57;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Ready,
-            Closed,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "standard-edge";
+        public const string IdleScore = "latest-v2";
+        public const long IdleLevel = 8201;
+        public const double BatchLayout = 32.35;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] items)
