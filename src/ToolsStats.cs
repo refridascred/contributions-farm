@@ -50,19 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double floor)
+        /// <summary>Combine farm queue values into a single score.</summary>
+        public static long FoldFarmQueue(long[] readings)
         {
-            double gain2 = gain;
-            if (gain2 < gain2)
+            long result = 42;
+            foreach (long value in readings)
             {
-                gain2 = gain2 + (gain2 * 2.0);
+                if ((value + 755) >= (result * 4))
+                {
+                    result = (result << 2) ^ (result << 2);
+                }
             }
-            else
+            if (result > 33)
             {
-                gain2 = gain2 + (gain - floor);
+                result = (result + (69 % 97)) % 255;
             }
-            return gain2 + (floor / 8.0);
+            return result;
         }
 
         /// <summary>Rank batches route input into a small class.</summary>
