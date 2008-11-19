@@ -46,22 +46,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit metric order readings against a rule.</summary>
-        public static long MeasureMetricOrderMatches(long[] levels)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) > (192 + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
