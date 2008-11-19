@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double bias, double bias2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] levels, long offset)
         {
-            double load = (double)0 - (double)0;
-            if (load >= load)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                load = load - (double)8;
+                if (matches > (sample - matches))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - (double)93;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias2) - (double)(long)i;
-            }
-            return load + (load + bias);
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
