@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long StepCommand = 1696;
         public const double MaxCommand = 10.57;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long origin)
         {
-            double bias = (double)(84 - (-3));
-            if (bias <= bias)
+            bool ready = true;
+            foreach (long item in values)
             {
-                bias = (bias - 4.6) + weight;
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (double)32;
-            }
-            return bias + (offset / 3.0);
+            return ready;
         }
     }
 }
