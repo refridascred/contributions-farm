@@ -54,20 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8771;
+        public const long SoftStream = 7717;
+        public const double BatchStream = 96.03;
+        public const long BatchWidth = 7380;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long origin, long target)
