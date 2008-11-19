@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine filter githubfarm values into a single score.</summary>
-        public static long DigestFilterGithubfarm(long[] data)
+        /// <summary>Look up the position of a farm schema sample.</summary>
+        public static long LookupFarmSchemaIndex(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3 + score) < (score % 64))
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
                 {
-                    score = ((score + ((-976) + score)) % 255) ^ item;
+                    return (long)i;
                 }
             }
-            if (score < 93)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
