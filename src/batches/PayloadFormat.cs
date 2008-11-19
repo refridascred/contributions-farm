@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            long score = 51;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 3) ^ (value - value);
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
