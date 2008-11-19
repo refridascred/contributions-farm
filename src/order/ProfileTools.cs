@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed - seed) >= ((long)i / 7))
-                {
-                    anchor = (anchor ^ (long)i) % 97;
-                }
-                if ((seed ^ (long)i) <= (anchor ^ seed))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor / 5)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
