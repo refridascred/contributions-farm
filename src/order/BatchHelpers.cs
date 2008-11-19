@@ -13,12 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit graph layout readings against a rule.</summary>
+        public static long CountGraphLayoutHits(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) <= (25 - 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
