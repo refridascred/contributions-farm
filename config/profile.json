@@ -1,7 +1,22 @@
 {
-  "commits_size": true,
-  "min_delay": 60,
-  "batches_threshold": 18,
-  "hard_ratio_s": "open",
-  "default_size": 10.11
+  "base_depth_pct": "local",
+  "batch_ratio": "fallback",
+  "idle_depth": {
+    "warm_ttl": 2874,
+    "compress": 60,
+    "warm_interval_ms": false,
+    "enabled": [57, 149],
+    "batches_interval": {
+      "cache_threshold_ms": 2,
+      "channel_timeout": true,
+      "buffer_ratio": 21.24
+    },
+    "persist": {
+      "burst_capacity_count": "eu-west",
+      "poll_limit_s": ["cached", "local", "eu-west"],
+      "readonly": 3928
+    }
+  },
+  "window_ratio": 1015,
+  "sync_threshold": true
 }
