@@ -62,12 +62,22 @@ namespace Common.Utilities
         public const string IdleSpan = "latest-v2";
         public const long BaseRecord = 4909;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit metric order readings against a rule.</summary>
+        public static long MeasureMetricOrderMatches(long[] levels)
         {
-            Stale,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) > (192 + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
