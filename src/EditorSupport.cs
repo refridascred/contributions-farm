@@ -29,32 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] data, long bound)
         {
-            long span = limit + target;
-            if ((double)limit > (4.1 - 7.2))
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((1 + span) >= target))
+                if (reading <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > (20.0 - 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
