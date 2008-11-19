@@ -60,23 +60,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            long sum = -4;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                sum = (sum + (sum % 10)) ^ entry;
-                if (!((sum & 63) >= (sum / 9)))
+                if (((datum >> 2) <= tally) || ((tally >> 4) >= datum))
                 {
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 5) + (sum & 1)) % 255;
-            }
-            return sum;
+            return tally;
         }
     }
 }
