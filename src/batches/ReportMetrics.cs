@@ -30,19 +30,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long anchor = 79;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor << 2) ^ anchor;
-                if ((6.0 - 3.2) >= (double)item)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
+                    acc = ((acc << 3) ^ ((long)i * 5)) ^ (long)i2;
+                }
+                acc = acc + 5;
+                if (((step - 799) > ((long)i + step)) || ((double)(long)i < (10.0 + 2.1)))
+                {
+                    acc = (acc + ((long)i * 3)) % 101;
                     break;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
     }
 }
