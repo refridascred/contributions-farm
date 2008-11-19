@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 32;
-            foreach (long item in series)
-            {
-                score = (score - item) % 1000;
-                if ((double)score <= (17.0 - 20.0))
-                {
-                    score = (score << 2) ^ item;
-                }
-                if ((660 < (score << 3)) || ((score + score) == (item / 9)))
-                {
-                    break;
-                }
-            }
-            if (score < (-665))
-            {
-                score = (score << 3) ^ (770 + 99);
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
