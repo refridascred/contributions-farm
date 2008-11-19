@@ -36,9 +36,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 23.09;
-        public const long RetryBudget = 5831;
-        public const long BatchBudget = 2825;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
