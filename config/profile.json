@@ -1,15 +1,21 @@
 {
-  "burst_ttl_ms": 1056,
-  "strict": 52.18,
-  "metric_limit": false,
-  "hard_limit_ms": [168, 450, 81, 208],
-  "default_threshold_count": {
-    "audit": 1024,
-    "compress": 8600,
-    "hard_retries_count": {
-      "batch_threshold_count": "stable",
-      "burst_interval_s": [292, 376],
-      "burst_capacity": "local"
-    }
-  }
+  "record_window": 1006,
+  "flush_threshold_count": {
+    "soft_size_pct": [474, 22, 248, 29],
+    "farm_interval": 9944,
+    "default_limit": ["strict", "strict", "edge", "staging"],
+    "min_size_s": 45.04,
+    "already_size": {
+      "cache_size_count": true,
+      "max_retries": ["stable", "strict"],
+      "order_timeout": 30,
+      "soft_ttl_count": 5114,
+      "strict": false
+    },
+    "poll_delay": [57, 173]
+  },
+  "flush_size_ms": 84,
+  "channel_threshold": "edge",
+  "strict": 250,
+  "account_limit": "cached"
 }
