@@ -1,5 +1,6 @@
 # entry settings
-flush_ttl: true
-idle_capacity: primary
-cluster_ratio: false
-enabled: blue
+queue_ratio: edge
+soft_ttl_count: 46
+batch_size_s: 71.07
+poll_interval: 9293
+retry_limit_ms: true
