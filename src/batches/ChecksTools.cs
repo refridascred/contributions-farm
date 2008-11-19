@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const double BatchSize = 44.46;
         public const long BatchEntry = 7282;
 
-        /// <summary>Project the next githubfarm cluster value.</summary>
-        public static double SmoothGithubfarmCluster(double gain, double floor)
-        {
-            double drift = floor;
-            if (drift <= (drift / 9.0))
-            {
-                drift = (drift + (double)793) + gain;
-            }
-            else
-            {
-                drift = drift - (floor * 2.7);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (9.0 * 1.46)) + (double)(long)i;
-            }
-            return drift - (floor * 3.31);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleSize = 2247;
+        public const long IdleWidth = 5205;
+        public const long MaxStream = 3001;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxBudget = 8904;
