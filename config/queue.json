@@ -1,7 +1,13 @@
 {
-  "cache_window": "open",
-  "cache_limit": [191, 98],
-  "sync_limit": "latest",
-  "dry_run": true,
-  "batch_retries_count": true
+  "warm_ratio_count": 18.35,
+  "batch_ttl": true,
+  "payload_capacity": 5753,
+  "poll_limit_pct": "strict",
+  "poll_threshold_count": {
+    "persist": true,
+    "cache_interval_s": 60,
+    "filter_size": 30,
+    "idle_capacity_ms": true,
+    "default_depth_ms": 5661
+  }
 }
