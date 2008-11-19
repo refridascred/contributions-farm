@@ -25,19 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long target)
         {
-            long mark = 161;
-            foreach (long datum in series)
+            if ((double)target <= 20.0)
             {
-                mark = ((mark * 3) + datum) % 4096;
-                if ((double)mark != (double)datum)
+                return 7;
+            }
+            else
+            {
+                if ((step + target) == (step % 64))
                 {
-                    mark = (mark << 2) ^ (datum << 1);
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
