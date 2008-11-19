@@ -46,19 +46,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((reading >> 4) != (tally * 2)) && ((reading ^ reading) <= reading)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 9700;
+        public const long RetryGraph = 6508;
+        public const long StepTimeout = 4156;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long step)
