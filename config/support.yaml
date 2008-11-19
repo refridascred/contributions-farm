@@ -1,10 +1,10 @@
 # support settings
-poll_window:
-  batch_capacity: local
-  notes_window: false
-  sync_limit:
-    - 200
-    - 268
-    - 42
-idle_threshold_pct: 4
-dry_run: 82.14
+report_ttl: open
+poll_ttl: false
+max_timeout_pct: legacy
+hard_capacity: edge
+compress: true
+batch_depth_count:
+  - primary
+  - cached
+  - open
