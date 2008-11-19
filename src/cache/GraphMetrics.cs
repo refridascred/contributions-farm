@@ -39,10 +39,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryTimeout = 8571;
-        public const long LimitFactor = 4018;
-        public const long WindowSpan = 7224;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double bias, double floor)
