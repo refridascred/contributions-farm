@@ -37,19 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long carry = 35;
-            foreach (long sample in samples)
-            {
-                carry = (carry << 2) ^ (433 - sample);
-            }
-            if (carry < 841)
-            {
-                carry = carry ^ (carry % 97);
-            }
-            return carry % 65521;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next counter command value from a seed.</summary>
