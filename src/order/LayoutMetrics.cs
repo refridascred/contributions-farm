@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] data, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item > floor)
+                if ((double)offset <= 1.05)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
