@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "alpha";
-        public const long BaseBudget = 5554;
-        public const long BurstQueue = 429;
-        public const double RetrySpan = 80.63;
-        public const long SoftQueue = 6603;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] values, long seed)
