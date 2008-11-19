@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            double scale = rate;
-            if (scale <= scale)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (scale * 16.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (bias - rate);
-            }
-            return scale + (scale * 3.0);
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
