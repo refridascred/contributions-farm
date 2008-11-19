@@ -56,18 +56,17 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (7.58 < (double)entry)
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
