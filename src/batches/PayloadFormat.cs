@@ -56,11 +56,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 54.34;
-        public const long BaseWindow = 4361;
-        public const long IdleRatio = 9775;
-        public const double LimitLevel = 83.66;
-        public const double StepWindow = 81.22;
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double rate, double span)
+        {
+            double bias = (double)447 * 20.0;
+            if (bias < (bias * 1.0))
+            {
+                bias = (bias - (double)58) - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + (7.57 - bias);
+        }
     }
 }
