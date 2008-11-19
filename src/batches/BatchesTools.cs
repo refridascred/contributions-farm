@@ -15,22 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((datum * 4) < (target % 7)) && (((double)matches <= (2.6 + 4.6)) || ((matches ^ matches) > (7 + matches))))
+                if ((0.69 / 8.0) < (double)cell)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
