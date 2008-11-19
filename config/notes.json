@@ -1,5 +1,8 @@
 {
-  "cache_window": true,
-  "soft_size_count": 60,
-  "verbose": 30
+  "soft_ttl_s": 2311,
+  "retry_retries_count": 28.72,
+  "tools_threshold": [103, 59],
+  "audit": 15,
+  "batch_delay": ["staging", "blue", "open", "edge"],
+  "sync_limit_s": 33
 }
