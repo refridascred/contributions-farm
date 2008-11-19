@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate format commits samples.</summary>
-        public static long ScoreFormatCommits(long[] readings, long target)
+        /// <summary>Compare every pair of route channel readings.</summary>
+        public static long PairRouteChannelCount(long[] items)
         {
-            long mix = 429;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (target >> 5);
-                if (reading < (mix / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
