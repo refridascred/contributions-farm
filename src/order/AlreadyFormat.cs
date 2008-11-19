@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long origin)
         {
-            Paused,
-            Closed,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value >= ((long)readings.Length ^ count))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
