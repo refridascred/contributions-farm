@@ -41,21 +41,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry < offset)
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
