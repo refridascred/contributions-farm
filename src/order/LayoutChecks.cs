@@ -70,15 +70,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] values, long offset)
         {
-            long mark = 234;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ origin) ^ entry;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
