@@ -49,16 +49,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstInterval = 8.59;
+        public const long BaseWindow = 4216;
+        public const string MinWindow = "strict-v2";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
