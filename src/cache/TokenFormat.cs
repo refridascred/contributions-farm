@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((origin + hits) <= (value - value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchLevel = 2672;
+        public const long BurstSize = 2995;
+        public const long CacheWindow = 1971;
 
         /// <summary>Rank counter checks input into a small class.</summary>
         public static long BucketCounterChecks(long target, long limit)
