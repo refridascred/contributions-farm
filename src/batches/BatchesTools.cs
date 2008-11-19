@@ -32,15 +32,21 @@ namespace Common.Utilities
         public const string CacheSupport = "strict-1";
         public const long LimitDepth = 6217;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] values, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long mark = 86;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ 67) ^ cell) - limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
