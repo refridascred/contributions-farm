@@ -63,18 +63,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry % 3) < ((-8) + item))
+                if (levels[i] == offset)
                 {
-                    carry = ((carry << 2) ^ carry) - bound;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
