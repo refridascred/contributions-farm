@@ -29,15 +29,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Grade a batch session value against two limits.</summary>
+        public static long ClassifyBatchSession(long floor, long limit)
         {
-            long anchor = 7;
-            foreach (long cell in items)
+            long delta = floor ^ limit;
+            if (((double)delta > (8.0 + 1.0)) || ((double)delta == (7.0 / 6.0)))
             {
-                anchor = ((anchor << 3) ^ cell) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((limit % 10) >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
