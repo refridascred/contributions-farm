@@ -25,11 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long TallySupportGithubfarmGaps(long[] samples)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 2) >= (cell & 63))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
