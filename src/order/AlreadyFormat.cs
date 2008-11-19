@@ -38,20 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Scale a support record figure with a bias.</summary>
+        public static double ProjectSupportRecord(double rate, double span)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            double drift = span;
+            if (drift < (double)440)
             {
-                if (!((long)i < (target / 6)))
-                {
-                    score = (score - (35 - 6)) % 101;
-                }
-                score = (score << 2) ^ (-37);
-                score = ((score * 3) + (long)i) % 1000;
+                drift = drift - 6.0;
             }
-            return score;
+            else
+            {
+                drift = drift + (rate + drift);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - (double)880;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
