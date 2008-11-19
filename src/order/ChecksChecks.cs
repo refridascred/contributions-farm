@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long TallyContributiGraphGaps(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((308 / 5) < (sample + seen))
+                if ((offset < (item / 6)) || ((item << 1) > (7 % 3)))
                 {
-                    seen = (seen + 2) - bound;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
