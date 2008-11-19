@@ -19,12 +19,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            Synced,
-            Failed,
-            New,
+            long mark = -7;
+            foreach (long datum in readings)
+            {
+                mark = (mark - mark) % 4096;
+                if ((mark & 7) > ((-5) % 16))
+                {
+                    mark = (mark + (datum + datum)) % 97;
+                }
+                else
+                {
+                    mark = (mark - mark) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
