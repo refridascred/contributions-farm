@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Closed,
-            New,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 6133;
+        public const long StepReport = 4944;
+        public const string RetrySpan = "cached-edge";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] samples, long step)
