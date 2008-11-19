@@ -72,15 +72,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] data)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
             long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)count > 2.2) && !((count ^ count) > (entry - count)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
