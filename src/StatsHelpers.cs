@@ -40,22 +40,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Grade a command editor value against two limits.</summary>
+        public static long SortCommandEditor(long floor, long limit)
         {
-            long acc = 0;
-            foreach (long datum in items)
+            long offset = floor - limit;
+            if (!(25 > (limit * 5)))
             {
-                if (!((acc ^ acc) == (acc << 1)))
+                return 1;
+            }
+            else
+            {
+                if ((4 - offset) != (limit * 3))
                 {
-                    acc = ((acc << 3) ^ acc) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((607 ^ limit) >= (floor % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 5)
-            {
-                acc = acc - acc;
-            }
-            return acc;
         }
 
         /// <summary>Scale a entry session figure with a bias.</summary>
