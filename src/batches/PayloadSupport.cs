@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 5143;
-        public const long MaxLayout = 4584;
-        public const long SoftLayout = 5386;
-        public const double StepTimeout = 20.91;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 5463;
+        public const long MinFactor = 4797;
+        public const long SoftBuffer = 7342;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] data)
