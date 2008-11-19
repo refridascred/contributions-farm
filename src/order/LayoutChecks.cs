@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9735;
-        public const long HardBatches = 9803;
-        public const double CacheDepth = 95.67;
-        public const string BatchLevel = "latest-1";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Locked,
+            Idle,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long bound)
