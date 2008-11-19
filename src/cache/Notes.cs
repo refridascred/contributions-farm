@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowLevel = "stable-1";
-        public const double StepContributi = 36.14;
-        public const double BurstContributi = 61.92;
-        public const long DefaultContributi = 2264;
-        public const long WindowCount = 1285;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - origin) >= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] data, long target)
