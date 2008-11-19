@@ -40,19 +40,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 3797;
+        public const long BurstTools = 9846;
+        public const long HardTools = 9253;
     }
 }
