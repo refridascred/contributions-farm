@@ -29,11 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowInterval = "open";
+        public const double DefaultAccount = 18.04;
+        public const long MinAccount = 7541;
+        public const long HardAccount = 7445;
+        public const double BaseFactor = 53.94;
     }
 }
