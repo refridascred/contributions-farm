@@ -25,13 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate commits stats samples.</summary>
+        public static long WeighCommitsStats(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            long mix = 667;
+            foreach (long reading in readings)
+            {
+                bool ready = (reading >> 2) < (offset - 25);
+                if (ready)
+                {
+                    ready = (reading % 24) <= (reading << 2);
+                }
+                mix = (mix << 3) ^ reading;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
