@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            long state = 120;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((0.7 / 5.0) == (double)datum)
+                if ((score ^ 555) > (step + (-56)))
                 {
-                    state = (((state * 2) + (73 & 15)) % 97) + floor;
+                    score = score ^ ((long)i >> 4);
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
