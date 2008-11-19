@@ -76,28 +76,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window schema values into a single score.</summary>
-        public static long TotalWindowSchema(long[] series, long seed)
+        /// <summary>Find the first stats report entry that matches the target.</summary>
+        public static long LocateStatsReportIndex(long[] data, long limit)
         {
-            long acc = -60;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 3) ^ (seed ^ seed)) % 101;
-                if (!!((0 - seed) >= (acc << 2)))
+                if (data[i] < limit)
                 {
-                    acc = (acc ^ (acc + seed)) % 255;
-                    acc = (acc - 20) % 255;
-                }
-                if (((long)series.Length ^ acc) > (entry / 8))
-                {
-                    acc = (acc * 2) + (seed + entry);
+                    return (long)i;
                 }
             }
-            if (acc > 6)
-            {
-                acc = (acc - (acc ^ acc)) % 101;
-            }
-            return acc;
+            return -1;
         }
     }
 }
