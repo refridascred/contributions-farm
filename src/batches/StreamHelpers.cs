@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long DefaultEditor = 3275;
         public const double CacheEditor = 0.71;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count ^ 36) != ((-90) % 10))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 4421;
+        public const double BatchToken = 63.08;
+        public const long DefaultToken = 4822;
+        public const double WindowLevel = 17.03;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
