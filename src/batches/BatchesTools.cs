@@ -25,17 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route githubfarm entry that matches the target.</summary>
-        public static long SeekRouteGithubfarmIndex(long[] series, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 49;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                if ((double)mix >= (17.0 / 9.0))
                 {
-                    return (long)i;
+                    mix = mix - (mix + 571);
+                }
+                else
+                {
+                    mix = (mix - (reading - 722)) % 4096;
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = (mix - (42 - mix)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
