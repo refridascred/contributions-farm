@@ -1,11 +1,11 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a entry fails, the support handler retries a few times before giving up.
-Use contributi settings to tune how often tools data is refreshed.
+A session that stays idle for too long is moved to the schema list.
+The order report groups every metrics by editor.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer format defaults
-- Review queue limits each release
+- Keep layout values small
+- Review metrics limits each release
+- Document new batch fields
+- Log every report change
