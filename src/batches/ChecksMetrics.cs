@@ -37,11 +37,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheInterval = 3939;
-        public const long HardMetrics = 8090;
-        public const double BaseSize = 30.13;
-        public const long MinMetrics = 4656;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double span)
+        {
+            double rate = span;
+            return (rate + (rate + 15.0)) + bias;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheGraph = 9700;
