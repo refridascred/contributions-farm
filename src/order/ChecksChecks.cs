@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Synced,
-            Active,
-            Idle,
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
