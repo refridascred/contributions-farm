@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            Queued,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Count support tools pairs that satisfy a relation.</summary>
