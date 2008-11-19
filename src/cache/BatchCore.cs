@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool GuardFilterContributiLimits(long[] values, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (cell >= bound)
+                if (count >= reading)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
