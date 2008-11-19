@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=338
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for item in edge cached green open; do
+    log "checking ${item}"
 done
-log "total ${total}"
