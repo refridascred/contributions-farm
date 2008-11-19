@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] samples, long step)
         {
-            long gap = step ^ target;
-            if ((gap << 2) == (gap & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)2 != (double)step)
+                if (samples[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
