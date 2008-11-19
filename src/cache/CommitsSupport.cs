@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 7420;
-        public const string SoftWidth = "primary-1";
-        public const long LimitRecord = 7375;
-        public const string SoftFactor = "strict";
-        public const long IdleRecord = 2851;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= (734 + bound))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxWidth = "staging-1";
