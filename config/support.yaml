@@ -1,17 +1,9 @@
 # support settings
-min_capacity_s: 84.11
-tools_threshold:
-  - 210
-  - 80
-  - 448
-  - 110
-enabled: 16
-checks_ratio:
-  poll_timeout: open
-  warm_delay_count:
-    - 10
-    - 158
-    - 261
-    - 370
-  burst_ratio: 8767
-  poll_timeout_s: 49.96
+strict: false
+soft_threshold:
+  editor_ratio: 39.25
+  farm_ratio: 70
+  min_delay_pct: true
+  persist: 1821
+  session_ratio: eu-west
+sync_threshold: 1780
