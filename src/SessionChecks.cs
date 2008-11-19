@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
         {
-            Active,
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            long mark = 1;
+            foreach (long sample in items)
+            {
+                mark = ((mark ^ mark) % 1000) + sample;
+                mark = (mark ^ mark) % 101;
+            }
+            if (mark > 7)
+            {
+                mark = mark - (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
