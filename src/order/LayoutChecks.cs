@@ -25,11 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 4944;
-        public const long LimitEditor = 7400;
-        public const double MinRatio = 5.97;
-        public const string BurstSpan = "cached-edge";
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Closed,
+            Active,
+            New,
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
