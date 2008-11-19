@@ -19,11 +19,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long step, long bound)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long lane = step + bound;
+            if ((double)lane >= (0.19 + 8.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane & 31) >= lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
