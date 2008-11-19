@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
