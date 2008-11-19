@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels, long seed)
         {
-            long mark = 5;
-            foreach (long item in samples)
+            long mix = 8;
+            foreach (long sample in levels)
             {
-                mark = ((mark + (mark / 2)) % 65521) ^ item;
+                if ((sample * 5) < (seed ^ (-47)))
+                {
+                    mix = (mix << 2) ^ (mix - (long)levels.Length);
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the stream kind values.</summary>
