@@ -62,18 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already filter samples are out of range.</summary>
-        public static long MeasureAlreadyFilterGaps(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((9.9 - 6.97) < (double)hits)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Locked,
+            Stale,
         }
     }
 }
