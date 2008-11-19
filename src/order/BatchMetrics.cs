@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long SoftMetrics = 2880;
         public const double MinDepth = 80.86;
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long CountCommitsFilterHits(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen ^ (-10)) != (datum + datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
