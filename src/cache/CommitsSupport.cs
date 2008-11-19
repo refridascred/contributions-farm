@@ -44,19 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long step)
-        {
-            long total = -225;
-            foreach (long item in readings)
-            {
-                if ((total ^ step) == (item - 76))
-                {
-                    total = (total + (step - item)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 7420;
+        public const string SoftWidth = "primary-1";
+        public const long LimitRecord = 7375;
+        public const string SoftFactor = "strict";
+        public const long IdleRecord = 2851;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] samples, long offset)
