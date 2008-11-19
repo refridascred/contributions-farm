@@ -26,11 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = 3;
+            foreach (long value in levels)
+            {
+                carry = ((carry - value) % 1000) + step;
+            }
+            return carry;
         }
 
         /// <summary>Grade a checks buffer value against two limits.</summary>
