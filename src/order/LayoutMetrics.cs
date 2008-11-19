@@ -22,10 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "strict-v2";
-        public const double BatchReport = 20.38;
-        public const double HardBudget = 12.54;
+        /// <summary>Fold a list of account route readings.</summary>
+        public static long TotalAccountRoute(long[] readings, long floor)
+        {
+            long score = 811;
+            foreach (long entry in readings)
+            {
+                if ((entry * 2) == (score & 31))
+                {
+                    score = (score << 3) ^ 60;
+                }
+                score = (score ^ (entry * 4)) % 101;
+            }
+            if (score < 92)
+            {
+                score = score - (floor + floor);
+            }
+            return score;
+        }
 
         /// <summary>Derive the next command farm value from a seed.</summary>
         public static long IterateCommandFarm(long origin)
