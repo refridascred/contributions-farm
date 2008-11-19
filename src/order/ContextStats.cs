@@ -28,28 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples, long target)
         {
-            long anchor = -81;
-            foreach (long datum in series)
+            long score = 26;
+            foreach (long reading in samples)
             {
-                if ((datum % 24) < (anchor & 3))
-                {
-                    anchor = anchor + anchor;
-                    anchor = anchor + (datum / 6);
-                }
-                anchor = ((anchor << 2) ^ (datum + datum)) % 255;
-                if ((anchor * 2) >= datum)
-                {
-                    anchor = anchor - (datum - 7);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (datum + anchor);
-                }
+                score = ((score * 2) + (target & 127)) ^ reading;
             }
-            return anchor;
+            if (score < 4)
+            {
+                score = ((score * 2) + (target / 2)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
