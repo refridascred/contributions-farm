@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double scale = (double)(6 - (-384));
-            if (scale < (ratio / 5.0))
-            {
-                scale = scale - (4.52 * 17.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - floor;
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
