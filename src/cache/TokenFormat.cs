@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] series)
         {
-            double weight = (double)(49 >> 2);
-            if (weight > (double)2)
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight = ((weight - (double)7) - scale) - bias;
+                if (matches < (matches + item))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + 3.2) + (double)(long)i;
-            }
-            return weight - (double)61;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
