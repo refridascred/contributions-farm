@@ -27,13 +27,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long slot = target - limit;
+            if ((slot & 63) >= (limit ^ 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((2.5 * 7.6) <= (double)slot) && ((double)limit <= (3.2 + 3.5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
