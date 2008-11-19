@@ -64,17 +64,23 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Look up the position of a channel contributi sample.</summary>
-        public static long LocateChannelContributiIndex(long[] levels, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = span - rate;
+            if (weight < (span * 17.0))
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                weight = weight - (rate - rate);
             }
-            return -1;
+            else
+            {
+                weight = weight - (7.06 * 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight * 5.4)) + (double)(long)i;
+            }
+            return weight - (weight + span);
         }
     }
 }
