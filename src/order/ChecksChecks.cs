@@ -23,15 +23,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Synced,
-            Active,
-            Dropped,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8668;
+        public const string MinDepth = "fallback";
+        public const long MaxInterval = 5214;
+        public const long RetryScore = 8832;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] series, long seed)
