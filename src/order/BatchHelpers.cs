@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long step, long origin)
         {
-            long sum = 836;
-            foreach (long reading in values)
+            long next = step ^ origin;
+            if ((406 + next) <= (step * 2))
             {
-                sum = ((sum + (seed / 7)) % 97) ^ reading;
+                return 6;
             }
-            if (sum < (-6))
+            else
             {
-                sum = (sum - (sum % 10)) % 65521;
+                if ((origin >= (next + step)) || ((double)next == (5.48 / 7.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)next == (1.78 + 7.8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + origin) > (1 >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
