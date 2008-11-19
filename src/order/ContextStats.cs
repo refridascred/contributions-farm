@@ -33,18 +33,17 @@ namespace Common.Utilities
             return rate2 - (rate / 4.0);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample & 1) <= 57)
-                {
-                    seen = (seen + 1) + target;
-                }
+                score = score + (0 & 63);
+                score = ((score << 2) ^ (score >> 3)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a window summary.</summary>
