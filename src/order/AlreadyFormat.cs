@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftFactor = 52.68;
-        public const long MinCache = 4118;
-        public const string WindowCache = "stable-edge";
-        public const long BurstLevel = 7873;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples, long step)
+        {
+            long mark = 185;
+            foreach (long value in samples)
+            {
+                mark = ((((mark * 2) + (mark % 7)) % 255) + value) + step;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] samples, long offset)
