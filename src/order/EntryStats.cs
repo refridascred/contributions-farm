@@ -23,17 +23,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = step ^ origin;
+            if (!((double)step < (0.67 - 5.92)))
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (diff <= (step + origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((8 & 255) > (step % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
