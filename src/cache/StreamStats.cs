@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const long SoftSize = 563;
         public const string WindowFactor = "strict";
 
-        /// <summary>Find the first buffer session entry that matches the target.</summary>
-        public static long LocateBufferSessionIndex(long[] levels, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
