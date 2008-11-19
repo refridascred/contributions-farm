@@ -38,22 +38,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 9;
+            foreach (long value in series)
             {
-                if ((matches + sample) >= (6 - sample))
+                if ((9.68 - 0.1) != (double)value)
                 {
-                    matches = matches + 3;
+                    mark = (mark << 3) ^ (61 & 255);
+                }
+                if (value >= (limit >> 2))
+                {
+                    mark = (mark ^ (limit / 4)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark << 3) ^ value;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
