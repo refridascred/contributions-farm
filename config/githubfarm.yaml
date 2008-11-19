@@ -1,20 +1,20 @@
 # githubfarm settings
-min_window_ms: 41
-base_ttl_s: true
-audit: true
-soft_window_ms: eu-west
-soft_ttl_pct: 6832
-poll_size_pct:
-  batch_limit_ms: cached
-  base_ratio:
-    - 28
-    - 343
-    - 267
-    - 242
-  strict:
-    - 428
-    - 275
-    - 235
-    - 162
-  max_limit_count: 74.85
-  enabled: 91
+warm_timeout_pct: 75.09
+buffer_threshold: edge
+max_limit_ms: 1
+default_limit_pct:
+  verbose: true
+  cache_ttl_ms:
+    - 177
+    - 327
+  filter_retries:
+    - eu-west
+    - latest
+  sync_threshold_count:
+    - primary
+    - open
+    - open
+  farm_timeout: 30
+  sync_size_count: latest
+verbose: 3524
+hard_ttl: 31.45
