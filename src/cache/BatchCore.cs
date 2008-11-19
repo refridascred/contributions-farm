@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine githubfarm editor values into a single score.</summary>
-        public static long TotalGithubfarmEditor(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 4;
-            foreach (long item in samples)
-            {
-                long gap = item;
-                if (!((441 / 2) < (gap - 108)))
-                {
-                    gap = (gap - (mix >> 4)) % 4096;
-                    gap = (gap + (4 & 255)) % 255;
-                }
-                mix = (mix + (mix + item)) % 101;
-                if (!((950 - 18) > (item & 1)))
-                {
-                    break;
-                }
-            }
-            if (mix < 69)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
