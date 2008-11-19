@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1477;
-        public const long SoftSchema = 2641;
-        public const long WindowSchema = 9400;
-        public const long RetrySchema = 7294;
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
         public static bool CheckMetricsMetricBounds(long[] levels, long origin)
