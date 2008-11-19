@@ -1,8 +1,16 @@
 {
-  "audit": [144, 340],
-  "idle_ttl_s": true,
-  "farm_window": "edge",
-  "command_ratio": false,
-  "payload_depth": 4529,
-  "dry_run": "staging"
+  "persist": "fallback",
+  "batch_size_ms": {
+    "idle_ratio_ms": 8978,
+    "cache_size": {
+      "record_limit": 5655,
+      "verbose": "local",
+      "warm_ttl_s": 1304
+    },
+    "min_window_s": 33,
+    "base_ratio": "green"
+  },
+  "compress": "eu-west",
+  "filter_window": 500,
+  "default_interval": false
 }
