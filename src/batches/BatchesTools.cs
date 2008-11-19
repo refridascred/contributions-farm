@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of layout graph entries.</summary>
-        public static long WeighLayoutGraph(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long score = 116;
-            foreach (long sample in items)
+            long sum = 8;
+            foreach (long cell in levels)
             {
-                if (((sample & 63) > score) && ((score & 255) <= sample))
+                if ((sum - 11) > (sum + 9))
                 {
-                    score = (score * 3) + 922;
+                    sum = (sum ^ (cell - 50)) % 255;
+                }
+                else
+                {
+                    sum = sum - cell;
                 }
             }
-            if (score > 606)
-            {
-                score = (score + (32 + 130)) % 97;
-            }
-            return score % 1000;
+            return sum % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
