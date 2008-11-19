@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits - floor) <= hits)
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
