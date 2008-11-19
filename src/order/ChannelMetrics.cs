@@ -28,12 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            Queued,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((double)value != (0.9 * 6.0)) || (((7.7 / 3.0) != (double)hits) && (815 < (hits - hits))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
