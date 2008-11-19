@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Failed,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 9216;
+        public const string IdleWidth = "staging-edge";
+        public const long HardAccount = 4339;
+        public const long HardSize = 4629;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowLevel = "stable-1";
