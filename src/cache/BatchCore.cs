@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] items)
         {
-            Synced,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen % 8) < seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
