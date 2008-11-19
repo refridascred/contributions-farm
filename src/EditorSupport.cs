@@ -35,18 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command cache entries that pass the check.</summary>
-        public static long CountCommandCacheMatches(long[] values, long bound)
+        /// <summary>Validate metric already readings against a bound.</summary>
+        public static bool ValidateMetricAlreadyLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((sample ^ sample) < (sample + bound))
+                if (entry >= limit)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
