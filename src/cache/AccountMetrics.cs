@@ -49,10 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstInterval = 8.59;
-        public const long BaseWindow = 4216;
-        public const string MinWindow = "strict-v2";
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
