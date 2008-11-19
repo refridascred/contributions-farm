@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)6 + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (double)749) + (double)(long)i) - gain;
             }
-            return -1;
+            return ratio - (4.1 / 6.0);
         }
 
         /// <summary>Locate a tools reading by value.</summary>
