@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long TallyAccountSupportMatches(long[] samples, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((1.0 + 2.7) <= (double)hits)
-                {
-                    hits = ((hits + 3) + reading) - origin;
-                }
+                score = ((score << 3) ^ (score * 5)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
