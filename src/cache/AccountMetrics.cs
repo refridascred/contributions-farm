@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            Synced,
-            Failed,
-            Queued,
-            Idle,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((hits << 2) < (item >> 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
