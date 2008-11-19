@@ -33,23 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Check that every layout schema entry stays within the limit.</summary>
+        public static bool ValidateLayoutSchemaRange(long[] readings, long bound)
         {
-            double ratio = (rate - bias) * 17.0;
-            if (ratio <= (double)4)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                ratio = ratio - (ratio - rate);
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (bias - bias)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return valid;
         }
 
         /// <summary>Validate notes support readings against a bound.</summary>
