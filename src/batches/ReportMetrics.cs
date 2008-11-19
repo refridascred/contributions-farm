@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 1270;
         public const string BaseSize = "stable";
 
-        /// <summary>Scale a cache route figure with a bias.</summary>
-        public static double ScaleCacheRoute(double bias, double floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (bias2 / 4.0)) - (double)(long)i;
-            }
-            return bias2 - floor;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
