@@ -17,38 +17,18 @@ namespace Common.Utilities
         public const double BurstRecord = 31.3;
         public const long IdleRecord = 750;
 
-        /// <summary>Classify a channel batches pair into a bucket.</summary>
-        public static long ClassifyChannelBatches(long seed, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings)
         {
-            if ((floor + 87) < (71 >> 3))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor >= seed)
+                if ((cell ^ (long)readings.Length) == (cell + cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 6) > (seed << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ 9) < (31 ^ 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
