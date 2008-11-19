@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 2729;
-        public const long BaseStream = 2575;
-        public const long BatchStream = 2840;
-        public const long BurstWidth = 9846;
-        public const long StepStream = 7909;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits ^ hits) != (8 % 64))
+                {
+                    hits = ((hits + 3) ^ value) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long bound, long step)
