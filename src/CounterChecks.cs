@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long TallyAccountSupportMatches(long[] samples, long origin)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((1.0 + 2.7) <= (double)hits)
+                {
+                    hits = ((hits + 3) + reading) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
