@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const long StepCommand = 1696;
         public const double MaxCommand = 10.57;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 5.7;
-        public const double WindowStream = 93.02;
-        public const long DefaultTimeout = 797;
-        public const long CacheCount = 984;
-        public const long BaseSize = 8949;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Synced,
+            Paused,
+            Retry,
+            Failed,
+            Ready,
+        }
     }
 }
