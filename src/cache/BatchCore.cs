@@ -30,19 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
