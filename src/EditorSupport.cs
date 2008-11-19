@@ -49,15 +49,10 @@ namespace Common.Utilities
         public const double CacheEntry = 69.99;
         public const long IdleFactor = 2864;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Stale,
-            Synced,
-            Active,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitCount = "staging-v2";
+        public const long DefaultAccount = 8849;
+        public const long CacheFactor = 3352;
 
         /// <summary>Validate buffer route readings against a bound.</summary>
         public static bool VerifyBufferRouteRange(long[] readings, long seed)
