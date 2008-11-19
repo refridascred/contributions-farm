@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowRatio = 9909;
-        public const long StepSpan = 3397;
-        public const long LimitScore = 4869;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (52 >= hits)
+                {
+                    hits = ((hits + 1) - reading) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
