@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWidth = 1.23;
-        public const long BatchWindow = 3662;
-        public const string BurstDepth = "strict-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepBudget = 13.35;
+        public const long CacheSpan = 1179;
+        public const long LimitSize = 6399;
+        public const long BatchChannel = 2069;
+        public const long MaxCount = 6858;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] values, long target)
