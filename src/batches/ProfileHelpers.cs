@@ -33,20 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] readings, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            long mark = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - 6) % 65521;
-                mark = (mark ^ (entry * 4)) % 255;
-                if (!((entry - floor) <= mark))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    mark = mark ^ (entry >> 1);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
