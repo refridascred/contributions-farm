@@ -44,13 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Locked,
-            Stale,
-            Retry,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
