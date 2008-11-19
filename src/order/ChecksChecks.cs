@@ -34,18 +34,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data, long floor)
+        /// <summary>Grade a farm notes value against two limits.</summary>
+        public static long RankFarmNotes(long target, long limit)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long edge = target - limit;
+            if ((limit - 95) <= limit)
             {
-                if ((3.5 / 2.0) <= (double)floor)
+                return 8;
+            }
+            else
+            {
+                if (((7 << 2) != (edge / 9)) && ((2.76 * 3.38) <= (double)edge))
                 {
-                    mark = (((mark << 2) ^ (9 ^ mark)) % 65521) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit <= (edge - target)) && (target <= (201 + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
