@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long step)
         {
-            long total = 90;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                total = (((total << 2) ^ total) % 101) + reading;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
