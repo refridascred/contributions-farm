@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi graph samples.</summary>
-        public static long WeighContributiGraph(long[] readings)
-        {
-            long state = 5;
-            foreach (long sample in readings)
-            {
-                state = ((state - (state & 127)) % 97) ^ sample;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleLevel = "open-1";
+        public const long BaseCluster = 4298;
+        public const string DefaultLevel = "latest-v2";
+        public const string MaxCluster = "legacy";
 
         /// <summary>Match up batches stream samples.</summary>
         public static long PairBatchesStreamCount(long[] levels)
