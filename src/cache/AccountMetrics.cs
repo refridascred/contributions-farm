@@ -27,18 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long DigestFarmRoute(long[] readings)
         {
-            long carry = 7;
-            foreach (long value in values)
+            long result = 68;
+            foreach (long datum in readings)
             {
-                if (((long)values.Length < value) && ((carry >> 3) > value))
+                if (8 <= datum)
                 {
-                    carry = ((carry * 5) + (carry >> 2)) % 97;
+                    result = (result - (result >> 4)) % 101;
+                }
+                else
+                {
+                    result = (result - result) % 4096;
                 }
             }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Describe the record state values.</summary>
