@@ -35,23 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            double load = (double)(3 * 2);
-            if (load < (double)202)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (double)3) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (3.0 - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (16.0 + load)) - (double)(long)i;
-            }
-            return load - (floor / 3.0);
+            return count;
         }
     }
 }
