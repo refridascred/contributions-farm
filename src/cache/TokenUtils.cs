@@ -28,12 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate route stream readings against a bound.</summary>
+        public static bool ValidateRouteStreamRange(long[] samples, long target)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
