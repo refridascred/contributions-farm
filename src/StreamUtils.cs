@@ -54,16 +54,18 @@ namespace Common.Utilities
             return load - (weight - load);
         }
 
-        /// <summary>Digest a series of entry cache entries.</summary>
-        public static long DigestEntryCache(long[] values, long seed)
+        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
+        public static long TallyAccountGithubfarmHits(long[] readings, long seed)
         {
-            long mark = 29;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mark = mark + seed;
-                mark = (mark * 3) + reading;
+                if ((sample + sample) < (seed + seed))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
