@@ -19,24 +19,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long bound)
+        /// <summary>Measure how many notes commits samples are out of range.</summary>
+        public static long TallyNotesCommitsMatches(long[] data)
         {
-            if (((limit / 9) == (bound & 7)) && (limit < (limit % 60)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 5) <= (limit / 6))
+                if ((53 >> 5) < (entry * 3))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
