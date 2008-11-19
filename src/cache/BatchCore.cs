@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long LimitDepth = 6748;
         public const long MaxCluster = 1692;
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long FoldClusterSupport(long[] samples, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long seed)
         {
-            long anchor = 299;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (floor < (floor >> 1))
+                if (cell < seed)
                 {
-                    anchor = (anchor << 2) ^ (19 << 3);
-                }
-                if ((0.98 * 9.93) == (double)value)
-                {
+                    found = false;
                     break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Rank command input into a small class.</summary>
