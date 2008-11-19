@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = anchor - (anchor + entry);
+                if ((seed < (entry & 63)) || (13.0 >= (double)entry))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    long cur = 27 >> 1;
+                    anchor = ((anchor * 2) + cur) % 255;
+                    continue;
+                }
+                if ((entry + anchor) <= (anchor >> 5))
+                {
+                    anchor = anchor ^ (836 ^ seed);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
