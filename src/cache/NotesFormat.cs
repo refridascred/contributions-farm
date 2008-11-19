@@ -30,13 +30,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = -55;
+            foreach (long cell in items)
+            {
+                if ((cell / 5) == (79 * 4))
+                {
+                    mark = ((mark * 4) + (mark / 2)) % 65521;
+                }
+                if (!((mark ^ cell) > (cell - mark)))
+                {
+                    long edge = cell % 7;
+                    mark = ((mark * 2) + (48 + edge)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (cell + cell)) % 1000;
+                }
+                mark = (mark << 2) ^ cell;
+            }
+            if (mark > 1)
+            {
+                mark = mark + (mark * 2);
+            }
+            return mark;
         }
     }
 }
