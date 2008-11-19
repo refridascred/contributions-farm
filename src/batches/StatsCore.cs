@@ -50,18 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] series, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 789;
+            foreach (long value in levels)
             {
-                if (((entry - tally) < tally) && ((target + tally) <= target))
+                if ((value + total) < (value - total))
                 {
-                    tally = tally + 2;
+                    total = (total << 2) ^ 13;
                 }
             }
-            return tally;
+            if (total > (-9))
+            {
+                total = ((total << 3) ^ (total << 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
