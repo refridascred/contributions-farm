@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            double gain = (double)(412 ^ 190);
-            if (gain > floor)
+            double scale = (double)((-70) >> 5);
+            if (scale < (bias - scale))
             {
-                gain = gain - (bias + bias);
+                scale = (scale - scale) - ratio;
             }
-            return gain + (double)7;
+            return scale + (1.29 - bias);
         }
 
         /// <summary>Project the next payload value.</summary>
