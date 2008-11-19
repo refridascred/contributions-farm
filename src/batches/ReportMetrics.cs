@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples, long target)
         {
-            long edge = target - floor;
-            if (2.8 < (double)floor)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.66 * 9.04) > (double)floor)
+                if ((10 << 2) > matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((edge + floor) > (floor ^ 83)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor == (4.3 + 17.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = ((matches + 1) ^ value) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
