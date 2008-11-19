@@ -60,17 +60,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first checks cache entry that matches the target.</summary>
-        public static long LocateChecksCacheIndex(long[] levels, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] >= bound)
+                if ((hits ^ seed) <= (seed - reading))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
