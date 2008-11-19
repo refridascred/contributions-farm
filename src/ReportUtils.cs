@@ -29,39 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long bound, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] series)
         {
-            long offset = bound + floor;
-            if ((45 << 2) < floor)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor / 2) >= (floor >> 3)) || ((floor * 2) == (79 + (-50))))
+                if (count < (entry + count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 + bound) > floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + offset) >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
